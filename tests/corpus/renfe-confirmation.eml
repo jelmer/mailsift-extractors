@@ -1,0 +1,52 @@
+Authentication-Results: example.org; dkim=pass header.d=renfe.es header.i=@renfe.es
+From: Renfe <ventaOnline@renfe.es>
+To: joe@example.com
+Subject: Confirmacion de venta Renfe
+Date: Fri, 26 Jun 2026 23:41:30 +0000
+Message-ID: <renfe-test@renfe.es>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<script type="application/ld+json">
+[
+{
+"@context": "http://schema.org",
+"@type": "TrainReservation",
+"reservationNumber": "FFFFFF",
+"reservationStatus": "http://schema.org/ReservationConfirmed",
+"reservationFor": {
+"@type": "TrainTrip",
+"trainNumber": "00621",
+"departureStation": {"@type": "TrainStation","name": "VIGO URZAIZ"},
+"departureTime": "2026-08-15T07:32:00+0200",
+"arrivalStation": {"@type": "TrainStation","name": "VITORIA-GASTEIZ"},
+"arrivalTime": "2026-08-15T16:21:00+0200",
+"trainName": "ALVIA"
+},
+"reservedTicket": {
+"@type": "Ticket",
+"ticketNumber": "7000000000000",
+"ticketedSeat": {"@type": "Seat","seatNumber": "01C","seatSection": "1"}
+}
+},
+{
+"@context": "http://schema.org",
+"@type": "TrainReservation",
+"reservationNumber": "FFFFFF",
+"reservationStatus": "http://schema.org/ReservationConfirmed",
+"reservationFor": {
+"@type": "TrainTrip",
+"trainNumber": "00282",
+"departureStation": {"@type": "TrainStation","name": "VITORIA-GASTEIZ"},
+"departureTime": "2026-08-15T16:45:00+0200",
+"arrivalStation": {"@type": "TrainStation","name": "SAN SEBASTIAN-DONOSTIA"},
+"arrivalTime": "2026-08-15T18:50:00+0200",
+"trainName": "Intercit"
+}
+}
+]
+</script>
+<p>GRACIAS POR TU COMPRA</p>
+<p>Localizador: FFFFFF</p>
+</body></html>

@@ -1,0 +1,33 @@
+Authentication-Results: example.org; dkim=pass header.d=deutschebahn.com header.i=@deutschebahn.com
+From: Deutsche Bahn <noreply@deutschebahn.com>
+To: joe@example.com
+Subject: Buchungsbestaetigung Deutsche Bahn (Auftrag: 600000000000)
+Date: Sat, 26 Oct 2024 20:13:07 +0000
+Message-ID: <db-test@deutschebahn.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY"
+
+--BOUNDARY
+Content-Type: text/plain; charset="utf-8"
+
+Hallo Joe Example, vielen Dank fuer Ihre Buchung bei der Deutschen Bahn.
+
+--BOUNDARY
+Content-Type: text/plain; charset="utf-8"; name="BAHN_2024-12-27_Hinrueckfahrt_.ics"
+Content-Disposition: attachment; filename="BAHN_2024-12-27_Hinrueckfahrt_.ics"
+
+BEGIN:VCALENDAR
+X-LOTUS-CHARSET:UTF-8
+VERSION:2.0
+PRODID:http://www.bahn.de
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:db-600000000000-hin@bahn.de
+SUMMARY:Utrecht Centraal -> Hamburg Hbf
+DTSTART:20241227T101400
+DTEND:20241227T161200
+LOCATION:Utrecht Centraal
+END:VEVENT
+END:VCALENDAR
+
+--BOUNDARY--

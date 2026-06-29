@@ -1,0 +1,9 @@
+[project]
+name = "mailsift-extractors"
+version = "0.0.1"
+description = "Per-vendor email extractor scripts for mailsift."
+requires-python = ">=3.11"
+license = { text = "GPL-3.0-or-later" }
+
+[tool.pytest.ini_options]
+testpaths = ["extractors/_tests"]

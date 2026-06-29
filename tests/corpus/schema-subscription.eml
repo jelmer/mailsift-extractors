@@ -1,0 +1,29 @@
+From: receipts@streamingco.example
+To: joe@example.com
+Subject: Your subscription renews on 15 July
+Date: Sun, 15 Jun 2026 09:00:00 +0000
+Message-ID: <sub-001@streamingco.example>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Order",
+  "orderNumber": "ORD-001",
+  "acceptedOffer": {
+    "@type": "Offer",
+    "name": "StreamingCo Standard",
+    "subscriptionDuration": "P1M",
+    "price": "9.99",
+    "priceCurrency": "EUR"
+  }
+}
+</script>
+</head>
+<body>
+<p>Your StreamingCo subscription renews monthly.</p>
+</body>
+</html>

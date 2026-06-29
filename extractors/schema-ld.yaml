@@ -1,0 +1,4 @@
+name: schema-ld
+order: 10
+requires:
+  - html

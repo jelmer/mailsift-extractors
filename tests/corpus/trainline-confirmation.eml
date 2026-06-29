@@ -1,0 +1,39 @@
+Authentication-Results: example.org; dkim=pass header.d=info.thetrainline.com header.i=@info.thetrainline.com
+From: Trainline <auto-confirm@info.thetrainline.com>
+To: joe@example.com
+Subject: Your booking confirmation for London to Ashford International (15 March at 10:40)
+Date: Sun, 15 Mar 2026 10:34:36 +0000
+Message-ID: <trainline-test@info.thetrainline.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>Your trip to Ashford International departing Sunday 15 March 2026 is confirmed</h1>
+<p>London St Pancras International &rarr; Ashford International</p>
+<script type="application/ld+json">[{
+  "@context": "http://schema.org",
+  "@type": "TrainReservation",
+  "reservationNumber": "700000000000",
+  "reservationId": "700000000000 , 03/15/2026 10:40",
+  "reservationStatus": "http://schema.org/ReservationConfirmed",
+  "reservationFor": {
+    "@type": "TrainTrip",
+    "departureStation": {
+      "@type": "TrainStation",
+      "name": "London St Pancras International"
+    },
+    "departureTime": "2026-03-15T10:40:00+00:00",
+    "arrivalStation": {
+      "@type": "TrainStation",
+      "name": "Ashford International"
+    },
+    "arrivalTime": "2026-03-15T11:19:00+00:00",
+    "underName": {
+      "@type": "Person",
+      "name": ""
+    },
+    "trainName": "",
+    "trainNumber": ""
+  }
+}]</script>
+</body></html>

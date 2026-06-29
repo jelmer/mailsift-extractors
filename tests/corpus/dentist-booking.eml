@@ -1,0 +1,34 @@
+Authentication-Results: example.org; dkim=pass header.d=exampledental.example header.i=@exampledental.example
+From: Example Dental Practice <sms@exampledental.example>
+To: joe@example.com
+Subject: Joe, your appointment has been booked
+Date: Sat, 18 Oct 2025 07:30:07 +0000
+Message-ID: <dental-test@exampledental.example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY"
+
+--BOUNDARY
+Content-Type: text/plain; charset="utf-8"
+
+Dear Mr Joe Example,
+
+Your appointment is on Monday 27/10/25 at 11:20 with Dr Example for 00:20.
+
+--BOUNDARY
+Content-Type: application/octet-stream; name="Add Appointment.ics"
+Content-Disposition: attachment; filename="Add Appointment.ics"
+
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Software of Excellence//SOE Patient Portal//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:dentist-cgw01-2025-10-27-1120@exampledental.example
+SUMMARY:Dental appointment with Dr Example
+DTSTART:20251027T112000
+DTEND:20251027T114000
+LOCATION:Example Dental Practice, 1 Example Street, London, EC1A 1AA
+END:VEVENT
+END:VCALENDAR
+
+--BOUNDARY--

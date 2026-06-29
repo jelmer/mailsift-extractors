@@ -1,0 +1,32 @@
+From: bookings@airline.example
+To: test@example.org
+Subject: Your flight FR1234 to Barcelona
+Date: Sat, 20 Jun 2026 08:14:00 +0000
+Message-ID: <flight-fr1234@airline.example>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FlightReservation",
+  "reservationNumber": "FR1234-ABC123",
+  "underName": {"@type": "Person", "name": "Test"},
+  "reservationFor": {
+    "@type": "Flight",
+    "flightNumber": "1234",
+    "airline": {"@type": "Airline", "name": "Ryanair", "iataCode": "FR"},
+    "departureAirport": {"@type": "Airport", "iataCode": "DUB", "name": "Dublin"},
+    "arrivalAirport": {"@type": "Airport", "iataCode": "BCN", "name": "Barcelona"},
+    "departureTime": "2026-07-20T18:00:00+00:00",
+    "arrivalTime": "2026-07-20T22:00:00+02:00"
+  }
+}
+</script>
+</head>
+<body>
+<p>Your flight is confirmed. See attached.</p>
+</body>
+</html>

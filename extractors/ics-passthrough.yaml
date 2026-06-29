@@ -1,0 +1,5 @@
+name: ics-passthrough
+order: 20
+requires:
+  - "attachment:text/calendar"
+  - "attachment:filename:*.ics"

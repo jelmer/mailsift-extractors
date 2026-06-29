@@ -1,0 +1,15 @@
+Authentication-Results: example.org; dkim=pass header.d=airbnb.com header.i=@airbnb.com
+From: Airbnb <automated@airbnb.com>
+To: test@example.org
+Subject: Confirmed: Your 9-14 August trip, here is your Airbnb receipt
+Date: Thu, 25 Jun 2026 22:02:50 +0000
+Message-ID: <airbnb-test@airbnb.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<script type="application/ld+json">
+{"@type":"LodgingReservation","@context":"http://schema.org","reservationNumber":"IIIIIIIIII","reservationStatus":"http://schema.org/ReservationConfirmed","underName":{"@type":"Person","name":"Test"},"reservationFor":{"@type":"LodgingBusiness","name":"Example Guesthouse","address":{"@type":"PostalAddress","streetAddress":"1 Example Street, 1000 Exampletown, Portugal","addressLocality":"Exampletown","addressRegion":"Example","postalCode":"1000","addressCountry":"PT"},"telephone":"+351 000 000 000"},"checkinDate":"2026-08-09T15:00","checkoutDate":"2026-08-14T12:00"}
+</script>
+<p>You are all set for Exampletown.</p>
+</body></html>
