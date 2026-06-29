@@ -1,0 +1,9 @@
+name: kwalitaria
+order: 50
+from_domains:
+  - kwalitaria.nl
+subject_regex: "(?i)^Kwalitaria\\s+.+?\\s+bestelling\\s+\\d+"
+requires:
+  - html
+require_dkim:
+  - kwalitaria.nl
