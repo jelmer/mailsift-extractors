@@ -1,0 +1,43 @@
+Authentication-Results: example.org; dkim=pass header.d=bol.com header.i=@bol.com
+From: "bol" <automail@bol.com>
+To: test@example.org
+Subject: Bedankt voor je bestelling
+Date: Thu, 28 May 2026 15:22:29 +0100
+Message-ID: <bol-com-ordered-test@bol.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Bedankt voor je bestelling</title>
+  <style>body{font-family:Arial,sans-serif;}</style>
+</head>
+<body>
+<div style="display:none">Bedankt voor je bestelling</div>
+<table><tr><td>
+  <h1>Bedankt Test</h1>
+  <p>Fijn dat je koos voor bol.</p>
+  <p>We gaan aan de slag en laten het weten wanneer we je bestelling verzenden.</p>
+  <h2>Dit heb je besteld</h2>
+  <p>Bestelnummer: C000000000</p>
+  <table>
+    <tr>
+      <td>Example Product</td>
+      <td>Verkoper: ExampleAudio.com</td>
+      <td>Bezorgdatum: 29 mei</td>
+      <td>1x</td>
+      <td>&euro; 11,00</td>
+    </tr>
+  </table>
+  <table>
+    <tr><td>Verzendkosten</td><td>Gratis</td></tr>
+    <tr><td><strong>Totaal</strong></td><td><strong>&euro; 11,00</strong></td></tr>
+  </table>
+  <p>Je koos voor achteraf betalen</p>
+</td></tr></table>
+
+<div style="display:none">C000000000</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <auto-confirm@amazon.co.uk>
+To: test@example.org
+Subject: Ordered: 'Example Gadget X1 - Wireless...'
+Date: Wed, 24 Jun 2026 23:13:00 +0000
+Message-ID: <amazon-uk-ordered-test@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Your Orders
+
+    Thanks for your order!
+Ordered
+
+Dispatched
+
+Out for delivery
+
+Delivered
+
+Arriving Saturday
+
+Test - London
+
+Order #
+111-1111111-1111111
+
+View or edit order
+
+* Example Gadget X1 - Wireless Example Device, 2 Channels
+  Quantity: 1
+  26.93 GBP
+
+Total
+26.93 GBP
+
+Amazon.co.uk is a trading name for Amazon EU Sarl.

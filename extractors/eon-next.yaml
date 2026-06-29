@@ -1,0 +1,9 @@
+name: eon-next
+order: 50
+from_domains:
+  - eonnext.com
+subject_regex: "(?i)Your energy statement"
+requires:
+  - text
+require_dkim:
+  - eonnext.com

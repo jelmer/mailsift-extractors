@@ -1,0 +1,11 @@
+name: sainsburys
+order: 50
+from_domains:
+  - sainsburys.co.uk
+  - "*.sainsburys.co.uk"
+subject_regex: "(?i)delivery will arrive between|delivery window update|saver slot"
+requires:
+  - html
+require_dkim:
+  - mail.sainsburys.co.uk
+  - sainsburys.co.uk

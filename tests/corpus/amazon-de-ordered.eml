@@ -1,0 +1,37 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.de header.i=@amazon.de
+From: "Amazon.de" <bestellbestaetigung@amazon.de>
+To: test@example.org
+Subject: Ordered: 'Example 24V EU power supply...'
+Date: Wed, 13 Aug 2025 14:58:23 +0000
+Message-ID: <amazon-de-ordered-test@amazon.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Your Orders
+
+    Thanks for your order, Test!
+Ordered
+
+Dispatched
+
+Out for delivery
+
+Delivered
+
+Arriving 21 August - 27 August
+
+Test
+
+Order #
+222-2222222-2222222
+
+View or edit order
+
+* Example 24 V EU Power Supply Compatible with Example Speaker
+  Quantity: 1
+  26.49 EUR
+
+Total
+31.05 EUR
+
+Amazon.de

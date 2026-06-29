@@ -1,0 +1,21 @@
+Authentication-Results: example.org; dkim=pass header.d=uber.com header.i=@uber.com
+From: Uber Receipts <noreply@uber.com>
+To: joe@example.org
+Subject: [Personal] Your Monday evening trip with Uber
+Date: Mon, 11 May 2026 17:43:02 +0200
+Message-ID: <uber-trip-1@uber.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>11 May 2026 17:24</p>
+<p>Thanks for riding, Joe</p>
+<p>We hope you enjoyed your ride this evening.</p>
+<p>Total &euro;9.50</p>
+<p>Trip fare &euro;9.50</p>
+<p>Trip details</p>
+<p>UberX 4.09 kilometres, 9 minutes</p>
+<p>17:33 Voorbeeldstraat 1, 1000 AA Utrecht</p>
+<p>17:42 1000 ZZ Utrecht, Netherlands</p>
+<p>You rode with Driver</p>
+</body></html>

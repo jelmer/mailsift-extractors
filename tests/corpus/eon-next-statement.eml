@@ -1,0 +1,29 @@
+Authentication-Results: example.org; dkim=pass header.d=eonnext.com header.i=@eonnext.com
+From: E.ON Next <hi@eonnext.com>
+To: test@example.org
+Subject: FYI: Your energy statement
+Date: Tue, 9 Jun 2026 12:33:21 +0000
+Message-ID: <eon-next-test@eonnext.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Test User
+Account no. - A-00000000
+
+Flat 1 1 Example Street, Anytown
+
+Your energy statement
+
+Full PDF bill attached
+
+9th May 2026 - 8th June 2026
+
+Your previous balance: £14.86 CR
+
+1. Charges on your account (Inclusive of VAT)
+Electricity: £26.95 DR
+
+2. Payments you've made
+Direct Debit collection - 1st June 2026: £24.12 CR
+
+Your new balance: £12.03 CR

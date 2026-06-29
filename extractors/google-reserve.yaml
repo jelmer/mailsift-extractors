@@ -1,0 +1,9 @@
+name: google-reserve
+order: 50
+from_domains:
+  - google.com
+subject_regex: "(?i)^Your reservation at .* (is confirmed|has been modified|has been cancell?ed)"
+requires:
+  - html
+require_dkim:
+  - google.com

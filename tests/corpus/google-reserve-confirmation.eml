@@ -1,0 +1,25 @@
+Authentication-Results: example.org; dkim=pass header.d=google.com header.i=@google.com
+From: Google Reserve <reserve-noreply@google.com>
+To: test@example.org
+Subject: Your reservation at The Example Bistro is confirmed
+Date: Fri, 17 Apr 2026 17:56:07 +0000
+Message-ID: <google-reserve-test@google.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<div itemscope itemtype=http://schema.org/FoodEstablishmentReservation>
+  <meta itemprop=reservationNumber content="0000-0000-0000-0000">
+  <meta itemprop=partySize content=2>
+  <meta itemprop=startTime content="2026-04-17T19:45:00+01:00">
+  <meta itemprop=endTime content="2026-04-17T21:15:00+01:00">
+  <div itemprop=reservationFor itemscope itemtype=http://schema.org/FoodEstablishment>
+    <meta itemprop=name content="The Example Bistro">
+    <div itemprop=address itemscope itemtype=http://schema.org/PostalAddress>
+      <meta itemprop=streetAddress content="1 Example Lane">
+      <meta itemprop=postalCode content="EC1A 1AA">
+      <meta itemprop=addressCountry content=GB>
+    </div>
+  </div>
+</div>
+</body></html>

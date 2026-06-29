@@ -1,0 +1,9 @@
+name: bol-com
+order: 50
+from_domains:
+  - bol.com
+subject_regex: "(?i)^(Bedankt voor je bestelling|Je pakket is nu bij PostNL|De bezorger is onderweg|Je pakket is bezorgd|Je pakket ligt bij de buren)"
+requires:
+  - html
+require_dkim:
+  - bol.com

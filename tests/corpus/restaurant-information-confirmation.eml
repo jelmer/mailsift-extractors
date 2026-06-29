@@ -1,0 +1,23 @@
+Authentication-Results: example.org; dkim=pass header.d=restaurant-information.com header.i=@restaurant-information.com
+From: Example Restaurant <reservation@restaurant-information.com>
+To: joe@example.com
+Subject: Confirmation of your booking at Example Restaurant
+Date: Wed, 18 Mar 2026 17:17:25 +0000
+Message-ID: <ri-test@restaurant-information.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<table><tr><td>Booking confirmed</td></tr></table>
+<table><tr><td>Dear Joe<br/><br/>Thank you for booking at our restaurant. We are pleased to inform you that your booking is confirmed. Please find the details below:</td></tr></table>
+<table>
+  <tr><td><strong>Example Restaurant</strong><br/>1 Example Street EC1A 1AA London<br/></td></tr>
+  <tr>
+    <td>Date<br/><strong>Thursday, 19 Mar</strong></td>
+    <td>Hour<br/><strong>18:30</strong></td>
+    <td>People<br/><strong>2 people</strong></td>
+  </tr>
+  <tr><td>Seating time<br/><strong>Your table is reserved from 18:30 to 20:30 (2h). Please arrive on time to avoid cancellation by the restaurant.</strong></td></tr>
+</table>
+<p>Cancellation link includes the reservation id: https://www.restaurant-information.com/en_GB/reservation/cancel/00000000-0000-0000-0000-000000000000/?jwt=xyz</p>
+</body></html>

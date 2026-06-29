@@ -1,0 +1,18 @@
+Authentication-Results: example.org; dkim=pass header.d=uber.com header.i=@uber.com
+From: Uber Receipts <noreply@uber.com>
+To: joe@example.org
+Subject: [Personal] Your Wednesday evening order with Uber Eats
+Date: Wed, 24 Jul 2024 20:18:30 +0200
+Message-ID: <uber-eats-1@uber.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Total &euro;34.60</p>
+<p>24 July 2024</p>
+<p>Thanks for ordering, Joe</p>
+<p>Here&#39;s your receipt for Example Sushi.</p>
+<p>Payments Mastercard 0000 25/07/2024 08:18 &euro;34.60</p>
+<p>You ordered from Example Sushi</p>
+<p>Delivered to Voorbeeldstrasse 28, 70469 Stuttgart</p>
+</body></html>

@@ -1,0 +1,16 @@
+Authentication-Results: example.org; dkim=pass header.d=sevenrooms.com header.i=@sevenrooms.com
+From: The Example Bistro <r+abc-c@message.sevenrooms.com>
+To: test@example.org
+Subject: Your Reservation at The Example Bistro | Test User on 17/04/2026
+Date: Fri, 17 Apr 2026 17:56:26 +0000
+Message-ID: <sevenrooms-test@sevenrooms.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<div>Test User</div>
+<div>Friday, 17 April 2026</div>
+<div>2 guests &middot; 19:45 - 21:15</div>
+<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;dates=20260417T184500Z%2F20260417T201500Z&amp;details=Test+User&amp;location=1+Example+Lane&amp;output=xml&amp;sf=true&amp;text=Reservation+at+The+Example+Bistro">Google</a>
+<div>Your reservation number is GGGGGGGGGGG</div>
+</body></html>

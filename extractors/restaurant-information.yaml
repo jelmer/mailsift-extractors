@@ -1,0 +1,9 @@
+name: restaurant-information
+order: 50
+from_domains:
+  - restaurant-information.com
+subject_regex: "(?i)^Confirmation of your booking at"
+requires:
+  - html
+require_dkim:
+  - restaurant-information.com
