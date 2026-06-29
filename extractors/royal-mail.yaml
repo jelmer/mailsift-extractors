@@ -1,0 +1,10 @@
+name: royal-mail
+order: 50
+from_domains:
+  - royalmail.com
+  - "*.royalmail.com"
+subject_regex: "(?i)Your (Royal Mail )?parcel.*(on its way|due to be delivered|has been delivered|delivered to)"
+requires:
+  - html
+require_dkim:
+  - royalmail.com

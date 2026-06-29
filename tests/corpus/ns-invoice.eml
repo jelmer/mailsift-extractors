@@ -1,0 +1,16 @@
+Authentication-Results: example.org; dkim=pass header.d=ns.nl header.i=@ns.nl
+From: Nederlandse Spoorwegen <noreply.ns@ns.nl>
+To: test@example.org
+Subject: Uw factuur staat klaar
+Date: Mon, 02 Dec 2024 04:45:40 +0100
+Message-ID: <ns-test@ns.nl>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Nederlandse Spoorwegen</p>
+<p>Relatienummer: 0100000000 | Ons kenmerk: 5000000000</p>
+<p>Beste heer User,</p>
+<p>Uw nieuwe factuur 400000000000 staat voor u klaar in MijnNS.</p>
+<p>Het gaat om een bedrag van &euro; 4,55. We schrijven dit bedrag rond 5 december 2024 af van uw bankrekening, via automatische incasso.</p>
+</body></html>

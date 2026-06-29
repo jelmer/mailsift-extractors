@@ -1,0 +1,25 @@
+Authentication-Results: example.org; dkim=pass header.d=service-airfrance.com header.i=@service-airfrance.com
+From: Air France <admin@service-airfrance.com>
+To: joe@example.com
+Subject: Booking confirmed - Hamburg-Paris on 30/12/2023
+Date: Sun, 24 Dec 2023 08:58:25 +0000
+Message-ID: <af-test@service-airfrance.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>BOOKING CONFIRMED</h1>
+<p>Hamburg &lt; &gt; Paris</p>
+<p>Departing on 12/30/2023 at 18h05</p>
+<p>Booking reference</p>
+<p>AAAAAA</p>
+
+<h2>Your flight details</h2>
+<p>Hamburg (HAM) - Paris (CDG)</p>
+<p>Saturday, December 30</p>
+<p>18h05 Hamburg Airport - Terminal 1</p>
+<p>Flight AF1511 - Operated by Air France</p>
+<p>Check-in Deadline : 17h25</p>
+<p>19h45 Aeroport Charles de Gaulle - Terminal 2F</p>
+
+</body></html>

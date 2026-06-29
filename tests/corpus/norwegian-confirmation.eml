@@ -1,0 +1,29 @@
+Authentication-Results: example.org; dkim=pass header.d=norwegian.com header.i=@norwegian.com
+From: Norwegian <noreply@norwegian.com>
+To: joe@example.com
+Subject: Travel Receipt
+Date: Tue, 10 Jun 2025 06:08:50 +0000
+Message-ID: <norwegian-test@norwegian.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Booking Confirmation</p>
+<p>Booking reference: CCCCCC</p>
+
+<p>Flight info</p>
+<p>From/To</p>
+<p>DY1303-10 Jun 2025</p>
+<p>09:20 London-Gatwick</p>
+<p>12:25 Oslo-Gardermoen</p>
+<p>Category/Seating</p>
+<p>LowFare</p>
+
+<p>Flight info</p>
+<p>From/To</p>
+<p>DY1312-15 Jun 2025</p>
+<p>14:25 Oslo-Gardermoen</p>
+<p>15:45 London-Gatwick</p>
+<p>Category/Seating</p>
+<p>Flex</p>
+</body></html>

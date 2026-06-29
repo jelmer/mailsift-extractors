@@ -1,0 +1,10 @@
+name: ns
+order: 50
+from_domains:
+  - ns.nl
+  - "*.ns.nl"
+subject_regex: "(?i)Uw factuur staat klaar|Uw NS factuur staat klaar"
+requires:
+  - html
+require_dkim:
+  - ns.nl

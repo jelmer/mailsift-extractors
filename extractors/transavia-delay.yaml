@@ -1,0 +1,9 @@
+name: transavia-delay
+order: 50
+from_domains:
+  - transavia.com
+subject_regex: "(?i)^Your flight\\s+[A-Z]{2}\\d+\\s+to\\s+.+\\s+has been delayed"
+requires:
+  - html
+require_dkim:
+  - transavia.com

@@ -1,0 +1,10 @@
+name: ups
+order: 50
+from_domains:
+  - ups.com
+  - "*.ups.com"
+subject_regex: "(?i)ups|tracking number 1Z|parcel was delivered|parcel scheduled for delivery"
+requires:
+  - html
+require_dkim:
+  - ups.com

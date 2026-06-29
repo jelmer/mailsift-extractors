@@ -1,0 +1,10 @@
+name: yodel
+order: 50
+from_domains:
+  - yodel.co.uk
+  - "*.yodel.co.uk"
+subject_regex: "(?i)yodel|out for delivery|not long to wait|rate your delivery"
+requires:
+  - html
+require_dkim:
+  - yodel.co.uk

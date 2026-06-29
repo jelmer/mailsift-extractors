@@ -1,0 +1,17 @@
+Authentication-Results: example.org; dkim=pass header.d=ups.com header.i=@ups.com
+From: UPS <mcinfo@ups.com>
+To: joe@example.org
+Subject: UPS Update: Parcel Scheduled for Delivery Tomorrow
+Date: Wed, 29 Apr 2026 10:41:08 +0000
+Message-ID: <ups-otfd-1@ups.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi, Joe</p>
+<p>Your parcel is arriving tomorrow.</p>
+<p>From ACME PARTS CO</p>
+<p>A signature is required for parcel delivery.</p>
+<p>Estimated Delivery Thursday 30/04/2026 between 08:30 - 11:30</p>
+<p>UPS Standard 1Z0000000000000001</p>
+</body></html>

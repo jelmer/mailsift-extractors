@@ -1,0 +1,10 @@
+name: evri
+order: 50
+from_domains:
+  - evri.com
+  - "*.evri.com"
+subject_regex: "(?i)evri|parcel|out for delivery|been delivered"
+requires:
+  - html
+require_dkim:
+  - evri.com

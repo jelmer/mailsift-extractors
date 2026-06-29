@@ -1,0 +1,9 @@
+name: air-france
+order: 50
+from_domains:
+  - service-airfrance.com
+subject_regex: "(?i)^Booking confirmed\\s+-\\s+.+\\s+on\\s+\\d{1,2}/\\d{1,2}/\\d{4}\\s*$"
+requires:
+  - html
+require_dkim:
+  - service-airfrance.com

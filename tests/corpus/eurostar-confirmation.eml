@@ -1,0 +1,22 @@
+Authentication-Results: example.org; dkim=pass header.d=eurostar.com header.i=@eurostar.com
+From: Eurostar <noreply@eurostar.com>
+To: test@example.org
+Subject: Booking confirmation | Wednesday, 10 June 2026 - Reference: EEEEEE
+Date: Fri, 30 Jan 2026 10:04:03 +0000
+Message-ID: <eurostar-test@eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Booking reference: EEEEEE</p>
+<table>
+<tr><td>Outbound Eurostar Standard Wednesday, 10 June 2026</td></tr>
+<tr><td>London St Pancras Int'l Rotterdam Centraal 18:04 22:32 3 hrs 28 mins Direct</td></tr>
+<tr><td>Test User Coach 5 - Seat 17</td></tr>
+</table>
+<table>
+<tr><td>Return Eurostar Standard Monday, 22 June 2026</td></tr>
+<tr><td>Rotterdam Centraal London St Pancras Int'l 19:28 21:57 3 hrs 29 mins Direct</td></tr>
+<tr><td>Test User Coach 10 - Seat 55</td></tr>
+</table>
+</body></html>

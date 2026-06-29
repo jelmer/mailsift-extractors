@@ -1,0 +1,9 @@
+name: norwegian
+order: 50
+from_domains:
+  - norwegian.com
+subject_regex: "(?i)^(Travel Receipt|Travel documents)\\b"
+requires:
+  - html
+require_dkim:
+  - norwegian.com

@@ -1,0 +1,9 @@
+name: ns-international
+order: 50
+from_domains:
+  - confirmation.nsinternational.nl
+subject_regex: "(?i)^Confirmation,\\s+name:.+booking reference:"
+requires:
+  - html
+require_dkim:
+  - confirmation.nsinternational.nl

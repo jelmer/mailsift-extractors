@@ -1,0 +1,10 @@
+name: eurostar
+order: 50
+from_domains:
+  - eurostar.com
+  - "*.eurostar.com"
+subject_regex: "(?i)Booking confirmation\\s*\\||exchange confirmation\\s*\\|"
+requires:
+  - html
+require_dkim:
+  - eurostar.com

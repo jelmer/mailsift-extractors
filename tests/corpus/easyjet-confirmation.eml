@@ -1,0 +1,22 @@
+Authentication-Results: example.org; dkim=pass header.d=easyjet.com header.i=@easyjet.com
+From: easyJet <donotreply@easyjet.com>
+To: test@example.org
+Subject: easyJet booking reference: ABCDEFG
+Date: Thu, 11 Jul 2024 15:28:08 +0000
+Message-ID: <ej-test@easyjet.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi, TESTUSER; here are the details for your booking (ABCDEFG)</p>
+<table>
+<tr><td>1 of 2 London Luton to Amsterdam EZY2521</td></tr>
+<tr><td>Departs: Fri 12 Jul 2024 18:45</td></tr>
+<tr><td>Arrives: Fri 12 Jul 2024 20:55</td></tr>
+</table>
+<table>
+<tr><td>2 of 2 Amsterdam to London Luton EZY2512</td></tr>
+<tr><td>Departs: Tue 16 Jul 2024 08:45</td></tr>
+<tr><td>Arrives: Tue 16 Jul 2024 09:00</td></tr>
+</table>
+</body></html>

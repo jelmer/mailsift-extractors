@@ -1,0 +1,15 @@
+Authentication-Results: example.org; dkim=pass header.d=yodel.co.uk header.i=@yodel.co.uk
+From: Yodel <noreply@yodel.co.uk>
+To: joe@example.org
+Subject: Not long to wait now
+Date: Fri, 18 Oct 2024 18:22:10 +0100
+Message-ID: <yodel-otw-1@yodel.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi</p>
+<p>Your Voorbeeld Webshop parcel is on its way to you.</p>
+<p>Your tracking number: JD0000000000000000</p>
+<p><a href="http://yodel.co.uk/tracking/JD0000000000000000">Track your parcel</a></p>
+</body></html>

@@ -1,0 +1,21 @@
+Authentication-Results: example.org; dkim=pass header.d=yodel.co.uk header.i=@yodel.co.uk
+From: Yodel <noreply@yodel.co.uk>
+To: joe@example.org
+Subject: Your Voorbeeld Webshop parcel is out for delivery
+Date: Sat, 19 Oct 2024 08:04:12 +0100
+Message-ID: <yodel-otfd-1@yodel.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi</p>
+<p>Your Voorbeeld Webshop parcel will be delivered between</p>
+<p>12:04 - 14:04</p>
+<p>This parcel doesn't need to be delivered to a person, but when our driver delivers your parcel, they may:</p>
+<ul>
+<li>Take a photo of it in your open doorway or</li>
+<li>Leave it in a safe place and take a photo or</li>
+<li>Deliver to a neighbour and take a photo as proof of delivery</li>
+</ul>
+<p><a href="http://yodel.co.uk/tracking/JD0000000000000000">Track your parcel</a></p>
+</body></html>

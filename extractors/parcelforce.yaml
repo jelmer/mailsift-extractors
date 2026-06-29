@@ -1,0 +1,10 @@
+name: parcelforce
+order: 50
+from_domains:
+  - parcelforce.co.uk
+  - "*.parcelforce.co.uk"
+subject_regex: "(?i)parcel\\s+delivery|parcelforce"
+requires:
+  - html
+require_dkim:
+  - parcelforce.co.uk

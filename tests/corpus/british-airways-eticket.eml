@@ -1,0 +1,39 @@
+Authentication-Results: example.org; dkim=pass header.d=email.ba.com header.i=@email.ba.com
+From: British Airways e-ticket <BA.e-ticket@email.ba.com>
+To: joe@example.com
+Subject: Your e-ticket receipt BBBBBB: 8 Jun 2024 16:15
+Date: Fri, 24 May 2024 16:51:15 +0000
+Message-ID: <ba-eticket-test@email.ba.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Dear Mr Example,
+
+British Airways booking reference: BBBBBB
+
+---------------------
+Your e-ticket receipt
+---------------------
+Thank you for booking with British Airways.
+
+Ticket Type: e-ticket
+
+--------------
+Your Itinerary
+--------------
+----------------------------------------------------
+BA0440: British Airways | Euro Traveller | Confirmed
+----------------------------------------------------
+Depart: 8 Jun 2024 16:15 - Heathrow (London) - Terminal 5
+Arrive: 8 Jun 2024 18:35 - Amsterdam
+
+----------------------------------------------------
+BA0443: British Airways | Euro Traveller | Confirmed
+----------------------------------------------------
+Depart: 16 Jun 2024 21:10 - Amsterdam
+Arrive: 16 Jun 2024 21:25 - Heathrow (London) - Terminal 5
+
+--------------
+Passenger list
+--------------
+MR JOE EXAMPLE
