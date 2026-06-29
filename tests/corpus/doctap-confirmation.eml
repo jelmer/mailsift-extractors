@@ -1,0 +1,20 @@
+Authentication-Results: example.org; dkim=pass header.d=doctap.co.uk header.i=@doctap.co.uk
+From: DocTap <patients@doctap.co.uk>
+To: joe@example.com
+Subject: Appointment Confirmation - 04 Jul, 11:15
+Date: Mon, 1 Jul 2024 11:51:16 +0000
+Message-ID: <doctap-test@doctap.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Dear Joe,</p>
+<p>Thanks for booking your appointment with DocTap.</p>
+<p><div>Appointment:</div>GP appointment, 15 mins</p>
+<p><div>When:</div>Thursday July 04, 2024 11:15</p>
+<p><div>Where: </div><a href='https://example.com/map'>Example Clinic
+1 Example Street
+London
+EC1A 1AA</a></p>
+<p><div>Dr Example :</div>Dr Example is a registered GP.</p>
+</body></html>

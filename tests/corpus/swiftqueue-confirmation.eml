@@ -1,0 +1,20 @@
+Authentication-Results: example.org; dkim=pass header.d=swiftqueue.com header.i=@swiftqueue.com
+From: Swiftqueue <reservations@swiftqueue.com>
+To: joe@example.com
+Subject: Swiftqueue Appointment Confirmation for 08:45 on Friday the 6th of December 2024
+Date: Wed, 27 Nov 2024 14:18:37 +0000
+Message-ID: <swiftqueue-test@swiftqueue.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Dear Joe,</p>
+<p>Thank you for booking your appointment at Example Community Clinic.</p>
+<p>Your appointment is confirmed for: <strong>Friday 6th of December 2024</strong> at <strong>8:45 AM</strong> in 1 Example Street, London, EC1A 1AA, UK.</p>
+
+<p>Appointment Details</p>
+<p><strong>Time:</strong></p>
+<p>Friday 6th of December 2024 at <strong>8:45 AM</strong></p>
+<p><strong>Location:</strong></p>
+<p>Example Community Clinic, 1 Example Street, London, EC1A 1AA, UK</p>
+</body></html>

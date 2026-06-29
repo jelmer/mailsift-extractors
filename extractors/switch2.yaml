@@ -1,0 +1,9 @@
+name: switch2
+order: 50
+from_domains:
+  - switch2.co.uk
+subject_regex: "(?i)Your payment receipt|payment receipt"
+requires:
+  - text
+require_dkim:
+  - switch2.co.uk

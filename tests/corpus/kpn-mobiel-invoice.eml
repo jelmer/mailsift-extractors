@@ -1,0 +1,13 @@
+Authentication-Results: example.org; dkim=pass header.d=kpn.com header.i=@kpn.com
+From: KPN <noreply@kpn.com>
+To: test@example.org
+Subject: Uw maandelijkse factuur van KPN Mobiel
+Date: Tue, 26 Aug 2025 07:12:51 +0000
+Message-ID: <kpn-test@kpn.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Beste meneer User,</p>
+<p>Deze maand is het totaalbedrag van uw factuur &euro; 16,95. Deze factuur hoort bij klantnummer 10000000000.</p>
+</body></html>

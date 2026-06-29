@@ -1,0 +1,21 @@
+Authentication-Results: example.org; dkim=pass header.d=switch2.co.uk header.i=@switch2.co.uk
+From: Switch2 <donotreply@switch2.co.uk>
+To: test@example.org
+Subject: Your payment receipt
+Date: Thu, 4 Jun 2026 09:45:03 +0000
+Message-ID: <switch2-test@switch2.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Hi Mr. Test User
+
+Thanks for making a payment towards your account using My Switch2
+
+Here's the details of your payment:
+
+Date: 04 June 2026 09:42
+Card Number:
+Payment Amount: £70.81
+Reference Number; 00000000000000000000000000000000
+
+If you need any help you can reach us on 0333 321 2010

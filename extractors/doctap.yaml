@@ -1,0 +1,9 @@
+name: doctap
+order: 50
+from_domains:
+  - doctap.co.uk
+subject_regex: "(?i)^Appointment\\s+(Confirmation|Reminder)\\b"
+requires:
+  - html
+require_dkim:
+  - doctap.co.uk
