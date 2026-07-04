@@ -126,7 +126,7 @@ def main() -> int:
     receipt: dict = {
         "@context": "https://schema.org",
         "@type": "Order",
-        "merchant": {"@type": "Organization", "name": merchant_name},
+        "merchant": merchant_name,
         "broker": {"@type": "Organization", "name": provider},
         "orderNumber": f"uber-{kind}-{order_id}",
         "priceSpecification": {
