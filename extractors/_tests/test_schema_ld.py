@@ -54,6 +54,17 @@ def test_trainline_train_reservation_passthrough(run_extractor):
     assert res["reservationFor"]["arrivalTime"] == "2026-03-15T11:19:00+00:00"
 
 
+def test_noncanonical_datetimes_are_canonicalised(run_extractor):
+    # Vendors emit DateTime fields with a space separator or an offset
+    # without a colon; schema-ld rewrites them to ISO-8601 so the Rust
+    # converter accepts them.
+    out = run_extractor("schema-ld", "schema-noncanonical-datetime.eml")
+    assert set(out) == {"BISTRO-42.reservation.json"}
+    res = out["BISTRO-42.reservation.json"]
+    assert res["startTime"] == "2025-07-04T14:05:00"
+    assert res["endTime"] == "2025-07-04T16:05:00+02:00"
+
+
 def test_subscription_offer_emitted(run_extractor):
     # An `Order` confirmation carrying an `Offer` with a
     # `subscriptionDuration` triggers a `.subscription.json` artifact

@@ -16,6 +16,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -34,6 +35,63 @@ SUPPORTED_TYPES = {
 }
 
 SLUG_RE = re.compile(r"[^A-Za-z0-9_.+-]+")
+
+# schema.org reservation properties whose value is a DateTime. Vendors
+# frequently emit these in shapes the Rust converter rejects (a space
+# instead of `T`, an offset without a colon, a trailing `Z`), so we
+# canonicalise them to ISO-8601 before dumping.
+DATETIME_KEYS = {
+    "arrivalTime",
+    "boardingTime",
+    "bookingTime",
+    "checkinTime",
+    "checkoutTime",
+    "departureTime",
+    "doorTime",
+    "dropoffTime",
+    "endTime",
+    "modifiedTime",
+    "pickupTime",
+    "startTime",
+}
+
+# Value looks like a date-time (as opposed to a bare Date) when it
+# carries a time component after the day. Bare dates are left untouched.
+_HAS_TIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}")
+
+
+def canonical_datetime(value: str) -> str:
+    """Return `value` as a canonical ISO-8601 string, or unchanged.
+
+    Handles the non-canonical shapes vendors emit (space separator,
+    offset without a colon, trailing `Z`). If `value` isn't a
+    recognisable date-time it is returned untouched so genuinely odd
+    strings still surface to the converter rather than being swallowed.
+    """
+    if not _HAS_TIME_RE.match(value):
+        return value
+    candidate = value
+    if candidate.endswith(("Z", "z")):
+        candidate = candidate[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(candidate)
+    except ValueError:
+        return value
+    return parsed.isoformat()
+
+
+def normalise_datetimes(obj: Any) -> Any:
+    """Recursively canonicalise DateTime-valued fields in `obj`."""
+    if isinstance(obj, dict):
+        return {
+            k: canonical_datetime(v)
+            if k in DATETIME_KEYS and isinstance(v, str)
+            else normalise_datetimes(v)
+            for k, v in obj.items()
+        }
+    if isinstance(obj, list):
+        return [normalise_datetimes(v) for v in obj]
+    return obj
 
 
 def walk_objects(obj: Any) -> Iterable[dict[str, Any]]:
@@ -132,7 +190,10 @@ def main() -> int:
         while out.exists():
             suffix += 1
             out = Path(f"{slug}-{suffix}.reservation.json")
-        out.write_text(json.dumps(obj, ensure_ascii=False), encoding="utf-8")
+        out.write_text(
+            json.dumps(normalise_datetimes(obj), ensure_ascii=False),
+            encoding="utf-8",
+        )
         index += 1
 
     emit_subscriptions(mail.ld_json)
