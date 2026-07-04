@@ -1,0 +1,20 @@
+Authentication-Results: example.org; dkim=pass header.d=edm.postnl.nl header.i=@edm.postnl.nl
+From: PostNL <notificatie@edm.postnl.nl>
+To: joe@example.org
+Subject: Nieuw pakket van Voorbeeld Webshop B.V.
+Date: Wed, 14 Jan 2026 21:12:17 +0100
+Message-ID: <postnl-nieuw-1@edm.postnl.nl>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Wij zijn PostNL en we hebben iets voor je
+
+Hoi Joe, er komt een nieuw pakket van Voorbeeld Webshop B.V. naar je toe.
+
+Track & trace-code
+
+3SAAAA0000000
+
+Tot snel,
+
+PostNL

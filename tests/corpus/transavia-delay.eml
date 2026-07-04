@@ -1,0 +1,14 @@
+Authentication-Results: example.org; dkim=pass header.d=transavia.com header.i=@transavia.com
+From: Transavia <TIP@transavia.com>
+To: joe@example.com
+Subject: Your flight HV5314 to Amsterdam (Schiphol) has been delayed
+Date: Tue, 30 Dec 2025 11:57:06 +0000
+Message-ID: <transavia-delay-test@transavia.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Your booking:&nbsp;DDDDDD<br/><br/>
+Dear&nbsp;Joe,<br/><br/>
+We are sorry to inform you that your flight HV5314&nbsp;from Cyprus &#40;Larnaca&#41; to Amsterdam &#40;Schiphol&#41; on 30/12/2025 has been delayed&nbsp;due to&nbsp;a technical issue. The new departure time is 14:25&nbsp;local time. Please note that times for check-in and baggage drop-off have not changed and are based on the original departure time as stated on your ticket.</p>
+</body></html>

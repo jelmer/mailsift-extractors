@@ -1,0 +1,13 @@
+Authentication-Results: example.org; dkim=pass header.d=dpd.co.uk header.i=@dpd.co.uk
+From: IKEA <yourdelivery@dpd.co.uk>
+To: test@example.org
+Subject: Your IKEA order will be delivered today between 13:40 - 14:40
+Date: Mon, 09 Feb 2026 09:02:25 +0000
+Message-ID: <dpd-test@dpd.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>We will deliver your IKEA parcel on an all-electric vehicle TODAY 9th February 2026 between 13:40 - 14:40</p>
+<p>Your parcel: 1500 0000 000 000</p>
+</body></html>

@@ -1,0 +1,11 @@
+name: thon-hotels
+order: 50
+from_domains:
+  - e.thonhotels.no
+  - thonhotels.no
+subject_regex: "(?i)^Booking Confirmation"
+requires:
+  - html
+require_dkim:
+  - e.thonhotels.no
+  - thonhotels.no

@@ -1,0 +1,24 @@
+Authentication-Results: example.org; dkim=pass header.d=edm.postnl.nl header.i=@edm.postnl.nl
+From: PostNL <noreply@edm.postnl.nl>
+To: joe@example.org
+Subject: Verstuurd: je pakket voor Voorbeeld Events
+Date: Wed, 29 Apr 2026 15:01:48 +0200
+Message-ID: <postnl-verstuurd-1@edm.postnl.nl>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Wij zijn PostNL en we hebben iets voor je
+
+Hoi Joe, we hebben je pakket ontvangen, dankjewel!
+
+Deze mail is je verzendbewijs. Bewaar 'm goed!
+
+Volg je pakket
+
+Track & trace-code
+
+3SCCCC000000000
+
+Tot snel,
+
+PostNL

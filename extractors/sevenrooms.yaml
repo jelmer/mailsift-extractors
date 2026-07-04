@@ -1,0 +1,10 @@
+name: sevenrooms
+order: 50
+from_domains:
+  - sevenrooms.com
+  - "*.sevenrooms.com"
+subject_regex: "(?i)Your Reservation at"
+requires:
+  - html
+require_dkim:
+  - sevenrooms.com

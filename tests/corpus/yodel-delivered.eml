@@ -1,0 +1,16 @@
+Authentication-Results: example.org; dkim=pass header.d=yodel.co.uk header.i=@yodel.co.uk
+From: Yodel <noreply@yodel.co.uk>
+To: joe@example.org
+Subject: Rate your delivery
+Date: Sat, 19 Oct 2024 13:03:18 +0100
+Message-ID: <yodel-delivered-1@yodel.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi</p>
+<p>We have delivered your Yodel parcel to a safe place: HALLWAY.</p>
+<p>Let us know how we did and you could win &pound;200 of high street shopping vouchers</p>
+<p>Your tracking number: JD0000000000000000</p>
+<p><a href="http://yodel.co.uk/tracking/JD0000000000000000">Track your parcel</a></p>
+</body></html>

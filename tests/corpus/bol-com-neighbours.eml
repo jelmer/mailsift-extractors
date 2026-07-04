@@ -1,0 +1,20 @@
+Authentication-Results: example.org; dkim=pass header.d=bol.com header.i=@bol.com
+From: "bol" <automail@bol.com>
+To: test@example.org
+Subject: Je pakket ligt bij de buren
+Date: Fri, 29 May 2026 10:48:23 +0100
+Message-ID: <bol-com-neighbours-test@bol.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>Bij de buren</title></head>
+<body>
+<div style="display:none">Op Voorbeeldstraat 1</div>
+<h1>Hallo Test</h1>
+<p>Je was niet thuis toen de bezorger voor de deur stond. Daarom is je pakket bij de buren afgegeven.</p>
+
+<div style="display:none">C000000000</div>
+</body>
+</html>

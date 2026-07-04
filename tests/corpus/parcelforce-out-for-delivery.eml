@@ -1,0 +1,14 @@
+Authentication-Results: example.org; dkim=pass header.d=parcelforce.co.uk header.i=@parcelforce.co.uk
+From: Parcelforce <Notifications@parcelforce.co.uk>
+To: joe@example.org
+Subject: Your parcel delivery
+Date: Fri, 31 Mar 2023 08:28:08 +0100
+Message-ID: <pf-otfd-1@parcelforce.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Your parcel delivery</p>
+<p>Your parcel <strong>JD0000000</strong> from <strong>ACME PARTS LTD</strong> is due to be delivered by Joe of Parcelforce today between <strong>09:25</strong> and <strong>10:25</strong>.</p>
+<p>Track your parcel at <a href="http://www.parcelforce.com/track-trace?trackNumber=JD0000000">parcelforce.com/track-trace?trackNumber=JD0000000</a>.</p>
+</body></html>

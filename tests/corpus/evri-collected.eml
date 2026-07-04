@@ -1,0 +1,16 @@
+Authentication-Results: example.org; dkim=pass header.d=evri.com header.i=@evri.com
+From: Evri <do-not-reply@evri.com>
+To: joe@example.org
+Subject: Thanks for collecting your Voorbeeld Webshop parcel
+Date: Tue, 09 Dec 2025 15:24:12 +0000
+Message-ID: <evri-collected-1@evri.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Collection confirmation</p>
+<p>Your Voorbeeld Webshop parcel was collected from your selected ParcelShop on Tuesday 9 December at 15:23.</p>
+<p>Tracking number</p>
+<p>H0000A0000000000</p>
+<p><a href="https://www.evri.com/track/parcel/H0000A0000000000/details">View tracking details</a></p>
+</body></html>

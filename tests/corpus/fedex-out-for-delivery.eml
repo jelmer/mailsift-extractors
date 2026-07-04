@@ -1,0 +1,21 @@
+Authentication-Results: example.org; dkim=pass header.d=fedex.com header.i=@fedex.com
+From: FedEx <TrackingUpdates@fedex.com>
+To: joe@example.org
+Subject: Your shipment is out for delivery today 800000000000
+Date: Wed, 25 Feb 2026 08:15:20 +0000
+Message-ID: <fedex-otfd-1@fedex.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Your shipment is scheduled to arrive today.</p>
+<p>Your shipment is out for delivery today.</p>
+<p>Scheduled delivery</p>
+<p>Estimated between 9:10am and 1:10pm</p>
+<p>Tracking details</p>
+<p>Tracking ID 800000000000</p>
+<p>From MARKI, MZ, PL</p>
+<p>To LONDON, LO, GB</p>
+<p>Ship date Fri 20/02/2026 04:38 PM</p>
+<p>Service FedEx International Connect Plus</p>
+</body></html>

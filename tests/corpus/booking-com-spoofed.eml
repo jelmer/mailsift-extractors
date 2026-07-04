@@ -1,0 +1,20 @@
+From: Booking.com <noreply@booking.com>
+To: test@example.org
+Subject: =?UTF-8?B?8J+bhCBUaGFua3MhIFlvdXIgYm9va2luZyBpcyBjb25maXJtZWQgYXQgRXZpbCBIb3RlbA==?=
+Date: Mon, 1 Jul 2024 09:00:00 +0000
+Message-ID: <bk-spoof@example.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<body>
+<h1>Thanks! Your booking is confirmed at Evil Hotel</h1>
+<p>Confirmation: 7777777777 PIN: 0000</p>
+<p>Thanks Test! Your booking in Amsterdam is confirmed. Evil Hotel is expecting you on Fri 19 Jul</p>
+<table>
+<tr><td>Check-in Friday, 19 July 2024 (from 15:00)</td></tr>
+<tr><td>Check-out Sunday, 21 July 2024 (until 11:00)</td></tr>
+<tr><td>Location 1 Evil Street, Nowhere Phone +0 0 0000</td></tr>
+</table>
+</body>
+</html>

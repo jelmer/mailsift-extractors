@@ -1,0 +1,9 @@
+name: klm
+order: 50
+from_domains:
+  - klm.com
+subject_regex: "(?i)^Confirmation:\\s+.+\\s+\\([A-Z0-9]{5,8}\\)\\s*$"
+requires:
+  - html
+require_dkim:
+  - klm.com

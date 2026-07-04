@@ -1,0 +1,10 @@
+name: booking-com
+order: 50
+from_domains:
+  - booking.com
+  - "*.booking.com"
+subject_regex: "(?i)booking is confirmed at|booking is confirmed"
+requires:
+  - html
+require_dkim:
+  - booking.com

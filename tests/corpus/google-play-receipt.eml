@@ -1,0 +1,51 @@
+Authentication-Results: example.org; dkim=pass header.d=google.com header.i=@google.com
+From: "Google Play" <googleplay-noreply@google.com>
+To: test@example.org
+Subject: Your Google Play Order Receipt from 19 Jun 2026
+Date: Fri, 19 Jun 2026 13:13:05 +0000
+Message-ID: <google-play-receipt-test@google.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Google Play
+
+Thank you
+
+Your subscription from Google Commerce Limited on Google Play continues and
+you've been charged. Manage your subscriptions
+
+To help keep your subscription active, add a backup payment method.
+
+Add backup
+
+Order number: GPA.0000-0000-0000-00000..3
+Order date: 19 Jun 2026 14:13:03 BST
+Your account: test@example.org
+
+Item Price
+
+Example App Premium (Example App) (by Example Ltd)
+£1.59/month
+
+Auto-renewing subscription
+
+Total: £1.59/month
+
+(Includes VAT of £0.26)
+
+Payment method:
+
+Mastercard-0000
+
+Play Points earned
++2
+
+Google Commerce Limited
+1 Example Street
+Exampletown
+Example County
+Ireland
+
+By subscribing, you authorise us to charge you the subscription cost (as
+described above) automatically, charged to the payment method provided
+until cancelled. Learn how to cancel. Keep this for your records.

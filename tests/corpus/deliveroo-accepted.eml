@@ -1,0 +1,72 @@
+Authentication-Results: example.org; dkim=pass header.d=t.deliveroo.com header.i=@t.deliveroo.com
+From: Deliveroo <noreply@t.deliveroo.com>
+To: joe@example.org
+Subject: The Example Grill has accepted your order
+Date: Sun, 14 Sep 2025 21:39:32 +0100
+Message-ID: <deliveroo-accepted-1@t.deliveroo.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Hi Joe,
+
+The Example Grill has accepted your order
+
+      Your order will arrive today at 22:30.
+
+Thank you for using Deliveroo!
+
+===================================================
+
+Your Receipt for Order #4401
+
+Deliver from:
+
+The Example Grill
+
+1 Example Street
+
+London EC1A1AA
+
++442036020862
+
+Deliver to:
+
+Joe Example
+
+4 Example Place, apartment 102
+
+London EC1A1AA
+
++44 7000 000000
+
+---------------------
+
+  1x Mixed Salad - £6.90
+
+  1x Hummus - £6.90
+
+  1x Grilled Halloumi - £8.15
+
+  1x Shish Taouk - £17.25
+
+	 -- Chips
+
+Subtotal £39.20
+
+Service fee £2.99
+
+Delivery fee Free
+
+Tip £0.00
+
+  Restaurant tip £0.00
+
+Credit -£0.00
+
+Total £42.19
+
+===================================================
+
+For food-related questions, you can call The Example Grill on +442036020862. Your Deliveroo order ID is 50000000000.
+
+(c) Copyright 2025 Deliveroo

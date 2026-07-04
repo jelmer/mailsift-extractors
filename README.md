@@ -9,7 +9,7 @@ for `*.yaml` manifests in the configured extractors directory.
 
 The full extractor contract - manifest fields, dispatch semantics,
 artifact filenames, debugging recipes - is documented in
-[`extractors/README.md`](extractors/README.md).
+[extractors/README.md](extractors/README.md).
 
 ## Layout
 
@@ -29,3 +29,11 @@ tests/
 pip install pytest
 pytest extractors/_tests
 ```
+
+## Available extractors
+
+Run `./list.py` to print the discovered extractors with their `order`
+and dispatch hints (`from_domains`, `subject_regex`, `requires`,
+`require_dkim`), read straight from the manifests. Pass `--json` for the
+raw manifest data. For the full detail of any one extractor, read its
+`<extractor>.yaml`.

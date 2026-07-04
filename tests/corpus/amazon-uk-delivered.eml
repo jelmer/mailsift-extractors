@@ -1,0 +1,30 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <order-update@amazon.co.uk>
+To: test@example.org
+Subject: Delivered: 'Example Connector Adapter...'
+Date: Sat, 27 Jun 2026 12:55:04 +0000
+Message-ID: <amazon-uk-delivered-test@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Your Orders
+
+    Your package was delivered!
+
+Delivered today
+
+Parcel was handed to a receptionist.
+
+Test - London
+
+Order #
+333-3333333-3333333
+
+Track package
+
+* Example Connector Adapter Panel Mount
+  Quantity: 1
+
+Return or replace items in Your Orders
+
+Amazon.co.uk is a trading name for Amazon EU Sarl.

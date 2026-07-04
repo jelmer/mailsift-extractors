@@ -1,0 +1,21 @@
+name: amazon
+order: 50
+from_domains:
+  - amazon.co.uk
+  - amazon.de
+  - amazon.nl
+  - amazon.fr
+  - amazon.it
+  - amazon.es
+  - amazon.com
+subject_regex: "(?i)^(Ordered|Dispatched|Out for delivery|Delivered|Delivery attempted|Your return of):? "
+requires:
+  - text
+require_dkim:
+  - amazon.co.uk
+  - amazon.de
+  - amazon.nl
+  - amazon.fr
+  - amazon.it
+  - amazon.es
+  - amazon.com

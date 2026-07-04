@@ -1,0 +1,19 @@
+Authentication-Results: example.org; dkim=pass header.d=ups.com header.i=@ups.com
+From: UPS <pkginfo@ups.com>
+To: joe@example.org
+Subject: UPS Shipping Notification, Tracking Number 1Z0000000000000000
+Date: Wed, 07 Jan 2026 13:21:14 +0000
+Message-ID: <ups-shipped-1@ups.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>A signature is required for parcel delivery</p>
+<p>You have a parcel coming.</p>
+<p>Estimated Delivery Date: Friday, 09/01/2026</p>
+<p>Estimated Delivery Time: End of Day</p>
+<p>Shipment Details</p>
+<p>From: ACME PARTS CO</p>
+<p>Tracking Number: 1Z0000000000000000</p>
+<p>UPS Service: UPS WORLDWIDE SAVER</p>
+</body></html>

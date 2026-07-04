@@ -1,0 +1,10 @@
+name: uber
+order: 50
+from_domains:
+  - uber.com
+  - "*.uber.com"
+subject_regex: "(?i)\\[Personal\\]\\s+Your\\s+.+\\s+(?:trip\\s+with\\s+Uber|order\\s+with\\s+Uber\\s+Eats)"
+requires:
+  - html
+require_dkim:
+  - uber.com

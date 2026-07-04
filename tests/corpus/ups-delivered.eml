@@ -1,0 +1,16 @@
+Authentication-Results: example.org; dkim=pass header.d=ups.com header.i=@ups.com
+From: UPS <mcinfo@ups.com>
+To: joe@example.org
+Subject: Your UPS Parcel was delivered
+Date: Thu, 30 Apr 2026 10:18:39 +0000
+Message-ID: <ups-delivered-1@ups.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi, Joe</p>
+<p>Your parcel has been delivered.</p>
+<p>From ACME PARTS CO</p>
+<p>Delivered Thursday 30/04/2026 11:13</p>
+<p>UPS Standard 1Z0000000000000001</p>
+</body></html>

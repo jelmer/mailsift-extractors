@@ -1,0 +1,61 @@
+Authentication-Results: example.org; dkim=pass header.d=thepihut.myshopify.com header.i=@thepihut.myshopify.com
+From: "The Pi Hut" <contact@thepihut.com>
+To: test@example.org
+Subject: Order #100002 confirmed
+Date: Thu, 18 Jun 2026 12:37:43 +0000
+Message-ID: <shopify-pihut-test@thepihut.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Thank you for your purchase!
+
+The Pi Hut
+
+Order #100002
+
+----------------------------
+Thank you for your purchase!
+----------------------------
+
+Hi Test, we're getting your order ready to be shipped.
+
+View your order
+
+Order summary
+-------------
+
+Example Gadget × 1
+
+£38.40
+
+Subtotal
+
+£38.40
+
+Shipping
+
+£3.90
+
+GB VAT
+
+£7.05
+
+Taxes
+
+£7.05
+
+Total
+
+£42.30 GBP
+
+Customer information
+--------------------
+
+Shipping address
+----------------
+
+Joe Example
+Flat 1
+1 EXAMPLE STREET
+London EX1 1AA
+United Kingdom

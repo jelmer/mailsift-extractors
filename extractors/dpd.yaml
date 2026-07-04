@@ -1,0 +1,10 @@
+name: dpd
+order: 50
+from_domains:
+  - dpd.co.uk
+  - "*.dpd.co.uk"
+subject_regex: "(?i)expecting your.*parcel|will be delivered today|parcel is on its way"
+requires:
+  - html
+require_dkim:
+  - dpd.co.uk

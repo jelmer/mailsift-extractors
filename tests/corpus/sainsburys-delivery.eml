@@ -1,0 +1,18 @@
+Authentication-Results: example.org; dkim=pass header.d=mail.sainsburys.co.uk header.i=@mail.sainsburys.co.uk
+From: Sainsbury's <no-reply@mail.sainsburys.co.uk>
+To: test@example.org
+Subject: Your delivery will arrive between 11:37am - 12:37pm
+Date: Mon, 16 Mar 2026 23:35:18 +0000
+Message-ID: <sains-test@mail.sainsburys.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Delivery window update - Sainsbury's</p>
+<p>Test, your saver slot is confirmed!</p>
+<p>View the details below:</p>
+<p>Tuesday 17 March, 11:37am - 12:37pm to EC1A 1AA Your order details</p>
+<p>Order number: 9999999999</p>
+<p>Due to arrive: 11:37am - 12:37pm</p>
+<p>Total: £85.47*</p>
+</body></html>

@@ -1,0 +1,23 @@
+Authentication-Results: example.org; dkim=pass header.d=e.thonhotels.no header.i=@e.thonhotels.no
+From: Thon Hotels <reservations@e.thonhotels.no>
+To: joe@example.com
+Subject: Booking Confirmation Thon Hotel Brussels City Centre
+Date: Thu, 16 Oct 2025 09:52:09 +0000
+Message-ID: <thon-test@e.thonhotels.no>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<body>
+<h1>Your reservation</h1>
+<p>Thon Hotel Brussels City Centre</p>
+<p>Ref. 400000000</p>
+<p>1 room, 2 nights, 1 adult</p>
+<p>Fri 30. Jan 2026<br>Check-in from 12:00</p>
+<p>Sun 1. Feb 2026<br>Check out before 13:00</p>
+<p>Total price</p>
+<p>EUR 204.00</p>
+<h2>Address</h2>
+<p>Avenue du Boulevard 17, Brussels, BE</p>
+</body>
+</html>

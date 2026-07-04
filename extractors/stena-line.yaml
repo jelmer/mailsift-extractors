@@ -1,0 +1,9 @@
+name: stena-line
+order: 50
+from_domains:
+  - stenaline.com
+subject_regex: "(?i)^Stena Line e-ticket for booking reference"
+requires:
+  - html
+require_dkim:
+  - stenaline.com

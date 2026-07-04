@@ -1,0 +1,23 @@
+Authentication-Results: example.org; dkim=pass header.d=booking.com header.i=@booking.com
+From: Booking.com <noreply@booking.com>
+To: test@example.org
+Subject: =?UTF-8?B?8J+bhCBUaGFua3MhIFlvdXIgYm9va2luZyBpcyBjb25maXJtZWQgYXQgRXhhbXBsZSBIb3RlbCBBbXN0ZXJkYW0=?=
+Date: Mon, 1 Jul 2024 09:00:00 +0000
+Message-ID: <bk-test@booking.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<body>
+<h1>Thanks! Your booking is confirmed at Example Hotel Amsterdam</h1>
+<p>Confirmation: 9999999999 PIN: 0000</p>
+<p>Thanks Test! Your booking in Amsterdam is confirmed. Example Hotel Amsterdam is expecting you on Fri 19 Jul</p>
+<table>
+<tr><td>Reservation details</td></tr>
+<tr><td>Check-in Friday, 19 July 2024 (from 15:00)</td></tr>
+<tr><td>Check-out Sunday, 21 July 2024 (until 11:00)</td></tr>
+<tr><td>Your reservation 2 nights, 1 room</td></tr>
+<tr><td>Location 1 Example Street, Amsterdam, 1011 AB, Netherlands Phone +31 20 1234567</td></tr>
+</table>
+</body>
+</html>

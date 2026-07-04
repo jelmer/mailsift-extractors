@@ -1,0 +1,10 @@
+name: fedex
+order: 50
+from_domains:
+  - fedex.com
+  - "*.fedex.com"
+subject_regex: "(?i)shipment|fedex"
+requires:
+  - html
+require_dkim:
+  - fedex.com

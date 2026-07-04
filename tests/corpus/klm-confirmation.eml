@@ -1,0 +1,42 @@
+Authentication-Results: example.org; dkim=pass header.d=klm.com header.i=@klm.com
+From: KLM Reservations <noreply@klm.com>
+To: joe@example.com
+Subject: Confirmation: London - San Francisco (P00000)
+Date: Tue, 15 Jan 2019 23:11:58 +0000
+Message-ID: <klm-test@klm.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>Booking confirmation</h1>
+<p>Your booking was successful!</p>
+
+<h2>Your booking code</h2>
+<p>Flight - Booking code</p>
+<p><strong>P00000</strong></p>
+
+<h2>Flight summary</h2>
+<p>Flight: London - San Francisco - Return</p>
+<p>GBP 3,235.84</p>
+<p>Tue 19 Feb 19 - Tue 19 Mar 19</p>
+
+<h3>Departure: London - San Francisco</h3>
+<p>Tue 19 Feb 19</p>
+<p>06:30 London (Heathrow Airport, United Kingdom)</p>
+<p>Tue 19 Feb 19</p>
+<p>09:00 Amsterdam (Schiphol, Netherlands)</p>
+<p>Class: Business</p>
+<p>Flight number: KL 1000</p>
+<p>Operated by: KLM Royal Dutch Airlines</p>
+
+<p>The waiting time until the next flight is 1h25</p>
+
+<p>Tue 19 Feb 19</p>
+<p>10:25 Amsterdam (Schiphol, Netherlands)</p>
+<p>Tue 19 Feb 19</p>
+<p>12:25 San Francisco (San Francisco Intl., California, USA)</p>
+<p>Class: World Business Class</p>
+<p>Flight number: KL 0605</p>
+<p>Operated by: KLM Royal Dutch Airlines</p>
+
+</body></html>

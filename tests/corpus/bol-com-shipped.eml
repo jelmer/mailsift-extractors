@@ -1,0 +1,23 @@
+Authentication-Results: example.org; dkim=pass header.d=bol.com header.i=@bol.com
+From: "bol" <automail@bol.com>
+To: test@example.org
+Subject: Je pakket is nu bij PostNL
+Date: Thu, 28 May 2026 18:40:11 +0100
+Message-ID: <bol-com-shipped-test@bol.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>Je pakket wordt bezorgd</title></head>
+<body>
+<div style="display:none">Binnenkort wordt 't in je brievenbus bezorgd.</div>
+<h1>Hallo Test</h1>
+<p>We hebben je pakket meegegeven met PostNL! Het past door de brievenbus, dus je hoeft er niet voor thuis te blijven.</p>
+<h2>Dit is onderweg</h2>
+<p>1 artikel</p>
+<p>Example Product</p>
+
+<div style="display:none">C000000000</div>
+</body>
+</html>

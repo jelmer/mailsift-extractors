@@ -1,0 +1,21 @@
+Authentication-Results: example.org; dkim=pass header.d=fedex.com header.i=@fedex.com
+From: FedEx <TrackingUpdates@fedex.com>
+To: joe@example.org
+Subject: We have your shipment 800000000000.
+Date: Fri, 20 Feb 2026 15:49:17 +0000
+Message-ID: <fedex-otw-1@fedex.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>We have an estimated delivery date for your shipment.</p>
+<p>We have your shipment.</p>
+<p>Scheduled delivery date Wed 25/02/2026</p>
+<p>Estimated between 9:10am and 1:10pm</p>
+<p>Tracking details</p>
+<p>Tracking ID 800000000000</p>
+<p>From MARKI, MZ, PL</p>
+<p>To LONDON, LO, GB</p>
+<p>Ship date Fri 20/02/2026 04:38 PM</p>
+<p>Service FedEx International Connect Plus</p>
+</body></html>

@@ -1,0 +1,16 @@
+Authentication-Results: example.org; dkim=pass header.d=royalmail.com header.i=@royalmail.com
+From: Royal Mail <no-reply@royalmail.com>
+To: test@example.org
+Subject: Your Royal Mail parcel from Vision Direct is due to be delivered today
+Date: Fri, 16 Aug 2024 09:00:00 +0000
+Message-ID: <rm-test1@royalmail.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi Test User</p>
+<p>Your parcel is due to be delivered:</p>
+<p>Today, Friday, 16 August 2024</p>
+<p>Delivery is estimated between: 09:30am and 1:30pm*</p>
+<p>Want to track your parcel? OL000000000GB Track Parcel</p>
+</body></html>

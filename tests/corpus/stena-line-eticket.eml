@@ -1,0 +1,20 @@
+Authentication-Results: example.org; dkim=pass header.d=stenaline.com header.i=@stenaline.com
+From: Stena Line Limited <noreply.integration@stenaline.com>
+To: joe@example.com
+Subject: Stena Line e-ticket for booking reference 90000000
+Date: Sat, 25 Jan 2025 21:00:43 +0000
+Message-ID: <stena-test@stenaline.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Booking confirmed for Joe Example</p>
+<p>BOOKING REFERENCE:</p><p>90000000</p>
+<table>
+<tr><td>HARWICH - HOOK OF HOLLAND</td></tr>
+<tr><td>Ship</td><td>Stena Britannica</td></tr>
+<tr><td>Departs</td><td>lör 2025-05-10<br/>23:00</td></tr>
+<tr><td>Arrives</td><td>sön 2025-05-11<br/>08:00</td></tr>
+<tr><td>Total Price</td><td>152,10 GBP</td></tr>
+</table>
+</body></html>

@@ -1,0 +1,12 @@
+name: deliveroo
+order: 50
+from_domains:
+  - t.deliveroo.com
+  - deliveroo.com
+  - "*.deliveroo.com"
+subject_regex: "(?i)accepted your order|your order's in the kitchen"
+requires:
+  - text
+require_dkim:
+  - deliveroo.com
+  - t.deliveroo.com

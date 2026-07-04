@@ -1,0 +1,32 @@
+Authentication-Results: example.org; dkim=pass header.d=confirmation.nsinternational.nl header.i=@confirmation.nsinternational.nl
+From: NS International <no-reply@confirmation.nsinternational.nl>
+To: joe@example.com
+Subject: Confirmation, name: Joe Example, booking reference: HHHHHHH, departure date: 02/02/2026
+Date: Mon, 2 Feb 2026 17:15:01 +0000
+Message-ID: <ns-intl-test@confirmation.nsinternational.nl>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<font>Thank you for your booking</font>
+<table>
+<tr><td>Bookingcode: </td><td>HHHHHHH</td></tr>
+<tr><td>Payment date: </td><td>02 February 2026</td></tr>
+<tr><td>Method of payment:</td><td>iDEAL</td></tr>
+</table>
+<font>Total price:</font>
+<strong>&euro;60</strong><strong>60</strong>
+<font>9% VAT on Dutch route: &euro; 2,44</font>
+
+<font>Passengers</font>
+<font>Joe Example</font> - Adult - Discount 40% on NS route
+
+<font>Outward</font>
+<font><strong>Gent St Pieters - Utrecht Centraal</strong></font>
+<font>Departure:</font> <font>Mon 02 Feb 2026 om 18:27</font>
+<font>Arrival:</font> <font>Mon 02 Feb 2026 om 21:14</font>
+<font>Travel time:</font> <font>02:47</font>
+<font>Changes:</font> <font>2</font>
+<font>Class:</font> <font>Standard Class</font>
+
+</body></html>

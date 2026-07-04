@@ -1,0 +1,20 @@
+Authentication-Results: example.org; dkim=pass header.d=evil-myshopify.com header.i=@evil-myshopify.com
+From: "Fake Shop" <orders@evil-myshopify.com>
+To: test@example.org
+Subject: Order #99999 confirmed
+Date: Sat, 27 Jun 2026 12:00:00 +0000
+Message-ID: <shopify-spoofed-test@evil-myshopify.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Thank you for your purchase!
+
+Order #99999
+
+Bait product × 1
+
+£99.00
+
+Total
+
+£99.00 GBP

@@ -1,0 +1,10 @@
+name: easyjet
+order: 50
+from_domains:
+  - easyjet.com
+  - "*.easyjet.com"
+subject_regex: "(?i)easyJet booking reference"
+requires:
+  - html
+require_dkim:
+  - easyjet.com

@@ -1,0 +1,10 @@
+name: postnl
+order: 50
+from_domains:
+  - edm.postnl.nl
+  - "*.postnl.nl"
+subject_regex: "(?i)^(Nieuw|Verstuurd:|Onderweg|Afgeleverd:)\\s.*pakket"
+requires:
+  - text
+require_dkim:
+  - edm.postnl.nl
