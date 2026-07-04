@@ -18,11 +18,8 @@ def test_ordered_emits_receipt_and_parcel(run_extractor):
 
     receipt = out["bol-C000000000.receipt.json"]
     assert receipt["orderNumber"] == "C000000000"
-    assert receipt["merchant"] == {"@type": "Organization", "name": "bol"}
-    assert receipt["seller"] == {
-        "@type": "Organization",
-        "name": "ExampleAudio.com",
-    }
+    assert receipt["merchant"] == "bol"
+    assert receipt["seller"] == "ExampleAudio.com"
     assert receipt["priceSpecification"] == {
         "@type": "PriceSpecification",
         "price": 11.00,

@@ -12,7 +12,7 @@ def test_accepted_emits_receipt_and_eta(run_extractor):
     receipt = out["deliveroo-50000000000.receipt.json"]
     assert receipt["@type"] == "Order"
     assert receipt["orderNumber"] == "deliveroo-50000000000"
-    assert receipt["merchant"] == {"@type": "Organization", "name": "The Example Grill"}
+    assert receipt["merchant"] == "The Example Grill"
     assert receipt["broker"] == {"@type": "Organization", "name": "Deliveroo"}
     assert receipt["priceSpecification"] == {
         "@type": "PriceSpecification",

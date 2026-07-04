@@ -11,7 +11,7 @@ def test_trip_emits_rideshare_receipt(run_extractor):
     assert name.startswith("uber-trip-uber-") and name.endswith(".receipt.json")
     receipt = out[name]
     assert receipt["@type"] == "Order"
-    assert receipt["merchant"] == {"@type": "Organization", "name": "Uber"}
+    assert receipt["merchant"] == "Uber"
     assert receipt["broker"] == {"@type": "Organization", "name": "Uber"}
     assert receipt["priceSpecification"] == {
         "@type": "PriceSpecification",
@@ -30,10 +30,7 @@ def test_eats_emits_food_receipt(run_extractor):
         ".receipt.json"
     )
     receipt = out[name]
-    assert receipt["merchant"] == {
-        "@type": "Organization",
-        "name": "Example Sushi",
-    }
+    assert receipt["merchant"] == "Example Sushi"
     assert receipt["broker"]["name"] == "Uber Eats"
     assert receipt["priceSpecification"]["price"] == 34.60
     assert receipt["priceSpecification"]["priceCurrency"] == "EUR"

@@ -144,7 +144,7 @@ def main() -> int:
     receipt: dict = {
         "@context": "https://schema.org",
         "@type": "Order",
-        "merchant": {"@type": "Organization", "name": "bol"},
+        "merchant": "bol",
         "orderNumber": order_id,
         "priceSpecification": {
             "@type": "PriceSpecification",
@@ -154,10 +154,7 @@ def main() -> int:
     }
     seller_m = SELLER_RE.search(text)
     if seller_m:
-        receipt["seller"] = {
-            "@type": "Organization",
-            "name": seller_m.group(1).strip(),
-        }
+        receipt["seller"] = seller_m.group(1).strip()
     if mail.date:
         receipt["orderDate"] = mail.date.strftime("%Y-%m-%d")
     Path(f"bol-{order_id}.receipt.json").write_text(
