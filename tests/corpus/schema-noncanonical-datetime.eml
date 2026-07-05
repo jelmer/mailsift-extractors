@@ -1,0 +1,29 @@
+From: reservations@bistro.example
+To: test@example.org
+Subject: Your table is booked
+Date: Fri, 04 Jul 2025 09:00:00 +0000
+Message-ID: <booking-9antml@bistro.example>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodEstablishmentReservation",
+  "reservationNumber": "BISTRO-42",
+  "underName": {"@type": "Person", "name": "Test"},
+  "startTime": "2025-07-04 14:05:00",
+  "endTime": "2025-07-04T16:05:00+0200",
+  "reservationFor": {
+    "@type": "FoodEstablishment",
+    "name": "Bistro Example"
+  }
+}
+</script>
+</head>
+<body>
+<p>Your table for two is confirmed.</p>
+</body>
+</html>
