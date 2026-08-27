@@ -1,0 +1,28 @@
+Authentication-Results: example.org; dkim=pass header.d=sainsburys.co.uk header.i=@sainsburys.co.uk
+From: Sainsbury's <service@sainsburys.co.uk>
+To: test@example.org
+Subject: Thanks for your order - 9999999999
+Date: Sun, 16 Aug 2026 16:10:13 +0000
+Message-ID: <order-9999999999@sainsburys.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Order Confirmation - Sainsbury's</p>
+<p>Test, your delivery is confirmed!</p>
+<p>View the details below:</p>
+<p>Monday, 17 August 11am to 3pm to EC1A 1AA</p>
+<p>What you need to know</p>
+<p>We've got your order</p>
+<p>Order number 9999999999</p>
+<p>Estimated total &pound;101.70*</p>
+<p>*Your total is an estimate due to products sold by weight.</p>
+<p>Your payment details</p>
+<p>Payment card: MASTERCARD ending in 0000</p>
+<p>We'll take payment for your order on Monday, 17 August.</p>
+<p>Your slot details</p>
+<p>Slot date: Monday 17 August 11am to 3pm</p>
+<p>Address: 1, Example Street, London, EC1A 1AA</p>
+<p>Amending your order</p>
+<p>To make changes impacting grocery items, you can amend until 11pm Sunday, 16 August.</p>
+</body></html>
