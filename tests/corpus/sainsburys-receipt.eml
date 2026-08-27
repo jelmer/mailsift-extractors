@@ -1,0 +1,37 @@
+Authentication-Results: example.org; dkim=pass header.d=sainsburys.co.uk header.i=@sainsburys.co.uk
+From: Sainsbury's <service@sainsburys.co.uk>
+To: test@example.org
+Subject: Receipt for your =?UTF-8?B?U2FpbnNidXJ54oCZcw==?= order 9999999999
+Date: Mon, 17 Aug 2026 05:15:03 +0000
+Message-ID: <receipt-9999999999@sainsburys.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Sainsbury's
+
+Test, we've picked your order! Your delivery is arriving
+soon:
+
+
+Today 11:00am to 3:00pm to EC1A 1AA
+
+
+WHAT YOU NEED TO KNOW
+
+
+YOUR ORDER IS READY FOR TODAY
+
+Order number:       9999999999
+Payment received:   £99.80
+
+
+YOUR SLOT DETAILS
+
+Slot date: Monday 17th August, 11:00am to 3:00pm
+Delivery address: 1, Example Street, London,
+EC1A 1AA
+
+
+WE'VE PICKED YOUR ITEMS
+
+1 product unavailable, see more details below.
