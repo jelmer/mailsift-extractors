@@ -1,0 +1,9 @@
+name: eventbrite
+order: 50
+from_domains:
+  - order.eventbrite.com
+subject_regex: "(?i)^Order (?:Confirmation|CANCELED) for\\s+"
+requires:
+  - text
+require_dkim:
+  - order.eventbrite.com
