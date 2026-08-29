@@ -77,13 +77,17 @@ def run_extractor(tmp_path: Path):
         for child in sorted(tmp_path.iterdir()):
             if not child.is_file():
                 continue
-            text = child.read_text(encoding="utf-8")
             if child.suffix == ".json":
-                out[child.name] = json.loads(text)
+                out[child.name] = json.loads(child.read_text(encoding="utf-8"))
             elif child.name.endswith(".ics"):
-                out[child.name] = _read_event_stable(text)
+                out[child.name] = _read_event_stable(child.read_text(encoding="utf-8"))
+            elif ".ticket." in child.name:
+                # Ticket artifacts (PDF, pkpass, images) are opaque
+                # blobs; return the raw bytes so tests can assert on
+                # size or content hash.
+                out[child.name] = child.read_bytes()
             else:
-                out[child.name] = text
+                out[child.name] = child.read_text(encoding="utf-8")
         return out
 
     return _run

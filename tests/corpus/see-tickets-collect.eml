@@ -1,0 +1,43 @@
+From: SEE Tickets <donotreply@seetickets.com>
+To: test@example.org
+Subject: ANOTHER ARTIST - Ticket Order Confirmation 87654321
+Date: Wed, 18 Oct 2023 17:28:04 -0000
+Message-ID: <see-tickets-collect@seetickets.com>
+Authentication-Results:
+ example.org; dkim=pass header.d=seetickets.com header.i=@seetickets.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1807817426629944287=="
+
+--===============1807817426629944287==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+plain text placeholder
+
+--===============1807817426629944287==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body>
+<h1>Booking confirmation for Another Artist at The Example Club, Camden, Lond=
+on</h1>
+<p>Hi TEST USER</p>
+<p>Order confirmed: ANOTHER ARTIST</p>
+<div>BOOKING REFERENCE 87654321</div>
+<h2>Ticket delivery</h2>
+<p>Your tickets will be available for collection at the venue on the day of t=
+he event.</p>
+<h2>Order summary</h2>
+<div>Another Artist</div>
+<div>Monday, 13 Nov 2023 at 19.30</div>
+<div>Doors open:19.00</div>
+<div>The Example Club, Camden, London</div>
+<div>1 x General Admission</div>
+<div>&pound;14.95</div>
+<div>Total</div>
+<div>&pound;14.95</div>
+</body></html>
+
+--===============1807817426629944287==--
