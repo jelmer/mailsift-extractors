@@ -1,0 +1,38 @@
+From: Eventbrite <noreply@order.eventbrite.com>
+To: test@example.org
+Subject: Order Confirmation for Example Event Title
+Date: Thu, 15 Jun 2023 16:02:21 -0000
+Message-ID: <eventbrite-confirm@order.eventbrite.com>
+Authentication-Results: example.org; dkim=pass header.d=order.eventbrite.com
+ header.i=@order.eventbrite.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Eventbrite
+
+*** Test User, you've got tickets!
+------------------------------------------------------------------------
+
+Go to My Tickets: https://clicks.eventbrite.com/f/a/xxxxx/yyyy/RgRABCDEaHR0cH=
+M6Ly93d3cuZXZlbnRicml0ZS5jb20vbXl0aWNrZXRzLzk5OTk5OTk5OTk
+
+** Example Event Title
+------------------------------------------------------------------------
+
+Example Event Title
+
+1 x Ticket
+
+Order total: Free
+
+Thursday, June 29, 2023 from 7:00 PM to 9:00 PM (United Kingdom Time)
+
+Example Venue
+https://clicks.eventbrite.com/f/a/xxxxx/yyyy/RgRABCDEaHR0cHM6Ly9tYXBzLmdvb2ds=
+ZS5jb20vbWFwcz9xPUV4YW1wbGUrVmVudWUrMStFeGFtcGxlK1N0cmVldCtMb25kb24
+
+** Order Summary
+------------------------------------------------------------------------
+
+Order #9999999999

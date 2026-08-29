@@ -1,0 +1,23 @@
+From: Example Organizer <noreply@order.eventbrite.com>
+To: test@example.org
+Subject: Order CANCELED for Example Event Title
+Date: Tue, 27 Jun 2023 22:25:12 -0000
+Message-ID: <eventbrite-cancel@order.eventbrite.com>
+Authentication-Results: example.org; dkim=pass header.d=order.eventbrite.com
+ header.i=@order.eventbrite.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Eventbrite
+
+** Order #9999999999 has been canceled
+------------------------------------------------------------------------
+
+Tickets in this order have been voided and will no longer grant entry
+to Example Event Title.
+
+Example Event Title
+
+Event date:
+Thu, Jun 29, 2023 7:00 PM - 9:00 PM (BST)
