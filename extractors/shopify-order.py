@@ -43,11 +43,13 @@ TOTAL_RE = re.compile(
     re.MULTILINE,
 )
 # Carrier tracking line. The label varies (`DPD tracking number`,
-# `Special Care tracking number`, `Royal Mail tracking number`, ...);
-# the value is alphanumeric. Restrict the carrier label to non-newline
-# whitespace so we don't slurp surrounding lines.
+# `Special Care tracking number`, `Royal Mail tracking number`, ...)
+# and some shops drop it entirely, leaving a bare `Tracking number:`.
+# Restrict the carrier label to non-newline whitespace so we don't
+# slurp surrounding lines. Tracking numbers may carry hyphens
+# (Evri) alongside alphanumerics.
 TRACKING_RE = re.compile(
-    r"^(?P<carrier>[A-Za-z][A-Za-z0-9 ]*?)\s+tracking\s+number:\s*(?P<number>[A-Za-z0-9]+)",
+    r"^(?:(?P<carrier>[A-Za-z][A-Za-z0-9 ]*?)\s+)?tracking\s+number:\s*\n?\s*(?P<number>[A-Za-z0-9][A-Za-z0-9-]*)",
     re.MULTILINE | re.IGNORECASE,
 )
 
@@ -60,6 +62,14 @@ CARRIER_MAP = {
     "dpd": "dpd",
     "royal mail": "royal-mail",
     "special care": "royal-mail",  # The Pi Hut's "Special Care" is Royal Mail Tracked
+    "evri": "evri",
+    "hermes": "evri",
+    "yodel": "yodel",
+    "parcelforce": "parcelforce",
+    "postnl": "postnl",
+    "ups": "ups",
+    "fedex": "fedex",
+    "dhl": "dhl",
 }
 
 
@@ -122,34 +132,66 @@ def emit_receipt(text: str, mail) -> bool:
     return True
 
 
+def delivery_status(subject: str) -> str | None:
+    """Map the Shopify notification subject onto a delivery status."""
+    low = subject.lower()
+    if "has been delivered" in low or "was delivered" in low:
+        return "Delivered"
+    if "out for delivery" in low:
+        return "OutForDelivery"
+    if "on the way" in low or "shipped" in low or "on its way" in low:
+        return "InTransit"
+    return None
+
+
 def emit_parcel(text: str, mail) -> bool:
+    """Emit one `.parcel.json` per tracking number in the mail.
+
+    Shopify splits an order across shipments and repeats the tracking
+    block for each one, so a single mail can carry several parcels.
+    Downstream dedup keys on `trackingNumber`, which means every
+    shipment needs its own file or the extras are lost.
+    """
     order_m = ORDER_ID_RE.search(text)
-    track_m = TRACKING_RE.search(text)
-    if not track_m:
-        return False
-    carrier_label = track_m.group("carrier").strip().lower()
-    carrier_id = CARRIER_MAP.get(carrier_label, carrier_label.replace(" ", "-"))
-    tracking_number = track_m.group("number")
     merchant = merchant_from_address(mail.from_address)
+    status = delivery_status(mail.subject or "")
 
-    parcel = {
-        "@context": "https://schema.org",
-        "@type": "ParcelDelivery",
-        "trackingNumber": tracking_number,
-        "provider": {
-            "@type": "Organization",
-            "@id": carrier_id,
-            "name": track_m.group("carrier").strip(),
-        },
-    }
-    if order_m:
-        parcel["orderNumber"] = order_m.group(1)
-    parcel["merchant"] = merchant
+    seen: set[str] = set()
+    for track_m in TRACKING_RE.finditer(text):
+        tracking_number = track_m.group("number")
+        if tracking_number in seen:
+            continue
+        seen.add(tracking_number)
 
-    Path(f"{merchant.lower()}-{tracking_number}.parcel.json").write_text(
-        json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
-    )
-    return True
+        carrier_name = (track_m.group("carrier") or "").strip()
+        if carrier_name:
+            carrier_id = CARRIER_MAP.get(
+                carrier_name.lower(), carrier_name.lower().replace(" ", "-")
+            )
+        else:
+            carrier_id = None
+
+        parcel = {
+            "@context": "https://schema.org",
+            "@type": "ParcelDelivery",
+            "trackingNumber": tracking_number,
+        }
+        if carrier_id:
+            parcel["provider"] = {
+                "@type": "Organization",
+                "@id": carrier_id,
+                "name": carrier_name,
+            }
+        if order_m:
+            parcel["orderNumber"] = order_m.group(1)
+        if status:
+            parcel["deliveryStatus"] = status
+        parcel["merchant"] = {"@type": "Organization", "name": merchant}
+
+        Path(f"{merchant.lower()}-{tracking_number}.parcel.json").write_text(
+            json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
+        )
+    return bool(seen)
 
 
 def main() -> int:
@@ -165,12 +207,20 @@ def main() -> int:
     # for your order!`, `Order confirmation`).
     if "confirmed" in subject_lower or "thank you for your order" in subject_lower:
         emitted_any |= emit_receipt(text, mail)
-    # Shipment: `A shipment from order #N is on the way`.
-    if "on the way" in subject_lower or "shipped" in subject_lower:
-        emitted_any |= emit_parcel(text, mail)
-    # Some shops collapse confirmation and shipping into a single
-    # "Order X has been delivered" mail; treat as parcel update.
-    if "has been delivered" in subject_lower:
+    # Shipment: `A shipment from order #N is on the way`, plus the
+    # later status updates Shopify sends against the same order
+    # ("out for delivery", "has been delivered").
+    if any(
+        phrase in subject_lower
+        for phrase in (
+            "on the way",
+            "on its way",
+            "shipped",
+            "out for delivery",
+            "has been delivered",
+            "was delivered",
+        )
+    ):
         emitted_any |= emit_parcel(text, mail)
     return 0
 

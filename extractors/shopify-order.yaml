@@ -5,7 +5,7 @@ order: 50
 # `<shop>.myshopify.com` key managed by Shopify's infrastructure.
 # Spammers can't fake that; cheap copycats of the Shopify HTML
 # template can't either.
-subject_regex: "(?i)^(Order #|A shipment from order #|Order .* confirmed|.* (confirmed|shipped|on the way|has been delivered))"
+subject_regex: "(?i)^(Order #|A shipment from order #|Order .* confirmed|Thank you for your order|.* (confirmed|shipped|on the way|on its way|out for delivery|has been delivered|was delivered))"
 requires:
   - text
 require_dkim:

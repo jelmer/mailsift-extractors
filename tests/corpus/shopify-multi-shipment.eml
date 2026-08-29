@@ -1,0 +1,29 @@
+Authentication-Results: example.org; dkim=pass header.d=patchplants.myshopify.com header.i=@patchplants.myshopify.com
+From: "Patch" <help@patchplants.com>
+To: test@example.org
+Subject: A shipment from order #100003 is on the way
+Date: Wed, 24 Jun 2026 15:34:04 +0000
+Message-ID: <shopify-multi-test@patchplants.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Order #100003
+
+Your order is on the way
+========================
+
+Your order is on the way. Track your shipment to see the delivery status.
+
+DPD tracking number: 15000000000010
+
+Items in this shipment
+----------------------
+
+Example Plant × 1
+
+Evri tracking number: H01ABC-1234567
+
+Items in this shipment
+----------------------
+
+Second Plant × 2

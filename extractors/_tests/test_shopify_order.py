@@ -35,4 +35,41 @@ def test_shipment_emits_parcel(run_extractor):
         "name": "DPD",
     }
     assert parcel["orderNumber"] == "100001"
-    assert parcel["merchant"] == "Patchplants"
+    assert parcel["merchant"] == {"@type": "Organization", "name": "Patchplants"}
+
+
+def test_shipment_records_delivery_status_and_url(run_extractor):
+    out = run_extractor("shopify-order", "shopify-patch-shipped.eml")
+    parcel = out["patchplants-15000000000000.parcel.json"]
+    assert parcel["deliveryStatus"] == "InTransit"
+    # Merchant is an Organization on parcels, matching the dedicated
+    # carrier extractors.
+    assert parcel["merchant"] == {
+        "@type": "Organization",
+        "name": "Patchplants",
+    }
+
+
+def test_multi_shipment_emits_one_parcel_each(run_extractor):
+    out = run_extractor("shopify-order", "shopify-multi-shipment.eml")
+    assert set(out) == {
+        "patchplants-15000000000010.parcel.json",
+        "patchplants-H01ABC-1234567.parcel.json",
+    }
+    dpd = out["patchplants-15000000000010.parcel.json"]
+    assert dpd["provider"]["@id"] == "dpd"
+    assert dpd["orderNumber"] == "100003"
+    # Hyphenated tracking numbers must survive intact.
+    evri = out["patchplants-H01ABC-1234567.parcel.json"]
+    assert evri["trackingNumber"] == "H01ABC-1234567"
+    assert evri["provider"]["@id"] == "evri"
+
+
+def test_out_for_delivery_emits_parcel(run_extractor):
+    out = run_extractor("shopify-order", "shopify-out-for-delivery.eml")
+    assert set(out) == {"thepihut-AB123456789GB.parcel.json"}
+    parcel = out["thepihut-AB123456789GB.parcel.json"]
+    assert parcel["trackingNumber"] == "AB123456789GB"
+    assert parcel["provider"]["@id"] == "royal-mail"
+    assert parcel["deliveryStatus"] == "OutForDelivery"
+    assert parcel["orderNumber"] == "100004"

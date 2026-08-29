@@ -1,0 +1,17 @@
+Authentication-Results: example.org; dkim=pass header.d=thepihut.myshopify.com header.i=@thepihut.myshopify.com
+From: "The Pi Hut" <contact@thepihut.com>
+To: test@example.org
+Subject: Your order is out for delivery
+Date: Thu, 25 Jun 2026 09:12:00 +0000
+Message-ID: <shopify-ofd-test@thepihut.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Order #100004
+
+Your order is out for delivery
+==============================
+
+Royal Mail tracking number: AB123456789GB
+
+Track your shipment: https://www.royalmail.com/track-your-item#/tracking-results/AB123456789GB
