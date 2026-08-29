@@ -30,7 +30,9 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
 
-SUBJECT_VENUE_RE = re.compile(r"Confirmation of your booking at\s+(.+?)\s*$", re.IGNORECASE)
+SUBJECT_VENUE_RE = re.compile(
+    r"Confirmation of your booking at\s+(.+?)\s*$", re.IGNORECASE
+)
 RES_ID_RE = re.compile(
     r"restaurant-information\.com/[^/\s]+/reservation/cancel/"
     r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",

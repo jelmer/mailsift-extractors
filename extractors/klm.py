@@ -34,7 +34,9 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
 
-SUBJECT_BOOKING_RE = re.compile(r"Confirmation:\s+.+?\s+\(([A-Z0-9]{5,8})\)\s*$", re.IGNORECASE)
+SUBJECT_BOOKING_RE = re.compile(
+    r"Confirmation:\s+.+?\s+\(([A-Z0-9]{5,8})\)\s*$", re.IGNORECASE
+)
 BODY_BOOKING_RE = re.compile(r"Booking code\s*\n+\s*([A-Z0-9]{5,8})\b")
 FLIGHT_NUMBER_RE = re.compile(r"Flight number:\s*([A-Z]{2})\s*(\d{1,4})")
 DATE_LINE_RE = re.compile(

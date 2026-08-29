@@ -23,7 +23,9 @@ from mailsift_extractor import read_message
 SUBJECT_HOTEL_RE = re.compile(
     r"(?:Thanks!?|booking)\s*Your booking is confirmed at\s+(.+)$", re.IGNORECASE
 )
-SUBJECT_HOTEL_RE_LOOSE = re.compile(r"confirmed at\s+(.+?)(?:$|\s*\(from)", re.IGNORECASE)
+SUBJECT_HOTEL_RE_LOOSE = re.compile(
+    r"confirmed at\s+(.+?)(?:$|\s*\(from)", re.IGNORECASE
+)
 
 CONFIRMATION_RE = re.compile(r"Confirmation:\s*(\d+)")
 

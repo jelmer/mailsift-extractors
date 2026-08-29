@@ -39,7 +39,9 @@ FLIGHT_RE = re.compile(
     r"(\d{1,2}/\d{1,2}/\d{4})\s+has\s+been\s+delayed",
     re.IGNORECASE,
 )
-NEW_TIME_RE = re.compile(r"new\s+departure\s+time\s+is\s+(\d{1,2}:\d{2})", re.IGNORECASE)
+NEW_TIME_RE = re.compile(
+    r"new\s+departure\s+time\s+is\s+(\d{1,2}:\d{2})", re.IGNORECASE
+)
 AIRPORT_NAME_RE = re.compile(r"^(.*?)\s*\(([^)]+)\)\s*$")
 
 

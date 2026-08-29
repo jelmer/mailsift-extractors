@@ -37,7 +37,9 @@ WINDOW_RE = re.compile(r"\b(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})\b")
 OUT_FOR_DELIVERY_RE = re.compile(
     r"^Your\s+(?P<merchant>.+?)\s+parcel\s+is\s+out\s+for\s+delivery\s*$", re.IGNORECASE
 )
-ON_ITS_WAY_BODY_RE = re.compile(r"Your\s+(.+?)\s+parcel\s+is\s+on\s+its\s+way", re.IGNORECASE)
+ON_ITS_WAY_BODY_RE = re.compile(
+    r"Your\s+(.+?)\s+parcel\s+is\s+on\s+its\s+way", re.IGNORECASE
+)
 
 
 class _Strip(HTMLParser):

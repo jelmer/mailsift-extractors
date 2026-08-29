@@ -48,14 +48,17 @@ from mailsift_extractor import read_message
 
 ORDER_ID_RE = re.compile(r"Your\s+Deliveroo\s+order\s+ID\s+is\s+(\d+)", re.IGNORECASE)
 SHORT_ORDER_ID_RE = re.compile(r"Order\s+#(\d+)", re.IGNORECASE)
-DELIVER_FROM_RE = re.compile(r"Deliver\s+from:\s*\n\s*\n(?P<merchant>[^\n]+)\n", re.IGNORECASE)
+DELIVER_FROM_RE = re.compile(
+    r"Deliver\s+from:\s*\n\s*\n(?P<merchant>[^\n]+)\n", re.IGNORECASE
+)
 ITEM_RE = re.compile(
     r"^\s*(?P<qty>\d+)x\s+(?P<name>[^\n-]+?)\s+-\s+([£€$])(?P<price>\d+(?:\.\d{2})?)\s*$",
     re.MULTILINE,
 )
 TOTAL_RE = re.compile(r"^Total\s+([£€$])(?P<price>\d+(?:\.\d{2})?)\s*$", re.MULTILINE)
 ETA_RE = re.compile(
-    r"Your\s+order\s+will\s+arrive\s+today\s+at\s+(?P<time>\d{1,2}:\d{2})", re.IGNORECASE
+    r"Your\s+order\s+will\s+arrive\s+today\s+at\s+(?P<time>\d{1,2}:\d{2})",
+    re.IGNORECASE,
 )
 SYMBOL_TO_CURRENCY = {"£": "GBP", "€": "EUR", "$": "USD"}
 
