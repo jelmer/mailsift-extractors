@@ -24,10 +24,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-ACCOUNT_RE = re.compile(r"Account no\.?\s*[-:]\s*([A-Z0-9-]+)", re.I)
+ACCOUNT_RE = re.compile(r"Account no\.?\s*[-:]\s*([A-Z0-9-]+)", re.IGNORECASE)
 PERIOD_RE = re.compile(
     r"(\d{1,2})(?:st|nd|rd|th)?\s+"
     r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
@@ -35,14 +34,14 @@ PERIOD_RE = re.compile(
     r"(\d{1,2})(?:st|nd|rd|th)?\s+"
     r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
     r"(\d{4})",
-    re.I,
+    re.IGNORECASE,
 )
 DD_RE = re.compile(
     r"Direct Debit collection\s*-\s*"
     r"(\d{1,2})(?:st|nd|rd|th)?\s+"
     r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
     r"(\d{4})\s*:\s*£\s*([0-9]+(?:\.[0-9]{2})?)",
-    re.I,
+    re.IGNORECASE,
 )
 
 MONTHS = {

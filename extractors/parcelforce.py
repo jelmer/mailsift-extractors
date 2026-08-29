@@ -24,8 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 # JD-prefixed tracking number, alphanumeric tail.
 TRACKING_RE = re.compile(r"\b(JD[A-Z0-9]{5,18})\b")
@@ -33,7 +32,7 @@ DELIVERY_RE = re.compile(
     r"Your\s+parcel\s+(?P<tracking>JD[A-Z0-9]{5,18})\s+from\s+(?P<merchant>.+?)\s+"
     r"is\s+due\s+to\s+be\s+delivered\b.*?between\s+(?P<start>\d{1,2}:\d{2})\s+"
     r"and\s+(?P<end>\d{1,2}:\d{2})",
-    re.I | re.S,
+    re.IGNORECASE | re.DOTALL,
 )
 
 

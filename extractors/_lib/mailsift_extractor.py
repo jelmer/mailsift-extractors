@@ -21,9 +21,10 @@ import email.policy
 import email.utils
 import json
 import sys
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Mapping, cast
+from typing import Any, cast
 
 
 @dataclass

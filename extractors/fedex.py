@@ -31,24 +31,23 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-TRACKING_RE = re.compile(r"Tracking\s+ID\s+(\d{12,15})", re.I)
+TRACKING_RE = re.compile(r"Tracking\s+ID\s+(\d{12,15})", re.IGNORECASE)
 SUBJECT_TRACKING_RE = re.compile(r"\b(\d{12,15})\b")
 WINDOW_RE = re.compile(
     r"Estimated\s+between\s+"
     r"(\d{1,2}(?::\d{2})?(?:am|pm))\s+and\s+(\d{1,2}(?::\d{2})?(?:am|pm))",
-    re.I,
+    re.IGNORECASE,
 )
 SCHEDULED_DATE_RE = re.compile(
     r"Scheduled\s+delivery\s+date\s+[A-Z][a-z]+,?\s+(\d{1,2}/\d{1,2}/\d{4})",
-    re.I,
+    re.IGNORECASE,
 )
 DELIVERED_RE = re.compile(
     r"Delivery\s+Date\s+[A-Z][a-z]+,?\s+(\d{1,2}/\d{1,2}/\d{4})\s+"
     r"(\d{1,2}(?::\d{2})?(?:am|pm))",
-    re.I,
+    re.IGNORECASE,
 )
 
 
@@ -79,7 +78,7 @@ def strip_html(html: str) -> str:
 
 def parse_clock(s: str) -> tuple[int, int]:
     """Parse '9am' / '1:38pm' style time."""
-    m = re.match(r"(\d{1,2})(?::(\d{2}))?(am|pm)", s, re.I)
+    m = re.match(r"(\d{1,2})(?::(\d{2}))?(am|pm)", s, re.IGNORECASE)
     if not m:
         raise ValueError(f"bad time {s!r}")
     hour = int(m.group(1))
@@ -126,8 +125,8 @@ def main() -> int:
         # Some short variants fall back to the subject - but only trust a
         # numeric token if `tracking` is also mentioned somewhere in the
         # subject, otherwise we'd misclassify random numbers.
-        if re.search(r"Tracking", mail.subject, re.I) or re.search(
-            r"shipment.*\b\d{12,15}\b", mail.subject, re.I
+        if re.search(r"Tracking", mail.subject, re.IGNORECASE) or re.search(
+            r"shipment.*\b\d{12,15}\b", mail.subject, re.IGNORECASE
         ):
             m = SUBJECT_TRACKING_RE.search(mail.subject)
             if m:

@@ -30,12 +30,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 TOTAL_RE = re.compile(r"\bTotal\s*([£€$])\s*(\d+(?:[.,]\d{2})?)")
 EATS_MERCHANT_RE = re.compile(
-    r"Here'?s\s+your\s+receipt\s+for\s+(?P<merchant>[^.\n]+?)\s*[.\n]", re.I
+    r"Here'?s\s+your\s+receipt\s+for\s+(?P<merchant>[^.\n]+?)\s*[.\n]", re.IGNORECASE
 )
 SYMBOL_TO_CURRENCY = {"£": "GBP", "€": "EUR", "$": "USD"}
 

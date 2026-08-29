@@ -30,15 +30,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 TRACKING_RE = re.compile(r"\b(JD\d{15,20})\b")
 WINDOW_RE = re.compile(r"\b(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})\b")
 OUT_FOR_DELIVERY_RE = re.compile(
-    r"^Your\s+(?P<merchant>.+?)\s+parcel\s+is\s+out\s+for\s+delivery\s*$", re.I
+    r"^Your\s+(?P<merchant>.+?)\s+parcel\s+is\s+out\s+for\s+delivery\s*$", re.IGNORECASE
 )
-ON_ITS_WAY_BODY_RE = re.compile(r"Your\s+(.+?)\s+parcel\s+is\s+on\s+its\s+way", re.I)
+ON_ITS_WAY_BODY_RE = re.compile(r"Your\s+(.+?)\s+parcel\s+is\s+on\s+its\s+way", re.IGNORECASE)
 
 
 class _Strip(HTMLParser):

@@ -32,7 +32,7 @@ def discover(directory: Path) -> list[dict[str, Any]]:
         with path.open(encoding="utf-8") as fh:
             data = yaml.safe_load(fh)
         if not isinstance(data, dict):
-            raise ValueError(f"{path.name}: manifest is not a mapping")
+            raise TypeError(f"{path.name}: manifest is not a mapping")
         if "name" not in data:
             raise ValueError(f"{path.name}: manifest has no 'name'")
         manifests.append(data)

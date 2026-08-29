@@ -26,19 +26,18 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-SUBJECT_VENUE_RE = re.compile(r"Your Reservation at\s+(.+?)\s*\|", re.I)
+SUBJECT_VENUE_RE = re.compile(r"Your Reservation at\s+(.+?)\s*\|", re.IGNORECASE)
 
 # google calendar link: encodes UTC dates + venue + description
 GOOGLE_CAL_RE = re.compile(
     r"https://calendar\.google\.com/calendar/render\?[^\"'>\s]+",
-    re.I,
+    re.IGNORECASE,
 )
 
 PARTY_RE = re.compile(r"(\d+)\s+guests?\s*[·•|-]\s*(\d{1,2}:\d{2})")
-RES_NUMBER_RE = re.compile(r"reservation number is\s+([A-Z0-9]+)", re.I)
+RES_NUMBER_RE = re.compile(r"reservation number is\s+([A-Z0-9]+)", re.IGNORECASE)
 
 
 def parse_google_cal(url: str) -> dict[str, str]:

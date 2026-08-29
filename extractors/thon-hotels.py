@@ -33,11 +33,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 REF_RE = re.compile(r"Ref\.\s*(\d+)")
-HOTEL_RE = re.compile(r"(Thon Hotel[^\n]+?)\s*$", re.M)
+HOTEL_RE = re.compile(r"(Thon Hotel[^\n]+?)\s*$", re.MULTILINE)
 CHECKIN_RE = re.compile(
     r"([A-Z][a-z]{2})\s+(\d{1,2})\.\s+([A-Z][a-z]{2})\s+(\d{4})\s*\n\s*Check-in\s+from\s+(\d{1,2}:\d{2})",
 )

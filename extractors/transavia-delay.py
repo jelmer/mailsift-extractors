@@ -31,16 +31,15 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 BOOKING_RE = re.compile(r"Your booking:\s*([A-Z0-9]{5,8})")
 FLIGHT_RE = re.compile(
     r"flight\s+([A-Z]{2}\d{1,4})\s+from\s+(.+?)\s+to\s+(.+?)\s+on\s+"
     r"(\d{1,2}/\d{1,2}/\d{4})\s+has\s+been\s+delayed",
-    re.I,
+    re.IGNORECASE,
 )
-NEW_TIME_RE = re.compile(r"new\s+departure\s+time\s+is\s+(\d{1,2}:\d{2})", re.I)
+NEW_TIME_RE = re.compile(r"new\s+departure\s+time\s+is\s+(\d{1,2}:\d{2})", re.IGNORECASE)
 AIRPORT_NAME_RE = re.compile(r"^(.*?)\s*\(([^)]+)\)\s*$")
 
 

@@ -30,17 +30,16 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 TRACKING_RE = re.compile(r"\b([A-Z]{2}\d{9,11}[A-Z]{2})\b")
 DATE_RE = re.compile(
     r"Today,?\s*([A-Z][a-z]+),?\s*(\d{1,2})\s+([A-Z][a-z]+)\s+(\d{4})",
-    re.I,
+    re.IGNORECASE,
 )
 WINDOW_RE = re.compile(
     r"estimated between:?\s*(\d{1,2}(?::\d{2})?(?:am|pm))\s+and\s+(\d{1,2}(?::\d{2})?(?:am|pm))",
-    re.I,
+    re.IGNORECASE,
 )
 
 MONTHS = {
@@ -86,7 +85,7 @@ def strip_html(html: str) -> str:
 
 def parse_clock(s: str) -> tuple[int, int]:
     """Parse '11am' / '12:30pm' style time."""
-    m = re.match(r"(\d{1,2})(?::(\d{2}))?(am|pm)", s, re.I)
+    m = re.match(r"(\d{1,2})(?::(\d{2}))?(am|pm)", s, re.IGNORECASE)
     if not m:
         raise ValueError(f"bad time {s!r}")
     hour = int(m.group(1))

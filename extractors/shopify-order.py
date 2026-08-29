@@ -26,8 +26,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 ORDER_ID_RE = re.compile(r"Order\s+#([A-Za-z0-9]+)")
 # Item line in the order-summary table: "Product name × 1" then a
@@ -35,13 +34,13 @@ ORDER_ID_RE = re.compile(r"Order\s+#([A-Za-z0-9]+)")
 # newline; the × is unicode U+00D7 in the wire template.
 ITEM_RE = re.compile(
     r"^(?P<name>.+?)\s*[×x]\s*(?P<qty>\d+)\s*\n\s*\n(?P<symbol>[£€$])(?P<price>[0-9]+(?:\.[0-9]{2})?)",
-    re.M,
+    re.MULTILINE,
 )
 # Final "Total" line: `Total\n\n£42.30 GBP` - the currency suffix is
 # what disambiguates the line from the subtotal.
 TOTAL_RE = re.compile(
     r"^Total\s*\n\s*\n(?P<symbol>[£€$])(?P<price>[0-9]+(?:\.[0-9]{2})?)\s+(?P<currency>[A-Z]{3})",
-    re.M,
+    re.MULTILINE,
 )
 # Carrier tracking line. The label varies (`DPD tracking number`,
 # `Special Care tracking number`, `Royal Mail tracking number`, ...);
@@ -49,7 +48,7 @@ TOTAL_RE = re.compile(
 # whitespace so we don't slurp surrounding lines.
 TRACKING_RE = re.compile(
     r"^(?P<carrier>[A-Za-z][A-Za-z0-9 ]*?)\s+tracking\s+number:\s*(?P<number>[A-Za-z0-9]+)",
-    re.M | re.I,
+    re.MULTILINE | re.IGNORECASE,
 )
 
 SYMBOL_TO_CURRENCY = {"£": "GBP", "€": "EUR", "$": "USD"}

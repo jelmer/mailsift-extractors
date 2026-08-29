@@ -39,8 +39,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 BOOKING_RE = re.compile(r"BOOKING REFERENCE:?\s*\n+\s*(\d{6,12})")
 ROUTE_RE = re.compile(

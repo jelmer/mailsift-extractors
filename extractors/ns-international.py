@@ -32,13 +32,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-SUBJECT_REF_RE = re.compile(r"booking reference:\s*([A-Z0-9]{5,12})", re.I)
+SUBJECT_REF_RE = re.compile(r"booking reference:\s*([A-Z0-9]{5,12})", re.IGNORECASE)
 ROUTE_RE = re.compile(
     r"(?P<dir>Outward|Return)\s*\n+\s*(?P<origin>[^\n]+?)\s+-\s+(?P<dest>[^\n]+?)\s*\n",
-    re.I,
+    re.IGNORECASE,
 )
 DEP_RE = re.compile(
     r"Departure:\s*\n?\s*"

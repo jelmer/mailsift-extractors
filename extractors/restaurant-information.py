@@ -28,14 +28,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-SUBJECT_VENUE_RE = re.compile(r"Confirmation of your booking at\s+(.+?)\s*$", re.I)
+SUBJECT_VENUE_RE = re.compile(r"Confirmation of your booking at\s+(.+?)\s*$", re.IGNORECASE)
 RES_ID_RE = re.compile(
     r"restaurant-information\.com/[^/\s]+/reservation/cancel/"
     r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
-    re.I,
+    re.IGNORECASE,
 )
 DATE_RE = re.compile(
     r"\bDate\s*\n\s*([A-Z][a-z]+,\s+\d{1,2}\s+[A-Z][a-z]+)",
@@ -44,7 +43,7 @@ HOUR_RE = re.compile(r"\bHour\s*\n\s*(\d{1,2}:\d{2})")
 PEOPLE_RE = re.compile(r"\bPeople\s*\n\s*(\d+)\s+(?:people|person)")
 SEATING_RE = re.compile(
     r"reserved\s+from\s+\d{1,2}:\d{2}\s+to\s+(\d{1,2}:\d{2})",
-    re.I,
+    re.IGNORECASE,
 )
 
 

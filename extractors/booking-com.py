@@ -18,13 +18,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 SUBJECT_HOTEL_RE = re.compile(
-    r"(?:Thanks!?|booking)\s*Your booking is confirmed at\s+(.+)$", re.I
+    r"(?:Thanks!?|booking)\s*Your booking is confirmed at\s+(.+)$", re.IGNORECASE
 )
-SUBJECT_HOTEL_RE_LOOSE = re.compile(r"confirmed at\s+(.+?)(?:$|\s*\(from)", re.I)
+SUBJECT_HOTEL_RE_LOOSE = re.compile(r"confirmed at\s+(.+?)(?:$|\s*\(from)", re.IGNORECASE)
 
 CONFIRMATION_RE = re.compile(r"Confirmation:\s*(\d+)")
 
@@ -45,7 +44,7 @@ CHECKOUT_RE = re.compile(
     r"Check-out\s+([A-Z][a-z]+(?:,)?\s+(?:[A-Z][a-z]+\s+\d{1,2},?\s+\d{4}|\d{1,2}\s+[A-Z][a-z]+\s+\d{4}))"
     r"\s*\((?:until\s+)?(\d{1,2}:\d{2})",
 )
-LOCATION_RE = re.compile(r"Location\s+([^P]+?)\s+Phone\b", re.S)
+LOCATION_RE = re.compile(r"Location\s+([^P]+?)\s+Phone\b", re.DOTALL)
 
 
 class _Strip(HTMLParser):

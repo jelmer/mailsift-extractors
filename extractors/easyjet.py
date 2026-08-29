@@ -24,10 +24,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-REFERENCE_RE = re.compile(r"easyJet booking reference:?\s*([A-Z0-9]+)", re.I)
+REFERENCE_RE = re.compile(r"easyJet booking reference:?\s*([A-Z0-9]+)", re.IGNORECASE)
 
 LEG_RE = re.compile(
     r"(\d+)\s+of\s+(\d+)\s+([A-Z][A-Za-z .'-]+?)\s+to\s+([A-Z][A-Za-z .'-]+?)\s+"

@@ -33,14 +33,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 ORDER_RE = re.compile(r"\b(\d{3}-\d{7}-\d{7})\b")
-TOTAL_RE = re.compile(r"^Total\s*\n\s*([0-9]+(?:\.[0-9]{2})?)\s*([A-Z]{3})", re.M)
+TOTAL_RE = re.compile(r"^Total\s*\n\s*([0-9]+(?:\.[0-9]{2})?)\s*([A-Z]{3})", re.MULTILINE)
 ITEM_RE = re.compile(
     r"^\*\s+(.+?)\n\s+Quantity:\s+(\d+)(?:\n\s+([0-9]+(?:\.[0-9]{2})?)\s*([A-Z]{3}))?",
-    re.M,
+    re.MULTILINE,
 )
 # Amazon locale TLDs we've seen confirmation mail from. Anything not
 # in this map still gets `amazon` as a fall-back provider id.

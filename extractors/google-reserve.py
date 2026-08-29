@@ -34,18 +34,17 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 META_RE = re.compile(
     # content="..." | content='...' | content=bareword
     r"<meta\s+itemprop=[\"']?(?P<prop>[A-Za-z]+)[\"']?\s+content="
     r"(?:\"(?P<dq>[^\"]*)\"|'(?P<sq>[^']*)'|(?P<bare>[^\s>]+))",
-    re.I,
+    re.IGNORECASE,
 )
 SCOPE_OPEN_RE = re.compile(
     r"<div\s+[^>]*itemtype=[\"']?http://schema\.org/(?P<type>[A-Za-z]+)",
-    re.I,
+    re.IGNORECASE,
 )
 
 

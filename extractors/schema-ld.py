@@ -16,14 +16,14 @@ from __future__ import annotations
 import json
 import re
 import sys
+from collections.abc import Iterable
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 SUPPORTED_TYPES = {
     "FlightReservation",

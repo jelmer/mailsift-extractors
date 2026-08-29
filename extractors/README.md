@@ -96,13 +96,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 from mailsift_extractor import read_message
 
-mail = read_message()            # parses sys.stdin
+mail = read_message()  # parses sys.stdin
 
-mail.from_address                # "noreply@vendor.example"
-mail.subject, mail.date          # parsed for you
-mail.text, mail.html             # decoded bodies, or None
-mail.ld_json                     # parsed application/ld+json blocks
-mail.attachments                 # [Attachment(filename, mime_type, bytes, ...)]
+mail.from_address  # "noreply@vendor.example"
+mail.subject, mail.date  # parsed for you
+mail.text, mail.html  # decoded bodies, or None
+mail.ld_json  # parsed application/ld+json blocks
+mail.attachments  # [Attachment(filename, mime_type, bytes, ...)]
 
 Path("flight-fr1234.event.ics").write_bytes(cal.to_ical())
 ```

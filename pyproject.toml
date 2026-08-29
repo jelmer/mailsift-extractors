@@ -7,3 +7,10 @@ license = { text = "GPL-3.0-or-later" }
 
 [tool.pytest.ini_options]
 testpaths = ["extractors/_tests"]
+
+[tool.ruff.lint]
+# Extractors deliberately use naive local wall-clock times: each vendor
+# emits times in its own local zone and the extractors round-trip them as
+# such. Enforcing timezone-aware datetimes would require inventing a
+# timezone we don't have.
+ignore = ["DTZ001", "DTZ007"]

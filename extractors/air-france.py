@@ -26,10 +26,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-SUBJECT_DATE_RE = re.compile(r"on\s+(\d{1,2}/\d{1,2}/\d{4})\s*$", re.I)
+SUBJECT_DATE_RE = re.compile(r"on\s+(\d{1,2}/\d{1,2}/\d{4})\s*$", re.IGNORECASE)
 BOOKING_RE = re.compile(r"Booking reference\s*\n+\s*([A-Z0-9]{5,8})")
 SEGMENT_HEADER_RE = re.compile(
     r"^(?P<from_city>[A-Z][\w .'-]+?)\s*\((?P<from_iata>[A-Z]{3})\)\s*-\s*"

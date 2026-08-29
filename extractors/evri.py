@@ -29,14 +29,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 # Evri tracking numbers are alphanumeric, currently 16 characters.
 TRACKING_RE = re.compile(r"\b([A-Z]\d{4}[A-Z]\d{10})\b")
-URL_TRACKING_RE = re.compile(r"evri\.com/track/parcel/([A-Z0-9]{10,20})", re.I)
+URL_TRACKING_RE = re.compile(r"evri\.com/track/parcel/([A-Z0-9]{10,20})", re.IGNORECASE)
 SUBJECT_COLLECTED_RE = re.compile(
-    r"^Thanks\s+for\s+collecting\s+your\s+(?P<merchant>.+?)\s+parcel\s*$", re.I
+    r"^Thanks\s+for\s+collecting\s+your\s+(?P<merchant>.+?)\s+parcel\s*$", re.IGNORECASE
 )
 
 

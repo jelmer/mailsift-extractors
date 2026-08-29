@@ -28,23 +28,22 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 TRACKING_RE = re.compile(r"\b(1Z[A-Z0-9]{16})\b")
 WINDOW_RE = re.compile(
     r"Estimated\s+Delivery\s+[A-Z][a-z]+,?\s+"
     r"(?P<date>\d{2}/\d{2}/\d{4})\s+between\s+"
     r"(?P<start>\d{1,2}:\d{2})\s*-\s*(?P<end>\d{1,2}:\d{2})",
-    re.I,
+    re.IGNORECASE,
 )
 DELIVERED_RE = re.compile(
     r"Delivered\s+[A-Z][a-z]+,?\s+(?P<date>\d{2}/\d{2}/\d{4})\s+(?P<time>\d{1,2}:\d{2})",
-    re.I,
+    re.IGNORECASE,
 )
 SCHEDULED_DATE_RE = re.compile(
     r"Estimated\s+Delivery\s+Date:?\s*[A-Z][a-z]+,?\s+(?P<date>\d{2}/\d{2}/\d{4})",
-    re.I,
+    re.IGNORECASE,
 )
 
 

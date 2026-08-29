@@ -26,8 +26,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 TRACKING_RE = re.compile(r"\b(3S[A-Z]{2,6}\d{6,12})\b")
 SUBJECT_RE = re.compile(
@@ -35,7 +34,7 @@ SUBJECT_RE = re.compile(
     r"(Verstuurd):\s+je\s+pakket\s+(?:van|voor)|"
     r"(Onderweg)\s+met\s+je\s+pakket\s+van|"
     r"(Afgeleverd):\s+je\s+pakket\s+van)\s+(?P<merchant>.+?)\s*$",
-    re.I,
+    re.IGNORECASE,
 )
 
 

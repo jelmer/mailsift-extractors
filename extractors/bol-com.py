@@ -33,19 +33,18 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 # bol order ids: A/C prefix + 9 alphanumerics. The footer copy is the
 # most reliable place to find it; the order-confirmation body also says
 # "Bestelnummer: XYZ".
 ORDER_ID_RE = re.compile(r"\b([AC]000[A-Z0-9]{6})\b")
-BESTELNUMMER_RE = re.compile(r"Bestelnummer\s*[:\s]\s*([AC]000[A-Z0-9]{6})", re.I)
+BESTELNUMMER_RE = re.compile(r"Bestelnummer\s*[:\s]\s*([AC]000[A-Z0-9]{6})", re.IGNORECASE)
 # "Totaal ... € 11,00" - the amount can use either a comma or dot
 # decimal separator. "Totaal" appears multiple times in some templates;
 # we want the grand total, which is the last match in the body.
-TOTAL_RE = re.compile(r"Totaal[^\d€]*€\s*([0-9]+[,.][0-9]{2})", re.I)
-SELLER_RE = re.compile(r"Verkoper\s*[:\s]\s*([^\n<]+)", re.I)
+TOTAL_RE = re.compile(r"Totaal[^\d€]*€\s*([0-9]+[,.][0-9]{2})", re.IGNORECASE)
+SELLER_RE = re.compile(r"Verkoper\s*[:\s]\s*([^\n<]+)", re.IGNORECASE)
 
 
 class _Strip(HTMLParser):

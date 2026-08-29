@@ -31,16 +31,15 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-INVOICE_RE = re.compile(r"factuur\s+(\d{6,})", re.I)
-AMOUNT_RE = re.compile(r"(?:€|EUR)\s*([0-9]+[,.]\d{2})", re.I)
+INVOICE_RE = re.compile(r"factuur\s+(\d{6,})", re.IGNORECASE)
+AMOUNT_RE = re.compile(r"(?:€|EUR)\s*([0-9]+[,.]\d{2})", re.IGNORECASE)
 DEBIT_DATE_RE = re.compile(
     r"rond\s+(\d{1,2})\s+(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)\s+(\d{4})",
-    re.I,
+    re.IGNORECASE,
 )
-RELATIE_RE = re.compile(r"Relatienummer:\s*(\d+)", re.I)
+RELATIE_RE = re.compile(r"Relatienummer:\s*(\d+)", re.IGNORECASE)
 
 DUTCH_MONTHS = {
     "januari": 1,

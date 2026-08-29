@@ -32,11 +32,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 REFERENCE_RE = re.compile(r"Booking reference:?\s*([A-Z0-9]{6})")
-SUBJECT_REFERENCE_RE = re.compile(r"Reference:\s*([A-Z0-9]{6})", re.I)
+SUBJECT_REFERENCE_RE = re.compile(r"Reference:\s*([A-Z0-9]{6})", re.IGNORECASE)
 
 LEG_RE = re.compile(
     r"(?P<direction>Outbound|Return)\s+"

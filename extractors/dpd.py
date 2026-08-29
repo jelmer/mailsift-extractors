@@ -28,15 +28,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 TRACKING_RE = re.compile(r"Your parcel:\s*(\d{4}\s\d{4}\s\d{3}\s\d{3})")
 # "TODAY 9th February 2026 between 13:40 - 14:40"
 WINDOW_RE = re.compile(
     r"TODAY\s+(\d{1,2})(?:st|nd|rd|th)?\s+([A-Z][a-z]+)\s+(\d{4})\s+between\s+"
     r"(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})",
-    re.I,
+    re.IGNORECASE,
 )
 
 MONTHS = {

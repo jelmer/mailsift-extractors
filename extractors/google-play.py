@@ -23,15 +23,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-ORDER_RE = re.compile(r"^Order number:\s*(GPA\.[\w.\-]+)", re.M)
-DATE_RE = re.compile(r"^Order date:\s*(\d{1,2})\s+([A-Z][a-z]{2})\s+(\d{4})", re.M)
+ORDER_RE = re.compile(r"^Order number:\s*(GPA\.[\w.\-]+)", re.MULTILINE)
+DATE_RE = re.compile(r"^Order date:\s*(\d{1,2})\s+([A-Z][a-z]{2})\s+(\d{4})", re.MULTILINE)
 ITEM_RE = re.compile(
     r"\n\n([^\n]+?(?:\(by [^\)]+\))?)\n(?:£|€|\$)([0-9]+(?:\.[0-9]{1,2})?)"
 )
-TOTAL_RE = re.compile(r"^Total:\s*(£|€|\$)?\s*([0-9]+(?:\.[0-9]{1,2})?)", re.M)
+TOTAL_RE = re.compile(r"^Total:\s*(£|€|\$)?\s*([0-9]+(?:\.[0-9]{1,2})?)", re.MULTILINE)
 
 MONTH_ABBR = {
     "Jan": 1,

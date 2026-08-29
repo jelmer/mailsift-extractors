@@ -24,14 +24,13 @@ from __future__ import annotations
 import json
 import re
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import Mail, read_message  # noqa: E402
-
+from mailsift_extractor import Mail, read_message
 
 MONTHS = {
     "january": 1,
@@ -58,7 +57,7 @@ SLOT_WITH_POSTCODE_RE = re.compile(
     r"(?P<start>\d{1,2}(?::\d{2})?(?:am|pm))\s*(?:-|to)\s*"
     r"(?P<end>\d{1,2}(?::\d{2})?(?:am|pm))"
     r"\s+to\s+(?P<postcode>" + POSTCODE_RE + r")",
-    re.I,
+    re.IGNORECASE,
 )
 
 # Order confirmation body: "Slot date: Monday 17 August 11am to 3pm"
@@ -68,7 +67,7 @@ SLOT_ORDER_RE = re.compile(
     r"(?P<day>\d{1,2})(?:st|nd|rd|th)?\s+(?P<month>[A-Z][a-z]+)\s+"
     r"(?P<start>\d{1,2}(?::\d{2})?(?:am|pm))\s*(?:-|to)\s*"
     r"(?P<end>\d{1,2}(?::\d{2})?(?:am|pm))",
-    re.I,
+    re.IGNORECASE,
 )
 
 # Receipt body: "Slot date: Monday 17th August, 11:00am to 3:00pm"
@@ -79,17 +78,17 @@ SLOT_RECEIPT_RE = re.compile(
     r",\s*"
     r"(?P<start>\d{1,2}(?::\d{2})?(?:am|pm))\s*(?:-|to)\s*"
     r"(?P<end>\d{1,2}(?::\d{2})?(?:am|pm))",
-    re.I,
+    re.IGNORECASE,
 )
 
-ORDER_RE = re.compile(r"Order\s+number[:\s]+(\d+)", re.I)
-ORDER_SUBJECT_RE = re.compile(r"order\s+(\d+)", re.I)
+ORDER_RE = re.compile(r"Order\s+number[:\s]+(\d+)", re.IGNORECASE)
+ORDER_SUBJECT_RE = re.compile(r"order\s+(\d+)", re.IGNORECASE)
 
 PAYMENT_RECEIVED_RE = re.compile(
-    r"Payment\s+received[:\s]+£\s*([0-9]+(?:\.[0-9]{2})?)", re.I
+    r"Payment\s+received[:\s]+£\s*([0-9]+(?:\.[0-9]{2})?)", re.IGNORECASE
 )
 ESTIMATED_TOTAL_RE = re.compile(
-    r"Estimated\s+total\s*£\s*([0-9]+(?:\.[0-9]{2})?)", re.I
+    r"Estimated\s+total\s*£\s*([0-9]+(?:\.[0-9]{2})?)", re.IGNORECASE
 )
 
 # "We'll take payment for your order on Tuesday, 19 May"
@@ -98,13 +97,13 @@ PAYMENT_DATE_RE = re.compile(
     r"(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)?,?\s*"
     r"(\d{1,2})(?:st|nd|rd|th)?\s+"
     r"(January|February|March|April|May|June|July|August|September|October|November|December)",
-    re.I,
+    re.IGNORECASE,
 )
 
 ADDRESS_RE = re.compile(
     r"(?:Delivery\s+address|Address):\s*(?P<address>.+?)\s+"
     r"(?P<postcode>" + POSTCODE_RE + r")",
-    re.I | re.S,
+    re.IGNORECASE | re.DOTALL,
 )
 
 
@@ -154,7 +153,7 @@ def parse_clock(time_str: str) -> tuple[int, int]:
 def resolve_year(message_date: datetime | None, day: int, month: int) -> int:
     """Pick the year that places the slot closest to the message date."""
     if message_date is None:
-        return datetime.now(timezone.utc).year
+        return datetime.now(UTC).year
     candidates = [
         datetime(message_date.year - 1, month, day),
         datetime(message_date.year, month, day),
