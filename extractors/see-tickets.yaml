@@ -1,0 +1,9 @@
+name: see-tickets
+order: 50
+from_domains:
+  - seetickets.com
+subject_regex: "(?i)(?:E-Ticket Order|Ticket Order Confirmation)\\s+\\d{5,}\\s*$"
+requires:
+  - html
+require_dkim:
+  - seetickets.com

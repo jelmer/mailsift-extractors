@@ -1,0 +1,60 @@
+From: SEE Tickets <donotreply@seetickets.com>
+To: test@example.org
+Subject: E-Ticket Order 12345678
+Date: Wed, 22 Feb 2023 17:45:22 -0000
+Message-ID: <see-tickets-eticket@seetickets.com>
+Authentication-Results:
+ example.org; dkim=pass header.d=seetickets.com header.i=@seetickets.com
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5305687370707643240=="
+
+--===============5305687370707643240==
+Content-Type: multipart/alternative;
+ boundary="===============6425599613514519717=="
+
+--===============6425599613514519717==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+plain text placeholder
+
+--===============6425599613514519717==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<h1>Booking confirmation for Example Artist at Example Venue, London</h1>
+<p>Hi TEST USER</p>
+<p>Order confirmed: EXAMPLE ARTIST</p>
+<div>BOOKING REFERENCE 12345678</div>
+<h2>Ticket delivery</h2>
+<p>Please find your print at home tickets attached to this email.</p>
+<h2>Order summary</h2>
+<div>Example Artist</div>
+<div>Thursday, 6 Apr 2023 at 19.30</div>
+<div>Example Venue, London</div>
+<div>1 x General Admission</div>
+<div>&pound;23.50</div>
+<div>Total</div>
+<div>&pound;26.00</div>
+</body></html>
+
+--===============6425599613514519717==--
+
+--===============5305687370707643240==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="12345678.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iajw8L1R5cGUvQ2F0YWxvZy9QYWdlcyAyIDAgUj4+ZW5kb2JqCjIgMCBv
+Ymo8PC9UeXBlL1BhZ2VzL0tpZHNbMyAwIFJdL0NvdW50IDE+PmVuZG9iagozIDAgb2JqPDwvVHlw
+ZS9QYWdlL1BhcmVudCAyIDAgUi9NZWRpYUJveFswIDAgMTAwIDEwMF0vQ29udGVudHMgNCAwIFI+
+PmVuZG9iago0IDAgb2JqPDwvTGVuZ3RoIDMwPj5zdHJlYW0KQlQgL0YxIDEyIFRmIDEwIDUwIFRk
+ICh0aWNrZXQpIFRqIEVUCmVuZHN0cmVhbSBlbmRvYmoKeHJlZgowIDUKMDAwMDAwMDAwMCA2NTUz
+NSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNTMgMDAwMDAgbiAKMDAwMDAwMDA5OCAw
+MDAwMCBuIAowMDAwMDAwMTcyIDAwMDAwIG4gCnRyYWlsZXI8PC9TaXplIDUvUm9vdCAxIDAgUj4+
+CnN0YXJ0eHJlZgoyNjYKJSVFT0YK
+
+--===============5305687370707643240==--
