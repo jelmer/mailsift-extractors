@@ -1,0 +1,29 @@
+Authentication-Results: example.org; dkim=pass header.d=dice.fm header.i=noreply@dice.fm
+From: DICE <noreply@dice.fm>
+To: test@example.org
+Subject: Your tickets: Example Band // Support (Co-Headline)
+Date: Wed, 20 Dec 2023 10:12:07 +0000
+Message-ID: <dice-test@dice.fm>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Nice one, Test</p>
+<p>You're going to Example Band // Support (Co-Headline)</p>
+<a href="https://dice.fm/event/example-band-support-14th-mar-the-example-venue-london-tickets">event link</a>
+<a href="https://link.dice.fm/AAAAAAAAAAAA">View tickets</a>
+<h3>Ticket details</h3>
+<div>Ticket type</div>
+<div>General Admission</div>
+<div>Quantity</div>
+<div>1</div>
+<div>Venue</div>
+<div>The Example Venue</div>
+<div>1 Example Street, London EX1 1EX</div>
+<div>Date &amp; time</div>
+<div>Thu 14 Mar, 7:00 PM GMT</div>
+<div>Name on ticket</div>
+<div>Test User</div>
+<div>Total price</div>
+<div>&pound;32.96</div>
+</body></html>
