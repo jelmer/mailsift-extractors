@@ -65,6 +65,19 @@ def test_noncanonical_datetimes_are_canonicalised(run_extractor):
     assert res["endTime"] == "2025-07-04T16:05:00+02:00"
 
 
+def test_datetime_in_a_date_field_is_canonicalised(run_extractor):
+    # Some vendors put a full timestamp into schema.org `Date`-typed
+    # fields like `startDate`/`endDate`. The normaliser is value-driven,
+    # not key-driven, so it rewrites the timestamp regardless of the
+    # containing field's canonical type. Bare Dates (no time component)
+    # still pass through untouched.
+    out = run_extractor("schema-ld", "schema-datetime-in-date-field.eml")
+    assert set(out) == {"LIDO-99.reservation.json"}
+    for_ = out["LIDO-99.reservation.json"]["reservationFor"]
+    assert for_["startDate"] == "2025-08-28T12:00:00"
+    assert for_["endDate"] == "2025-08-28T12:50:00"
+
+
 def test_subscription_offer_emitted(run_extractor):
     # An `Order` confirmation carrying an `Offer` with a
     # `subscriptionDuration` triggers a `.subscription.json` artifact

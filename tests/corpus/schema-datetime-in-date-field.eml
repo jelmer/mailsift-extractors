@@ -1,0 +1,33 @@
+From: bookings@lido.example
+To: test@example.org
+Subject: Your booking is confirmed
+Date: Wed, 27 Aug 2025 08:00:00 +0000
+Message-ID: <lido-99antml@lido.example>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EventReservation",
+  "reservationNumber": "LIDO-99",
+  "underName": {"@type": "Person", "name": "Test"},
+  "reservationFor": {
+    "@type": "Event",
+    "name": "Lido swim slot",
+    "startDate": "2025-08-28 12:00:00",
+    "endDate": "2025-08-28 12:50:00",
+    "location": {
+      "@type": "Place",
+      "name": "Lido"
+    }
+  }
+}
+</script>
+</head>
+<body>
+<p>Slot confirmed.</p>
+</body>
+</html>
