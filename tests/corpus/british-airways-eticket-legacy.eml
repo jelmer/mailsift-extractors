@@ -1,0 +1,42 @@
+Authentication-Results: example.org; dkim=pass header.d=email.ba.com header.i=@email.ba.com
+From: British Airways e-ticket <BA.e-ticket@email.ba.com>
+To: test@example.org
+Subject: BA e-ticket receipt LEGACY: LGW-AMS 16 May 2013 16:00
+Date: Wed, 08 May 2013 09:00:00 +0000
+Message-ID: <ba-eticket-legacy-test@email.ba.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Dear MR VERNOOIJ,
+
+Thank you for booking with British Airways. Your booking
+reference is LEGACY.
+
+Ticket Type: e-ticket
+This is your e-ticket receipt.
+
+--------------
+YOUR ITINERARY
+--------------
+British Airways booking reference: LEGACY
+
+Passenger(s):        MR JELMER VERNOOIJ
+
+Flight number:       BA2762
+From:                Gatwick (London) Terminal N
+To:                  Amsterdam
+Depart:              16 May 2013 16:00
+Arrive:              16 May 2013 18:10
+Cabin:               Euro Traveller
+Operated by:         British Airways
+Booking status:      Confirmed
+
+
+Flight number:       BA2759
+From:                Amsterdam
+To:                  Gatwick (London) Terminal N
+Depart:              20 May 2013 10:55
+Arrive:              20 May 2013 11:00
+Cabin:               Euro Traveller
+Operated by:         British Airways
+Booking status:      Confirmed

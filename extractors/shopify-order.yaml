@@ -1,12 +1,17 @@
 name: shopify-order
 order: 50
 # Routes off the DKIM signature, not the sender domain: every
-# Shopify-hosted shop's notification mail is signed by a
-# `<shop>.myshopify.com` key managed by Shopify's infrastructure.
-# Spammers can't fake that; cheap copycats of the Shopify HTML
-# template can't either.
+# Shopify-hosted shop's notification mail is signed by keys managed
+# by Shopify's infrastructure. Spammers can't fake that; cheap
+# copycats of the Shopify HTML template can't either.
+#
+# Two signing patterns in the wild:
+# - `<shop>.myshopify.com` for shops on the classic sending domain.
+# - `<sub>.shopifyemail.com` (`t.` for transactional, `g.` for
+#   marketing) for shops on Shopify Email, the newer default.
 subject_regex: "(?i)^(Order #|A shipment from order #|Order .* confirmed|.* (confirmed|shipped|on the way|has been delivered))"
 requires:
   - text
 require_dkim:
   - ".myshopify.com"
+  - ".shopifyemail.com"

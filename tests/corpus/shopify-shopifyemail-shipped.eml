@@ -1,0 +1,24 @@
+Authentication-Results: example.org; dkim=pass header.d=t.shopifyemail.com header.i=@t.shopifyemail.com
+From: "BikeParts.co.uk" <store+2194341977@t.shopifyemail.com>
+To: test@example.org
+Subject: [NO-REPLY] - A shipment from order BP427930 is on the way
+Date: Mon, 09 Jun 2025 09:15:00 +0000
+Message-ID: <shopify-shipped-shopifyemail-test@t.shopifyemail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Your order is on the way
+
+BikeParts.co.uk
+
+Order BP427930
+
+Your order is on the way. Track your shipment to see the delivery status.
+
+Royal Mail tracking number: VF649847141GB
+
+( https://www.royalmail.com/track-your-item#/tracking-results/VF649847141GB )
+
+Items in this shipment
+
+Shimano Spares SH51 MTB SPD cleats single release x 1

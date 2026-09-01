@@ -36,3 +36,19 @@ def test_shipment_emits_parcel(run_extractor):
     }
     assert parcel["orderNumber"] == "100001"
     assert parcel["merchant"] == "Patchplants"
+
+
+def test_shopifyemail_sender_uses_display_name_as_merchant(run_extractor):
+    # Shops on Shopify Email send through relays like `t.shopifyemail.com`
+    # which don't carry the shop's identity in the sender domain. The
+    # merchant name has to come from the `From:` display name, and the
+    # order number is emitted without a `#` prefix (BikeParts uses
+    # opaque alphanumeric IDs). The resulting filename is slugified so
+    # dots in `BikeParts.co.uk` don't leak through.
+    out = run_extractor("shopify-order", "shopify-shopifyemail-shipped.eml")
+    assert set(out) == {"bikeparts-co-uk-VF649847141GB.parcel.json"}
+    parcel = out["bikeparts-co-uk-VF649847141GB.parcel.json"]
+    assert parcel["merchant"] == "BikeParts.co.uk"
+    assert parcel["orderNumber"] == "BP427930"
+    assert parcel["trackingNumber"] == "VF649847141GB"
+    assert parcel["provider"]["@id"] == "royal-mail"

@@ -5,7 +5,10 @@ BA's e-ticket mail (BA.e-ticket@email.ba.com) carries a clean
 plain-text itinerary. We don't try to extract from HTML, which is
 designed for visual layout and would be fragile to scrape.
 
-Format:
+Two formats in the wild - subject prefix `BA e-ticket receipt` on
+older mail and `Your e-ticket receipt` on more recent mail.
+
+Modern format (per segment):
 
     British Airways booking reference: BBBBBB
     ...
@@ -18,7 +21,18 @@ Format:
     Depart: 8 Jun 2024 16:15 - Heathrow (London) - Terminal 5
     Arrive: 8 Jun 2024 18:35 - Amsterdam
 
-Each `BAnnnn:` segment becomes one `FlightReservation` sharing the
+Legacy format (per segment, ~2013):
+
+    Flight number:       BA2762
+    From:                Gatwick (London) Terminal N
+    To:                  Amsterdam
+    Depart:              16 May 2013 16:00
+    Arrive:              16 May 2013 18:10
+    Cabin:               Euro Traveller
+    Operated by:         British Airways
+    Booking status:      Confirmed
+
+Each `BAnnnn` segment becomes one `FlightReservation` sharing the
 booking reference. Subsequent updates (delay, cancellation) sent by
 other BA addresses would land on a different extractor; here we only
 process the one-shot e-ticket receipt.
@@ -36,7 +50,12 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
 
-BOOKING_RE = re.compile(r"British Airways booking reference:\s*([A-Z0-9]{5,8})")
+BOOKING_RE = re.compile(
+    r"(?:British Airways )?booking reference(?: is)?:?\s*([A-Z0-9]{5,8})",
+    re.IGNORECASE,
+)
+# Modern format: `BAnnnn: British Airways | ...` header line, then
+# `Depart:`/`Arrive:` lines with `date time - place`.
 SEGMENT_RE = re.compile(
     r"^(BA\d{2,4}):\s*British Airways\b",
     re.MULTILINE,
@@ -50,6 +69,23 @@ ARRIVE_RE = re.compile(
     re.MULTILINE,
 )
 
+# Legacy format: label/value pairs. Values are padded with spaces to
+# align the column, then trimmed. `From:`/`To:` carry the airport
+# phrase directly; `Depart:`/`Arrive:` carry the same
+# `date time` split as the modern format but without the trailing
+# ` - place` (which appears on `From:`/`To:` instead).
+LEGACY_FLIGHT_RE = re.compile(r"^Flight number:\s+(BA\d{2,4})\s*$", re.MULTILINE)
+LEGACY_FROM_RE = re.compile(r"^From:\s+(.+?)\s*$", re.MULTILINE)
+LEGACY_TO_RE = re.compile(r"^To:\s+(.+?)\s*$", re.MULTILINE)
+LEGACY_DEPART_RE = re.compile(
+    r"^Depart:\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(\d{1,2}:\d{2})\s*$",
+    re.MULTILINE,
+)
+LEGACY_ARRIVE_RE = re.compile(
+    r"^Arrive:\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(\d{1,2}:\d{2})\s*$",
+    re.MULTILINE,
+)
+
 
 def parse_naive_dt(date_str: str, time_str: str) -> datetime | None:
     try:
@@ -59,12 +95,14 @@ def parse_naive_dt(date_str: str, time_str: str) -> datetime | None:
 
 
 def airport_from_phrase(phrase: str) -> dict:
-    """Turn "Heathrow (London) - Terminal 5" or "Amsterdam" into an
-    Airport object.
+    """Turn a BA airport phrase into an Airport object.
 
-    BA writes the airport name first; the parenthesised city follows;
-    everything after a ` - ` is a terminal annotation we keep on the
-    address field.
+    Modern format uses ` - ` to separate the terminal:
+        `Heathrow (London) - Terminal 5`
+    Legacy format inlines it after the parenthesised city:
+        `Gatwick (London) Terminal N`
+    Plain form (no city, no terminal) also works:
+        `Amsterdam`
     """
     text = phrase.strip()
     terminal = None
@@ -73,15 +111,79 @@ def airport_from_phrase(phrase: str) -> dict:
         terminal = terminal.strip()
     name = text.strip()
     address = None
-    m = re.match(r"^(.+?)\s*\(([^)]+)\)\s*$", name)
+    # Split off `(city)` and anything trailing it (the legacy
+    # `Terminal N` after the paren).
+    m = re.match(r"^(.+?)\s*\(([^)]+)\)\s*(.*)$", name)
     if m:
         name = m.group(1).strip()
         address = m.group(2).strip()
+        trailing = m.group(3).strip()
+        if trailing and not terminal:
+            terminal = trailing
     out: dict = {"@type": "Airport", "name": name}
     if address:
         out["address"] = address
     if terminal:
         out["alternateName"] = terminal
+    return out
+
+
+def parse_modern_segments(text: str) -> list[tuple]:
+    """Return `(flight_no, dep_dt, arr_dt, dep_phrase, arr_phrase)` per
+    segment for the modern itinerary layout, or `[]` if this text
+    doesn't match.
+    """
+    headers = list(SEGMENT_RE.finditer(text))
+    out = []
+    for index, header in enumerate(headers):
+        flight_no = header.group(1)  # e.g. "BA0440"
+        block_start = header.end()
+        block_end = (
+            headers[index + 1].start() if index + 1 < len(headers) else len(text)
+        )
+        block = text[block_start:block_end]
+        dep_match = DEPART_RE.search(block)
+        arr_match = ARRIVE_RE.search(block)
+        if not dep_match or not arr_match:
+            continue
+        dep_dt = parse_naive_dt(dep_match.group(1), dep_match.group(2))
+        arr_dt = parse_naive_dt(arr_match.group(1), arr_match.group(2))
+        if dep_dt is None or arr_dt is None:
+            continue
+        out.append((flight_no, dep_dt, arr_dt, dep_match.group(3), arr_match.group(3)))
+    return out
+
+
+def parse_legacy_segments(text: str) -> list[tuple]:
+    """Return the same tuple as `parse_modern_segments`, for the ~2013
+    label/value layout.
+
+    Segments are delimited by `Flight number:` headers. The four
+    label lines that make up a segment (`From:`, `To:`, `Depart:`,
+    `Arrive:`) appear in a fixed order within that block; the block
+    ends at the next `Flight number:` or the end of the itinerary
+    section.
+    """
+    headers = list(LEGACY_FLIGHT_RE.finditer(text))
+    out = []
+    for index, header in enumerate(headers):
+        flight_no = header.group(1)
+        block_start = header.end()
+        block_end = (
+            headers[index + 1].start() if index + 1 < len(headers) else len(text)
+        )
+        block = text[block_start:block_end]
+        from_m = LEGACY_FROM_RE.search(block)
+        to_m = LEGACY_TO_RE.search(block)
+        dep_m = LEGACY_DEPART_RE.search(block)
+        arr_m = LEGACY_ARRIVE_RE.search(block)
+        if not (from_m and to_m and dep_m and arr_m):
+            continue
+        dep_dt = parse_naive_dt(dep_m.group(1), dep_m.group(2))
+        arr_dt = parse_naive_dt(arr_m.group(1), arr_m.group(2))
+        if dep_dt is None or arr_dt is None:
+            continue
+        out.append((flight_no, dep_dt, arr_dt, from_m.group(1), to_m.group(1)))
     return out
 
 
@@ -96,29 +198,11 @@ def main() -> int:
         return 0
     booking_code = booking_match.group(1)
 
-    # Walk segments by their `BAnnnn:` header. The body between one
-    # header and the next holds that segment's Depart/Arrive lines.
-    headers = list(SEGMENT_RE.finditer(text))
-    if not headers:
+    segments = parse_modern_segments(text) or parse_legacy_segments(text)
+    if not segments:
         return 0
 
-    for index, header in enumerate(headers):
-        flight_no = header.group(1)  # e.g. "BA0440"
-        block_start = header.end()
-        block_end = (
-            headers[index + 1].start() if index + 1 < len(headers) else len(text)
-        )
-        block = text[block_start:block_end]
-
-        dep_match = DEPART_RE.search(block)
-        arr_match = ARRIVE_RE.search(block)
-        if not dep_match or not arr_match:
-            continue
-        dep_dt = parse_naive_dt(dep_match.group(1), dep_match.group(2))
-        arr_dt = parse_naive_dt(arr_match.group(1), arr_match.group(2))
-        if dep_dt is None or arr_dt is None:
-            continue
-
+    for flight_no, dep_dt, arr_dt, dep_phrase, arr_phrase in segments:
         reservation: dict = {
             "@context": "https://schema.org",
             "@type": "FlightReservation",
@@ -131,8 +215,8 @@ def main() -> int:
                     "iataCode": "BA",
                     "name": "British Airways",
                 },
-                "departureAirport": airport_from_phrase(dep_match.group(3)),
-                "arrivalAirport": airport_from_phrase(arr_match.group(3)),
+                "departureAirport": airport_from_phrase(dep_phrase),
+                "arrivalAirport": airport_from_phrase(arr_phrase),
                 "departureTime": dep_dt.strftime("%Y-%m-%dT%H:%M:%S"),
                 "arrivalTime": arr_dt.strftime("%Y-%m-%dT%H:%M:%S"),
             },

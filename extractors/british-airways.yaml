@@ -2,7 +2,7 @@ name: british-airways
 order: 50
 from_domains:
   - email.ba.com
-subject_regex: "(?i)^Your e-ticket receipt\\s+[A-Z0-9]{5,8}:"
+subject_regex: "(?i)^(?:BA |Your )?e-ticket receipt\\s+[A-Z0-9]{5,8}:"
 requires:
   - text
 require_dkim:

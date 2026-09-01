@@ -1,0 +1,27 @@
+Authentication-Results: example.org; dkim=pass header.d=ebay.com header.i=@ebay.com
+From: eBay <ebay@ebay.com>
+To: test@example.org
+Subject: Order confirmed: Example Widget for testing...
+Date: Sat, 30 Aug 2025 09:00:00 +0000
+Message-ID: <ebay-order-test@ebay.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h2>Thanks for shopping. Your order is confirmed.</h2>
+<p>Your order details</p>
+<div>Example Widget for testing purposes only</div>
+<div>Price:</div>
+<div>&pound;12.34</div>
+<div>Item ID:</div>
+<div>111122223333</div>
+<div>Order number:</div>
+<div>42-99999-88888</div>
+<div>Order total:</div>
+<div>Subtotal</div>
+<div>&pound;12.34</div>
+<div>Postage</div>
+<div>Free</div>
+<div>Total</div>
+<div>&pound;12.34</div>
+</body></html>
