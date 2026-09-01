@@ -1,0 +1,34 @@
+Authentication-Results: example.org; dkim=pass header.d=connect.sncf header.i=@connect.sncf
+From: SNCF Connect <noreply@connect.sncf>
+To: test@example.org
+Subject: Your trip Bordeaux-Saint-Jean - Paris Montparnasse, outbound on Sunday, 16 August 2026
+Date: Sat, 16 Aug 2025 03:13:24 +0000
+Message-ID: <sncf-trip-test@connect.sncf>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+SNCF CONNECT
+
+THANK YOU AND HAVE A PLEASANT TRIP
+
+- - - - - - - - - - - - - - - - - - - - - - -
+PAYMENT SUMMARY
+- - - - - - - - - - - - - - - - - - - - - - -
+
+instructionLine
+
+- Usage DEBIT
+- instructionLine
+Transaction no.  805182  SNCF 201519037580049 : €104.00
+instructionLine
+- Processed on 16 Aug 2025, 03:13:24
+- Authorisation no. 156493
+- Reference number  TESTPN / HP5310961397
+
+- Debit - Secure remote sale
+- Trader : SNCF VOYAGEURS, 93210 SAINT-DENIS
+
+instructionLine
+
+- Order total : €104.00
+instructionLine

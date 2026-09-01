@@ -1,0 +1,9 @@
+name: sncf-connect
+order: 50
+from_domains:
+  - connect.sncf
+subject_regex: "(?i)^Your trip\\s+.+\\s+-\\s+.+,\\s*outbound on"
+requires:
+  - text
+require_dkim:
+  - connect.sncf
