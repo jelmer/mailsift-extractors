@@ -1,0 +1,9 @@
+name: ebay
+order: 50
+from_domains:
+  - ebay.com
+subject_regex: "(?i)^(?:.\\s*)?Order (?:confirmed|update):"
+requires:
+  - html
+require_dkim:
+  - ebay.com

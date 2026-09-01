@@ -1,0 +1,19 @@
+Authentication-Results: example.org; dkim=pass header.d=ebay.com header.i=@ebay.com
+From: eBay <ebay@ebay.com>
+To: test@example.org
+Subject: Order update: Example Widget for testing...
+Date: Mon, 01 Sep 2025 09:00:00 +0000
+Message-ID: <ebay-update-test@ebay.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi, keep track of your order.</p>
+<div>Tracking number:</div>
+<div>ABC123456789</div>
+<div>Example Widget for testing purposes only</div>
+<div>Item ID:</div>
+<div>111122223333</div>
+<div>Order number:</div>
+<div>42-99999-88888</div>
+</body></html>
