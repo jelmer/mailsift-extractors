@@ -1,0 +1,19 @@
+name: british-airways-legacy
+# Higher than the modern extractor's 50 so this only runs against
+# messages the modern one won't touch. Same parser as the modern
+# extractor, plus a message-date cutoff enforced in the script:
+# nothing after 2018 is accepted here, so a spoofer today can't
+# reach this no-DKIM path.
+order: 60
+script: british-airways-legacy.py
+from_domains:
+  - email.ba.com
+# Only the legacy subject prefix. Modern mail (`Your e-ticket
+# receipt ...`) is handled by the main extractor whose DKIM check
+# guards against spoofing.
+subject_regex: "(?i)^BA e-ticket receipt\\s+[A-Z0-9]{5,8}:"
+requires:
+  - text
+# No `require_dkim`: pre-2018 BA mail predates BA's DKIM setup.
+# The date cutoff in british-airways-legacy.py is what actually
+# defends the code path.

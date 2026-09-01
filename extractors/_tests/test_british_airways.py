@@ -81,3 +81,23 @@ def test_legacy_eticket_format_still_extracts(run_extractor):
         "@type": "Airport",
         "name": "Amsterdam",
     }
+
+
+def test_legacy_extractor_extracts_pre_cutoff_mail(run_extractor):
+    # The `british-airways-legacy` manifest reuses the same parser
+    # but with no `require_dkim` (BA didn't sign mail in 2013).
+    # It should extract from the same legacy fixture the main
+    # extractor recognises.
+    out = run_extractor("british-airways-legacy", "british-airways-eticket-legacy.eml")
+    assert set(out) == {
+        "ba-LEGACY-BA2762.reservation.json",
+        "ba-LEGACY-BA2759.reservation.json",
+    }
+
+
+def test_legacy_extractor_refuses_post_cutoff_mail(run_extractor):
+    # The date cutoff is what defends the no-DKIM code path from a
+    # spoofer today. The modern fixture is dated 2026 and must be
+    # rejected here even though it would parse fine.
+    out = run_extractor("british-airways-legacy", "british-airways-eticket.eml")
+    assert out == {}
