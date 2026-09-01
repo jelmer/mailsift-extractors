@@ -36,27 +36,10 @@ SUPPORTED_TYPES = {
 
 SLUG_RE = re.compile(r"[^A-Za-z0-9_.+-]+")
 
-# schema.org reservation properties whose value is a DateTime. Vendors
-# frequently emit these in shapes the Rust converter rejects (a space
-# instead of `T`, an offset without a colon, a trailing `Z`), so we
-# canonicalise them to ISO-8601 before dumping.
-DATETIME_KEYS = {
-    "arrivalTime",
-    "boardingTime",
-    "bookingTime",
-    "checkinTime",
-    "checkoutTime",
-    "departureTime",
-    "doorTime",
-    "dropoffTime",
-    "endTime",
-    "modifiedTime",
-    "pickupTime",
-    "startTime",
-}
-
 # Value looks like a date-time (as opposed to a bare Date) when it
-# carries a time component after the day. Bare dates are left untouched.
+# carries a time component after the day. Bare dates are left untouched
+# so a genuinely date-typed field (schema.org Date, e.g. a `birthDate`)
+# doesn't get promoted to a spurious midnight timestamp.
 _HAS_TIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}")
 
 
@@ -81,16 +64,21 @@ def canonical_datetime(value: str) -> str:
 
 
 def normalise_datetimes(obj: Any) -> Any:
-    """Recursively canonicalise DateTime-valued fields in `obj`."""
+    """Recursively canonicalise any string that looks like a date-time.
+
+    Key-driven normalisation (a fixed set of DateTime-typed field names)
+    misses vendors that put a full timestamp in a schema.org `Date`
+    field like `startDate` or `endDate`. Value-driven normalisation
+    catches those without needing a list per vendor: bare Dates fail
+    the time-component check in `canonical_datetime` and pass through
+    untouched.
+    """
     if isinstance(obj, dict):
-        return {
-            k: canonical_datetime(v)
-            if k in DATETIME_KEYS and isinstance(v, str)
-            else normalise_datetimes(v)
-            for k, v in obj.items()
-        }
+        return {k: normalise_datetimes(v) for k, v in obj.items()}
     if isinstance(obj, list):
         return [normalise_datetimes(v) for v in obj]
+    if isinstance(obj, str):
+        return canonical_datetime(obj)
     return obj
 
 
