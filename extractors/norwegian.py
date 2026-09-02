@@ -30,7 +30,14 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
 
-BOOKING_RE = re.compile(r"Booking reference:\s*([A-Z0-9]{5,8})")
+# Norwegian labels vary: `Booking reference:` on newer templates,
+# `YOUR BOOKING REFERENCE IS:` on older ones (with the reference on
+# the following line). Accept both, with newline-tolerant whitespace
+# between label and value.
+BOOKING_RE = re.compile(
+    r"(?:YOUR\s+)?Booking reference(?:\s+is)?:\s*\n?\s*([A-Z0-9]{5,8})",
+    re.IGNORECASE,
+)
 FLIGHT_HEADER_RE = re.compile(
     r"^(DY\d{2,4})\s*-\s*(\d{1,2}\s+[A-Z][a-z]{2}\s+\d{4})\s*$",
     re.MULTILINE,

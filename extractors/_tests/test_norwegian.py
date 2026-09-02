@@ -31,3 +31,16 @@ def test_two_segment_confirmation_emits_two_reservations(run_extractor):
     inbound = out["norwegian-CCCCCC-DY1312.reservation.json"]
     assert inbound["reservationFor"]["departureTime"] == "2025-06-15T14:25:00"
     assert inbound["reservationFor"]["arrivalTime"] == "2025-06-15T15:45:00"
+
+
+def test_legacy_label_variant(run_extractor):
+    # Older Norwegian mail (~2014) uses the label
+    # `YOUR BOOKING REFERENCE IS:` with the reference on the next
+    # line. Newer templates use the inline `Booking reference: X`.
+    # The extractor recognises both.
+    out = run_extractor("norwegian", "norwegian-legacy-confirmation.eml")
+    assert set(out) == {"norwegian-LEGACY-DY5407.reservation.json"}
+    r = out["norwegian-LEGACY-DY5407.reservation.json"]
+    assert r["reservationNumber"] == "LEGACY"
+    assert r["reservationFor"]["flightNumber"] == "5407"
+    assert r["reservationFor"]["departureTime"] == "2014-11-20T20:15:00"

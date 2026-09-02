@@ -1,0 +1,17 @@
+Authentication-Results: example.org; dkim=pass header.d=norwegian.com header.i=@norwegian.com
+From: Norwegian <noreply@norwegian.com>
+To: joe@example.com
+Subject: Travel documents LEGACY
+Date: Thu, 20 Nov 2014 06:08:50 +0000
+Message-ID: <norwegian-legacy-test@norwegian.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Thank you for booking with Norwegian.</p>
+<p>YOUR BOOKING REFERENCE IS:</p>
+<p>LEGACY</p>
+<p>DY5407 - 20 Nov 2014</p>
+<p>20:15 London-Gatwick</p>
+<p>23:40 Madrid</p>
+</body></html>
