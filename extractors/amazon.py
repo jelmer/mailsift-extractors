@@ -67,19 +67,44 @@ def sender_locale(from_address: str | None) -> str | None:
 
 
 def status_from_subject(subject: str) -> str | None:
-    """Map the leading verb in the subject to a schema.org-ish status."""
-    if subject.startswith("Ordered"):
-        return "OrderProcessing"
-    if subject.startswith("Dispatched"):
-        return "OrderInTransit"
-    if subject.startswith("Out for delivery"):
-        return "OrderInTransit"
-    if subject.startswith("Delivered"):
-        return "OrderDelivered"
+    """Map the leading verb in the subject to a schema.org-ish status.
+
+    Amazon reuses the same English lifecycle words across every
+    locale on one template and localises them on another (`Ihre
+    Amazon.de Bestellung von X wurde versandt!` for dispatch,
+    `Bezorgd:` for delivery on the Dutch site, etc). The checks
+    below cover the English forms plus the German and Dutch
+    variants seen in the mailbox; every language landing here
+    keys off the same schema.org status.
+    """
+    lower = subject.lower()
+    # English lifecycle keywords - can appear at the start on the
+    # English-locale template or anywhere in the subject on the
+    # localised ones ("wurde versandt!" appears after the item name
+    # for German dispatch mails).
     if subject.startswith("Delivery attempted"):
         return "OrderProblem"
     if subject.startswith("Your return"):
         return "OrderReturned"
+    if subject.startswith("Out for delivery"):
+        return "OrderInTransit"
+    if (
+        subject.startswith("Dispatched")
+        or "wurde versandt" in lower
+        or "is verzonden" in lower
+    ):
+        return "OrderInTransit"
+    if subject.startswith("Arriving") or "arriving today" in lower:
+        return "OrderInTransit"
+    if subject.startswith(("Delivered", "Bezorgd")) or "zugestellt" in lower:
+        return "OrderDelivered"
+    if (
+        subject.startswith("Ordered")
+        or "bestellung von" in lower  # DE order confirmation
+        or "-bestelling van" in lower  # NL order confirmation
+        or "order of" in lower  # `Your Amazon.nl order of X`
+    ):
+        return "OrderProcessing"
     return None
 
 
@@ -119,8 +144,9 @@ def main() -> int:
     )
 
     # Receipt only on the order-placed mail. Other mails reference the
-    # same order, but the prices live only in the "Ordered" body.
-    if not subject.startswith("Ordered"):
+    # same order, but the prices live only in the "Ordered" body. Any
+    # localised subject that maps to `OrderProcessing` qualifies.
+    if status != "OrderProcessing":
         return 0
 
     total_m = TOTAL_RE.search(text)
