@@ -1,0 +1,9 @@
+name: dhl
+order: 50
+from_domains:
+  - dhl.com
+subject_regex: "(?i)^(Your Shipment (Is (On Its Way|Arriving Soon)|Has Been Delivered)|Your Delivery Is Today|DHL On Demand Delivery)"
+requires:
+  - html
+require_dkim:
+  - dhl.com
