@@ -101,3 +101,31 @@ def test_legacy_extractor_refuses_post_cutoff_mail(run_extractor):
     # rejected here even though it would parse fine.
     out = run_extractor("british-airways-legacy", "british-airways-eticket.eml")
     assert out == {}
+
+
+def test_columnar_eticket_format_extracts(run_extractor):
+    # Mid-2010s BA e-tickets carry the itinerary as free-standing
+    # `date / time / place / [terminal]` blocks under a bare
+    # `BAnnnn` header line, rather than the modern inline
+    # `BAnnnn: British Airways | ...` shape. Same booking-reference
+    # phrasing, same output.
+    out = run_extractor("british-airways", "british-airways-eticket-columnar.eml")
+    assert set(out) == {
+        "ba-COLUMN-BA0444.reservation.json",
+        "ba-COLUMN-BA0443.reservation.json",
+    }
+    outbound = out["ba-COLUMN-BA0444.reservation.json"]
+    for_ = outbound["reservationFor"]
+    assert for_["flightNumber"] == "444"
+    assert for_["departureAirport"] == {
+        "@type": "Airport",
+        "name": "Heathrow",
+        "address": "London",
+        "alternateName": "Terminal 5",
+    }
+    assert for_["arrivalAirport"] == {
+        "@type": "Airport",
+        "name": "Amsterdam",
+    }
+    assert for_["departureTime"] == "2016-06-23T20:05:00"
+    assert for_["arrivalTime"] == "2016-06-23T22:20:00"

@@ -1,0 +1,65 @@
+Authentication-Results: example.org; dkim=pass header.d=bounce.ba.com header.i=@bounce.ba.com
+From: British Airways e-ticket <BA.e-ticket@email.ba.com>
+To: test@example.org
+Subject: Your e-ticket receipt COLUMN: LHR-AMS 23 Jun 2016 20:05
+Date: Tue, 07 Jun 2016 00:14:35 +0000
+Message-ID: <ba-eticket-columnar-test@bounce.ba.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Dear Mr Tester,
+
+British Airways booking reference: COLUMN
+
+---------------------
+Your e-ticket receipt
+---------------------
+Thank you for booking with British Airways.
+
+Your Itinerary
+
+
+
+BA0444
+British Airways | Euro Traveller | Confirmed
+
+
+23 Jun 2016
+
+20:05
+
+Heathrow (London)
+Terminal 5
+
+23 Jun 2016
+
+22:20
+
+Amsterdam
+
+
+
+
+
+
+BA0443
+British Airways | Euro Traveller | Confirmed
+
+
+27 Jun 2016
+
+21:05
+
+Amsterdam
+
+
+27 Jun 2016
+
+21:20
+
+Heathrow (London)
+Terminal 5
+
+
+
+Passenger       MR TEST TESTER
