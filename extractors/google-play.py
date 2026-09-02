@@ -25,14 +25,28 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
 
-ORDER_RE = re.compile(r"^Order number:\s*(GPA\.[\w.\-]+)", re.MULTILINE)
+# Modern Google Play order numbers are `GPA.NNNN-NNNN-NNNN-NNNNN`.
+# Older mail (pre-2014-ish, including Google Play Music receipts)
+# used a bare `<digits>.<digits>` form on its own line right after
+# the `Order number:` label.
+ORDER_RE = re.compile(
+    r"^Order number:\s*\n?\s*(GPA\.[\w.\-]+|\d{10,}\.\d{10,})",
+    re.MULTILINE,
+)
 DATE_RE = re.compile(
     r"^Order date:\s*(\d{1,2})\s+([A-Z][a-z]{2})\s+(\d{4})", re.MULTILINE
 )
+# Item line: blank line, then the item title (possibly with a
+# trailing `(by Publisher)`), then a price on the next line. Line
+# endings vary between `\n` (text pipeline) and `\r\n` (email source),
+# so we spell them out explicitly.
 ITEM_RE = re.compile(
-    r"\n\n([^\n]+?(?:\(by [^\)]+\))?)\n(?:£|€|\$)([0-9]+(?:\.[0-9]{1,2})?)"
+    r"(?:\r?\n){2}([^\r\n]+?(?:\(by [^\)]+\))?)\r?\n(?:£|€|\$)([0-9]+(?:\.[0-9]{1,2})?)"
 )
-TOTAL_RE = re.compile(r"^Total:\s*(£|€|\$)?\s*([0-9]+(?:\.[0-9]{1,2})?)", re.MULTILINE)
+# `Total: £57.99` on its own line (modern), or inline
+# `Tax: $0.00Total: $0.00` (2013 Google Play Music format has no
+# whitespace between the preceding amount and the `Total:` label).
+TOTAL_RE = re.compile(r"Total:\s*(£|€|\$)?\s*([0-9]+(?:\.[0-9]{1,2})?)")
 
 MONTH_ABBR = {
     "Jan": 1,
@@ -84,6 +98,24 @@ def main() -> int:
             "priceCurrency": currency,
         },
     }
+
+    items = []
+    for item_match in ITEM_RE.finditer(text):
+        name = item_match.group(1).strip()
+        items.append(
+            {
+                "@type": "OrderItem",
+                "orderedItem": {"@type": "Product", "name": name},
+                "orderQuantity": 1,
+                "orderItemSubtotal": {
+                    "@type": "PriceSpecification",
+                    "price": float(item_match.group(2)),
+                    "priceCurrency": currency,
+                },
+            }
+        )
+    if items:
+        receipt["orderedItem"] = items
 
     date_m = DATE_RE.search(text)
     if date_m:
