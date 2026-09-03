@@ -54,10 +54,11 @@ BOOKING_RE = re.compile(
     r"(?:British Airways )?booking reference(?: is)?:?\s*([A-Z0-9]{5,8})",
     re.IGNORECASE,
 )
-# Modern format: `BAnnnn: British Airways | ...` header line, then
-# `Depart:`/`Arrive:` lines with `date time - place`.
+# Modern format: `BAnnnn: British Airways | <cabin> | ...` header
+# line, then `Depart:`/`Arrive:` lines with `date time - place`. The
+# cabin name is separated by ` | ` and always follows the airline.
 SEGMENT_RE = re.compile(
-    r"^(BA\d{2,4}):\s*British Airways\b",
+    r"^(?P<no>BA\d{2,4}):\s*British Airways\s*\|\s*(?P<cabin>[^|]+?)\s*\|",
     re.MULTILINE,
 )
 DEPART_RE = re.compile(
@@ -85,6 +86,7 @@ LEGACY_ARRIVE_RE = re.compile(
     r"^Arrive:\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(\d{1,2}:\d{2})\s*$",
     re.MULTILINE,
 )
+LEGACY_CABIN_RE = re.compile(r"^Cabin:\s+(.+?)\s*$", re.MULTILINE)
 
 # 2016-era columnar format: `BAnnnn` alone on a line, then the
 # airline+cabin, then two blocks of `date / time / place [/ terminal]`
@@ -136,14 +138,15 @@ def airport_from_phrase(phrase: str) -> dict:
 
 
 def parse_modern_segments(text: str) -> list[tuple]:
-    """Return `(flight_no, dep_dt, arr_dt, dep_phrase, arr_phrase)` per
-    segment for the modern itinerary layout, or `[]` if this text
+    """Return `(flight_no, dep_dt, arr_dt, dep_phrase, arr_phrase, cabin)`
+    per segment for the modern itinerary layout, or `[]` if this text
     doesn't match.
     """
     headers = list(SEGMENT_RE.finditer(text))
     out = []
     for index, header in enumerate(headers):
-        flight_no = header.group(1)  # e.g. "BA0440"
+        flight_no = header.group("no")  # e.g. "BA0440"
+        cabin = header.group("cabin").strip() or None
         block_start = header.end()
         block_end = (
             headers[index + 1].start() if index + 1 < len(headers) else len(text)
@@ -157,7 +160,9 @@ def parse_modern_segments(text: str) -> list[tuple]:
         arr_dt = parse_naive_dt(arr_match.group(1), arr_match.group(2))
         if dep_dt is None or arr_dt is None:
             continue
-        out.append((flight_no, dep_dt, arr_dt, dep_match.group(3), arr_match.group(3)))
+        out.append(
+            (flight_no, dep_dt, arr_dt, dep_match.group(3), arr_match.group(3), cabin)
+        )
     return out
 
 
@@ -253,7 +258,9 @@ def parse_legacy_segments(text: str) -> list[tuple]:
         arr_dt = parse_naive_dt(arr_m.group(1), arr_m.group(2))
         if dep_dt is None or arr_dt is None:
             continue
-        out.append((flight_no, dep_dt, arr_dt, from_m.group(1), to_m.group(1)))
+        cabin_m = LEGACY_CABIN_RE.search(block)
+        cabin = cabin_m.group(1).strip() if cabin_m else None
+        out.append((flight_no, dep_dt, arr_dt, from_m.group(1), to_m.group(1), cabin))
     return out
 
 
@@ -290,24 +297,34 @@ def extract(mail, max_message_date: datetime | None = None) -> int:
     if not segments:
         return 0
 
-    for flight_no, dep_dt, arr_dt, dep_phrase, arr_phrase in segments:
+    for flight_no, dep_dt, arr_dt, dep_phrase, arr_phrase, cabin in segments:
+        flight: dict = {
+            "@type": "Flight",
+            "flightNumber": flight_no[2:].lstrip("0") or "0",
+            "airline": {
+                "@type": "Airline",
+                "iataCode": "BA",
+                "name": "British Airways",
+            },
+            "departureAirport": airport_from_phrase(dep_phrase),
+            "arrivalAirport": airport_from_phrase(arr_phrase),
+            "departureTime": dep_dt.strftime("%Y-%m-%dT%H:%M:%S"),
+            "arrivalTime": arr_dt.strftime("%Y-%m-%dT%H:%M:%S"),
+        }
+        if cabin:
+            flight["pending:cabinClass"] = cabin
+            context: str | dict = {
+                "@vocab": "https://schema.org/",
+                "pending": "https://pending.schema.org/",
+            }
+        else:
+            context = "https://schema.org"
+
         reservation: dict = {
-            "@context": "https://schema.org",
+            "@context": context,
             "@type": "FlightReservation",
             "reservationNumber": booking_code,
-            "reservationFor": {
-                "@type": "Flight",
-                "flightNumber": flight_no[2:].lstrip("0") or "0",
-                "airline": {
-                    "@type": "Airline",
-                    "iataCode": "BA",
-                    "name": "British Airways",
-                },
-                "departureAirport": airport_from_phrase(dep_phrase),
-                "arrivalAirport": airport_from_phrase(arr_phrase),
-                "departureTime": dep_dt.strftime("%Y-%m-%dT%H:%M:%S"),
-                "arrivalTime": arr_dt.strftime("%Y-%m-%dT%H:%M:%S"),
-            },
+            "reservationFor": flight,
         }
         Path(f"ba-{booking_code}-{flight_no}.reservation.json").write_text(
             json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
