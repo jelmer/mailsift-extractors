@@ -18,7 +18,9 @@ currency vary. All mails carry a 17-character order number
 also carries the total amount and itemised prices - emit it as a
 `.receipt.json` (loosely schema.org `Order`-shaped). Every status mail
 emits a `.parcel.json` keyed on the order number so the parcels target
-can merge them into one record per order as it progresses.
+can merge them into one record per order as it progresses. Item names
+that survive the bullet regex land on the parcel as `itemShipped` too,
+so downstream tools can name the contents without cross-referencing.
 
 We deliberately don't emit a calendar event: Amazon doesn't promise a
 delivery window precise enough to be useful.
@@ -139,6 +141,18 @@ def main() -> int:
     }
     if status is not None:
         parcel["deliveryStatus"] = status
+
+    # Every Amazon shipment mail (Ordered / Dispatched / Delivered)
+    # lists the items on their own bullets. Copy the names onto the
+    # parcel so the dashboard can show what's in the box, matching
+    # schema.org's `itemShipped` (a Product or an array of them).
+    item_names = [
+        item_m.group(1).strip().rstrip(",") for item_m in ITEM_RE.finditer(text)
+    ]
+    if item_names:
+        products = [{"@type": "Product", "name": name} for name in item_names]
+        parcel["itemShipped"] = products[0] if len(products) == 1 else products
+
     Path(f"{provider_id}-{order_id}.parcel.json").write_text(
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
     )

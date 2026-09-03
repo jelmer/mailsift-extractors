@@ -14,6 +14,9 @@ def test_uk_ordered_emits_receipt_and_parcel(run_extractor):
     assert parcel["trackingNumber"] == "111-1111111-1111111"
     assert parcel["provider"]["@id"] == "amazon-uk"
     assert parcel["deliveryStatus"] == "OrderProcessing"
+    # itemShipped mirrors what's on the receipt so the parcel dashboard
+    # can name the contents without cross-referencing.
+    assert "Example Gadget X1" in parcel["itemShipped"]["name"]
 
     receipt = out["amazon-uk-111-1111111-1111111.receipt.json"]
     assert receipt["merchant"] == "Amazon"
@@ -33,19 +36,21 @@ def test_uk_ordered_emits_receipt_and_parcel(run_extractor):
 def test_uk_dispatched_emits_parcel_only(run_extractor):
     out = run_extractor("amazon", "amazon-uk-dispatched.eml")
     assert set(out) == {"amazon-uk-111-1111111-1111111.parcel.json"}
-    assert (
-        out["amazon-uk-111-1111111-1111111.parcel.json"]["deliveryStatus"]
-        == "OrderInTransit"
-    )
+    parcel = out["amazon-uk-111-1111111-1111111.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderInTransit"
+    # The dispatched mail names the item on a bullet; the extractor
+    # stamps it on the parcel so the dashboard can show what's in the
+    # box without cross-referencing the earlier receipt.
+    assert parcel["itemShipped"]["@type"] == "Product"
+    assert "Example Gadget X1" in parcel["itemShipped"]["name"]
 
 
 def test_uk_delivered_emits_parcel_only(run_extractor):
     out = run_extractor("amazon", "amazon-uk-delivered.eml")
     assert set(out) == {"amazon-uk-333-3333333-3333333.parcel.json"}
-    assert (
-        out["amazon-uk-333-3333333-3333333.parcel.json"]["deliveryStatus"]
-        == "OrderDelivered"
-    )
+    parcel = out["amazon-uk-333-3333333-3333333.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderDelivered"
+    assert parcel["itemShipped"]["name"] == "Example Connector Adapter Panel Mount"
 
 
 def test_de_ordered_emits_receipt_and_parcel(run_extractor):
@@ -87,6 +92,10 @@ def test_nl_localised_dispatched(run_extractor):
     parcel = out["amazon-nl-408-9999999-9999999.parcel.json"]
     assert parcel["provider"]["@id"] == "amazon-nl"
     assert parcel["deliveryStatus"] == "OrderInTransit"
+    # The NL localised mail lists the bullet but not a Quantity line,
+    # so the strict ITEM_RE deliberately misses it -- better an empty
+    # itemShipped than the wrong one.
+    assert "itemShipped" not in parcel
 
 
 def test_de_localised_dispatched(run_extractor):

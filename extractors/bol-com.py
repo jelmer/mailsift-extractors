@@ -49,6 +49,20 @@ BESTELNUMMER_RE = re.compile(
 # we want the grand total, which is the last match in the body.
 TOTAL_RE = re.compile(r"Totaal[^\d€]*€\s*([0-9]+[,.][0-9]{2})", re.IGNORECASE)
 SELLER_RE = re.compile(r"Verkoper\s*[:\s]\s*([^\n<]+)", re.IGNORECASE)
+# Item names appear in a few positions across the template family:
+# - modern "Bedankt..." mail: between the order number and the seller.
+# - shipped/delivered mails: after "Dit is (onderweg|bezorgd) N artikel(en)".
+# - legacy "Bevestiging van uw bestelling" mail: after "Besteld bij bol.com:".
+ITEM_MODERN_RE = re.compile(
+    r"Bestelnummer:\s*[AC]000[A-Z0-9]{6}\s+(.+?)\s+Verkoper:", re.IGNORECASE
+)
+ITEM_STATUS_RE = re.compile(
+    r"Dit is (?:onderweg|bezorgd)\s+\d+\s+artike\w*\s+(.+?)\s+(?:[AC]000[A-Z0-9]{6}|\d{10})",
+    re.IGNORECASE,
+)
+ITEM_LEGACY_RE = re.compile(
+    r"Besteld bij bol\.com:\s+(.+?)\s+\d+\s+€", re.IGNORECASE
+)
 
 
 class _Strip(HTMLParser):
@@ -148,6 +162,16 @@ def main() -> int:
     }
     if status is not None:
         parcel["deliveryStatus"] = status
+    # Item name, if a template we understand names it. The bul (buren /
+    # neighbours) template just carries an address, so no item field.
+    item_m = ITEM_MODERN_RE.search(text) or ITEM_STATUS_RE.search(
+        text
+    ) or ITEM_LEGACY_RE.search(text)
+    if item_m:
+        parcel["itemShipped"] = {
+            "@type": "Product",
+            "name": item_m.group(1).strip(),
+        }
     Path(f"bol-{order_id}.parcel.json").write_text(
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
     )
