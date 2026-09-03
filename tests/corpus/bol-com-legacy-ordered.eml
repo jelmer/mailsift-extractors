@@ -1,0 +1,20 @@
+Authentication-Results: example.org; dkim=pass header.d=bol.com header.i=@bol.com
+From: "bol.com" <noreply@bol.com>
+To: test@example.org
+Subject: Bevestiging van uw bestelling 9999999900
+Date: Mon, 02 Jul 2012 12:53:16 +0000
+Message-ID: <bol-com-legacy-test@bol.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Geachte heer Testklant,</p>
+<p>Hartelijk dank voor uw bestelling bij bol.com.</p>
+<div>Bestelnummer: 9999999900</div>
+<div>Besteld bij bol.com:</div>
+<div>Letters To A Young Contrarian</div>
+<div>1</div>
+<div>&euro; 14,99</div>
+<div>Totaal</div>
+<div>&euro; 14,99</div>
+</body></html>

@@ -35,12 +35,14 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
 
-# bol order ids: A/C prefix + 9 alphanumerics. The footer copy is the
-# most reliable place to find it; the order-confirmation body also says
-# "Bestelnummer: XYZ".
-ORDER_ID_RE = re.compile(r"\b([AC]000[A-Z0-9]{6})\b")
+# bol order ids come in two flavours:
+# - Legacy (pre-2015): a plain 10-digit numeric (`NNNNNNNNNN`).
+# - Modern: `[AC]000` prefix + 6 alphanumerics.
+# The footer / `Bestelnummer:` label is the most reliable place; a
+# bare regex over the body would match dates and other numbers.
+ORDER_ID_RE = re.compile(r"\b([AC]000[A-Z0-9]{6}|\d{10})\b")
 BESTELNUMMER_RE = re.compile(
-    r"Bestelnummer\s*[:\s]\s*([AC]000[A-Z0-9]{6})", re.IGNORECASE
+    r"Bestelnummer\s*[:\s]\s*([AC]000[A-Z0-9]{6}|\d{10})", re.IGNORECASE
 )
 # "Totaal ... € 11,00" - the amount can use either a comma or dot
 # decimal separator. "Totaal" appears multiple times in some templates;
@@ -75,10 +77,23 @@ def strip_html(html: str) -> str:
 
 
 def status_from_subject(subject: str) -> str | None:
-    """Map the Dutch subject to a schema.org-ish delivery status."""
+    """Map the Dutch subject to a schema.org-ish delivery status.
+
+    Modern bol templates use informal `je` phrasing; legacy 2012-era
+    ones use the formal `uw` form (`Bevestiging van uw bestelling ...`
+    for orders, `Uw bestelling ... wordt verzonden` for dispatch).
+    """
     s = subject.lower()
-    if s.startswith("bedankt voor je bestelling"):
+    if s.startswith(
+        (
+            "bedankt voor je bestelling",
+            "bevestiging van je bestelling",
+            "bevestiging van uw bestelling",
+        )
+    ):
         return "OrderProcessing"
+    if "wordt verzonden" in s:
+        return "OrderInTransit"
     if "nu bij postnl" in s:
         return "OrderInTransit"
     if "bezorger is onderweg" in s:
@@ -92,7 +107,12 @@ def status_from_subject(subject: str) -> str | None:
 
 def main() -> int:
     mail = read_message()
-    if (mail.from_address or "").lower() != "automail@bol.com":
+    # bol has used at least two automated senders over the years:
+    # `automail@bol.com` on the modern templates and `noreply@bol.com`
+    # on the pre-2015 ones. Both are DKIM-signed by `bol.com`, so
+    # accept either.
+    from_address = (mail.from_address or "").lower()
+    if from_address not in ("automail@bol.com", "noreply@bol.com"):
         return 0
     subject = (mail.subject or "").strip()
     if not mail.html:
@@ -133,8 +153,16 @@ def main() -> int:
     )
 
     # Receipt only on the order-confirmation mail. The other mails
-    # don't carry the total.
-    if not subject.lower().startswith("bedankt voor je bestelling"):
+    # don't carry the total. Accept both the modern
+    # `Bedankt voor je bestelling` and the legacy
+    # `Bevestiging van (je|uw) bestelling` phrasings.
+    if not subject.lower().startswith(
+        (
+            "bedankt voor je bestelling",
+            "bevestiging van je bestelling",
+            "bevestiging van uw bestelling",
+        )
+    ):
         return 0
 
     totals = TOTAL_RE.findall(text)
