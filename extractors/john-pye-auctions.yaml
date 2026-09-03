@@ -1,0 +1,9 @@
+name: john-pye-auctions
+order: 50
+from_domains:
+  - johnpye.co.uk
+subject_regex: "(?i)^New Invoice\\s*#\\d+\\s+from John Pye Auctions"
+# The subject carries the invoice number and amount; the body only
+# has a payment link. No body-shape requirement.
+require_dkim:
+  - johnpye.co.uk

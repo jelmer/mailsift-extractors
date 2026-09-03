@@ -1,0 +1,9 @@
+name: rapha
+order: 50
+from_domains:
+  - rapha.cc
+subject_regex: "(?i)^Your Rapha (order|dispatch) confirmation\\s*-\\s*Order"
+requires:
+  - html
+require_dkim:
+  - rapha.cc

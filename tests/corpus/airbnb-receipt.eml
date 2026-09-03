@@ -1,0 +1,22 @@
+Authentication-Results: example.org; dkim=pass header.d=airbnb.com header.i=@airbnb.com
+From: Airbnb <automated@airbnb.com>
+To: test@example.org
+Subject: Your receipt from Airbnb
+Date: Fri, 12 Mar 2021 13:28:53 +0000
+Message-ID: <airbnb-receipt-test@airbnb.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Your receipt from Airbnb</p>
+<p>Receipt ID: RCTESTID42 &middot; 12 March 2021</p>
+<p>Greater London</p>
+<p>14 nights in Greater London</p>
+<p>Confirmation code: HMTESTCODE</p>
+<p>Price breakdown</p>
+<div>Total (GBP)</div>
+<div>&pound;834.50</div>
+<div>Payment</div>
+<div>Amount paid (GBP)</div>
+<div>&pound;834.50</div>
+</body></html>

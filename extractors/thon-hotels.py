@@ -36,12 +36,21 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 from mailsift_extractor import read_message
 
 REF_RE = re.compile(r"Ref\.\s*(\d+)")
-HOTEL_RE = re.compile(r"(Thon Hotel[^\n]+?)\s*$", re.MULTILINE)
+# `[^\r\n]` rather than `[^\n]`: the stripped text carries `\r\n`
+# line endings, and matching on `[^\n]` sucks in trailing carriage
+# returns and further content.
+HOTEL_RE = re.compile(r"(Thon Hotel[^\r\n]+?)\s*$", re.MULTILINE)
+# Between the date and the `Check-in / Check out` label the stripped
+# HTML holds a run of whitespace and blank lines. Accept `\s+`, not
+# a fixed `\n`. Time is `12.00` on Norwegian-locale templates and
+# `12:00` on English; accept either separator.
 CHECKIN_RE = re.compile(
-    r"([A-Z][a-z]{2})\s+(\d{1,2})\.\s+([A-Z][a-z]{2})\s+(\d{4})\s*\n\s*Check-in\s+from\s+(\d{1,2}:\d{2})",
+    r"([A-Z][a-z]{2})\s+(\d{1,2})\.\s+([A-Z][a-z]{2})\s+(\d{4})\s+"
+    r"Check-in\s+from\s+(\d{1,2}[.:]\d{2})",
 )
 CHECKOUT_RE = re.compile(
-    r"([A-Z][a-z]{2})\s+(\d{1,2})\.\s+([A-Z][a-z]{2})\s+(\d{4})\s*\n\s*Check\s*out\s+before\s+(\d{1,2}:\d{2})",
+    r"([A-Z][a-z]{2})\s+(\d{1,2})\.\s+([A-Z][a-z]{2})\s+(\d{4})\s+"
+    r"Check\s*out\s+before\s+(\d{1,2}[.:]\d{2})",
 )
 PRICE_RE = re.compile(r"\bEUR\s+([0-9]+(?:[.,][0-9]{2})?)")
 ADDRESS_RE = re.compile(r"\bAddress\s*\n\s*([^\n]+)")
@@ -116,8 +125,10 @@ def main() -> int:
     if ci_date is None or co_date is None:
         return 0
 
-    ci_hh, ci_mm = (int(x) for x in ci_match.group(5).split(":"))
-    co_hh, co_mm = (int(x) for x in co_match.group(5).split(":"))
+    # Time separator is `:` on English templates and `.` on
+    # Norwegian ones - split on either.
+    ci_hh, ci_mm = (int(x) for x in re.split(r"[.:]", ci_match.group(5)))
+    co_hh, co_mm = (int(x) for x in re.split(r"[.:]", co_match.group(5)))
     checkin = ci_date.replace(hour=ci_hh, minute=ci_mm)
     checkout = co_date.replace(hour=co_hh, minute=co_mm)
 

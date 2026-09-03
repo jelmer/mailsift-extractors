@@ -5,5 +5,9 @@ from_domains:
 subject_regex: "(?i)^(?:BA |Your )?e-ticket receipt\\s+[A-Z0-9]{5,8}:"
 requires:
   - text
+# BA has signed outgoing mail from at least two subdomains over the
+# years: `email.ba.com` currently and `bounce.ba.com` in the
+# mid-2010s. Accept any `.ba.com` subdomain (leading dot = suffix
+# match) rather than trying to enumerate them.
 require_dkim:
-  - email.ba.com
+  - .ba.com

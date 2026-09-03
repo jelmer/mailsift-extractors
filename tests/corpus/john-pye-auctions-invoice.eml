@@ -1,0 +1,14 @@
+Authentication-Results: example.org; dkim=pass header.d=johnpye.co.uk header.i=@johnpye.co.uk
+From: John Pye Auctions <info@johnpye.co.uk>
+To: test@example.org
+Subject: New Invoice #91247783 from John Pye Auctions (JohnPye) for £112.60 GBP
+Date: Wed, 24 May 2023 12:00:00 +0000
+Message-ID: <john-pye-invoice-test@johnpye.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Hello Tester,
+
+You have won the following lot. Please pay for your invoice.
+
+Login to your account to pay.

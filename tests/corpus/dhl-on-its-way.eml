@@ -1,0 +1,17 @@
+Authentication-Results: example.org; dkim=pass header.d=dhl.com header.i=@dhl.com
+From: DHL Express <noreply.odd@dhl.com>
+To: test@example.org
+Subject: DHL On Demand Delivery
+Date: Fri, 25 Nov 2022 09:00:00 +0000
+Message-ID: <dhl-onway-test@dhl.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h2>Event Notification</h2>
+<h1>Your Shipment Is On Its Way</h1>
+<p>Hello TESTER TEST,</p>
+<p>Your DHL Express shipment with waybill number 9999999902 from EXAMPLE SHIPPER is on its way.</p>
+<p>Delivery Information</p>
+<div>Waybill No.9999999902</div>
+</body></html>

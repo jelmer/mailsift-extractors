@@ -46,3 +46,23 @@ def test_neighbours_emits_parcel_only(run_extractor):
     out = run_extractor("bol-com", "bol-com-neighbours.eml")
     assert set(out) == {"bol-C000000000.parcel.json"}
     assert out["bol-C000000000.parcel.json"]["deliveryStatus"] == "OrderDelivered"
+
+
+def test_legacy_2012_bestelling_emits_receipt_and_parcel(run_extractor):
+    # Pre-2015 bol mail came from `noreply@bol.com`, used formal
+    # `Bevestiging van uw bestelling <NNN>` subjects, and had bare
+    # 10-digit order numbers (no `[AC]000` prefix).
+    out = run_extractor("bol-com", "bol-com-legacy-ordered.eml")
+    assert set(out) == {
+        "bol-9999999900.parcel.json",
+        "bol-9999999900.receipt.json",
+    }
+    parcel = out["bol-9999999900.parcel.json"]
+    assert parcel["orderNumber"] == "9999999900"
+    assert parcel["deliveryStatus"] == "OrderProcessing"
+    receipt = out["bol-9999999900.receipt.json"]
+    assert receipt["priceSpecification"] == {
+        "@type": "PriceSpecification",
+        "price": 14.99,
+        "priceCurrency": "EUR",
+    }

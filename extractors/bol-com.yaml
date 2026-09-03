@@ -2,7 +2,10 @@ name: bol-com
 order: 50
 from_domains:
   - bol.com
-subject_regex: "(?i)^(Bedankt voor je bestelling|Je pakket is nu bij PostNL|De bezorger is onderweg|Je pakket is bezorgd|Je pakket ligt bij de buren)"
+# bol.com switched from the formal `u`/`uw` phrasing to informal
+# `je`/`jouw` around 2015. Accept both plus the modern parcel
+# tracking / delivery notifications.
+subject_regex: "(?i)^(Bedankt voor je bestelling|Bevestiging van (?:je|uw) bestelling|(?:Je|Uw) bestelling met bestelnummer .* wordt verzonden|Je pakket is nu bij PostNL|De bezorger is onderweg|Je pakket is bezorgd|Je pakket ligt bij de buren)"
 requires:
   - html
 require_dkim:

@@ -1,0 +1,19 @@
+Authentication-Results: example.org; dkim=pass header.d=dhl.com header.i=@dhl.com
+From: DHL Express <noreply.odd@dhl.com>
+To: test@example.org
+Subject: Your Shipment Has Been Delivered
+Date: Wed, 15 Apr 2026 12:15:00 +0000
+Message-ID: <dhl-delivered-test@dhl.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>YOUR SHIPMENT HAS BEEN DELIVERED</h1>
+<p>Hello TEST TESTER,</p>
+<p>Your DHL Express shipment was delivered on Wed Apr 15 2026 at 12:08.</p>
+<div>Shipment Details</div>
+<div>Shipper Name</div>
+<div>EXAMPLE SENDER LTD</div>
+<div>Waybill No.</div>
+<div>9999999901</div>
+</body></html>

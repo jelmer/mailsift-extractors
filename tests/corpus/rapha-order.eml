@@ -1,0 +1,26 @@
+Authentication-Results: example.org; dkim=pass header.d=rapha.cc header.i=@rapha.cc
+From: Rapha <rapha@rapha.cc>
+To: test@example.org
+Subject: Your Rapha order confirmation - Order 999999999
+Date: Tue, 18 Jul 2023 15:12:00 +0000
+Message-ID: <rapha-order-test@rapha.cc>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>Order Confirmation</h1>
+<p>Thank you for shopping at Rapha.</p>
+<div>Order Number</div>
+<div>999999999</div>
+<div>Date</div>
+<div>18/07/2023</div>
+<div>ORDER TOTAL</div>
+<div>&pound;109.16</div>
+<div>Item</div>
+<div>Reflective Brevet Socks - Regular</div>
+<div>Dark Navy, Large</div>
+<div>&pound;24.00</div>
+<div>1</div>
+<div>ORDER TOTAL</div>
+<div>&pound;109.16</div>
+</body></html>

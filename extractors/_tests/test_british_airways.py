@@ -81,3 +81,51 @@ def test_legacy_eticket_format_still_extracts(run_extractor):
         "@type": "Airport",
         "name": "Amsterdam",
     }
+
+
+def test_legacy_extractor_extracts_pre_cutoff_mail(run_extractor):
+    # The `british-airways-legacy` manifest reuses the same parser
+    # but with no `require_dkim` (BA didn't sign mail in 2013).
+    # It should extract from the same legacy fixture the main
+    # extractor recognises.
+    out = run_extractor("british-airways-legacy", "british-airways-eticket-legacy.eml")
+    assert set(out) == {
+        "ba-LEGACY-BA2762.reservation.json",
+        "ba-LEGACY-BA2759.reservation.json",
+    }
+
+
+def test_legacy_extractor_refuses_post_cutoff_mail(run_extractor):
+    # The date cutoff is what defends the no-DKIM code path from a
+    # spoofer today. The modern fixture is dated 2026 and must be
+    # rejected here even though it would parse fine.
+    out = run_extractor("british-airways-legacy", "british-airways-eticket.eml")
+    assert out == {}
+
+
+def test_columnar_eticket_format_extracts(run_extractor):
+    # Mid-2010s BA e-tickets carry the itinerary as free-standing
+    # `date / time / place / [terminal]` blocks under a bare
+    # `BAnnnn` header line, rather than the modern inline
+    # `BAnnnn: British Airways | ...` shape. Same booking-reference
+    # phrasing, same output.
+    out = run_extractor("british-airways", "british-airways-eticket-columnar.eml")
+    assert set(out) == {
+        "ba-COLUMN-BA0444.reservation.json",
+        "ba-COLUMN-BA0443.reservation.json",
+    }
+    outbound = out["ba-COLUMN-BA0444.reservation.json"]
+    for_ = outbound["reservationFor"]
+    assert for_["flightNumber"] == "444"
+    assert for_["departureAirport"] == {
+        "@type": "Airport",
+        "name": "Heathrow",
+        "address": "London",
+        "alternateName": "Terminal 5",
+    }
+    assert for_["arrivalAirport"] == {
+        "@type": "Airport",
+        "name": "Amsterdam",
+    }
+    assert for_["departureTime"] == "2016-06-23T20:05:00"
+    assert for_["arrivalTime"] == "2016-06-23T22:20:00"

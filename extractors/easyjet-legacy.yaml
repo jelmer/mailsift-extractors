@@ -1,0 +1,16 @@
+name: easyjet-legacy
+# Higher than modern (50) so this only runs on messages the modern
+# manifest won't touch. Same parser as easyjet; the wrapper enforces
+# a message-date cutoff so a spoofer today can't reach the no-DKIM
+# path.
+order: 60
+script: easyjet-legacy.py
+from_domains:
+  - easyjet.com
+  - "*.easyjet.com"
+subject_regex: "(?i)easyJet booking reference"
+requires:
+  - html
+# No `require_dkim`: pre-2015 easyJet mail predates DKIM. The date
+# cutoff in easyjet-legacy.py is what actually defends the code
+# path.

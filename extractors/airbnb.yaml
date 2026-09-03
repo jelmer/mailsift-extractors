@@ -1,0 +1,9 @@
+name: airbnb
+order: 50
+from_domains:
+  - airbnb.com
+subject_regex: "(?i)^Your receipt from Airbnb"
+requires:
+  - html
+require_dkim:
+  - airbnb.com

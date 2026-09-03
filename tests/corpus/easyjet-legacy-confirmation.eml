@@ -1,0 +1,28 @@
+Authentication-Results: example.org; spf=pass smtp.mail=donotreply@easyjet.com
+From: easyJet <donotreply@easyjet.com>
+To: test@example.org
+Subject: easyJet booking reference: LEG2013
+Date: Tue, 15 Oct 2013 22:09:58 +0100
+Message-ID: <easyjet-legacy-test@easyjet.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>easyJet booking confirmation email</p>
+<p>Thank you for booking: LEG2013</p>
+<p>Payments 15/10/2013 &pound;156.98 has been charged.</p>
+<p>Your confirmed itinerary</p>
+<p>Passengers</p>
+<p>Mr TEST TESTER</p>
+<p>London Luton to Amsterdam</p>
+<p>Dep 25 October 2013 18:55</p>
+<p>Arr 25 October 2013 21:05</p>
+<p>Flight 2163</p>
+<p>Bag drop opens 25 October 2013 16:55</p>
+<p>Bag drop closes 25 October 2013 18:15</p>
+<p>Seats Automatically Allocated</p>
+<p>Amsterdam to London Luton</p>
+<p>Dep 28 October 2013 09:30</p>
+<p>Arr 28 October 2013 09:40</p>
+<p>Flight 2152</p>
+</body></html>

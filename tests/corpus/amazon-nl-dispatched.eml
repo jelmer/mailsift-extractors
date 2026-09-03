@@ -1,0 +1,17 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.nl header.i=@amazon.nl
+From: "Amazon.nl" <verzending-volgen@amazon.nl>
+To: test@example.org
+Subject: Je bestelling bij Amazon.nl met bestelnr. 408-9999999-9999999 van 1 item is verzonden
+Date: Fri, 22 Aug 2025 10:00:00 +0000
+Message-ID: <amazon-nl-dispatched-test@amazon.nl>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Je bestelling
+
+Order #
+408-9999999-9999999
+
+* Example NL Widget
+
+Aankomstverwachting: 25 augustus

@@ -1,0 +1,21 @@
+Authentication-Results: example.org; dkim=pass header.d=google.com header.i=@google.com
+From: "Google Play" <googleplay-noreply@google.com>
+To: test@example.org
+Subject: Your Google Play Order Receipt from 17-Jun-2013
+Date: Mon, 17 Jun 2013 22:12:32 +0000
+Message-ID: <google-play-legacy-test@google.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Thank you.
+You have signed up for a free trial subscription to Google Play Music.
+
+Order number:
+12345678901234567890.9999999999999999
+
+Order date: 17-Jun-2013 15:12:30 PDT
+Payment method: Visa-9150
+ItemPrice
+*Google Play Music All Access*$0.00Monthly Subscription - First charge on
+17-Jul-2013
+Tax: $0.00Total: $0.00

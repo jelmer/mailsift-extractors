@@ -3,8 +3,14 @@ order: 50
 from_domains:
   - edm.postnl.nl
   - "*.postnl.nl"
-subject_regex: "(?i)^(Nieuw|Verstuurd:|Onderweg|Afgeleverd:)\\s.*pakket"
+# PostNL uses several subject shapes across the years and templates:
+#   `Nieuw pakket van <shop>`, `Verstuurd: <shop> pakket`,
+#   `Onderweg pakket`, `Afgeleverd: pakket` (older);
+#   `Jouw <shop>-pakket is onderweg` (informal, newer).
+subject_regex: "(?i)^(Nieuw|Verstuurd:|Onderweg|Afgeleverd:|Jouw)\\s.*pakket"
 requires:
   - text
 require_dkim:
-  - edm.postnl.nl
+  # `edm.postnl.nl` is the historical signing subdomain;
+  # `notificatie.postnl.nl` sends the informal `Jouw ...` variants.
+  - .postnl.nl

@@ -75,3 +75,26 @@ def test_de_dispatched_emits_parcel_only(run_extractor):
     parcel = out["amazon-de-222-2222222-2222222.parcel.json"]
     assert parcel["deliveryStatus"] == "OrderInTransit"
     assert parcel["provider"]["@id"] == "amazon-de"
+
+
+def test_nl_localised_dispatched(run_extractor):
+    # Amazon.nl mails may carry a Dutch-localised subject
+    # ("Je bestelling bij Amazon.nl ... is verzonden") rather than
+    # the English `Dispatched:` prefix. The status keyword lives
+    # somewhere in the middle of the subject.
+    out = run_extractor("amazon", "amazon-nl-dispatched.eml")
+    assert set(out) == {"amazon-nl-408-9999999-9999999.parcel.json"}
+    parcel = out["amazon-nl-408-9999999-9999999.parcel.json"]
+    assert parcel["provider"]["@id"] == "amazon-nl"
+    assert parcel["deliveryStatus"] == "OrderInTransit"
+
+
+def test_de_localised_dispatched(run_extractor):
+    # Amazon.de mails may carry a German-localised subject
+    # ("Ihre Amazon.de Bestellung von X wurde versandt!"). The
+    # extractor recognises "wurde versandt" anywhere in the subject.
+    out = run_extractor("amazon", "amazon-de-localised-dispatched.eml")
+    assert set(out) == {"amazon-de-028-9999999-9999999.parcel.json"}
+    parcel = out["amazon-de-028-9999999-9999999.parcel.json"]
+    assert parcel["provider"]["@id"] == "amazon-de"
+    assert parcel["deliveryStatus"] == "OrderInTransit"

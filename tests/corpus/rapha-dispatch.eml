@@ -1,0 +1,17 @@
+Authentication-Results: example.org; dkim=pass header.d=rapha.cc header.i=@rapha.cc
+From: Rapha <rapha@rapha.cc>
+To: test@example.org
+Subject: Your Rapha dispatch confirmation - Order 999999999
+Date: Wed, 19 Jul 2023 09:00:00 +0000
+Message-ID: <rapha-dispatch-test@rapha.cc>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>YOUR ORDER IS ON ITS WAY</h1>
+<p>Rapha order dispatched.</p>
+<div>Order Number</div>
+<div>999999999</div>
+<div>Tracking Link</div>
+<div><a href="https://track.dpd.co.uk/parcels/99999999999999">Track</a></div>
+</body></html>
