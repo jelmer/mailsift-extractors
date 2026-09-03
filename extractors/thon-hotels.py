@@ -40,6 +40,11 @@ REF_RE = re.compile(r"Ref\.\s*(\d+)")
 # line endings, and matching on `[^\n]` sucks in trailing carriage
 # returns and further content.
 HOTEL_RE = re.compile(r"(Thon Hotel[^\r\n]+?)\s*$", re.MULTILINE)
+# "1 room, 2 nights, 1 adult" - carry the room and adult counts through.
+COMPOSITION_RE = re.compile(
+    r"(?P<rooms>\d+)\s+rooms?,\s+\d+\s+nights?,\s+(?P<adults>\d+)\s+adults?",
+    re.IGNORECASE,
+)
 # Between the date and the `Check-in / Check out` label the stripped
 # HTML holds a run of whitespace and blank lines. Accept `\s+`, not
 # a fixed `\n`. Time is `12.00` on Norwegian-locale templates and
@@ -148,8 +153,26 @@ def main() -> int:
         except ValueError:
             total_price = None
 
+    comp_match = COMPOSITION_RE.search(text)
+    num_rooms: int | None = None
+    num_adults: int | None = None
+    if comp_match:
+        num_rooms = int(comp_match.group("rooms"))
+        num_adults = int(comp_match.group("adults"))
+
+    # An object @context lets us mix the base vocabulary with the
+    # pending track (for numAdults, still on pending.schema.org) and
+    # tripmate's own namespace (numRooms - no schema.org term).
+    context: str | dict = "https://schema.org"
+    if num_rooms is not None or num_adults is not None:
+        context = {
+            "@vocab": "https://schema.org/",
+            "pending": "https://pending.schema.org/",
+            "tripmate": "https://jelmer.github.io/tripmate/ns#",
+        }
+
     reservation: dict = {
-        "@context": "https://schema.org",
+        "@context": context,
         "@type": "LodgingReservation",
         "reservationNumber": f"thon-{ref}",
         "checkinTime": checkin.strftime("%Y-%m-%dT%H:%M:%S"),
@@ -161,6 +184,10 @@ def main() -> int:
     }
     if address:
         reservation["reservationFor"]["address"] = address
+    if num_adults is not None:
+        reservation["pending:numAdults"] = num_adults
+    if num_rooms is not None:
+        reservation["tripmate:numRooms"] = num_rooms
     if total_price is not None:
         reservation["totalPrice"] = {
             "@type": "PriceSpecification",

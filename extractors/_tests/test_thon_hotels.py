@@ -21,6 +21,13 @@ def test_confirmation_emits_reservation(run_extractor):
         "price": 204.00,
         "priceCurrency": "EUR",
     }
+    assert res["pending:numAdults"] == 1
+    assert res["tripmate:numRooms"] == 1
+    assert res["@context"] == {
+        "@vocab": "https://schema.org/",
+        "pending": "https://pending.schema.org/",
+        "tripmate": "https://jelmer.github.io/tripmate/ns#",
+    }
 
 
 def test_norwegian_locale_variant(run_extractor):
