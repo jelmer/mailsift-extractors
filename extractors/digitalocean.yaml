@@ -1,0 +1,9 @@
+name: digitalocean
+order: 50
+from_domains:
+  - digitalocean.com
+subject_regex: "(?i)^DigitalOcean - Received .* payment"
+requires:
+  - text
+require_dkim:
+  - digitalocean.com

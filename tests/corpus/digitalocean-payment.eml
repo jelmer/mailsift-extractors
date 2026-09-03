@@ -1,0 +1,20 @@
+Authentication-Results: example.org; dkim=pass header.d=digitalocean.com header.i=@digitalocean.com
+From: DigitalOcean Support <support@digitalocean.com>
+To: test@example.org
+Subject: DigitalOcean - Received $28.8 payment
+Date: Mon, 01 Sep 2025 05:31:35 +0000
+Message-ID: <do-payment-test@digitalocean.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Payment Receipt for My Team
+
+-----------------------------------------------------
+DigitalOcean Receipt - 01-Sep-2025
+
+Amount: $28.8
+
+DigitalOcean
+105 Edgeview Drive, Suite 425
+Broomfield, CO, 80021
+-----------------------------------------------------
