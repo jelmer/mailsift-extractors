@@ -13,9 +13,11 @@ looks like:
     Rotterdam Centraal London St Pancras Int'l 19:28 21:57 ...
 
 Each leg starts with `Outbound` or `Return`, followed by the fare class,
-the date, the two stations, and the two times. We emit one
-TrainReservation per leg, UID-keyed on `<reference>-<direction>` so an
-exchange confirmation for the same direction overwrites in place.
+the date, the two stations, and the two times, then a passenger row
+with `Coach N - Seat M`. We emit one TrainReservation per leg,
+UID-keyed on `<reference>-<direction>` so an exchange confirmation
+for the same direction overwrites in place. The seat assignment
+lands in `ticketedSeat` and the fare class in its `seatingType`.
 
 Eurostar mails don't carry a train number, so the reservation has no
 trainNumber field; the iCal summary falls back to "Train: <from> -> <to>".
@@ -39,7 +41,7 @@ SUBJECT_REFERENCE_RE = re.compile(r"Reference:\s*([A-Z0-9]{6})", re.IGNORECASE)
 
 LEG_RE = re.compile(
     r"(?P<direction>Outbound|Return)\s+"
-    r"Eurostar\s+\S+\s+"  # fare class (Standard / Plus / Premier)
+    r"Eurostar\s+(?P<fare>\S+)\s+"  # fare class (Standard / Plus / Premier)
     r"(?P<weekday>Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),\s+"
     r"(?P<day>\d{1,2})\s+"
     r"(?P<month>January|February|March|April|May|June|July|August|September|October|November|December)\s+"
@@ -48,6 +50,9 @@ LEG_RE = re.compile(
     r"(?P<dep>\d{2}:\d{2})\s+"
     r"(?P<arr>\d{2}:\d{2})\b"
 )
+
+# Coach + seat, sitting on the passenger row that follows a leg.
+SEAT_RE = re.compile(r"Coach\s+(?P<coach>\S+)\s*-\s*Seat\s+(?P<seat>\S+)")
 
 
 MONTHS = {
@@ -145,8 +150,9 @@ def main() -> int:
     if not reference:
         return 0
 
+    legs = list(LEG_RE.finditer(text))
     seen_directions: set[str] = set()
-    for leg in LEG_RE.finditer(text):
+    for index, leg in enumerate(legs):
         direction = leg.group("direction")
         if direction in seen_directions:
             continue
@@ -172,7 +178,14 @@ def main() -> int:
             continue
         from_station, to_station = stations
 
-        reservation = {
+        # The seat assignment sits on the passenger row just after this
+        # leg's route line, before the next leg begins. A booking with
+        # one passenger yields one Coach/Seat; multiple passengers just
+        # give us the first, which is enough for the calendar entry.
+        tail_end = legs[index + 1].start() if index + 1 < len(legs) else len(text)
+        seat = SEAT_RE.search(text, leg.end(), tail_end)
+
+        reservation: dict = {
             "@context": "https://schema.org",
             "@type": "TrainReservation",
             "reservationNumber": f"eurostar-{reference}-{direction.lower()}",
@@ -191,6 +204,13 @@ def main() -> int:
                 "arrivalTime": arr_dt.strftime("%Y-%m-%dT%H:%M:%S"),
             },
         }
+        if seat is not None:
+            reservation["ticketedSeat"] = {
+                "@type": "Seat",
+                "seatNumber": seat.group("seat"),
+                "seatSection": seat.group("coach"),
+                "seatingType": leg.group("fare"),
+            }
 
         slug = f"eurostar-{reference}-{direction.lower()}"
         Path(f"{slug}.reservation.json").write_text(
