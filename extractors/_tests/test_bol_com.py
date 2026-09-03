@@ -43,6 +43,17 @@ def test_shipped_emits_parcel_only(run_extractor):
     assert parcel["itemShipped"]["name"] == "Example Product"
 
 
+def test_out_for_delivery_emits_parcel_only(run_extractor):
+    # The "De bezorger is onderweg" template announces a delivery
+    # window; the shape mirrors the shipped/delivered mails so item
+    # extraction and status parsing exercise the same path.
+    out = run_extractor("bol-com", "bol-com-out-for-delivery.eml")
+    assert set(out) == {"bol-C000000000.parcel.json"}
+    parcel = out["bol-C000000000.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderInTransit"
+    assert parcel["itemShipped"]["name"] == "Example Keyboard"
+
+
 def test_delivered_emits_parcel_only(run_extractor):
     out = run_extractor("bol-com", "bol-com-delivered.eml")
     assert set(out) == {"bol-C000000000.parcel.json"}

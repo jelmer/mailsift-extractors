@@ -53,6 +53,24 @@ def test_uk_delivered_emits_parcel_only(run_extractor):
     assert parcel["itemShipped"]["name"] == "Example Connector Adapter Panel Mount"
 
 
+def test_uk_dispatched_with_multiple_items(run_extractor):
+    # A multi-item shipment: itemShipped becomes an array of Products
+    # rather than a single Product. Modelled after a real dispatched
+    # mail; sensitive fields scrubbed.
+    out = run_extractor("amazon", "amazon-uk-dispatched-multiple.eml")
+    assert set(out) == {"amazon-uk-444-4444444-4444444.parcel.json"}
+    parcel = out["amazon-uk-444-4444444-4444444.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderInTransit"
+    items = parcel["itemShipped"]
+    assert isinstance(items, list)
+    assert [i["name"] for i in items] == [
+        "Example Gadget X1",
+        "Example HDMI 2.1 Cable 2M, 8K@60Hz, Supports eARC HDR10 HDCP 2.2/2.3, "
+        "Compatible with all HDMI devices",
+    ]
+    assert all(i["@type"] == "Product" for i in items)
+
+
 def test_de_ordered_emits_receipt_and_parcel(run_extractor):
     out = run_extractor("amazon", "amazon-de-ordered.eml")
     assert set(out) == {
