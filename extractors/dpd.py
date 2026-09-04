@@ -13,8 +13,10 @@ The body always carries the tracking number formatted with spaces
 so it matches what the DPD website would show.
 
 Like Royal Mail, we emit a `.parcel.json` for every update so the
-parcels target can merge them by tracking number, and a
-`.reservation.json` only when a delivery window is present.
+parcels target can merge them by tracking number. The delivery
+window rides on the same file (`expectedArrivalFrom`/`Until`) when
+we know it - a parcel isn't a reservation, so no separate calendar
+artifact is written.
 """
 
 from __future__ import annotations
@@ -138,22 +140,6 @@ def main() -> int:
     Path(f"dpd-{tracking}.parcel.json").write_text(
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
     )
-
-    if window_start is not None and window_end is not None:
-        reservation = {
-            "@context": "https://schema.org",
-            "@type": "EventReservation",
-            "reservationNumber": f"dpd-delivery-{tracking}",
-            "reservationFor": {
-                "@type": "Event",
-                "name": "DPD delivery",
-                "startDate": window_start.strftime("%Y-%m-%dT%H:%M:%S"),
-                "endDate": window_end.strftime("%Y-%m-%dT%H:%M:%S"),
-            },
-        }
-        Path(f"dpd-delivery-{tracking}.reservation.json").write_text(
-            json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
-        )
 
     return 0
 

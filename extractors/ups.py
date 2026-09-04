@@ -12,9 +12,9 @@ After tag-stripping the HTML the relevant text is in a stable form:
 - "Tracking Number: 1Zxxxxxxxxxxxxxxxxx" or service line `UPS <X>
   1Zxxxx...` carry the 18-character 1Z tracking id.
 
-Emits a `.parcel.json` for each update. When a delivery window is
-present, also emits a `.reservation.json` so the slot lands on the
-calendar.
+Emits a `.parcel.json` for each update. The delivery window rides on
+the same file (`expectedArrivalFrom`/`Until`) when present - a parcel
+isn't a reservation, so no separate calendar artifact is written.
 """
 
 from __future__ import annotations
@@ -160,22 +160,6 @@ def main() -> int:
     Path(f"ups-{tracking}.parcel.json").write_text(
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
     )
-
-    if window_start is not None and window_end is not None:
-        reservation = {
-            "@context": "https://schema.org",
-            "@type": "EventReservation",
-            "reservationNumber": f"ups-delivery-{tracking}",
-            "reservationFor": {
-                "@type": "Event",
-                "name": "UPS delivery",
-                "startDate": window_start.strftime("%Y-%m-%dT%H:%M:%S"),
-                "endDate": window_end.strftime("%Y-%m-%dT%H:%M:%S"),
-            },
-        }
-        Path(f"ups-delivery-{tracking}.reservation.json").write_text(
-            json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
-        )
 
     return 0
 

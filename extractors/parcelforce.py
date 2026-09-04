@@ -10,8 +10,9 @@ plain-text rendering of the body is essentially one paragraph:
 
 The id is the JD-prefixed Royal Mail / Parcelforce shared tracking
 number (variable length, leading "JD"). We treat any matching mail as
-out-for-delivery and emit both a parcel record and a calendar
-reservation for the window.
+out-for-delivery and emit a parcel record with the delivery window
+on it (`expectedArrivalFrom`/`Until`). A parcel isn't a reservation,
+so no separate calendar artifact is written.
 """
 
 from __future__ import annotations
@@ -117,21 +118,6 @@ def main() -> int:
 
     Path(f"parcelforce-{tracking}.parcel.json").write_text(
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
-    )
-
-    reservation = {
-        "@context": "https://schema.org",
-        "@type": "EventReservation",
-        "reservationNumber": f"parcelforce-delivery-{tracking}",
-        "reservationFor": {
-            "@type": "Event",
-            "name": "Parcelforce delivery",
-            "startDate": window_start.strftime("%Y-%m-%dT%H:%M:%S"),
-            "endDate": window_end.strftime("%Y-%m-%dT%H:%M:%S"),
-        },
-    }
-    Path(f"parcelforce-delivery-{tracking}.reservation.json").write_text(
-        json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
     )
     return 0
 
