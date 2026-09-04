@@ -1,0 +1,582 @@
+Delivered-To: user@example.com
+Received: from a3-16.smtp-out.eu-west-1.amazonses.com
+ (a3-16.smtp-out.eu-west-1.amazonses.com. [54.240.3.16])        by
+ mx.google.com with ESMTPS id
+ ffacd0b85a97d-4815f3102ffsi12488759f8f.275.2026.08.15.14.47.26        for
+ <user@example.com>        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256
+ bits=128/128);        Sat, 15 Aug 2026 14:47:26 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e13:b0:498:11b5:3ff7 with SMTP id
+ 5b1f17b1804b1-499879bd2e1mr223023165e9.18.1786830446252;        Sat, 15 Aug
+ 2026 14:47:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786830446; cv=none;
+        d=google.com; s=arc-20260327;
+        b=jps8C5Z6wBP3+SlHQaXjZ1bECBojc1Kg+5njkKsDKXpabLc6cVwmdnnMWnnK/z6aBy
+         Z2KFX6FR1kvSvmuBuDDvLpJRVfQfUUjx1Fjpv1Hsm30+bJmfhd8qqeyz/twElAImSMes
+         cfzF71sKccKdY87bOdA98aRsUWAgPEjWSJaXiJULTuFjdtsvUYakkO5RV1xN/EgMzHIn
+         mZZ0lEEddfxoXnWSlcDefZGm0SonlyY0gk9BxH8WWRLr4fd6ZyZ2kusNyUOaCllh8Vma
+         3bSALSyN2VkB7AykvyV9VgOsJULoVxmx1D+EdJaLiQy1Udk+fE3q2qzvQ9tx11NAvRlG
+         eF8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327;       
+ h=feedback-id:mime-version:subject:message-id:to:from:date        
+ :dkim-signature:dkim-signature;       
+ bh=fu7kpbeaiB2Fnn6cjUAt1Vp6ALRvtK91u3qpxmE0MJY=;       
+ fh=MpiHTFU+kyhMlRbMPhoEaPjHKTXBUXdUsSrFXK7brM8=;       
+ b=AfECbJE4E1RYEb70sqxeIOsyOhG1bUydmBLiERKANcV5Pmthujf6XsAA7p59Ng2OF9        
+ JZb8/4+ueVAjcjRl23nF/u1/lP8vtPL1Dk816ZqCA1W0IXe9K0Ww1JIIadz1eqe5/TX+        
+ k1GxPfuJSnL1Gx0HlrZsFdtSqkPytnBbaTIE0b6n+bm1XXUCa/zLXRIUSf8PUsYR29fW        
+ sQPLvRBUSRwMenXS/M4WiIX8H/IQhFAjvG+dEZi0pKUzpJvwPmX2trYFUk1mX6cGrexd        
+ aXxMZXBgHzNbBxp/mV3UnQ6014gtniX9mKVBEH7BM0qvquidVzRrIx+6nZ3izB2Prgck        
+ BNOQ==;        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass
+ header.i=@fs.flixbus.com header.s=dxirgti4pgvnhslmkn7jemswcyfscpm4
+ header.b=SW1w2QIm;       dkim=pass header.i=@amazonses.com
+ header.s=shh3fegwg5fppqsuzphvschd53n6ihuv header.b=zp0TnfvN;       spf=pass
+ (google.com: domain of =?utf-8?q?010201a00764dd31-599f91d2-9ffb-402e-9209-3?=
+ =?utf-8?q?cc906097b57-000000=40ses=2Efs=2Eflixbus=2Ecom?= designates
+ 54.240.3.16 as permitted sender) =?utf-8?q?smtp=2Emailfrom=3D010201a00764dd?=
+ =?utf-8?q?31-599f91d2-9ffb-402e-9209-3cc906097b57-000000=40ses=2Efs=2Eflixb?=
+ =?utf-8?q?us=2Ecom=3B?=       dmarc=pass (p=NONE sp=NONE dis=NONE)
+ header.from=fs.flixbus.com
+Return-Path: =?utf-8?q?=3C010201a00764dd31-599f91d2-9ffb-402e-9209-3cc906097?=
+ =?utf-8?q?b57-000000=40ses=2Efs=2Eflixbus=2Ecom=3E?=
+Received: from a3-16.smtp-out.eu-west-1.amazonses.com
+ (a3-16.smtp-out.eu-west-1.amazonses.com. [54.240.3.16])        by
+ mx.google.com with ESMTPS id
+ ffacd0b85a97d-4815f3102ffsi12488759f8f.275.2026.08.15.14.47.26        for
+ <user@example.com>        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256
+ bits=128/128);        Sat, 15 Aug 2026 14:47:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of =?utf-8?q?010201a00764dd31-599f91d?=
+ =?utf-8?q?2-9ffb-402e-9209-3cc906097b57-000000=40ses=2Efs=2Eflixbus=2Ecom?=
+ designates 54.240.3.16 as permitted sender) client-ip=54.240.3.16;
+Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@fs.flixbus.com header.s=dxirgti4pgvnhslmkn7jemswcyfscpm4
+ header.b=SW1w2QIm;       dkim=pass header.i=@amazonses.com
+ header.s=shh3fegwg5fppqsuzphvschd53n6ihuv header.b=zp0TnfvN;       spf=pass
+ (google.com: domain of =?utf-8?q?010201a00764dd31-599f91d2-9ffb-402e-9209-3?=
+ =?utf-8?q?cc906097b57-000000=40ses=2Efs=2Eflixbus=2Ecom?= designates
+ 54.240.3.16 as permitted sender) =?utf-8?q?smtp=2Emailfrom=3D010201a00764dd?=
+ =?utf-8?q?31-599f91d2-9ffb-402e-9209-3cc906097b57-000000=40ses=2Efs=2Eflixb?=
+ =?utf-8?q?us=2Ecom=3B?=       dmarc=pass (p=NONE sp=NONE dis=NONE)
+ header.from=fs.flixbus.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=dxirgti4pgvnhslmkn7jemswcyfscpm4; d=fs.flixbus.com; t=1786830446;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type;
+	bh=+1p0YXdLdrS/9219WxATk9V1d5ncUVHsnRxLgCRTUHQ=;
+	b=SW1w2QImqBItXxvYNltJjtgbnfeLZdAtHwumgY/UVLiip9HWWyUAKpGVZXHz2hB8
+	pYapUrT9JVROxpnOZ0vV9NJjt2onXxA6eI05BRJRllyTQQTLly8+bIAdeHEE/5M6tHc
+	dSuSXRR9bHOaDYjRRCSfEw/MkbGaEGz3eoK+3PFcee7cgwZ7I7YhaZMCauebW1MkaUl
+	HiUwMOPgXBx7jfmKvfhJXvkOaPee4aQAjyvW70CDri6ehdsDsG46Kyj0cAvUqsjfmqE
+	jUf+FzTM92MTpuEHXxZqWQexoQdstqbYP/RI5R4jgNAQ3ajRWN0frLjwdXvT8zMR3Bo
+	lNLo7BEN7g==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=shh3fegwg5fppqsuzphvschd53n6ihuv; d=amazonses.com; t=1786830446;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:Feedback-ID;
+	bh=+1p0YXdLdrS/9219WxATk9V1d5ncUVHsnRxLgCRTUHQ=;
+	b=zp0TnfvNt+dFwOEBruCAvOllWaOtSXehtmeLNBFONCI2RId3ZPhDVcaCWvx53OUo
+	ooYUypM4CpTUqvB3AUK965p/GMkXyc77VCN1fuM33R6+uO+L4Z2EWQPr0MAbqBQERND
+	eFuWqUYvlUoG17uoZgpsk0hpNfWVVsfAWPlpBgkQ=
+Date: Sat, 15 Aug 2026 21:47:25 +0000
+From: Flix <noreply@fs.flixbus.com>
+To: user@example.com
+Message-ID: <010201a00764dd31-599f91d2-9ffb-402e-9209-3cc906097b57-000000@eu-west-1.amazonses.com>
+Subject: Payment proof email
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1178808_844936362.1786830445855"
+Feedback-ID:
+ ::1.eu-west-1.tZS6FB8tVmofnQIv9wStsvozxZb5LUipbHq31ZpoFio=:AmazonSES
+X-SES-Outgoing: 2026.08.15-54.240.3.16
+
+------=_Part_1178808_844936362.1786830445855
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1178809_1982344053.1786830445855"
+
+------=_Part_1178809_1982344053.1786830445855
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<!DOCTYPE html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" lang=3D"en">
+<head>
+  <title>Invoice</title>
+  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type"/>
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0"/>
+  <!--[if !mso]>-->
+  <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"/>
+  <!--<![endif]-->
+  <meta name=3D"format-detection" content=3D"telephone=3Dno"/>
+  <meta name=3D"x-apple-disable-message-reformatting"/>
+  <link href=3D"https://fonts.googleapis.com/css2?family=3DRoboto:wght@400,70=
+0&display=3Dswap"
+        rel=3D"stylesheet">
+  <style>
+    html {
+      box-sizing: border-box
+    }
+
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      background: #f7f7f7;
+      color: #444;
+      font-family: Roboto Condensed, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.375em;
+    }
+
+    tr, td {
+      box-sizing: border-box
+    }
+
+    .container {
+      border: 0;
+      box-sizing: border-box;
+      margin: 0;
+      width: 100%;
+      padding: 12px;
+      background: #f7f7f7;
+    }
+
+    .content {
+      box-sizing: border-box;
+      max-width: 640px;
+      margin: auto;
+      padding: 0 12px 24px;
+      border: 1px solid #e1e1e1;
+      border-top: 3px solid #73d700;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .content-greyhound {
+      box-sizing: border-box;
+      max-width: 640px;
+      margin: auto;
+      padding: 0 12px 24px;
+      border: 1px solid #e1e1e1;
+      border-top: 3px solid #004963;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .logo {
+      box-sizing: border-box;
+      margin: 0;
+      width: 100%;
+      padding-top: 12px;
+      text-align: left;
+    }
+
+    .logo-link {
+      box-sizing: border-box;
+      padding: 0;
+      display: inline-block;
+      height: 24px;
+      margin-bottom: 12px;
+    }
+
+    .logo-image {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .email-body {
+      width: 100%;
+      border: 0;
+      box-sizing: border-box
+    }
+
+    .title {
+      box-sizing: border-box;
+      color: #353535;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 27px;
+    }
+
+    .booking-text {
+      box-sizing: border-box;
+      color: #353535;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    .invoice-text {
+      box-sizing: border-box;
+      color: #353535;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .cancel-date {
+      box-sizing: border-box;
+      color: #353535;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+
+    .cancel-text {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      color: #353535;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    .faq-title {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      color: #353535;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+
+    .faq-text {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      color: #353535;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    .thanks-text {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      color: #353535;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    .button-container {
+      border: 0;
+      box-sizing: border-box;
+      padding: 0;
+      display: block;
+      position: relative;
+      width: 100%;
+      margin-bottom: 18px;
+    }
+
+    .button-body {
+      border: 0;
+      box-sizing: border-box;
+    }
+
+    .button-item {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 6px;
+      background: #ffad00;
+    }
+
+    .footer {
+      border: 0;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 171px;
+      border-radius: 6px;
+      background: #f7f7f7;
+      text-align: center;
+    }
+
+    .download-app {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      color: #353535;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0;
+      line-height: 22px;
+    }
+
+    .google-play {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 12px;
+    }
+
+    .google-play a {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    .google-play a img {
+      box-sizing: border-box;
+      padding: 0 6px;
+      width: 112px;
+      border: 0;
+    }
+
+    .social-media-links {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 12px;
+    }
+
+    .social-media-links a {
+      box-sizing: border-box
+    }
+
+    .social-media-links a img {
+      box-sizing: border-box;
+      width: 36px;
+      height: 36px;
+      border: 0;
+    }
+
+    .copyright {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 84px;
+      border-radius: 6px;
+      background: #f7f7f7;
+      text-align: center;
+      border: 0;
+    }
+
+    .copyright p {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      color: #646464;
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+      max-width: 544px;
+      margin: 0 auto;
+      line-height: 18px;
+    }
+  </style>
+</head>
+<body>
+<table class=3D"hce-layout-wrapper container">
+  <tr>
+    <td>
+      <table class=3D"hce-email-body content">
+        <tr>
+          <td>
+            <table class=3D"hce-header logo">
+  <tr>
+    <td>
+      <a class=3D"hce-header-logo-link logo-link"
+         title=3D"Hive logo"
+         href=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fwww.=
+flixbus.com/1/010201a00764dd31-599f91d2-9ffb-402e-9209-3cc906097b57-000000/E6=
+yR_mesQ5D_zUAIvZp5_4anwuc=3D473"
+         rel=3D"author">
+        <img class=3D"hce-header-logo-link__img logo-image"
+             src=3D"https://honeycomb-assets.hive.flixbus.com/honeycomb-logos=
+-static/1.0.2/png/flix-bg.png"
+             alt=3D"Logo"
+             height=3D"36"
+             width=3D"71.25"/>
+      </a>
+    </td>
+  </tr>
+</table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table class=3D"email-body">
+  <tr>
+    <td>
+      <h1 class=3D"hce-h3 title">Dear Flix customer</h1>
+      <h2 class=3D"hce-text booking-text">Thank you for your booking (#000000=
+0000)</h2>
+      <h4 class=3D"hce-text invoice-text">Your payment proof is attached.</h4>
+
+      <h1 class=3D"hce-h2 cancel-date">Do you want to cancel or change your t=
+rip?</h1>
+      <h2 class=3D"hce-text cancel-text">Please use our self-service area <a =
+href=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fshop.global.f=
+lixbus.com%2Frebooking%2Flogin/1/010201a00764dd31-599f91d2-9ffb-402e-9209-3cc=
+906097b57-000000/pyo8VtObN_2yd5kuY4CIphUO_g4=3D473">"Manage my booking"</a> w=
+here you can cancel your trip, make changes to it, and edit passenger details=
+ such as name or phone number.</h2>
+
+      <h1 class=3D"hce-h2 faq-title">Frequently Asked Questions (FAQ)</h1>
+      <h2 class=3D"hce-text faq-text">We answer the most common questions abo=
+ut our services in our FAQ section at <a href=3D"https://pk4s6wxc.r.eu-west-1=
+.awstrack.me/L0/https:%2F%2Fhelp.flixbus.com%2Fs%2F%3Flanguage=3Den_US/1/0102=
+01a00764dd31-599f91d2-9ffb-402e-9209-3cc906097b57-000000/tH7umxaLsjQoHh0exngb=
+repbENE=3D473">www.flixbus.com</a>.<br />There you will also find our <a href=
+=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fglobal.flixbus.co=
+m%2Fgeneral-terms-business-and-booking-conditions/1/010201a00764dd31-599f91d2=
+-9ffb-402e-9209-3cc906097b57-000000/hdNOOBca0MB1vC7DRyVSjXl55yw=3D473">Terms =
+and Conditions</a> and <a href=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0=
+/https:%2F%2Fglobal.flixbus.com%2Fpassenger-rights/1/010201a00764dd31-599f91d=
+2-9ffb-402e-9209-3cc906097b57-000000/2fctSR9FmOcfA4D6fuBKC3NZqrQ=3D473">Passe=
+nger Rights</a>.</h2>
+     =20
+
+      <h4 class=3D"hce-text thanks-text">We look forward to welcoming you on =
+board,<br/>Your Flix team.</h4>
+
+      <table class=3D"hce-form-row button-container">
+        <tr>
+          <td>
+            <table class=3D"button-body">
+              <tr>
+                <td class=3D"hce-btn-wrapper button-item"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table class=3D"hce-footer footer">
+  <tr>
+    <td>
+      <h4 class=3D"hce-h4 download-app">Download the FlixBus app!</h4>
+    </td>
+  </tr>
+  <tr>
+    <td class=3D"hce-footer-app-nav google-play">
+      <a class=3D"hce-footer-app-nav__g-play-banner"
+         href=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fplay=
+.google.com%2Fstore%2Fapps%2Fdetails%3Fid=3Dde.flixbus.app/1/010201a00764dd31=
+-599f91d2-9ffb-402e-9209-3cc906097b57-000000/OnF__8xAibcuAqgLgfbFHnQWX_0=3D47=
+3">
+        <img
+            src=3D"https://honeycomb.flixbus.com/dist/4.4.0-alpha.4/img/email=
+/google-play-banner.png"
+            alt=3D"Google play banner"
+            width=3D"112"/>
+      </a>
+      <a class=3D"hce-footer-app-nav__appstore-banner"
+         href=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fapps=
+.apple.com%2Fde%2Fapp%2Fflixbus-flixtrain%2Fid778437357/1/010201a00764dd31-59=
+9f91d2-9ffb-402e-9209-3cc906097b57-000000/VKGE6yLCNXWGna4K4ilX0mWgG5g=3D473">
+        <img
+            src=3D"https://honeycomb.flixbus.com/dist/4.4.0-alpha.4/img/email=
+/appstore-banner.png"
+            alt=3D"Appstore banner"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td class=3D"hce-footer-social-nav social-media-links">
+      <a href=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fwww.=
+facebook.com%2FFlixBus/1/010201a00764dd31-599f91d2-9ffb-402e-9209-3cc906097b5=
+7-000000/G_ysx64GO4RvIf_7nj_Vn4YBRdQ=3D473">
+        <img
+            src=3D"https://honeycomb-icons.hive.flixbus.com/10.0.1/svg/facebo=
+ok.svg"
+            alt=3D"Facebook icon"
+            width=3D"36"
+            height=3D"36"/>
+      </a>
+      <a href=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fwww.=
+instagram.com%2Fflixbus/1/010201a00764dd31-599f91d2-9ffb-402e-9209-3cc906097b=
+57-000000/kcbeMWZWFALKmh1fxIeMc1sn0Yg=3D473">
+        <img
+            src=3D"https://honeycomb-icons.hive.flixbus.com/10.0.1/svg/insta.=
+svg"
+            alt=3D"Instagram icon"
+            width=3D"36"
+            height=3D"36"/>
+      </a>
+      <a href=3D"http://pk4s6wxc.r.eu-west-1.awstrack.me/L0/http:%2F%2Fwww.yo=
+utube.com%2Fuser%2FEinfachBusfahren%3Ffeature=3Dwatch/1/010201a00764dd31-599f=
+91d2-9ffb-402e-9209-3cc906097b57-000000/vk37RofK6c1-YX9hMiCrGXCl83U=3D473">
+        <img src=3D"https://honeycomb-icons.hive.flixbus.com/10.0.1/svg/youtu=
+be.svg"
+             alt=3D"Youtube icon"
+             width=3D"36"
+             height=3D"36"/>
+      </a>
+      <a href=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fwww.=
+linkedin.com%2Fcompany%2Fflixbus/1/010201a00764dd31-599f91d2-9ffb-402e-9209-3=
+cc906097b57-000000/VI6bPfZWUZSlhH5fqFBAUby2CNg=3D473">
+        <img src=3D"https://honeycomb-icons.hive.flixbus.com/10.0.1/svg/linke=
+din.svg"
+             alt=3D"Youtube icon"
+             width=3D"36"
+             height=3D"36"/>
+      </a>
+      <a href=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fwww.=
+tiktok.com%2F@flixbus/1/010201a00764dd31-599f91d2-9ffb-402e-9209-3cc906097b57=
+-000000/gEOdbSafG6fWw2m1kxF0Q9WpzBs=3D473">
+        <img src=3D"https://honeycomb-icons.hive.flixbus.com/10.0.1/svg/tik-t=
+ok.svg"
+             alt=3D"Youtube icon"
+             width=3D"36"
+             height=3D"36"/>
+      </a>
+    </td>
+  </tr>
+</table>
+            <br/>
+            <table class=3D"hce-footer copyright">
+  <tr>
+    <td>
+      <p class=3D"hce-h4">
+        <span>Copyright =C2=A9 2026 | Flix SE | Friedenheimer Br=C3=BCcke 16,=
+ 80639 Munich | All rights reserved | <a href=3D"#">Legal Notice</a> | <a hre=
+f=3D"#">Privacy Policy</a></span>
+      </p>
+    </td>
+  </tr>
+</table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<img alt=3D"" src=3D"https://pk4s6wxc.r.eu-west-1.awstrack.me/I0/010201a00764=
+dd31-599f91d2-9ffb-402e-9209-3cc906097b57-000000/PHbjMT335dqFPTZY_CJAdjN8iKc=
+=3D473" style=3D"display: none; width: 1px; height: 1px;">
+</body>
+</html>
+
+------=_Part_1178809_1982344053.1786830445855--
+
+------=_Part_1178808_844936362.1786830445855
+Content-Type: application/pdf; name="Payment Receipt-0000000000.pdf"
+Content-Disposition: attachment; filename="Payment Receipt-0000000000.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJXN0dWItZm9yLW1haWxzaWZ0LWZpeHR1cmUKMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAolJUVPRgo=
+------=_Part_1178808_844936362.1786830445855--
