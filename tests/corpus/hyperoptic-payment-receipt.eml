@@ -1,0 +1,222 @@
+Delivered-To: user@example.com
+Received: from prd-bill-api1 (unknown [172.22.47.172])	by iws2.hyperoptic.com
+ (Postfix) with ESMTP id 6F805233D8	for <user@example.com>; Fri, 10 Jul 2026
+ 21:13:06 +0100 (BST)
+X-Received: by 2002:a05:6000:2013:b0:47d:f01e:83cf with SMTP id
+ ffacd0b85a97d-47f2dd0a07fmr203085f8f.58.1783714387344;        Fri, 10 Jul
+ 2026 13:13:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783714387; cv=none;
+        d=google.com; s=arc-20260327;
+        b=fOdjtxCkipzN+SbBk4PMwO4XIs+rk1yTbY9Ckr/gGiFgpOYc6n6V5RUrVuDZ7mgt9G
+         uL3d0gRCnOFVy7LS3h/1JVguH1XCoRflkQw+FRh9iiV7jRKWXntkNDKZNDbqcGUvWsmk
+         MEle+TxWwJgwPz7w+XppTgQ2QucoGrVThvp97SSyrUTfwBrICDmM++tWMvm/HigUUPRF
+         WI5OscUyVUoxsAYY+5ftn2cuWk2UCTWueildIAxUCQn5l2SjuLmUM/LeVQjPsZBmEkw0
+         tuSA7TXl9lKT6eG+sfLMNlfQZud0gfVhY4FmS6pcmJ1MpLfEOj2MHEGtaieVBRDeY7m2
+         1+tA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327;       
+ h=mime-version:subject:message-id:to:from:date:dkim-signature;       
+ bh=TR0ETAkjNmEKYx9/m0SlzZO08vLvAYBhLDW7Qq7n15o=;       
+ fh=MpiHTFU+kyhMlRbMPhoEaPjHKTXBUXdUsSrFXK7brM8=;       
+ b=JENbNOOyYBDMSb6qDvXnkIZ2hXbu/AXX9v4saB1sCZfqvPiUKUFG2cHjiHDkUPBSg5        
+ eqh8rYX/DQI7zhCGkN0iQvy9GPVFLTy08uCCTrElzXL7i6+6KuLe3Seojh6a6wgagX8T        
+ b8W2EzeBzjlE4dnzJrDSelv5cbbXu6KjOsLgqxGs8g/mOtZZQ8gqO0l9A8jM+/LN8htM        
+ tJkI/Kp4LhJgFJdO0n6QSycMwrX6BVlEKZEdMPj+MhA3o/sONIdxD3kWfCKM/ClekPTp        
+ 9FC1UaSfra7dJiEpZe9kR241aR0OIdAq7gFNyUJYsWkmRX0gmbM4VTamYnVO9RBep44n        
+ BBsg==;        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass
+ header.i=@hyperoptic.com header.s=mail header.b=LAyXQzWj;       spf=pass
+ (google.com: domain of no_reply@hyperoptic.com designates 54.76.207.91 as
+ permitted sender) smtp.mailfrom=no_reply@hyperoptic.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=hyperoptic.com
+Return-Path: <no_reply@hyperoptic.com>
+Received: from iws2.hyperoptic.com (iws2.hyperoptic.com. [54.76.207.91])
+        by mx.google.com with ESMTPS id
+ ffacd0b85a97d-47aa2fd309bsi41386168f8f.444.2026.07.10.13.13.06        for
+ <user@example.com>        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384
+ bits=256/256);        Fri, 10 Jul 2026 13:13:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of no_reply@hyperoptic.com designates
+ 54.76.207.91 as permitted sender) client-ip=54.76.207.91;
+Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@hyperoptic.com header.s=mail header.b=LAyXQzWj;       spf=pass
+ (google.com: domain of no_reply@hyperoptic.com designates 54.76.207.91 as
+ permitted sender) smtp.mailfrom=no_reply@hyperoptic.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=hyperoptic.com
+Received: from prd-bill-api1 (unknown [172.22.47.172])
+	by iws2.hyperoptic.com (Postfix) with ESMTP id 6F805233D8
+	for <user@example.com>; Fri, 10 Jul 2026 21:13:06 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hyperoptic.com;
+	s=mail; t=1783714386;
+	bh=TR0ETAkjNmEKYx9/m0SlzZO08vLvAYBhLDW7Qq7n15o=;
+	h=Date:From:To:Subject;
+	b=LAyXQzWjxz6ZZFXHdMlu20BjRShnBMCgwFjA0djKRfXDztF8fcu/cCpWRdZbDquvx
+	 4eiNIjNNASRIoJhs5UtcQ+ch4QXNcAXZNd3tm+ZfnBE4t+Rgq4Zj8FaDtYIHQxHpon
+	 26Ho/MzG1iMHIm/Qv03KxTkkpldgPXr0umMNScDYoBKwxa6bGgO8CAxh63b/D0wC+4
+	 cjac7ikMao6z6LX0FqSOp5LiND82Q/cVHmKSt6aiNgYwvn5uzM6mxglWzD5RkfVXoC
+	 mwaoctgRRgYOxncQMjb0Z4IBaQ3GwEwV9827rChjaw3F7Ii/VVMRSs4tBbgmhjo2Tl
+	 dD00nhQrZqZ+g==
+Date: Fri, 10 Jul 2026 21:13:06 +0100 (BST)
+From: no_reply@hyperoptic.com
+To: user@example.com
+Message-ID: <1689956940.30215.1783714386455@prd-bill-api1>
+Subject: Thanks for your payment
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_30213_1211308627.1783714386451"
+
+------=_Part_30213_1211308627.1783714386451
+Content-Type: multipart/related; 
+	boundary="----=_Part_30214_703394653.1783714386451"
+
+------=_Part_30214_703394653.1783714386451
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<!doctype html>
+    <html>
+    <head>
+        <meta charset=3D"utf-8">
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1.0" />
+        <style type=3D"text/css">
+            html {
+                font-family: Arial, sans-serif;
+                font-style: normal;
+                font-weight: normal;
+            }
+        </style>
+    </head>
+    <body style=3D"margin: 0; padding:0; font-style: normal; font-weight: nor=
+mal;">
+        <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"800"=
+ style=3D"font-family: Arial, sans-serif; font-style: normal; font-weight: no=
+rmal;">
+            <tr>
+                <td>
+                    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" w=
+idth=3D"800"
+                        style=3D"font-family: Arial, sans-serif; font-style: =
+normal; font-weight: normal;">
+                        <tr>
+                            <td>
+                                <table border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" width=3D"800"
+                                    style=3D"border-collapse: collapse;">
+                                    <tr>
+                                        <td align=3D"right">
+                                            <a href=3D"https://hyperoptic.com=
+/" target=3D"_blank">
+                                                <img src=3D"https://d3v8ce5nb=
+i17h0.cloudfront.net/header-800x150px.jpg"
+                                                    width=3D"800" height=3D"1=
+50" style=3D"display: block;" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"b=
+order-collapse:collapse;" width=3D"600"><tbody><tr><td align=3D"left" style=
+=3D"font-family:Calibri, Helvetica, Arial, sans-serif;font-size:13px;font-wei=
+ght:600;color:#19a6e4;">&nbsp;
+
+ </td></tr><tr><td align=3D"left" style=3D"font-family:Calibri, Helvetica, Ar=
+ial, sans-serif;font-size:13px;font-weight:400;color:#616161;">Hi Test
+                </td></tr><tr><td align=3D"left" style=3D"font-family:Calibri=
+, Helvetica, Arial, sans-serif;font-size:13px;font-weight:600;color:#19a6e4;"=
+>&nbsp;
+
+ </td></tr><tr><td align=3D"left" style=3D"font-family:Calibri, Helvetica, Ar=
+ial, sans-serif;font-size:13px;font-weight:400;color:#616161;">Thanks for you=
+r recent credit card payment. We're attaching a copy of the payment receipt h=
+ere for your records.
+                </td></tr><tr><td align=3D"left" style=3D"font-family:Calibri=
+, Helvetica, Arial, sans-serif;font-size:13px;font-weight:600;color:#19a6e4;"=
+>&nbsp;
+
+ </td></tr><tr>
+ =20
+ <tr>
+        <td align=3D"left" style=3D"font-family:Calibri, Helvetica, Arial, sa=
+ns-serif; font-size:13px; font-weight:600; color:#19a6e4;">Need help?
+    <br>=20
+        </td>
+    </tr>
+    <tr>
+        <td align=3D"left" style=3D"font-family:Calibri, Helvetica, Arial, sa=
+ns-serif; font-size:13px; font-weight:400; color:#616161;">
+            - <a style=3D"font-family:Calibri, Helvetica, Arial, sans-serif; =
+font-size:13px; font-weight:400; color:#19a6e4;" href=3D"https://www.hyperopt=
+ic.com/myaccount-login/">Log in to My Account</a> to check for updates, manag=
+e your account or troubleshoot an issue 24/7
+        </td>
+    </tr>
+    <tr>
+        <td align=3D"left" style=3D"font-family:Calibri, Helvetica, Arial, sa=
+ns-serif; font-size:13px; font-weight:400; color:#616161;">
+            - Prefer to talk to someone? <a style=3D"font-family:Calibri, Hel=
+vetica, Arial, sans-serif; font-size:13px; font-weight:400; color:#616161;"> =
+Please check our contact options</a> <a href=3D"https://www.hyperoptic.com/co=
+ntact-us/" style=3D"font-family:Calibri, Helvetica, Arial, sans-serif; font-s=
+ize:13px; font-weight:400; color:#19a6e4;">here</a>.
+        </td>
+    </tr>
+
+ </tbody></table><table style=3D"border-collapse: collapse;" border=3D"0" wid=
+th=3D"700" cellspacing=3D"0" cellpadding=3D"0">
+   <tbody>
+      <tr>
+         <td>&nbsp;</td>
+      </tr>
+      <tr>
+         <td style=3D"font-family: Calibri, Helvetica, Arial, sans-serif; fon=
+t-size: 13px; font-weight: 600; color: #616161;" align=3D"left">Please note t=
+hat this is an automated message - replies to this email are not monitored.</=
+td>
+      </tr>
+   </tbody>
+</table>
+<table style=3D"border-collapse: collapse;" border=3D"0" width=3D"600" cellsp=
+acing=3D"0" cellpadding=3D"0">
+    <tbody>
+        <tr><td>&nbsp;</td></tr><tr><td style=3D"font-family: Calibri, Helvet=
+ica, Arial, sans-serif; font-size: 13px; font-weight: 400; color: #616161;" a=
+lign=3D"left">Thanks,</td></tr><tr><td style=3D"font-family: Calibri, Helveti=
+ca, Arial, sans-serif; font-size: 13px; font-weight: 600; color: #19a6e4;" al=
+ign=3D"left">Some Person</td></tr><tr><td style=3D"font-family: Calibri, Helv=
+etica, Arial, sans-serif; font-size: 13px; font-weight: 400; color: #616161;"=
+ align=3D"left">Head of Customer Service</td></tr><tr style=3D"font-family: C=
+alibri, Helvetica, Arial, sans-serif; font-size: 10px;"><td>&nbsp;</td></tr><=
+tr><td style=3D"font-family: Calibri, Helvetica, Arial, sans-serif; font-size=
+: 13px; font-weight: 400; color: #616161;" align=3D"left">Follow us</td></tr>=
+<tr><td style=3D"font-size: 13px; font-weight: 600; color: #616161;" align=3D=
+"left"><a href=3D"https://twitter.com/Hyperoptic" target=3D"_blank" rel=3D"no=
+opener"> <img src=3D"http://d3v8ce5nbi17h0.cloudfront.net/twitter.png" alt=3D=
+"Hyperoptic broadband" width=3D"28px" height=3D"28px" /> </a> <a href=3D"http=
+s://www.facebook.com/HyperopticGigabitBroadband/" target=3D"_blank" rel=3D"no=
+opener"> <img src=3D"http://d3v8ce5nbi17h0.cloudfront.net/facebook.png" alt=
+=3D"Hyperoptic broadband" width=3D"28px" height=3D"28px" /> </a> <a href=3D"h=
+ttps://www.linkedin.com/company/2183582" target=3D"_blank" rel=3D"noopener"> =
+<img src=3D"http://d3v8ce5nbi17h0.cloudfront.net/linkedin.png" alt=3D"Hyperop=
+tic broadband" width=3D"28px" height=3D"28px" /> </a> <a href=3D"https://www.=
+youtube.com/channel/UCAYeFDtjbcykBsS1jt3O25A" target=3D"_blank" rel=3D"noopen=
+er"> <img src=3D"http://d3v8ce5nbi17h0.cloudfront.net/youtube.png" alt=3D"Hyp=
+eroptic broadband" width=3D"28px" height=3D"28px" /> </a></td></tr></tbody></=
+table>
+</html>
+
+------=_Part_30214_703394653.1783714386451--
+
+------=_Part_30213_1211308627.1783714386451
+Content-Type: application/pdf; name="WP000000000000_Invoice.pdf"
+Content-Disposition: attachment; filename="WP000000000000_Invoice.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJXN0dWItZm9yLW1haWxzaWZ0LWZpeHR1cmUKMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAolJUVPRgo=
+------=_Part_30213_1211308627.1783714386451--
