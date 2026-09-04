@@ -65,8 +65,10 @@ def test_uk_dispatched_with_multiple_items(run_extractor):
     assert isinstance(items, list)
     assert [i["name"] for i in items] == [
         "Example Gadget X1",
-        "Example HDMI 2.1 Cable 2M, 8K@60Hz, Supports eARC HDR10 HDCP 2.2/2.3, "
-        "Compatible with all HDMI devices",
+        (
+            "Example HDMI 2.1 Cable 2M, 8K@60Hz, Supports eARC HDR10 HDCP 2.2/2.3, "
+            "Compatible with all HDMI devices"
+        ),
     ]
     assert all(i["@type"] == "Product" for i in items)
 

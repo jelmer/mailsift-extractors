@@ -21,14 +21,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 AMOUNT_RE = re.compile(
     r"totaalbedrag van uw factuur\s*€\s*(-?[0-9]+[,.]\d{2})",
-    re.I,
+    re.IGNORECASE,
 )
-KLANT_RE = re.compile(r"klantnummer\s*(\d+)", re.I)
+KLANT_RE = re.compile(r"klantnummer\s*(\d+)", re.IGNORECASE)
 
 
 class _Strip(HTMLParser):

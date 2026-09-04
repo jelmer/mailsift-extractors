@@ -28,15 +28,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-APPOINTMENT_RE = re.compile(r"Appointment:\s*\n?\s*(.+?)(?=\n\n|\nWhen:|$)", re.S)
+APPOINTMENT_RE = re.compile(r"Appointment:\s*\n?\s*(.+?)(?=\n\n|\nWhen:|$)", re.DOTALL)
 WHEN_RE = re.compile(
     r"When:\s*\n?\s*"
     r"([A-Z][a-z]+\s+[A-Z][a-z]+\s+\d{1,2},\s+\d{4}\s+\d{1,2}:\d{2})"
 )
-WHERE_RE = re.compile(r"Where:?\s*\n?\s*(.+?)(?=\n\n|\nDetails:|\nDr\b|$)", re.S)
+WHERE_RE = re.compile(r"Where:?\s*\n?\s*(.+?)(?=\n\n|\nDetails:|\nDr\b|$)", re.DOTALL)
 PRACTITIONER_RE = re.compile(r"^(Dr\s+[A-Z][a-zA-Z'\- ]+?)\s*:", re.MULTILINE)
 
 

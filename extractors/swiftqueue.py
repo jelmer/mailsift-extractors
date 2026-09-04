@@ -30,16 +30,15 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 TIME_RE = re.compile(
     r"Time:\s*\n+\s*"
     r"([A-Z][a-z]+\s+\d{1,2}(?:st|nd|rd|th)\s+of\s+[A-Z][a-z]+\s+\d{4})"
     r"\s+at\s+(\d{1,2}:\d{2}\s*(?:AM|PM))"
 )
-LOCATION_RE = re.compile(r"Location:\s*\n+\s*(.+?)(?=\n\n|$)", re.S)
-CLINIC_RE = re.compile(r"appointment\s+at\s+(.+?)\s*[.\n]", re.I)
+LOCATION_RE = re.compile(r"Location:\s*\n+\s*(.+?)(?=\n\n|$)", re.DOTALL)
+CLINIC_RE = re.compile(r"appointment\s+at\s+(.+?)\s*[.\n]", re.IGNORECASE)
 
 
 class _Strip(HTMLParser):

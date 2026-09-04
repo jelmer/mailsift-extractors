@@ -25,10 +25,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
+from mailsift_extractor import read_message
 
-
-SUBJECT_RE = re.compile(r"Kwalitaria\s+(.+?)\s+bestelling\s+(\d+)", re.I)
+SUBJECT_RE = re.compile(r"Kwalitaria\s+(.+?)\s+bestelling\s+(\d+)", re.IGNORECASE)
 SHOP_RE = re.compile(r"Je hebt besteld bij\s+(.+?)\.\s")
 TOTAL_RE = re.compile(r"Totaal\s*€\s*([0-9]+[.,][0-9]{2})")
 
@@ -113,7 +112,9 @@ def main() -> int:
     # strip a leading "Kwalitaria " to make the joined name consistent.
     shop_full = shop_short
     if (m := SHOP_RE.search(flat)) is not None:
-        shop_full = re.sub(r"^Kwalitaria\s+", "", m.group(1).strip(), flags=re.I)
+        shop_full = re.sub(
+            r"^Kwalitaria\s+", "", m.group(1).strip(), flags=re.IGNORECASE
+        )
 
     parser = _Rows()
     parser.feed(mail.html)

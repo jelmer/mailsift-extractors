@@ -24,16 +24,15 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message  # noqa: E402
-
+from mailsift_extractor import read_message
 
 DATE_RE = re.compile(
     r"Date:?\s+(\d{1,2})\s+"
     r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
     r"(\d{4})",
-    re.I,
+    re.IGNORECASE,
 )
-AMOUNT_RE = re.compile(r"Payment Amount:?\s*£\s*([0-9]+(?:\.[0-9]{2})?)", re.I)
+AMOUNT_RE = re.compile(r"Payment Amount:?\s*£\s*([0-9]+(?:\.[0-9]{2})?)", re.IGNORECASE)
 REF_RE = re.compile(r"Reference Number[;:]?\s*([A-Fa-f0-9]{8,})")
 
 

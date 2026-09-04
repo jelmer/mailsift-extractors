@@ -60,9 +60,7 @@ ITEM_STATUS_RE = re.compile(
     r"Dit is (?:onderweg|bezorgd)\s+\d+\s+artike\w*\s+(.+?)\s+(?:[AC]000[A-Z0-9]{6}|\d{10})",
     re.IGNORECASE,
 )
-ITEM_LEGACY_RE = re.compile(
-    r"Besteld bij bol\.com:\s+(.+?)\s+\d+\s+€", re.IGNORECASE
-)
+ITEM_LEGACY_RE = re.compile(r"Besteld bij bol\.com:\s+(.+?)\s+\d+\s+€", re.IGNORECASE)
 
 
 class _Strip(HTMLParser):
@@ -164,9 +162,11 @@ def main() -> int:
         parcel["deliveryStatus"] = status
     # Item name, if a template we understand names it. The bul (buren /
     # neighbours) template just carries an address, so no item field.
-    item_m = ITEM_MODERN_RE.search(text) or ITEM_STATUS_RE.search(
-        text
-    ) or ITEM_LEGACY_RE.search(text)
+    item_m = (
+        ITEM_MODERN_RE.search(text)
+        or ITEM_STATUS_RE.search(text)
+        or ITEM_LEGACY_RE.search(text)
+    )
     if item_m:
         parcel["itemShipped"] = {
             "@type": "Product",
