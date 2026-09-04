@@ -190,7 +190,7 @@ def parse_columnar_segments(text: str) -> list[tuple]:
                 break
         lines = [ln.strip() for ln in block.splitlines() if ln.strip()]
         # Extract the two date/time/place/[terminal] blocks in order.
-        legs = []
+        legs: list[tuple[str, str, str]] = []
         i = 0
         while i < len(lines) and len(legs) < 2:
             if not _DATE_RE.match(lines[i]):
