@@ -25,8 +25,15 @@ def test_two_segment_booking_emits_two_reservations(run_extractor):
         "address": "Amsterdam",
     }
 
+    assert leg1["reservationFor"]["pending:cabinClass"] == "Business"
+    assert leg1["@context"] == {
+        "@vocab": "https://schema.org/",
+        "pending": "https://pending.schema.org/",
+    }
+
     leg2 = out["klm-P00000-KL0605.reservation.json"]
     assert leg2["reservationFor"]["flightNumber"] == "605"
     assert leg2["reservationFor"]["departureTime"] == "2019-02-19T10:25:00"
     assert leg2["reservationFor"]["arrivalTime"] == "2019-02-19T12:25:00"
     assert leg2["reservationFor"]["arrivalAirport"]["name"] == ("San Francisco Intl.")
+    assert leg2["reservationFor"]["pending:cabinClass"] == "World Business Class"

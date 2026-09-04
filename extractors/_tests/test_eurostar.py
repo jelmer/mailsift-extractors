@@ -31,6 +31,12 @@ def test_return_trip(run_extractor):
             "departureTime": "2026-06-10T18:04:00",
             "arrivalTime": "2026-06-10T22:32:00",
         },
+        "ticketedSeat": {
+            "@type": "Seat",
+            "seatNumber": "17",
+            "seatSection": "5",
+            "seatingType": "Standard",
+        },
     }
     ret = out["eurostar-EEEEEE-return.reservation.json"]
     assert ret["reservationNumber"] == "eurostar-EEEEEE-return"
@@ -38,3 +44,9 @@ def test_return_trip(run_extractor):
     assert ret["reservationFor"]["arrivalStation"]["name"] == "London St Pancras Int'l"
     assert ret["reservationFor"]["departureTime"] == "2026-06-22T19:28:00"
     assert ret["reservationFor"]["arrivalTime"] == "2026-06-22T21:57:00"
+    assert ret["ticketedSeat"] == {
+        "@type": "Seat",
+        "seatNumber": "55",
+        "seatSection": "10",
+        "seatingType": "Standard",
+    }

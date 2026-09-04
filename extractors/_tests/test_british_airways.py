@@ -12,7 +12,10 @@ def test_eticket_emits_one_reservation_per_segment(run_extractor):
 
     outbound = out["ba-BBBBBB-BA0440.reservation.json"]
     assert outbound == {
-        "@context": "https://schema.org",
+        "@context": {
+            "@vocab": "https://schema.org/",
+            "pending": "https://pending.schema.org/",
+        },
         "@type": "FlightReservation",
         "reservationNumber": "BBBBBB",
         "reservationFor": {
@@ -35,6 +38,7 @@ def test_eticket_emits_one_reservation_per_segment(run_extractor):
             },
             "departureTime": "2024-06-08T16:15:00",
             "arrivalTime": "2024-06-08T18:35:00",
+            "pending:cabinClass": "Euro Traveller",
         },
     }
 
@@ -64,6 +68,7 @@ def test_legacy_eticket_format_still_extracts(run_extractor):
     assert outbound["reservationNumber"] == "LEGACY"
     for_ = outbound["reservationFor"]
     assert for_["flightNumber"] == "2762"
+    assert for_["pending:cabinClass"] == "Euro Traveller"
     assert for_["departureAirport"] == {
         "@type": "Airport",
         "name": "Gatwick",

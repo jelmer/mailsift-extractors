@@ -43,6 +43,9 @@ DATE_LINE_RE = re.compile(
     r"^(?P<wday>[A-Z][a-z]{2})\s+(?P<day>\d{1,2})\s+(?P<mon>[A-Z][a-z]{2})\s+(?P<yy>\d{2})\s*$"
 )
 TIME_AIRPORT_RE = re.compile(r"^(?P<time>\d{1,2}:\d{2})\s+(?P<airport>.+?)\s*$")
+# "Class: <name>" sits between the arrival airport and the flight
+# number; KLM writes both "Business" and "World Business Class".
+CLASS_LINE_RE = re.compile(r"^Class:\s*(?P<cabin>.+?)\s*$")
 
 
 class _Strip(HTMLParser):
@@ -138,21 +141,25 @@ def main() -> int:
         airline_code = fn_match.group(1)
         flight_num = fn_match.group(2)
         # Walk back from the flight-number line, collecting prior
-        # lines that match either a date or a time+airport. Filler
-        # lines (e.g. "Class: ..." which sits between the segment and
-        # the flight number) are skipped. We stop once we have one
+        # lines that match either a date or a time+airport. A "Class:
+        # <cabin>" line sits between the segment and the flight
+        # number and is captured separately. We stop once we have one
         # complete segment: [dep_date, dep_time_airport, arr_date,
         # arr_time_airport], i.e. four kept lines.
         cursor = index - 1
         collected: list[tuple[str, dict]] = []
+        cabin: str | None = None
         while cursor >= 0 and len(collected) < 4:
             current = lines[cursor]
             d_match = DATE_LINE_RE.match(current)
             t_match = TIME_AIRPORT_RE.match(current)
+            c_match = CLASS_LINE_RE.match(current)
             if d_match:
                 collected.append(("date", d_match.groupdict()))
             elif t_match:
                 collected.append(("time", t_match.groupdict()))
+            elif c_match and cabin is None:
+                cabin = c_match.group("cabin")
             cursor -= 1
         if len(collected) < 4:
             continue
@@ -183,23 +190,35 @@ def main() -> int:
         airline_name = {"KL": "KLM Royal Dutch Airlines", "AF": "Air France"}.get(
             airline_code, airline_code
         )
+        flight: dict = {
+            "@type": "Flight",
+            "flightNumber": flight_num.lstrip("0") or "0",
+            "airline": {
+                "@type": "Airline",
+                "iataCode": airline_code,
+                "name": airline_name,
+            },
+            "departureAirport": dep_airport,
+            "arrivalAirport": arr_airport,
+            "departureTime": dep_dt.strftime("%Y-%m-%dT%H:%M:%S"),
+            "arrivalTime": arr_dt.strftime("%Y-%m-%dT%H:%M:%S"),
+        }
+        # Cabin class lives under the pending.schema.org namespace.
+        # An object @context so consumers can resolve the prefix.
+        if cabin:
+            flight["pending:cabinClass"] = cabin
+            context: str | dict = {
+                "@vocab": "https://schema.org/",
+                "pending": "https://pending.schema.org/",
+            }
+        else:
+            context = "https://schema.org"
+
         reservation: dict = {
-            "@context": "https://schema.org",
+            "@context": context,
             "@type": "FlightReservation",
             "reservationNumber": booking,
-            "reservationFor": {
-                "@type": "Flight",
-                "flightNumber": flight_num.lstrip("0") or "0",
-                "airline": {
-                    "@type": "Airline",
-                    "iataCode": airline_code,
-                    "name": airline_name,
-                },
-                "departureAirport": dep_airport,
-                "arrivalAirport": arr_airport,
-                "departureTime": dep_dt.strftime("%Y-%m-%dT%H:%M:%S"),
-                "arrivalTime": arr_dt.strftime("%Y-%m-%dT%H:%M:%S"),
-            },
+            "reservationFor": flight,
         }
         Path(f"klm-{booking}-{airline_code}{flight_num}.reservation.json").write_text(
             json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
