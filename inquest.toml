@@ -1,0 +1,3 @@
+test_command = "pytest --subunit $IDOPTION"
+test_id_option = "--load-list $IDFILE"
+group_regex = "^(.*)::[^:]+$"
