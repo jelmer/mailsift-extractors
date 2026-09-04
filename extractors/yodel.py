@@ -14,9 +14,11 @@ text ("Your tracking number: JD...") and the tracking URL
 the merchant name in the subject ("Your <merchant> parcel is out for
 delivery") and the time range on its own line in the body.
 
-Emits a `.parcel.json` for every update; on out-for-delivery also emits
-a `.reservation.json` so the slot lands on the calendar. The merchant
-is parsed from the subject (or body) when available.
+Emits a `.parcel.json` for every update. On out-for-delivery the
+delivery window rides on the same file (`expectedArrivalFrom`/`Until`);
+a parcel isn't a reservation, so no separate calendar artifact is
+written. The merchant is parsed from the subject (or body) when
+available.
 """
 
 from __future__ import annotations
@@ -133,21 +135,6 @@ def main() -> int:
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
     )
 
-    if window_start is not None and window_end is not None:
-        reservation = {
-            "@context": "https://schema.org",
-            "@type": "EventReservation",
-            "reservationNumber": f"yodel-delivery-{tracking}",
-            "reservationFor": {
-                "@type": "Event",
-                "name": "Yodel delivery",
-                "startDate": window_start.strftime("%Y-%m-%dT%H:%M:%S"),
-                "endDate": window_end.strftime("%Y-%m-%dT%H:%M:%S"),
-            },
-        }
-        Path(f"yodel-delivery-{tracking}.reservation.json").write_text(
-            json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
-        )
     return 0
 
 

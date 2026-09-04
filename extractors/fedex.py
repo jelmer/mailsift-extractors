@@ -16,8 +16,9 @@ together with `Scheduled delivery date <Weekday>, DD/MM/YYYY` (or just
 `today` - we use the message Date in that case). Delivered mails carry
 `Delivery Date <Weekday>, DD/MM/YYYY H:MMam/pm`.
 
-Emits a `.parcel.json` for each update. When a delivery window is
-present, also emits a `.reservation.json` for the calendar slot.
+Emits a `.parcel.json` for each update. The delivery window rides on
+the same file (`expectedArrivalFrom`/`Until`) when present - a parcel
+isn't a reservation, so no separate calendar artifact is written.
 """
 
 from __future__ import annotations
@@ -187,21 +188,6 @@ def main() -> int:
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
     )
 
-    if window_start is not None and window_end is not None:
-        reservation = {
-            "@context": "https://schema.org",
-            "@type": "EventReservation",
-            "reservationNumber": f"fedex-delivery-{tracking}",
-            "reservationFor": {
-                "@type": "Event",
-                "name": "FedEx delivery",
-                "startDate": window_start.strftime("%Y-%m-%dT%H:%M:%S"),
-                "endDate": window_end.strftime("%Y-%m-%dT%H:%M:%S"),
-            },
-        }
-        Path(f"fedex-delivery-{tracking}.reservation.json").write_text(
-            json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
-        )
     return 0
 
 

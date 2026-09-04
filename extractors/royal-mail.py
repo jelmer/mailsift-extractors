@@ -15,8 +15,8 @@ human-readable date and time window in the body.
 
 Emits a `.parcel.json` for every status update, so the parcels target
 can merge them into a single record per tracking number. When a time
-window is present, also emits a `.reservation.json` so the delivery
-slot shows up on the calendar.
+window is present, it rides on the same file - a parcel isn't a
+reservation, so no separate calendar artifact is written.
 """
 
 from __future__ import annotations
@@ -168,22 +168,6 @@ def main() -> int:
     Path(f"royalmail-{tracking}.parcel.json").write_text(
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
     )
-
-    if window_start is not None and window_end is not None:
-        reservation = {
-            "@context": "https://schema.org",
-            "@type": "EventReservation",
-            "reservationNumber": f"royalmail-delivery-{tracking}",
-            "reservationFor": {
-                "@type": "Event",
-                "name": "Royal Mail delivery",
-                "startDate": window_start.strftime("%Y-%m-%dT%H:%M:%S"),
-                "endDate": window_end.strftime("%Y-%m-%dT%H:%M:%S"),
-            },
-        }
-        Path(f"royalmail-delivery-{tracking}.reservation.json").write_text(
-            json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
-        )
 
     return 0
 
