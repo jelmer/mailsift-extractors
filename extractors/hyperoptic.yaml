@@ -1,0 +1,9 @@
+name: hyperoptic
+order: 50
+from_domains:
+  - hyperoptic.com
+subject_regex: "(?i)^Thanks for your payment"
+requires:
+  - attachment:filename:*.pdf
+require_dkim:
+  - hyperoptic.com

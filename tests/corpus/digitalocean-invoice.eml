@@ -1,0 +1,942 @@
+Delivered-To: user@example.com
+Received: by 2002:a05:6000:128b:b0:472:753d:3324 with SMTP id f11csp623882wrx;
+        Tue, 30 Jun 2026 20:40:38 -0700 (PDT)
+X-Received: by 2002:a05:6a00:4143:b0:845:3260:50d1 with SMTP id
+ d2e1a72fcca58-8479f0e740dmr5292370b3a.27.1782877237542;        Tue, 30 Jun
+ 2026 20:40:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782877237; cv=none;
+        d=google.com; s=arc-20260327;
+        b=JOUXTL+nsyIyjMhOTGWSpOvPOi4jihJOO3/vWw0KIqxJiHP5q9mg4YHe3YfwLuYpkC
+         DKEwvaCIeEwcszA8zCrPuj0oqThM9H5L4JCeunAymA566esF+JJ4XJ39ES43npin91en
+         I3e2UlTV3das+zlNiHke0S01HkjnIkD8At68XwZ3/ZeqM8JK/NeGTvucBRW2BrTla+Js
+         Cix1H/Q0gB2beO+F00LMNDVxOw4cQ0pWdNkSvO6K0/qg94QmOQyuW3G8njjUu42Ru8R0
+         +BDgAU1cW7+EMR973GaweCCAyLKNRLXjfP2FOjpm0bam3Z3FPB36UOWjJsmscrpAYuog
+         fNDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327;       
+ h=to:reply-to:subject:message-id:mime-version:from:date        
+ :dkim-signature:dkim-signature;       
+ bh=Ds9DEXP4a6ParhgLA2BF19JQaRoG4u8SSmyWrvaCIhg=;       
+ fh=xbHWhosr/NT2K6Bg94lytn/73dFPM4GQ1S71UB/jEuQ=;       
+ b=gRhAHP/bBySIqOGflS7HE5L1HLxIn0p6fHkjzz7rKrYro5PUFIrGEvolADUXcg4Ahw        
+ XDGFazYkI7CpmtdqrStPYjuEtbXc+Ab/G6c0wImNXzbhK38R7Z4k6aLS+cMim7fl4ayc        
+ bCrQjHkoslony/9APRNMK23MKovmO+V3qDYdYYxdz8j7df5RtvG1Db5w5Fch1D42Qt+r        
+ 034kc6bEuRCs1mJXYfz+I5bXTnPS8Kq9ZxKJ0J1OppnuUWKEl2W8SdrP2v79vOEggp/t        
+ 2EwwYXpSKsx/GnAR219wyK5lt/NUKikaGdy8Zf1PDGkMQwTLg1BFbmEXQ4dg0h3KVFQm        
+ a8Sw==;        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass
+ header.i=@digitalocean.com header.s=s1 header.b=MePHeBtE;       dkim=pass
+ header.i=@sendgrid.info header.s=smtpapi header.b=xqNzZJE6;       spf=pass
+ (google.com: domain of
+ bounces+00000000-cd15-user=gmail.com@em6554.digitalocean.com designates
+ 168.245.49.182 as permitted sender)
+ smtp.mailfrom="bounces+00000000-cd15-user=gmail.com@em6554.digitalocean.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=digitalocean.com
+Return-Path: <bounces+00000000-cd15-user=gmail.com@em6554.digitalocean.com>
+Received: from o2.outbound-sg.digitalocean.com
+ (o2.outbound-sg.digitalocean.com. [168.245.49.182])        by mx.google.com
+ with ESMTPS id d2e1a72fcca58-847a0484ee9si8851204b3a.165.2026.06.30.20.40.36
+        for <user@example.com>        (version=TLS1_3
+ cipher=TLS_AES_128_GCM_SHA256 bits=128/128);        Tue, 30 Jun 2026 20:40:37
+ -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ bounces+00000000-cd15-user=gmail.com@em6554.digitalocean.com designates
+ 168.245.49.182 as permitted sender) client-ip=168.245.49.182;
+Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@digitalocean.com header.s=s1 header.b=MePHeBtE;       dkim=pass
+ header.i=@sendgrid.info header.s=smtpapi header.b=xqNzZJE6;       spf=pass
+ (google.com: domain of
+ bounces+00000000-cd15-user=gmail.com@em6554.digitalocean.com designates
+ 168.245.49.182 as permitted sender)
+ smtp.mailfrom="bounces+00000000-cd15-user=gmail.com@em6554.digitalocean.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=digitalocean.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digitalocean.com;
+	h=content-type:date:from:mime-version:subject:reply-to:to:cc:
+	content-type:date:feedback-id:from:subject:to;
+	s=s1; t=1782877235;
+	bh=Ds9DEXP4a6ParhgLA2BF19JQaRoG4u8SSmyWrvaCIhg=;
+	b=MePHeBtEqv0xs3IM8Lcs6eq+wl34PGn+KUaI4d/JHcZ5+A6z1TlRj50P72DJWHdbEjDK
+	w80SJHOLcr1bxjamvtYwuPnEZWl5DAu/gvd8qvS8lsIHdXjy8UhTtXF94GVJui8xKngpsN
+	VKSc7OqsXrHFEDvL4O9dWAXcWrN/kVJkzxA5a+XJ0npfqOlH08rO6EESY0MZDWdgaDrdcF
+	OX+meLUsiPIgVFRAjQ/Hk58detyETcZvOSUY1noVZspOZiHr96SRyvitpsWF19Opa/rjKT
+	d2+Vv5wasqF2EmpnYkatyos/tO2a/qJODs60CKozeLWMFPpv9Cflp48th8XOg6BA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:date:from:mime-version:subject:reply-to:to:cc:
+	content-type:date:feedback-id:from:subject:to;
+	s=smtpapi; t=1782877235;
+	bh=Ds9DEXP4a6ParhgLA2BF19JQaRoG4u8SSmyWrvaCIhg=;
+	b=xqNzZJE6rddbDH/EknNW8ugqkyxgR+0vkfPnFKDfMb8uOacCCBMp63XrtOnzssrou4wD
+	jrDKqEfkRoJJPSlMRDb3t+ZxILlKdYyL67l5uV49vpM21cqtkJD93v3SpTFIcQVTQ+CFvA
+	EfUILtuRtXb5++GFbckiCkmYf8p6WfLlA=
+Received: by recvd-9c4fc5d56-ppsgf with SMTP id
+ recvd-9c4fc5d56-ppsgf-1-6A448C33-47	2026-07-01 03:40:35.915787985 +0000 UTC
+ m=+707997.563560097
+Received: from MjYyNjQ0Njg (unknown)
+	by geopod-ismtpd-1 (SG) with HTTP
+	id Y5z0cTx-SF61AGHSYjxF6Q
+	Wed, 01 Jul 2026 03:40:35.905 +0000 (UTC)
+Content-Type: multipart/mixed;
+ boundary="78c5e07a8559213b392f49257d475079f4f7fc1782bedaaa0f13b68f7e77"
+Date: Wed, 01 Jul 2026 03:40:35 +0000 (UTC)
+From: DigitalOcean Support <support@digitalocean.com>
+Mime-Version: 1.0
+Message-ID: <Y5z0cTx-SF61AGHSYjxF6Q@geopod-ismtpd-1>
+Subject: [DigitalOcean] Your 2026-06 invoice is available
+Reply-To: DigitalOcean Support <support@digitalocean.com>
+X-SG-EID: u001.Irsp9SSQ08zT63q1jQS2DFoZTfqEihOJUvkuh7SdskYq3i+VOTK8WwD7S
+ =?utf-8?q?yPWcbDFw+0i4fiuIaTaA275Od4SINO382Ev+U7NohC08KeBVUtD6MxjqYfr2xyVFJ?=
+ =?utf-8?q?tBBu/l7NAxj/C1NGhV+hjToB4wDoVc7ugdmjI4/laoqkdlo+6yWp7HzGp+6WOc2cu?=
+ =?utf-8?q?ANKA0ExnA/RDcBiSArNZAWZxSMkzV/XUY/QxSX5jG15WhaKKjN30wm49+OSAIYEhK?=
+ =?utf-8?q?YdPp?=
+X-SG-ID: u001.SdBcvi+Evd/bQef8eZF3BpTL9BgbK5wfSJMJGMsmprDsPyUTnMagHRCjb
+ =?utf-8?q?/65Gublfs288kI+8a5kkEqg4NLKlurCH8sNswjzJmeHbj12UtxYsd85XuAZF5bqja?=
+ =?utf-8?q?kvGZySJzIp/QaAPGVumtRv5glIbSrNn7qznM5TseAq3jFjVYCNWpX7nmad2YoXhXh?=
+ =?utf-8?q?I1FDX?=
+To: user <user@example.com>
+X-Entity-ID: u001.ru+ruRM/vtU7GKTI0wuwkw==
+
+--78c5e07a8559213b392f49257d475079f4f7fc1782bedaaa0f13b68f7e77
+Content-Type: multipart/alternative;
+ boundary="cf5707a87d820a97c469133cc734eccf9bd6f5ba5315b1ea9b62e3661b82"
+
+--cf5707a87d820a97c469133cc734eccf9bd6f5ba5315b1ea9b62e3661b82
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Your 2026-06 invoice is now available
+Thanks for using DigitalOcean!
+
+Your balance due was automatically charged to your MasterCard ending in 168=
+1, so you don't need to do anything. Happy Coding!
+
+Summary for My Team
+
+ Previous Balance:                                    $0.00=20
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=
+=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=
+=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=
+=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=
+=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=
+=94=81=E2=94=81
+ Usage charges for 2026-06:                          $24.00=20
+ Account discount applied:                            $0.00=20
+ Account credit applied:                              $0.00=20
+=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
+=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
+=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=
+=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
+=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
+=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=
+=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
+=94=80=E2=94=80
+ Subtotal:                                           $24.00=20
+ Tax (Taxes):                                         $4.80=20
+=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
+=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
+=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=
+=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
+=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
+=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=
+=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
+=94=80=E2=94=80
+ Invoice Total:                                      $28.80=20
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=
+=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=
+=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=
+=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=
+=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=
+=94=81=E2=94=81
+ Amount paid:                                       -$28.80=20
+ Ending account balance:                              $0.00=20
+
+For your convenience, a copy of your invoice PDF is attached.
+
+For more information or to manage your payment methods or other billing set=
+tings please visit your <a href=3D"https://u00000000.ct.sendgrid.net/ls/cli=
+ck?upn=3Du001.W-2FolxTzqTkFgf-2F0utqurIuR4e3qbk-2Fl7oDFr39k5i6KG0q8JbJhcbW2=
+37RWQrRUm-2BRKFviH9YMWZfnyFOAcpb6FV4EkgT-2Fxh5A2XV5d3iJU-3Dxt6S_waatv26fJZC=
+2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUY1wT1qJi-2FMyqHfOs3eW2VBanEh44-2BAW-2ByjA9oq=
+GrMS0-2FimaKSjP6lSJOAQaeIPzXV4L7FZqzl6JBUFLbeY5JK0Tz4LuOa4FoaxR1Oo3pgvo98kB=
+fWg-2FE8NJm0Th5wX3H7wAciUxhACqpRbP8J7Gk9jIMqM50wZWDA76NOVt1-2BkeVsnSWKJuOze=
+eohV-2FCbo1MXJVUODjZY-2Fn-2FOn2T0c1MReXvqvONK1hhnKty8vJYJtpiwlLeMHX9604C5fl=
+mjuExQazSgAHZ1ErabwSO2UWAjEG8ScjmRQ4FeRegCWD8CB2g-3D-3D>Billing Settings</a=
+>.
+
+P.S. If you are a business with a registered Tax ID (VAT, GST, etc.), pleas=
+e enter it here: <a href=3D"https://u00000000.ct.sendgrid.net/ls/click?upn=
+=3Du001.W-2FolxTzqTkFgf-2F0utqurIpmimj25iJdZg0g5mfRCRrM-3DDHjF_waatv26fJZC2=
+PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUY1wT1qJi-2FMyqHfOs3eW2VBanEh44-2BAW-2ByjA9oqG=
+rMS0-2FimaKSjP6lSJOAQaeIPzXV4L7FZqzl6JBUFLbeY5JK0Tz4LuOa4FoaxR1Oo3pgvo98kBf=
+Wg-2FE8NJm0Th5wX3H7wAciUxhACqpRbP8J7Gk9jIMqM50wZWDA76NOVt1-2BkefTRHiNxpaThf=
+hw1YfqXqcRwXc5Tp6CpfUPHQQhAlp5LMv8UskelEL04gNrq2ckwR6ewrQ-2FVl7f2eIGAepLfuj=
+YnWGEmS6fkLbSarcE1rHQpHsZzutdmT993Ge5LTFTqwA-3D-3D>Billing Settings</a>
+
+--cf5707a87d820a97c469133cc734eccf9bd6f5ba5315b1ea9b62e3661b82
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=iso-8859-1
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
+<html lang=3D"en">
+<head>
+  <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+  <meta name=3D"viewport" content=3D"initial-scale=3D1.0"> <!-- So that mob=
+ile webkit will display zoomed in -->
+  <meta name=3D"format-detection" content=3D"telephone=3Dno"> <!-- disable =
+auto telephone linking in iOS -->
+  <title>*|SUBJECT|*</title>
+  <style type=3D"text/css">
+    @font-face {
+    font-family: 'Proxima Nova';
+    src: url('https://assets.digitalocean.com/fonts/proximanova-reg-webfont=
+.eot');
+    src: url('https://assets.digitalocean.com/fonts/proximanova-reg-webfont=
+.eot?#iefix') format('embedded-opentype'),
+    url('https://assets.digitalocean.com/fonts/proximanova-reg-webfont.woff=
+') format('woff'),
+    url('https://assets.digitalocean.com/fonts/proximanova-reg-webfont.ttf'=
+) format('truetype'),
+    url('https://assets.digitalocean.com/fonts/proximanova-reg-webfont.svg#=
+ProximaNovaLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    }
+    @font-face {
+    font-family: 'Proxima Nova';
+    src: url('https://assets.digitalocean.com/fonts/proximanova-light-webfo=
+nt.eot');
+    src: url('https://assets.digitalocean.com/fonts/proximanova-light-webfo=
+nt.eot?#iefix') format('embedded-opentype'),
+    url('https://assets.digitalocean.com/fonts/proximanova-light-webfont.wo=
+ff') format('woff'),
+    url('https://assets.digitalocean.com/fonts/proximanova-light-webfont.tt=
+f') format('truetype'),
+    url('https://assets.digitalocean.com/fonts/proximanova-light-webfont.sv=
+g#ProximaNovaLight') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    }
+    /* /\/\/\/\/\/\/\/\/ CLIENT-SPECIFIC STYLES /\/\/\/\/\/\/\/\/ */
+    #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" =
+message */
+    .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail =
+to display emails at full width */
+    .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass f=
+ont, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Ho=
+tmail to display normal line spacing */
+    body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:100%; -m=
+s-text-size-adjust:100%;} /* Prevent WebKit and Windows mobile changing def=
+ault text sizes */
+    table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacin=
+g between tables in Outlook 2007 and up */
+    img{-ms-interpolation-mode:bicubic;} /* Allow smoother rendering of res=
+ized image in Internet Explorer */
+    /* /\/\/\/\/\/\/\/\/ RESET STYLES /\/\/\/\/\/\/\/\/ */
+    body{margin:0; padding:0;}
+    img{border:0; height:auto; line-height:100%; outline:none; text-decorat=
+ion:none;}
+    table{border-collapse:collapse !important;}
+    body, #bodyTable, #bodyCell{height:100% !important; margin:0; padding:0=
+; width:100% !important;}
+    /* /\/\/\/\/\/\/\/\/ TEMPLATE STYLES /\/\/\/\/\/\/\/\/ */
+    /* =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D Page Styles =3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D */
+    #bodyCell{padding:20px;}
+    #templateContainer{width:768px;}
+    #templateContainer * {-webkit-font-smoothing: antialiased;text-shadow: =
+1px 1px 1px rgba(0,0,0,0.004);}
+    /**
+    * @tab Page
+    * @section background style
+    * @tip Set the background color and top border for your email. You may =
+want to choose colors that match your company's branding.
+    * @theme page
+    */
+    body, #bodyTable{
+    /*@editable*/ background-color:#F7F7F7;
+    }
+    /**
+    * @tab Page
+    * @section background style
+    * @tip Set the background color and top border for your email. You may =
+want to choose colors that match your company's branding.
+    * @theme page
+    */
+    #bodyCell{
+    }
+    /**
+    * @tab Page
+    * @section email border
+    * @tip Set the border for your email.
+    */
+    #templateContainer{
+    /*@editable*/ border:0px transparent #BBBBBB;
+    }
+    /**
+    * @tab Page
+    * @section heading 1
+    * @tip Set the styling for all first-level headings in your emails. The=
+se should be the largest of your headings.
+    * @style heading 1
+    */
+    h1{
+    /*@editable*/ color:#202020 !important;
+    display:block;
+    /*@editable*/ font-family:'Proxima Nova', 'Open Sans', 'Helvetica Neue'=
+, Calibri, Helvetica, sans-serif;
+    /*@editable*/ font-size:26px;
+    /*@editable*/ font-style:normal;
+    /*@editable*/ font-weight:100;
+    /*@editable*/ line-height:100%;
+    /*@editable*/ letter-spacing:normal;
+    margin-top:0;
+    margin-right:0;
+    margin-bottom:10px;
+    margin-left:0;
+    /*@editable*/ text-align:left;
+    }
+    /**
+    * @tab Page
+    * @section heading 2
+    * @tip Set the styling for all second-level headings in your emails.
+    * @style heading 2
+    */
+    h2{
+    /*@editable*/ color:#404040 !important;
+    display:block;
+    /*@editable*/ font-family:'Proxima Nova', 'Open Sans', 'Helvetica Neue'=
+, Calibri, Helvetica, sans-serif;
+    /*@editable*/ font-size:28px;
+    /*@editable*/ font-style:normal;
+    /*@editable*/ font-weight:100;
+    /*@editable*/ line-height:140%;
+    /*@editable*/ letter-spacing:normal;
+    margin-top:2px;
+    margin-right:0;
+    margin-bottom:15px;
+    margin-left:0;
+    /*@editable*/ text-align:left;
+    -webkit-font-smoothing: subpixel-antialiased;
+    }
+    /**
+    * @tab Page
+    * @section heading 3
+    * @tip Set the styling for all third-level headings in your emails.
+    * @style heading 3
+    */
+    h3{
+    /*@editable*/ color:#595959 !important;
+    display:block;
+    /*@editable*/ font-family:'Proxima Nova', 'Open Sans', 'Helvetica Neue'=
+, Calibri, Helvetica, sans-serif;
+    /*@editable*/ font-size:20px;
+    /*@editable*/ font-style:normal;
+    /*@editable*/ font-weight:300;
+    /*@editable*/ line-height:140%;
+    /*@editable*/ letter-spacing:normal;
+    margin-top:20px;
+    margin-right:0;
+    margin-bottom:17px;
+    margin-left:0;
+    /*@editable*/ text-align:left;
+    -webkit-font-smoothing: subpixel-antialiased;
+    }
+    /**
+    * @tab Page
+    * @section heading 4
+    * @tip Set the styling for all fourth-level headings in your emails. Th=
+ese should be the smallest of your headings.
+    * @style heading 4
+    */
+    h4{
+    /*@editable*/ color:#999 !important;
+    display:block;
+    /*@editable*/ font-family:'Proxima Nova', 'Open Sans', 'Helvetica Neue'=
+, Calibri, Helvetica, sans-serif;
+    /*@editable*/ font-size:14px;
+    /*@editable*/ font-style:normal;
+    /*@editable*/ font-weight:normal;
+    /*@editable*/ line-height:100%;
+    /*@editable*/ letter-spacing:normal;
+    margin-top:0;
+    margin-right:0;
+    margin-bottom:8px;
+    margin-left:0;
+    /*@editable*/ text-align:left;
+    }
+    /* =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D Header Styles =3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D */
+    /**
+    * @tab Header
+    * @section preheader style
+    * @tip Set the background color and bottom border for your email's preh=
+eader area.
+    * @theme header
+    */
+    #templatePreheader{
+    /*@editable*/ background-color:#F7F7F7;
+    }
+    /**
+    * @tab Header
+    * @section preheader text
+    * @tip Set the styling for your email's preheader text. Choose a size a=
+nd color that is easy to read.
+    */
+    .preheaderContent{
+    /*@editable*/ color:#808080;
+    /*@editable*/ font-family:'Proxima Nova', 'Open Sans', 'Helvetica Neue'=
+, Calibri, Helvetica, sans-serif;
+    /*@editable*/ font-size:10px;
+    /*@editable*/ line-height:125%;
+    /*@editable*/ text-align:left;
+    }
+    /**
+    * @tab Header
+    * @section preheader link
+    * @tip Set the styling for your email's preheader links. Choose a color=
+ that helps them stand out from your text.
+    */
+    .preheaderContent a:link, .preheaderContent a:visited, /* Yahoo! Mail O=
+verride */ .preheaderContent a .yshortcuts /* Yahoo! Mail Override */{
+    /*@editable*/ color:#606060;
+    /*@editable*/ font-weight:normal;
+    /*@editable*/ text-decoration:underline;
+    }
+    /**
+    * @tab Header
+    * @section header style
+    * @tip Set the background color and borders for your email's header are=
+a.
+    * @theme header
+    */
+    #templateHeader{
+    /*@editable*/ background-color:#F4F4F4;
+    }
+    /**
+    * @tab Header
+    * @section header text
+    * @tip Set the styling for your email's header text. Choose a size and =
+color that is easy to read.
+    */
+    .headerContent{
+    /*@editable*/ color:#505050;
+    /*@editable*/ font-family:'Proxima Nova', 'Open Sans', 'Helvetica Neue'=
+, Calibri, Helvetica, sans-serif;
+    /*@editable*/ font-size:20px;
+    /*@editable*/ font-weight:bold;
+    /*@editable*/ line-height:100%;
+    /*@editable*/ padding-top:0;
+    /*@editable*/ padding-right:0;
+    /*@editable*/ padding-bottom:0;
+    /*@editable*/ padding-left:0;
+    /*@editable*/ text-align:left;
+    /*@editable*/ vertical-align:middle;
+    }
+    /**
+    * @tab Header
+    * @section header link
+    * @tip Set the styling for your email's header links. Choose a color th=
+at helps them stand out from your text.
+    */
+    .headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Overrid=
+e */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
+    /*@editable*/ color:#298eea;
+    /*@editable*/ font-weight:normal;
+    /*@editable*/ text-decoration:underline;
+    }
+    #headerImage{
+    height:auto;
+    max-width:768px;
+    }
+    /* =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D Body Styles =3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D */
+    /**
+    * @tab Body
+    * @section body style
+    * @tip Set the background color and borders for your email's body area.
+    */
+    #templateBody{
+    /*@editable background-color:#fff; */
+    }
+    /**
+    * @tab Body
+    * @section body text
+    * @tip Set the styling for your email's main content text. Choose a siz=
+e and color that is easy to read.
+    * @theme main
+    */
+    .bodyContent{
+    /*@editable*/ color:#505050;
+    /*@editable*/ font-family:'Proxima Nova', 'Open Sans', 'Helvetica Neue'=
+, Calibri, Helvetica, sans-serif;
+    /*@editable*/ font-size:16px;
+    /*@editable*/ line-height:160%;
+    padding-top:35px;
+    padding-right:40px;
+    padding-bottom:40px;
+    padding-left:40px;
+    background: #fff;
+    /*@editable*/ text-align:left;
+    }
+    .buttonContent {
+    background:#298eea
+    }
+    td td {
+    /*@editable*/ font-family:'Proxima Nova', 'Open Sans', 'Helvetica Neue'=
+, Calibri, Helvetica, sans-serif;
+    }
+    /**
+    * @tab Body
+    * @section body link
+    * @tip Set the styling for your email's main content links. Choose a co=
+lor that helps them stand out from your text.
+    */
+    .bodyContent a:link, .bodyContent a:visited, /* Yahoo! Mail Override */=
+ .bodyContent a .yshortcuts /* Yahoo! Mail Override */{
+    /*@editable*/ color:#298eea;
+    /*@editable*/ font-weight:normal;
+    /*@editable*/ text-decoration:underline;
+    }
+    .bodyContent img{
+    display:inline;
+    height:auto;
+    max-width:560px;
+    }
+    ul > ul {
+    margin-bottom: 15px;
+    }
+    /* =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D Footer Styles =3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D */
+    /**
+    * @tab Footer
+    * @section footer style
+    * @tip Set the background color and borders for your email's footer are=
+a.
+    * @theme footer
+    */
+    #templateFooter{
+    /*@editable*/ background-color:#F7F7F7;
+    margin-top:20px;
+    }
+    /**
+    * @tab Footer
+    * @section footer text
+    * @tip Set the styling for your email's footer text. Choose a size and =
+color that is easy to read.
+    * @theme footer
+    */
+    .footerContent{
+    /*@editable*/ color:#808080;
+    /*@editable*/ font-family:'Proxima Nova', 'Open Sans', 'Helvetica Neue'=
+, Calibri, Helvetica, sans-serif;
+    /*@editable*/ font-size:12px;
+    /*@editable*/ line-height:150%;
+    padding-top:20px;
+    padding-right:20px;
+    padding-bottom:20px;
+    padding-left:20px;
+    /*@editable*/ text-align:center;
+    }
+    /**
+    * @tab Footer
+    * @section footer link
+    * @tip Set the styling for your email's footer links. Choose a color th=
+at helps them stand out from your text.
+    */
+    .footerContent a:link, .footerContent a:visited, /* Yahoo! Mail Overrid=
+e */ .footerContent a .yshortcuts, .footerContent a span /* Yahoo! Mail Ove=
+rride */{
+    /*@editable*/ color:#606060;
+    /*@editable*/ font-weight:normal;
+    /*@editable*/ text-decoration:underline;
+    }
+    /* /\/\/\/\/\/\/\/\/ MOBILE STYLES /\/\/\/\/\/\/\/\/ */
+    @media only screen and (max-width: 480px){
+    /* /\/\/\/\/\/\/ CLIENT-SPECIFIC MOBILE STYLES /\/\/\/\/\/\/ */
+    body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:none !im=
+portant;} /* Prevent Webkit platforms from changing default text sizes */
+    body{width:100% !important; min-width:100% !important;} /* Prevent iOS =
+Mail from adding padding to the body */
+    /* /\/\/\/\/\/\/ MOBILE RESET STYLES /\/\/\/\/\/\/ */
+    #bodyCell{padding:10px !important;}
+    /* /\/\/\/\/\/\/ MOBILE TEMPLATE STYLES /\/\/\/\/\/\/ */
+    /* =3D=3D=3D=3D=3D=3D=3D=3D Page Styles =3D=3D=3D=3D=3D=3D=3D=3D */
+    /**
+    * @tab Mobile Styles
+    * @section template width
+    * @tip Make the template fluid for portrait or landscape view adaptabil=
+ity. If a fluid layout doesn't work for you, set the width to 300px instead=
+.
+    */
+    #templateContainer{
+    max-width:768px !important;
+    /*@editable*/ width:100% !important;
+    }
+    /**
+    * @tab Mobile Styles
+    * @section heading 1
+    * @tip Make the first-level headings larger in size for better readabil=
+ity on small screens.
+    */
+    h1{
+    font-size:30px !important;
+    line-height:35px !important;
+    }
+    /**
+    * @tab Mobile Styles
+    * @section heading 2
+    * @tip Make the second-level headings larger in size for better readabi=
+lity on small screens.
+    */
+    h2{
+    }
+    /**
+    * @tab Mobile Styles
+    * @section heading 3
+    * @tip Make the third-level headings larger in size for better readabil=
+ity on small screens.
+    */
+    h3{
+    font-size:24px !important;
+    }
+    /**
+    * @tab Mobile Styles
+    * @section heading 4
+    * @tip Make the fourth-level headings larger in size for better readabi=
+lity on small screens.
+    */
+    h4{
+    }
+    /* =3D=3D=3D=3D=3D=3D=3D=3D Header Styles =3D=3D=3D=3D=3D=3D=3D=3D */
+    #templatePreheader{} /* Hide the template preheader to save space */
+    /**
+    * @tab Mobile Styles
+    * @section header image
+    * @tip Make the main header image fluid for portrait or landscape view =
+adaptability, and set the image's original width as the max-width. If a flu=
+id setting doesn't work, set the image width to half its original size inst=
+ead.
+    */
+    #headerImage{
+    height:auto !important;
+    /*@editable*/ max-width:768px !important;
+    /*@editable*/ width:100% !important;
+    }
+    /**
+    * @tab Mobile Styles
+    * @section header text
+    * @tip Make the header content text larger in size for better readabili=
+ty on small screens. We recommend a font size of at least 16px.
+    */
+    .headerContent{
+    /*@editable*/ font-size:20px !important;
+    /*@editable*/ line-height:125% !important;
+    }
+    /* =3D=3D=3D=3D=3D=3D=3D=3D Body Styles =3D=3D=3D=3D=3D=3D=3D=3D */
+    /**
+    * @tab Mobile Styles
+    * @section body text
+    * @tip Make the body content text larger in size for better readability=
+ on small screens. We recommend a font size of at least 16px.
+    */
+    .bodyContent{
+    /*@editable*/ font-size:18px !important;
+    /*@editable*/ line-height:145% !important;
+    padding-top: 20px;
+    padding-bottom:20px;
+    padding-left:20px;
+    padding-right:20px;
+    }
+    /* =3D=3D=3D=3D=3D=3D=3D=3D Footer Styles =3D=3D=3D=3D=3D=3D=3D=3D */
+    /**
+    * @tab Mobile Styles
+    * @section footer text
+    * @tip Make the body content text larger in size for better readability=
+ on small screens.
+    */
+    .footerContent{
+    /*@editable*/ font-size:14px !important;
+    /*@editable*/ line-height:115% !important;
+    }
+    .footerContent a{display:block !important;} /* Place footer social and =
+utility links on their own lines, for easier access */
+    }
+    .button-blue {
+     background: #0069ff;
+     border-radius: 3px;
+     border: 1px solid #0069ff;
+     color: #fff !important;
+     cursor: pointer;
+     display: inline-block;
+     height: 3rem;
+     line-height: 3rem;
+     text-align: center;
+     text-decoration: none;
+     user-select: none;
+    =20
+    }
+  </style>
+</head>
+<body bgcolor=3D"#f4f4f4" link=3D"398bce" leftmargin=3D"0" topmargin=3D"0" =
+marginwidth=3D"0" marginheight=3D"0" style=3D"margin:0; padding:0;-webkit-t=
+ext-size-adjust:none; -ms-text-size-adjust:none;background: #f4f4f4;">
+<table class=3D"content" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" h=
+eight=3D"100%" width=3D"100%" bgcolor=3D"#f4f4f4" style=3D"background: #f4f=
+4f4;"><tr><td>
+
+<!-- CSS Image background in Outlook : BEGIN -->
+<!-- Best used with absolute image paths -->
+<!--[if gte mso 9]>
+  <v:background xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"t">
+    <v:fill type=3D"tile" color=3D"#eeeeee" src=3D"https://assets.digitaloc=
+ean.com/email/background-fallback.png">
+  </v:background>
+<![endif]-->
+<!-- CSS Image background in Outlook : END -->
+
+  <!-- Logo Left Nav Right + Vertical Padding : BEGIN -->
+  <table border=3D"0" width=3D"600" cellpadding=3D"0" cellspacing=3D"0" ali=
+gn=3D"center" class=3D"email-container">
+    <tr>
+      <td height=3D"top" style=3D"font-size: 0; line-height: 0;">=A0</td>
+    </tr>
+    <tr>
+      <td class=3D"force-col-center" valign=3D"middle" style=3D"padding: 20=
+px 0;text-align: left;">
+            <a href=3D"https://u00000000.ct.sendgrid.net/ls/click?upn=3Du00=
+1.W-2FolxTzqTkFgf-2F0utqurInRD-2BFpoopVA90mFTW8mUhyPp8PbcwAkwr3XZsRgjl7QOOn=
+S_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUY1wT1qJi-2FMyqHfOs3eW2VBanEh44-=
+2BAW-2ByjA9oqGrMS0-2FimaKSjP6lSJOAQaeIPzXV4L7FZqzl6JBUFLbeY5JK0Tz4LuOa4Foax=
+R1Oo3pgvo98kBfWg-2FE8NJm0Th5wX3H7wAciUxhACqpRbP8J7Gk9jIMqM50wZWDA76NOVt1-2B=
+keSHQcgjv0dIUMi6tSSIL0bdXigdX5BhWHzU8ESM-2Fi0hZB3FGr-2BQuu0eb-2Fmq49Rbf-2F3=
+YIgkxV34kDhJK2NPbxCbSPnKWFelt6fLj-2Fe77uTscqdKR0q8pemVwOga0K44-2FIBQ-3D-3D"=
+ target=3D"_blank"><img src=3D"https://cloud.digitalocean.com/DigitalOcean-=
+logo-blue.png" height=3D"29" width=3D"180" border=3D"0"></a>
+      </td>
+      <td class=3D"hide" valign=3D"middle" style=3D"padding: 20px 0;text-al=
+ign: right; font-family: Helvetica, Arial, sans-serif; font-size: 16px;">
+      </td>
+    </tr>
+    <tr>
+      <td height=3D"10" style=3D"font-size: 0; line-height: 0;">=A0</td>
+    </tr>
+  </table>
+  <!-- Logo Left Nav Right + Vertical Padding : END -->
+
+  <!-- Email Container : BEGIN -->
+  <!-- This table wraps the whole body email within it's width (600px), set=
+s the background color (white) and border (thin, gray, solid) -->
+    <table border=3D"0" width=3D"600" cellpadding=3D"0" cellspacing=3D"0" a=
+lign=3D"center" style=3D"background: #ffffff;border: 1px solid #e5e5e5;" cl=
+ass=3D"email-container">
+
+      <!-- Single Fluid Image, No Crop : BEGIN -->
+      <tr>
+        <td>
+
+        </td>
+      </tr>
+      <!-- Single Fluid Image, No Crop : END -->
+
+      <!-- Full Width, Fluid Column : BEGIN -->
+      <tr>
+        <td style=3D"border-bottom: 1px solid #e5e5e5;">
+          <table border=3D"0" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" align=3D"center">
+            <tr>
+              <td mc:edit=3D"main" style=3D"padding: 30px 30px 00px 30px; f=
+ont-family: sans-serif; font-size: 16px; line-height: 25px; color: #666666;=
+">
+                <div style=3D"margin: 10px;">
+  <h2>Your 2026-06 invoice is now available
+  </h2>
+  <p>Thanks for using DigitalOcean!</p>
+ =20
+
+ =20
+    <p>Your balance due was automatically charged to your MasterCard ending=
+ in xxxx, so you don't need to do anything. Happy Coding!</p>
+ =20
+
+ =20
+
+  <div style=3D"width: 100%;margin-top: 30px;">
+    <h2>Summary for My Team</h2>
+    <div style=3D"padding: 10px;border-bottom: 1px solid #aaa;">
+      Previous Balance
+      <span style=3D"float: right;">$0.00</span>
+    </div>
+    <div style=3D"padding: 10px;">
+      Usage charges for 2026-06
+      <span style=3D"float: right;">$24.00</span>
+    </div>
+
+   =20
+    <div style=3D"padding: 10px; border-top: 1px solid #eee;">
+      Account discount applied
+      <span style=3D"float: right;">$0.00</span>
+    </div>
+   =20
+
+   =20
+    <div style=3D"padding: 10px; border-top: 1px solid #eee;">
+      Account credit applied
+      <span style=3D"float: right;">$0.00</span>
+    </div>
+   =20
+
+   =20
+    <div style=3D"padding: 10px; border-top: 1px solid #ccc;">
+      Subtotal
+      <span style=3D"float: right;">$24.00</span>
+    </div>
+   =20
+
+   =20
+    <div style=3D"padding: 10px; border-top: 1px solid #eee;">
+      Tax (Taxes)
+      <span style=3D"float: right;">$4.80</span>
+    </div>
+   =20
+    <div style=3D"padding: 10px; border-top: 1px solid #ccc; border-bottom:=
+ 1px solid #aaa;">
+      Invoice Total=20
+      <span style=3D"float: right;">$28.80</span>
+    </div>
+   =20
+      <div style=3D"padding: 10px; border-bottom: 1px solid #aaa;">
+        Amount paid
+       =20
+        <span style=3D"float: right;">-$28.80</span>
+      </div>
+   =20
+    <div style=3D"padding: 10px;">
+      Ending account balance
+      <span style=3D"float: right;">$0.00</span>
+    </div>
+
+   =20
+  </div>
+  <p>For your convenience, a copy of your invoice PDF is attached.</p>
+  <p>For more information or to manage your payment methods or other billin=
+g settings please visit your <a href=3D"https://u00000000.ct.sendgrid.net/l=
+s/click?upn=3Du001.W-2FolxTzqTkFgf-2F0utqurIuR4e3qbk-2Fl7oDFr39k5i6KG0q8JbJ=
+hcbW237RWQrRUm-2BRKFviH9YMWZfnyFOAcpb-2Bu1dnRnw8Emusi-2Bv-2FDPs6g-3DkqsE_wa=
+atv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUY1wT1qJi-2FMyqHfOs3eW2VBanEh44-2BAW=
+-2ByjA9oqGrMS0-2FimaKSjP6lSJOAQaeIPzXV4L7FZqzl6JBUFLbeY5JK0Tz4LuOa4FoaxR1Oo=
+3pgvo98kBfWg-2FE8NJm0Th5wX3H7wAciUxhACqpRbP8J7Gk9jIMqM50wZWDA76NOVt1-2Bkebj=
+lL3OiYbK-2FsDldDAgftIREGzfe55ogpJQUaQUSTBlM9M6Ypkgux3K-2FgvXPhJQrAYg6bmAlXS=
+ueAbpQECxgEthNEMTEbb2GDeivVlqO8SZVUhe27ZSzIxSSaCHaZUslDw-3D-3D">Billing Set=
+tings</a>.</p>
+</div>
+
+
+  <div style=3D"margin: 10px;">
+   =20
+      P.S. If you are a business with a registered Tax ID (VAT, GST, etc.),=
+ please enter it here: <a href=3D"https://u00000000.ct.sendgrid.net/ls/clic=
+k?upn=3Du001.W-2FolxTzqTkFgf-2F0utqurIqwFFYF5na8AU0E5948tmq0-3DeUVc_waatv26=
+fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUY1wT1qJi-2FMyqHfOs3eW2VBanEh44-2BAW-2Byj=
+A9oqGrMS0-2FimaKSjP6lSJOAQaeIPzXV4L7FZqzl6JBUFLbeY5JK0Tz4LuOa4FoaxR1Oo3pgvo=
+98kBfWg-2FE8NJm0Th5wX3H7wAciUxhACqpRbP8J7Gk9jIMqM50wZWDA76NOVt1-2BkeauanDlp=
+TuJajNRDetMOcikpMVPoylEovjpiliVEVtYUXil7RUVzK835HaeWjyHcQCGdI3OgB4wPyyvH3gh=
+i-2BFXYAoaVdNjwtdOB8CdNE7i4Z9BN0OkSI7KsO10AXVnAwA-3D-3D">Billing Settings</=
+a>
+   =20
+  </div>
+
+
+
+  			</td>
+            </tr>
+            <tr>
+                <td style=3D"padding-left: 37px; padding-bottom: 20px; marg=
+in-top: 0px; font-family: sans-serif; color: #666666;">
+            <br>
+                    <strong> <a style=3D"color: ##777676; font-size: 15.5px=
+; line-height: 20px"> Have questions?  </a> </strong>
+        	<div style=3D"height:2px;"><br></div>
+        	You can check out our <a style=3D"color: #298eea;text-decoration:n=
+one;font-size: 13px;" href=3D"https://u00000000.ct.sendgrid.net/ls/click?up=
+n=3Du001.W-2FolxTzqTkFgf-2F0utqurIg3eP6xQJxyvt23hgItP2OOKNFJwSE6P4GAoV7pqZK=
+cIlH-2B61e6X4STX50iUIIDlbA-3D-3DKEHE_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ=
+92SUY1wT1qJi-2FMyqHfOs3eW2VBanEh44-2BAW-2ByjA9oqGrMS0-2FimaKSjP6lSJOAQaeIPz=
+XV4L7FZqzl6JBUFLbeY5JK0Tz4LuOa4FoaxR1Oo3pgvo98kBfWg-2FE8NJm0Th5wX3H7wAciUxh=
+ACqpRbP8J7Gk9jIMqM50wZWDA76NOVt1-2BkeeTSFhDoTyHRcjRYRvKqwA1Z7UBUZbPQ-2FHsdl=
+ZwSeCivxxOmcTzpn2z-2Bqu3O4m0g7ahR3WhwZvNzqD3CW16G924-2B2NfccarZctsYdtKf4sAE=
+IjaFcetTvvgJi5YlMAvxNQ-3D-3D">FAQ</a> or our <a style=3D"color: #298eea;tex=
+t-decoration:none;" href=3D"https://u00000000.ct.sendgrid.net/ls/click?upn=
+=3Du001.W-2FolxTzqTkFgf-2F0utqurIq4MN1nZPbd-2F-2B3tpYlzZPdpEXEhvl3UPrbLXY0C=
+Q4yjtFttVYEAMHym50JdOJ6k94Q-3D-3DzWL4_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNN=
+J92SUY1wT1qJi-2FMyqHfOs3eW2VBanEh44-2BAW-2ByjA9oqGrMS0-2FimaKSjP6lSJOAQaeIP=
+zXV4L7FZqzl6JBUFLbeY5JK0Tz4LuOa4FoaxR1Oo3pgvo98kBfWg-2FE8NJm0Th5wX3H7wAciUx=
+hACqpRbP8J7Gk9jIMqM50wZWDA76NOVt1-2Bkedz-2BKsBfv-2FiBkmsrRlBd8KHspzB8f04kX8=
+ExIiKfZ41rLL9eCMOw-2BNs6mxSE45ca6fCgahke3FrkFNPQTWwJqNBEWD3piKAk7t-2Bm31Qju=
+-2Bhc7cusWBlHd2-2FEzblr8bUupQ-3D-3D">support page</a> for more information
+        =09
+        	    <div style=3D"margin-top: 5px; font-family: sans-serif; font-s=
+ize: 12px; line-height: 25px; color: #666666;">
+                    <strong>Account:</strong> do:team:2f8341982a2257142b17a=
+98a5632c0836de2fc11
+  			    </div>
+  			  			</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Full Width, Fluid Column : END -->
+
+  </table>
+  <!-- Email Container : END -->
+
+  <!-- Footer : BEGIN -->
+  <table border=3D"0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" al=
+ign=3D"center" class=3D"email-container">
+    <tr>
+      <td style=3D"text-align: center;padding: 20px 0px 5px;font-family: He=
+lvetica, Arial, sans-serif; font-size: 13px; line-height: 28px;color: #8888=
+88;">
+        Earn $25 credit when you <a style=3D"color: #888888;" href=3D"https=
+://u00000000.ct.sendgrid.net/ls/click?upn=3Du001.uu78y7io9LIMHzpJaTern1VQMa=
+WOtep4NFKPEpIc14U-3D-s7d_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUY1wT1qJi=
+-2FMyqHfOs3eW2VBanEh44-2BAW-2ByjA9oqGrMS0-2FimaKSjP6lSJOAQaeIPzXV4L7FZqzl6J=
+BUFLbeY5JK0Tz4LuOa4FoaxR1Oo3pgvo98kBfWg-2FE8NJm0Th5wX3H7wAciUxhACqpRbP8J7Gk=
+9jIMqM50wZWDA76NOVt1-2BkeadD2P1CIwW42vfxkiAhk4V8wie1RZnf6MD6LUJKtRWCl7f4ZBc=
+VJ5cHwVYFUeBkh18zU52UydpWR-2B75H-2BlrMvBcmzNLK41qJ3GGQ-2Fn0Axk8fvyURVUq5z4N=
+7joGAwnnIQ-3D-3D">refer a friend to DigitalOcean</a>
+      </td>
+    </tr>
+  </table>
+  <!-- Footer : END -->
+
+</td></tr></table>
+<img src=3D"https://u00000000.ct.sendgrid.net/wf/open?upn=3Du001.bdhYUfsjDb=
+95BGwYAsRXHo6v1rXFCMaD9mJGOAUsCHhoEugDeH4e5QXGu5NCIMhb9iq6-2BpXXgvq1UvAzuj5=
+x715DaJaQADmRv1AhMpV-2BZyKOluLJacq84ys0CW0G1ZrqSsAZR-2BxvtIK6YrHe7OVxkT9AAb=
+dFH4ViEiVaWlMJUaLgBOyc7i6mHNjRdhab7mdBcNaXghO3uWBOeE2veNbPt3bBEzx06M101coHo=
+1zPmqS62hmCUeQI9R3dvA-2Fz9KqzeTi2p9UtQ4u-2FRBIBeNoyDoq-2BxK-2BV-2FCa3rmXenY=
+Sfl9-2Bz3s4cqBs493P6Ao9HQgJ7KaktP9VsKYfrNknKFwFH-2FP0WVvts9Jqbhyx45nyHUBQ-3=
+D" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !impo=
+rtant;width:1px !important;border-width:0 !important;margin-top:0 !importan=
+t;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !impor=
+tant;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !=
+important;padding-left:0 !important;"/></body>
+</html>
+--cf5707a87d820a97c469133cc734eccf9bd6f5ba5315b1ea9b62e3661b82--
+
+--78c5e07a8559213b392f49257d475079f4f7fc1782bedaaa0f13b68f7e77
+Content-Disposition: attachment;
+ filename="DigitalOcean Invoice 2026 Jun (9999999-0000000).pdf"
+Content-Type: application/pdf;
+ name="DigitalOcean Invoice 2026 Jun (9999999-0000000).pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJXN0dWItZm9yLW1haWxzaWZ0LWZpeHR1cmUKMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAolJUVPRgo=
+--78c5e07a8559213b392f49257d475079f4f7fc1782bedaaa0f13b68f7e77--

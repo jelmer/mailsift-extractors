@@ -1,0 +1,9 @@
+name: miio
+order: 50
+from_domains:
+  - miio.pt
+subject_regex: "(?i)Your invoice|Yey.*Payment made successfully"
+requires:
+  - attachment:application/pdf
+require_dkim:
+  - miio.pt

@@ -1,0 +1,10 @@
+name: flixbus
+order: 50
+from_domains:
+  - "*.flixbus.com"
+  - flixbus.com
+subject_regex: "(?i)^Payment proof"
+requires:
+  - attachment:application/pdf
+require_dkim:
+  - flixbus.com

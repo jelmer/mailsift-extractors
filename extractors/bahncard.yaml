@@ -1,0 +1,9 @@
+name: bahncard
+order: 50
+from_domains:
+  - bahn.de
+subject_regex: "(?i)Invoice for your BahnCard"
+requires:
+  - attachment:filename:*.pdf
+require_dkim:
+  - bahn.de

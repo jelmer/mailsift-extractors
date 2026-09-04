@@ -1,0 +1,346 @@
+Delivered-To: user@example.com
+Received: from localhost (pa2lpaot04.elok.comp.db.de [10.106.73.41])	(using
+ TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)	 key-exchange
+ X25519 server-signature RSA-PSS (4096 bits))	(No client certificate
+ requested)	by mx.smtp.db.de (Postfix) with ESMTPSA id 4gzlyk4pl9z9v2DG	for
+ <user@example.com>; Tue, 14 Jul 2026 06:03:10 +0200 (CEST)
+X-Received: by 2002:a05:6000:480b:b0:46f:1b89:999 with SMTP id
+ ffacd0b85a97d-47ef69910b9mr19653079f8f.30.1784001791227;        Mon, 13 Jul
+ 2026 21:03:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784001791; cv=none;
+        d=google.com; s=arc-20260327;
+        b=qlc38YmX3drYX7lcpQXU0+H54pV3ooaUigZql592ei1cGMX5DLYR+uHnA8o34uiaug
+         KkIIFbHd73+HpEUQF+sfe7d1tkJoKLNYUDObgsadYnzWB04QZO2hg9cjlXm8leTmTP5+
+         saOGIbksGuSuy/dLWsCc7q/W1B5eBcShhsQIsshAbY+Kuw50GcEz+2ReUn0rPC4jCTVx
+         2zePVYZcsB9G7JBRGNjo+WOkZ2mKnSlonde3syjD8v5dM0MTI7iaqVymUXMBubDwGJ0q
+         YKBYV0bqMMO4+grsvwkSpkLE6Wr+MxmFI8InYugJ5rynxxOB/I+jiRjQeR32FMNTc9HZ
+         a7dw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327;       
+ h=mime-version:subject:message-id:to:from:date:dkim-signature;       
+ bh=oe7EEvR+b1YEnV88idfS1snQh1MgAVZ1ZxIW+0SAvDU=;       
+ fh=MpiHTFU+kyhMlRbMPhoEaPjHKTXBUXdUsSrFXK7brM8=;       
+ b=ZUYnZgmwpL/Qm/aqTQyIUGEy+yO3sy6e4LprTFOTYjYAmGdQXOnOYrXYydJ4wfnmKk        
+ Zfk4p1QMTt1f0QBwP7m1NXx0zwC6WlHC2CDx6Py3vQXrMJPFpY6R1wlI+gFFWZnLY8gB        
+ ZiEqNdPr/Qr5AI4XcQFtwncbPs2wx2UFO07QVO7/JneliV6kafVSQAaKYsww8C9KuEfj        
+ eFb8MvWGJVaCnmq6wh2a42UFEq4sxVT7FZx8QAfx0WCCRFDGyAki6WHhR/b9zbv+y7jF        
+ XTzDdonI9PioasieoDiaFvwqQuxzxo/3jrNjHwVwXeLEvLsZ2lp276qaxDR81s81ZIuD        
+ xG5A==;        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass
+ header.i=@bahn.de header.s=mailgate header.b="e7iaK8/x";       spf=pass
+ (google.com: domain of noreply.bahncard-rechnung@bahn.de designates
+ 81.200.196.41 as permitted sender)
+ smtp.mailfrom=noreply.bahncard-rechnung@bahn.de;       dmarc=pass (p=REJECT
+ sp=REJECT dis=NONE) header.from=bahn.de
+Return-Path: <noreply.bahncard-rechnung@bahn.de>
+Received: from mailgate.tech.deutschebahn.com (mailgate.tech.deutschebahn.com.
+ [81.200.196.41])        by mx.google.com with ESMTPS id
+ ffacd0b85a97d-47f464a8b8dsi2986860f8f.158.2026.07.13.21.03.11        for
+ <user@example.com>        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384
+ bits=256/256);        Mon, 13 Jul 2026 21:03:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply.bahncard-rechnung@bahn.de
+ designates 81.200.196.41 as permitted sender) client-ip=81.200.196.41;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@bahn.de
+ header.s=mailgate header.b="e7iaK8/x";       spf=pass (google.com: domain of
+ noreply.bahncard-rechnung@bahn.de designates 81.200.196.41 as permitted
+ sender) smtp.mailfrom=noreply.bahncard-rechnung@bahn.de;       dmarc=pass
+ (p=REJECT sp=REJECT dis=NONE) header.from=bahn.de
+Received: from mx.smtp.db.de (unknown [10.107.4.100])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	by mhout-prd.mail-prod.comp.db.de (Postfix) with ESMTPS id 4gzlyk5xTlz9ttvN
+	for <user@example.com>; Tue, 14 Jul 2026 06:03:10 +0200 (CEST)
+Received: from localhost (pa2lpaot04.elok.comp.db.de [10.106.73.41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	by mx.smtp.db.de (Postfix) with ESMTPSA id 4gzlyk4pl9z9v2DG
+	for <user@example.com>; Tue, 14 Jul 2026 06:03:10 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bahn.de; s=mailgate;
+	t=1784001790;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type;
+	bh=oe7EEvR+b1YEnV88idfS1snQh1MgAVZ1ZxIW+0SAvDU=;
+	b=e7iaK8/xq1oWdG5pSdjjb5l14CfAzVygGOKJSOXCjI5pNe+j9duiFi4Gz3vJBYVP4AA70d
+	hC6086fbDHMejAaBoIGMmlakaTArO2mjOPCit3UfNoifrIKOgKzeQX3tMAozaBkgzFwIxk
+	G2waHLz4btCOzzQVuffDiLSUPow44ieGCOCGvU+OGIIC2964FvyIDwyhYblkNzlNs/J4o0
+	X4JHguj0gPQGgzbaU6t52aOKb5bMDxvPx92IgTHfl1ZUpdSVhJiRy0lBK9zPGEgu5vXIbP
+	3pizUk2V0zPvIkSE2vnpVg9LZzEFhXX2AB8ffJxxlCfK+5S75b5LE8nzIW32Tg==
+Date: Tue, 14 Jul 2026 06:03:10 +0200 (CEST)
+From: noreply.bahncard-rechnung@bahn.de
+To: user@example.com
+Message-ID: <57005697.87020.1784001790553@localhost>
+Subject: (ID 1-0000000E) Invoice for your BahnCard
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_87010_364782731.1784001790412"
+
+------=_Part_87010_364782731.1784001790412
+Content-Type: multipart/related; 
+	boundary="----=_Part_87011_809980315.1784001790412"
+
+------=_Part_87011_809980315.1784001790412
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_87012_1211965252.1784001790412"
+
+------=_Part_87012_1211965252.1784001790412
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+-webkit-box-shadow: 0px 4px 8px #828282; /*webkit browser */-moz-box-shadow: =
+0px 4px 8px #828282; /*firefox */box-shadow: 0px 4px 8px #828282;line-height:=
+1.15;width:467.700pt; padding:0pt 42.550pt 0pt 85.050pt ; background-color: #=
+FFFFFF; margin:auto.header{ padding-top:36.000pt ;}.footer{ padding-bottom:31=
+.200pt ;}.page-content{ position:relative;padding-top: 62.650pt ;padding-bott=
+om: 70.900pt ;min-height:708.350pt; ;}del {text-decoration:line-through;color=
+:red;} ins {text-decoration:none;} .Hyperlink-H{color:#0000FF;} .Standard-P{m=
+argin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001pt;font-siz=
+e:11pt;position:relative;font-family:"Arial";} .Standard-H{font-family:Arial;=
+color:#000000;} .Listennummer5-P{margin-left:0pt;margin-right:0pt;margin-top:=
+0pt;margin-bottom:.0001pt;font-size:11pt;position:relative;font-family:"Arial=
+";} .Listennummer5-H{font-family:Arial;color:#000000;} .Listennummer4-P{margi=
+n-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001pt;font-size:11=
+pt;position:relative;font-family:"Arial";} .Listennummer4-H{font-family:Arial=
+;color:#000000;} .Listennummer3-P{margin-left:0pt;margin-right:0pt;margin-top=
+:0pt;margin-bottom:.0001pt;font-size:11pt;position:relative;font-family:"Aria=
+l";} .Listennummer3-H{font-family:Arial;color:#000000;} .Listennummer2-P{marg=
+in-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001pt;font-size:1=
+1pt;position:relative;font-family:"Arial";} .Listennummer2-H{font-family:Aria=
+l;color:#000000;} .Aufzhlungszeichen5-P{margin-left:0pt;margin-right:0pt;marg=
+in-top:0pt;margin-bottom:.0001pt;font-size:11pt;position:relative;font-family=
+:"Arial";} .Aufzhlungszeichen5-H{font-family:Arial;color:#000000;} .Aufzhlung=
+szeichen4-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.00=
+01pt;font-size:11pt;position:relative;font-family:"Arial";} .Aufzhlungszeiche=
+n4-H{font-family:Arial;color:#000000;} .Aufzhlungszeichen3-P{margin-left:0pt;=
+margin-right:0pt;margin-top:0pt;margin-bottom:.0001pt;font-size:11pt;position=
+:relative;font-family:"Arial";} .Aufzhlungszeichen3-H{font-family:Arial;color=
+:#000000;} .Aufzhlungszeichen2-P{margin-left:0pt;margin-right:0pt;margin-top:=
+0pt;margin-bottom:.0001pt;font-size:11pt;position:relative;font-family:"Arial=
+";} .Aufzhlungszeichen2-H{font-family:Arial;color:#000000;} .Listennummer-P{m=
+argin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001pt;font-siz=
+e:11pt;position:relative;font-family:"Arial";} .Listennummer-H{font-family:Ar=
+ial;color:#000000;} .Aufzhlungszeichen-P{margin-left:0pt;margin-right:0pt;mar=
+gin-top:0pt;margin-bottom:.0001pt;font-size:11pt;position:relative;font-famil=
+y:"Arial";} .Aufzhlungszeichen-H{font-family:Arial;color:#000000;} .berschrif=
+t1-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001pt;fo=
+nt-size:11pt;position:relative;font-family:"Arial";} .berschrift1-H{font-fami=
+ly:Arial;color:#000000;font-family:Arial Black;color:#808080;font-size:15pt;}=
+ .berschrift2-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom=
+:.0001pt;font-size:11pt;position:relative;font-family:"Arial";} .berschrift2-=
+H{font-family:Arial;color:#000000;font-family:Arial Black;} .berschrift3-P{ma=
+rgin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001pt;font-size=
+:11pt;position:relative;font-family:"Arial";} .berschrift3-H{font-family:Aria=
+l;color:#000000;font-family:Arial Black;} .berschrift4-P{margin-left:0pt;marg=
+in-right:0pt;margin-top:0pt;margin-bottom:.0001pt;font-size:11pt;position:rel=
+ative;font-family:"Arial";} .berschrift4-H{font-family:Arial;color:#000000;fo=
+nt-family:Arial Black;} .berschrift5-P{margin-left:0pt;margin-right:0pt;margi=
+n-top:0pt;margin-bottom:.0001pt;font-size:11pt;position:relative;font-family:=
+"Arial";} .berschrift5-H{font-family:Arial;color:#000000;} .berschrift6-P{mar=
+gin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001pt;font-size:=
+11pt;position:relative;font-family:"Arial";} .berschrift6-H{font-family:Arial=
+;color:#000000;font-family:Times New Roman;font-style:italic;} .berschrift7-P=
+{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001pt;font-s=
+ize:11pt;position:relative;font-family:"Arial";} .berschrift7-H{font-family:A=
+rial;color:#000000;font-size:10pt;} .Aufzhlung1-P{margin-left:0pt;margin-righ=
+t:0pt;margin-top:0pt;margin-bottom:.0001pt;font-size:11pt;position:relative;f=
+ont-family:"Arial";} .Aufzhlung1-H{font-family:Arial;color:#000000;} .Nummeri=
+erung1-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001p=
+t;font-size:11pt;position:relative;font-family:"Arial";} .Nummerierung1-H{fon=
+t-family:Arial;color:#000000;} .Nummerierung2-P{margin-left:0pt;margin-right:=
+0pt;margin-top:0pt;margin-bottom:.0001pt;font-size:11pt;position:relative;fon=
+t-family:"Arial";} .Nummerierung2-H{font-family:Arial;color:#000000;} .Nummer=
+ierung3-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.0001=
+pt;font-size:11pt;position:relative;font-family:"Arial";} .Nummerierung3-H{fo=
+nt-family:Arial;color:#000000;} .NormaleTabelle-C{vertical-align:top;} Hello =
+Mr Test User,=C2=A0thank you for choosing a BahnCard.=C2=A0Please find attach=
+ed the invoice for your BahnCard.=C2=A0You will find all necessary informatio=
+n regarding the invoice amount, the due date and the bank account details to =
+which the money should be transferred in the attached invoice.=C2=A0If you ha=
+ve any questions or need any further information visit our website https://in=
+t.bahn.de/en/help.=C2=A0Yours sincerely,=C2=A0Your BahnCard-Service Team=C2=
+=A0________________________________________________________________N=C3=A4her=
+e Informationen zur Datenverarbeitung finden Sie hier:Datenschutzhinweise Bah=
+nCardDatenschutzhinweise der DB Fernverkehr AG=C2=A0Sitz der Gesellschaft: Fr=
+ankfurt am MainRegistergericht: Frankfurt am Main, HRB 83173USt-IdNr.: DE 260=
+656754Vorstand: Dr. Michael Peterson (Vorsitz), Wilken Bormann, Martin Jende,=
+ Anja Sch=C3=B6llmannVorsitzender des Aufsichtsrates: Martin Seiler
+
+------=_Part_87012_1211965252.1784001790412
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns=3D"http://www.w3.org/19=
+99/xhtml" xmlns:WX=3D"http://schemas.microsoft.com/office/word/2003/auxHint" =
+xmlns:aml=3D"http://schemas.microsoft.com/aml/2001/core" xmlns:w10=3D"urn:sch=
+emas-microsoft-com:office:word" xmlns:wp=3D"http://schemas.openxmlformats.org=
+/drawingml/2006/wordprocessingDrawing" xmlns:pic=3D"http://schemas.openxmlfor=
+mats.org/drawingml/2006/picture" xmlns:rel=3D"http://schemas.openxmlformats.o=
+rg/package/2006/relationships" xmlns:r=3D"http://schemas.openxmlformats.org/o=
+fficeDocument/2006/relationships" xmlns:w=3D"http://schemas.openxmlformats.or=
+g/wordprocessingml/2006/main" xmlns:a=3D"http://schemas.openxmlformats.org/dr=
+awingml/2006/main" xmlns:o=3D"urn:schemas-microsoft-com:office:office"><head>=
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"/><me=
+ta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge"/><style type=3D"text/=
+css"><!--[if !mso]>
+                            v\:* {behavior:url(#default#VML);}
+                            o\:* {behavior:url(#default#VML);}
+                            w10\:* {behavior:url(#default#VML);}
+                            .shape {behavior:url(#default#VML);}
+                        <![endif]--></style><style type=3D"text/css">-webkit-=
+box-shadow: 0px 4px 8px #828282;     /*webkit browser */-moz-box-shadow: 0px =
+4px 8px #828282;    /*firefox */box-shadow: 0px 4px 8px #828282;line-height:1=
+.15;width:467.700pt; padding:0pt 42.550pt 0pt 85.050pt ; background-color: #F=
+FFFFF; margin:auto.header{ padding-top:36.000pt ;}.footer{ padding-bottom:31.=
+200pt ;}.page-content{ position:relative;padding-top: 62.650pt ;padding-botto=
+m: 70.900pt ;min-height:708.350pt; ;}</style><style type=3D"text/css">del {te=
+xt-decoration:line-through;color:red;} ins {text-decoration:none;} .Hyperlink=
+-H{color:#0000FF;}=20
+.Standard-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.00=
+01pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Standard-H{font-family:Arial;color:#000000;}=20
+.Listennummer5-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-botto=
+m:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Listennummer5-H{font-family:Arial;color:#000000;}=20
+.Listennummer4-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-botto=
+m:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Listennummer4-H{font-family:Arial;color:#000000;}=20
+.Listennummer3-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-botto=
+m:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Listennummer3-H{font-family:Arial;color:#000000;}=20
+.Listennummer2-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-botto=
+m:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Listennummer2-H{font-family:Arial;color:#000000;}=20
+.Aufzhlungszeichen5-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-=
+bottom:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Aufzhlungszeichen5-H{font-family:Arial;color:#000000;}=20
+.Aufzhlungszeichen4-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-=
+bottom:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Aufzhlungszeichen4-H{font-family:Arial;color:#000000;}=20
+.Aufzhlungszeichen3-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-=
+bottom:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Aufzhlungszeichen3-H{font-family:Arial;color:#000000;}=20
+.Aufzhlungszeichen2-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-=
+bottom:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Aufzhlungszeichen2-H{font-family:Arial;color:#000000;}=20
+.Listennummer-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom=
+:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Listennummer-H{font-family:Arial;color:#000000;}=20
+.Aufzhlungszeichen-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-b=
+ottom:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Aufzhlungszeichen-H{font-family:Arial;color:#000000;}=20
+.berschrift1-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:=
+.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.berschrift1-H{font-family:Arial;color:#000000;font-family:Arial Black;color:=
+#808080;font-size:15pt;}=20
+.berschrift2-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:=
+.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.berschrift2-H{font-family:Arial;color:#000000;font-family:Arial Black;}=20
+.berschrift3-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:=
+.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.berschrift3-H{font-family:Arial;color:#000000;font-family:Arial Black;}=20
+.berschrift4-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:=
+.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.berschrift4-H{font-family:Arial;color:#000000;font-family:Arial Black;}=20
+.berschrift5-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:=
+.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.berschrift5-H{font-family:Arial;color:#000000;}=20
+.berschrift6-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:=
+.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.berschrift6-H{font-family:Arial;color:#000000;font-family:Times New Roman;fo=
+nt-style:italic;}=20
+.berschrift7-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:=
+.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.berschrift7-H{font-family:Arial;color:#000000;font-size:10pt;}=20
+.Aufzhlung1-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-bottom:.=
+0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Aufzhlung1-H{font-family:Arial;color:#000000;}=20
+.Nummerierung1-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-botto=
+m:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Nummerierung1-H{font-family:Arial;color:#000000;}=20
+.Nummerierung2-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-botto=
+m:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Nummerierung2-H{font-family:Arial;color:#000000;}=20
+.Nummerierung3-P{margin-left:0pt;margin-right:0pt;margin-top:0pt;margin-botto=
+m:.0001pt;font-size:11pt;position:relative;font-family:"Arial";}
+.Nummerierung3-H{font-family:Arial;color:#000000;}=20
+.NormaleTabelle-C{vertical-align:top;} </style></head><body style=3D""><div s=
+tyle=3D"background-color:white"><div class=3D"header" style=3D"padding-top:36=
+.000pt ;"/><p class=3D"Standard-P" style=3D"direction:ltr;unicode-bidi:normal=
+;"><span class=3D"Standard-H">Hello Mr Test User,</span></p><p class=3D"Stand=
+ard-P" style=3D"direction:ltr;unicode-bidi:normal;"><span class=3D"Standard-H=
+">=C2=A0</span></p><p class=3D"Standard-P" style=3D"direction:ltr;unicode-bid=
+i:normal;text-autospace:none;"><span class=3D"Standard-H">thank you for choos=
+ing a BahnCard.</span></p><p class=3D"Standard-P" style=3D"direction:ltr;unic=
+ode-bidi:normal;text-autospace:none;"><span class=3D"Standard-H">=C2=A0</span=
+></p><p class=3D"Standard-P" style=3D"direction:ltr;unicode-bidi:normal;text-=
+autospace:none;"><span class=3D"Standard-H">Please find attached the invoice =
+for your BahnCard.</span></p><p class=3D"Standard-P" style=3D"direction:ltr;u=
+nicode-bidi:normal;text-autospace:none;"><span class=3D"Standard-H">=C2=A0</s=
+pan></p><p class=3D"Standard-P" style=3D"direction:ltr;unicode-bidi:normal;te=
+xt-autospace:none;"><span class=3D"Standard-H">You will find all necessary in=
+formation regarding the invoice amount, the due date and the bank account det=
+ails to which the money should be transferred in the attached invoice.</span>=
+</p><p class=3D"Standard-P" style=3D"direction:ltr;unicode-bidi:normal;"><spa=
+n class=3D"Standard-H">=C2=A0</span></p><p class=3D"Standard-P" style=3D"dire=
+ction:ltr;unicode-bidi:normal;"><span class=3D"Standard-H">If you have any qu=
+estions or need any further information visit our website https://int.bahn.de=
+/en/help.</span></p><p class=3D"Standard-P" style=3D"direction:ltr;unicode-bi=
+di:normal;"><span class=3D"Standard-H">=C2=A0</span></p><p class=3D"Standard-=
+P" style=3D"direction:ltr;unicode-bidi:normal;"><span class=3D"Standard-H">Yo=
+urs sincerely,</span></p><p class=3D"Standard-P" style=3D"direction:ltr;unico=
+de-bidi:normal;"><span class=3D"Standard-H">=C2=A0</span></p><p class=3D"Stan=
+dard-P" style=3D"direction:ltr;unicode-bidi:normal;"><span class=3D"Standard-=
+H">Your BahnCard-Service Team</span></p><p class=3D"Standard-P" style=3D"dire=
+ction:ltr;unicode-bidi:normal;"><span class=3D"Standard-H">=C2=A0</span></p><=
+p class=3D"Standard-P" style=3D"direction:ltr;unicode-bidi:normal;"><span cla=
+ss=3D"Standard-H"><span style=3D"color:#000000;"></span>_____________________=
+___________________________________________</span></p><p class=3D"Standard-P"=
+ style=3D"direction:ltr;unicode-bidi:normal;"><span class=3D"Standard-H"><spa=
+n style=3D"color:#000000;"></span><span style=3D"color:#000000;">N=C3=A4here =
+Informationen zur Datenverarbeitung finden Sie hier:</span></span></p><p clas=
+s=3D"Standard-P" style=3D"direction:ltr;unicode-bidi:normal;"><span class=3D"=
+Standard-H"><span style=3D"color:#000000;"></span><a style=3D"text-decoration=
+:none;" href=3D"https://www.db-fernverkehr.com/datenschutzhinweise/datenschut=
+z-bahncard"><span class=3D"Hyperlink-H" style=3D"text-decoration:underline;">=
+Datenschutzhinweise BahnCard</span></a></span></p><p class=3D"Standard-P" sty=
+le=3D"direction:ltr;unicode-bidi:normal;"><span class=3D"Standard-H"><span cl=
+ass=3D"Hyperlink-H" style=3D"text-decoration:underline;"></span><a style=3D"t=
+ext-decoration:none;" href=3D"https://www.db-fernverkehr.com/datenschutzhinwe=
+ise"><span class=3D"Hyperlink-H" style=3D"text-decoration:underline;">Datensc=
+hutzhinweise der DB Fernverkehr AG</span></a></span></p><p class=3D"Standard-=
+P" style=3D"direction:ltr;unicode-bidi:normal;"><span class=3D"Standard-H">=
+=C2=A0</span></p><p class=3D"Standard-P" style=3D"direction:ltr;unicode-bidi:=
+normal;"><span class=3D"Standard-H"><span style=3D"color:#000000;"></span><sp=
+an style=3D"color:#000000;">Sitz der Gesellschaft: Frankfurt am Main</span><s=
+pan style=3D"color:#000000;"></span><span style=3D"color:#000000;"></span><sp=
+an style=3D"color:#000000;"></span></span></p><p class=3D"Standard-P" style=
+=3D"direction:ltr;unicode-bidi:normal;"><span class=3D"Standard-H"><span styl=
+e=3D"color:#000000;"></span><span style=3D"color:#000000;">Registergericht: F=
+rankfurt am Main, HRB 83173</span></span></p><p class=3D"Standard-P" style=3D=
+"direction:ltr;unicode-bidi:normal;"><span class=3D"Standard-H"><span style=
+=3D"color:#000000;"></span><span style=3D"color:#000000;">USt-IdNr.: DE 26065=
+6754</span></span></p><p class=3D"Standard-P" style=3D"direction:ltr;unicode-=
+bidi:normal;"><span class=3D"Standard-H"><span style=3D"color:#000000;"></spa=
+n><span style=3D"color:#000000;">Vorstand: Dr. Michael Peterson (Vorsitz), </=
+span><span style=3D"color:#000000;">Wilken Bormann, Martin </span><span style=
+=3D"color:#000000;">Jende</span><span style=3D"color:#000000;">, Anja Sch=C3=
+=B6llmann</span></span></p><p class=3D"Standard-P" style=3D"direction:ltr;uni=
+code-bidi:normal;"><span class=3D"Standard-H"><span style=3D"color:#000000;">=
+</span><span style=3D"color:#000000;">Vorsitzender des Aufsichtsrates: Martin=
+ Seiler</span></span></p><div class=3D"footer" style=3D"padding-bottom:31.200=
+pt ;"/></div></body></html>
+
+------=_Part_87012_1211965252.1784001790412--
+
+------=_Part_87011_809980315.1784001790412--
+
+------=_Part_87010_364782731.1784001790412
+Content-Type: application/octet-stream; name=BahnCard_Invoice.pdf
+Content-Disposition: attachment; filename=BahnCard_Invoice.pdf
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJXN0dWItZm9yLW1haWxzaWZ0LWZpeHR1cmUKMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAolJUVPRgo=
+------=_Part_87010_364782731.1784001790412--

@@ -1,0 +1,10 @@
+name: digitalocean-invoice
+order: 50
+from_domains:
+  - digitalocean.com
+subject_regex: "(?i)Your \\d{4}-\\d{2} invoice is available"
+requires:
+  - text
+  - attachment:application/pdf
+require_dkim:
+  - digitalocean.com

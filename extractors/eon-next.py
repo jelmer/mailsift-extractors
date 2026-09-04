@@ -107,9 +107,15 @@ def main() -> int:
         # bill still lands in the right year folder.
         bill["paymentDueDate"] = period_end.strftime("%Y-%m-%d")
 
-    Path(f"eon-next-{invoice_id}.bill.json").write_text(
+    slug = f"eon-next-{invoice_id}"
+    Path(f"{slug}.bill.json").write_text(
         json.dumps(bill, ensure_ascii=False), encoding="utf-8"
     )
+
+    pdf = mail.find_pdf_attachment("statement")
+    if pdf is not None:
+        Path(f"{slug}.bill.pdf").write_bytes(pdf.bytes)
+
     return 0
 
 
