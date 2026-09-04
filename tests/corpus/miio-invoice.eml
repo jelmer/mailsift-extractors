@@ -1,0 +1,613 @@
+Delivered-To: user@example.com
+Received: from wrqvfqkc.outbound-mail.sendgrid.net
+ (wrqvfqkc.outbound-mail.sendgrid.net. [149.72.244.28])        by
+ mx.google.com with ESMTPS id
+ d75a77b69052e-52d83f1f491si3692111cf.34.2026.08.13.12.14.50        for
+ <user@example.com>        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256
+ bits=128/128);        Thu, 13 Aug 2026 12:14:50 -0700 (PDT)
+X-Received: by 2002:ac8:5dcf:0:b0:51b:fe7a:4eb8 with SMTP id
+ d75a77b69052e-52d854a61cbmr2104751cf.35.1786648490836;        Thu, 13 Aug
+ 2026 12:14:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786648490; cv=none;
+        d=google.com; s=arc-20260327;
+        b=AeR9R97Y2wuwr0FAjSjn2xbZPWCS5JTDAuZM7seWunzL9nJKUojiGHlgNqmg5eOjsS
+         uNbybbSsG5O8fIMlmewGCn6n3V92fjTT4Aw5a/8bOK/K1JoJo1Wc457uwXDFYftInDYU
+         JQh5/vsQQohdLz9EBwxGhLeOx7u9nrf1owz3Q71ePOC3O2WpqXKo5UZzbHsaMQfI5Ldf
+         pl/eDBqohaz1gSdNh5NUnwa+5EOvIacJrwiWxBKx/yrpEPktoIbCk8oxaS6wQyrTkJiu
+         0VJIpyi2y0RQED8MUh6Bix0/3G0W9/G/JNTWXzGUToZZZRMcT2l4gjDR2Q+y2CPFNUuy
+         lboQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327;       
+ h=to:subject:message-id:mime-version:from:date:dkim-signature        
+ :dkim-signature;        bh=yefAliOttMap2tfxd0JVrRVKtgRBvhGqsa/EPecM4A0=;
+        fh=MpiHTFU+kyhMlRbMPhoEaPjHKTXBUXdUsSrFXK7brM8=;       
+ b=AOVGvk5cT6Gdm1UCqKesARBCjWMy7e8gTs5jbWFPBeA2C56Enja2q+CzKL33+cAGrW        
+ 2KQCwPzKjAxajeFb0+3TbgZ13Yss8Kaa3NQiknJIq1GmgiIONXx0tnHXlOEtQn3i46EP        
+ AXgetSiS030/VzX4AKENHdt5rXgyqJMX8pOA2sfDcQOqrYJUMwt2ZUldtfrjJRPMPKsD        
+ J4sSqeNCx0UhAbatwhHlWos+4PU31dm/APyJFqolIgutnDc4faEFnm6n7deuu8GsJZfM        
+ oLADtvf4Q1YtBrEg/10dUNh2cALwYRUQqFw/f7iaKxMu4vaxACcPmMX9GclcV7Dk8uYa        
+ Lc2w==;        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass
+ header.i=@miio.pt header.s=s1 header.b=fuQNYBII;       dkim=pass
+ header.i=@sendgrid.info header.s=smtpapi header.b="Gh/wIxdl";       spf=pass
+ (google.com: domain of bounces+12553490-dd1f-user=gmail.com@em9827.miio.pt
+ designates 149.72.244.28 as permitted sender)
+ smtp.mailfrom="bounces+12553490-dd1f-user=gmail.com@em9827.miio.pt";      
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=miio.pt
+Return-Path: <bounces+12553490-dd1f-user=gmail.com@em9827.miio.pt>
+Received: from wrqvfqkc.outbound-mail.sendgrid.net
+ (wrqvfqkc.outbound-mail.sendgrid.net. [149.72.244.28])        by
+ mx.google.com with ESMTPS id
+ d75a77b69052e-52d83f1f491si3692111cf.34.2026.08.13.12.14.50        for
+ <user@example.com>        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256
+ bits=128/128);        Thu, 13 Aug 2026 12:14:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ bounces+12553490-dd1f-user=gmail.com@em9827.miio.pt designates 149.72.244.28
+ as permitted sender) client-ip=149.72.244.28;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@miio.pt
+ header.s=s1 header.b=fuQNYBII;       dkim=pass header.i=@sendgrid.info
+ header.s=smtpapi header.b="Gh/wIxdl";       spf=pass (google.com: domain of
+ bounces+12553490-dd1f-user=gmail.com@em9827.miio.pt designates 149.72.244.28
+ as permitted sender)
+ smtp.mailfrom="bounces+12553490-dd1f-user=gmail.com@em9827.miio.pt";      
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=miio.pt
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=miio.pt;
+	h=content-type:date:from:mime-version:subject:to:cc:content-type:date:
+	feedback-id:from:subject:to;
+	s=s1; t=1786648490;
+	bh=yefAliOttMap2tfxd0JVrRVKtgRBvhGqsa/EPecM4A0=;
+	b=fuQNYBIIfKzO7OYQX20vyfYnK0EsjennYFaSIVqL/IN2kUG3dVoH9A+4iA5UaW2M1fFL
+	AImxegVKpT71c/z7RvOmoI1lA0rtgCqwnATCMJhmdlcwrc46AkLhz5/4XJZ0moxrTRMZ1/
+	smLvrrbpEVa5aOaupSVCbQEqCjEs6AGuM3xCpWo6vo4r1TmEt7XMleifooeg47yK4IAR0U
+	IAUYJ/s1jQ7Po4H0JDmGwXPFK+XKP2wiTa7RJD6SoXz/V2VytHxa9QHqw8LkLjM7iTzWMM
+	5QvDaCA4StaC26ZXGM9+FB9UN7BkcFns1LI4KoHQ2QKmkRNZ103y6D1KWD0ixogg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:date:from:mime-version:subject:to:cc:content-type:date:
+	feedback-id:from:subject:to;
+	s=smtpapi; t=1786648490;
+	bh=yefAliOttMap2tfxd0JVrRVKtgRBvhGqsa/EPecM4A0=;
+	b=Gh/wIxdl7WdiI27Ro4zoviUaf+q4YkUpqmrCT5ePhXp2DmgLCwcUsMI5itlfVr2DyZ77
+	yVr5GorOPefa7eKKtp4/gDxJ8A2uqs3x19lYPrpyLKus/2k8tLRULT9VmUfG1dLMNU7LDK
+	NGGD91t3r8s00aynSfX7SCX/Pf0CmURGY=
+Received: by recvd-cc76d4bb6-5dpp8 with SMTP id
+ recvd-cc76d4bb6-5dpp8-1-6A7E17AA-27	2026-08-13 19:14:50.017599282 +0000 UTC
+ m=+1383733.233640320
+Received: from MTI1NTM0OTA (unknown)
+	by geopod-ismtpd-8 (SG) with HTTP
+	id ByMgVTlkRoKahgTLCwK55g
+	Thu, 13 Aug 2026 19:14:49.978 +0000 (UTC)
+Content-Type: multipart/mixed;
+ boundary="4f6079a40a73be45f63114b7e38678a9fa2fbebc29330d17d07a1c512d6a"
+Date: Thu, 13 Aug 2026 19:14:50 +0000 (UTC)
+From: Miio <invoices@miio.pt>
+Mime-Version: 1.0
+Message-ID: <ByMgVTlkRoKahgTLCwK55g@geopod-ismtpd-8>
+Subject: Your invoice
+X-SG-EID: u001.sJNmL31cVOO+Yk5n8bfbFDvziQwq+deQ6lP+xFPzjcMnvlLfeJhbGQj10
+ =?utf-8?q?riiFVRdBKShi0K0fUiusFEfq2ajqCOMp9LCxIc4eo5mNs1CQ2CE573K6A6Ox4myT8?=
+ =?utf-8?q?bcFAbvr8mD/yO1hZz4yvsqBNKxNPtYht3mknamwLlWffq3yE/iDQRfWiFzLNK8msH?=
+ =?utf-8?q?0HUBERAhZOAqgJ0WCeRl+PO7i2?=9eY61Bw7nKN09TT4cxY2vA=
+X-SG-ID: u001.SdBcvi+Evd/bQef8eZF3BpTL9BgbK5wfSJMJGMsmprDsPyUTnMagHRCjb
+ =?utf-8?q?/65GublqQtT02c6aM5kttbg8K4iCBsZTUTsJuQhenLbGvnr3atVZLY7mLfuyzhnCi?=
+ =?utf-8?q?ccCFUIba5ekzbNY19HMCV/tpnwClIFWEsuS02XGkb/D/hdk/mcnGIS8iZxBv/t7lQ?=
+ =?utf-8?q?UzB8M8kOTCNzuLtsbWJeQUCpCtVb2RJaRITXse3VzlmqzAwyhKHxs/fGMF0Ww/jiZ?=
+ =?utf-8?q?0AjVvrmOD3Uft9rEwx6AkunG30ocSPsdX1CVWPI?=cmFeWgw0=
+To: user@example.com
+X-Entity-ID: u001.4erRLlLqYhnNIOOTZmNEog==
+
+--4f6079a40a73be45f63114b7e38678a9fa2fbebc29330d17d07a1c512d6a
+Content-Type: multipart/alternative;
+ boundary="71199d4be371db0b61984ddcfb5901d06b4d16908baaaddfab8940514da1"
+
+--71199d4be371db0b61984ddcfb5901d06b4d16908baaaddfab8940514da1
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+We attached an invoice for the period up to 12/08/2026.
+
+( https://www.miioelectric.com/ )
+
+Your invoice
+
+Grateful for the trust and preference!
+
+We attached an invoice for the period up to 12/08/2026.
+You can see the detail of the charging sessions for this invoice in this link=
+ ( https://miio-services.miio.com/d/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=
+xx ).
+
+The link is valid for 7 days. After that, you can access the documents throug=
+h the app.
+
+Thank you for being an active part of the miio community!
+
+( https://link.miioelectric.com/xxxxxxx )
+
+Let's travel together?
+
+( https://www.miioelectric.com/ )
+
+( https://www.facebook.com/miioelectric/ ) ( https://www.instagram.com/miioel=
+ectric/ ) ( https://www.linkedin.com/company/muvext/ )
+
+Unsubscribe ( <%asm_group_unsubscribe_raw_url%> ) - Unsubscribe Preferences (=
+ <%asm_preferences_raw_url%> )
+
+--71199d4be371db0b61984ddcfb5901d06b4d16908baaaddfab8940514da1
+Mime-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/T=
+R/xhtml1/DTD/xhtml1-strict.dtd">
+<html data-editor-version=3D"2" class=3D"sg-campaigns" xmlns=3D"http://www.w3=
+.org/1999/xhtml">
+    <head>
+      <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+      <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1, minimum-scale=3D1, maximum-scale=3D1">
+      <!--[if !mso]><!-->
+      <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge">
+      <!--<![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+  <style type=3D"text/css">
+    body {width: 600px;margin: 0 auto;}
+    table {border-collapse: collapse;}
+    table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+    img {-ms-interpolation-mode: bicubic;}
+  </style>
+<![endif]-->
+      <style type=3D"text/css">
+    body, p, div {
+      font-family: arial,helvetica,sans-serif;
+      font-size: 14px;
+    }
+    body {
+      color: #000000;
+    }
+    body a {
+      color: #1188E6;
+      text-decoration: none;
+    }
+    p { margin: 0; padding: 0; }
+    table.wrapper {
+      width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    img.max-width {
+      max-width: 100% !important;
+    }
+    .column.of-2 {
+      width: 50%;
+    }
+    .column.of-3 {
+      width: 33.333%;
+    }
+    .column.of-4 {
+      width: 25%;
+    }
+    ul ul ul ul  {
+      list-style-type: disc !important;
+    }
+    ol ol {
+      list-style-type: lower-roman !important;
+    }
+    ol ol ol {
+      list-style-type: lower-latin !important;
+    }
+    ol ol ol ol {
+      list-style-type: decimal !important;
+    }
+    @media screen and (max-width:480px) {
+      .preheader .rightColumnContent,
+      .footer .rightColumnContent {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent div,
+      .preheader .rightColumnContent span,
+      .footer .rightColumnContent div,
+      .footer .rightColumnContent span {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent,
+      .preheader .leftColumnContent {
+        font-size: 80% !important;
+        padding: 5px 0;
+      }
+      table.wrapper-mobile {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+      img.max-width {
+        height: auto !important;
+        max-width: 100% !important;
+      }
+      a.bulletproof-button {
+        display: block !important;
+        width: auto !important;
+        font-size: 80%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .columns {
+        width: 100% !important;
+      }
+      .column {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .social-icon-column {
+        display: inline-block !important;
+      }
+    }
+  </style>
+      <!--user entered Head Start-->
+   =20
+     <!--End Head user entered-->
+    </head>
+    <body>
+      <center class=3D"wrapper" data-link-color=3D"#1188E6" data-body-style=
+=3D"font-size:14px; font-family:arial,helvetica,sans-serif; color:#000000; ba=
+ckground-color:#ffffff;">
+        <div class=3D"webkit">
+          <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"10=
+0%" class=3D"wrapper" bgcolor=3D"#ffffff">
+            <tr>
+              <td valign=3D"top" bgcolor=3D"#ffffff" width=3D"100%">
+                <table width=3D"100%" role=3D"content-container" class=3D"out=
+er" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                  <tr>
+                    <td width=3D"100%">
+                      <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0">
+                        <tr>
+                          <td>
+                            <!--[if mso]>
+    <center>
+    <table><tr><td width=3D"600">
+  <![endif]-->
+                                    <table width=3D"100%" cellpadding=3D"0" c=
+ellspacing=3D"0" border=3D"0" style=3D"width:100%; max-width:600px;" align=3D=
+"center">
+                                      <tr>
+                                        <td role=3D"modules-container" style=
+=3D"padding:0px 0px 0px 0px; color:#000000; text-align:left;" bgcolor=3D"#fff=
+fff" width=3D"100%" align=3D"left"><table class=3D"module preheader preheader=
+-hide" role=3D"module" data-type=3D"preheader" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" width=3D"100%" style=3D"display: none !important; mso-hide=
+: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: =
+0;">
+    <tr>
+      <td role=3D"module-content">
+        <p>We attached an invoice for the period up to 12/08/2026.</p>
+      </td>
+    </tr>
+  </table><table class=3D"wrapper" role=3D"module" data-type=3D"image" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"96d3aee5-6b1e-4b43-9d9f-c08a808cc5ee">
+    <tbody>
+      <tr>
+        <td style=3D"font-size:6px; line-height:10px; padding:0px 0px 0px 0px=
+;" valign=3D"top" align=3D"center">
+         =20
+        <a href=3D"https://www.miioelectric.com/"><img class=3D"max-width" bo=
+rder=3D"0" style=3D"display:block; color:#000000; text-decoration:none; font-=
+family:Helvetica, arial, sans-serif; font-size:16px; max-width:20% !important=
+; width:20%; height:auto !important;" width=3D"120" alt=3D"" data-proportiona=
+lly-constrained=3D"true" data-responsive=3D"true" src=3D"http://cdn.mcauto-im=
+ages-production.sendgrid.net/627961ab722d6285/fa6b400c-7cc8-4c5b-8784-e152ae2=
+de2d3/300x116.png"></a></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"code" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"532b2fd6-dc97-4262-a8f8-8bd28e35b13d">
+    <tbody>
+      <tr>
+        <td height=3D"100%" valign=3D"top" role=3D"module-content">
+       =20
+          <div style=3D"font-size:18px; font-weight:700; font-family: 'Helvet=
+ica', 'Arial', sans-serif; padding:40px 0px 0px 0px; text-align: center">
+            <span style=3D"color: #308681">Your invoice</span>
+        </div>
+</td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"code" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"d329521a-8a28-4185-bbf7-02ad9874e15b">
+    <tbody>
+      <tr>
+        <td height=3D"100%" valign=3D"top" role=3D"module-content">  <div sty=
+le=3D"font-size:18px; font-weight:500; font-family: 'Helvetica', 'Arial', san=
+s-serif; padding:10px; text-align: center">
+            <span style=3D"color: #308681">Grateful for the trust and prefere=
+nce!</span>
+        </div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"spacer" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"97bf6ce3-e55c-4b6d-8452-bea4d0245aa8">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 30px 0px;" role=3D"module-content" bgcol=
+or=3D"">
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"divider" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-lay=
+out: fixed;" data-muid=3D"7cc4a567-0ae7-4914-a90a-621157e6a375">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 0px 0px;" role=3D"module-content" height=
+=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" width=3D"100%" height=3D"2px" style=3D"line-height:2px; font-size:2px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 2px 0px;" bgcolor=3D"#eaeaea"></=
+td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"spacer" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"a9ca308f-5466-488e-b97b-3d72e5a11d64">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 60px 0px;" role=3D"module-content" bgcol=
+or=3D"">
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"code" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"25e7fb24-28cf-4f05-b66f-2ea40b4f921a">
+    <tbody>
+      <tr>
+        <td height=3D"100%" valign=3D"top" role=3D"module-content">
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"font-=
+style: normal; font-variant-ligatures: normal; font-variant-caps: normal; fon=
+t-weight: 400; text-align: center; color: #000000; font-size: 15px; font-fami=
+ly: helvetica, sans-serif; line-height:200%;">We attached an invoice for the =
+period up to 12/08/2026.&nbsp;</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"font-=
+style: normal; font-variant-ligatures: normal; font-variant-caps: normal; fon=
+t-weight: 400; text-align: center; color: #000000; font-size: 15px; font-fami=
+ly: helvetica, sans-serif; line-height:normal;">You can see the detail of the=
+ charging sessions for this invoice in this </span><a href=3D"https://miio-se=
+rvices.miio.com/d/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"><span style=3D=
+"font-style: normal; font-variant-ligatures: normal; font-variant-caps: norma=
+l; font-weight: 400; text-align: center; color: #44b7b3; font-size: 15px; fon=
+t-family: helvetica, sans-serif; line-height:normal;"><u>link</u></span></a><=
+span style=3D"font-style: normal; font-variant-ligatures: normal; font-varian=
+t-caps: normal; font-weight: 400; text-align: center; color: #44b7b3; font-si=
+ze: 15px; font-family: helvetica, sans-serif; line-height:normal;">.</span><b=
+r><br><br>The link is valid for 7 days. After that, you can access the docume=
+nts through the app.</div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"c2f7098c-57a4-48e6-8155-b9dcbf2882f3" data-mc-module=
+-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:18px 0px 18px 0px; line-height:22px; text-align:=
+inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-content"=
+><div><div style=3D"font-family: inherit; text-align: inherit"><span style=3D=
+"font-style: normal; font-variant-ligatures: normal; font-variant-caps: norma=
+l; font-weight: 400; text-align: center; color: #000000; font-size: 15px; fon=
+t-family: helvetica, sans-serif">Thank you for being an active part of the mi=
+io community!<br>
+</span></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"spacer" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"4f6252f5-a753-4d00-b5a2-0be03d40b4b7.1">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 15px 0px;" role=3D"module-content" bgcol=
+or=3D"">
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"code" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"b0ac8a6f-900e-4210-adfa-efc0bd150c4f">
+    <tbody>
+      <tr>
+        <td height=3D"100%" valign=3D"top" role=3D"module-content">
+
+  <div style=3D"padding:0px 0px 0px 0px; text-align:center; display:flex; jus=
+tify-content:center;">     =20
+   <a href=3D"https://link.miioelectric.com/xxxxxxx">
+   <img class=3D"max-width" border=3D"0" style=3D"text-decoration:none; max-w=
+idth:100% !important; width:100%; height:auto !important;" width=3D"120" alt=
+=3D"" data-proportionally-constrained=3D"true" data-responsive=3D"true" src=
+=3D"http://cdn.mcauto-images-production.sendgrid.net/627961ab722d6285/055f643=
+3-ecb8-4378-a341-60f89e8893be/1845x638.png">
+   </a>
+</div>
+
+</td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"spacer" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"4f6252f5-a753-4d00-b5a2-0be03d40b4b7">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 30px 0px;" role=3D"module-content" bgcol=
+or=3D"">
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"code" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"81d94ee0-0e6b-4dcc-a7f1-a67feca3bb88">
+    <tbody>
+      <tr>
+        <td height=3D"100%" valign=3D"top" role=3D"module-content">  <div sty=
+le=3D"font-size:14px; font-weight:700; font-family: 'Helvetica', 'Arial', san=
+s-serif; padding:40px 0px 40px 0px; text-align: center; background-color:#F3F=
+9F8;">
+            <span style=3D"color: #308681">Let's travel together?</span>
+        </div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"spacer" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"0a979420-b8e4-4601-b5ac-17173cd9c143">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 30px 0px;" role=3D"module-content" bgcol=
+or=3D"">
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"wrapper" role=3D"module" data-type=3D"image" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"7d3d99e2-0831-49ae-9010-1485ae758c30">
+    <tbody>
+      <tr>
+        <td style=3D"font-size:6px; line-height:10px; padding:0px 0px 0px 0px=
+;" valign=3D"top" align=3D"center">
+         =20
+        <a href=3D"https://www.miioelectric.com/"><img class=3D"max-width" bo=
+rder=3D"0" style=3D"display:block; color:#000000; text-decoration:none; font-=
+family:Helvetica, arial, sans-serif; font-size:16px; max-width:16% !important=
+; width:16%; height:auto !important;" width=3D"96" alt=3D"" data-proportional=
+ly-constrained=3D"true" data-responsive=3D"true" src=3D"http://cdn.mcauto-ima=
+ges-production.sendgrid.net/627961ab722d6285/fa6b400c-7cc8-4c5b-8784-e152ae2d=
+e2d3/300x116.png"></a></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"spacer" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layo=
+ut: fixed;" data-muid=3D"8af24f6a-f1e5-436d-b61a-e8a87e4ffadb">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 10px 0px;" role=3D"module-content" bgcol=
+or=3D"">
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"social" align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" s=
+tyle=3D"table-layout: fixed;" data-muid=3D"nS7DeTjnVXKyL959FJKcaV">
+      <tbody>
+        <tr>
+          <td valign=3D"top" style=3D"padding:0px 0px 0px 0px; font-size:6px;=
+ line-height:10px;" align=3D"center">
+            <table align=3D"center">
+              <tbody><tr align=3D"center"><td style=3D"padding: 0px 5px;" cla=
+ss=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://www.facebook.com/miioelect=
+ric/" target=3D"_blank" alt=3D"Facebook" title=3D"Facebook" style=3D"display:=
+inline-block; background-color:#308681; height:24px; width:24px; border-radiu=
+s:30px; -webkit-border-radius:30px; -moz-border-radius:30px;">
+        <img role=3D"social-icon" alt=3D"Facebook" title=3D"Facebook" src=3D"=
+https://mc.sendgrid.com/assets/social/white/facebook.png" style=3D"height:24p=
+x; width:24px;" height=3D"24" width=3D"24">
+      </a>
+    </td><td style=3D"padding: 0px 5px;" class=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://www.instagram.com/miioelec=
+tric/" target=3D"_blank" alt=3D"Instagram" title=3D"Instagram" style=3D"displ=
+ay:inline-block; background-color:#308681; height:24px; width:24px; border-ra=
+dius:30px; -webkit-border-radius:30px; -moz-border-radius:30px;">
+        <img role=3D"social-icon" alt=3D"Instagram" title=3D"Instagram" src=
+=3D"https://mc.sendgrid.com/assets/social/white/instagram.png" style=3D"heigh=
+t:24px; width:24px;" height=3D"24" width=3D"24">
+      </a>
+    </td><td style=3D"padding: 0px 5px;" class=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://www.linkedin.com/company/m=
+uvext/" target=3D"_blank" alt=3D"LinkedIn" title=3D"LinkedIn" style=3D"displa=
+y:inline-block; background-color:#308681; height:24px; width:24px; border-rad=
+ius:30px; -webkit-border-radius:30px; -moz-border-radius:30px;">
+        <img role=3D"social-icon" alt=3D"LinkedIn" title=3D"LinkedIn" src=3D"=
+https://mc.sendgrid.com/assets/social/white/linkedin.png" style=3D"height:24p=
+x; width:24px;" height=3D"24" width=3D"24">
+      </a>
+    </td></tr></tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table><div data-role=3D"module-unsubscribe" class=3D"module" role=3D"mo=
+dule" data-type=3D"unsubscribe" style=3D"color:#444444; font-size:12px; line-=
+height:20px; padding:16px 16px 16px 16px; text-align:center;" data-muid=3D"cb=
+37e1be-dd7d-4889-a6aa-0f9a3248c5f2"><div class=3D"Unsubscribe--addressLine"><=
+/div><p style=3D"font-size:12px; line-height:20px;"><a class=3D"Unsubscribe--=
+unsubscribeLink" href=3D"<%asm_group_unsubscribe_raw_url%>" target=3D"_blank"=
+ style=3D"">Unsubscribe</a> - <a href=3D"<%asm_preferences_raw_url%>" target=
+=3D"_blank" class=3D"Unsubscribe--unsubscribePreferences" style=3D"">Unsubscr=
+ibe Preferences</a></p></div></td>
+                                      </tr>
+                                    </table>
+                                    <!--[if mso]>
+                                  </td>
+                                </tr>
+                              </table>
+                            </center>
+                            <![endif]-->
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+    <img src=3D"https://u12553490.ct.sendgrid.net/wf/open?upn=3Du001.bdhYUfsj=
+Db95BGwYAsRXHo6v1rXFCMaD9mJGOAUsCHhoEugDeH4e5QXGu5NCIMhbiBMYw0xj1VjpkvaD6o2le=
+bwImNfN9nffcFLkTAzqO-2FDByMIO96f-2FXejOzbsMBbYbFb-2BiqeSbwX5ngskeYPZXX196FCD-=
+2BcBLpFFP3QVCm0AHT-2F-2BWWtZwzdMtpC19QCOq1n7Gn92mQHH4-2BXyDAGiWojsld7SC1c5mMI=
+mJZb2-2FT6lSP-2Fknx-2BzMJCtpe7d-2BCiF1bE5H66FPNSN6faIJHQzx5DCzNX0W4SWTqS4-2Bc=
+NH9yuhCtAbfCX-2FuYmBKnjqQfJXKAa8gtZmkaJ5PS-2FC8PEIKDN39K8PzUF0NGgf1b1wu1Ld-2B=
+szamfpWGF5jp-2B6dpW-2FzO7LTBQmXIVeHhhwjIbYGfc878O-2B2buce4ou6yCfyRNhk0GxDVFxK=
+he2QDS4EiQNvemfxZnnZDQ5BoWH02ts5t2sw-3D-3D" alt=3D"" width=3D"1" height=3D"1"=
+ border=3D"0" style=3D"height:1px !important;width:1px !important;border-widt=
+h:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-righ=
+t:0 !important;margin-left:0 !important;padding-top:0 !important;padding-bott=
+om:0 !important;padding-right:0 !important;padding-left:0 !important;"/></bod=
+y>
+  </html>
+
+--71199d4be371db0b61984ddcfb5901d06b4d16908baaaddfab8940514da1--
+
+--4f6079a40a73be45f63114b7e38678a9fa2fbebc29330d17d07a1c512d6a
+Content-Disposition: attachment;
+ filename="00000000-0000-0000-0000-000000000000.pdf"
+Content-Type: application/pdf; name="00000000-0000-0000-0000-000000000000.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJXN0dWItZm9yLW1haWxzaWZ0LWZpeHR1cmUKMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAolJUVPRgo=
+--4f6079a40a73be45f63114b7e38678a9fa2fbebc29330d17d07a1c512d6a--
