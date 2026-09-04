@@ -194,6 +194,13 @@ def parse_columnar_segments(text: str) -> list[tuple]:
                 block = block[:i]
                 break
         lines = [ln.strip() for ln in block.splitlines() if ln.strip()]
+        # The airline/cabin/status banner sits on the first non-empty
+        # line, shaped `British Airways | <cabin> | <status>`.
+        cabin: str | None = None
+        if lines and "|" in lines[0]:
+            parts = [p.strip() for p in lines[0].split("|")]
+            if len(parts) >= 2 and parts[1]:
+                cabin = parts[1]
         # Extract the two date/time/place/[terminal] blocks in order.
         legs: list[tuple[str, str, str]] = []
         i = 0
@@ -225,7 +232,7 @@ def parse_columnar_segments(text: str) -> list[tuple]:
         arr_dt = parse_naive_dt(legs[1][0], legs[1][1])
         if dep_dt is None or arr_dt is None:
             continue
-        out.append((flight_no, dep_dt, arr_dt, legs[0][2], legs[1][2]))
+        out.append((flight_no, dep_dt, arr_dt, legs[0][2], legs[1][2], cabin))
     return out
 
 
