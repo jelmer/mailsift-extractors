@@ -1,0 +1,2022 @@
+Delivered-To: user@example.com
+Received: from kraken-messagesworker-db86f5f5f-n8dqm (unknown)	by
+ geopod-ismtpd-1 (SG) with ESMTP id Rn7A4AgaS_mCkAJ08yFILQ	for
+ <user@example.com>; Sun, 09 Aug 2026 09:58:13.133 +0000 (UTC)
+X-Received: by 2002:a17:90b:2416:b0:38e:42f5:d096 with SMTP id
+ 98e67ed59e1d1-39283ecfc68mr3073988a91.0.1786269495558;        Sun, 09 Aug
+ 2026 02:58:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786269495; cv=none;
+        d=google.com; s=arc-20260327;
+        b=G1s2lzBfuGnyd56b3YS5qV8CbVxKc1XztUWHSqovETgyDVrILFyZhrB4yLGcdDPQkA
+         uzqmMqG7QQK+exaqC64wyrG81m4lGm51hUJUMAdjECnY+L1eaPt2isU4tNZSACAKI0v0
+         aIsICmaD4PYaYUc5aY+Bf+kLHDUIf2N3txBEdNOCbmFo2nEEwwGr+YFTFIJCPdkBQVQF
+         lL5PAHYaBDYJhIRPapNk9Z6Zzg5APw9kYtixLPtz1LtmQ10+usUx6Jh/Bzsr/SIHWE7u
+         1bz0ggEEC0j/DWaZ8YYhq3fuWQJ0PJ3YBnmYDflY+QvDb/wsHeM8+D7SjNmwnaT1JcNl
+         0spg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327;       
+ h=to:message-id:date:from:subject:mime-version:dkim-signature        
+ :dkim-signature;        bh=MJVEt+yQCSzJOz1uSK7jzYCs9OO5ob9F68znmu1fRhc=;
+        fh=MpiHTFU+kyhMlRbMPhoEaPjHKTXBUXdUsSrFXK7brM8=;       
+ b=cLFOXS2V94ok7AzY7BFYU7lF+yBhN9nd1IVW8yyvI3mSKCf+9tyPncuRr1oD5C3K4d        
+ fufe33EIgIxUP6ntAatKNHcOsedRSyuG+n9uk0mrc+XHz9nEWkbFLi65yk75vOlB4HYr        
+ dcox2hARxof7zu4WQ4zsJ4D8ViHbw2k+SlrhSnNcJcpTvU56AdWtkuKqJrxV/eCGDL6N        
+ 9hXBhwW8lwdQfvr8FWwnnCt2dpcqM5LZ022Uv7RoVuL7L+g/fBCc5weciSsuhqugBaNM        
+ yTTOP/sOTE1lxWoCgU6WiHK3mjaAPBeckdJMuq4rX/dUJNTF62BGQRSTC8QCWn9g2VCR        
+ cljw==;        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass
+ header.i=@eonnext.com header.s=s1 header.b=PXS88eaS;       dkim=pass
+ header.i=@sendgrid.info header.s=smtpapi header.b=xPmA2d6P;       spf=pass
+ (google.com: domain of
+ bounces+16829718-15cd-user=gmail.com@em8458.eonnext.com designates
+ 149.72.88.178 as permitted sender)
+ smtp.mailfrom="bounces+16829718-15cd-user=gmail.com@em8458.eonnext.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eonnext.com
+Return-Path: <bounces+16829718-15cd-user=gmail.com@em8458.eonnext.com>
+Received: from wrqvrvbn.outbound-mail.sendgrid.net
+ (wrqvrvbn.outbound-mail.sendgrid.net. [149.72.88.178])        by
+ mx.google.com with ESMTPS id
+ 98e67ed59e1d1-39085dfdb02si21373619a91.9.2026.08.09.02.58.14        for
+ <user@example.com>        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256
+ bits=128/128);        Sun, 09 Aug 2026 02:58:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ bounces+16829718-15cd-user=gmail.com@em8458.eonnext.com designates
+ 149.72.88.178 as permitted sender) client-ip=149.72.88.178;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@eonnext.com
+ header.s=s1 header.b=PXS88eaS;       dkim=pass header.i=@sendgrid.info
+ header.s=smtpapi header.b=xPmA2d6P;       spf=pass (google.com: domain of
+ bounces+16829718-15cd-user=gmail.com@em8458.eonnext.com designates
+ 149.72.88.178 as permitted sender)
+ smtp.mailfrom="bounces+16829718-15cd-user=gmail.com@em8458.eonnext.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=eonnext.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=eonnext.com;
+	h=mime-version:content-type:subject:from:date:to:cc:content-type:date:
+	feedback-id:from:subject:to;
+	s=s1; t=1786269493;
+	bh=MJVEt+yQCSzJOz1uSK7jzYCs9OO5ob9F68znmu1fRhc=;
+	b=PXS88eaSeahi8EbQuN38pmKhDZ5UcQP30qqZbMPnIcxd80dFiKPFPrOhut8Rs7OGLs4V
+	ebf9yJSU1ysuwyS/lHZaCXaku8JblcIeMACwP+LLgs0uJbrt4q+SnajGV5twqkBGxuOLIt
+	qKnHEJXF4l8AsLC8Vl+xIVtxnvr0cnOFl7Dyu6riq5MLS+Cc0oXG/BXk9Rka3byZC5avnJ
+	24TDwHmjfecBQ43Xja+GDVhet9ZBsFEdPRLjdbeJDdJdT3fLDeOGYvnv15wTz5Dx7mZqE2
+	q5QBK5vBikDS6h1avu3OZsK5eO93GBnJMi7PWMfQ4LL8Fu+XkSzV2lfb12j+sy4g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=mime-version:content-type:subject:from:date:to:cc:content-type:date:
+	feedback-id:from:subject:to;
+	s=smtpapi; t=1786269493;
+	bh=MJVEt+yQCSzJOz1uSK7jzYCs9OO5ob9F68znmu1fRhc=;
+	b=xPmA2d6Pq0R8SefgfJh0O0uiAhPTd8OOIDfAfDn2pQyUFlIY433igqUMB8coiRH+JaSJ
+	0XXpskG12phIVj0pVqEwP9Posn/ZRLFGinS9HMdFCvCE7OedPq5/NwqCer3sk9wFgUcHoN
+	V4hw7bvD0ioPow7FXa4zpO1z+s5WSyyo0=
+Received: by recvd-57bdbf96f7-pvgrt with SMTP id
+ recvd-57bdbf96f7-pvgrt-1-6A784F35-1B	2026-08-09 09:58:13.31051902 +0000 UTC
+ m=+1004684.237051844
+Received: from kraken-messagesworker-db86f5f5f-n8dqm (unknown)
+	by geopod-ismtpd-1 (SG) with ESMTP id Rn7A4AgaS_mCkAJ08yFILQ
+	for <user@example.com>; Sun, 09 Aug 2026 09:58:13.133 +0000 (UTC)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5151284179073790688=="
+Subject: FYI: Your energy statement
+From: "E.ON Next" <hi@eonnext.com>
+Date: Sun, 09 Aug 2026 09:58:13 +0000 (UTC)
+Message-ID:
+ <178626949309.86.9780219183743876769@kraken-messagesworker-db86f5f5f-n8dqm>
+X-SG-EID: u001.EHdiHNFG0Zcc4a5uN5/smr58EcED3NpQWr9g8L5n62rkM1eHauoYmSLnz
+ =?utf-8?q?ZWWlUlFVz8vPMtEhLrzqdfkFEKZTAFDRky194gcedoLRmuVN57iL42jXXpB0NcVU/?=
+ =?utf-8?q?aPC6DRc/QKYOSQXTCrlYVEcrBux/yzizRcEuX2TouWNRiQpa/QlNleykpyr0GXpiO?=
+ =?utf-8?q?wukW52ocdmP74Y62ns/RWX0E44?=5rvX2n8rGU0DbhlkrlEESo=
+X-SG-ID: u001.SdBcvi+Evd/bQef8eZF3BpTL9BgbK5wfSJMJGMsmprCEU6EnixtlN9NGk
+ =?utf-8?q?FQWAm+fJtWSrj1ABLJ+xh6OhuZhvbuYkctklUQ8oShy0roBG1FGPTIkQ1hICjZaxd?=
+ =?utf-8?q?hyJVvpU6TZVvv?=N0oJFqFmqHa8Kmg==
+To: user@example.com
+X-Entity-ID: u001.ZuG/g0Yz6NpGNKqXiUXFtA==
+
+--===============5151284179073790688==
+Content-Type: multipart/alternative;
+ boundary="===============4128981043035278768=="
+
+--===============4128981043035278768==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+
+CgoKCgoKCgo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KVGVzdCBVc2VyCkFjY291bnQg
+bm8uIC0gQS0wMDAwMDAwMAoKCjEgRXhhbXBsZSBSb2FkLCBUZXN0IENpdHkKPT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09CgoKCgpZb3VyIGVuZXJneSBzdGF0ZW1lbnQKCkZ1bGwgUERGIGJp
+bGwgYXR0YWNoZWQKCjl0aCBKdWx5IDIwMjYgLSA4dGggQXVndXN0IDIwMjYKCllvdXIgcHJldmlv
+dXMgYmFsYW5jZTogwqM3LjMwIENSCgoxLiBDaGFyZ2VzIG9uIHlvdXIgYWNjb3VudCAoSW5jbHVz
+aXZlIG9mIFZBVCkKRWxlY3RyaWNpdHk6IMKjMzYuOTAgRFIKCjIuIFBheW1lbnRzIHlvdSd2ZSBt
+YWRlCkRpcmVjdCBEZWJpdCBjb2xsZWN0aW9uIC0gM3JkIEF1Z3VzdCAyMDI2OiDCozI0LjEyIENS
+CgpZb3VyIG5ldyBiYWxhbmNlOiDCozUuNDggRFIKCgoKWW91IHBheSBieSBtb250aGx5IERpcmVj
+dCBEZWJpdCwgc28geW91ciBwYXltZW50cyBhcmUgdXAgdG8gZGF0ZS4KICAgICAgICAgICAgICAg
+IEEgcmVhc29uYWJsZSBhbW91bnQgb2YgZGViaXQgb3IgY3JlZGl0IGlzIG5vcm1hbCwgYnV0IGlm
+IHlvdSdyZSBjb25jZXJuZWQgZG8gZ2V0IGluIHRvdWNoLgogICAgICAgICAgICAgICAgVGhpcyBz
+dGF0ZW1lbnQgaXMgcHVyZWx5IGZvciB5b3VyIHJlZmVyZW5jZS4KCgoKRnVsbCBiaWxsIGJyZWFr
+ZG93bgpZb3UnbGwgZmluZCBhIGZ1bGwgYnJlYWtkb3duIGF0dGFjaGVkLCB3aGljaCB5b3UgY2Fu
+IGtlZXAgZm9yIHlvdXIgcmVmZXJlbmNlLgoKCgpBbnkgd2F5IHdlIGNhbiBoZWxwLCB3ZSB3aWxs
+LgoKVGhlIEUuT04gTmV4dCBUZWFtCgoKCgo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0K
+CkFjY291bnQgb3ZlcnZpZXc6CgpZb3VyIGFjY291bnQgbnVtYmVyOiBBLTAwMDAwMDAwCkFkZHJl
+c3MgZm9yIHRoZSBwcm9wZXJ0eTogMSBFeGFtcGxlIFJvYWQsIFRlc3QgQ2l0eSAKCgpZb3VyIGN1
+cnJlbnQgYmFsYW5jZSBpczogLcKjNS40OAotCgpGaW5kIG91dCBtb3JlIGF0OgpodHRwOi8vdXJs
+MDAwMC5lb25uZXh0LmNvbS9scy9jbGljaz91cG49dTAwMS41VDc1NWtQdHAzbUZ5c2k1YXNNdklw
+dXMxYmV1dWpkWURuQ3hKeXlkQk45RGRXcnNtV1AxZmxnVldqNE5CMGFmYzQ1SVl1dmxzcGJFOXUy
+SEVVVTZ0dWVkNjNzUEVZQUdlQmhQbzBZQi0yRmFBLTNEYUJiT193YWF0djI2ZkpaQzJQQldWb1ZR
+bmFPeG01ZktXVGR3eFhNZk5OSjkyU1VabC0yQlJqR096SUVEZzY0cHRqaTBwZmZXamszYU5mWmZm
+UGp2VThZa0VyUnJUWG56UndSZTFEZEo5ZTJFVlBpRTBSaGxxVjZENG10MnFxSDZGVGVCNDhDNkVy
+dlM2elVpN1hnaE5oMlJMejE0YWo1dnFleE5CdGtCb25Mdzg4aTd5TnRLR3g5Qzl4ZElKbmZEajRX
+UUIyLTJCNDFzbTY4aWx1Y053OTY4TXk1UXBMTFV3WXNlLTJCOWhVTXNvVHpEVlIxZmVGRkctMkZP
+dEx1R2FnaE03ejNTQ3Z1ZEo3UkMzelNXZFp0SFZvcy0yRk1PY2FCT09lMm9SMGY3ZzN6LTJGTjNM
+R3UtMkZ2QXBXZEplcDlYN3JqWVUtMkItMkZQWklNMXRSWgoKClFVSUNLIExJTktTOgpWaWV3IGJp
+bGxzOgpodHRwOi8vdXJsMDAwMC5lb25uZXh0LmNvbS9scy9jbGljaz91cG49dTAwMS41VDc1NWtQ
+dHAzbUZ5c2k1YXNNdklwdXMxYmV1dWpkWURuQ3hKeXlkQk45RGRXcnNtV1AxZmxnVldqNE5CMGFm
+c2I3OWVZcy0yQkMxTTNCaGhlT2p0RmVQNnJyU04yQi0yRlExVnhPb004MFhOMU0tM0QtYTlVX3dh
+YXR2MjZmSlpDMlBCV1ZvVlFuYU94bTVmS1dUZHd4WE1mTk5KOTJTVVpsLTJCUmpHT3pJRURnNjRw
+dGppMHBmZldqazNhTmZaZmZQanZVOFlrRXJSclRYbnpSd1JlMURkSjllMkVWUGlFMFJobHFWNkQ0
+bXQycXFINkZUZUI0OEM2RXJ2UzZ6VWk3WGdoTmgyUkx6MTRhajV2cWV4TkJ0a0Jvbkx3ODhpN3lQ
+YVlkSTROWVBNUkg2OERwUlQtMkJuZTgzOUNYcHRQajVHWWtnLTJCTU5nTy0yRld1UUxaTjRkT05H
+ZXRxZzljcExRT3F2dEJGV014RXhvWTBFNFVWeTItMkZQR3h0ZDBlM0hzdVk1d2pHM0VlYmZjdXBh
+bHE3QXd5cDh2azhBdGRPMXkwdDU5MkxPQXk1Z1h6V3U0R1pvMUFiSUVQYwoKQmFsYW5jZSBoaXN0
+b3J5OgpodHRwOi8vdXJsMDAwMC5lb25uZXh0LmNvbS9scy9jbGljaz91cG49dTAwMS41VDc1NWtQ
+dHAzbUZ5c2k1YXNNdklwdXMxYmV1dWpkWURuQ3hKeXlkQk45RGRXcnNtV1AxZmxnVldqNE5CMGFm
+c2I3OWVZcy0yQkMxTTNCaGhlT2p0RmVQNnJyU04yQi0yRlExVnhPb004MFhOMU0tM0RhVEhEX3dh
+YXR2MjZmSlpDMlBCV1ZvVlFuYU94bTVmS1dUZHd4WE1mTk5KOTJTVVpsLTJCUmpHT3pJRURnNjRw
+dGppMHBmZldqazNhTmZaZmZQanZVOFlrRXJSclRYbnpSd1JlMURkSjllMkVWUGlFMFJobHFWNkQ0
+bXQycXFINkZUZUI0OEM2RXJ2UzZ6VWk3WGdoTmgyUkx6MTRhajV2cWV4TkJ0a0Jvbkx3ODhpN3lP
+RTVDZ3RxdnB4Ymw4ZGtJU3dnNkprQXlJWUV1cTd0dFB5OXBEUzNPODhhbEs3S2hDR2ZySjNKZGsx
+MGlCcTI5S2NlS3YxZWpPTEpYM3kwQ1RSSFozd0Jrei0yRmdySUlQYkJhbkN4OVo0Vk1IYk1BeUVR
+MzRYcjhuTGxYSkhtWVIwUlBsWkV0VjU3cWIzazZidDRHRFdzLTJCCgpNYWtlIGEgcGF5bWVudDoK
+aHR0cDovL3VybDAwMDAuZW9ubmV4dC5jb20vbHMvY2xpY2s/dXBuPXUwMDEuNVQ3NTVrUHRwM21G
+eXNpNWFzTXZJcHVzMWJldXVqZFlEbkN4Snl5ZEJOOURkV3JzbVdQMWZsZ1ZXajROQjBhZmVpNWti
+ek11dS0yQjRqZ0dHWThsNDRpUjIzSUVtbzhQSGw1Tkx2Qm1CaFdQWS0zREpJZmlfd2FhdHYyNmZK
+WkMyUEJXVm9WUW5hT3htNWZLV1Rkd3hYTWZOTko5MlNVWmwtMkJSakdPeklFRGc2NHB0amkwcGZm
+V2prM2FOZlpmZlBqdlU4WWtFclJyVFhuelJ3UmUxRGRKOWUyRVZQaUUwUmhscVY2RDRtdDJxcUg2
+RlRlQjQ4QzZFcnZTNnpVaTdYZ2hOaDJSTHoxNGFqNXZxZXhOQnRrQm9uTHc4OGk3eVBIOVc5QVJX
+WFN3M3Aza3UyUzdTd2trdHFhZXA1YmVFdnFZalBHbVlSbFBFSkV3YTFpZmNFS3N4LTJCNGdzSFRi
+TExvemVPSDktMkJncE83ZFBnRHlNZWlEd3d1YU9BNExOMVBOZ3BzSktMQWw2aEdqVE9JbHpVNUdH
+bDVtaHBYSWQtMkZ5Yi0yRnRsM09TYkhQSkYtMkI4QzdLdUdhLTJGUQoKQ2hhbmdlIHBheW1lbnQ6
+Cmh0dHA6Ly91cmwwMDAwLmVvbm5leHQuY29tL2xzL2NsaWNrP3Vwbj11MDAxLjVUNzU1a1B0cDNt
+RnlzaTVhc012SXB1czFiZXV1amRZRG5DeEp5eWRCTjlEZFdyc21XUDFmbGdWV2o0TkIwYWZlaTVr
+YnpNdXUtMkI0amdHR1k4bDQ0aVFjWXFRTnpRRTFmbDNmcWhFZXNkNzgtM0RlSDlOX3dhYXR2MjZm
+SlpDMlBCV1ZvVlFuYU94bTVmS1dUZHd4WE1mTk5KOTJTVVpsLTJCUmpHT3pJRURnNjRwdGppMHBm
+ZldqazNhTmZaZmZQanZVOFlrRXJSclRYbnpSd1JlMURkSjllMkVWUGlFMFJobHFWNkQ0bXQycXFI
+NkZUZUI0OEM2RXJ2UzZ6VWk3WGdoTmgyUkx6MTRhajV2cWV4TkJ0a0Jvbkx3ODhpN3lQLTJGU3Bp
+LTJCTjlzQUowT0dKbnR3M2o4cXFlVlkzZlMwbVJtVFVYNHBvN2sxN2J4NVpZLTJGaVk0LTJCSkNx
+OGRqSHBQSkx0dnA0dHlFaG9RWmJ1SThVS2JYM0ZKS0UtMkZQeTJNU3lCVlZIR1p0QjE3SDNIMENn
+dC0yQmtXVXRpRTY2S2Z3amUwV0xrUmJwUkI4MmJ2UU9SZGpnNThJNC0yRgoKCgpTb21ldGhpbmcg
+ZWxzZSBvbiB5b3VyIG1pbmQ/CldlIGhhdmUgYW5zd2Vycy4gT3VyIEZBUXMgbWFrZSBlbmVyZ3kg
+ZWFzeS1icmVlenkuCgpSZWFkIG91ciBGQVFzIGF0OgpodHRwOi8vdXJsMDAwMC5lb25uZXh0LmNv
+bS9scy9jbGljaz91cG49dTAwMS41VDc1NWtQdHAzbUZ5c2k1YXNNdkloNGNNWDN6Z3R1QkpqMTVz
+NmRkWFNnSHQtMkI0OXhlVjN5RmV2MUtEb0ptY3h4TWdRX3dhYXR2MjZmSlpDMlBCV1ZvVlFuYU94
+bTVmS1dUZHd4WE1mTk5KOTJTVVpsLTJCUmpHT3pJRURnNjRwdGppMHBmZldqazNhTmZaZmZQanZV
+OFlrRXJSclRYbnpSd1JlMURkSjllMkVWUGlFMFJobHFWNkQ0bXQycXFINkZUZUI0OEM2RXJ2UzZ6
+VWk3WGdoTmgyUkx6MTRhajV2cWV4TkJ0a0Jvbkx3ODhpN3lNSzlIdkZ4aG9rTG11c0R3dlRWeTl6
+OFpZSmdKdC0yQlNZMmNEc3p5TVBrSjM5dmdDYmoyajJiTzFIN3BuMjBtV1ZjVUR5dmZFcklDa1A4
+cDJPdHEwd2g2RG9BeTJSY0k1b0VlS1lIR01yZExyTGdjakdUVjJQLTJGY3JrZlBjVmEyYnZ3UTRG
+bFNKSERPZUIyRU5yT1lQLTJGNDEKCklmIHlvdSBjYW4ndCBmaW5kIHdoYXQgeW91J3JlIGxvb2tp
+bmcgZm9yLCBqdXN0IHJlcGx5IHRvIHRoaXMgZW1haWwuCgoKCgo9PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT0KCkUuT04gTmV4dCBFbmVyZ3kgTGltaXRlZCBSZWdpc3RlcmVkIE9mZmljZToK
+VHJpbml0eSBIb3VzZSwgMiBCdXJ0b24gU3RyZWV0LCBOb3R0aW5naGFtLCBORzEgNEJYLgpSZWdp
+c3RlcmVkIGluIEVuZ2xhbmQgJiBXYWxlcywgTm86IDAzNzgyNDQzLgoKPT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09CgpXZSdyZSBkaWZmZXJlbnQgYXQgRS5PTiBOZXh0LiBQb3NpdGl2ZWx5
+IGRpZmZlcmVudC4gRmluZCBvdXQgbW9yZSBhYm91dCBzdXBwb3J0IHdlIGNhbiBvZmZlciBhdDoK
+aHR0cDovL3VybDAwMDAuZW9ubmV4dC5jb20vbHMvY2xpY2s/dXBuPXUwMDEuNVQ3NTVrUHRwM21G
+eXNpNWFzTXZJa0VLZDFUZ2JsQjNvZVQtMkZwSnUzeEhhWkhnYXRXdXNZOXJwcnNyU25HRlVDb2xh
+N1BmVWVuSVJ5UXJlT0p4eEVUQS0zRC0zRFlyUXVfd2FhdHYyNmZKWkMyUEJXVm9WUW5hT3htNWZL
+V1Rkd3hYTWZOTko5MlNVWmwtMkJSakdPeklFRGc2NHB0amkwcGZmV2prM2FOZlpmZlBqdlU4WWtF
+clJyVFhuelJ3UmUxRGRKOWUyRVZQaUUwUmhscVY2RDRtdDJxcUg2RlRlQjQ4QzZFcnZTNnpVaTdY
+Z2hOaDJSTHoxNGFqNXZxZXhOQnRrQm9uTHc4OGk3eU1JRVdhU0FHcjd4S29ac1Ezd0JIeHVyZS0y
+RjB0Sm13VEgyU04tMkI2RmN0dVNGa244aEZIUGNhajY1aFJMWU5iRWstMkJndmFMdUM1aWV2clhH
+T1NpNGt2Z0xqTkUtMkYyNldxMUoybHNkSTN1aDZHeFZDbFBMeG45czRiOWlpOUdQT1U0dHB2Sm5R
+OFFaQnA5aE4xZXBwMGNwTVhuCmFuZCBvdXIgcG9saWNpZXMgYXQ6Cmh0dHA6Ly91cmwwMDAwLmVv
+bm5leHQuY29tL2xzL2NsaWNrP3Vwbj11MDAxLjVUNzU1a1B0cDNtRnlzaTVhc012SWtFS2QxVGdi
+bEIzb2VULTJGcEp1M3hIYkJ0YTlhLTJGbXJuaGlTamEzdXA1NW01ZEFudV93YWF0djI2ZkpaQzJQ
+QldWb1ZRbmFPeG01ZktXVGR3eFhNZk5OSjkyU1VabC0yQlJqR096SUVEZzY0cHRqaTBwZmZXamsz
+YU5mWmZmUGp2VThZa0VyUnJUWG56UndSZTFEZEo5ZTJFVlBpRTBSaGxxVjZENG10MnFxSDZGVGVC
+NDhDNkVydlM2elVpN1hnaE5oMlJMejE0YWo1dnFleE5CdGtCb25Mdzg4aTd5T1NCUnZ0dUItMkZK
+MlprT2RoTDFnRXRyQlF5Y1BwZEFZRDNHamtkeDZWS3lCVzlaeGJDSzc2VUtCdGZLclZoZnVha0hQ
+ODlJbW5PTEs0VTdFLTJCb0JOQzBuOUpiNFY5LTJGY0h5Skw5U2RnVlhyNVJJdlI0dFRILTJCNE85
+dkhQdlU2ei0yQjgzNXNRbFhDM0xnZHpmYmpwaHU1R3ktMkJkCgo=
+
+--===============4128981043035278768==
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.=
+org/TR/REC-html40/loose.dtd">
+<html lang=3D"en-gb">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style type=3D"text/css">
+  /* styles in here will not be inlined. Use for media queries etc */
+  /* force Outlook to provide a "view in browser" menu link. */
+  #outlook a {padding:0;}
+  /* prevent Webkit and Windows Mobile platforms from changing default font s=
+izes.*/
+  body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-ad=
+just:100%; margin:0; padding:0;}
+  /* force Hotmail to display emails at full width */
+  .ExternalClass {width:100%;}
+  /* force Hotmail to display normal line spacing. http://www.emailonacid.com=
+/forum/viewthread/43/ */
+  .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font,=
+ .ExternalClass td, .ExternalClass div {line-height: 100%;}
+
+  @media only screen and (max-width: 480px)
+  {
+    br.hidden { display: block !important; }
+    td.padding_cell { display: none !important; }
+    table.message_footer_table td {
+      font-size: 11.00px !important;
+    }
+  }
+  @media only screen and (max-device-width: 480px)
+  {
+    br.hidden { display: block !important; }
+    td.padding_cell { display: none !important; }
+    table.message_footer_table td {
+      font-size: 11.00px !important;
+    }
+  }
+</style>
+
+<!--[if (mso 12)|(mso 14)]>
+<style type=3D"text/css">
+  /* fix a padding issue on Outlook 07, 10 */
+  table td {border-collapse: collapse;}
+  table {
+    table-layout: fixed;
+  }
+</style>
+<![endif]-->
+
+
+<style type=3D"text/css">
+  /* styles in here will not be inlined. Use for media queries etc */
+  /* force Outlook to provide a "view in browser" menu link. */
+  #outlook a {padding:0;}
+  /* prevent Webkit and Windows Mobile platforms from changing default font s=
+izes.*/
+  body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-ad=
+just:100%; margin:0; padding:0;}
+  /* force Hotmail to display emails at full width */
+  .ExternalClass {width:100%;}
+  /* force Hotmail to display normal line spacing. http://www.emailonacid.com=
+/forum/viewthread/43/ */
+  .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font,=
+ .ExternalClass td, .ExternalClass div {line-height: 100%;}
+  /* fix a padding issue on Outlook 07, 10 */
+  table td {border-collapse: collapse;}
+
+  @media only screen and (max-width: 480px)
+  {
+    br.hidden { display: block !important; }
+    td.padding_cell { display: none !important; }
+    table.message_footer_table td {
+      font-size: 11.00px !important;
+    }
+  }
+  @media only screen and (max-device-width: 480px)
+  {
+    br.hidden { display: block !important; }
+    td.padding_cell { display: none !important; }
+    table.message_footer_table td {
+      font-size: 11.00px !important;
+    }
+  }
+</style>
+
+<style type=3D"text/css">
+  @font-face {
+    font-family: 'HaasGrot';
+    src: url('https://www.eonnext.com/branding/woff/Web/NeueHaasGrotTextRound=
+-75Bold-Web.woff2') format('woff2'),
+    url('https://www.eonnext.com/branding/woff/Web/NeueHaasGrotTextRound-75Bo=
+ld-Web.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: normal;
+  }
+
+  @font-face {
+    font-family: 'HaasGrot';
+    src: url('https://www.eonnext.com/branding/woff/Web/NeueHaasGrotDispRound=
+-55Roman-Web.woff2') format('woff2'),
+    url('https://www.eonnext.com/branding/woff/Web/NeueHaasGrotDispRound-55Ro=
+man-Web.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+  }
+
+  .date_cell a {
+    color: #999999;
+  }
+
+  .comment_header_td {
+    width: 100%;
+    background: #00aeff;
+    border: none;
+    font-family: 'HaasGrot', Helvetica, sans-serif;
+  }
+
+  .content-td {
+    color: #525252;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .main_wrapper {
+    padding: 0 20px;
+  }
+</style>
+
+
+<style type=3D"text/css">
+
+  @media screen and (max-width: 635px) {
+    .main-wrap {
+      width: 100% !important;
+    }
+    .mobile-bumper {
+      width: 20px !important;
+    }
+    .padding {
+      padding-right: 10px !important;
+      padding-left: 10px !important;
+    }
+    .mobile-bumper--none {
+      width: 0px !important;
+    }
+    .quick-link-spacer {
+      width: 10px !important;
+    }
+    .feeback-panel {
+      width: 200px !important;
+    }
+    * [summary~=3D"hide"] {display:none !important;}
+
+    u ~ div .stuffIWantToTargetInGmail {display: none !important;}
+    u ~ div .gmailul li { list-style-type: disc; }
+    u ~ div .gmailul li:before { content: none; }
+
+    .mobile-main {
+      padding: 0 20px 30px !important;
+    }
+
+    .hero-portrait {
+      width: 60% !important;
+    }
+   =20
+  }
+
+  @media screen and (max-width: 480px) {
+    .content-td {
+      padding: 30px 15px 0 !important;
+    }
+    .content-td h1 {
+      margin-bottom: 5px;
+    }
+    .message_footer_table .space {
+      width: 20px !important;
+    }
+
+    .main_wrapper {
+      padding: 0;
+    }
+
+    .comment_body {
+      border-bottom: 1px solid #DDD !important;
+    }
+
+    /* Hide element */
+    *[class*=3D"hide"] {
+      display:none !important;
+      mso-hide: all;
+      overflow:hidden;
+      max-height: 0;
+      font-size: 0;
+    }
+    *[class~=3Dhide_on_mobile] { display: none !important; }
+    .hide_on_mobile { display: none !important; }
+    /* show element */
+    *[class=3D"show"] {
+      overflow: visible !important;
+      float: none !important;
+      display: block !important;
+      line-height:100% !important;
+      max-height: none !important;
+    }
+    .show {
+      overflow: visible !important;
+      float: none !important;
+      display: block !important;
+      line-height:100% !important;
+      max-height: none !important;
+    }
+  }
+
+  .sub-title {
+    padding: 0 0 !important;
+  }
+
+</style>
+
+
+<style type=3D"text/css">
+  .content-td blockquote + * {
+    margin-top: 20px !important;
+  }
+
+  .ExternalClass .content-td h1 {
+    padding: 20px 0 !important;
+  }
+
+  .ExternalClass .content-td h2 {
+    padding: 0 0 5px !important;
+  }
+
+  .ExternalClass .content-td p {
+    padding: 10px 0 !important;
+  }
+
+  .ExternalClass .content-td hr + * {
+    padding-top: 30px !important;
+  }
+
+  .ExternalClass .content-td ol ,
+  .ExternalClass .content-td ul {
+    padding: 0 0 20px 40px !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass .content-td ol li,
+  .ExternalClass .content-td ul li {
+    padding: 3px 0 !important;
+    margin: 0 !important;
+  }
+  .content-td > :first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .ExternalClass .content-td > :first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+</style>
+
+<!--[if !mso 9]><!-->
+<style type=3D"text/css">
+/* Custom links */
+li {
+  position: relative;
+  list-style-type: none;
+  margin-bottom: 16px;
+}
+
+li:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: -35px;
+  width: 26px;
+  height: 19px;
+  background-image:  url(https://www.eonnext.com/branding/eon/icons/tick.png);
+  background-size: 100%;
+}
+
+li .gas-bullet:before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: -35px;
+  width: 26px;
+  height: 25px;
+  background-image:  url(https://www.eonnext.com/branding/eon/icons/fire@2x.p=
+ng);
+  background-size: 100%;
+}
+
+li .electricity-bullet:before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: -35px;
+  width: 26px;
+  height: 25px;
+  background-image:  url(https://www.eonnext.com/branding/eon/icons/flash@2x.=
+png);
+  background-size: 100%;
+}
+
+ul.reset li {
+  list-style-type: disc;
+}
+
+ul.reset li:before {
+  position: relative;
+  background: none;
+  content: none;
+}
+</style>
+<!--<![endif]-->
+
+<style type=3D"text/css">
+  .email-align-right {
+  text-align: right !important;
+}
+.email-align-center {
+  text-align: center !important;
+}
+.email-align-left {
+  text-align: left !important;
+}
+/* Over-ride for RTL */
+.right-to-left .email-align-right{
+  text-align: left !important;
+}
+.right-to-left .email-align-left{
+  text-align: right !important;
+}
+.right-to-left .email-align-left {
+  text-align:right !important;
+}
+.right-to-left li {
+  text-align:right !important;
+  direction: rtl;
+}
+.right-to-left .email-align-left img,
+.right-to-left .email-align-left .email-h2b-button {
+  margin-left: 0 !important;
+}
+
+/* Outlook styles */
+
+body[data-outlook-cycle] .hide {
+  display: none !important;
+}
+
+body[data-outlook-cycle] .center {
+  display: block !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+body[data-outlook-cycle] li {
+  list-style-type: disc;
+}
+
+body[data-outlook-cycle] li:before {
+  content: none;
+}
+
+    table[class=3Dmain] .outlook-border {
+        background-color: transparent !important;
+    }
+
+</style>
+
+
+<style type=3D"text/css">
+ =20
+
+@media (max-width: 768px) {
+    .banner-title h1 {
+        font-size: 20.00px;
+        line-height: 30.00px;
+    }
+}
+
+@media (min-width: 769px) {
+    .banner-title h1 {
+        font-size: 30.00px;
+        line-height: 45.00px;
+    }
+}
+
+.banner {
+    border-radius: 10px;
+    background-color: #ff4822;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.banner-title h1 {
+    margin: 0;
+    color: white;
+    font-family: 'HaasGrot', Helvetica, sans-serif;
+}
+
+.banner-content {
+    color: white;
+    font-family: 'HaasGrot', Helvetica, sans-serif;
+    font-size: 20.00px !important;
+    line-height: 30.00px !important;
+}
+
+.banner-content td {
+    font-size: 20.00px;
+    line-height: 30.00px;
+}
+
+.banner-content a,
+.banner-content a:hover
+.banner-content a:visited {
+    color: white;
+    text-decoration: underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"=
+ class=3D"bgtc personal" align=3D"center" style=3D"border-collapse: collapse;=
+ line-height: 100% !important; margin: 0; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; padding: 0; width: 100% !important; background-color: #E5E5E5;" bg=
+color=3D"#E5E5E5">
+  <tr>
+    <td>
+    <!--[if (gte mso 10)]>
+      <tr>
+      <td>
+      <table role=3D"presentation" style=3D"width: 600px">
+    <![endif]-->
+      <table role=3D"presentation" style=3D"border-collapse: collapse; margin=
+: auto; width: 100%; max-width: 635px; min-width: 320px; mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt" class=3D"main-wrap">
+        <tr>
+          <td valign=3D"top" class=3D"main_wrapper">
+
+            <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" class=3D"comment_wrapper_table admin_comment" align=3D"center" s=
+tyle=3D"-webkit-background-clip: padding-box; -webkit-border-radius: 3px; bac=
+kground-clip: padding-box; border-collapse: collapse; border-radius: 3px; col=
+or: #545454; font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 13.00=
+px; line-height: 20.00px; margin: 0 auto; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; width: 100%">
+              <tr>
+                <td valign=3D"top" class=3D"comment_wrapper_td">
+                  <!-- HEADER-->
+                  <table role=3D"presentation" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" width=3D"100%">
+                    <tr>
+                      <td bgcolor=3D"#FAF6F4" height=3D"20" style=3D"font-siz=
+e: 1px; line-height: 1px;"></td>
+                    </tr>
+                    <tr>
+                      <td bgcolor=3D"#FAF6F4">
+                        <table role=3D"presentation" cellpadding=3D"0" cellsp=
+acing=3D"0" border=3D"0" width=3D"100%">
+                          <tr>
+                            <td width=3D"20" class=3D"mobile-bumper" align=3D=
+"left"></td>
+                            <td width=3D"100" bgcolor=3D"#FAF6F4">
+                              <img
+                                src=3D"https://eonnext.com/branding/eon/brand=
+ing/logo.png"
+                                alt=3D"E.ON Next"
+                                border=3D"0"
+                                width=3D"90"
+                                style=3D"display: block;"
+                              />
+                            </td>
+                           =20
+
+                            <td bgcolor=3D"#FAF6F4" align=3D"right" style=3D"=
+font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 16.00px; line-heig=
+ht: 20.00px; color: #36164A; font-weight: 300;">
+                             =20
+                               =20
+                                  Test User
+                                  <br/>
+                                  <strong>Account number:</strong> A-00000000
+                               =20
+                             =20
+                            </td>
+                            <td width=3D"20" class=3D"mobile-bumper" align=3D=
+"left"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td bgcolor=3D"#FAF6F4" height=3D"20" style=3D"font-siz=
+e: 1px; line-height: 1px;"></td>
+                    </tr>
+                    </tr>
+                  </table>
+                  <!-- /HEADER-->
+
+                  <table role=3D"presentation" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" class=3D"comment_body" style=3D"-webkit-background-clip: =
+padding-box; background-clip: padding-box; border-collapse: collapse; mso-tab=
+le-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-bottom: none; bord=
+er-top: none;">
+                    <tr>
+                      <td class=3D"mobile-main" style=3D"-webkit-background-c=
+lip: padding-box; background-clip: padding-box; border-radius: 0 0 3px 3px; c=
+olor: #525252; font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 15.=
+00px; line-height: 22.00px; overflow: hidden; padding: 0 40px 30px; backgroun=
+d-color: #FAF6F4;">
+                        <!-- CONTENT -->
+                        <table role=3D"presentation" cellpadding=3D"0" cellsp=
+acing=3D"0" border=3D"0" width=3D"100%" bgcolor=3D"#FAF6F4">
+                          <tr>
+                            <td bgcolor=3D"#FAF6F4" height=3D"40" style=3D"fo=
+nt-size: 1px; line-height: 1px;"></td>
+                          </tr>
+                          <tr>
+                            <td bgcolor=3D"#FAF6F4" style=3D"font-family: 'Ha=
+asGrot', Helvetica, sans-serif; font-size: 32.00px; line-height: 48.00px; col=
+or: #FF4822; font-weight: 800; background-color: #FAF6F4; text-align: center;=
+" align=3D"center">
+                             =20
+                            </td>
+                          </tr>
+                          <tr>
+                            <td bgcolor=3D"#FAF6F4" height=3D"25" style=3D"fo=
+nt-size: 1px; line-height: 1px;"></td>
+                          </tr>
+                          <!-- HERO -->
+                          <tr>
+                            <td align=3D"center">
+                             =20
+                                <img
+                                  src=3D"https://eonnext.com/branding/eon/ill=
+ustrations/common/hero.png"
+                                  alt=3D""
+                                  width=3D"100%"
+                                />
+                             =20
+                            </td>
+                          </tr>
+                          <!-- /HERO -->
+                          <tr>
+                            <td bgcolor=3D"#FAF6F4" height=3D"25" style=3D"fo=
+nt-size: 1px; line-height: 1px;"></td>
+                          </tr>
+                          <tr>
+                            <td bgcolor=3D"#FAF6F4" align=3D"center" style=3D=
+"font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 20.00px; line-hei=
+ght: 24.00px; color: #36164A; font-weight: 300; background-color: #FAF6F4; te=
+xt-align: center;">
+                             =20
+                            </td>
+                          </tr>
+                          <!-- /HERO -->
+                          <tr>
+                            <td bgcolor=3D"#FAF6F4" style=3D"font-family: 'Ha=
+asGrot', Helvetica, sans-serif; font-size: 20.00px; line-height: 30.00px; col=
+or: #36164A; font-weight: 300; background-color: #FAF6F4; text-align: left;">
+                              <!-- CONTENT -->
+                             =20
+
+<table role=3D"presentation" width=3D"100%" cellspacing=3D"0" cellpadding=3D"=
+0" border=3D"0">
+    <tr>
+        <td>
+            <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%">
+                <tbody>
+                    <tr>
+                        <td align=3D"right" style=3D"font-family: 'HaasGrot',=
+ Helvetica, sans-serif; font-size: 21.00px; line-height: 23.00px; color: #361=
+64A; background-color: #FAF6F4; font-weight: 800; letter-spacing: -0.99px;">
+                            <span style=3D"font-size: 18.00px; line-height: 3=
+6px; font-weight: 400; letter-spacing: -0.76px;">Full PDF bill attached</span>
+                        </td>
+                    </tr>
+
+                    <tr><td height=3D"100"></td></tr>
+
+                    <tr>
+                        <td style=3D"font-family: 'HaasGrot', Helvetica, sans=
+-serif; font-size: 18.00px; line-height: 24.00px; color: #36164A; background-=
+color: #FAF6F4; font-weight: 300;">
+                            <span style=3D"font-weight: 800; letter-spacing: =
+-0.7px; font-size: 42px; line-height: 50px;" class=3D"main-title">
+                                Your energy account
+                            </span>
+                            <br/>
+                            <span style=3D"letter-spacing: -0.99px; font-size=
+: 21.00px; line-height: 30.00px;">
+                                <span class=3D"appleLinks">9th July 2026 - 8t=
+h August 2026</span>
+                            </span>
+                            <br/>
+                        </td>
+                    </tr>
+
+                    <tr><td height=3D"30"></td></tr>
+
+                    <!-- Breakout box -->
+                    <tr><td height=3D"1" bgcolor=3D"#36164A" style=3D"font-si=
+ze: 1px; line-height: 1px;" class=3D"outlook-border"></td></tr>
+
+                    <tr>
+                        <td>
+                            <table role=3D"presentation" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                <tr>
+                                    <td width=3D"1" align=3D"left" bgcolor=3D=
+"#36164A" class=3D"outlook-border"></td>
+                                    <td colspan=3D"3" height=3D"25" style=3D"=
+font-size: 1px; line-height: 1px;"></td>
+                                    <td width=3D"1" align=3D"left" bgcolor=3D=
+"#36164A" class=3D"outlook-border"></td>
+                                </tr>
+                                <tr>
+                                    <td width=3D"1" align=3D"left" bgcolor=3D=
+"#36164A" class=3D"outlook-border"></td>
+                                    <td width=3D"10" align=3D"left"></td>
+                                    <td>
+                                        <table role=3D"presentation" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                           =20
+                                                <tr>
+                                                    <td>
+                                                        <table role=3D"presen=
+tation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                                            <tr>
+                                                                <td style=3D"=
+font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 21.00px; line-heig=
+ht: 23.00px; color: #36164A; background-color: #FAF6F4; font-weight: 800; let=
+ter-spacing: -0.99px;">
+                                                                    On <span =
+class=3D"appleLinks">9th July 2026</span><br/> your balance was
+                                                                </td>
+                                                                <td align=3D"=
+right" style=3D"font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 21=
+.00px; line-height: 23.00px; color: #36164A; background-color: #FAF6F4; font-=
+weight: 300; letter-spacing: -0.85px;">
+                                                                    &pound;7.=
+30 CR
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                                <tr><td height=3D"30"></td></=
+tr>
+                                                <tr>
+                                                    <td bgcolor=3D"#36164A" h=
+eight=3D"2" style=3D"font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                                </tr>
+                                                <tr><td height=3D"30"></td></=
+tr>
+                                           =20
+
+                                           =20
+
+                                           =20
+
+                                           =20
+                                                <tr>
+                                                    <td style=3D"font-family:=
+ 'HaasGrot', Helvetica, sans-serif; font-size: 21.00px; line-height: 23.00px;=
+ color: #36164A; background-color: #FAF6F4; font-weight: 800; letter-spacing:=
+ -0.99px;">
+                                                       =20
+                                                        1. We have charged yo=
+u (VAT is included)
+                                                       =20
+                                                    </td>
+                                                </tr>
+
+                                                <tr><td height=3D"25"></td></=
+tr>
+
+                                               =20
+                                                    <tr>
+                                                        <td>
+                                                            <table role=3D"pr=
+esentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                                                <tr>
+                                                                    <td style=
+=3D"font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 18.00px; line-=
+height: 21px; color: #36164A; background-color: #FAF6F4; font-weight: 400; le=
+tter-spacing: -0.99px;">
+                                                                        Elect=
+ricity
+                                                                    </td>
+                                                                    <td align=
+=3D"right" style=3D"font-family: 'HaasGrot', Helvetica, sans-serif; font-size=
+: 18.00px; line-height: 23.00px; color: #36164A; background-color: #FAF6F4; f=
+ont-weight: 800; letter-spacing: -0.85px;">
+                                                                        &poun=
+d;36.90 DR
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align=3D"left" st=
+yle=3D"font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 16.00px; li=
+ne-height: 23.00px; color: #36164A; background-color: #FAF6F4; font-weight: 3=
+00; letter-spacing: -0.85px;">
+                                                            <span class=3D"ap=
+pleLinks">8th July 2026 &mdash; 7th August 2026</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr><td height=3D"14" sty=
+le=3D"font-size: 1px; line-height: 1px;"></td></tr>
+                                               =20
+
+                                                <tr><td height=3D"30"></td></=
+tr>
+                                           =20
+
+                                           =20
+
+                                           =20
+                                                <tr>
+                                                    <td style=3D"font-family:=
+ 'HaasGrot', Helvetica, sans-serif; font-size: 21.00px; line-height: 23.00px;=
+ color: #36164A; background-color: #FAF6F4; font-weight: 800; letter-spacing:=
+ -0.99px;">
+                                                       =20
+                                                        2. You have paid
+                                                    </td>
+                                                </tr>
+
+                                                <tr><td height=3D"11" style=
+=3D"font-size: 1px; line-height: 1px;"></td></tr>
+
+                                               =20
+                                                    <tr>
+                                                        <td>
+                                                            <table role=3D"pr=
+esentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                                                <tr>
+                                                                    <td width=
+=3D"60%" style=3D"font-family: 'HaasGrot', Helvetica, sans-serif; font-size: =
+18.00px; line-height: 21px; color: #36164A; background-color: #FAF6F4; font-w=
+eight: 400; letter-spacing: -0.99px;">
+                                                                        Direc=
+t Debit collection<br/><span style=3D"font-family: 'HaasGrot', Helvetica, san=
+s-serif; font-size: 16.00px; line-height: 23.00px; color: #36164A; background=
+-color: #FAF6F4; font-weight: 300; letter-spacing: -0.85px;"><span class=3D"a=
+ppleLinks">3rd August 2026</span></span>
+                                                                    </td>
+                                                                    <td width=
+=3D"100" align=3D"right" valign=3D"top" style=3D"font-family: 'HaasGrot', Hel=
+vetica, sans-serif; font-size: 18.00px; line-height: 23.00px; color: #36164A;=
+ background-color: #FAF6F4; font-weight: 800; letter-spacing: -0.85px; min-wi=
+dth: 100px;">
+                                                                        &poun=
+d;24.12 CR
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr><td height=3D"14" sty=
+le=3D"font-size: 1px; line-height: 1px;"></td></tr>
+                                               =20
+
+                                                <tr><td height=3D"30"></td></=
+tr>
+                                           =20
+
+                                           =20
+
+                                            <tr>
+                                                <td bgcolor=3D"#36164A" heigh=
+t=3D"2" style=3D"font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                            </tr>
+                                            <tr><td height=3D"30"></td></tr>
+
+                                            <tr>
+                                                <td>
+                                                    <table role=3D"presentati=
+on" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                                        <tr>
+                                                            <td style=3D"font=
+-family: 'HaasGrot', Helvetica, sans-serif; font-size: 21.00px; line-height: =
+23.00px; color: #36164A; background-color: #FAF6F4; font-weight: 800; letter-=
+spacing: -0.99px;">
+                                                                Your balance =
+on<br/> <span class=3D"appleLinks">8th August 2026</span>
+                                                            </td>
+                                                            <td align=3D"righ=
+t" style=3D"font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 21.00p=
+x; line-height: 23.00px; color: #36164A; background-color: #FAF6F4; font-weig=
+ht: 400; letter-spacing: -0.85px;">
+                                                                &pound;5.48 DR
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width=3D"10" align=3D"left"></td>
+                                    <td width=3D"1" align=3D"left" bgcolor=3D=
+"#36164A" class=3D"outlook-border"></td>
+                                </tr>
+                                <tr>
+                                    <td width=3D"1" align=3D"left" bgcolor=3D=
+"#36164A" class=3D"outlook-border"></td>
+                                    <td colspan=3D"3" height=3D"25" style=3D"=
+font-size: 1px; line-height: 1px;"></td>
+                                    <td width=3D"1" align=3D"left" bgcolor=3D=
+"#36164A" class=3D"outlook-border"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr><td height=3D"1" bgcolor=3D"#36164A" style=3D"font-si=
+ze: 1px; line-height: 1px;" class=3D"outlook-border"></td></tr>
+                    <!-- Breakdown box -->
+
+                    <tr><td height=3D"40"></td></tr>
+
+                    <tr>
+                        <td align=3D"left" style=3D"font-family: 'HaasGrot', =
+Helvetica, sans-serif; font-size: 18.00px; line-height: 23.00px; color: #3616=
+4A; background-color: #FAF6F4; font-weight: 400; letter-spacing: -0.85px;">
+                            Hi Test,
+                            <br/><br/>
+                           =20
+                            You&#39;ll find a full PDF breakdown attached, wh=
+ich you can keep for your reference.
+                            <br/><br/>
+                           =20
+                               =20
+                               =20
+                                 =20
+                                     =20
+                                          <span style=3D"font-weight: 800">Yo=
+u pay by monthly Direct Debit, so your payments are up to date.</span>
+                                          <br/><br/>
+                                          A reasonable amount of debit or cre=
+dit is normal, but if you&#39;re concerned do get in touch.
+                                     =20
+                                 =20
+                               =20
+                           =20
+                        </td>
+                    </tr>
+
+
+                   =20
+
+
+                    <tr><td height=3D"20"></td></tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+
+                              <!-- /CONTENT-->
+
+                              <!-- SIGNOFF -->
+                             =20
+                                <br/><br/>
+                               =20
+                                Any way we can help, we will.
+                               =20
+                                <br/><br/>
+                                <b>The E.ON Next Team</b>
+                                <br/><br/>
+                             =20
+                              <!-- /SIGNOFF -->
+                             =20
+                            </td>
+                          </tr>
+                          <tr>
+                            <td bgcolor=3D"#FAF6F4" height=3D"20" style=3D"fo=
+nt-size: 1px; line-height: 1px;"></td>
+                          </tr>
+                        </table>
+                        <!-- /CONTENT -->
+                      </td>
+                    </tr>
+
+                   =20
+                     =20
+                        <!-- Account overview -->
+                       =20
+                         =20
+                            <tr>
+                              <td align=3D"center" bgcolor=3D"#FAF6F4" style=
+=3D"font-family: 'HaasGrot', Helvetica, sans-serif; color: #36164A; font-size=
+: 24.00px; line-height: 60.00px; font-weight: 800; text-align: center;">
+                                Account overview
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class=3D"content-td padding" style=3D"-webk=
+it-background-clip: padding-box; -webkit-border-radius: 0 0 3px 3px; backgrou=
+nd-clip: padding-box; border-radius: 0 0 3px 3px; color: #525252; font-family=
+: 'HaasGrot', Helvetica, sans-serif; font-size: 15.00px; line-height: 22.00px=
+; overflow: hidden; padding: 0 40px 0; background-color: #FAF6F4;">
+
+                                <!--Account Balance-->
+                               =20
+                                  <table role=3D"presentation" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                    <tr>
+                                      <td>
+                                        <table role=3D"presentation" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                          <tr>
+                                            <td align=3D"left">
+                                              <table role=3D"presentation" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                                <tr>
+                                                  <td align=3D"center" style=
+=3D"color: #36164A; font-family: 'HaasGrot', Helvetica, sans-serif; font-size=
+: 20.00px; line-height: 24.00px; font-weight: 800; overflow: hidden; backgrou=
+nd-color: #FFFFFF; padding: 30px 15px; box-shadow: 0px 6px 12px rgba(0, 0, 0,=
+ 0.05); border-radius: 12px; text-align: center;">
+                                                    <table role=3D"presentati=
+on" class=3D"spacer"><tbody><tr><td height=3D"10px" style=3D"font-size: 10.00=
+px; line-height: 11.00px;">&#xA0;</td></tr></tbody></table>
+                                                    Your current balance is
+                                                    <br/><br/>
+                                                    <span style=3D"color: #94=
+00FF; font-size: 22.00px; line-height: 26.00px; font-weight: 400;">
+                                                      <span style=3D"font-siz=
+e: 42.00px; font-weight: 800; line-height: 26.00px;">-&pound;5.48 DR</span>
+                                                    </span>
+                                                    <br/><br/>
+                                                    <table role=3D"presentati=
+on" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" style=
+=3D"margin: auto;">
+                                                      <tr>
+                                                          <td style=3D"border=
+-radius: 3px; background: #FFFFFF; text-align: center;">
+                                                              <a href=3D"http=
+://url0000.eonnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDn=
+CxJyydBN9DdWrsmWP1flgVWj4NB0afc45IYuvlspbE9u2HEUU6tued63sPEYAGeBhPo0YB-2FaA-3=
+DRzqn_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3a=
+NfZffPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RL=
+z14aj5vqexNBtkBonLw88i7yMP33izwyJ49DcnTaut5nZ3Uwu-2FNJAG9KkJSvcEbUy8ukhivcoW9=
+MrBTSFf7-2Fwgf5l0bfYfvz30fft-2BOOFRr0XAC6kIrP1NbFmQIWzTuRgg0qiSyfuJ99XpSLK-2F=
+lQgnSEstOHqrExcQu5e2zhlNda4O" style=3D"background: #FFFFFF; border: 2px solid=
+ #9400FF; font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 18.00px;=
+ font-weight: 400; mso-height-rule: exactly; line-height: 50.00px; text-align=
+: center; text-decoration: none; display: block; border-radius: 28px; padding=
+: 0px 35px;">
+                                                                  &nbsp;&nbsp=
+;&nbsp;&nbsp;<span style=3D"color:#9400FF">More</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                              </a>
+                                                          </td>
+                                                      </tr>
+                                                    </table>
+
+                                                    <table role=3D"presentati=
+on" class=3D"spacer"><tbody><tr><td height=3D"10px" style=3D"font-size: 10.00=
+px; line-height: 11.00px;">&#xA0;</td></tr></tbody></table>
+                                                  </td>
+                                                </tr>
+                                              </table>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    <tr><td height=3D"15" style=3D"font-size:=
+ 1px; line-height: 1px;"></td></tr>
+                                  </table>
+                               =20
+                                <!--/Account Balance-->
+                              </td>
+                            </tr>
+                         =20
+                       =20
+                        <!-- /Account overview -->
+
+                        <!-- Quick Links-->
+                       =20
+                         =20
+                            <tr>
+                              <td style=3D"-webkit-background-clip: padding-b=
+ox; -webkit-border-radius: 0 0 3px 3px; background-clip: padding-box; border-=
+radius: 0 0 3px 3px; color: #525252; font-family: 'HaasGrot', Helvetica, sans=
+-serif; font-size: 15.00px; line-height: 22.00px; overflow: hidden; padding: =
+0 40px 30px; background-color: #FAF6F4;" class=3D"padding">
+                                <table role=3D"presentation" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                  <tr>
+                                    <td>
+                                      <table role=3D"presentation" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                        <tr>
+                                          <td height=3D"20" style=3D"font-siz=
+e: 1px; line-height: 1px;"></td>
+                                        </tr>
+                                        <tr>
+                                          <td align=3D"center" style=3D"font-=
+family: 'HaasGrot', Helvetica, sans-serif; color: #36164A; font-size: 24.00px=
+; line-height: 60.00px; font-weight: 800; text-align: center;">
+                                            Quick links
+                                          </td>
+                                        </tr>
+                                      </table>
+                                      <table role=3D"presentation" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                        <tr>
+                                          <td align=3D"center" style=3D"color=
+: #36164A; font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 20.00px=
+; line-height: 24.00px; font-weight: 800; overflow: hidden; background-color:=
+ #FFFFFF; padding: 10px 30px; box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05); b=
+order-radius: 12px; text-align: center;">
+                                            <table role=3D"presentation" clas=
+s=3D"spacer"><tbody><tr><td height=3D"10px" style=3D"font-size: 10.00px; line=
+-height: 11.00px;">&#xA0;</td></tr></tbody></table>
+                                            <table role=3D"presentation" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                              <tr valign=3D"center">
+                                                <td align=3D"center" width=3D=
+"40">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afsb79eYs-2BC1M3BhheOjtFeP6rrSN2B-2FQ1VxOoM80XN1M-3DmKQK_waat=
+v26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8=
+YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqex=
+NBtkBonLw88i7yMw-2BmL2VVQ8sNGYuqJj-2F9MMt-2BbD385qzZcKxGaaFqNWABhXGtIbZKNF8S-=
+2FLT-2FGbBtrQMoCeNqh4C8q-2FQI-2BumBO74q19Gk6LI0pujkyFRo-2B-2Bu2u3dUDJ-2FohPHd=
+TBJ-2BBM7nQey-2FVdXDhLAzlhkEho5f0w" style=3D"color: #36164A; text-decoration:=
+ none;">
+                                                    <img
+                                                      src=3D"https://eonnext.=
+com/branding/eon/icons/view-bills.png"
+                                                      alt=3D""
+                                                      border=3D"0"
+                                                      width=3D"32"
+                                                      style=3D"display: block=
+;"
+                                                    />
+                                                  </a>
+                                                </td>
+                                                <td align=3D"left" style=3D"c=
+olor: #36164A; font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 20.=
+00px; line-height: 24.00px; font-weight: 300;">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afsb79eYs-2BC1M3BhheOjtFeP6rrSN2B-2FQ1VxOoM80XN1M-3DFlsJ_waat=
+v26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8=
+YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqex=
+NBtkBonLw88i7yNo773TVkzP4hcmuRQm3LwTT-2B-2BSMFxpLJB9hI8X-2FQ0RSBTbblqOUba79VL=
+GtesIY3MJ6om-2FTVSq7-2F1y3BvVfWWel-2FiF3sWoD4XlvaOgOa2Vq8xxcUA-2BxSleW9KYpfZ9=
+AwypG-2BTej5rCvHG-2FEegy3bWy" style=3D"color: #36164A; text-decoration: none;=
+">
+                                                    View bills
+                                                  </a>
+                                                </td>
+                                                <td align=3D"right">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afsb79eYs-2BC1M3BhheOjtFeP6rrSN2B-2FQ1VxOoM80XN1M-3DmbWz_waat=
+v26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8=
+YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqex=
+NBtkBonLw88i7yMDdGSYD3rREozmoSq5CDJMj8ou-2BiskO7iduavQMbpM7wntPRYtEmfRBuCJ4eS=
+LLFGgIIldMDvGO6qLB97airX9-2Bbu-2BZniXlLwmaH86-2Byps5q4V5BI3TRi4dK7J-2Bvo-2FCB=
+5VZOQo7V8CtTYAHNtYS0uL" style=3D"color: #36164A; text-decoration: none;">
+                                                    <img
+                                                      src=3D"https://eonnext.=
+com/branding/eon/icons/arrow.png"
+                                                      alt=3D""
+                                                      border=3D"0"
+                                                      width=3D"30"
+                                                      style=3D"display: block=
+;"
+                                                    />
+                                                  </a>
+                                                </td>
+                                              </tr>
+
+                                              <tr>
+                                                <td height=3D"30" style=3D"fo=
+nt-size: 1px; line-height: 1px;"></td>
+                                              </tr>
+
+                                              <tr valign=3D"center">
+                                                <td align=3D"center" width=3D=
+"40">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afsb79eYs-2BC1M3BhheOjtFeP6rrSN2B-2FQ1VxOoM80XN1M-3DdxLo_waat=
+v26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8=
+YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqex=
+NBtkBonLw88i7yNPOYYrqWgs465nk-2FkkVDwXoGTfL4xdKSJt2fBuoLgtxnPA-2BY-2FR3YEaNX2=
+3eQFKaPdMFez6hFq4jPncn1Ij-2BgyiX4iGKOZxfmR3rku-2FUZ3wbnLtrqXbxlfJBq2xAuN6vACB=
+60lX6Pq1pEcj2Rk6Fual" style=3D"color: #36164A; text-decoration: none;">
+                                                    <img
+                                                      src=3D"https://eonnext.=
+com/branding/eon/icons/balance-history.png"
+                                                      alt=3D""
+                                                      border=3D"0"
+                                                      width=3D"30"
+                                                      style=3D"display: block=
+; margin-right: 4px;"
+                                                    />
+                                                  </a>
+                                                </td>
+                                                <td align=3D"left" style=3D"c=
+olor: #36164A; font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 20.=
+00px; line-height: 24.00px; font-weight: 300;">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afsb79eYs-2BC1M3BhheOjtFeP6rrSN2B-2FQ1VxOoM80XN1M-3D3h7L_waat=
+v26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8=
+YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqex=
+NBtkBonLw88i7yM4HzCEkBe-2B-2Bi2LcSshezbyJwBkwzvM6qIPen0c9z-2FgwM4tuen8JusV9Lq=
+K7nS83ENQnjq7W7Sr60R5Lmn5qzRjeR3-2B7oI8MMcM0iYWTg3uL83EGGJLfVLz2pi7i-2BqAgzeI=
+kg4Oftcl8vDUN6zxKGtH" style=3D"color: #36164A; text-decoration: none;">
+                                                    Balance history
+                                                  </a>
+                                                </td>
+                                                <td align=3D"right">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afsb79eYs-2BC1M3BhheOjtFeP6rrSN2B-2FQ1VxOoM80XN1M-3DIytw_waat=
+v26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8=
+YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqex=
+NBtkBonLw88i7yP0VRRFo-2FdotDB5TC4fGyuZh2rTDaoo1QPkjjXjVvQpdrfM4mJEgYyuLn9QStU=
+N-2B0CWknFATyZ7fAo5T0MwgRrEru2ijyyerSV5e-2F8LJnGjZKDH-2Fv32gAsAVDfKQGaZWJfrFr=
+MsQLLg2o1DAnTg5mfR" style=3D"color: #36164A; text-decoration: none;">
+                                                    <img
+                                                      src=3D"https://eonnext.=
+com/branding/eon/icons/arrow.png"
+                                                      alt=3D""
+                                                      border=3D"0"
+                                                      width=3D"30"
+                                                      style=3D"display: block=
+;"
+                                                    />
+                                                  </a>
+                                                </td>
+                                              </tr>
+
+                                              <tr>
+                                                <td height=3D"30" style=3D"fo=
+nt-size: 1px; line-height: 1px;"></td>
+                                              </tr>
+
+                                              <tr valign=3D"center">
+                                                <td align=3D"center" width=3D=
+"40">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afei5kbzMuu-2B4jgGGY8l44iR23IEmo8PHl5NLvBmBhWPY-3DKRnv_waatv2=
+6fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8Yk=
+ErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqexNB=
+tkBonLw88i7yN-2B-2FdVApbX9OedhtxpQXcDDh6XNZV1PtMGlzpYtNhndaHaittkOAcoZK8SJ1Wj=
+z-2BRrvf0y-2BnOt55tp4MMzpRsXc6oz-2FDj6ZhoaVfMvaRaWD8ORBHrXbo2kq3Njw2OXxeFkPOS=
+zC-2Fk5AQ3mnSoI7Qdim" style=3D"color: #36164A; text-decoration: none;">
+                                                    <img
+                                                      src=3D"https://eonnext.=
+com/branding/eon/icons/change-payment.png"
+                                                      alt=3D""
+                                                      border=3D"0"
+                                                      width=3D"25"
+                                                      style=3D"display: block=
+; margin-right: 4px;"
+                                                    />
+                                                  </a>
+                                                </td>
+                                                <td align=3D"left" style=3D"c=
+olor: #36164A; font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 20.=
+00px; line-height: 24.00px; font-weight: 300;">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afei5kbzMuu-2B4jgGGY8l44iR23IEmo8PHl5NLvBmBhWPY-3D9oae_waatv2=
+6fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8Yk=
+ErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqexNB=
+tkBonLw88i7yNdmGJe9x7mObcpUrsCZKI9nXyifYfn7ucGrgu9IHUePlRfcPfymcWMTlgyuoqp8Xy=
+LoCIRt06TldVaG9GCofWXb-2FbSv4VG-2BjsYW5JqCGNgfUKvn88x1ffeUJTBCZUKX-2B70uvbWs0=
+QTFXBXP1Ka8KfX" style=3D"color: #36164A; text-decoration: none;">
+                                                    Make a payment
+                                                  </a>
+                                                </td>
+                                                <td align=3D"right">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afei5kbzMuu-2B4jgGGY8l44iR23IEmo8PHl5NLvBmBhWPY-3D0EGX_waatv2=
+6fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8Yk=
+ErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqexNB=
+tkBonLw88i7yN-2F-2BWquMxctloe2oSh7RwTSru-2BpDaqjcH-2BLRX-2BpAMt2QNe6MLuwdP8Bf=
+GGY455hMnoC-2FYJ4SUEbFpRkYaw3HCICJkw5lVPuH-2BrFM5EGbTPTIfENPai82zcFPl-2BSiBgw=
+yhMkXLD-2BzBkZELiBrydgPbb1" style=3D"color: #36164A; text-decoration: none;">
+                                                    <img
+                                                      src=3D"https://eonnext.=
+com/branding/eon/icons/arrow.png"
+                                                      alt=3D""
+                                                      border=3D"0"
+                                                      width=3D"30"
+                                                      style=3D"display: block=
+;"
+                                                    />
+                                                  </a>
+                                                </td>
+                                              </tr>
+
+                                              <tr>
+                                                <td height=3D"30" style=3D"fo=
+nt-size: 1px; line-height: 1px;"></td>
+                                              </tr>
+
+                                              <tr valign=3D"center">
+                                                <td align=3D"center" width=3D=
+"40">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afei5kbzMuu-2B4jgGGY8l44iQcYqQNzQE1fl3fqhEesd78-3DEhc__waatv2=
+6fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8Yk=
+ErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqexNB=
+tkBonLw88i7yNJAwREDVKMcB-2BGqNfRbXJ3-2FozO-2B8eWGRXXpUvHROGVO9kYkpH6kfA-2FQUj=
+qNMYBnqdE-2Bh7lmaxa3bbDtB-2BouwLwNhUp8K43DU25SkWga5TMHkPdyiEgdxAxPQcPRttX7pcV=
+OrL5S8gyKlrMAoxtqLME" style=3D"color: #36164A; text-decoration: none;">
+                                                    <img
+                                                      src=3D"https://eonnext.=
+com/branding/eon/icons/payment.png"
+                                                      alt=3D""
+                                                      border=3D"0"
+                                                      width=3D"25"
+                                                      style=3D"display: block=
+; margin-right: 4px;"
+                                                    />
+                                                  </a>
+                                                </td>
+                                                <td align=3D"left" style=3D"c=
+olor: #36164A; font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 20.=
+00px; line-height: 24.00px; font-weight: 300;">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afei5kbzMuu-2B4jgGGY8l44iQcYqQNzQE1fl3fqhEesd78-3DWE9l_waatv2=
+6fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8Yk=
+ErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqexNB=
+tkBonLw88i7yMLUB1co3tsmfABoY7bfZNcWCpE3WGCkfsa-2Br6XKXLAaAwbMwsWhh7GzYIh8LZFZ=
+0Lx5HUEeVnBlOp-2FYoUWG9dkpHACga5a2UYdoxDuvct4LIJnWiMQo26myL0MBn1w7rPhDtZWX2J3=
+Qy3mQGRauYqI" style=3D"color: #36164A; text-decoration: none;">
+                                                    Change payment
+                                                  </a>
+                                                </td>
+                                                <td align=3D"right">
+                                                  <a href=3D"http://url0000.e=
+onnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIpus1beuujdYDnCxJyydBN9DdW=
+rsmWP1flgVWj4NB0afei5kbzMuu-2B4jgGGY8l44iQcYqQNzQE1fl3fqhEesd78-3DeaH-_waatv2=
+6fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8Yk=
+ErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqexNB=
+tkBonLw88i7yOgU17VlNOKYa9S-2FcMeGxNYNm-2F-2FW6gcs13A5BB-2B3KdkFUi5fX9ICTtXfgm=
+AKquybdM-2BVmz9K-2BQOo0-2F0PjQ2M6x4Yx01N1dw0UyNLzq1DO1Mfcqr6UpBCF8buZl-2BtlRH=
+-2FyFBYxiS6QKq121QCE5jwpmu" style=3D"color: #36164A; text-decoration: none;">
+                                                    <img
+                                                      src=3D"https://eonnext.=
+com/branding/eon/icons/arrow.png"
+                                                      alt=3D""
+                                                      border=3D"0"
+                                                      width=3D"30"
+                                                      style=3D"display: block=
+;"
+                                                    />
+                                                  </a>
+                                                </td>
+                                              </tr>
+                                            </table>
+
+                                            <table role=3D"presentation" clas=
+s=3D"spacer"><tbody><tr><td height=3D"10px" style=3D"font-size: 10.00px; line=
+-height: 11.00px;">&#xA0;</td></tr></tbody></table>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td height=3D"40" style=3D"font-size: 1px=
+; line-height: 1px;"></td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                         =20
+                       =20
+                        <!-- /Quick Links-->
+
+                        <!-- FAQs-->
+                       =20
+                          <tr>
+                            <td align=3D"center" style=3D"background-color: #=
+FAF6F4;">
+                              <table role=3D"presentation" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                <tr>
+                                  <td align=3D"left" width=3D"100" class=3D"m=
+obile-bumper"></td>
+                                  <td align=3D"center">
+                                    <table role=3D"presentation" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                      <tr>
+                                        <td align=3D"center" style=3D"backgro=
+und-color: #FAF6F4;">
+                                          <img
+                                            src=3D"https://eonnext.com/brandi=
+ng/eon/illustrations/common/faqs.png"
+                                            alt=3D""
+                                            border=3D"0"
+                                            width=3D"140"
+                                            style=3D"display: block; margin: =
+0 auto;"
+                                          />
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td height=3D"20" style=3D"font-size:=
+ 1px; line-height: 1px;"></td>
+                                      </tr>
+                                      <tr>
+                                        <td align=3D"center" style=3D"font-fa=
+mily: 'HaasGrot', Helvetica, sans-serif; font-size: 20.00px; font-weight: 300=
+; line-height: 30.00px; color: #36164A; background-color: #FAF6F4;">
+                                          <span style=3D"font-size: 32.00px; =
+font-weight: bold; line-height: 40.00px;" class=3D"sub-title">
+                                            Something else on your mind?
+                                          </span>
+                                          <br/><br/>
+                                          We have answers. Our FAQs make ener=
+gy easy-breezy.
+                                          <br/><br/>
+                                          <!-- BUTTON -->
+                                          <table role=3D"presentation" cellsp=
+acing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" style=3D"margin: =
+auto;">
+                                            <tr>
+                                                <td style=3D"border-radius: 3=
+px; background: #FAF6F4; text-align: center;">
+                                                    <a href=3D"http://url0000=
+.eonnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMvIh4cMX3zgtuBJj15s6ddXSgH=
+t-2B49xeV3yFev1KDoJmcxrQlu_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjG=
+OzIEDg64ptji0pffWjk3aNfZffPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB=
+48C6ErvS6zUi7XghNh2RLz14aj5vqexNBtkBonLw88i7yPVpEfuwszW3q2VBXSbnHWXR1-2FCD9P9=
+IH93irbNBmU-2BZvuFnpNOEkrar9WYCGUxagtPWQtQsxKsXTKiiRHHDKGSfVw-2BKCkFY4dWmsPDv=
+D78s5lK0cmHc12MO2CzuDKLrC9cp4YIh1FzDSZ9lGmxduu3" style=3D"background: #FAF6F4=
+; border: 2px solid #9400FF; font-family: 'HaasGrot', Helvetica, sans-serif; =
+font-size: 16.00px; font-weight: 400; mso-height-rule: exactly; line-height: =
+50.00px; text-align: center; text-decoration: none; display: block; border-ra=
+dius: 28px; padding: 0px 35px;">
+                                                        &nbsp;&nbsp;&nbsp;&nb=
+sp;<span style=3D"color:#9400FF">Read our FAQs</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                          </table>
+                                          <!-- /BUTTON -->
+                                          <br/>
+                                          If you can&#39;t find what you&#39;=
+re looking for, just reply to this email.
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                  <td align=3D"left" width=3D"100" class=3D"m=
+obile-bumper"></td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                       =20
+                        <!-- /FAQs-->
+
+                        <tr>
+                          <td style=3D"-webkit-background-clip: padding-box; =
+-webkit-border-radius: 0 0 3px 3px; background-clip: padding-box; border-radi=
+us: 0 0 3px 3px; color: #525252; font-family: 'HaasGrot', Helvetica, sans-ser=
+if; font-size: 15.00px; line-height: 22.00px; overflow: hidden; padding: 0 40=
+px 0; background-color: #FAF6F4;" class=3D"padding">
+                            <table role=3D"presentation" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"100%">
+                             =20
+   =20
+
+
+
+<tr>
+  <td style=3D"-webkit-background-clip: padding-box; background-clip: padding=
+-box; color: #36164A; font-family: 'HaasGrot', Helvetica, sans-serif; font-si=
+ze: 20.00px line-height: 24.00px; overflow: hidden; background-color: #FAF6F4=
+;">
+  <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" width=3D"100%">
+    <tr>
+      <td height=3D"80" style=3D"font-size: 1px; line-height: 1px;"></td>
+    </tr>
+    <tr>
+      <td style=3D"color: #36164A; font-family: 'HaasGrot', Helvetica, sans-s=
+erif; font-size: 20.00px; line-height: 30.00px; font-weight: 300px; overflow:=
+ hidden; text-align: center;">
+        <span style=3D"font-family: 'HaasGrot', Helvetica, sans-serif; font-s=
+ize: 32.00px; line-height: 36.00px; font-weight: bold; line-height: 36.00px;"=
+>Have we hit the nail on the head?</span>
+      </td>
+    </tr>
+    <tr>
+      <td height=3D"15" style=3D"font-size: 1px; line-height: 1px;"></td>
+    </tr>
+    <tr>
+      <td>
+        <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"100%">
+          <tr>
+            <td width=3D"30" class=3D"mobile-bumper" align=3D"left"></td>
+            <td style=3D"color: #36164A; font-family: 'HaasGrot', Helvetica, =
+sans-serif; font-size: 20.00px; line-height: 30.00px; font-weight: 300px; ove=
+rflow: hidden; text-align: center; padding: 0 20px;">
+              Let us know if this email was helpful and we&#39;ll keep on doi=
+ng more (or less) of the same to make energy easier
+            </td>
+            <td width=3D"30" class=3D"mobile-bumper" align=3D"left"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height=3D"30" style=3D"font-size: 1px; line-height: 1px;"></td>
+    </tr>
+    <tr>
+      <td>
+        <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"100%">
+          <tr>
+            <td align=3D"left" class=3D"mobile-bumper--none"></td>
+            <td align=3D"center" valign=3D"top" width=3D"300" class=3D"feebac=
+k-panel" style=3D"color: #36164A; font-family: 'HaasGrot', Helvetica, sans-se=
+rif; font-size: 18.00px; line-height: 20.00px; font-weight: 300px; overflow: =
+hidden; background-color: #FFFFFF; padding: 15px 15px; border-radius: 8px; bo=
+x-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05); text-align: center;">
+              <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0=
+" border=3D"0" width=3D"100%">
+                <tr>
+                  <td width=3D"30" class=3D"mobile-bumper" align=3D"left"></t=
+d>
+                  <td>
+                    <table role=3D"presentation" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" width=3D"100%">
+                      <tr>
+                        <td align=3D"left">
+                          <a href=3D"http://url0000.eonnext.com/ls/click?upn=
+=3Du001.5T755kPtp3mFysi5asMvIpmhnWIKgsAkSCQZHlAnrLLS5gTfWzMiY9-2BrQGJOD-2BUKK=
+Th4Py9JnxrRmS8i43QqiQXqX2gOxBQkQV3BJ-2BqLFvqzQz0NA-2Fzc0iGrzHPHMUJPxGsNq-2B-2=
+BJEoGVHKt0kaAUZg-3D-3D--nm_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjG=
+OzIEDg64ptji0pffWjk3aNfZffPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB=
+48C6ErvS6zUi7XghNh2RLz14aj5vqexNBtkBonLw88i7yN6mX-2BUrZMCEIk4fETZwIwsPg7luX6B=
+JyOJVZViKOHcDnQLyGfX-2F6wHVfDfAjDSfPRFfHnQHNzU3SKSFTir3SH4aiDsVWmU9bmc9rPLHPq=
+5YEDESVrO3KonjuDwruss26UTlLsvh-2FCR6DyktljoMsrl" style=3D"color: #36164A; tex=
+t-decoration: none;">
+                            <span style=3D"font-family: 'HaasGrot', Helvetica=
+, sans-serif; font-weight: bold;">Nailed it</span>
+                          </a>
+                        </td>
+                        <td align=3D"right">
+                          <a href=3D"http://url0000.eonnext.com/ls/click?upn=
+=3Du001.5T755kPtp3mFysi5asMvIpmhnWIKgsAkSCQZHlAnrLLS5gTfWzMiY9-2BrQGJOD-2BUKK=
+Th4Py9JnxrRmS8i43QqiQXqX2gOxBQkQV3BJ-2BqLFvqzQz0NA-2Fzc0iGrzHPHMUJPxGsNq-2B-2=
+BJEoGVHKt0kaAUZg-3D-3DLY6m_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjG=
+OzIEDg64ptji0pffWjk3aNfZffPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB=
+48C6ErvS6zUi7XghNh2RLz14aj5vqexNBtkBonLw88i7yMnZZRuKxUqoFlIBNteB4j3IAR8K4QlgY=
+CkyE45Bef8vTBcQbgchkdI33Dtbk6xNyJ1k2ce-2FN7reV6-2FGTiiPyO6M-2B6tYgLhIIKqW5pjG=
+CjNeOwS0Lto8G3mHOo8gdIzMG0YxTsQAUK4AVaC0xWvOVx-2B" style=3D"color: #36164A; t=
+ext-decoration: none;">
+                            <img
+                              src=3D"https://eonnext.com/branding/eon/icons/c=
+h-positive.png"
+                              alt=3D""
+                              border=3D"0"
+                              width=3D"67"
+                            />
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width=3D"30" class=3D"mobile-bumper" align=3D"left"></t=
+d>
+                </tr>
+              </table>
+            </td>
+            <td align=3D"left" class=3D"mobile-bumper--none"></td>
+          </tr>
+
+          <tr>
+            <td height=3D"40" style=3D"font-size: 1px; line-height: 1px;"></t=
+d>
+          </tr>
+
+          <tr>
+            <td align=3D"left" class=3D"mobile-bumper--none"></td>
+            <td align=3D"center" valign=3D"top" width=3D"300" class=3D"feebac=
+k-panel" style=3D"color: #36164A; font-family: 'HaasGrot', Helvetica, sans-se=
+rif; font-size: 18.00px; line-height: 20.00px; font-weight: 300px; overflow: =
+hidden; background-color: #FFFFFF; padding: 15px 15px; border-radius: 8px; bo=
+x-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05); text-align: center;">
+              <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0=
+" border=3D"0" width=3D"100%">
+                <tr>
+                  <td width=3D"30" class=3D"mobile-bumper" align=3D"left"></t=
+d>
+                  <td>
+                    <table role=3D"presentation" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" width=3D"100%">
+                      <tr>
+                        <td align=3D"left">
+                          <a href=3D"http://url0000.eonnext.com/ls/click?upn=
+=3Du001.5T755kPtp3mFysi5asMvIpmhnWIKgsAkSCQZHlAnrLLS5gTfWzMiY9-2BrQGJOD-2BUKK=
+Th4Py9JnxrRmS8i43QqiQXqX2gOxBQkQV3BJ-2BqLFvqzQz0NA-2Fzc0iGrzHPHMUJPd7MY27I39A=
+yKFkdebKnA2Q-3D-3DX__h_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIE=
+Dg64ptji0pffWjk3aNfZffPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6=
+ErvS6zUi7XghNh2RLz14aj5vqexNBtkBonLw88i7yNbKy4nkh2Jvu0s2aO8oD253Nvsv0jT0P4Ins=
+8LrTvaT7MFvvextWZAGU-2FPmc8-2BGTEgBsdqXdJLmDfiMSt9B1-2BXyJZSTfynPOjsohGd7RLHk=
+dK5tbygejLCzZ2DdzYG-2Fic64YldEbHNu-2FEm5RTvrtR5" style=3D"color: #36164A; tex=
+t-decoration: none;">
+                            <span style=3D"font-family: 'HaasGrot', Helvetica=
+, sans-serif; font-weight: bold;">Can&#39;t decide</span>
+                          </a>
+                        </td>
+                        <td align=3D"right">
+                          <a href=3D"http://url0000.eonnext.com/ls/click?upn=
+=3Du001.5T755kPtp3mFysi5asMvIpmhnWIKgsAkSCQZHlAnrLLS5gTfWzMiY9-2BrQGJOD-2BUKK=
+Th4Py9JnxrRmS8i43QqiQXqX2gOxBQkQV3BJ-2BqLFvqzQz0NA-2Fzc0iGrzHPHMUJPd7MY27I39A=
+yKFkdebKnA2Q-3D-3DY2pb_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIE=
+Dg64ptji0pffWjk3aNfZffPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6=
+ErvS6zUi7XghNh2RLz14aj5vqexNBtkBonLw88i7yM8TtWkAjKT6KB-2BmZKCTj2GWCKqI5wuPN0G=
+wj5mGl3kOBTUYoEJ5ntvBsIfVo5hVflmSLZcyZdEyC9FSdLP38DTznNKk8piuTtuUJ7sv6HcWZYxi=
+-2FcRI-2B7jYUB2u5InBUmFqVcJijhJvb0dae0nx6iM" style=3D"color: #36164A; text-de=
+coration: none;">
+                            <img
+                              src=3D"https://eonnext.com/branding/eon/icons/c=
+hi-neutral.png"
+                              alt=3D""
+                              border=3D"0"
+                              width=3D"67"
+                            />
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width=3D"30" class=3D"mobile-bumper" align=3D"left"></t=
+d>
+                </tr>
+              </table>
+            </td>
+            <td align=3D"left" class=3D"mobile-bumper--none"></td>
+          </tr>
+
+          <tr>
+            <td height=3D"40" style=3D"font-size: 1px; line-height: 1px;"></t=
+d>
+          </tr>
+
+          <tr>
+            <td align=3D"left" class=3D"mobile-bumper--none"></td>
+            <td align=3D"center" valign=3D"top" width=3D"300" class=3D"feebac=
+k-panel" style=3D"color: #36164A; font-family: 'HaasGrot', Helvetica, sans-se=
+rif; font-size: 18.00px; line-height: 20.00px; font-weight: 300px; overflow: =
+hidden; background-color: #FFFFFF; padding: 15px 15px; border-radius: 8px; bo=
+x-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05); text-align: center;">
+              <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0=
+" border=3D"0" width=3D"100%">
+                <tr>
+                  <td width=3D"30" class=3D"mobile-bumper" align=3D"left"></t=
+d>
+                  <td>
+                    <table role=3D"presentation" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" width=3D"100%">
+                      <tr>
+                        <td align=3D"left">
+                          <a href=3D"http://url0000.eonnext.com/ls/click?upn=
+=3Du001.5T755kPtp3mFysi5asMvIpmhnWIKgsAkSCQZHlAnrLLS5gTfWzMiY9-2BrQGJOD-2BUKK=
+Th4Py9JnxrRmS8i43QqiQXqX2gOxBQkQV3BJ-2BqLFvqzQz0NA-2Fzc0iGrzHPHMUJPsCGgJC6EWL=
+yjciGg5SVXQQ-3D-3Drfbl_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIE=
+Dg64ptji0pffWjk3aNfZffPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6=
+ErvS6zUi7XghNh2RLz14aj5vqexNBtkBonLw88i7yN0g-2BA69IRvLzpET3rIVytFya4TsJq7ys-2=
+FH0ErJ5IkVxrKiwuZacyJ26XeKdEKQhBIkmUjtnjjibXHoPrfm3QLP2MGR6RxTCKvzSKdIBOipc2G=
+YU2QpD7DqYpBW6lGdf-2F79l9iAk-2BSDUfFXP-2FW179Ck" style=3D"color: #36164A; tex=
+t-decoration: none;">
+                            <span style=3D"font-family: 'HaasGrot', Helvetica=
+, sans-serif; font-weight: bold;">Not really</span>
+                          </a>
+                        </td>
+                        <td align=3D"right">
+                          <a href=3D"http://url0000.eonnext.com/ls/click?upn=
+=3Du001.5T755kPtp3mFysi5asMvIpmhnWIKgsAkSCQZHlAnrLLS5gTfWzMiY9-2BrQGJOD-2BUKK=
+Th4Py9JnxrRmS8i43QqiQXqX2gOxBQkQV3BJ-2BqLFvqzQz0NA-2Fzc0iGrzHPHMUJPsCGgJC6EWL=
+yjciGg5SVXQQ-3D-3D_l7E_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIE=
+Dg64ptji0pffWjk3aNfZffPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6=
+ErvS6zUi7XghNh2RLz14aj5vqexNBtkBonLw88i7yO1YznwksXx1f7Gdsy9xyNUG64ITNSOUjV3At=
+FEf9tCD8ZsgkzezTh261dbeQnJ9EQVDU6RxlhOUoeFRFFtLGxOoUC04WqwWZIcyg4Rp2CVqKxNWYS=
+-2BWkkpNr8eZWcjCXqppUNrh6akBg7uShhyE6-2By" style=3D"color: #36164A; text-deco=
+ration: none;">
+                            <img
+                              src=3D"https://eonnext.com/branding/eon/icons/c=
+hi-negative.png"
+                              alt=3D""
+                              border=3D"0"
+                              width=3D"67"
+                            />
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width=3D"30" class=3D"mobile-bumper" align=3D"left"></t=
+d>
+                </tr>
+              </table>
+            </td>
+            <td align=3D"left" class=3D"mobile-bumper--none"></td>
+          </tr>
+
+          <tr>
+            <td height=3D"40" style=3D"font-size: 1px; line-height: 1px;"></t=
+d>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height=3D"40" style=3D"font-size: 1px; line-height: 1px;"></td>
+    </tr>
+  </table>
+  </td>
+</tr>
+
+
+                            </table>
+                          </td>
+                        </tr>
+                     =20
+                   =20
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td height=3D"30" bgcolor=3D"#36164A" style=3D"font-size: 1px=
+; line-height: 1px;"></td>
+              </tr>
+
+              <tr>
+                <td bgcolor=3D"#36164A">
+                  <table role=3D"presentation" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" width=3D"100%">
+                    <tr>
+                      <td width=3D"20" class=3D"mobile-bumper" align=3D"left"=
+></td>
+                      <td width=3D"100" bgcolor=3D"#36164A">
+                        <img
+                          src=3D"https://eonnext.com/branding/eon/branding/lo=
+go-white.png"
+                          alt=3D"E.ON Next"
+                          border=3D"0"
+                          width=3D"120"
+                          style=3D"display: block;"
+                        />
+                      </td>
+
+                      <td bgcolor=3D"#36164A" align=3D"right" valign=3D"" sty=
+le=3D"font-family: 'HaasGrot', Helvetica, sans-serif; font-size: 16.00px; lin=
+e-height: 20.00px; color: #36164A; font-weight: 300;">
+                        <a href=3D"http://url0000.eonnext.com/ls/click?upn=3D=
+u001.5T755kPtp3mFysi5asMvIvAC6Yp6D-2Bu-2FuScY71JfDzNSxajRKtFx-2BCOkPsLwIhGE5b=
+0u_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZ=
+ffPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14=
+aj5vqexNBtkBonLw88i7yP73z1-2BhfSNLMXyuHP88A0GTKtz5VyvxXz-2B9dXJHWZQVM1pELfbjn=
+kagCORvf7zzaXmYnvsjVKus6ZNsbUuLdVQJPtYn-2FqVAXcaPmOBrqW6TEwcgN3H45R-2BShr6EvU=
+1jXnBoWRzf3tLK-2FI5eY-2FOuDn-2F" style=3D"text-decoration: none; color: #E5E5=
+E5">
+                          <img
+                            src=3D"https://eonnext.com/branding/eon/social/fa=
+cebook.png"
+                            alt=3D"Like E.ON Next on Facebook"
+                            border=3D"0"
+                            width=3D"40"
+                            height=3D"40"
+                            style=3D"padding: 0 4px;"
+                          />
+                        </a>
+                      </td>
+                      <td width=3D"20" class=3D"mobile-bumper" align=3D"left"=
+></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td bgcolor=3D"#36164A" style=3D"-webkit-background-clip: pad=
+ding-box; background-clip: padding-box; color: #E5E5E5; font-family: 'HaasGro=
+t', Helvetica, sans-serif; font-size: 15.00px; line-height: 22.00px; overflow=
+: hidden;  background-color: #36164A;" class=3D"padding">
+                  <table role=3D"presentation" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" width=3D"100%">
+                    <tr>
+                      <td height=3D"30" style=3D"font-size: 1px; line-height:=
+ 1px;"></td>
+                    </tr>
+                    <tr>
+                      <td width=3D"20" class=3D"mobile-bumper" align=3D"left"=
+></td>
+                      <td style=3D"color: #E5E5E5; font-family: 'HaasGrot', H=
+elvetica, sans-serif; font-size: 14.00px; line-height: 22.00px; font-weight: =
+300px; overflow: hidden;">
+                        E.ON Next Energy Limited Registered Office: Trinity H=
+ouse, 2 Burton Street, Nottingham, NG1 4BX. Registered in England &amp; Wales=
+, No: 03782443.
+                        <br/><br/>
+                        <span style=3D"color: #AF9EB1;">
+                          &copy; 2026 E.ON Next
+                        </span>
+                        <br/><br/>
+                       =20
+We&#39;re different at E.ON Next. Positively different. Find out more about <=
+a href=3D"http://url0000.eonnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi5asMv=
+IkEKd1TgblB3oeT-2FpJu3xHaZHgatWusY9rprsrSnGFUCola7PfUenIRyQreOJxxETA-3D-3DSve=
+B_waatv26fJZC2PBWVoVQnaOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZf=
+fPjvU8YkErRrTXnzRwRe1DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14a=
+j5vqexNBtkBonLw88i7yPHUSkOhxdMkhw9qtbBUg5h2JtZeWDn-2BpFAsIBQ3Sd-2BoaRxYXZy-2F=
+lA-2BvYyJYdktRx7BBQURcHnDw34ro0QT-2FmQhZAvMuCUJ6uGAPrJl24Z1s7-2F9ML84feL172sM=
+jwRzSx8iRro8KwNqNkbJwp6iegz-2B" style=3D"text-decoration: underline; color: #=
+E5E5E5;">support we can offer</a>
+and <a href=3D"http://url0000.eonnext.com/ls/click?upn=3Du001.5T755kPtp3mFysi=
+5asMvIkEKd1TgblB3oeT-2FpJu3xHbBta9a-2FmrnhiSja3up55m5Vymw_waatv26fJZC2PBWVoVQ=
+naOxm5fKWTdwxXMfNNJ92SUZl-2BRjGOzIEDg64ptji0pffWjk3aNfZffPjvU8YkErRrTXnzRwRe1=
+DdJ9e2EVPiE0RhlqV6D4mt2qqH6FTeB48C6ErvS6zUi7XghNh2RLz14aj5vqexNBtkBonLw88i7yM=
+YyA5AjbRp5RsFU97AW9WNNKd8q2PJQIe5re-2FeQLiq8X5czXGq-2BE8j4K1RTnoS34QVj7aBQzzV=
+eEpILEinatcWWxqF3qh88LdtZO52raKKzCBsQqRMKh8v4HMrqJunxDw3H7XvzfQHzX8AzD8aVVz4"=
+ style=3D"text-decoration: underline; color: #E5E5E5;">our policies</a>.
+                       =20
+                      </td>
+                      <td width=3D"20" class=3D"mobile-bumper" align=3D"left"=
+></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td height=3D"30" bgcolor=3D"#36164A" style=3D"font-size: 1px=
+; line-height: 1px;"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td valign=3D"top" height=3D"20"></td>
+        </tr>
+      </table>
+      <!--[if (gte mso 10)]>
+        </td>
+        </tr>
+        </table>
+      <![endif]-->
+    </td>
+  </tr>
+</table>
+<img src=3D"http://url0000.eonnext.com/wf/open?upn=3Du001.bdhYUfsjDb95BGwYAsR=
+XHo6v1rXFCMaD9mJGOAUsCHgYN-2BydrruIlSKcEQNCWxQrsbq6Zeks8UvGPBqtYMnZGVGxsHtoJX=
+3hzD-2BA70RVjV-2Bo8T-2F0P1lmMWFYIqx57L2IBCw0dE5LTJEMTPQqhBTaYQJ3Xseu-2BSxCcWG=
+g2qvq9JAAh56nx0wIoCxxSWcAWq2T0774lUejgrNJYfP-2BSnThmNvC0z-2Bx7ATiLK1TBHb7zY73=
+VfyWfQdGK16jCqfLAHLo2YVyZD-2Brfz7TGFeIqd9VAqNRWA2uuOt3FGzrErqBJFsLukV5i-2Fbql=
+BYBKblTz-2B4E" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height=
+:1px !important;width:1px !important;border-width:0 !important;margin-top:0 !=
+important;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 =
+!important;padding-top:0 !important;padding-bottom:0 !important;padding-right=
+:0 !important;padding-left:0 !important;"/></body>
+</html>
+
+
+--===============4128981043035278768==--
+
+--===============5151284179073790688==
+Content-Type: application/pdf
+Content-Disposition: attachment; filename="eon-next-statement-2026-08-08.pdf"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJXN0dWItZm9yLW1haWxzaWZ0LWZpeHR1cmUKMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAolJUVPRgo=
+--===============5151284179073790688==--
