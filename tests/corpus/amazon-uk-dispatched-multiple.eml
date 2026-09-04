@@ -1,0 +1,41 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <shipment-tracking@amazon.co.uk>
+To: test@example.org
+Subject: Dispatched: 'Example Gadget X1' and 3 more items
+Date: Wed, 02 Sep 2026 22:39:35 +0000
+Message-ID: <amazon-uk-dispatched-multiple-test@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Your Orders
+
+    Your package was dispatched!
+Ordered
+
+Dispatched
+
+Out for delivery
+
+Delivered
+
+Arriving tomorrow 7 am – 1 pm
+
+Test - London
+
+Order #
+444-4444444-4444444
+
+Track package
+
+* Example Gadget X1
+  Quantity: 1
+  27.00 GBP
+
+* Example HDMI 2.1 Cable 2M, 8K@60Hz, Supports eARC HDR10 HDCP 2.2/2.3, Compatible with all HDMI devices
+  Quantity: 3
+  3.99 GBP
+
+Total
+38.97 GBP
+
+Amazon.co.uk is a trading name for Amazon EU Sarl.

@@ -1,0 +1,9 @@
+name: swiftqueue
+order: 50
+from_domains:
+  - swiftqueue.com
+subject_regex: "(?i)^Swiftqueue Appointment\\s+(Confirmation|Reminder)\\b|^Appointment Reminder\\b"
+requires:
+  - html
+require_dkim:
+  - swiftqueue.com

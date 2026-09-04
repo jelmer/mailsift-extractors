@@ -1,0 +1,23 @@
+Authentication-Results: example.org; dkim=pass header.d=bol.com header.i=@bol.com
+From: "bol" <automail@bol.com>
+To: test@example.org
+Subject: De bezorger is onderweg
+Date: Tue, 28 Jul 2026 09:23:21 +0100
+Message-ID: <bol-com-out-for-delivery-test@bol.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>De bezorger is onderweg</title></head>
+<body>
+<div style="display:none">En is er tussen 11:25 en 13:30 uur.</div>
+<h1>Hallo Test</h1>
+<p>De bezorger komt langs tussen 11:25 en 13:30 uur.</p>
+<h2>Dit is onderweg</h2>
+<p>1 artikel</p>
+<p>Example Keyboard</p>
+
+<div style="display:none">C000000000</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+Authentication-Results: example.org; dkim=pass header.d=kwalitaria.nl header.i=@kwalitaria.nl
+From: Kwalitaria <no-reply@kwalitaria.nl>
+To: joe@example.com
+Subject: Kwalitaria Example bestelling 20000000
+Date: Sun, 21 Jun 2026 15:39:49 +0000
+Message-ID: <kwalitaria-test@kwalitaria.nl>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h2>Dank je wel voor je online bestelling!</h2>
+<p>Je hebt besteld bij Kwalitaria Example. Jouw bestelling heeft ordernummer <b>20000000</b> en is geplaatst op zondag 21 juni om 17:39. Hou het ordernummer en deze bevestiging bij de hand als je contact met ons opneemt, zo kunnen wij je sneller van dienst zijn.</p>
+<p>Joe Example<br/>Voorbeeldstraat 1<br/>1000AA<br/>Amsterdam<br/>0000000000<br/><br/>
+<span>Betaalwijze:</span> iDEAL - Wero<br/>
+<span>Afleverwijze:</span> Bezorgen <span> op </span>zondag 21 juni<span> tussen </span>18:15<span> en </span>18:30
+</p>
+<table>
+<tr><td>1x</td><td>2 porties<br/>+ Frietsaus beker<br/>+ Normale friet</td><td>&euro; 9,30</td></tr>
+<tr><td>1x</td><td>Kroket vega<br/>+ Zacht bolletje wit</td><td>&euro; 4,40</td></tr>
+<tr><td>1x</td><td>Frikandel vega<br/>+ Ui/frietsaus/pindasaus<br/>+ Zacht bolletje wit</td><td>&euro; 5,40</td></tr>
+<tr><td></td><td>Leverkosten</td><td>&euro; 2,95</td></tr>
+<tr><td>excl.</td><td>BTW</td><td>&euro; 20,23</td></tr>
+<tr><td></td><td>Totaal</td><td>&euro; 22,05</td></tr>
+</table>
+</body></html>

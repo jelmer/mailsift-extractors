@@ -130,6 +130,7 @@ def emit_receipt(text: str, mail) -> bool:
         if (subtotal_match and (not total_match or total_is_zero))
         else total_match
     )
+    assert price_source is not None
     receipt: dict = {
         "@context": "https://schema.org",
         "@type": "Order",

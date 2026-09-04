@@ -1,0 +1,9 @@
+name: kpn-mobiel
+order: 50
+from_domains:
+  - kpn.com
+subject_regex: "(?i)maandelijkse factuur van KPN Mobiel"
+requires:
+  - html
+require_dkim:
+  - kpn.com
