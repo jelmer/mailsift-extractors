@@ -34,6 +34,15 @@ class Attachment:
     bytes: bytes
     content_id: str | None
 
+    def looks_like_pdf(self) -> bool:
+        """True when this attachment's bytes start with `%PDF-` or its
+        filename ends in `.pdf`. Vendors sometimes ship PDFs as
+        `application/octet-stream`, so a MIME-type check alone is not
+        enough.
+        """
+        name = (self.filename or "").lower()
+        return name.endswith(".pdf") or self.bytes.startswith(b"%PDF")
+
 
 @dataclass
 class Mail:
@@ -52,6 +61,24 @@ class Mail:
     @property
     def headers(self) -> Mapping[str, str]:
         return cast("Mapping[str, str]", self.message)
+
+    def find_pdf_attachment(self, hint: str | None = None) -> Attachment | None:
+        """Return the first PDF attachment, or None.
+
+        When `hint` is given, prefer an attachment whose filename
+        contains the hint (case-insensitive) - useful when the mail
+        carries several PDFs and only one matches the record we're
+        emitting. Falls back to the first PDF regardless.
+        """
+        pdfs = [a for a in self.attachments if a.looks_like_pdf()]
+        if not pdfs:
+            return None
+        if hint:
+            lowered = hint.lower()
+            for a in pdfs:
+                if lowered in (a.filename or "").lower():
+                    return a
+        return pdfs[0]
 
 
 def read_message(stream=None) -> Mail:

@@ -81,10 +81,14 @@ def run_extractor(tmp_path: Path):
                 out[child.name] = json.loads(child.read_text(encoding="utf-8"))
             elif child.name.endswith(".ics"):
                 out[child.name] = _read_event_stable(child.read_text(encoding="utf-8"))
-            elif ".ticket." in child.name:
-                # Ticket artifacts (PDF, pkpass, images) are opaque
-                # blobs; return the raw bytes so tests can assert on
-                # size or content hash.
+            elif (
+                ".ticket." in child.name
+                or (".receipt." in child.name and child.suffix != ".json")
+                or (".bill." in child.name and child.suffix != ".json")
+            ):
+                # Binary sidecars (ticket, receipt-file, bill-file) are
+                # opaque blobs; return the raw bytes so tests can assert
+                # on size or content hash.
                 out[child.name] = child.read_bytes()
             else:
                 out[child.name] = child.read_text(encoding="utf-8")
