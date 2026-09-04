@@ -1,0 +1,10 @@
+name: google-cloud
+order: 50
+from_domains:
+  - google.com
+subject_regex: "(?i)^Google Cloud Platform.*invoice is available"
+requires:
+  - text
+  - attachment:application/pdf
+require_dkim:
+  - google.com
