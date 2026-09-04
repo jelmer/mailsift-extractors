@@ -121,7 +121,9 @@ The pipeline classifies every file in cwd by its suffix:
 | `<slug>.reservation.json` | `reservation` | A schema.org-style reservation object (`FlightReservation`, `TrainReservation`, `LodgingReservation`, `EventReservation`, `FoodEstablishmentReservation`, `BusReservation`). The Rust side converts it to a calendar event. |
 | `<slug>.parcel.json`    | `parcel`       | Loose schema.org `ParcelDelivery` JSON. Must include `trackingNumber` (the dedup key). Merged with any prior file for the same tracking number. |
 | `<slug>.receipt.json`   | `receipt`      | Loose schema.org `Order` / `Invoice` JSON. Must include `orderNumber` (or `identifier`) and a merchant/seller name. |
+| `<slug>.receipt.<ext>`  | `receipt-file` | Preserved receipt attachment (typically the original PDF). Any extension other than `json` triggers this kind. Requires a sibling `<slug>.receipt.json` in the same run; the two files are filed next to each other on disk. |
 | `<slug>.bill.json`      | `bill`         | JSON with `payee`, `amount`, `dueDate`, `invoiceNumber`.                                               |
+| `<slug>.bill.<ext>`     | `bill-file`    | Preserved bill attachment (typically the original PDF). Any extension other than `json` triggers this kind. Requires a sibling `<slug>.bill.json` in the same run; the two files are filed next to each other on disk. |
 | `<slug>.subscription.json` | `subscription` | Schema.org-ish JSON carrying at minimum `subscriptionDuration`. Downstream tooling synthesises renewal reminders from it. |
 | `<slug>.ticket.<ext>`   | `ticket`       | Any binary blob (PDF, pkpass, image, ...). Dedup is by content hash; `<ext>` is taken literally as the on-disk extension. |
 
