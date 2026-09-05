@@ -10,6 +10,11 @@ It is the authoritative description of the contract: what the manifest
 fields mean, what the script gets on stdin, and what filenames it must
 write. This file only covers the workflow of adding a new one.
 
+If you'd rather follow a numbered recipe end to end (save a fixture,
+copy a skeleton, adjust the manifest, add a test, run through
+`replay --explain`), see
+[`WRITING-EXTRACTORS.md`](WRITING-EXTRACTORS.md).
+
 ## Look at an existing extractor first
 
 Every extractor in `extractors/` is a worked example. Rather than
