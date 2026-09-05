@@ -25,12 +25,11 @@ from __future__ import annotations
 import json
 import re
 import sys
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 RECEIPT_ID_RE = re.compile(r"Receipt ID:\s*([A-Z0-9]{6,20})", re.IGNORECASE)
 CONFIRMATION_RE = re.compile(r"Confirmation code:\s*([A-Z0-9]{6,20})", re.IGNORECASE)
@@ -49,36 +48,6 @@ TOTAL_RE = re.compile(
 )
 
 
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-        elif tag in ("br", "p", "div", "tr", "h1", "h2", "h3", "li", "td"):
-            self.parts.append("\n")
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(html: str) -> str:
-    p = _Strip()
-    p.feed(html)
-    text = "".join(p.parts)
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r" *\n *", "\n", text)
-    return text.strip()
-
-
 def parse_amount(raw: str) -> float:
     return float(raw.replace(",", ""))
 
@@ -88,7 +57,7 @@ def main() -> int:
     html = mail.html
     if not html:
         return 0
-    text = strip_html(html)
+    text = strip_html(html, block_tags=True)
 
     receipt_match = RECEIPT_ID_RE.search(text)
     if not receipt_match:

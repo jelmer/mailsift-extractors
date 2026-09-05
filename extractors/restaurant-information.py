@@ -23,12 +23,11 @@ import json
 import re
 import sys
 from datetime import datetime
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 SUBJECT_VENUE_RE = re.compile(
     r"Confirmation of your booking at\s+(.+?)\s*$", re.IGNORECASE
@@ -47,38 +46,6 @@ SEATING_RE = re.compile(
     r"reserved\s+from\s+\d{1,2}:\d{2}\s+to\s+(\d{1,2}:\d{2})",
     re.IGNORECASE,
 )
-
-
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-        elif tag in ("br", "p", "div", "tr", "td", "li", "h1", "h2", "h3"):
-            self.parts.append("\n")
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-        elif tag in ("p", "div", "tr", "td", "li", "h1", "h2", "h3"):
-            self.parts.append("\n")
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(html: str) -> str:
-    p = _Strip()
-    p.feed(html)
-    text = "".join(p.parts)
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r" *\n *", "\n", text)
-    return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
 def resolve_year(date_str: str, mail_date: datetime | None) -> datetime | None:
@@ -115,7 +82,7 @@ def main() -> int:
     if not venue:
         return 0
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, block_tags=True)
 
     res_id_match = RES_ID_RE.search(text) or RES_ID_RE.search(mail.html)
     if not res_id_match:

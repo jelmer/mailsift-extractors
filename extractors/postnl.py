@@ -21,12 +21,11 @@ from __future__ import annotations
 import json
 import re
 import sys
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 TRACKING_RE = re.compile(r"\b(3S[A-Z]{2,6}\d{6,12})\b")
 SUBJECT_RE = re.compile(
@@ -44,31 +43,6 @@ STATUS_MAP = {
     "onderweg": "OutForDelivery",
     "afgeleverd": "Delivered",
 }
-
-
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(html: str) -> str:
-    p = _Strip()
-    p.feed(html)
-    return re.sub(r"\s+", " ", " ".join(p.parts)).strip()
 
 
 def main() -> int:

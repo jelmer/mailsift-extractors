@@ -25,12 +25,11 @@ import json
 import re
 import sys
 from datetime import datetime
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 TRACKING_RE = re.compile(r"Your parcel:\s*(\d{4}\s\d{4}\s\d{3}\s\d{3})")
 # "TODAY 9th February 2026 between 13:40 - 14:40"
@@ -54,31 +53,6 @@ MONTHS = {
     "november": 11,
     "december": 12,
 }
-
-
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(html: str) -> str:
-    p = _Strip()
-    p.feed(html)
-    return re.sub(r"\s+", " ", " ".join(p.parts)).strip()
 
 
 def status_from_subject(subject: str) -> str | None:

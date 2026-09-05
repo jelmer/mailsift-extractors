@@ -15,12 +15,11 @@ from __future__ import annotations
 import json
 import re
 import sys
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 ORDER_NUMBER_RE = re.compile(r"Order Number\s*\n\s*(?P<number>\d{6,12})")
 # Order total on the confirmation mail; may appear multiple times in
@@ -39,36 +38,6 @@ TRACKING_URL_RE = re.compile(
 )
 
 SYMBOL_TO_CURRENCY = {"£": "GBP", "€": "EUR", "$": "USD"}
-
-
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-        elif tag in ("br", "p", "div", "tr", "h1", "h2", "h3", "li", "td"):
-            self.parts.append("\n")
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(html: str) -> str:
-    p = _Strip()
-    p.feed(html)
-    text = "".join(p.parts)
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r" *\n *", "\n", text)
-    return text.strip()
 
 
 def emit_receipt(mail, text: str) -> None:
@@ -136,7 +105,7 @@ def main() -> int:
     subject = (mail.subject or "").lower()
     if not mail.html:
         return 0
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, block_tags=True)
 
     if "order confirmation" in subject:
         emit_receipt(mail, text)
