@@ -1,0 +1,36 @@
+Authentication-Results: example.org; dkim=pass header.d=transavia.com header.i=@e.transavia.com
+From: Transavia <booking@e.transavia.com>
+To: joe@example.com
+Subject: Boekingsbevestiging: je reis naar Spanje (Barcelona) - AAAAAA
+Date: Mon, 3 Feb 2025 10:00:00 +0100
+Message-ID: <transavia-booking-test@e.transavia.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>Boekingsbevestiging</h1>
+<p>Boekingsnummer: AAAAAA</p>
+<p>Hoi Joe,</p>
+<h2>Jouw vlucht</h2>
+<p>Vluchttijden zijn lokale tijden</p>
+<div>
+  <p>vrijdag 4 april 2025</p>
+  <p>09:15</p>
+  <p>11:30</p>
+  <p>Amsterdam (Schiphol)</p>
+  <p>Spanje (Barcelona)</p>
+  <p>AMS</p>
+  <p>BCN</p>
+  <p>Vluchtnummer: HV6111</p>
+</div>
+<div>
+  <p>maandag 7 april 2025</p>
+  <p>12:00</p>
+  <p>14:20</p>
+  <p>Spanje (Barcelona)</p>
+  <p>Amsterdam (Schiphol)</p>
+  <p>BCN</p>
+  <p>AMS</p>
+  <p>Vluchtnummer: HV6112</p>
+</div>
+</body></html>
