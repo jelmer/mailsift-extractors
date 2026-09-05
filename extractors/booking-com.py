@@ -26,7 +26,14 @@ SUBJECT_HOTEL_RE_LOOSE = re.compile(
     r"confirmed at\s+(.+?)(?:$|\s*\(from)", re.IGNORECASE
 )
 
-CONFIRMATION_RE = re.compile(r"Confirmation:\s*(\d+)")
+# Booking.com label the reservation number a few ways: `Confirmation:
+# NNN` on older mails, `Confirmation number: NNN` on the newer body,
+# and `Booking number NNN` in the itinerary block. All refer to the
+# same digits, so any of them will do.
+CONFIRMATION_RE = re.compile(
+    r"(?:Confirmation(?:\s+number)?|Booking\s+number)\s*:?\s*(\d+)",
+    re.IGNORECASE,
+)
 
 # Booking.com renders dates a few ways across years and locales. We hand
 # the leading-day-of-week chunk to strptime, trying each format in turn.

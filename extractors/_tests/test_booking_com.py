@@ -18,3 +18,16 @@ def test_lodging_reservation(run_extractor):
         },
         "reservationNumber": "booking-com-9999999999",
     }
+
+
+def test_confirmation_number_label(run_extractor):
+    # Newer Booking.com bodies use `Confirmation number: NNN` (and
+    # `Booking number NNN` further down) instead of the older bare
+    # `Confirmation: NNN`. Both must be recognised or the
+    # reservation drops the number and the file can't be filed.
+    out = run_extractor("booking-com", "booking-com-confirmation-number-label.eml")
+    assert set(out) == {"booking-com-8888888888.reservation.json"}
+    assert (
+        out["booking-com-8888888888.reservation.json"]["reservationNumber"]
+        == "booking-com-8888888888"
+    )
