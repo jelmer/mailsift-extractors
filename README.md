@@ -9,7 +9,9 @@ for `*.yaml` manifests in the configured extractors directory.
 
 The full extractor contract - manifest fields, dispatch semantics,
 artifact filenames, debugging recipes - is documented in
-[extractors/README.md](extractors/README.md).
+[extractors/README.md](extractors/README.md). For a step-by-step
+walkthrough of adding a new extractor from scratch, see
+[WRITING-EXTRACTORS.md](WRITING-EXTRACTORS.md).
 
 ## Layout
 
