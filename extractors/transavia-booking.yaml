@@ -1,0 +1,10 @@
+name: transavia-booking
+order: 50
+from_domains:
+  - transavia.com
+  - "*.transavia.com"
+subject_regex: "(?i)^Boekingsbevestiging"
+requires:
+  - html
+require_dkim:
+  - transavia.com
