@@ -1,0 +1,33 @@
+Authentication-Results: example.org; dkim=pass header.d=connect.sncf header.i=@connect.sncf
+From: SNCF Connect <noreply@connect.sncf>
+To: test@example.org
+Subject: Your trip Bordeaux-Saint-Jean - Paris Montparnasse 1 Et 2, outbound on Sunday, 16 August 2026
+Date: Sat, 16 Aug 2026 01:13:27 +0000
+Message-ID: <sncf-trip-html@connect.sncf>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="BOUND"
+
+--BOUND
+Content-Type: text/plain; charset="utf-8"
+
+SNCF CONNECT
+
+THANK YOU AND HAVE A PLEASANT TRIP
+
+Reference number  TESTPN / HP0000000000
+Order total : €104.00
+
+--BOUND
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>Thank you</h1>
+<p>Your journey Bordeaux-Saint-Jean Paris Montparnasse 1 Et 2 &euro;104.00</p>
+<p>Outbound: Sunday, 16 August 2026 at 06:58</p>
+<p>Reference TESTPN Name Test</p>
+<h2>OUTBOUND TGV INOUI 8534 | TARIF FLEX PREMIERE</h2>
+<p>Reference number  TESTPN / HP0000000000</p>
+<p>Order total &euro;104.00</p>
+</body></html>
+
+--BOUND--
