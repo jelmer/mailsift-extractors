@@ -35,8 +35,13 @@ from mailsift_extractor import read_message, strip_html
 
 REFERENCE_RE = re.compile(r"easyJet booking reference:?\s*([A-Z0-9]+)", re.IGNORECASE)
 
+# Airport in the modern layout is a name optionally followed by a
+# `(Terminal)` clause: `Lisbon (T1)`, `Paris CDG (T2E)`. Both parts
+# are captured together so they land in the reservation as a single
+# airport string.
+_MODERN_AIRPORT = r"[A-Z][A-Za-z .'-]+?(?:\s*\([^)]{1,40}\))?"
 LEG_RE = re.compile(
-    r"(\d+)\s+of\s+(\d+)\s+([A-Z][A-Za-z .'-]+?)\s+to\s+([A-Z][A-Za-z .'-]+?)\s+"
+    rf"(\d+)\s+of\s+(\d+)\s+({_MODERN_AIRPORT})\s+to\s+({_MODERN_AIRPORT})\s+"
     r"(EZ[YS]?\d+)\s+"
     r"Departs:\s+([A-Z][a-z]+\s+\d{1,2}\s+[A-Z][a-z]+\s+\d{4}\s+\d{1,2}:\d{2})\s+"
     r"Arrives:\s+([A-Z][a-z]+\s+\d{1,2}\s+[A-Z][a-z]+\s+\d{4}\s+\d{1,2}:\d{2})"
