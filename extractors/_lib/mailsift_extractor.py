@@ -11,6 +11,11 @@ Extractor protocol recap:
 `read_message()` parses stdin and returns a `Mail` object with attribute
 access to common fields plus pre-parsed text/html bodies and ld+json
 blocks. Extractors in other languages just parse the RFC822 themselves.
+
+`strip_html()` reduces an HTML body to normalised plain text ready for
+regex-driven parsing; `normalize_unicode()` applies the same character
+cleanups on its own so the same helper is available for extractors that
+work off the plain-text body.
 """
 
 from __future__ import annotations
@@ -20,10 +25,13 @@ import email.message
 import email.policy
 import email.utils
 import json
+import re
 import sys
+import unicodedata
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import datetime
+from html.parser import HTMLParser
 from typing import Any, cast
 
 
@@ -199,6 +207,144 @@ def _attachment_from(part: email.message.EmailMessage) -> Attachment:
         bytes=payload,
         content_id=content_id,
     )
+
+
+# HTML block-level tags. When `strip_html(..., block_tags=True)` is
+# used, encountering one of these emits a newline so paragraph
+# structure survives; the default (collapse-to-spaces) is what the
+# regex-driven extractors want.
+_BLOCK_TAGS = frozenset(
+    {
+        "address",
+        "article",
+        "aside",
+        "blockquote",
+        "br",
+        "dd",
+        "details",
+        "dialog",
+        "div",
+        "dl",
+        "dt",
+        "fieldset",
+        "figcaption",
+        "figure",
+        "footer",
+        "form",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "header",
+        "hgroup",
+        "hr",
+        "li",
+        "main",
+        "nav",
+        "ol",
+        "p",
+        "pre",
+        "section",
+        "summary",
+        "table",
+        "td",
+        "th",
+        "tr",
+        "ul",
+    }
+)
+
+# Zero-width and formatting-only characters that some senders (Gmail's
+# marketing/preheader tricks in particular) sprinkle through prose and
+# that then defeat literal regex matches. Stripped unconditionally.
+_ZERO_WIDTH = re.compile("[\u200b\u200c\u200d\u2060\ufeff]")
+
+# Characters we replace with an ordinary space so word-boundary regexes
+# match. Non-breaking space is the big one; the narrow / hair space
+# variants show up in currency formatting.
+_SPACE_LIKE = re.compile("[\u00a0\u2009\u200a\u202f\u205f]")
+
+# Soft hyphen is a hint for line-breaking; the display renders as
+# nothing, so treat it that way.
+_SOFT_HYPHEN = "\u00ad"
+
+
+def normalize_unicode(text: str) -> str:
+    """Apply the character cleanups every extractor wants: NFKC
+    canonicalisation, drop zero-width / formatting-only code points,
+    replace non-breaking / thin spaces with ordinary space, drop soft
+    hyphens.
+
+    Idempotent and cheap; safe to call on already-normalised text.
+    """
+    text = unicodedata.normalize("NFKC", text)
+    text = text.replace(_SOFT_HYPHEN, "")
+    text = _ZERO_WIDTH.sub("", text)
+    text = _SPACE_LIKE.sub(" ", text)
+    return text
+
+
+class _HtmlToText(HTMLParser):
+    def __init__(self, *, block_tags: bool) -> None:
+        super().__init__(convert_charrefs=True)
+        self._parts: list[str] = []
+        self._skip_depth = 0
+        self._block_tags = block_tags
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag in ("style", "script"):
+            self._skip_depth += 1
+            return
+        if self._block_tags and tag in _BLOCK_TAGS:
+            self._parts.append("\n")
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        # `<br/>` and friends: block-level whether or not `block_tags`
+        # is set, since a self-closing block always represents a break.
+        if self._block_tags and tag in _BLOCK_TAGS:
+            self._parts.append("\n")
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in ("style", "script") and self._skip_depth > 0:
+            self._skip_depth -= 1
+
+    def handle_data(self, data: str) -> None:
+        if self._skip_depth == 0:
+            self._parts.append(data)
+
+    def result(self) -> str:
+        return "".join(self._parts)
+
+
+def strip_html(html: str, *, block_tags: bool = False) -> str:
+    """Reduce an HTML body to plain text ready for regex parsing.
+
+    `<style>` and `<script>` blocks are dropped, HTML entities are
+    decoded, and the output is Unicode-normalised via
+    [`normalize_unicode`]. Whitespace is collapsed:
+
+    - `block_tags=False` (default): every run of whitespace becomes a
+      single space. Right for extractors that grep the body as one
+      long string.
+    - `block_tags=True`: block-level tags (`<p>`, `<div>`, `<br>`,
+      `<tr>`, `<li>`, ...) insert a newline, and blank lines are
+      preserved between paragraphs. Right for extractors that walk the
+      body line by line.
+    """
+    parser = _HtmlToText(block_tags=block_tags)
+    parser.feed(html)
+    text = normalize_unicode(parser.result())
+    if block_tags:
+        # Collapse runs of spaces/tabs within a line, then collapse
+        # runs of blank lines to a single blank so paragraph breaks
+        # stay visible.
+        text = re.sub(r"[ \t]+", " ", text)
+        text = re.sub(r" *\n *", "\n", text)
+        text = re.sub(r"\n{3,}", "\n\n", text)
+        return text.strip()
+    return re.sub(r"\s+", " ", text).strip()
 
 
 def _extract_ld_json(html: str) -> list[Any]:

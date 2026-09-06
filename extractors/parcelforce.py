@@ -20,12 +20,11 @@ from __future__ import annotations
 import json
 import re
 import sys
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 # JD-prefixed tracking number, alphanumeric tail.
 TRACKING_RE = re.compile(r"\b(JD[A-Z0-9]{5,18})\b")
@@ -35,31 +34,6 @@ DELIVERY_RE = re.compile(
     r"and\s+(?P<end>\d{1,2}:\d{2})",
     re.IGNORECASE | re.DOTALL,
 )
-
-
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(html: str) -> str:
-    p = _Strip()
-    p.feed(html)
-    return re.sub(r"\s+", " ", " ".join(p.parts)).strip()
 
 
 def main() -> int:

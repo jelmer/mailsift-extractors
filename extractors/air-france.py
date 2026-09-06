@@ -21,12 +21,11 @@ import json
 import re
 import sys
 from datetime import datetime
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 SUBJECT_DATE_RE = re.compile(r"on\s+(\d{1,2}/\d{1,2}/\d{4})\s*$", re.IGNORECASE)
 BOOKING_RE = re.compile(r"Booking reference\s*\n+\s*([A-Z0-9]{5,8})")
@@ -38,38 +37,6 @@ SEGMENT_HEADER_RE = re.compile(
 DATE_LINE_RE = re.compile(r"^[A-Z][a-z]+,\s+([A-Z][a-z]+)\s+(\d{1,2})\s*$")
 TIME_AIRPORT_RE = re.compile(r"^(\d{1,2})h(\d{2})\s+(.+?)\s*$")
 FLIGHT_RE = re.compile(r"Flight\s+([A-Z]{2})(\d{2,4})\b")
-
-
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-        elif tag in ("br", "tr", "p", "div", "h1", "h2", "h3", "td", "li"):
-            self.parts.append("\n")
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-        elif tag in ("tr", "p", "div", "h1", "h2", "h3", "td", "li"):
-            self.parts.append("\n")
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(body: str) -> str:
-    p = _Strip()
-    p.feed(body)
-    text = "".join(p.parts)
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r" *\n *", "\n", text)
-    return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
 def split_airport(phrase: str) -> tuple[str, str | None]:
@@ -104,7 +71,7 @@ def main() -> int:
     # need the year, so the ambiguity doesn't matter here.
     booking_year = int(subject_match.group(1).split("/")[-1])
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, block_tags=True)
 
     booking_match = BOOKING_RE.search(text)
     if not booking_match:

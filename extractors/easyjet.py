@@ -27,12 +27,11 @@ import json
 import re
 import sys
 from datetime import datetime
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 REFERENCE_RE = re.compile(r"easyJet booking reference:?\s*([A-Z0-9]+)", re.IGNORECASE)
 
@@ -55,31 +54,6 @@ _LEGACY_DATE = r"\d{1,2}\s+[A-Z][a-z]+\s+\d{4}\s+\d{1,2}:\d{2}"
 LEGACY_TRAIL_RE = re.compile(
     rf"Dep\s+({_LEGACY_DATE})\s+Arr\s+({_LEGACY_DATE})\s+Flight\s+(\d+)"
 )
-
-
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(html: str) -> str:
-    p = _Strip()
-    p.feed(html)
-    return re.sub(r"\s+", " ", " ".join(p.parts)).strip()
 
 
 def parse_dt(s: str) -> datetime | None:

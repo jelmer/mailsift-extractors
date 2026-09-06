@@ -33,12 +33,11 @@ import json
 import re
 import sys
 from datetime import UTC, datetime, timedelta
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 ORDER_LINK_RE = re.compile(r"link\.dice\.fm/([A-Za-z0-9]+)")
 EVENT_LINK_RE = re.compile(r"dice\.fm/event/([A-Za-z0-9-]+)")
@@ -56,38 +55,6 @@ DATE_TIME_RE = re.compile(
     r"(?P<ampm>AM|PM)?\s*"
     r"(?P<tz>[A-Z]{2,5})?\s*$"
 )
-
-
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-        elif tag in ("br", "tr", "p", "div", "h1", "h2", "h3", "td", "li"):
-            self.parts.append("\n")
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-        elif tag in ("tr", "p", "div", "h1", "h2", "h3", "td", "li"):
-            self.parts.append("\n")
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(body: str) -> str:
-    p = _Strip()
-    p.feed(body)
-    text = "".join(p.parts)
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r" *\n *", "\n", text)
-    return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
 def event_name_from_subject(subject: str | None) -> str | None:
@@ -187,7 +154,7 @@ def main() -> int:
     if not mail.html:
         return 0
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, block_tags=True)
     lines = text.split("\n")
 
     # Anchor the parse on the "Ticket details" heading; everything above

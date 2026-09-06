@@ -20,17 +20,15 @@ confirmation and matching reminder collapse to one calendar event.
 
 from __future__ import annotations
 
-import html
 import json
 import re
 import sys
 from datetime import datetime
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 TIME_RE = re.compile(
     r"Time:\s*\n+\s*"
@@ -39,39 +37,6 @@ TIME_RE = re.compile(
 )
 LOCATION_RE = re.compile(r"Location:\s*\n+\s*(.+?)(?=\n\n|$)", re.DOTALL)
 CLINIC_RE = re.compile(r"appointment\s+at\s+(.+?)\s*[.\n]", re.IGNORECASE)
-
-
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-        elif tag in ("br", "tr", "p", "div", "h1", "h2", "h3", "td", "li"):
-            self.parts.append("\n")
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-        elif tag in ("tr", "p", "div", "h1", "h2", "h3", "td", "li"):
-            self.parts.append("\n")
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(body: str) -> str:
-    p = _Strip()
-    p.feed(body)
-    text = "".join(p.parts)
-    text = html.unescape(text)
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r" *\n *", "\n", text)
-    return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
 def parse_when(date_str: str, time_str: str) -> datetime | None:
@@ -90,7 +55,7 @@ def main() -> int:
     if not mail.html:
         return 0
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, block_tags=True)
 
     time_match = TIME_RE.search(text)
     if not time_match:

@@ -27,12 +27,11 @@ import json
 import re
 import sys
 from datetime import datetime
-from html.parser import HTMLParser
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import read_message, strip_html
 
 SUBJECT_REF_RE = re.compile(r"booking reference:\s*([A-Z0-9]{5,12})", re.IGNORECASE)
 ROUTE_RE = re.compile(
@@ -54,38 +53,6 @@ CLASS_RE = re.compile(r"Class:\s*\n?\s*([A-Za-z][A-Za-z ]+?)\s*(?:\n|$)")
 TOTAL_RE = re.compile(r"Total price:\s*\n?\s*€\s*(\d+?)(?:[,.](\d{2})|(\d{2}))(?!\d)")
 
 
-class _Strip(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.parts: list[str] = []
-        self.skip = False
-
-    def handle_starttag(self, tag: str, attrs) -> None:
-        if tag in ("style", "script"):
-            self.skip = True
-        elif tag in ("br", "tr", "p", "div", "h1", "h2", "h3", "td", "li"):
-            self.parts.append("\n")
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in ("style", "script"):
-            self.skip = False
-        elif tag in ("tr", "p", "div", "h1", "h2", "h3", "td", "li"):
-            self.parts.append("\n")
-
-    def handle_data(self, data: str) -> None:
-        if not self.skip:
-            self.parts.append(data)
-
-
-def strip_html(body: str) -> str:
-    p = _Strip()
-    p.feed(body)
-    text = "".join(p.parts)
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r" *\n *", "\n", text)
-    return re.sub(r"\n{3,}", "\n\n", text).strip()
-
-
 def parse_naive_dt(date_str: str, time_str: str) -> datetime | None:
     try:
         return datetime.strptime(f"{date_str} {time_str}", "%d %b %Y %H:%M")
@@ -103,7 +70,7 @@ def main() -> int:
         return 0
     booking = ref_match.group(1)
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, block_tags=True)
 
     total_price = None
     if (m := TOTAL_RE.search(text)) is not None:
