@@ -1,0 +1,37 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <shipment-tracking@amazon.co.uk>
+To: test@example.org
+Subject: Out for delivery: 'Example Insulated Glove...' and 1 more item
+Date: Mon, 07 Sep 2026 11:14:22 +0000
+Message-ID: <amazon-uk-out-for-delivery-test@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Your Orders
+
+    Your package is out for delivery!
+Ordered
+
+Dispatched
+
+Out for delivery
+
+Delivered
+
+Arriving today 12:45 pm - 4:45 pm
+
+Test - London
+
+Order #
+444-4444444-4444444
+
+Track package
+https://www.amazon.co.uk/progress-tracker/package?orderId=444-4444444-4444444
+
+* Example Insulated Glove, Olive Green
+  Quantity: 1
+
+* Example Rechargeable AA Batteries, 12-Pack
+  Quantity: 1
+
+Amazon.co.uk

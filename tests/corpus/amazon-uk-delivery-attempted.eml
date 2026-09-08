@@ -1,0 +1,28 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <order-update@amazon.co.uk>
+To: test@example.org
+Subject: delivery attempted: 'Example HDMI KVM Switch...'
+Date: Wed, 26 Aug 2026 14:25:54 +0000
+Message-ID: <amazon-uk-delivery-attempted-test@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Your Orders
+
+    Your delivery was attempted
+
+Delivery attempted today at 3:25 pm
+
+Test - London
+
+Order #
+777-7777777-7777777
+
+Track package
+https://www.amazon.co.uk/progress-tracker/package?orderId=777-7777777-7777777
+
+* Example HDMI KVM Switch, 4K60Hz
+  Quantity: 1
+  79.99 GBP
+
+Amazon.co.uk

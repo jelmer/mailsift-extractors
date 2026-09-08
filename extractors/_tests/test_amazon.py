@@ -127,3 +127,88 @@ def test_de_localised_dispatched(run_extractor):
     parcel = out["amazon-de-028-9999999-9999999.parcel.json"]
     assert parcel["provider"]["@id"] == "amazon-de"
     assert parcel["deliveryStatus"] == "OrderInTransit"
+
+
+def test_uk_out_for_delivery_is_its_own_status(run_extractor):
+    # Previously collapsed into OrderInTransit, which lost the one
+    # update that says the parcel arrives today.
+    out = run_extractor("amazon", "amazon-uk-out-for-delivery.eml")
+    parcel = out["amazon-uk-444-4444444-4444444.parcel.json"]
+    assert parcel["deliveryStatus"] == "OutForDelivery"
+    # "Arriving today 12:45 pm - 4:45 pm" on a mail sent 7 September.
+    assert parcel["expectedArrivalFrom"] == "2026-09-07"
+    assert parcel["expectedArrivalUntil"] == "2026-09-07"
+
+
+def test_uk_dispatched_carries_the_arrival_estimate(run_extractor):
+    # "Arriving Saturday" on a mail sent Thursday 25 June.
+    out = run_extractor("amazon", "amazon-uk-dispatched.eml")
+    parcel = out["amazon-uk-111-1111111-1111111.parcel.json"]
+    assert parcel["expectedArrivalFrom"] == "2026-06-27"
+    assert parcel["expectedArrivalUntil"] == "2026-06-27"
+
+
+def test_de_dispatched_carries_an_arrival_window(run_extractor):
+    # "Arriving 21 August - 27 August", mail sent 14 August 2025.
+    out = run_extractor("amazon", "amazon-de-dispatched.eml")
+    parcel = out["amazon-de-222-2222222-2222222.parcel.json"]
+    assert parcel["expectedArrivalFrom"] == "2025-08-21"
+    assert parcel["expectedArrivalUntil"] == "2025-08-27"
+
+
+def test_delivered_has_no_arrival_estimate(run_extractor):
+    # A delivered parcel has a real date, not an estimate.
+    out = run_extractor("amazon", "amazon-uk-delivered.eml")
+    parcel = out["amazon-uk-333-3333333-3333333.parcel.json"]
+    assert "expectedArrivalFrom" not in parcel
+    assert "expectedArrivalUntil" not in parcel
+
+
+def test_lowercase_delivery_attempted_is_a_problem(run_extractor):
+    # Amazon lowercases the verb on some of these, which used to fall
+    # through status_from_subject and emit no status at all.
+    out = run_extractor("amazon", "amazon-uk-delivery-attempted.eml")
+    parcel = out["amazon-uk-777-7777777-7777777.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderProblem"
+    assert "expectedArrivalFrom" not in parcel
+
+
+def test_one_mail_can_carry_several_orders(run_extractor):
+    # A single "Ordered" mail acknowledges each order in its own block.
+    # Only the first was emitted before, and its items and Total were
+    # taken from whichever block the regex happened to reach first.
+    out = run_extractor("amazon", "amazon-uk-ordered-two-orders.eml")
+    assert set(out) == {
+        "amazon-uk-555-5555555-5555555.parcel.json",
+        "amazon-uk-555-5555555-5555555.receipt.json",
+        "amazon-uk-666-6666666-6666666.parcel.json",
+        "amazon-uk-666-6666666-6666666.receipt.json",
+    }
+
+    first = out["amazon-uk-555-5555555-5555555.parcel.json"]
+    assert first["expectedArrivalFrom"] == "2026-09-15"
+    assert first["expectedArrivalUntil"] == "2026-09-21"
+    second = out["amazon-uk-666-6666666-6666666.parcel.json"]
+    assert second["expectedArrivalFrom"] == "2026-09-08"
+    assert second["expectedArrivalUntil"] == "2026-09-08"
+
+    # Each receipt keeps its own total and items.
+    assert (
+        out["amazon-uk-555-5555555-5555555.receipt.json"]["priceSpecification"]["price"]
+        == 20.02
+    )
+    assert len(out["amazon-uk-555-5555555-5555555.receipt.json"]["orderedItem"]) == 1
+    assert (
+        out["amazon-uk-666-6666666-6666666.receipt.json"]["priceSpecification"]["price"]
+        == 47.78
+    )
+    assert len(out["amazon-uk-666-6666666-6666666.receipt.json"]["orderedItem"]) == 2
+
+
+def test_arrival_window_can_cross_the_new_year(run_extractor):
+    # Amazon never writes a year, so "3 January" in a December mail
+    # has to roll forward rather than land eleven months in the past.
+    out = run_extractor("amazon", "amazon-uk-dispatched-new-year.eml")
+    parcel = out["amazon-uk-888-8888888-8888888.parcel.json"]
+    assert parcel["expectedArrivalFrom"] == "2026-12-28"
+    assert parcel["expectedArrivalUntil"] == "2027-01-03"
