@@ -1,0 +1,59 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <auto-confirm@amazon.co.uk>
+To: test@example.org
+Subject: Ordered: 'Example Thermometer Probe...' and 2 more items
+Date: Sat, 05 Sep 2026 21:17:18 +0000
+Message-ID: <amazon-uk-ordered-two-test@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Your Orders
+
+    Thanks for your order!
+Ordered
+
+Dispatched
+
+Out for delivery
+
+Delivered
+
+Arriving 15 September - 21 September
+
+Test - London
+
+Order #
+555-5555555-5555555
+
+View or edit order
+https://www.amazon.co.uk/your-orders/order-details?orderID=555-5555555-5555555
+
+* Example Thermometer Probe Sensor WN30AN
+  Quantity: 1
+  20.02 GBP
+
+Total
+20.02 GBP
+
+Arriving Tuesday
+
+Test - London
+
+Order #
+666-6666666-6666666
+
+View or edit order
+https://www.amazon.co.uk/your-orders/order-details?orderID=666-6666666-6666666
+
+* Example Rechargeable AA Batteries, 12-Pack
+  Quantity: 1
+  14.91 GBP
+
+* Example Insulated Glove, Olive Green
+  Quantity: 1
+  32.87 GBP
+
+Total
+47.78 GBP
+
+Amazon.co.uk
