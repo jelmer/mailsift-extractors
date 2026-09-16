@@ -1,0 +1,49 @@
+From: "KLM" <noreply@ticket.klm.com>
+To: test@example.org
+Subject: Ticket voor Test User
+Date: Wed, 17 Jul 2019 10:11:12 +0000
+Message-ID: <klm-ticket-nl-test@ticket.klm.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============7130323632581584675=="
+
+--===============7130323632581584675==
+Content-Type: multipart/alternative;
+ boundary="===============7933601503370704498=="
+
+--===============7933601503370704498==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Uw ticket zit in de bijlage.
+
+--===============7933601503370704498==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<p>Beste Test User,</p>
+<p>In de bijlage van deze e-mail vindt u uw ticket naar Voorbeeldstad.</p>
+<h2>Boekingsgegevens</h2>
+<p>Boekingscode: BBBBBB</p>
+<table>
+<tr><td>Alphaville (AAA)</td></tr>
+<tr><td>-</td></tr>
+<tr><td>Voorbeeldstad (CCC)</td></tr>
+<tr><td>zondag 08 september 2019 om 17:25</td></tr>
+</table>
+</body></html>
+
+--===============7933601503370704498==--
+
+--===============7130323632581584675==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Ticket voor: Mr Test User / Reis naar Voorbeeldstad: 000 0000000000 .pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iajw8L1R5cGUvQ2F0YWxvZz4+ZW5kb2JqCnRyYWlsZXI8PC9Sb290IDEg
+MCBSPj4KJSVFT0YK
+
+--===============7130323632581584675==--

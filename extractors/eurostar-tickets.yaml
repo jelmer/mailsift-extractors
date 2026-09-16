@@ -1,0 +1,10 @@
+name: eurostar-tickets
+order: 50
+from_domains:
+  - eurostar.com
+  - "*.eurostar.com"
+subject_regex: "(?i)^Your Eurostar tickets? to\\s+.+$"
+requires:
+  - html
+require_dkim:
+  - eurostar.com

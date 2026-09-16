@@ -1,0 +1,42 @@
+From: Eurostar <noreply@eurostar.com>
+To: test@example.org
+Subject: Your Eurostar tickets to Alpha International on Mon, 30 October
+Date: Tue, 17 Oct 2023 21:23:53 +0000
+Message-ID: <eurostar-tickets-test@eurostar.com>
+Authentication-Results: example.org; dkim=pass header.d=eurostar.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8109451492307511009=="
+
+--===============8109451492307511009==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your tickets are ready.
+
+--===============8109451492307511009==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<p>Your Eurostar ticket</p>
+<p>For 1 passenger</p>
+<p>Booking Reference: EEEEEE</p>
+<p>Hi Test User,</p>
+<div><p>Test User</p>
+<p>Outbound</p>
+<p>Mon, 30 October</p>
+<p>Beta Central</p>
+<p>Alpha International</p>
+<p>19:28</p><p>(local time)</p>
+<p>21:57</p><p>(local time)</p>
+<p>Test User</p>
+<p>Standard</p>
+<p>Coach</p><p>4</p>
+<p>Seat</p><p>11</p>
+<p>TRAIN</p><p>1001</p>
+<p>TICKET NUMBER</p><p>000000000</p>
+</div></body></html>
+
+--===============8109451492307511009==--

@@ -1,0 +1,8 @@
+name: hertz
+order: 50
+from_domains:
+  - hertz.com
+  - emails.hertz.com
+subject_regex: "(?i)^Your Hertz Reservation\\s+[A-Z0-9]{6,}\\s*$"
+requires:
+  - html

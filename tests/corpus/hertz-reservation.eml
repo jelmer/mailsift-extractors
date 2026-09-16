@@ -1,0 +1,43 @@
+From: <noreply@emails.hertz.com>
+To: test@example.org
+Subject: Your Hertz Reservation H0000000000
+Date: Sat, 07 Feb 2026 09:00:00 +0000
+Message-ID: <hertz-test@emails.hertz.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3422555887176334323=="
+
+--===============3422555887176334323==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your reservation.
+
+--===============3422555887176334323==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<p>Your Hertz Reservation</p>
+<p>Thanks for Travelling at the Speed of Hertz,</p>
+<p>TEST USER</p>
+<p>Your reservation confirmation number is: H0000000000</p>
+<p>Your Itinerary:</p>
+<p>Pickup and Return Location.</p>
+<p>Example City - Airport</p>
+<p>Address</p>
+<p>1 Example Drive</p>
+<p>Example City, EX 0-0000</p>
+<p>Pick Up time</p>
+<p>Fri, 13 Mar, 2026 at 18:00</p>
+<p>Return time</p>
+<p>Sun, 22 Mar, 2026 at 18:00</p>
+<p>Pay at Location</p>
+<p>100.00 USD</p>
+<p>Your Vehicle:</p>
+<p>Economy</p>
+<p>Group A</p>
+</body></html>
+
+--===============3422555887176334323==--

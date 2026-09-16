@@ -1,0 +1,10 @@
+name: avis
+order: 50
+from_domains:
+  - e.avis.com
+  - avis.com
+subject_regex: "(?i)^Avis Rent A Car: Reservation Confirmation\\s*\\|"
+requires:
+  - html
+require_dkim:
+  - e.avis.com

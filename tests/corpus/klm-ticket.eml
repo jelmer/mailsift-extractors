@@ -1,0 +1,58 @@
+From: "KLM" <noreply@ticket.klm.com>
+To: test@example.org
+Subject: Ticket for Test User
+Date: Wed, 05 Apr 2017 16:40:29 +0000
+Message-ID: <klm-ticket-test@ticket.klm.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============4776359105324455472=="
+
+--===============4776359105324455472==
+Content-Type: multipart/alternative;
+ boundary="===============0751471674138567764=="
+
+--===============0751471674138567764==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your ticket is attached.
+
+--===============0751471674138567764==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body>
+<p>Dear Test User,</p>
+<p>Attached to this e-mail is your ticket to Springfield. Have a great journey!<=
+/p>
+<h2>Booking details</h2>
+<p>You can find more details in your ticket (attached) and in My Trip on KLM.=
+com.</p>
+<p>Booking code: AAAAAA</p>
+<table>
+<tr><td>Alphaville (AAA)</td></tr>
+<tr><td>-</td></tr>
+<tr><td>Springfield (BBB)</td></tr>
+<tr><td>Friday 12 May 2017 at 08:40</td></tr>
+</table>
+<table>
+<tr><td>Springfield (BBB)</td></tr>
+<tr><td>-</td></tr>
+<tr><td>Alphaville (AAA)</td></tr>
+<tr><td>Monday 22 May 2017 at 03:00</td></tr>
+</table>
+</body></html>
+
+--===============0751471674138567764==--
+
+--===============4776359105324455472==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Ticket for Mr Test User - Trip to Springfield - 0000000000000.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iajw8L1R5cGUvQ2F0YWxvZz4+ZW5kb2JqCnRyYWlsZXI8PC9Sb290IDEg
+MCBSPj4KJSVFT0YK
+
+--===============4776359105324455472==--

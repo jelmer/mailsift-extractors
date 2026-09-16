@@ -1,0 +1,58 @@
+From: Alamo <info@alamo.nl>
+To: test@example.org
+Subject: Uw Alamo reservering: 200000000
+Date: Wed, 21 Oct 2026 14:00:00 +0000
+Message-ID: <alamo-test@alamo.nl>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============6320022862293363287=="
+
+--===============6320022862293363287==
+Content-Type: multipart/alternative;
+ boundary="===============7482539811214487611=="
+
+--===============7482539811214487611==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Uw boeking.
+
+--===============7482539811214487611==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<p>Alamo - Wereldwijde autoverhuur</p>
+<p>Boekingsbevestiging</p>
+<p>Hartelijk dank voor uw reservering bij Alamo. In de bijlage ontvangt u de
+factuur van uw reservering.</p>
+</body></html>
+
+--===============7482539811214487611==--
+
+--===============6320022862293363287==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="FACTUUR_200000000-1.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iajw8L1R5cGUvQ2F0YWxvZz4+ZW5kb2JqCnRyYWlsZXI8PC9Sb290IDEg
+MCBSPj4KJSVFT0YK
+
+--===============6320022862293363287==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Algemene voorwaarden.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKYm9pbGVycGxhdGUKJSVFT0YK
+
+--===============6320022862293363287==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Condities ter plaatse.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKYm9pbGVycGxhdGUKJSVFT0YK
+
+--===============6320022862293363287==--

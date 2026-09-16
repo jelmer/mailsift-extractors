@@ -1,0 +1,7 @@
+name: nationalcar
+order: 50
+from_domains:
+  - nationalcar.com
+subject_regex: "(?i)^National Reservation Confirmation\\s+\\d{6,}\\s+for\\s+"
+requires:
+  - html
