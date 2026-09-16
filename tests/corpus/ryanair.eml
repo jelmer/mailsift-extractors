@@ -1,0 +1,26 @@
+From: Ryanair <Itinerary@ryanair.com>
+To: test@example.org
+Subject: Ryanair Travel Itinerary
+Date: Thu, 26 Dec 2019 17:18:15 +0000
+Message-ID: <ryanair-test@ryanair.com>
+Authentication-Results: example.org; dkim=pass header.d=ryanair.com
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<p>myRyanair</p>
+<p>Destination::<br/>Springfield</p>
+<p>Reservation:<br/>AAAAAA</p>
+<h2>Your flight information</h2>
+<p>To Springfield FR1234</p>
+<p>Alphaville -<br/>Springfield</p>
+<p>Mon, 06 Jan 20</p>
+<p>Departure time - 22:15</p>
+<p>Arrival time - 23:10</p>
+<p>(AAA) -<br/>(BBB)</p>
+<p>Passenger(s):</p>
+<p>Mr TEST USER</p>
+<p>Receipt:</p>
+<p>Total paid via Visa ending in 0000 277.68 EUR</p>
+</body></html>
