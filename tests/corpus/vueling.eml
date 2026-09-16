@@ -1,0 +1,23 @@
+From: Vueling Airlines <no-reply@vueling.com>
+To: test@example.org
+Subject: Your booking confirmation - AAAAAA AAA-BBB 24 February
+Date: Fri, 23 Feb 2018 22:12:42 +0000
+Message-ID: <vueling-test@vueling.com>
+Authentication-Results: example.org; dkim=pass header.d=vueling.com
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<p>Hi Test User, booking confirmed.</p>
+<p>Booking code AAAAAA</p>
+<table>
+<tr><td>Outbound</td><td>Basic</td></tr>
+<tr><td>Saturday, 24 February 2018</td></tr>
+<tr><td>Alphaville (Luton)</td><td>Springfield (T1)</td></tr>
+<tr><td>AAA</td><td>BBB</td></tr>
+<tr><td>09:00h</td><td>12:15h</td></tr>
+<tr><td>VY1234</td></tr>
+</table>
+<p>Total: 91.96 GBP</p>
+</body></html>

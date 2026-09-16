@@ -1,0 +1,31 @@
+From: Delta Air Lines <DeltaAirLines@e.delta.com>
+To: test@example.org
+Subject: Your Flight Receipt - TEST USER 06MAY17
+Date: Thu, 04 May 2017 20:05:49 +0000
+Message-ID: <delta-test@e.delta.com>
+Authentication-Results: example.org; dkim=pass header.d=delta.com
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<p>Hello, TEST USER</p>
+<p>Your Trip Confirmation #: AAAAAA</p>
+<table>
+<tr><td>Sat, 06MAY</td><td>DEPART</td><td>ARRIVE</td></tr>
+</table>
+<table>
+<tr><td>DELTA AIR LINES INC 4567*</td></tr>
+<tr><td>MAIN CABIN (L)</td></tr>
+<tr><td>ALPHAVILLE, CA</td></tr>
+<tr><td>2:13pm</td></tr>
+<tr><td>SPRINGFIELD</td></tr>
+<tr><td>4:27pm</td></tr>
+</table>
+<p>Flight Receipt</p>
+<p>Ticket #: 0000000000000</p>
+<p>Ticket Issue Date: 04MAY17</p>
+<table>
+<tr><td>TICKET AMOUNT</td><td>$239.20 USD</td></tr>
+</table>
+</body></html>

@@ -1,0 +1,10 @@
+name: trainline
+order: 50
+from_domains:
+  - info.thetrainline.com
+  - thetrainline.com
+subject_regex: "(?i)^Your booking confirmation for "
+requires:
+  - html
+require_dkim:
+  - thetrainline.com

@@ -1,0 +1,34 @@
+From: Trainline <auto-confirm@info.thetrainline.com>
+To: test@example.org
+Subject: Your booking confirmation for Alphaville to Brookfield (03 May at 09:20)
+Date: Fri, 02 May 2025 08:12:50 +0000
+Message-ID: <trainline-return-test@info.thetrainline.com>
+Authentication-Results: example.org; dkim=pass header.d=thetrainline.com
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<h1>Your trip to Brookfield departing Saturday, 3 May 2025 is confirmed</h1>
+<table><tr><td>Alphaville</td><td>Brookfield</td></tr></table>
+<table>
+<tr><td>Outbound Saturday, 3 May</td></tr>
+<tr><td>01h 10m, 0 changes</td></tr>
+<tr><td>09:20 Alphaville</td></tr>
+<tr><td>Coastal Line</td></tr>
+<tr><td>10:30 Brookfield</td></tr>
+</table>
+<table>
+<tr><td>Inbound Monday, 5 May</td></tr>
+<tr><td>01h 15m, 0 changes</td></tr>
+<tr><td>23:40 Brookfield</td></tr>
+<tr><td>Coastal Line</td></tr>
+<tr><td>00:55 Alphaville</td></tr>
+</table>
+<h3>Payment information</h3>
+<table>
+<tr><td>Transaction ID:</td><td>768577223529</td></tr>
+<tr><td>Transaction Date:</td><td>2 May 2025</td></tr>
+<tr><td>Total amount:</td><td>&pound;41.20</td></tr>
+</table>
+</body></html>

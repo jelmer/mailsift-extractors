@@ -1,0 +1,8 @@
+name: dfds
+order: 50
+from_domains:
+  - dfds.info
+  - dfds.com
+subject_regex: "(?i)^Your booking confirmation$"
+require_dkim:
+  - dfds.info

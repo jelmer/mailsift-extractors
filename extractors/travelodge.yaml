@@ -1,0 +1,10 @@
+name: travelodge
+order: 50
+from_domains:
+  - mail.travelodge.co.uk
+  - travelodge.co.uk
+subject_regex: "(?i)^Your Travelodge booking confirmation$"
+requires:
+  - html
+require_dkim:
+  - travelodge.co.uk

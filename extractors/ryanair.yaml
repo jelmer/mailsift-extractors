@@ -1,0 +1,9 @@
+name: ryanair
+order: 50
+from_domains:
+  - ryanair.com
+subject_regex: "(?i)^Ryanair Travel Itinerary$"
+requires:
+  - html
+require_dkim:
+  - ryanair.com

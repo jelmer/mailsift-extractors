@@ -1,0 +1,22 @@
+From: Travelodge Website <webmaster@mail.travelodge.co.uk>
+To: test@example.org
+Subject: Your Travelodge Invoice
+Date: Thu, 29 Aug 2024 15:19:28 +0000
+Message-ID: <travelodge-invoice-test@mail.travelodge.co.uk>
+Authentication-Results: example.org; dkim=pass header.d=travelodge.co.uk
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<h1>VAT Invoice</h1>
+<table>
+<tr><td>Guest Name: Test User</td><td>Invoice Number: WB11111111</td></tr>
+<tr><td>Confirmation Number: 12345678</td><td>Arrival Date: 11 Oct 2024</td></tr>
+<tr><td></td><td>Departure Date: 13 Oct 2024</td></tr>
+</table>
+<p>Travelodge Springfield Central</p>
+<table>
+<tr><td>Gross Total:</td><td>&pound;169.98</td></tr>
+</table>
+</body></html>
