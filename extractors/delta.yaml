@@ -1,0 +1,10 @@
+name: delta
+order: 50
+from_domains:
+  - e.delta.com
+  - delta.com
+subject_regex: "(?i)^Your Flight Receipt"
+requires:
+  - html
+require_dkim:
+  - delta.com
