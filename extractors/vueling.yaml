@@ -1,0 +1,10 @@
+name: vueling
+order: 50
+from_domains:
+  - vueling.com
+  - transact.vueling.com
+subject_regex: "(?i)^(Your booking confirmation|Vueling / Information on your booking)"
+requires:
+  - html
+require_dkim:
+  - vueling.com
