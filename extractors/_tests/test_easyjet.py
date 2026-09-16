@@ -41,6 +41,19 @@ def test_two_legs_one_per_file(run_extractor):
     )
 
 
+def test_destination_with_terminal_parenthetical(run_extractor):
+    # Modern easyJet renders terminals as `Lisbon (T1)` right before
+    # the flight number. The parenthetical belongs to the airport,
+    # not to the flight token, so it has to survive into the
+    # destination field.
+    out = run_extractor("easyjet", "easyjet-confirmation-terminal.eml")
+    assert set(out) == {"easyjet-terminl-ezy2461.reservation.json"}
+    for_ = out["easyjet-terminl-ezy2461.reservation.json"]["reservationFor"]
+    assert for_["arrivalAirport"]["name"] == "Lisbon (T1)"
+    assert for_["departureAirport"]["name"] == "London Luton"
+    assert for_["flightNumber"] == "2461"
+
+
 def test_legacy_body_extracts_two_legs(run_extractor):
     # Pre-2014 easyJet mail uses `<Origin> to <Destination> / Dep /
     # Arr / Flight <num>` per leg (no `N of M`, no `EZY` prefix on

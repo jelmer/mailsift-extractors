@@ -1,0 +1,23 @@
+Authentication-Results: example.org; dkim=pass header.d=booking.com header.i=@booking.com
+From: Booking.com <noreply@booking.com>
+To: test@example.org
+Subject: =?UTF-8?B?8J+bhCBUaGFua3MhIFlvdXIgYm9va2luZyBpcyBjb25maXJtZWQgYXQgRXhhbXBsZSBIb3RlbCBWaWdv?=
+Date: Fri, 26 Jun 2026 23:33:41 +0000
+Message-ID: <bk-num-label@booking.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<body>
+<h1>Thanks! Your booking is confirmed at Example Hotel Vigo</h1>
+<p>Confirmation number: 8888888888 PIN code: 0000</p>
+<p>Thanks Test! Your booking in Vigo is confirmed. Example Hotel Vigo is expecting you on Fri 14 Aug</p>
+<table>
+<tr><td>Reservation details</td></tr>
+<tr><td>Check-in Friday, 14 August 2026 (from 15:00)</td></tr>
+<tr><td>Check-out Saturday, 15 August 2026 (until 12:00)</td></tr>
+<tr><td>Your reservation 1 night, 1 room</td></tr>
+<tr><td>Location Example Street 1, Vigo, 36211, Spain Phone +34 986 123456</td></tr>
+</table>
+</body>
+</html>
