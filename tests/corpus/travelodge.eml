@@ -1,0 +1,29 @@
+From: Travelodge Website <webmaster@mail.travelodge.co.uk>
+To: test@example.org
+Subject: Your Travelodge booking confirmation
+Date: Thu, 29 Aug 2024 15:19:28 +0000
+Message-ID: <travelodge-test@mail.travelodge.co.uk>
+Authentication-Results: example.org; dkim=pass header.d=travelodge.co.uk
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<h1>YOUR BOOKING CONFIRMATION</h1>
+<p>Hi Test User, Your booking is now confirmed, please check the summary
+below carefully to ensure it is correct.</p>
+<table>
+<tr><td>Your Confirmation number:12345678</td><td>Keep this number safe.</td></tr>
+</table>
+<table>
+<tr><td>Guest name:</td><td>Test User</td></tr>
+<tr><td>Hotel:</td><td>Springfield Central</td></tr>
+<tr><td>Rate:</td><td>Saver Rate</td></tr>
+<tr><td>Check in:</td><td>11 Oct 2024 at 3pm</td></tr>
+<tr><td>Check out:</td><td>13 Oct 2024 at 12 noon</td></tr>
+<tr><td>Staying in a:</td><td>Twin room</td></tr>
+<tr><td>Room Cost:</td><td>&pound;169.98</td></tr>
+</table>
+<h4>The total cost for your booking is: &pound;169.98</h4>
+<h4>Finding your hotel Use this postcode to find our hotel: AA1 7DY</h4>
+</body></html>
