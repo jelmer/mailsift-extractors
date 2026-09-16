@@ -1,0 +1,39 @@
+From: DFDS <email@dfds.info>
+To: test@example.org
+Subject: Your booking confirmation
+Date: Wed, 03 May 2023 21:29:13 +0000
+Message-ID: <dfds-test@dfds.info>
+Authentication-Results: example.org; dkim=pass header.d=dfds.info
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Booking number: 24569412
+
+Hi Tester,
+
+Thank you for booking with DFDS.
+
+BOOKING DETAILS
+
+BOOKING NUMBER: 24569412
+
+NO. OF PASSENGERS: 1
+
+OUTWARD JOURNEY:
+
+Route: Alphaville - Springfield
+
+Date: July 21, 2023
+
+Time: 19:30
+
+RETURN JOURNEY:
+
+Route: Springfield - Alphaville
+
+Date: July 28, 2023
+
+Time: 08:15
+
+ADVANCED PASSENGER INFORMATION (API)
