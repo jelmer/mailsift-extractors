@@ -1,0 +1,7 @@
+name: alamo
+order: 50
+from_domains:
+  - alamo.nl
+subject_regex: "(?i)^Uw Alamo reservering:\\s*\\d{6,}\\s*$"
+requires:
+  - html

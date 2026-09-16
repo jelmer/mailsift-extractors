@@ -1,0 +1,39 @@
+From: Eurostar <noreply@eurostar.com>
+To: test@example.org
+Subject: Your Eurostar tickets to Beta Central on Fri, 06 February
+Date: Mon, 15 Dec 2025 09:00:00 +0000
+Message-ID: <eurostar-tickets-rollover-test@eurostar.com>
+Authentication-Results: example.org; dkim=pass header.d=eurostar.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3643614545082753954=="
+
+--===============3643614545082753954==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your tickets are ready.
+
+--===============3643614545082753954==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<p>Your Eurostar ticket</p>
+<p>For 1 passenger</p>
+<p>Booking Reference: GGGGGG</p>
+<p>Hi Test User,</p>
+<div><p>Outbound</p>
+<p>Fri, 06 February</p>
+<p>Alpha International</p>
+<p>Beta Central</p>
+<p>08:01</p><p>(local time)</p>
+<p>11:30</p><p>(local time)</p>
+<p>Standard</p>
+<p>Coach</p><p>7</p>
+<p>Seat</p><p>15</p>
+<p>TRAIN</p><p>1004</p>
+</div></body></html>
+
+--===============3643614545082753954==--

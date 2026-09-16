@@ -1,0 +1,39 @@
+From: "reservations@nationalcar.com" <reservations@nationalcar.com>
+To: test@example.org
+Subject: National Reservation Confirmation 0000000000 for Example Intl
+ Airport (EXA)
+Date: Tue, 16 Jun 2026 12:00:00 +0000
+Message-ID: <national-test@nationalcar.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1518115993571274661=="
+
+--===============1518115993571274661==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your reservation.
+
+--===============1518115993571274661==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<p>Confirmation #</p><p>0000000000</p>
+<p>Thank you for choosing National.</p>
+<p>Your confirmation number is: 0000000000.</p>
+<p>Your Information</p>
+<p>Driver Name</p><p>TEST USER</p>
+<p>Your Vehicle</p><p>Midsize Hyundai Elantra</p><p>or similar</p>
+<p>Trip Details</p>
+<p>Pickup</p>
+<p>Example Intl Airport (EXA)</p>
+<p>August 29, 2026 07:00 PM</p>
+<p>1 Example Rd</p>
+<p>Return</p>
+<p>Example Intl Airport (EXA)</p>
+<p>September 10, 2026 11:00 PM</p>
+</body></html>
+
+--===============1518115993571274661==--

@@ -1,0 +1,35 @@
+From: "Avis" <avis@e.avis.com>
+To: test@example.org
+Subject: Avis Rent A Car: Reservation Confirmation | TESTUSER | Pick-up date:
+ 07/10/2026
+Date: Sat, 04 Jul 2026 10:00:00 +0000
+Message-ID: <avis-test@e.avis.com>
+Authentication-Results: example.org; dkim=pass header.d=e.avis.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3614446953468195236=="
+
+--===============3614446953468195236==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your car has been reserved.
+
+--===============3614446953468195236==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<p>Thank you TEST, your car has been reserved.</p>
+<p>Pick up:</p><p>Fri Jul 10, 2026 at 12:00 PM</p>
+<p>Drop off:</p><p>Fri Jul 17, 2026 at 12:00 PM</p>
+<p>Your Confirmation Number:</p><p>00000000GB0</p>
+<p>Your Car</p><p>Compact-Toyota Corolla or similar</p>
+<p>Estimated Total:</p><p>&pound;100.00</p>
+<p>Location Information</p>
+<p>Pick Up Location</p><p>Example Intl Airport,EXA</p>
+<p>Drop Off Location</p><p>Sample Airport,SMP</p>
+</body></html>
+
+--===============3614446953468195236==--

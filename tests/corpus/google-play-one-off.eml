@@ -1,0 +1,39 @@
+Authentication-Results: example.org; dkim=pass header.d=google.com header.i=@google.com
+From: "Google Play" <googleplay-noreply@google.com>
+To: test@example.org
+Subject: Your Google Play Order Receipt from 3 Mar 2026
+Date: Tue, 03 Mar 2026 09:22:41 +0000
+Message-ID: <google-play-one-off-test@google.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Google Play
+
+Thank you
+
+Thanks for your order.
+
+Order number: GPA.1111-2222-3333-44444
+Order date: 3 Mar 2026 09:22:41 GMT
+Your account: test@example.org
+
+Item Price
+
+Example Puzzle Game (by Example Studio)
+£4.99
+
+Total: £4.99
+
+(Includes VAT of £0.83)
+
+Payment method:
+
+Mastercard-0000
+
+Google Commerce Limited
+1 Example Street
+Exampletown
+Example County
+Ireland
+
+Keep this for your records.

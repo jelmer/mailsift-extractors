@@ -1,0 +1,64 @@
+From: Eurostar <noreply@eurostar.com>
+To: test@example.org
+Subject:
+ Your Eurostar tickets to Beta Central on Tuesday 19 November 2024
+Date: Wed, 13 Nov 2024 23:54:40 +0000
+Message-ID: <eurostar-tickets-multi-test@eurostar.com>
+Authentication-Results: example.org; dkim=pass header.d=eurostar.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7230858650663725976=="
+
+--===============7230858650663725976==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your tickets are ready.
+
+--===============7230858650663725976==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body>
+<p>Your Eurostar tickets</p>
+<p>For 1 passenger</p>
+<p>Booking reference: FFFFFF</p>
+<p>Hello,</p>
+<p>Your journey includes a connection between two Eurostar trains.</p>
+<div>
+<p>Outbound</p>
+<p>Tuesday 19 November 2024</p>
+<p>Alpha International</p>
+<p>Beta Central</p>
+<p>06:04</p><p>(local time)</p>
+<p>10:32</p><p>(local time)</p>
+<p>Eurostar Standard</p>
+<p>Coach</p><p>4</p>
+<p>Seat</p><p>12</p>
+<p>TRAIN</p><p>1001</p>
+</div><div>
+<p>Return (1/2)</p>
+<p>Tuesday 26 November 2024</p>
+<p>Beta Central</p>
+<p>Gamma Midi</p>
+<p>06:58</p>
+<p>08:08</p>
+<p>Eurostar Plus</p>
+<p>Coach</p><p>5</p>
+<p>Seat</p><p>13</p>
+<p>TRAIN</p><p>1002</p>
+</div><div>
+<p>Return (2/2)</p>
+<p>Tuesday 26 November 2024</p>
+<p>Gamma Midi</p>
+<p>Alpha International</p>
+<p>08:52</p>
+<p>09:57</p>
+<p>Eurostar Standard</p>
+<p>Coach</p><p>6</p>
+<p>Seat</p><p>14</p>
+<p>TRAIN</p><p>1003</p>
+</div></body></html>
+
+--===============7230858650663725976==--

@@ -11,6 +11,12 @@ Google Play sends a stable plaintext receipt format with:
 
 Used for one-off purchases and recurring subscription renewals. We emit
 a `.receipt.json` for each, loosely schema.org `Order`-shaped.
+
+Renewals additionally say so in the body - either a `/month`-style
+suffix on the price, or wording like `Auto-renewing subscription` or
+`Monthly Subscription`. Those also get a `.subscription.json` so the
+recurring relationship is tracked separately from the individual
+charge.
 """
 
 from __future__ import annotations
@@ -47,6 +53,35 @@ ITEM_RE = re.compile(
 # `Tax: $0.00Total: $0.00` (2013 Google Play Music format has no
 # whitespace between the preceding amount and the `Total:` label).
 TOTAL_RE = re.compile(r"Total:\s*(£|€|\$)?\s*([0-9]+(?:\.[0-9]{1,2})?)")
+# A recurring charge is flagged either by a period suffix on the price
+# (`£1.59/month`) or by wording elsewhere in the body. The 2013 Play
+# Music format uses `Monthly Subscription`; current mail says
+# `Auto-renewing subscription`.
+PERIOD_RE = re.compile(
+    r"(?:£|€|\$)[0-9]+(?:\.[0-9]{1,2})?\s*/\s*(month|year|week)\b", re.IGNORECASE
+)
+RECURRING_RE = re.compile(
+    r"auto-renewing subscription|(monthly|yearly|annual|weekly) subscription",
+    re.IGNORECASE,
+)
+# The 2013 format emphasises the item name with asterisks
+# (`*Google Play Music All Access*$0.00Monthly Subscription`), which
+# the modern ITEM_RE doesn't match.
+LEGACY_ITEM_RE = re.compile(r"\*([^*\r\n]+)\*(?:£|€|\$)[0-9]")
+# `First charge on 17-Jul-2013` - the date the subscription next bills.
+FIRST_CHARGE_RE = re.compile(
+    r"First charge on\s*\r?\n?\s*(\d{1,2})-([A-Z][a-z]{2})-(\d{4})", re.IGNORECASE
+)
+# ISO 8601 durations, which is what `subscriptionDuration` carries.
+PERIOD_TO_DURATION = {
+    "week": "P1W",
+    "month": "P1M",
+    "year": "P1Y",
+    "monthly": "P1M",
+    "yearly": "P1Y",
+    "annual": "P1Y",
+    "weekly": "P1W",
+}
 
 MONTH_ABBR = {
     "Jan": 1,
@@ -64,6 +99,20 @@ MONTH_ABBR = {
 }
 
 SYMBOL_TO_CURRENCY = {"£": "GBP", "€": "EUR", "$": "USD"}
+
+
+def subscription_duration(text: str) -> str | None:
+    """ISO 8601 duration if the receipt is a recurring charge, else None."""
+    period_m = PERIOD_RE.search(text)
+    if period_m:
+        return PERIOD_TO_DURATION[period_m.group(1).lower()]
+    recurring_m = RECURRING_RE.search(text)
+    if recurring_m:
+        word = recurring_m.group(1)
+        # `Auto-renewing subscription` states no period; monthly is the
+        # Play default and the only period that branch ever sees.
+        return PERIOD_TO_DURATION[word.lower()] if word else "P1M"
+    return None
 
 
 def main() -> int:
@@ -100,8 +149,10 @@ def main() -> int:
     }
 
     items = []
+    item_names = []
     for item_match in ITEM_RE.finditer(text):
         name = item_match.group(1).strip()
+        item_names.append(name)
         items.append(
             {
                 "@type": "OrderItem",
@@ -130,6 +181,46 @@ def main() -> int:
             pass
     if "orderDate" not in receipt and mail.date is not None:
         receipt["orderDate"] = mail.date.strftime("%Y-%m-%d")
+
+    duration = subscription_duration(text)
+    if duration is not None:
+        # Prefer the item name over the bare order id: a subscription
+        # record is a standing relationship, and `name` is what the
+        # dashboard lists it under.
+        item_name = item_names[0] if item_names else None
+        if item_name is None:
+            legacy_m = LEGACY_ITEM_RE.search(text)
+            if legacy_m:
+                item_name = legacy_m.group(1).strip()
+        subscription = {
+            "@context": "https://schema.org",
+            "@type": "Offer",
+            "name": item_name or "Google Play subscription",
+            # `provider` must stay a plain string; mailsift parses this
+            # field as one.
+            "provider": "Google Play",
+            "subscriptionDuration": duration,
+            "price": amount,
+            "priceCurrency": currency,
+        }
+        if "orderDate" in receipt:
+            subscription["orderDate"] = receipt["orderDate"]
+        charge_m = FIRST_CHARGE_RE.search(text)
+        if charge_m:
+            try:
+                subscription["renewalDate"] = datetime(
+                    int(charge_m.group(3)),
+                    MONTH_ABBR[charge_m.group(2).title()],
+                    int(charge_m.group(1)),
+                ).strftime("%Y-%m-%d")
+            except (KeyError, ValueError):
+                pass
+        sub_slug = re.sub(
+            r"[^A-Za-z0-9_+-]+", "-", item_name or f"google-play-{order_id}"
+        ).strip("-")
+        Path(f"{sub_slug}.subscription.json").write_text(
+            json.dumps(subscription, ensure_ascii=False), encoding="utf-8"
+        )
 
     # Slugify the order id for the filename. Google's order ids contain
     # dots (`GPA.0000-...`) and sometimes runs of them (`..3` in

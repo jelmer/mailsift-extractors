@@ -1,0 +1,8 @@
+name: klm-ticket
+order: 50
+from_domains:
+  - ticket.klm.com
+subject_regex: "(?i)^Ticket (?:for|voor)\\s+.+$"
+requires:
+  - html
+  - attachment:filename:*.pdf
