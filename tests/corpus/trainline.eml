@@ -1,0 +1,36 @@
+From: Trainline <auto-confirm@info.thetrainline.com>
+To: test@example.org
+Subject: Your booking confirmation for Alphaville to Springfield (14 April, 13:30)
+Date: Sun, 14 Apr 2024 11:32:47 +0000
+Message-ID: <trainline-test@info.thetrainline.com>
+Authentication-Results: example.org; dkim=pass header.d=thetrainline.com
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<h1>Your trip to Springfield departing Sunday, 14 April 2024 is confirmed</h1>
+<table><tr><td>Alphaville</td><td>Springfield</td></tr></table>
+<p>This is just a booking confirmation.</p>
+<table>
+<tr><td>Outbound Sunday, 14 April</td></tr>
+<tr><td>01h, 0 changes</td></tr>
+<tr><td>13:30 Alphaville</td></tr>
+<tr><td>Northern Vale Railway</td></tr>
+<tr><td>14:30 Springfield</td></tr>
+</table>
+<table>
+<tr><td>1x Advance Single Specified train only. No refunds.</td></tr>
+<tr><td>1x Adult</td></tr>
+<tr><td>No seats reserved</td></tr>
+</table>
+<h3>Payment information</h3>
+<table>
+<tr><td>Transaction ID:</td><td>945825428411</td></tr>
+<tr><td>Transaction Date:</td><td>14 April 2024</td></tr>
+<tr><td>Payment Type:</td><td>Google Pay</td></tr>
+<tr><td>Adult - Advance Single</td><td>&pound;32.50</td></tr>
+<tr><td>Booking Fee</td><td>No booking fee</td></tr>
+<tr><td>Total amount:</td><td>&pound;32.50</td></tr>
+</table>
+</body></html>
