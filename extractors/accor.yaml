@@ -1,0 +1,10 @@
+name: accor
+order: 50
+from_domains:
+  - confirmation.all.com
+  - reservation.accor-mail.com
+  - accor-mail.com
+subject_regex: "(?i)^Confirmation of your reservation:"
+require_dkim:
+  - all.com
+  - accor-mail.com
