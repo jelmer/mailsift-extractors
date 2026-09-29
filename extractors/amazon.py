@@ -96,6 +96,14 @@ ITEM_RE = re.compile(
     r"^\*\s+(.+?)\n\s+Quantity:\s+(\d+)(?:\n\s+([0-9]+(?:\.[0-9]{2})?)\s*([A-Z]{3}))?",
     re.MULTILINE,
 )
+# The "Track package" link in a dispatch mail carries the three
+# parameters Amazon's public tracker needs -- `orderId`, `packageIndex`
+# and `shipmentId`. Without all three the page shows "shipment can't be
+# found", so we keep the whole URL rather than reassembling it.
+TRACK_URL_RE = re.compile(
+    r"https?://[^\s\"'<>]*/progress-tracker/package[^\s\"'<>]*"
+    r"shipmentId=[^\s\"'<>&]+[^\s\"'<>]*"
+)
 # Amazon locale TLDs we've seen confirmation mail from. Anything not
 # in this map still gets `amazon` as a fall-back provider id.
 LOCALE_TO_PROVIDER = {
@@ -323,6 +331,15 @@ def main() -> int:
         if item_names:
             products = [{"@type": "Product", "name": name} for name in item_names]
             parcel["itemShipped"] = products[0] if len(products) == 1 else products
+
+        # A dispatch mail's "Track package" URL carries the packageIndex
+        # and shipmentId that Amazon's public tracker needs, so stash it
+        # verbatim. Order-placed mails carry an order-summary link too,
+        # but no shipmentId -- ignore those, the fallback URL mailroom
+        # synthesises for order pages is a better place to land.
+        track_m = TRACK_URL_RE.search(block)
+        if track_m:
+            parcel["trackingUrl"] = track_m.group(0)
 
         Path(f"{provider_id}-{order_id}.parcel.json").write_text(
             json.dumps(parcel, ensure_ascii=False), encoding="utf-8"

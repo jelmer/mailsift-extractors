@@ -43,6 +43,15 @@ def test_uk_dispatched_emits_parcel_only(run_extractor):
     # box without cross-referencing the earlier receipt.
     assert parcel["itemShipped"]["@type"] == "Product"
     assert "Example Gadget X1" in parcel["itemShipped"]["name"]
+    # The Track package link carries orderId, packageIndex and
+    # shipmentId -- all three are needed for Amazon's public tracker
+    # to resolve the shipment, so keep the URL verbatim.
+    assert parcel["trackingUrl"] == (
+        "https://www.amazon.co.uk/progress-tracker/package"
+        "?_encoding=UTF8&orderId=111-1111111-1111111"
+        "&packageIndex=0&shipmentId=TESTSHIP01"
+        "&vt=NOTIFICATIONS&ref_=p_btn_fed_track_package"
+    )
 
 
 def test_uk_delivered_emits_parcel_only(run_extractor):
@@ -51,6 +60,15 @@ def test_uk_delivered_emits_parcel_only(run_extractor):
     parcel = out["amazon-uk-333-3333333-3333333.parcel.json"]
     assert parcel["deliveryStatus"] == "OrderDelivered"
     assert parcel["itemShipped"]["name"] == "Example Connector Adapter Panel Mount"
+
+
+def test_ordered_mail_has_no_tracking_url(run_extractor):
+    # The order-placed mail links to the order summary, not a
+    # progress-tracker with a shipmentId. Leaving trackingUrl unset
+    # lets mailroom's fallback URL take over.
+    out = run_extractor("amazon", "amazon-uk-ordered.eml")
+    parcel = out["amazon-uk-111-1111111-1111111.parcel.json"]
+    assert "trackingUrl" not in parcel
 
 
 def test_uk_dispatched_with_multiple_items(run_extractor):
@@ -71,6 +89,7 @@ def test_uk_dispatched_with_multiple_items(run_extractor):
         ),
     ]
     assert all(i["@type"] == "Product" for i in items)
+    assert "shipmentId=TESTSHIPMU" in parcel["trackingUrl"]
 
 
 def test_de_ordered_emits_receipt_and_parcel(run_extractor):
