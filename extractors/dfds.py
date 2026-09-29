@@ -98,17 +98,26 @@ def main() -> int:
         end = headings[index + 1].start() if index + 1 < len(headings) else len(text)
         leg = parse_leg(text[heading.end() : end])
         if leg is not None:
+            leg["direction"] = heading.group(1).lower()
             legs.append(leg)
     if not legs:
         return 0
 
     passengers = PASSENGERS_RE.search(text)
 
-    for index, leg in enumerate(legs):
+    # Direction (outward/return) goes into `reservationNumber` so both
+    # crossings of a return booking survive as separate calendar events;
+    # a bare booking number would collide because downstream sinks key
+    # off the reservation number. Delays keep the direction intact, so a
+    # rescheduled crossing still updates the same event.
+    multi_leg = len(legs) > 1
+    for leg in legs:
+        direction = leg["direction"]
+        number = f"{reference}-{direction}" if multi_leg else reference
         reservation: dict = {
             "@context": "https://schema.org",
             "@type": "BoatReservation",
-            "reservationNumber": reference,
+            "reservationNumber": number,
             "reservationFor": {
                 "@type": "BoatTrip",
                 "provider": {"@type": "Organization", "name": "DFDS"},
@@ -126,7 +135,7 @@ def main() -> int:
         if passengers:
             reservation["numSeats"] = int(passengers.group(1))
 
-        suffix = f"-{index + 1}" if len(legs) > 1 else ""
+        suffix = f"-{direction}" if multi_leg else ""
         Path(f"dfds-{reference}{suffix}.reservation.json").write_text(
             json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
         )

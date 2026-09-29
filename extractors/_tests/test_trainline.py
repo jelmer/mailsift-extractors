@@ -31,14 +31,16 @@ def test_return_emits_a_reservation_per_leg(run_extractor):
     # day after the one the heading names.
     out = run_extractor("trainline", "trainline-return.eml")
     assert set(out) == {
-        "trainline-768577223529-1.reservation.json",
-        "trainline-768577223529-2.reservation.json",
+        "trainline-768577223529-outbound.reservation.json",
+        "trainline-768577223529-inbound.reservation.json",
     }
-    outbound = out["trainline-768577223529-1.reservation.json"]
+    outbound = out["trainline-768577223529-outbound.reservation.json"]
+    assert outbound["reservationNumber"] == "768577223529-outbound"
     assert outbound["reservationFor"]["departureTime"] == "2025-05-03T09:20:00"
     assert outbound["reservationFor"]["arrivalTime"] == "2025-05-03T10:30:00"
 
-    inbound = out["trainline-768577223529-2.reservation.json"]
+    inbound = out["trainline-768577223529-inbound.reservation.json"]
+    assert inbound["reservationNumber"] == "768577223529-inbound"
     assert inbound["reservationFor"]["departureTime"] == "2025-05-05T23:40:00"
     assert inbound["reservationFor"]["arrivalTime"] == "2025-05-06T00:55:00"
     # Only the first leg carries the price; a return would otherwise
