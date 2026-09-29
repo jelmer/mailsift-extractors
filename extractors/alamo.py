@@ -9,10 +9,12 @@ the voucher (`Autohuur Voucher`, with `VOUCHER_<number>-N.pdf`).
 
 The body carries none of the trip details - no dates, branch or
 vehicle; those live only inside the attached PDFs, which we can't
-parse. So this extractor preserves the booking-specific documents as
-receipt files and does not synthesise a reservation it can't fill in.
-The generic `Algemene voorwaarden` / `Condities ter plaatse` terms
-attached to every mail are skipped.
+parse. So this extractor preserves each booking-specific document as
+its own `.receipt.pdf` + `.receipt.json` pair (mailsift files paired
+PDFs beside a same-slug JSON and drops orphans) and does not
+synthesise a reservation it can't fill in. The generic `Algemene
+voorwaarden` / `Condities ter plaatse` terms attached to every mail
+are skipped.
 
 TODO: if the PDFs are ever parsed (pickup/dropoff, branch, vehicle),
 emit a RentalCarReservation so these reach the calendar too.
@@ -51,21 +53,25 @@ def main() -> int:
     if not documents:
         return 0
 
-    receipt = {
-        "@context": "https://schema.org",
-        "@type": "Order",
-        "merchant": "Alamo",
-        "orderNumber": booking,
-    }
-    if mail.date is not None:
-        receipt["orderDate"] = mail.date.strftime("%Y-%m-%d")
-    Path(f"alamo-{booking}.receipt.json").write_text(
-        json.dumps(receipt, ensure_ascii=False), encoding="utf-8"
-    )
-
+    # One receipt record per PDF so each blob has a same-slug JSON
+    # sibling. mailsift files the pair together under
+    # `<merchant>-<order>` and drops orphan blobs.
+    order_date = mail.date.strftime("%Y-%m-%d") if mail.date is not None else None
     for document, document_match in documents:
         kind = document_match.group(1).lower()
-        Path(f"alamo-{booking}-{kind}.receipt.pdf").write_bytes(document.bytes)
+        slug = f"alamo-{booking}-{kind}"
+        receipt: dict = {
+            "@context": "https://schema.org",
+            "@type": "Order",
+            "merchant": "Alamo",
+            "orderNumber": f"{booking}-{kind}",
+        }
+        if order_date is not None:
+            receipt["orderDate"] = order_date
+        Path(f"{slug}.receipt.json").write_text(
+            json.dumps(receipt, ensure_ascii=False), encoding="utf-8"
+        )
+        Path(f"{slug}.receipt.pdf").write_bytes(document.bytes)
 
     return 0
 
