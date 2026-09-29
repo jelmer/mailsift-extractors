@@ -21,6 +21,7 @@ work off the plain-text body.
 from __future__ import annotations
 
 import email
+import email.header
 import email.message
 import email.policy
 import email.utils
@@ -55,7 +56,7 @@ class Attachment:
 @dataclass
 class Mail:
     raw: bytes
-    message: email.message.EmailMessage
+    message: email.message.Message
     from_address: str | None
     from_domain: str | None
     to: list[str]
@@ -90,12 +91,18 @@ class Mail:
 
 
 def read_message(stream=None) -> Mail:
-    """Parse an RFC822 message from the given stream (default sys.stdin.buffer)."""
+    """Parse an RFC822 message from the given stream (default sys.stdin.buffer).
+
+    Uses `compat32` rather than `policy.default` so we get raw header
+    strings unconditionally. The strict parser in 3.14 raises on any
+    From/To whose display name decodes to CR/LF (a broken encoded-word
+    from a real sender), and we only need strings to feed into our own
+    address/date parsing anyway.
+    """
     if stream is None:
         stream = sys.stdin.buffer
     raw = stream.read()
-    msg = email.message_from_bytes(raw, policy=email.policy.default)
-    assert isinstance(msg, email.message.EmailMessage)
+    msg = email.message_from_bytes(raw, policy=email.policy.compat32)
 
     from_address = _parse_address(msg.get("From"))
     from_domain = (
@@ -104,7 +111,7 @@ def read_message(stream=None) -> Mail:
         else None
     )
     to = _parse_address_list(msg.get_all("To") or [])
-    subject = msg.get("Subject")
+    subject = _decode_header(msg.get("Subject"))
     date = _parse_date(msg.get("Date"))
 
     text, html, attachments = _walk_parts(msg)
@@ -123,6 +130,25 @@ def read_message(stream=None) -> Mail:
         ld_json=ld_json,
         attachments=attachments,
     )
+
+
+def _decode_header(value: str | None) -> str | None:
+    """Decode any RFC 2047 encoded-words in a header value to a plain string."""
+    if value is None:
+        return None
+    parts: list[str] = []
+    for chunk, encoding in email.header.decode_header(value):
+        if isinstance(chunk, bytes):
+            # "unknown-8bit" and friends are sentinel labels the parser
+            # emits when it can't identify the charset; fall back to utf-8.
+            charset = encoding or "utf-8"
+            try:
+                parts.append(chunk.decode(charset, errors="replace"))
+            except LookupError:
+                parts.append(chunk.decode("utf-8", errors="replace"))
+        else:
+            parts.append(chunk)
+    return "".join(parts)
 
 
 def _parse_address(value: str | None) -> str | None:
@@ -151,7 +177,7 @@ def _parse_date(value: str | None) -> datetime | None:
 
 
 def _walk_parts(
-    msg: email.message.EmailMessage,
+    msg: email.message.Message,
 ) -> tuple[str | None, str | None, list[Attachment]]:
     text: str | None = None
     html: str | None = None
@@ -179,22 +205,18 @@ def _walk_parts(
     return text, html, attachments
 
 
-def _decoded_text(part: email.message.EmailMessage) -> str | None:
+def _decoded_text(part: email.message.Message) -> str | None:
+    payload = part.get_payload(decode=True)
+    if not isinstance(payload, bytes):
+        return None
+    charset = part.get_content_charset() or "utf-8"
     try:
-        content = part.get_content()
-    except (LookupError, UnicodeDecodeError):
-        payload = part.get_payload(decode=True)
-        if not isinstance(payload, bytes):
-            return None
+        return payload.decode(charset, errors="replace")
+    except LookupError:
         return payload.decode("utf-8", errors="replace")
-    if isinstance(content, str):
-        return content
-    if isinstance(content, bytes):
-        return content.decode("utf-8", errors="replace")
-    return None
 
 
-def _attachment_from(part: email.message.EmailMessage) -> Attachment:
+def _attachment_from(part: email.message.Message) -> Attachment:
     payload = part.get_payload(decode=True)
     if not isinstance(payload, bytes):
         payload = b""
