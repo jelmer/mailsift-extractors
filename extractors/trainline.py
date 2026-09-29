@@ -131,15 +131,24 @@ def main() -> int:
             text, heading.end(), end, heading.group(2), heading.group(3), year
         )
         if leg is not None:
+            leg["direction"] = heading.group(1).lower()
             legs.append(leg)
     if not legs:
         return 0
 
+    # Direction (outbound/inbound) goes into `reservationNumber` so both
+    # legs of a return booking survive as separate calendar events; the
+    # bare booking number would collide because downstream sinks key off
+    # the reservation number. Delays keep the direction intact, so a
+    # rescheduled leg still updates the same event.
+    multi_leg = len(legs) > 1
     for index, leg in enumerate(legs):
+        direction = leg["direction"]
+        number = f"{reference}-{direction}" if multi_leg else reference
         reservation: dict = {
             "@context": "https://schema.org",
             "@type": "TrainReservation",
-            "reservationNumber": reference,
+            "reservationNumber": number,
             "reservationFor": {
                 "@type": "TrainTrip",
                 "departureStation": {
@@ -168,7 +177,7 @@ def main() -> int:
                 "priceCurrency": "GBP",
             }
 
-        suffix = f"-{index + 1}" if len(legs) > 1 else ""
+        suffix = f"-{direction}" if multi_leg else ""
         Path(f"trainline-{reference}{suffix}.reservation.json").write_text(
             json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
         )

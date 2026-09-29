@@ -1,0 +1,54 @@
+Authentication-Results: example.org; dkim=pass header.d=confirmation.nsinternational.nl header.i=@confirmation.nsinternational.nl
+From: NS International <no-reply@confirmation.nsinternational.nl>
+To: joe@example.com
+Subject: Confirmation, name: Joe Example, booking reference: MULTI01, departure date: 19/07/2025
+Date: Thu, 10 Jul 2025 06:10:42 +0000
+Message-ID: <ns-intl-multi-test@confirmation.nsinternational.nl>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<table>
+<tr><td>Booking code</td><td>MULTI01</td></tr>
+<tr><td>Payment date</td><td>10 July 2025</td></tr>
+<tr><td>Total price</td><td>&euro; 224,70</td></tr>
+</table>
+
+<h3>Your Booking</h3>
+<h4>Outward journey</h4>
+<div>Sat 19 Jul 2025 Travel time: 08:35</div>
+
+<div>07:22</div>
+<div>Alphaville</div>
+<div>Track unknown</div>
+<div>TGV 8606</div>
+
+<div>11:07</div>
+<div>Brookfield</div>
+<div>Track unknown</div>
+
+<div>Transfer 75 min</div>
+
+<div>12:22</div>
+<div>Springfield North</div>
+<div>Track unknown</div>
+<div>EST 9339</div>
+
+<div>15:02</div>
+<div>Newton Central</div>
+<div>Track 13</div>
+
+<div>Transfer 18 min</div>
+
+<div>15:20</div>
+<div>Newton Central</div>
+<div>Track 14</div>
+<div>IC 2855</div>
+
+<div>15:57</div>
+<div>Endpoint Centraal</div>
+<div>Track 12</div>
+
+<h3>Passengers and seats</h3>
+<div>Joe Example - Adult</div>
+</body></html>

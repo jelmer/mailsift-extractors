@@ -1,0 +1,42 @@
+Authentication-Results: example.org; dkim=pass header.d=confirmation.nsinternational.nl header.i=@confirmation.nsinternational.nl
+From: NS International <no-reply@confirmation.nsinternational.nl>
+To: joe@example.com
+Subject: Confirmation, name: Joe Example, booking reference: RTDET02, departure date: 02/02/2026
+Date: Mon, 2 Feb 2026 17:15:01 +0000
+Message-ID: <ns-intl-routedetails-test@confirmation.nsinternational.nl>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<table>
+<tr><td>Bookingcode: </td><td>RTDET02</td></tr>
+<tr><td>Payment date: </td><td>02 February 2026</td></tr>
+</table>
+<div>Total price:</div>
+<div><strong>&euro;60</strong><strong>60</strong></div>
+
+<div>Passengers</div>
+<div>Joe Example - Adult</div>
+
+<div>Outward</div>
+<div><strong>Alphaville - Endpoint Centraal</strong></div>
+<table>
+<tr><td>Departure:</td><td>Mon 02 Feb 2026 om 18:27</td></tr>
+<tr><td>Arrival:</td><td>Mon 02 Feb 2026 om 21:14</td></tr>
+<tr><td>Changes:</td><td>2</td></tr>
+<tr><td>Class:</td><td>Standard Class</td></tr>
+</table>
+
+<div>Routedetails</div>
+<table>
+<tr><td>V</td><td>18:27</td><td>Alphaville</td></tr>
+<tr><td>A</td><td>19:23</td><td>Midtown</td></tr>
+<tr><td>Transfer (12 min.)</td></tr>
+<tr><td>D</td><td>19:35</td><td>Midtown</td></tr>
+<tr><td>A</td><td>20:17</td><td>Newton Central</td></tr>
+<tr><td>Transfer (18 min.)</td></tr>
+<tr><td>D</td><td>20:35</td><td>Newton Central</td></tr>
+<tr><td>A</td><td>21:14</td><td>Endpoint Centraal</td></tr>
+</table>
+
+</body></html>
