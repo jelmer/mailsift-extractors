@@ -122,3 +122,9 @@ mypy extractors               # type-check
 Keep the scripts type-hinted; the `mailsift_extractor` helper is
 annotated, so `mypy` catches most mistakes in how you use a parsed
 message.
+
+## Separate extractors for different formats
+
+Sometimes companies significantly change the formatting of their emails. In
+that case, consider creating a separate extractor rather than making the
+existing one more complicated.
