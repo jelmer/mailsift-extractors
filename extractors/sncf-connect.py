@@ -40,29 +40,42 @@ PNR_RE = re.compile(r"Reference number\s+(?P<pnr>[A-Z0-9]{6})\s*/\s*[A-Z0-9]{8,}
 TOTAL_RE = re.compile(
     r"Order total\s*:\s*(?P<symbol>[€£$])\s*(?P<amount>\d+(?:\.\d{2})?)"
 )
-# `Your trip <O> - <D>, outbound on <weekday>, <D Month YYYY>`
+# `Your trip <O> - <D>, outbound on <weekday>, <D Month YYYY>`.
+# Return itineraries append `, <RetO> - <RetD>, returning on ...`; the
+# return leg's endpoints are named separately so a trip that ends at a
+# different station (Massy Tgv - Brest outbound, Brest - Paris
+# Montparnasse return) doesn't have to be swapped from the outbound
+# pair. The return capture is optional; a one-way subject stops after
+# the outbound date.
 SUBJECT_TRIP_RE = re.compile(
-    r"^Your trip\s+(?P<origin>.+?)\s+-\s+(?P<destination>.+?),\s*outbound on",
+    r"^Your trip\s+(?P<origin>.+?)\s+-\s+(?P<destination>.+?),\s*outbound on"
+    r"(?:.*?,\s*(?P<return_origin>.+?)\s+-\s+(?P<return_destination>.+?),\s*returning on)?",
     re.IGNORECASE,
 )
 
 # HTML-body markers.
-# `Outbound: Sunday, 16 August 2026 at 06:58` — one per direction;
-# a return itinerary adds a matching `Inbound: ...` line.
+# `Outbound: Sunday, 16 August 2026 at 06:58` — one per direction; a
+# return itinerary adds a matching `Return: ...` (English) or
+# `Inbound: ...` line. The weekday-comma is optional: some templates
+# render `Sunday 6 July 2025`, others `Sunday, 16 August 2026`.
 DIRECTION_RE = re.compile(
-    r"(?P<direction>Outbound|Inbound)\s*:\s*"
-    r"[A-Z][a-z]+,\s+(?P<day>\d{1,2})\s+(?P<month>[A-Z][a-z]+)\s+(?P<year>\d{4})"
+    r"(?P<direction>Outbound|Inbound|Return)\s*:\s*"
+    r"[A-Z][a-z]+,?\s+(?P<day>\d{1,2})\s+(?P<month>[A-Z][a-z]+)\s+(?P<year>\d{4})"
     r"\s+at\s+(?P<hh>\d{1,2}):(?P<mm>\d{2})",
     re.IGNORECASE,
 )
 # The leg header lives under an all-caps section title, e.g.
-# `OUTBOUND TGV INOUI 8534 | TARIF FLEX PREMIERE`. The provider is
-# free-form ("TGV INOUI", "OUIGO", "INTERCITES"); the number sits
-# right before the pipe and is what we want on the reservation.
+# `OUTBOUND TGV INOUI 8534 | TARIF FLEX PREMIERE`,
+# `OUTBOUND TRAIN TER 855877 | VOYAGE TER BREIZHGO`, or in some
+# templates `OUTBOUND ??mail.equipment.INOUI_en_GB?? 5386 | ...` where
+# an unsubstituted placeholder stands in for the provider. Accept any
+# token run between the direction label and the number; only the
+# number goes into the reservation, so a placeholder provider is fine.
+# TER numbers run to six digits.
 LEG_HEADER_RE = re.compile(
-    r"(?P<direction>OUTBOUND|INBOUND)\s+"
-    r"(?P<provider>[A-Z][A-Z ]+?)\s+"
-    r"(?P<number>\d{2,5})\s*(?:\||$)",
+    r"(?P<direction>OUTBOUND|INBOUND|RETURN)\s+"
+    r"(?P<provider>\S(?:.*?\S)??)\s+"
+    r"(?P<number>\d{2,6})\s*(?:\||$)",
 )
 
 SYMBOL_TO_CURRENCY = {"£": "GBP", "€": "EUR", "$": "USD"}
@@ -131,10 +144,18 @@ def parse_direction_dt(m: re.Match[str]) -> datetime | None:
 
 
 def leg_headers(html_text: str) -> dict[str, str]:
-    """Map direction ("outbound"/"inbound") -> train number."""
+    """Map direction ("outbound"/"inbound"/"return") -> train number.
+
+    A return itinerary with a connection carries several `<DIR>
+    <PROVIDER> <NUMBER>` runs under the same direction heading (a TGV
+    followed by a TER, say). Only the first number is kept: the mail
+    body carries a single departure time per direction, so per-train
+    reservations would have to invent times we don't have.
+    """
     out: dict[str, str] = {}
     for m in LEG_HEADER_RE.finditer(html_text):
-        out[m.group("direction").lower()] = m.group("number")
+        direction = m.group("direction").lower()
+        out.setdefault(direction, m.group("number"))
     return out
 
 
@@ -154,6 +175,12 @@ def main() -> int:
     pnr = pnr_match.group("pnr")
     origin = subject_match.group("origin").strip()
     destination = subject_match.group("destination").strip()
+    return_origin_subj = subject_match.group("return_origin")
+    return_destination_subj = subject_match.group("return_destination")
+    return_origin = return_origin_subj.strip() if return_origin_subj else destination
+    return_destination = (
+        return_destination_subj.strip() if return_destination_subj else origin
+    )
 
     receipt: dict = {
         "@context": "https://schema.org",
@@ -182,10 +209,14 @@ def main() -> int:
             dep = parse_direction_dt(m)
             if dep is None:
                 continue
-            # Origin/destination come from the subject; on an
-            # inbound leg they swap.
-            if direction == "inbound":
-                dep_station, arr_station = destination, origin
+            # Origin/destination come from the subject; the second
+            # direction uses its own pair when the subject named one
+            # (return trips end at a different station on some SNCF
+            # tickets), otherwise it swaps the outbound pair. SNCF
+            # templates use `Inbound` or `Return` for the second
+            # direction depending on the itinerary.
+            if direction in {"inbound", "return"}:
+                dep_station, arr_station = return_origin, return_destination
             else:
                 dep_station, arr_station = origin, destination
             trip: dict = {

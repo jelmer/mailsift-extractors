@@ -57,6 +57,34 @@ def test_html_body_also_emits_reservation(run_extractor):
     assert for_["provider"]["name"] == "SNCF"
 
 
+def test_return_itinerary_emits_both_directions(run_extractor):
+    """The subject line names both legs (`<A> - <B>, outbound on
+    ..., <B> - <C>, returning on ...`). The HTML body uses `RETURN`
+    (not `INBOUND`) for the second direction on some SNCF templates;
+    both spellings feed the same `return` reservation key. The return
+    leg has to use its own subject pair, not a swap of the outbound
+    pair, because SNCF trips can end at a different station than they
+    started from.
+    """
+    out = run_extractor("sncf-connect", "sncf-connect-trip-return.eml")
+    assert "sncf-connect-RETPNR.receipt.json" in out
+    assert "sncf-connect-RETPNR-outbound.reservation.json" in out
+    assert "sncf-connect-RETPNR-return.reservation.json" in out
+
+    outbound = out["sncf-connect-RETPNR-outbound.reservation.json"]
+    assert outbound["reservationFor"]["departureStation"]["name"] == "Alphaville Tgv"
+    assert outbound["reservationFor"]["arrivalStation"]["name"] == "Brookfield"
+    assert outbound["reservationFor"]["departureTime"] == "2025-07-06T18:41:00"
+    assert outbound["reservationFor"]["trainNumber"] == "5386"
+
+    ret = out["sncf-connect-RETPNR-return.reservation.json"]
+    assert ret["reservationNumber"] == "sncf-connect-RETPNR-return"
+    assert ret["reservationFor"]["departureStation"]["name"] == "Brookfield"
+    assert ret["reservationFor"]["arrivalStation"]["name"] == "Springfield 1 Et 2"
+    assert ret["reservationFor"]["departureTime"] == "2025-07-10T07:22:00"
+    assert ret["reservationFor"]["trainNumber"] == "8606"
+
+
 def test_manifest_does_not_require_html():
     # The extractor emits the receipt from the plain-text body alone,
     # and `sncf-connect-trip.eml` is a text/plain-only mail. Every

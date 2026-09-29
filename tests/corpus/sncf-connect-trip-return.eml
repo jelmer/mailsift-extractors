@@ -1,0 +1,35 @@
+Authentication-Results: example.org; dkim=pass header.d=connect.sncf header.i=@connect.sncf
+From: SNCF Connect <noreply@connect.sncf>
+To: test@example.org
+Subject: Your trip Alphaville Tgv - Brookfield, outbound on Sunday 6 July 2025, Brookfield - Springfield 1 Et 2, returning on Thursday 10 July 2025
+Date: Sun, 6 Jul 2025 11:08:48 +0000
+Message-ID: <sncf-return-test@connect.sncf>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="BOUND"
+
+--BOUND
+Content-Type: text/plain; charset="utf-8"
+
+SNCF CONNECT
+
+THANK YOU AND HAVE A PLEASANT TRIP
+
+Reference number  RETPNR / HP0000000000
+Order total : €165.00
+
+--BOUND
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>Thank you</h1>
+<p>Your journey Alphaville Tgv Brookfield Brookfield Springfield 1 Et 2 &euro;165.00</p>
+<p>Outbound: Sunday 6 July 2025 at 18:41 Return: Thursday 10 July 2025 at 07:22 References RETPNR , OTHERPN</p>
+<h2>OUTBOUND TGV INOUI 5386 | TARIF STANDARD SECONDE</h2>
+<p>Fare rules ...</p>
+<h2>TRAIN TER 855897 | VOYAGE TER BREIZHGO</h2>
+<p>Second leg of the outbound ...</p>
+<h2>RETURN TGV INOUI 8606 | TARIF STANDARD SECONDE</h2>
+<p>Fare rules ...</p>
+</body></html>
+
+--BOUND--
