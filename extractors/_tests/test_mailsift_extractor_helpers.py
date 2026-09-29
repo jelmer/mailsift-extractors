@@ -13,7 +13,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "_lib"))
 
-from mailsift_extractor import normalize_unicode, strip_html
+from io import BytesIO
+
+from mailsift_extractor import normalize_unicode, read_message, strip_html
 
 
 class TestNormalizeUnicode:
@@ -90,3 +92,22 @@ class TestStripHtml:
         # space, tag boundaries do not.
         html = "<body>keep<script>drop<style>drop2</style>drop3</script>keep2</body>"
         assert strip_html(html) == "keepkeep2"
+
+
+class TestReadMessage:
+    def test_from_with_crlf_in_encoded_word(self) -> None:
+        # Python 3.14's strict address parser raises ValueError when a
+        # From header's display name decodes to CR/LF (a broken encoded
+        # word from a real sender). We fall back to raw parsing so the
+        # address is still extracted.
+        raw = (
+            b"From: =?utf-8?Q?a=0D=0Ab?= <sender@example.com>\r\n"
+            b"To: dest@example.com\r\n"
+            b"Subject: Hi\r\n"
+            b"Date: Mon, 01 Jan 2024 12:00:00 +0000\r\n"
+            b"Content-Type: text/plain\r\n\r\n"
+            b"body\r\n"
+        )
+        mail = read_message(BytesIO(raw))
+        assert mail.from_address == "sender@example.com"
+        assert mail.from_domain == "example.com"
