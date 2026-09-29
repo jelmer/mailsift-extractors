@@ -1,0 +1,9 @@
+name: klm-eticket
+order: 50
+from_domains:
+  - klm-info.com
+subject_regex: "(?i)^Ticket voor uw reis\\s*$"
+requires:
+  - html
+require_dkim:
+  - klm-info.com

@@ -1,0 +1,94 @@
+Authentication-Results: example.org; dkim=pass header.d=klm-info.com header.i=@klm-info.com
+From: KLM <KLM@klm-info.com>
+To: joe@example.com
+Subject: Ticket voor uw reis
+Date: Sun, 06 Sep 2026 01:51:42 +0000
+Message-ID: <klm-eticket-test@klm-info.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>Uw e-ticket</h1>
+
+<table><tr><td>
+<br><strong>Boekingscode:</strong>AAAAAA<br>
+<strong>Ticketnummer:</strong>0740000000000<br>
+<strong>Naam passagier:</strong>Joe&nbsp;Example<br>
+<strong>Frequent flyer nummer:</strong>000000000000<br>
+</td></tr></table>
+
+<h2>Uw vluchtschema</h2>
+
+<h3>Vlucht naar Amsterdam</h3>
+<table><tr>
+<td>
+maandag 21 september 2026 - 17:10<br>
+<strong>Londen,&nbsp;Heathrow Airport, LHR</strong><br>
+<table><tr>
+<td>KL1012&nbsp;&#124; Uitgevoerd door&nbsp;</td>
+<td><img src="airline.png"></td>
+</tr></table>
+Economy Class
+&#124; Boekingsklasse: Q<br>
+<a href="https://example.com/seat">Selecteer uw stoel</a>
+<br><br>
+maandag 21 september 2026 - 19:30<br>
+<strong>Amsterdam, Schiphol Airport, AMS</strong><br>
+</td>
+</tr></table>
+
+<h3>Vlucht naar Trondheim</h3>
+<table><tr>
+<td>
+maandag 21 september 2026 - 20:40<br>
+<strong>Amsterdam, Schiphol Airport, AMS</strong><br>
+<table><tr>
+<td>KL1155&nbsp;&#124; Uitgevoerd door&nbsp;</td>
+<td><img src="airline.png"></td>
+</tr></table>
+Economy Class
+&#124; Boekingsklasse: Q<br>
+<a href="https://example.com/seat">Selecteer uw stoel</a>
+<br><br>
+maandag 21 september 2026 - 22:50<br>
+<strong>Trondheim, Vaernes Airport, TRD</strong><br>
+</td>
+</tr></table>
+
+<h3>Vlucht naar Amsterdam</h3>
+<table><tr>
+<td>
+maandag 28 september 2026 - 17:10<br>
+<strong>Trondheim, Vaernes Airport, TRD</strong><br>
+<table><tr>
+<td>KL1154&nbsp;&#124; Uitgevoerd door&nbsp;</td>
+<td><img src="airline.png"></td>
+</tr></table>
+Business Class
+&#124; Boekingsklasse: J<br>
+<a href="https://example.com/seat">Selecteer uw stoel</a>
+<br><br>
+maandag 28 september 2026 - 19:25<br>
+<strong>Amsterdam, Schiphol Airport, AMS</strong><br>
+</td>
+</tr></table>
+
+<h3>Vlucht naar Londen</h3>
+<table><tr>
+<td>
+maandag 28 september 2026 - 20:40<br>
+<strong>Amsterdam, Schiphol Airport, AMS</strong><br>
+<table><tr>
+<td>KL1017&nbsp;&#124; Uitgevoerd door&nbsp;</td>
+<td><img src="airline.png"></td>
+</tr></table>
+Economy Class
+&#124; Boekingsklasse: N<br>
+<a href="https://example.com/seat">Selecteer uw stoel</a>
+<br><br>
+maandag 28 september 2026 - 20:55<br>
+<strong>Londen, Heathrow Airport, LHR</strong><br>
+</td>
+</tr></table>
+
+</body></html>
