@@ -68,17 +68,19 @@ def test_nationalcar_converts_pm_times(run_extractor):
 
 def test_alamo_keeps_only_the_booking_specific_pdf(run_extractor):
     # Every Alamo mail also carries generic terms PDFs; those are not
-    # about this booking and must not be filed.
+    # about this booking and must not be filed. One receipt JSON is
+    # written per booking-specific PDF so mailsift's pair invariant
+    # holds (blob must have a same-slug JSON sibling).
     out = run_extractor("alamo", "alamo-confirmation.eml")
     assert set(out) == {
-        "alamo-200000000.receipt.json",
+        "alamo-200000000-factuur.receipt.json",
         "alamo-200000000-factuur.receipt.pdf",
     }
-    assert out["alamo-200000000.receipt.json"] == {
+    assert out["alamo-200000000-factuur.receipt.json"] == {
         "@context": "https://schema.org",
         "@type": "Order",
         "merchant": "Alamo",
-        "orderNumber": "200000000",
+        "orderNumber": "200000000-factuur",
         "orderDate": "2026-10-21",
     }
     assert out["alamo-200000000-factuur.receipt.pdf"].startswith(b"%PDF")
