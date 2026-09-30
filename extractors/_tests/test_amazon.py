@@ -62,6 +62,18 @@ def test_uk_delivered_emits_parcel_only(run_extractor):
     assert parcel["itemShipped"]["name"] == "Example Connector Adapter Panel Mount"
 
 
+def test_delivered_url_orderid_is_not_treated_as_a_second_order(run_extractor):
+    # Amazon consolidates shipments: the delivered mail's "Track
+    # package" URL can carry an `orderId=` that is a *different*
+    # order from the one in the "Order #" heading. Emitting a parcel
+    # for the URL's orderId used to write a phantom .parcel.json for
+    # an order that this mail wasn't actually about.
+    out = run_extractor("amazon", "amazon-uk-delivered-consolidated.eml")
+    assert set(out) == {"amazon-uk-999-9999999-9999999.parcel.json"}
+    parcel = out["amazon-uk-999-9999999-9999999.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderDelivered"
+
+
 def test_ordered_mail_has_no_tracking_url(run_extractor):
     # The order-placed mail links to the order summary, not a
     # progress-tracker with a shipmentId. Leaving trackingUrl unset

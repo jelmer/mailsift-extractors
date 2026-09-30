@@ -1,0 +1,30 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <order-update@amazon.co.uk>
+To: test@example.org
+Subject: Delivered: 'Test Item...' and 1 more item
+Date: Thu, 04 Sep 2026 16:11:13 +0000
+Message-ID: <amazon-uk-delivered-consolidated-test@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+    Your package was delivered!
+
+Delivered today
+
+Parcel was handed to a receptionist.
+
+Test - London
+
+Order #
+999-9999999-9999999
+
+Track package
+https://www.amazon.co.uk/progress-tracker/package?_encoding=UTF8&orderId=888-8888888-8888888&packageIndex=0&shipmentId=TSHIPCON&vt=NOTIFICATIONS&ref_=p_btn_fed_track_package
+
+* Test Item Widget
+  Quantity: 1
+
+* Test Item Two
+  Quantity: 1
+
+Amazon.co.uk is a trading name for Amazon EU Sarl.
