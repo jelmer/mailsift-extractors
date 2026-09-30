@@ -49,7 +49,18 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
 
-ORDER_RE = re.compile(r"\b(\d{3}-\d{7}-\d{7})\b")
+# Match order numbers only under an order heading -- "Order #" on the
+# English template, "Bestellnummer:" on the German one, and so on.
+# The same number also appears in "Track package" and "View or edit
+# order" links below the heading, and Amazon consolidates shipments so
+# the URL's `orderId=` is sometimes a *different* order -- picking
+# those up as if they were fresh orders produced phantom parcels.
+ORDER_RE = re.compile(
+    r"^(?:Order\s*#|Bestellnummer:|Número de pedido:|"
+    r"N° de commande\s*:?|Numero d'ordine\s*:?)"
+    r"\s*\n\s*(\d{3}-\d{7}-\d{7})\b",
+    re.MULTILINE,
+)
 # "Arriving ..." sits on its own line above the order it belongs to.
 # Amazon never puts a year in it, and uses either an ASCII hyphen or an
 # en-dash in ranges. The Spanish template says "Llega ...".
@@ -266,10 +277,11 @@ def main() -> int:
     if not text:
         return 0
 
-    # The order number also shows up in the "Track package" and "View
-    # or edit order" links below it, so keep only its first appearance
-    # -- otherwise each order is emitted twice and the later, blockless
-    # copy overwrites the one carrying the arrival estimate.
+    # One Ordered mail can acknowledge several orders; each appears
+    # under its own "Order #" heading. Dedup so a mail that repeats an
+    # order in a later block (e.g. an aggregate Delivered notification)
+    # only emits the first occurrence -- its block is the one carrying
+    # the "Arriving ..." estimate and the item list.
     orders = []
     seen = set()
     for match in ORDER_RE.finditer(text):
