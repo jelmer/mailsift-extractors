@@ -9,7 +9,9 @@ Two lifecycle mails per won lot:
   after payment is settled.
 
 Everything we need is in the subject: invoice number, and for the
-`New Invoice` variant, the total amount + currency. Emit a receipt
+`New Invoice` variant, the total amount + currency. Newer mails drop
+the `for £<amount> GBP` suffix and the body has no amount either, so
+the receipt is emitted without a price in that case. Emit a receipt
 on the `New Invoice` mail; the `Thank You` mail is redundant and
 skipped.
 """
@@ -26,10 +28,11 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 from mailsift_extractor import read_message
 
 # `New Invoice #91247783 from John Pye Auctions (JohnPye) for £112.60 GBP`
+# or, without an amount, `New Invoice #91247783 from John Pye Auctions (JohnPye)`
 NEW_INVOICE_RE = re.compile(
-    r"New Invoice\s*#(?P<number>\d+)\s+from John Pye Auctions.*?"
-    r"for\s*(?P<symbol>[£€$])?\s*(?P<amount>[0-9]+(?:\.[0-9]{2})?)\s+"
-    r"(?P<currency>[A-Z]{3})",
+    r"New Invoice\s*#(?P<number>\d+)\s+from John Pye Auctions"
+    r"(?:.*?for\s*(?P<symbol>[£€$])?\s*(?P<amount>[0-9]+(?:\.[0-9]{2})?)\s+"
+    r"(?P<currency>[A-Z]{3}))?",
     re.IGNORECASE,
 )
 
@@ -45,20 +48,19 @@ def main() -> int:
         return 0
 
     invoice = match.group("number")
-    amount = float(match.group("amount"))
-    currency = match.group("currency")
 
     receipt: dict = {
         "@context": "https://schema.org",
         "@type": "Order",
         "merchant": "John Pye Auctions",
         "orderNumber": invoice,
-        "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": amount,
-            "priceCurrency": currency,
-        },
     }
+    if match.group("amount"):
+        receipt["priceSpecification"] = {
+            "@type": "PriceSpecification",
+            "price": float(match.group("amount")),
+            "priceCurrency": match.group("currency"),
+        }
     if mail.date:
         receipt["orderDate"] = mail.date.strftime("%Y-%m-%d")
 

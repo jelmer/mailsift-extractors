@@ -16,3 +16,18 @@ def test_new_invoice_subject_carries_amount(run_extractor):
         "price": 112.60,
         "priceCurrency": "GBP",
     }
+
+
+def test_new_invoice_without_amount(run_extractor):
+    # Since late 2026 the subject drops the "for £X GBP" suffix and the
+    # body carries no amount either; emit the receipt without a price.
+    out = run_extractor("john-pye-auctions", "john-pye-auctions-invoice-no-amount.eml")
+    assert out == {
+        "john-pye-auctions-91247784.receipt.json": {
+            "@context": "https://schema.org",
+            "@type": "Order",
+            "merchant": "John Pye Auctions",
+            "orderNumber": "91247784",
+            "orderDate": "2026-10-03",
+        }
+    }

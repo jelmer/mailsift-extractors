@@ -1,0 +1,40 @@
+Authentication-Results: example.org; dkim=pass header.d=johnpye.co.uk header.i=@johnpye.co.uk
+From: John Pye Auctions <customerservice@johnpye.co.uk>
+To: "test@example.org" <test@example.org>
+Subject: New Invoice #91247784 from John Pye Auctions (JohnPye)
+Date: Sat, 03 Oct 2026 18:14:20 +0000 (UTC)
+Message-ID: <john-pye-invoice-no-amount-test@johnpye.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE html>
+<html>
+<body>
+<table style="width:100%">
+<tr>
+<td></td>
+<td>
+    <p class="text"> <b>Hello test@example.org,
+    <br> You have an outstanding invoice
+    </b></p>
+
+    <p class="red-text"> <b>Invoice ID:#91247784</b></p>
+
+<p class="red-text">Online Card Payment:</p>
+   <p class="red-texta">Payment/Collection deadlines are present on your Invoice</p>
+<p class="text">To view and Pay your invoice, click the button below. Alternatively, you can login and view your invoices in 'My Account' </p>
+
+<p class="blue-text">Bank Transfer:</b></p>
+<p class="blue-texta">Please quote invoice number</b></p>
+<p class="text">
+Payee Name: John Pye &amp; Sons</br>
+</b></br>
+Account No: 00000000 </b></br>
+Sort Code: 00 00 00 </b></br></br>
+</p>
+</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>
