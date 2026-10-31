@@ -1,0 +1,217 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@email.airbnb.com
+From: Airbnb <express@airbnb.com>
+To: test@example.org
+Subject: Reservation Itinerary from Test Friend
+Date: Tue, 07 Jul 2015 19:33:58 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="b1"
+
+--b1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+  Hi Test,
+
+  Here's the itinerary for a reservation on Airbnb that Test Friend has shared with you. Your booking is confirmed.  If you have any questions, reply directly to friend@example.org.
+
+
+
+  ------------------------------------------------------------------------
+  Itinerary
+Confirmation Code: TESTCD
+* Check In August 08, 2015
+* Check Out August 12, 2015
+* 2 Guests
+
+Example guest room
+Host,
+
+１ サンプル　１０１, Kyoto-shi Example-ku, Kyoto Prefecture 605-0000, Japan
+
+
+--b1
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><table>
+<tr>
+
+<td>
+<div>
+
+<div>
+<div>
+Hi Test,
+</div>
+<div>
+Here's the itinerary for a reservation on Airbnb that Test Friend has shared with you.
+Your booking is confirmed.
+If you have any questions, reply directly to friend@example.org.
+</div>
+<div>
+Have a good trip,
+<br>
+The Airbnb Team
+</div>
+<div>2015-07-07 19:33:57 +0000</div>
+</div>
+<br><br>
+<div>
+<table>
+<tr>
+
+<td>
+<div>
+<div>
+<div>
+Itinerary
+</div>
+<strong>
+Confirmation Code: TESTCD
+</strong>
+</div>
+</div>
+</td>
+
+</tr>
+</table>
+<table>
+<tr>
+
+<td>
+<div>
+<div>
+<div>
+<strong>
+１ サンプル　１０１, Kyoto-shi Example-ku, Kyoto Prefecture 605-0000, Japan
+</strong>
+</div>
+
+</div>
+
+<div>
+<table>
+<tr>
+<td>
+<div>
+
+<strong>Example guest room</strong><br>
+<div>
+<span>Apartment - Entire home/apt</span>
+•
+<strong>2</strong> Guests
+</div>
+
+</div>
+</td>
+
+</tr>
+</table>
+</div>
+<div>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<div><strong>Arrive</strong></div>
+<span>
+Sat, August 08, 2015
+</span>
+</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr>
+<td>
+<div><strong>Depart</strong></div>
+<span>
+Wed, August 12, 2015
+</span>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+
+</tr>
+</table>
+<table>
+<tr>
+
+<td>
+<div>
+<div>
+
+Change or Cancel
+
+</div>
+</div>
+</td>
+
+</tr>
+</table>
+<table>
+<tr>
+
+<td>
+<div>
+<div>
+<div>
+<span>
+Your Host
+</span>
+<br>
+<br>
+<table>
+<tr>
+
+<td>
+<strong>Host, 例</strong>
+<br>
++81 0000000000
+<div>
+
+host@example.com
+
+
+
+
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<br>
+<div>
+By emailing the host at their @host.airbnb.com address, you agree to our Terms of Service and Privacy Policy.
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</td>
+
+</tr>
+</table>
+<table>
+<tr>
+
+<td>
+<div>
+<div>
+<div>
+</body></html>
+
+--b1--
