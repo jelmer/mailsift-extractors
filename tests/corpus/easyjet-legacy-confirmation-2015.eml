@@ -1,0 +1,22 @@
+Authentication-Results: mx.google.com; spf=pass smtp.mail=donotreply@easyjet.com
+From: "confirmation@easyJet.com" <donotreply@easyjet.com>
+To: test@example.org
+Subject: easyJet booking reference: LEG2015
+Date: 18 Feb 2015 23:00:00 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html><body>
+<p>easyJet booking confirmation email</p>
+<p>Thank you for booking: LEG2015</p>
+<p>Your confirmed itinerary</p>
+<p>Passengers</p>
+<p>Mr TEST USER</p>
+<p>Tel Aviv (Terminal 1) to London Gatwick (North Terminal)</p>
+<p>Dep 01 March 2015 20:50</p>
+<p>Arr 02 March 2015 00:25</p>
+<p>Flight 8818</p>
+<p>Bag drop opens 01 March 2015 17:50</p>
+<p>Bag drop closes 01 March 2015 19:50</p>
+<p>Seats 00A</p>
+</body></html>

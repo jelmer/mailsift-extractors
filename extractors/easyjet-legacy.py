@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""easyJet flight booking confirmations, pre-DKIM (2010-2013).
+"""easyJet flight booking confirmations from before easyJet signed with DKIM.
 
 Thin wrapper around `easyjet.py` that:
 
 - Enforces a message-date cutoff so a spoofer today can't reach the
-  no-DKIM legacy code path. easyJet started signing outgoing mail
-  with DKIM by 2015; anything genuinely older will pre-date it.
+  no-DKIM legacy code path. easyJet booking mail was still unsigned
+  in March 2022 and the first signed one seen is from July 2024.
 - Reuses the same parser as the modern extractor, so the two paths
   agree byte-for-byte on the output.
 
@@ -27,10 +27,10 @@ assert _spec is not None and _spec.loader is not None
 easyjet = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(easyjet)
 
-# Anything on or after this date must have been DKIM-signed and
-# should have reached the main extractor. If it lands here instead,
-# treat it as suspicious and refuse.
-_CUTOFF = datetime(2015, 1, 1)
+# Date of the first DKIM-signed easyJet booking mail seen. Anything
+# on or after it should have reached the main extractor; if it lands
+# here instead, treat it as suspicious and refuse.
+_CUTOFF = datetime(2024, 7, 11)
 
 
 def main() -> int:

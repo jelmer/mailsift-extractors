@@ -11,6 +11,6 @@ from_domains:
 subject_regex: "(?i)easyJet booking reference"
 requires:
   - html
-# No `require_dkim`: pre-2015 easyJet mail predates DKIM. The date
-# cutoff in easyjet-legacy.py is what actually defends the code
-# path.
+# No `require_dkim`: easyJet booking mail was unsigned until some
+# point between 2022 and 2024. The date cutoff in easyjet-legacy.py
+# is what actually defends the code path.
