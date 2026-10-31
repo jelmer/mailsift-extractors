@@ -17,6 +17,17 @@ After stripping HTML the blocks are paragraph-separated. We walk each
 reading the preceding four lines (depart date, depart time+airport,
 arrive date, arrive time+airport).
 
+The 2012-2019 templates put source newlines inside the table cell,
+so the time, city and parenthesised airport arrive on separate
+lines:
+
+    Wed 17 Dec 14
+    12:25
+    Amsterdam
+    (Schiphol, Netherlands)
+
+Those are joined back into one `<time> <airport>` line first.
+
 Booking code is in the subject; we also accept a `Booking code` /
 `Booking - Booking code` header in the body as a fallback.
 """
@@ -42,6 +53,7 @@ DATE_LINE_RE = re.compile(
     r"^(?P<wday>[A-Z][a-z]{2})\s+(?P<day>\d{1,2})\s+(?P<mon>[A-Z][a-z]{2})\s+(?P<yy>\d{2})\s*$"
 )
 TIME_AIRPORT_RE = re.compile(r"^(?P<time>\d{1,2}:\d{2})\s+(?P<airport>.+?)\s*$")
+BARE_TIME_RE = re.compile(r"^\d{1,2}:\d{2}$")
 # "Class: <name>" sits between the arrival airport and the flight
 # number; KLM writes both "Business" and "World Business Class".
 CLASS_LINE_RE = re.compile(r"^Class:\s*(?P<cabin>.+?)\s*$")
@@ -75,8 +87,84 @@ def parse_airport(phrase: str) -> dict:
     return out
 
 
-def main() -> int:
-    mail = read_message()
+class LayoutError(ValueError):
+    """The lines before a `Flight number:` don't form a segment."""
+
+
+def join_split_times(lines: list[str]) -> list[str]:
+    """Rejoin `<time>` / `<city>` / `(<airport>)` runs into one line."""
+    out = []
+    i = 0
+    while i < len(lines):
+        if (
+            BARE_TIME_RE.match(lines[i])
+            and i + 2 < len(lines)
+            and lines[i + 2].startswith("(")
+            and lines[i + 2].endswith(")")
+        ):
+            out.append(" ".join(lines[i : i + 3]))
+            i += 3
+        else:
+            out.append(lines[i])
+            i += 1
+    return out
+
+
+# What has to precede a `Flight number:` line, nearest first.
+_SEGMENT_LINES = (
+    ("arrival time and airport", TIME_AIRPORT_RE),
+    ("arrival date", DATE_LINE_RE),
+    ("departure time and airport", TIME_AIRPORT_RE),
+    ("departure date", DATE_LINE_RE),
+)
+
+
+def segment_before(
+    lines: list[str], index: int
+) -> tuple[list[dict], str | None] | None:
+    """Read the segment ending just above `lines[index]`.
+
+    Returns the arrival time, arrival date, departure time and
+    departure date match groups (in that order) plus the cabin from an
+    optional `Class:` line directly above the flight number.
+
+    Returns None if there is no time line above at all: the seat list
+    further down repeats each `Flight number:` under a bare
+    `<origin> - <destination>` heading. Raises `LayoutError` if a
+    segment starts but doesn't have the expected shape.
+    """
+    cursor = index - 1
+    cabin = None
+    if cursor >= 0 and (c_match := CLASS_LINE_RE.match(lines[cursor])):
+        cabin = c_match.group("cabin")
+        cursor -= 1
+    if cursor < 0 or not TIME_AIRPORT_RE.match(lines[cursor]):
+        return None
+    groups = []
+    for what, regex in _SEGMENT_LINES:
+        line = lines[cursor] if cursor >= 0 else None
+        match = regex.match(line) if line is not None else None
+        if match is None:
+            raise LayoutError(
+                f"expected {what} before {lines[index]!r}, found {line!r}"
+            )
+        groups.append(match.groupdict())
+        cursor -= 1
+    return groups, cabin
+
+
+def extract(mail, max_message_date: datetime | None = None) -> int:
+    """Emit one reservation per flight segment in `mail`.
+
+    With `max_message_date` set, refuse mail whose `Date:` header is
+    missing or on or after it. The legacy manifest uses this to accept
+    unsigned mail from before KLM signed with DKIM.
+    """
+    if max_message_date is not None and (
+        mail.date is None or mail.date.replace(tzinfo=None) >= max_message_date
+    ):
+        return 0
+
     if not mail.html:
         return 0
 
@@ -93,48 +181,27 @@ def main() -> int:
     if booking is None:
         return 0
 
-    lines = [ln.strip() for ln in text.split("\n") if ln.strip()]
+    lines = join_split_times([ln.strip() for ln in text.split("\n") if ln.strip()])
 
-    # For each flight-number occurrence, walk back to find the most
-    # recent four lines matching:
-    #   <date>
-    #   <time> <airport>
-    #   <date>
-    #   <time> <airport>
-    for index, line in enumerate(lines):
-        fn_match = FLIGHT_NUMBER_RE.match(line)
-        if not fn_match:
-            continue
+    flight_lines = [
+        (index, fn_match)
+        for index, line in enumerate(lines)
+        if (fn_match := FLIGHT_NUMBER_RE.match(line))
+    ]
+    segments = [
+        (fn_match, segment)
+        for index, fn_match in flight_lines
+        if (segment := segment_before(lines, index)) is not None
+    ]
+    if flight_lines and not segments:
+        raise LayoutError(
+            f"no itinerary segment above any of {len(flight_lines)} flight numbers"
+        )
+
+    for fn_match, segment in segments:
         airline_code = fn_match.group(1)
         flight_num = fn_match.group(2)
-        # Walk back from the flight-number line, collecting prior
-        # lines that match either a date or a time+airport. A "Class:
-        # <cabin>" line sits between the segment and the flight
-        # number and is captured separately. We stop once we have one
-        # complete segment: [dep_date, dep_time_airport, arr_date,
-        # arr_time_airport], i.e. four kept lines.
-        cursor = index - 1
-        collected: list[tuple[str, dict]] = []
-        cabin: str | None = None
-        while cursor >= 0 and len(collected) < 4:
-            current = lines[cursor]
-            d_match = DATE_LINE_RE.match(current)
-            t_match = TIME_AIRPORT_RE.match(current)
-            c_match = CLASS_LINE_RE.match(current)
-            if d_match:
-                collected.append(("date", d_match.groupdict()))
-            elif t_match:
-                collected.append(("time", t_match.groupdict()))
-            elif c_match and cabin is None:
-                cabin = c_match.group("cabin")
-            cursor -= 1
-        if len(collected) < 4:
-            continue
-        # `collected` was built bottom-up, so the order is:
-        #   [arr_time, arr_date, dep_time, dep_date]
-        arr_time_d, arr_date_d, dep_time_d, dep_date_d = (
-            entry[1] for entry in collected
-        )
+        (arr_time_d, arr_date_d, dep_time_d, dep_date_d), cabin = segment
         dep_dt = parse_naive_dt(
             dep_date_d["wday"],
             dep_date_d["day"],
@@ -191,6 +258,10 @@ def main() -> int:
             json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
         )
     return 0
+
+
+def main() -> int:
+    return extract(read_message())
 
 
 if __name__ == "__main__":

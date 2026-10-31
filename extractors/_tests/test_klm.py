@@ -2,6 +2,23 @@
 
 from __future__ import annotations
 
+import subprocess
+import sys
+from pathlib import Path
+
+EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
+CORPUS_DIR = EXTRACTORS_DIR.parent / "tests" / "corpus"
+
+
+def run_on_bytes(extractor: str, eml: bytes, cwd: Path) -> subprocess.CompletedProcess:
+    return subprocess.run(
+        [sys.executable, str(EXTRACTORS_DIR / f"{extractor}.py")],
+        cwd=cwd,
+        input=eml,
+        capture_output=True,
+        check=False,
+    )
+
 
 def test_two_segment_booking_emits_two_reservations(run_extractor):
     out = run_extractor("klm", "klm-confirmation.eml")
@@ -37,3 +54,103 @@ def test_two_segment_booking_emits_two_reservations(run_extractor):
     assert leg2["reservationFor"]["arrivalTime"] == "2019-02-19T12:25:00"
     assert leg2["reservationFor"]["arrivalAirport"]["name"] == ("San Francisco Intl.")
     assert leg2["reservationFor"]["pending:cabinClass"] == "World Business Class"
+
+
+EXPECTED_2014 = {
+    "klm-L00000-KL0743.reservation.json": {
+        "@context": "https://schema.org",
+        "@type": "FlightReservation",
+        "reservationNumber": "L00000",
+        "reservationFor": {
+            "@type": "Flight",
+            "flightNumber": "743",
+            "airline": {
+                "@type": "Airline",
+                "iataCode": "KL",
+                "name": "KLM Royal Dutch Airlines",
+            },
+            "departureAirport": {
+                "@type": "Airport",
+                "name": "Schiphol",
+                "address": "Amsterdam",
+            },
+            "arrivalAirport": {
+                "@type": "Airport",
+                "name": "J Chavez International",
+                "address": "Lima",
+            },
+            "departureTime": "2014-12-01T12:25:00",
+            "arrivalTime": "2014-12-01T19:15:00",
+        },
+    },
+    "klm-L00000-KL0744.reservation.json": {
+        "@context": "https://schema.org",
+        "@type": "FlightReservation",
+        "reservationNumber": "L00000",
+        "reservationFor": {
+            "@type": "Flight",
+            "flightNumber": "744",
+            "airline": {
+                "@type": "Airline",
+                "iataCode": "KL",
+                "name": "KLM Royal Dutch Airlines",
+            },
+            "departureAirport": {
+                "@type": "Airport",
+                "name": "J Chavez International",
+                "address": "Lima",
+            },
+            "arrivalAirport": {
+                "@type": "Airport",
+                "name": "Schiphol",
+                "address": "Amsterdam",
+            },
+            "departureTime": "2014-12-15T21:15:00",
+            "arrivalTime": "2014-12-16T15:30:00",
+        },
+    },
+}
+
+
+def test_split_time_and_airport_lines(run_extractor):
+    # The 2012-2019 templates break the time, city and airport onto
+    # separate lines inside one table cell.
+    out = run_extractor("klm", "klm-confirmation-2014.eml")
+    assert out == EXPECTED_2014
+
+
+def test_legacy_extractor_extracts_unsigned_2014_mail(run_extractor):
+    out = run_extractor("klm-legacy", "klm-confirmation-2014.eml")
+    assert out == EXPECTED_2014
+
+
+def test_legacy_extractor_refuses_post_cutoff_mail(tmp_path):
+    eml = (CORPUS_DIR / "klm-confirmation-2014.eml").read_bytes()
+    eml = eml.replace(
+        b"Date: Wed, 6 Aug 2014 00:00:00 +0200",
+        b"Date: Mon, 30 Aug 2021 12:00:00 +0000",
+    )
+    result = run_on_bytes("klm-legacy", eml, tmp_path)
+    assert result.returncode == 0
+    assert list(tmp_path.iterdir()) == []
+
+
+def test_legacy_extractor_refuses_mail_without_date(tmp_path):
+    eml = (CORPUS_DIR / "klm-confirmation-2014.eml").read_bytes()
+    eml = eml.replace(b"Date: Wed, 6 Aug 2014 00:00:00 +0200\n", b"")
+    result = run_on_bytes("klm-legacy", eml, tmp_path)
+    assert result.returncode == 0
+    assert list(tmp_path.iterdir()) == []
+
+
+def test_malformed_segment_raises_layout_error(tmp_path):
+    # A segment whose departure date is missing must fail loudly
+    # rather than be read with the wrong lines in the wrong slots.
+    eml = (CORPUS_DIR / "klm-confirmation.eml").read_bytes()
+    eml = eml.replace(b"<p>Tue 19 Feb 19</p>\n<p>06:30", b"<p>06:30", 1)
+    result = run_on_bytes("klm", eml, tmp_path)
+    assert result.returncode != 0
+    assert result.stderr.decode().splitlines()[-1] == (
+        "LayoutError: expected departure date before 'Flight number: KL 1000', "
+        "found 'Departure: London - San Francisco'"
+    )
