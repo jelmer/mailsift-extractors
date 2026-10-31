@@ -1,0 +1,340 @@
+From: Expedia Travel Confirmation <Confirmation@ExpediaConfirm.com>
+To: test@example.org
+Subject: Expedia travel confirmation/e-Ticket - 21 Feb - (Itin# 10000000001)
+Date: Wed, 18 Feb 2015 17:16:53 -0600
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@expediaconfirm.com
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+<body>
+                    <tr>
+                        <td >
+                            <table
+                                  >
+                                        <tr>
+                                            <td>
+    <table>
+        <tbody>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>This email can be used as an E-Ticket.</td>
+            <td nowrap="">Itinerary #&nbsp;</td>
+            <td nowrap="">10000000001</td>
+        </tr>
+        <tr>
+            <td>To get the most up-to-date version of your trip, go to your <a href="https://www.example.org/">online itinerary</a>
+and print a copy to take with you.</td>
+        </tr>
+        </tbody>
+    </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td  >
+<table>
+    <tbody>
+    <tr>
+        <td>
+Important Information        </td>
+    </tr>
+        <tr>
+            <td>
+                <ul>
+<li>To manage your booking or check in online (where available) please visit our <a href="https://www.example.org/">Manage my Flight <span >(Opens a new window) </span></a> page, select your airline and use the booking reference provided below.</li>
+<li>Proof of citizenship is required for international travel.  Be sure to bring all necessary documentation (e.g. passport, visa, transit permit). To learn more, visit our <a href="https://www.example.org/" >Visa and Passport page <span >(Opens a new window) </span></a>. For local destination and health advice, check the <a href="https://www.example.org/"> Foreign and Commonwealth Office website <span >(Opens a new window) </span> </a>.</li>
+	<li>If your plans change and you need to change or cancel your booking (subject to the applicable Rules & Restrictions below) please call us at 0330 123 1235</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    <tr>
+                                    <td>
+<table>
+<tbody>
+    <tr>
+        <td >
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+    London (STN)
+    &rarr;
+    Istanbul (SAW)
+                                </td>
+                            </tr>
+                <tr>
+                    <td>
+                            <span>
+                                21 Feb 2015 -
+                                23 Feb 2015
+                                        , 1 ticket
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td >&nbsp;</td>
+            <td>
+        <table id = "flightStatusTable">
+            <tr>
+                <td >
+                    CONFIRMED
+                </td>
+            </tr>
+                    <tr >
+                        <td>Pegasus Airlines</td>
+                        <td>AAAAAA</td>
+                    </tr>
+                    <tr>
+                        <td>Expedia Booking ID</td>
+                        <td>BBBBBB</td>
+                    </tr>
+        </table>
+        </td>
+    </tr>
+</table>
+     </td>
+</tr>
+<tr>
+<td >
+<table>
+    <tr>
+        <td >
+                Your reservation is booked and confirmed. There is no need to call us to reconfirm this reservation.
+        </td>
+    </tr>
+<tr>
+<td  >
+    <table>
+        <tr>
+            <td >
+Traveller Information            </td>
+        </tr>
+    <tr>
+        <td >
+            <table>
+                    <tr>
+                        <td >
+                            <strong>Mr. Test User</strong>
+                            <br><span>Adult</span>
+                        </td>
+                        <td >
+No frequent flyer details provided                        </td>
+                            <td >
+Ticket #                                    6240000000000<br>
+                            </td>
+                    </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td >
+            *
+Seat assignments, special meals, frequent flyer point awards and special assistance requests should be confirmed directly with the airline.        </td>
+    </tr>
+    <div >
+<tr>
+    <td >
+        <strong>
+        21 Feb 2015
+        </strong> -
+Departure            <span>
+Direct    </td>
+        <td>
+Total travel time:3 h 35 m
+        </td>
+</tr>
+<tr>
+<td >
+    <table>
+    <tr>
+    <td  >
+            <img src="http://images.trvl-media.com/media/content/expus/graphics/static_content/fusion/v0.1b/images/airlines/smPC.GIF">
+    </td>
+    <td >London</td>
+    <td >Istanbul</td>
+    <td >
+          3 h 35 m
+<br/>
+    </td>
+</tr>
+<tr>
+    <td >
+        STN&nbsp;
+            13:10
+    </td>
+    <td >
+        SAW&nbsp;
+            18:45
+            &nbsp;
+    </td>
+    <td >&nbsp;</td>
+</tr>
+    <tr>
+        <td >
+        Pegasus Airlines&nbsp; 502
+        </td>
+    </tr>
+    <tr>
+        <td >
+            Economy / Coach
+            (V)
+            <span> | </span>
+                <span>
+                        Confirm seats with the airline
+                    *
+                </span>
+        </td>
+    </tr>
+    </table>
+<tr>
+    <td >
+        <strong>
+        23 Feb 2015
+        </strong> -
+Return            <span>
+Direct    </td>
+        <td>
+Total travel time:2 h 0 m
+        </td>
+</tr>
+<tr>
+<td >
+    <table>
+    <tr>
+    <td  >
+            <img src="http://images.trvl-media.com/media/content/expus/graphics/static_content/fusion/v0.1b/images/airlines/smPC.GIF">
+    </td>
+    <td >Istanbul</td>
+    <td >Tel Aviv</td>
+    <td >
+          2 h 0 m
+<br/>
+    </td>
+</tr>
+<tr>
+    <td >
+        SAW&nbsp;
+            21:20
+    </td>
+    <td >
+        TLV&nbsp;
+            23:20
+            &nbsp;
+    </td>
+    <td >&nbsp;</td>
+</tr>
+    <tr>
+        <td >
+        Pegasus Airlines&nbsp; 779
+        </td>
+    </tr>
+    <tr>
+        <td >
+            Economy / Coach
+            (V)
+            <span> | </span>
+                <span>
+                        Confirm seats with the airline
+                    *
+                </span>
+        </td>
+    </tr>
+    </table>
+    </div>
+    <tr>
+        <td >
+Airline Rules & Regulations        </td>
+    </tr>
+    <tr>
+        <td >
+            <ul>
+                    <li>This price includes a non-refundable administration fee.</li>
+							<li >We understand that sometimes plans change. We do not charge a cancel or change fee. When the airline charges such fees in accordance with its own policies, the cost will be passed on to you.</li>
+                        <li >
+                            <strong>Tickets are non-refundable, non transferable and name changes are not allowed.</strong>
+                        </li>
+                    <li >Please read the <a href="https://www.example.org/">complete penalty rules for changes and cancellations <span>(Opens a new window) </span> </a> applicable to this fare.</li>
+                    <li >Please read important information regarding <a href="https://www.example.org/">airline liability limitations <span >(Opens a new window) </span> </a>.</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td >&nbsp;</td>
+<td >
+<table>
+    <tr>
+        <td>
+            <table
+             >
+                <tr>
+                   <td>
+Price Summary                   </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+  <tr>
+    <td >
+        <strong>Traveller 1:
+            <span data-value="Adult">Adult
+        </strong>
+    </td>
+    <td >&nbsp;</td>
+    <td >
+        <strong>£90.00  </strong>
+    </td>
+  </tr>
+  <tr>
+    <td >
+Flight    </td>
+    <td >&nbsp;</td>
+    <td >
+        £30.00
+    </td>
+  </tr>
+  <tr>
+    <td >
+Taxes &amp; Airline Fees    <td >&nbsp;</td>
+    <td >
+           £60.00
+    </td>
+  </tr>
+                    </td>
+                </tr>
+   </table>
+  </td>
+</tr>
+  <tr>
+      <td >
+Total:          <span>
+                         £90.00
+          </span>
+      </td>
+  </tr>
+                <tr>
+                    <td >
+All prices quoted in British pounds sterling.                    </td>
+                </tr>
+        </table>
+    </td>
+</body>
+</html>
