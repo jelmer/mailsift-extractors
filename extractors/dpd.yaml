@@ -3,7 +3,7 @@ order: 50
 from_domains:
   - dpd.co.uk
   - "*.dpd.co.uk"
-subject_regex: "(?i)expecting your.*parcel|will be delivered today|parcel is on its way"
+subject_regex: "(?i)expecting your.*parcel|will be delivered today|parcel is on its way|parcel has been delivered"
 requires:
   - html
 require_dkim:

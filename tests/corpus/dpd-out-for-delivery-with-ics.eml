@@ -1,0 +1,30 @@
+Authentication-Results: example.org; dkim=pass header.d=dpd.co.uk header.i=@dpd.co.uk
+From: IKEA <yourdelivery@dpd.co.uk>
+To: test@example.org
+Subject: Your IKEA order will be delivered today between 13:40 - 14:40
+Date: Mon, 09 Feb 2026 09:02:25 +0000
+Message-ID: <dpd-test@dpd.co.uk>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY"
+
+--BOUNDARY
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>We will deliver your IKEA parcel on an all-electric vehicle TODAY 9th February 2026 between 13:40 - 14:40</p>
+<p>Your parcel: 1500 0000 000 000</p>
+</body></html>
+
+--BOUNDARY
+Content-Disposition: attachment; filename="DPD Delivery.ics"
+Content-Transfer-Encoding: base64
+Content-Type: text/calendar; name="DPD Delivery.ics"
+
+QkVHSU46VkNBTEVOREFSClZFUlNJT046Mi4wClBST0RJRDotLy9EUERncm91cFVLLy8vTk9OU0dN
+TCB2MS4wLy9FTgpCRUdJTjpWRVZFTlQKVUlEOjIwMjYwMjA5VDA5MDIyNS15b3VyZGVsaXZlcnlA
+ZHBkLmNvLnVrCkRUU1RBTVA6MjAyNjAyMDlUMDkwMjI1CkxPQ0FUSU9OOjEgRXhhbXBsZSBTdHJl
+ZXQsIEZsYXQgMiwgQ2FtYnJpZGdlLCBDQjEgMkFCCkRFU0NSSVBUSU9OOklLRUEKU1VNTUFSWTpE
+UEQgRGVsaXZlcnkKRFRTVEFSVDoyMDI2MDIwOVQxMzQwMDAKRFRFTkQ6MjAyNjAyMDlUMTQ0MDAw
+CkVORDpWRVZFTlQKRU5EOlZDQUxFTkRBUgo=
+
+--BOUNDARY--

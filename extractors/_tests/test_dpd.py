@@ -32,3 +32,32 @@ def test_out_for_delivery_today(run_extractor):
         "expectedArrivalFrom": "2026-02-09T13:40:00",
         "expectedArrivalUntil": "2026-02-09T14:40:00",
     }
+
+
+def test_out_for_delivery_takes_the_postcode_from_the_ics(run_extractor):
+    out = run_extractor("dpd", "dpd-out-for-delivery-with-ics.eml")
+    assert out == {
+        "dpd-15000000000000.parcel.json": {
+            "@context": "https://schema.org",
+            "@type": "ParcelDelivery",
+            "trackingNumber": "15000000000000",
+            "provider": {"@type": "Organization", "@id": "dpd", "name": "DPD"},
+            "deliveryStatus": "OutForDelivery",
+            "deliveryPostalCode": "CB1 2AB",
+            "expectedArrivalFrom": "2026-02-09T13:40:00",
+            "expectedArrivalUntil": "2026-02-09T14:40:00",
+        }
+    }
+
+
+def test_delivered(run_extractor):
+    out = run_extractor("dpd", "dpd-delivered.eml")
+    assert out == {
+        "dpd-15000000000000.parcel.json": {
+            "@context": "https://schema.org",
+            "@type": "ParcelDelivery",
+            "trackingNumber": "15000000000000",
+            "provider": {"@type": "Organization", "@id": "dpd", "name": "DPD"},
+            "deliveryStatus": "Delivered",
+        }
+    }
