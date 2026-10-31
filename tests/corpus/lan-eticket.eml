@@ -1,0 +1,55 @@
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of op-000000000-20140818@mb.lan.com designates 192.0.2.3 as permitted sender) smtp.mail=op-000000000-20140818@mb.lan.com
+MIME-Version: 1.0
+Date: Mon, 18 Aug 2014 02:43:11 +0000
+From: LAN.com <sales@bo.lan.com>
+To: test@example.org
+Subject: E-Ticket Confirmation
+Content-Type: text/html
+Content-Transfer-Encoding: 8bit
+
+<table width="600" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+            	<table width="584" border="0" cellpadding="0" cellspacing="0">
+   	  <tr>
+						<td width="380" style="text-align: center;">
+                        <p><strong>Your reservation code is:</strong></p>
+                        <span><strong>AAAAAA</strong></span><br>
+                        <p><strong>&iexcl;Don't forget web Check-in* at LAN.com!</strong><br>
+Between 48 and 2 hours before your flight, <br>choose your seat and save time at the airport!<br>
+<p>*Available only on flights operated by LAN</p></p></td>
+<td width="204" style="text-align: left; padding:0 15px;">
+            <p><strong>Details</strong></p>
+                        <p><strong>Passengers</strong></p><span>Test User<br></span>
+                        <p><strong>Total Fare</strong></p><span><strong>&pound; 100.00</strong></span>&nbsp;<span>(GBP)</span></td>
+                  </tr>
+                </table>
+          </td>
+		</tr>
+		<tr>
+			<td>
+<h4>Itinerary</h4>
+<table id="id_tabla_itinerario" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="font-weight: normal; padding: 4px 0 5px 5px; border-right: 1px solid #ccc;">Wednesday 07 january 2015&nbsp;</td>
+    <td style="font-weight: normal; padding: 4px 0 5px 5px;"><strong>13:15</strong></td>
+    <td style="font-weight: normal; padding: 4px 0 5px 5px; border-right: 1px solid #ccc;">Juliaca (JUL)</td>
+    <td style="font-weight: normal; padding: 4px 0 5px 5px;"><strong>14:55</strong> <strong></strong></td>
+    <td style="font-weight: normal; padding: 4px 0 5px 5px; border-right: 1px solid #ccc;">Lima (LIM)</td>
+    <td style="font-weight: normal; padding: 4px 0 5px 5px; border-right: 1px solid #ccc;">LA2096<br>
+      <br>Operated by Lan Peru   </td>
+    <td style="font-weight: normal; padding: 4px 0 5px 5px; border-right: 1px solid #ccc;">Economy-L
+    </td>
+    <td style="font-weight: normal; padding: 4px 0 5px 5px;">
+
+Maximum 2 pieces which weigh 23 kg <strong>in total</strong>
+ </td>
+  </tr>
+</table>
+            </td>
+		</tr>
+		<tr>
+			<td>&copy; 2014 LATAM AIRLINES GROUP S.A. - All Rights Reserved</td>
+		</tr>
+</table>
