@@ -1,0 +1,168 @@
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of reservation@bravofly.com designates 62.212.75.184 as permitted sender) smtp.mail=reservation@bravofly.com
+Date: Tue, 5 May 2015 03:57:56 +0200 (CEST)
+From: reservation@bravofly.com
+To: test@example.org
+Subject: Confirmation of your flight reservation London - Tokyo, ID BOOKING
+ 100000000
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Conferma prenotazione volo 100000000</title>
+  </head>
+  <body>
+<table width="560" border="0" cellspacing="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;">
+  <tr>
+    <td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;">Dear Test User,<br><br>
+
+This is to thank you for taking advantage of our services and confirm to you that your flight has been successfully booked.</td>
+  </tr>
+  <tr>
+    <td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;">Should you need further information or wish to communicate any changes in your circumstances, please contact our Customer helpline. When calling, our operator will ask you to provide your Booking Identification Reference (ID Booking), which for you is: <span id="" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#1A70AE; font-weight:bold;">100000000</span></td>
+  </tr>
+  <tr>
+    <td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;">This confirmation e-mail is your electronic ticket: below, you will find details of the flight, the booking codes (PNR) and other important information you must keep safe. Please print the e-mail and take it with you to the airport.</td>
+  </tr>
+</table>
+  <table width="560" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="35" bgcolor="#EEF4F9">
+        <table width="560" border="0" cellspacing="0" cellpadding="0" height="35">
+          <tr>
+            <td><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#1A70AE; font-weight:bold; text-transform:uppercase; font-weight:bold; vertical-align:middle;">TRAVELERS EXTRA SERVICES PURCHASED</span></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+              <tr>
+                <td>
+                  <!--passeggero-->
+                  <table width="560" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td><span id="" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000; font-weight:bold;">Adult: Test User</span><span id="" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;"> Date of birth 01/01/1980</span></td>
+                    </tr>
+  <tr>
+    <td  style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;"><span id="" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;"> Electronic ticket number (e-tkt): 2050000000000</span></td>
+  </tr>
+                  </table>
+                  <!--/passeggero-->
+                </td>
+              </tr>
+  </table>
+<table width="560" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="25" bgcolor="#EEF4F9"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#1A70AE; font-weight:bold; text-transform:uppercase; font-weight:bold;vertical-align:middle;">FLIGHT SCHEDULE</span></td>
+  </tr>
+</table>
+<table width="560" border="0" cellspacing="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;">
+     <!-- IF di controllo treni -->
+      <tr>
+        <td>
+          <table width="560" border="0" cellspacing="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;">
+          <!--#if (multiFlight)-->
+            <tr>
+              <td>
+                <table width="560" border="0" cellspacing="0" cellpadding="0">
+	                 <tr>
+        	           <td>
+            	         <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">
+          		          	Reservation Number (PNR) : ABC123  - Use this number to check-in online
+          			  </span>
+                       </td>
+                  	</tr>
+                    <tr>
+                      <td>
+                        <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">
+                          	Booking System Code : ZZZZZZ
+                        </span>
+                      </td>
+                    </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table width="558" border="0" cellspacing="0" cellpadding="3" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333; text-align:left; border:1px solid #666;">
+                  <tr>
+                    <td width="15" height="20" bgcolor="#EEF4F9" style="border:1px solid #666;">&nbsp;</td>
+                    <td width="95" height="20" bgcolor="#EEF4F9" style="border:1px solid #666;">Date</td>
+                    <td width="85" height="20" bgcolor="#EEF4F9" style="border:1px solid #666;">Airline</td>
+                    <td width="80" height="20" bgcolor="#EEF4F9" style="border:1px solid #666;">Flight number</td>
+                    <td width="140" bgcolor="#EEF4F9" height="20" style="border:1px solid #666;">Departure</td>
+                    <td bgcolor="#EEF4F9" width="140"  height="20" style="border:1px solid #666;">Arrival</td>
+                  </tr>
+
+
+          <!--#list flight.mailBookingLegs as leg-->
+
+                  <tr>
+                    <td rowspan="2" style="border:1px solid #666;"><strong>O</strong> </td>
+                    <td style="border:1px solid #666;">Sat 25/07/2015</td>
+                    <td style="border:1px solid #666;">
+                      Lufthansa
+                    </td>
+                    <td style="border:1px solid #666;">
+                      <span>LH 0905</span> <br>
+                      <span>Economy</span>
+                    </td>
+                    <td style="border:1px solid #666;">11:30 London Heathrow </td>
+                    <td style="border:1px solid #666;">14:05 Frankfurt Int. </td>
+                  </tr>
+
+                  <tr>
+                    <td style="border:1px solid #666;">Sat 25/07/2015</td>
+                    <td style="border:1px solid #666;">
+                      Lufthansa
+                    </td>
+                    <td style="border:1px solid #666;">
+                      <span>LH 0716</span> <br>
+                      <span>Economy</span>
+                    </td>
+                    <td style="border:1px solid #666;">18:05 Frankfurt Int. </td>
+                    <td style="border:1px solid #666;">12:15 Tokyo Haneda </td>
+                  </tr>
+
+          <!--#list flight.mailBookingLegs as leg-->
+
+                  <tr>
+                    <td rowspan="1" style="border:1px solid #666;"><strong>R</strong> </td>
+                    <td style="border:1px solid #666;">Sun 16/08/2015</td>
+                    <td style="border:1px solid #666;">
+                      ANA
+                    </td>
+                    <td style="border:1px solid #666;">
+                      <span>NH 0211</span> <br>
+                      <span>Economy</span>
+                    </td>
+                    <td style="border:1px solid #666;">11:40 Tokyo Haneda </td>
+                    <td style="border:1px solid #666;">16:10 London Heathrow </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+</table>
+<table width="560" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;">
+      The amount debited on your credit card is <span id="" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#1A70AE;">800.00 GBP</span>, inclusive of the cost of flights and administrative fees.
+    </td>
+  </tr>
+  <tr>
+    <td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;">
+Thank you again for choosing us and we hope to serve you again soon.
+Have a good trip!
+Customer Care Team
+Bravofly Rumbo Group
+    </td>
+  </tr>
+</table>
+  </body>
+</html>
