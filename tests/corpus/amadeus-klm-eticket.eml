@@ -1,0 +1,334 @@
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of emailserver@pop3.amadeus.net designates 192.0.2.1 as permitted sender) smtp.mail=emailserver@pop3.amadeus.net
+From: "KLM EBT NETHERLANDS          (AGENTID00000000)" <emailserver@pop3.amadeus.net>
+To: test@example.org
+Subject: KLM e-Ticket 17 Dec Amsterdam Lima 
+Date: Tue, 05 Aug 2014 22:18:24 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: 8bit
+
+<body bgcolor="#FFFFFF"><B><FONT FACE="Arial" SIZE=5 COLOR="#0000ff"><P ALIGN="CENTER">KLM e-Ticket 17 Dec Amsterdam Lima </P></FONT></B><FONT FACE="Courier New" SIZE=3><PRE><hr>This document is automatically generated.
+Please do not respond to this mail.
+   
+<!-------------------------------------------------------------------
+E-TICKET
+PASSENGER NAME :
+BOOKING CODE   :
+E-TICKET NUMBER:
+ 
+If this mail is not in readable format, please view & print your travel
+itinerary here: 
+ 
+ 
+ 
+ 
+--------------------------------------------------------------------->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD><TITLE>WWW.KLM.COM</TITLE></HEAD>
+<BODY>
+<TABLE WIDTH="600"
+STYLE="
+WIDTH: 600PX;
+BACKGROUND: WHITE;
+COLOR: 000066;
+FONT-SIZE: 10PT;
+FONT-FAMILY: ARIAL,HELVETICA,VERDANA,SANS-SERIF;
+">
+<FONT FACE="ARIAL">
+<TABLE WIDTH="600" CELLPADDING="0"
+STYLE="FONT-SIZE: 10PT;    WIDTH: 600PX;
+BORDER-BOTTOM:9PX SOLID E1F3FF;">
+<TR>
+<TD WIDTH="600" STYLE="WIDTH:600PX">
+<IMG
+ STYLE="BACKGROUND: E1F3FF;"
+SRC="HTTP://CONTENT.AMADEUS.COM/CL/KL0LOGO2H.JPG">
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="600"
+STYLE="FONT-SIZE: 10PT;
+WIDTH: 600PX;
+BACKGROUND: WHITE;
+COLOR: #00248F;
+BORDER: 10PX SOLID #E1F3FF;">
+<TR>
+<TD STYLE="TEXT-ALIGN: LEFT; COLOR: #00248F;">
+<SPAN STYLE="FONT-WEIGHT: BOLD; ">
+Booking code: 
+ 
+ 
+AB1CDE
+<BR>
+E-ticket issue date: 
+ 
+ 
+<BR>
+Issued by:
+KLM EBT NETHERLANDS  <BR>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+KLM RESERVATIONS<BR>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+AMSTERDAM
+</SPAN>
+<BR>
+<BR>
+Thank you for choosing  KLM
+<STRONG>E-ticket</STRONG>.
+This is the itinerary and receipt
+for <STRONG>TEST MR USER</STRONG>.
+<BR>
+<BR>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+If unable to use the e-ticket, if
+travel plans change or if you received this document in error, please call
+AF/KLM at: 
+<STRONG>+31 200000000</STRONG>
+ 
+ 
+ 
+ 
+ 
+ 
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="600"
+STYLE="
+WIDTH: 600PX;
+BACKGROUND: #E1F3FF;
+COLOR: #00248F;
+FONT-SIZE: 10PT;
+BORDER: 10PX SOLID #E1F3FF;">
+<TR>
+<TD COLSPAN="3"
+STYLE="
+BACKGROUND: #E1F3FF;
+COLOR: #00248F;
+FONT-SIZE: 12PT;
+FONT-WEIGHT: BOLD;">
+Passenger Information<ecase>
+ 
+ 
+</Td>
+</Tr>
+<Tr>
+<Td Width="200" Style="
+Width: 200Px;
+Background: White;
+Font-weight: Bold;">
+Passenger Name
+</TD>
+<TD WIDTH="200" STYLE="
+WIDTH: 200PX;
+BACKGROUND: WHITE;
+FONT-WEIGHT: BOLD;">
+E-ticket number
+ 
+</TD>
+<TD WIDTH="200" STYLE="
+WIDTH: 200PX;
+BACKGROUND: WHITE;
+FONT-WEIGHT: BOLD;">
+Number loyalty program
+ 
+ 
+</TD>
+</TR>
+<TR>
+<TD WIDTH="200" STYLE="WIDTH:200PX; BACKGROUND: WHITE;">
+TEST MR USER
+</TD>
+<TD WIDTH="200" STYLE="WIDTH:200PX; BACKGROUND: WHITE;">
+074 0000000001
+</TD>
+<TD WIDTH="200" STYLE="WIDTH:200PX; BACKGROUND: WHITE;">
+KL0000000000
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="600"
+STYLE="
+WIDTH: 600PX;
+BACKGROUND: #E1F3FF;
+COLOR: #00248F;
+FONT-SIZE: 10PT;
+BORDER: 10PX SOLID #E1F3FF;">
+<TR>
+<TD COLSPAN="7"
+STYLE="
+BACKGROUND: #E1F3FF;
+COLOR: #00248F;
+FONT-SIZE: 12PT;
+FONT-WEIGHT: BOLD;">
+Itinerary Information
+ 
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Date
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Flight
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Departing
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Arriving
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Date
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Class
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Baggage
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="">
+17DEC
+</TD>
+<TD STYLE="">
+KL 0743
+</TD>
+<TD STYLE="">
+AMSTERDAM
+</TD>
+<TD STYLE="">
+LIMA
+</TD>
+<TD STYLE="">
+17DEC
+</TD>
+<TD STYLE="">
+N
+</TD>
+<TD STYLE="">
+1PC
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="">
+12:25
+</TD>
+<TD STYLE="">
+ 
+</TD>
+<TD STYLE="">
+AMS
+</TD>
+<TD STYLE="">
+LIM
+</TD>
+<TD STYLE="">
+19:15
+</TD>
+<TD STYLE="">
+ 
+</TD>
+<TD STYLE="">
+ 
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="">
+07JAN
+</TD>
+<TD STYLE="">
+KL 0744
+</TD>
+<TD STYLE="">
+LIMA
+</TD>
+<TD STYLE="">
+AMSTERDAM
+</TD>
+<TD STYLE="">
+08JAN
+</TD>
+<TD STYLE="">
+N
+</TD>
+<TD STYLE="">
+1PC
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="">
+21:15
+</TD>
+<TD STYLE="">
+ 
+</TD>
+<TD STYLE="">
+LIM
+</TD>
+<TD STYLE="">
+AMS
+</TD>
+<TD STYLE="">
+15:30
+</TD>
+<TD STYLE="">
+ 
+</TD>
+<TD STYLE="">
+ 
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="600" STYLE="FONT-SIZE: 8PT; BACKGROUND: WHITE; COLOR: #00248F;
+BORDER: 10PX SOLID #E1F3FF;">
+<TR><TD>
+When "0 pc" is stated as baggage allowance on the ticket, 
+Flying Blue Ivory members,  
+BlueBiz members and contracted corporate
+accounts (who have entered their membership number or account-code in
+their reservation), are entitled to carry 1 piece of check-in baggage free of
+charge. 
+Flying Blue Platinum, 
+Gold and Silver members are entitled to carry 2 pieces
+of check-in baggage free of charge.  
+ </TD>
+  </TR>
+</TABLE>
+<TABLE WIDTH="600"
+STYLE="FONT-SIZE: 10PT;
+WIDTH: 600PX;
+BACKGROUND: WHITE;
+COLOR: 00248F;
+BORDER: 10PX SOLID #E1F3FF;">
+<TR STYLE="BACKGROUND: WHITE; COLOR: #00248F;">
+<TD COLSPAN="7">
+17DEC KL 0743  /STATUS: OK
+/NOT VALID BEFORE 17DEC /NOT VALID AFTER 17DEC </TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE; COLOR: #00248F;">
+<TD COLSPAN="7">
+07JAN KL 0744  /STATUS: OK
+/NOT VALID BEFORE 07JAN /NOT VALID AFTER 07JAN </TD>
+</TR>
+</TABLE>
+</TABLE>
+<hr></PRE></FONT></body>

@@ -1,0 +1,329 @@
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of emailserver@pop3.amadeus.net designates 192.0.2.1 as permitted sender) smtp.mail=emailserver@pop3.amadeus.net
+From: "KLM EBT NETHERLANDS          (AGENTID00000000)" <emailserver@pop3.amadeus.net>
+To: test@example.org
+Subject: KLM e-Ticket 19 Okt Amsterdam San Francisco <Eccase
+Date: Mon, 08 Oct 2012 19:46:48 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: 8bit
+
+<body bgcolor="#FFFFFF"><B><FONT FACE="Arial" SIZE=5 COLOR="#0000ff"><P ALIGN="CENTER">KLM e-Ticket 19 Okt Amsterdam San Francisco <Eccase</P></FONT></B><FONT FACE="Courier New" SIZE=3><PRE><hr>This document is automatically generated.
+Please do not respond to this mail.
+   
+<!-------------------------------------------------------------------
+E-TICKET
+PASSENGER NAME :
+BOOKING CODE   :
+E-TICKET NUMBER:
+ 
+If this mail is not in readable format, please view & print your travel
+itinerary here: 
+ 
+ 
+ 
+ 
+--------------------------------------------------------------------->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD><TITLE>WWW.KLM.COM</TITLE></HEAD>
+<BODY>
+<TABLE WIDTH="600"
+STYLE="
+WIDTH: 600PX;
+BACKGROUND: WHITE;
+COLOR: 000066;
+FONT-SIZE: 10PT;
+FONT-FAMILY: ARIAL,HELVETICA,VERDANA,SANS-SERIF;
+">
+<FONT FACE="ARIAL">
+<TABLE WIDTH="600" CELLPADDING="0"
+STYLE="FONT-SIZE: 10PT;    WIDTH: 600PX;
+BORDER-BOTTOM:9PX SOLID E1F3FF;">
+<TR>
+<TD WIDTH="600" STYLE="WIDTH:600PX">
+<IMG
+ STYLE="BACKGROUND: E1F3FF;"
+SRC="HTTP://CONTENT.AMADEUS.COM/CL/KL0LOGO2H.JPG">
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="600"
+STYLE="FONT-SIZE: 10PT;
+WIDTH: 600PX;
+BACKGROUND: WHITE;
+COLOR: #00248F;
+BORDER: 10PX SOLID #E1F3FF;">
+<TR>
+<TD STYLE="TEXT-ALIGN: LEFT; COLOR: #00248F;">
+<SPAN STYLE="FONT-WEIGHT: BOLD; ">
+Boekingscode:
+ 
+ 
+FG2HIJ
+<BR>
+Uitgiftedatum e-ticket:
+ 
+ 
+<BR>
+Uitgegeven door:
+KLM EBT NETHERLANDS  <BR>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+CYGNIFIC E-DESK<BR>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+AMSTERDAM
+</SPAN>
+<BR>
+<BR>
+Bedankt dat u een 
+<STRONG>E-ticket</strong>
+van KLM
+heeft gekozen. 
+Dit
+is het reisschema en betalingsbewijs voor 
+<STRONG>TEST MR USER</STRONG>.
+<BR>
+<BR>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Indien 
+U verhinderd bent het e-ticket te
+gebruiken, indien uw reisplannen wijzigen of u dit document per vergissing
+heeft ontvangen, bel dan met AF/KLM
+op: 
+<STRONG>+31 200000000</STRONG>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="600"
+STYLE="
+WIDTH: 600PX;
+BACKGROUND: #E1F3FF;
+COLOR: #00248F;
+FONT-SIZE: 10PT;
+BORDER: 10PX SOLID #E1F3FF;">
+<TR>
+<TD COLSPAN="3"
+STYLE="
+BACKGROUND: #E1F3FF;
+COLOR: #00248F;
+FONT-SIZE: 12PT;
+FONT-WEIGHT: BOLD;">
+PassagierInformatie
+ 
+ 
+</TD>
+</TR>
+<TR>
+<TD WIDTH="200" STYLE="
+WIDTH: 200PX;
+BACKGROUND: WHITE;
+FONT-WEIGHT: BOLD;">
+Naam passagier
+</TD>
+<TD WIDTH="200" STYLE="
+WIDTH: 200PX;
+BACKGROUND: WHITE;
+FONT-WEIGHT: BOLD;">
+E-ticketnummer           
+ 
+</TD>
+<TD WIDTH="200" STYLE="
+WIDTH: 200PX;
+BACKGROUND: WHITE;
+FONT-WEIGHT: BOLD;">
+Nummer loyaliteits programma  
+ 
+ 
+</TD>
+</TR>
+<TR>
+<TD WIDTH="200" STYLE="WIDTH:200PX; BACKGROUND: WHITE;">
+TEST MR USER
+</TD>
+<TD WIDTH="200" STYLE="WIDTH:200PX; BACKGROUND: WHITE;">
+074 0000000002
+</TD>
+<TD WIDTH="200" STYLE="WIDTH:200PX; BACKGROUND: WHITE;">
+KL0000000000
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="600"
+STYLE="
+WIDTH: 600PX;
+BACKGROUND: #E1F3FF;
+COLOR: #00248F;
+FONT-SIZE: 10PT;
+BORDER: 10PX SOLID #E1F3FF;">
+<TR>
+<TD COLSPAN="7"
+STYLE="
+BACKGROUND: #E1F3FF;
+COLOR: #00248F;
+FONT-SIZE: 12PT;
+FONT-WEIGHT: BOLD;">
+Reisinformatie                              
+ 
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Datum         
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Vlucht                   
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Vertrek                  
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Aankomst                 
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Datum         
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Klasse                   
+</TD>
+<TD STYLE="
+FONT-WEIGHT: BOLD;">
+Bagage                   
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="">
+19OKT
+</TD>
+<TD STYLE="">
+KL 0605
+</TD>
+<TD STYLE="">
+AMSTERDAM
+</TD>
+<TD STYLE="">
+SAN FRANCISCO
+</TD>
+<TD STYLE="">
+19OKT
+</TD>
+<TD STYLE="">
+N
+</TD>
+<TD STYLE="">
+1PC
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="">
+09:50
+</TD>
+<TD STYLE="">
+ 
+</TD>
+<TD STYLE="">
+AMS
+</TD>
+<TD STYLE="">
+SFO
+</TD>
+<TD STYLE="">
+11:50
+</TD>
+<TD STYLE="">
+ 
+</TD>
+<TD STYLE="">
+ 
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="">
+22OKT
+</TD>
+<TD STYLE="">
+KL 0606
+</TD>
+<TD STYLE="">
+SAN FRANCISCO
+</TD>
+<TD STYLE="">
+AMSTERDAM
+</TD>
+<TD STYLE="">
+23OKT
+</TD>
+<TD STYLE="">
+N
+</TD>
+<TD STYLE="">
+1PC
+</TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE;">
+<TD STYLE="">
+14:00
+</TD>
+<TD STYLE="">
+ 
+</TD>
+<TD STYLE="">
+SFO
+</TD>
+<TD STYLE="">
+AMS
+</TD>
+<TD STYLE="">
+09:15
+</TD>
+<TD STYLE="">
+ 
+</TD>
+<TD STYLE="">
+ 
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="600"
+STYLE="FONT-SIZE: 10PT;
+WIDTH: 600PX;
+BACKGROUND: WHITE;
+COLOR: 00248F;
+BORDER: 10PX SOLID #E1F3FF;">
+<TR STYLE="BACKGROUND: WHITE; COLOR: #00248F;">
+<TD COLSPAN="7">
+19OKT KL 0605  /STATUS: OK
+/NOT VALID BEFORE 19OCT /NOT VALID AFTER 19OCT </TD>
+</TR>
+<TR STYLE="BACKGROUND: WHITE; COLOR: #00248F;">
+<TD COLSPAN="7">
+22OKT KL 0606  /STATUS: OK
+/NOT VALID BEFORE 22OCT /NOT VALID AFTER 22OCT </TD>
+</TR>
+</TABLE>
+</TABLE>
+<hr></PRE></FONT></body>

@@ -1,0 +1,214 @@
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of tdsfndprd@amadeus.com designates 192.0.2.1 as permitted sender) smtp.mailfrom=tdsfndprd@amadeus.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=amadeus.com
+From: =?UTF-8?B?IlRyYXZlbCBEb2N1bWVudCI=?= <itinerary@amadeus.com>
+TO: TEST@EXAMPLE.ORG
+Subject: USER/TEST 31JAN2018 SYD CAN
+Date: Wed, 17 Jan 2018 06:47:44 +0000
+Content-Type: multipart/related;
+	boundary="----=_Part_0000000_0000000000.0000000000000"
+MIME-Version: 1.0
+
+------=_Part_0000000_0000000000.0000000000000
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+<head>
+<style media=screen type="text/css">
+div.Navig { visibility: visible }
+</style>
+<style media=print type="text/css">
+div.Navig { visibility: hidden }</style><title>CustomizeIt</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="autor" content=""></head><body bgcolor="FFFFFF" leftmargin="37" style="font-size:0px">
+<meta name="creator" content="Amadeus">
+<meta name="creation date" content="Mon Jan 10 17:00:17 GMT 2011"></head>
+<body bgcolor="FFFFFF" leftmargin="37" >
+<center>
+<div align="left">
+<table width="718" cellpadding="0" cellspacing="0" border="0" style="padding-left:0; padding-right:0; padding-top:1; padding-bottom:1; table-layout:fixed; word-wrap:break-word;"><tr><td width="7"></td>
+<td width="13"></td>
+<td width="35"></td>
+<td width="34"></td>
+<td width="78"></td>
+<td width="3"></td>
+<td width="100"></td>
+<td width="70"></td>
+<td width="10"></td>
+<td width="4"></td>
+<td width="40"></td>
+<td width="31"></td>
+<td width="16"></td>
+<td width="29"></td>
+<td width="10"></td>
+<td width="79"></td>
+<td width="49"></td>
+<td width="3"></td>
+<td width="85"></td>
+<td width="22"></td>
+</tr>
+<tr><td valign=top bgcolor="#2B376E" colspan="9" rowspan="2"><div style="width:350;height:58"><div style="font-size:21px;font-family:Arial;color:#FCFFF5">Your trip</div></div></td>
+<td valign=top bgcolor="#2B376E"></td>
+<td valign=top bgcolor="#2B376E" colspan="5"><p ><span style="font-family:Arial; font-size:13.3px; color:#FCFFF5">Booking ref:</span></p></td>
+<td valign=top bgcolor="#2B376E" colspan="2"><p ><span style="font-family:Arial; font-size:13.3px; font-weight:bold; color:#FCFFF5">KL3MNO</span></p></td>
+<td valign=top bgcolor="#2B376E" colspan="3"><div style="width:108;height:16"><a style="font-size:12px;font-family:Arial;color:#FCFFF5" href="http://www.checkmytrip.com/US/retrieve/KL3MNO/USER">Check My Trip </a></div></td>
+</tr>
+<tr><td valign=top bgcolor="#2B376E"></td>
+<td valign=top bgcolor="#2B376E" colspan="5"><p ><span style="font-family:Arial; font-size:13.3px; color:#FCFFF5">Issued date:</span></p></td>
+<td valign=top bgcolor="#2B376E" colspan="3"><p ><span style="font-family:Arial; font-size:13.3px; font-weight:bold; color:#FCFFF5">17 January 2018</span></p></td>
+<td valign=top bgcolor="#2B376E" colspan="2"></td>
+</tr>
+<tr><td valign=top bgcolor="#B6BBBD" colspan="4"><p ><span style="font-family:Arial; font-size:13.3px; color:#2B376E">Traveler</span></p></td>
+<td valign=top bgcolor="#B6BBBD" colspan="5"><p ><span style="font-family:Arial; font-size:13.3px; font-weight:bold; color:#2B376E">Test User</span></p></td>
+<td valign=top bgcolor="#B6BBBD"></td>
+<td valign=top bgcolor="#B6BBBD" colspan="4"><p ><span style="font-family:Arial; font-size:13.3px; color:#2B376E">Agency</span></p></td>
+<td valign=top bgcolor="#B6BBBD" colspan="6"><div style="width:248;height:16"><div style ="font-size:12px;font-family:Arial;font-weight:bold;color:#2B376E">EXAMPLE TRAVEL</div></div></td>
+</tr>
+<tr><td valign=top colspan="20"><p ><span style="font-family:Arial; font-size:5.3px; color:#FFFFFF">.</span></p></td>
+</tr>
+<tr><td valign=top colspan="13"><p ><span style="font-family:Arial; font-size:14.6px; color:#2B376E">Wednesday 31 January 2018</span></p></td>
+<td valign=top colspan="7"></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:13.3px; font-weight:bold; color:#2B376E">China Southern Airlines CZ 302</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="12"></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0"><div style="width:78;height:18"><div style ="font-size:10.6px;line-height:1.4;font-family:Arial;font-weight:bold;color:#2B376E">Departure</div></div></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"><div style="width:172;height:18"><div style ="font-size:10.6px;line-height:1.4;font-family:Arial;font-weight:bold;color:#2B376E">31 January 10:15 PM</div></div></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="6"><div style="width:205;height:18"><div style ="font-size:10.6px;line-height:1.4;font-weight:bold;font-family:Arial;color:#2B376E"> Sydney, (Kingsford Smith) <a style="line-height:1.4;text-decoration:none;font-weight:normal;font-size:10.6px;color:#2B376E" href="https://www.checkmytrip.com/triptools/SYD">(+)</a></div></div></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4" rowspan="2"><div style="width:158;height:18"><div style="font-size:10.6px;font-family:Arial;line-height:1.4;font-weight:bold;color:#2B376E">Terminal: 1</div></div></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" rowspan="2"><div style="width:35;height:36"><a href="HTTP://WWW.CSAIR.COM/EN/"><IMG style="border-style: none"  SRC= "https://www.mrs.amadeus.net/1ASIHMRSEXT/mrspvd/urln/1A/ADTD/IMAGE/pvd-airline-CZ-36.png?" /></a></div></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0"><div style="width:78;height:18"><div style ="font-size:10.6px;line-height:1.4;font-weight:bold;font-family:Arial;color:#2B376E">Arrival</div></div></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"><div style="width:172;height:18"><div style ="font-size:10.6px;line-height:1.4;font-weight:bold;font-family:Arial;color:#2B376E">01 February 05:00 AM</div></div></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="6"><div style="width:205;height:18"><div style ="font-size:10.6px;line-height:1.4;font-weight:bold;font-family:Arial;color:#2B376E">Guangzhou, (Baiyun Intl) <a style="line-height:1.4;text-decoration:none;font-weight:normal;font-size:10.6px;color:#2B376E" href="https://www.checkmytrip.com/triptools/CAN">(+)</a></div></div></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Duration</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">09:45 (Non stop)</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2" rowspan="2"><div style="width:69;height:16"><a style="font-size:12px;font-family:Arial;color:#0000ff" href="https://www.csair.com/en/online/check_in/index.shtml">Check-in </a></div></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Booking status</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Confirmed</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Class</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Economy (E)</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Baggage allowance</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">2 Piece(s) for Test User</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Equipment</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">AIRBUS INDUSTRIE A330</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Frequent Flyer number</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">CZ KL0000000000 for Test User</span></p></td>
+</tr>
+<tr><td valign=top colspan="20"><p ><span style="font-family:Arial; font-size:5.3px; color:#FFFFFF">.</span></p></td>
+</tr>
+<tr><td valign=top colspan="13"><p ><span style="font-family:Arial; font-size:14.6px; color:#2B376E">Thursday 01 February 2018</span></p></td>
+<td valign=top colspan="7"></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:13.3px; font-weight:bold; color:#2B376E">China Southern Airlines CZ 303</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="12"></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0"><div style="width:78;height:18"><div style ="font-size:10.6px;line-height:1.4;font-family:Arial;font-weight:bold;color:#2B376E">Departure</div></div></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"><div style="width:172;height:18"><div style ="font-size:10.6px;line-height:1.4;font-family:Arial;font-weight:bold;color:#2B376E">01 February 09:30 AM</div></div></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="6"><div style="width:205;height:18"><div style ="font-size:10.6px;line-height:1.4;font-weight:bold;font-family:Arial;color:#2B376E"> Guangzhou, (Baiyun Intl) <a style="line-height:1.4;text-decoration:none;font-weight:normal;font-size:10.6px;color:#2B376E" href="https://www.checkmytrip.com/triptools/CAN">(+)</a></div></div></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0"><div style="width:78;height:18"><div style ="font-size:10.6px;line-height:1.4;font-weight:bold;font-family:Arial;color:#2B376E">Arrival</div></div></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"><div style="width:172;height:18"><div style ="font-size:10.6px;line-height:1.4;font-weight:bold;font-family:Arial;color:#2B376E">01 February 02:30 PM</div></div></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="6"><div style="width:205;height:18"><div style ="font-size:10.6px;line-height:1.4;font-weight:bold;font-family:Arial;color:#2B376E">London, (Heathrow) <a style="line-height:1.4;text-decoration:none;font-weight:normal;font-size:10.6px;color:#2B376E" href="https://www.checkmytrip.com/triptools/LHR">(+)</a></div></div></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><div style="width:158;height:18"><div style="font-size:10.6px;font-family:Arial;line-height:1.4;font-weight:bold;color:#2B376E">Terminal: 4</div></div></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Duration</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">13:00 (Non stop)</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Booking status</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Confirmed</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Class</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Economy (E)</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Equipment</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">787&nbsp;&nbsp;ALL SERIES PASSENGER</span></p></td>
+</tr>
+<tr><td valign=top colspan="20"><p ><span style="font-family:Arial; font-size:5.3px; color:#FFFFFF">.</span></p></td>
+</tr>
+<tr><td valign=top colspan="20"><p ><span style="font-family:Arial; font-size:14.6px; color:#2B376E">Wednesday 17 October 2018</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4" rowspan="2"><p ><span style="font-family:Arial; font-size:13.3px; font-weight:bold; color:#2B376E">Miscellaneous</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="12"></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0"></td>
+<td valign=top bgcolor="#EBEFF0"><p ><span style="font-family:Arial; font-size:10.6px; font-weight:bold; color:#2B376E">Location</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="5"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; font-weight:bold; color:#2B376E">Paris - FR</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="4"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Details</span></p></td>
+<td valign=top bgcolor="#EBEFF0" colspan="2"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="10"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">Retention</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="16"><p ><span style="font-family:Arial; font-size:13.3px; font-weight:bold; color:#2B376E">Ticket details</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="16"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">E-ticket&nbsp;&nbsp;784-0000000003 for Test User</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="16"><p ><span style="font-family:Arial; font-size:13.3px; font-weight:bold; color:#2B376E">Airline Booking Reference(s)</span></p></td>
+</tr>
+<tr><td valign=top bgcolor="#EBEFF0" colspan="4"></td>
+<td valign=top bgcolor="#EBEFF0" colspan="16"><p ><span style="font-family:Arial; font-size:10.6px; color:#2B376E">CZ (China Southern Airlines): PQ4RST</span></p></td>
+</tr>
+</table>
+</div>
+</center>
+</body>
+</html>
+------=_Part_0000000_0000000000.0000000000000--
