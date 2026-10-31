@@ -1,0 +1,39 @@
+Authentication-Results: mx.google.com; spf=pass smtp.mailfrom=bounce.baplc.com
+From: British Airways e-ticket <BA.e-ticket@email.ba.com>
+To: test@example.org
+Subject: Your e-ticket receipt YOURTK: LHR-ATH 29 Nov 2015 11:55
+Date: Wed, 28 Oct 2015 01:00:00 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+
+Dear Test User,
+
+British Airways booking reference: YOURTK
+
+---------------------
+Your e-ticket receipt
+---------------------
+Thank you for booking with British Airways.
+
+Ticket Type: e-ticket
+This is your e-ticket receipt.
+
+--------------
+Your Itinerary
+--------------
+----------------------------------------------------
+BA0632: British Airways | Euro Traveller | Confirmed
+----------------------------------------------------
+Depart: 29 Nov 2015 11:55 - Heathrow (London)&nbsp;- Terminal 5
+Arrive: 29 Nov 2015 17:35 - Athens
+
+----------------------------------------------------
+BA0633: British Airways | Euro Traveller | Confirmed
+----------------------------------------------------
+Depart: 6 Dec 2015 18:35 - Athens
+Arrive: 6 Dec 2015 20:25 - Heathrow (London) - Terminal 5
+
+--------------
+Passenger list
+--------------
+MR TEST USER
