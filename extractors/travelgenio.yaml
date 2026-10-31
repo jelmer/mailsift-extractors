@@ -1,0 +1,13 @@
+name: travelgenio
+order: 50
+from_domains:
+  - corp.travelgenio.com
+subject_regex: "(?i)^(?:Travelgenio - Booking|RESERVATION CONFIRMATION)$"
+requires:
+  - html
+# The only samples reached us as inline forwards, which carry no
+# signature and bypass this check via `trusted_forwarders`, so the
+# signing domain for direct mail is unconfirmed.
+require_dkim:
+  - travelgenio.com
+  - ".travelgenio.com"
