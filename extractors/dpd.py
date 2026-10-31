@@ -18,6 +18,11 @@ parcels target can merge them by tracking number. The delivery
 window rides on the same file (`expectedArrivalFrom`/`Until`) when
 we know it - a parcel isn't a reservation, so no separate calendar
 artifact is written.
+
+The out-for-delivery mail attaches a "DPD Delivery.ics" whose LOCATION
+is the delivery address. We lift the postcode from it into
+`deliveryPostalCode`, which mailroom needs to look the parcel up with
+DPD.
 """
 
 from __future__ import annotations
@@ -30,7 +35,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message, strip_html
+from mailsift_extractor import Mail, read_message, strip_html
 
 TRACKING_RE = re.compile(r"Your parcel:\s*(\d{4}\s\d{4}\s\d{3}\s\d{3})")
 # "TODAY 9th February 2026 between 13:40 - 14:40"
@@ -39,6 +44,8 @@ WINDOW_RE = re.compile(
     r"(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})",
     re.IGNORECASE,
 )
+# A UK postcode at the end of the address, e.g. "..., London, NW6 2EF".
+POSTCODE_RE = re.compile(r"([A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2})\s*$", re.IGNORECASE)
 
 MONTHS = {
     "january": 1,
@@ -69,6 +76,28 @@ def status_from_subject(subject: str) -> str | None:
     return None
 
 
+def ics_location(ics: str) -> str | None:
+    """Return the unescaped LOCATION of an iCalendar body, if any."""
+    # Undo RFC 5545 line folding before looking at properties.
+    unfolded = re.sub(r"\r?\n[ \t]", "", ics)
+    for line in unfolded.splitlines():
+        name, sep, value = line.partition(":")
+        if sep and name.split(";", 1)[0].upper() == "LOCATION":
+            return re.sub(r"\\([,;\\])", r"\1", value).replace("\\n", " ")
+    return None
+
+
+def postcode_from_attachments(mail: Mail) -> str | None:
+    for attachment in mail.attachments:
+        if attachment.mime_type != "text/calendar":
+            continue
+        location = ics_location(attachment.bytes.decode("utf-8", errors="replace"))
+        m = POSTCODE_RE.search(location or "")
+        if m:
+            return m.group(1).upper()
+    return None
+
+
 def main() -> int:
     mail = read_message()
     if not mail.html or not mail.subject:
@@ -92,6 +121,10 @@ def main() -> int:
     }
     if status:
         parcel["deliveryStatus"] = status
+
+    postcode = postcode_from_attachments(mail)
+    if postcode:
+        parcel["deliveryPostalCode"] = postcode
 
     window_start: datetime | None = None
     window_end: datetime | None = None
