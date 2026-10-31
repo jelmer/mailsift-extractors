@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """DPD parcel-tracking emails.
 
-DPD sends mails at three stages of a parcel's life:
+DPD sends mails at four stages of a parcel's life:
 
 - "We're expecting your <X> parcel"      -> incoming, ETA not yet set
 - "Your <X> parcel is on its way"        -> in transit (less common)
 - "Your <X> order will be delivered today between H:MM - H:MM"
   -> out for delivery with a window
+- "Great news, your <X> parcel has been delivered" -> delivered
 
 The body always carries the tracking number formatted with spaces
 ("1500 0000 000 000"). We strip the spaces for the on-disk identifier
@@ -57,6 +58,8 @@ MONTHS = {
 
 def status_from_subject(subject: str) -> str | None:
     s = subject.lower()
+    if "has been delivered" in s:
+        return "Delivered"
     if "will be delivered today" in s:
         return "OutForDelivery"
     if "on its way" in s:

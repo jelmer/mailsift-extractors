@@ -1,0 +1,14 @@
+Authentication-Results: example.org; dkim=pass header.d=dpd.co.uk header.i=@dpd.co.uk
+From: IKEA <yourdelivery@dpd.co.uk>
+To: test@example.org
+Subject: Great news, your IKEA parcel has been delivered
+Date: Mon, 09 Feb 2026 14:05:12 +0000
+Message-ID: <dpd-test-delivered@dpd.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>We've left your IKEA parcel here:</p>
+<p>Front Porch</p>
+<p>Your parcel: 1500 0000 000 000</p>
+</body></html>
