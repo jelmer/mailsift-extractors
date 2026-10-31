@@ -1,0 +1,202 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@booking.com
+From: "Booking.com" <customer.service@booking.com>
+To: test@example.org
+Subject: Your booking at Example Hotel Kensington
+Date: Sat, 15 Mar 2014 00:55:47 +0100
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><table>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td>Best Price Guaranteed</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+Thanks, Test! Your reservation is now confirmed.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Example Hotel Kensington</b>
+<span>
+Value Deal
+</span></td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Address:</b></td>
+<td><span>1 Example Street, Kensington and Chelsea</span><br><span>London</span>, <span>SW7 0AA</span>,
+<span>United Kingdom</span></td>
+</tr>
+<tr>
+<td><b>Phone:</b></td>
+<td><span>+440000000000</span></td>
+</tr>
+<tr>
+<td><b>Email:</b></td>
+<td><span>info@example.com</span></td>
+</tr>
+<tr>
+<td><b>Getting there:</b></td>
+<td>Show directions</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><table>
+<tr>
+<td>
+<table>
+<tr>
+<td>Manage your booking</td>
+</tr>
+</table>
+</td>
+</tr>
+</table></td>
+<td><table>
+<tr>
+<td>
+<table>
+<tr>
+<td><span>Print confirmation</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Your reservation</b></td>
+<td>
+1 night,
+1 room
+</td>
+</tr>
+<tr>
+<td><b>Check-in</b></td>
+<td>Friday, 14 March 2014
+<span>
+(from 14:00)
+</span></td>
+</tr>
+<tr>
+<td><b>Check-out</b></td>
+<td>Saturday, 15 March 2014
+<span>
+(until 11:00)
+</span>
+</td>
+</tr>
+<tr>
+<td><b>Booking number</b></td>
+<td>100000002</td>
+</tr>
+<tr>
+<td><b>PIN Code</b></td>
+<td>0000</td>
+</tr>
+<tr>
+<td><b>Booked by</b></td>
+<td><span>Test User</span> (<span>test@example.org</span>)‎</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>
+Twin Room
+</b></td>
+<td><b>£50</b></td>
+</tr>
+<tr>
+<td><b>VAT (20%) included</b></td>
+<td><b>
+£10
+</b></td>
+</tr>
+<tr>
+<td><b>Total Price</b></td>
+<td><b>£60</b></td>
+</tr>
+</table>
+<table>
+<tr>
+<td>
+Please note: additional supplements (e.g. extra bed) are not added to this total.
+</td>
+</tr>
+<tr>
+<td>
+Booking.com will not process your payment. The total price is payable directly to the property. Booking.com does not charge any reservation fees.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Example Hotel Kensington</b>
+<span>
+Value Deal
+</span></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+</body></html>

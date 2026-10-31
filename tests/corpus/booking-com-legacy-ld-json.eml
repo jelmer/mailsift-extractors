@@ -1,0 +1,203 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@booking.com
+From: "Booking.com" <customer.service@booking.com>
+To: test@example.org
+Subject: Your booking at Example Hostal Puno
+Date: Mon, 5 Jan 2015 22:49:49 +0100
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><script type="application/ld+json">{"@context": "http://schema.org", "@type": "LodgingReservation", "reservationNumber": "100000001", "reservationFor": {"@type": "LodgingBusiness", "name": "Example Hostal Puno"}, "checkinDate": "2015-01-05T12:00:00", "checkoutDate": "2015-01-06T09:00:00"}</script>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td><table>
+<tr>
+<td><span>Get the print version</span></td>
+</tr>
+</table></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+Thanks, Test! Your reservation is now confirmed.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Example Hostal Puno</b></td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Address:</b></td>
+<td><span>Jr. Ejemplo, 100</span><br><span>Puno </span>, <span>051</span>,
+<span>Peru</span></td>
+</tr>
+<tr>
+<td><b>Phone:</b></td>
+<td><span>+51000000000</span></td>
+</tr>
+<tr>
+<td><b>Getting there:</b></td>
+<td>Show directions</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><table>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+Manage your booking
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table></td>
+<td><table>
+<tr>
+<td>
+<table>
+<tr>
+<td><span>Get the print version</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Booking number</b></td>
+<td>100000001</td>
+</tr>
+<tr>
+<td><b>PIN Code</b></td>
+<td>0000</td>
+</tr>
+<tr>
+<td><b>Your reservation</b></td>
+<td>
+1 night,
+1 room
+</td>
+</tr>
+<tr>
+<td><b>Check-in</b></td>
+<td>Monday, January 5, 2015
+<span>
+(12:00 - 23:00)
+</span></td>
+</tr>
+<tr>
+<td><b>Check-out</b></td>
+<td>Tuesday, January 6, 2015
+<span>
+(08:00 - 09:00)
+</span></td>
+</tr>
+<tr>
+<td><b>Booked by</b></td>
+<td><span>Test User</span> (<span>test@example.org</span>)‎
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>
+Single Room
+</b></td>
+<td><b>$30</b></td>
+</tr>
+<tr>
+<td><b>
+Total Price
+</b></td>
+<td><b>$30</b></td>
+</tr>
+<tr>
+<td>Best Price Guaranteed</td>
+</tr>
+</table>
+<table>
+<tr>
+<td>
+You will pay the hotel in the hotel’s local currency (PEN) at the exchange rate on day of payment.
+</td>
+</tr>
+<tr>
+<td>
+Please note: additional supplements (e.g. extra bed) are not added to this total.
+</td>
+</tr>
+<tr>
+<td>
+The total price shown is the amount you will pay to the property. Booking.com does not charge any reservation, administration or other fees.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Example Hostal Puno</b></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+</body></html>
