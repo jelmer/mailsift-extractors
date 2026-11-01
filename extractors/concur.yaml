@@ -1,0 +1,11 @@
+name: concur
+order: 50
+from_domains:
+  - concursolutions.com
+subject_regex: "^Concur Itinerary: .+$"
+requires:
+  - html
+# Concur didn't sign these mails in 2018.
+require_dkim:
+  - concursolutions.com
+unsigned_before: "2019-01-01"
