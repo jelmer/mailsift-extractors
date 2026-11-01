@@ -404,5 +404,12 @@ def _extract_ld_json(html: str) -> list[Any]:
         try:
             blocks.append(json.loads(body))
         except json.JSONDecodeError:
-            continue
+            # Some senders' mail systems wrap long lines to fit SMTP's line
+            # limit, even inside a JSON string ("Example<LF> Airlines"),
+            # which strict JSON rejects. The break is inserted, not part of
+            # the data, so drop it and try once more.
+            try:
+                blocks.append(json.loads(re.sub(r"\r?\n", "", body)))
+            except json.JSONDecodeError:
+                continue
     return blocks

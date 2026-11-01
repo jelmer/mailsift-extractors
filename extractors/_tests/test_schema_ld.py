@@ -37,6 +37,18 @@ def test_flight_reservation_passthrough(run_extractor):
     }
 
 
+def test_line_wrapped_json_is_recovered(run_extractor):
+    # The sender's mail system wrapped the long ld+json line to fit
+    # SMTP's line limit, putting a raw line break inside the airline
+    # name. Strict JSON rejects that; the block must still be read, with
+    # the inserted break dropped.
+    out = run_extractor("schema-ld", "schema-flight-wrapped.eml")
+    assert set(out) == {"ABC123.reservation.json"}
+    flight = out["ABC123.reservation.json"]["reservationFor"]
+    assert flight["provider"]["name"] == "Example Airlines"
+    assert flight["flightNumber"] == "100"
+
+
 def test_trainline_train_reservation_passthrough(run_extractor):
     # The Trainline booking confirmation already carries a
     # `TrainReservation` ld+json block. No vendor extractor needed -
