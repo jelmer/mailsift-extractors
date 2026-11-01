@@ -1,0 +1,10 @@
+name: bravofly
+order: 50
+from_domains:
+  - bravofly.com
+subject_regex: "(?i)^Confirmation of your flight reservation\\s+.+,\\s+ID BOOKING\\s+\\d+\\s*$"
+requires:
+  - html
+# No `require_dkim`: the 2015 confirmation from bravofly.com was not
+# DKIM-signed. bravofly.py refuses messages dated after a cutoff
+# instead.

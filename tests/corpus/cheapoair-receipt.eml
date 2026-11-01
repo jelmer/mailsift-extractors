@@ -1,0 +1,244 @@
+Authentication-Results: mx.google.com;
+       spf=neutral (google.com: cheapoair@cheapoair.com does not designate permitted sender hosts) smtp.mail=cheapoair@cheapoair.com
+From: cheapoair@cheapoair.com
+To: test@example.org
+Subject: CheapOair.com - User/ Test - Booking receipt - Booking #
+ 10000000
+Date: 10 Sep 2014 12:22:05 -0400
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td height="24" style="font-size: 13px; font-weight: bold; color: #ffffff; padding-left: 14px">
+Customer Information</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000">
+<tr>
+<td height="22" style="width:70px">
+<div style="width:70px">
+ Traveler:</div>
+</td>
+<td style="width:150px">
+<div style="width:150px">
+<b>
+Test User</b>
+</div>
+</td>
+<td style="width:68px">
+<div style="width:68px">
+ Email:</div>
+</td>
+<td style="width:170px">
+<div style="width:170px">
+<b style="color:#103C9E">
+test@example.org</b>
+</div>
+</td>
+<td style="width:42px">
+<div style="width:42px">
+ Phone:</div>
+</td>
+<td style="width:110px">
+<div style="width:110px">
+ <b>
+555-555-0100</b>
+</div>
+</td>
+</tr>
+<tr>
+<td height="22">
+Booking #:</td>
+<td>
+<span style="background: #FFED71">
+<b>
+10000000</b>
+</span>
+</td>
+<td>
+Booked on:</td>
+<td>
+<span style="background: #FFED71">
+<b>
+Wed, Sep 10, 2014</b>
+</span>
+</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000">
+<tr id="trFlightTripSummary">
+<td height="24" colspan="3" bgcolor="#F5F5F5" style="padding-left: 14px; font-weight: bold; border-top: 1px solid #D0E0ED">
+<span style="background: #FFED71">
+Flight Summary</span>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<b>
+From:</b>
+<br />
+Cuzco, PE<strong>
+ (CUZ)</strong>
+<br />
+<br />
+<b>
+To:</b>
+<br />
+La Paz, BO<strong>
+ (LPB)</strong>
+</td>
+<td valign="top" width="30%">
+<b>
+Depart:</b>
+<br />
+Sat, Jan 03, 2015<br />
+<strong>
+ 10:35 am - 12:35 pm</strong>
+ (Nonstop)<br />
+</td>
+<td valign="top" width="30%">
+<span id="ctl09_ctl01_ctl00_rptConfTripSummary_ctl01_ctl00_lblAirlineConfirmation">
+<b>
+Airline Confirmation:</b>
+<br />
+Linea Aerea Amaszonas : ABCDEF<br />
+</span>
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000">
+<tr style="font-weight: bold; background: #D0E0ED">
+<td width="14" height="22">
+&nbsp;</td>
+<td>
+Traveler Name</td>
+<td>
+Ticket Number</td>
+<td>
+Meal Preference</td>
+<td>
+Special Request</td>
+</tr>
+<tr>
+<td height="22">
+&nbsp;</td>
+<td>
+<b>
+User, Test </b>
+<span class='apf11'>
+ (Adult)</span>
+</td>
+<td>
+<span id="ctl09_ctl01_ctl00_rptConfTripSummary_ctl01_ctl00_rpPax_ctl01_ltrTicketNumber" class="hghlgt">
+1690000000000 E-Ticket</span>
+</td>
+<td>
+Standard</td>
+<td>
+<span style='display:block; width:40px; margin:0 auto'>
+-</span>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#D0E0ED">
+<tr>
+<td height="26" style="padding-left: 14px">
+Booking Number: &nbsp;&nbsp;&nbsp;&nbsp;10000000</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000">
+<tr>
+<td height="32" colspan="4" style="color: #000066">
+<b style="font-size:14px">
+<span id="ctl09_ctl01_ctl00_rptConfDetails_ctl00_ctl00_fList_rptTrip_ctl01_rptFlight_ctl00_lblTripHeading">
+Departing Flight - Saturday, Jan 03, 2015</span>
+</b>
+</td>
+</tr>
+<tr>
+<td valign="top" style="border-right: 1px solid #D0E0ED;width:186px;">
+<img src='http://www.cheapoair.com/I/AI/Z8.gif' />
+<br>
+<b>
+Linea Aerea Amaszonas</b>
+<br>
+<span style="font-size: 11px">
+<b style="color: #000066; font-size:14px">
+Flight&nbsp;501</b>
+<br>
+Canadair Regional  Jet<br>
+<!--Seat Assignment Link-->
+<div class="seat-assignment-block" style="display:none">
+<a target="_blank" href="">
+</a>
+</div>
+<span style="display:block">
+<b style="font-size:12px;background:#ffed71;">
+</b>
+</span>
+<span style="display:block">
+<b>
+Airline confirmation: </b>
+ABCDEF</span>
+</span>
+<a href='https://www.cheapoair.com/'>
+Select Seats</a>
+</td>
+<td valign="top" style="border-right: 1px solid #D0E0ED; padding-left: 12px">
+<b style="color: #000066">
+From</b>
+<br>
+<b>
+Cuzco</b>
+ (CUZ)<br />
+<span style="font-size:14px">
+<b>
+10:35am</b>
+ - Jan 03, Sat</span>
+</td>
+<td valign="top" style="border-right: 1px solid #D0E0ED; padding-left: 12px">
+<b style="color: #000066">
+To</b>
+<br>
+<b>
+La Paz</b>
+ (LPB)<br />
+<span style="font-size:14px">
+<b>
+12:35pm</b>
+ - Jan 03, Sat</span>
+<div style="display:none;">
+<br />
+<b style='font-size:11px;'>
+Free baggage allowance</b>
+<br />
+<span style="font-size:11px;">
+ 20 kilograms </span>
+</div>
+</td>
+<td valign="top" style="padding-left: 12px">
+<b>
+ Nonstop </b>
+<br>
+<span style="font-size: 11px">
+Coach</span>
+</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="padding: 5px 14px; font-size: 12px;">
+Total Cost: US$ 200.00
+</td>
+</tr>
+</table>
+</body>
+</html>
