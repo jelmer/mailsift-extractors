@@ -132,8 +132,13 @@ def read_message(stream=None) -> Mail:
     )
 
 
+# A line break followed by whitespace continues the previous line
+# (RFC 5322 section 2.2.3).
+FOLD_RE = re.compile(r"\r?\n(?=[ \t])")
+
+
 def _decode_header(value: str | None) -> str | None:
-    """Decode any RFC 2047 encoded-words in a header value to a plain string."""
+    """Unfold a header value and decode any RFC 2047 encoded-words in it."""
     if value is None:
         return None
     parts: list[str] = []
@@ -148,7 +153,9 @@ def _decode_header(value: str | None) -> str | None:
                 parts.append(chunk.decode("utf-8", errors="replace"))
         else:
             parts.append(chunk)
-    return "".join(parts)
+    # Unfold after decoding: an 8-bit header comes in as a `Header`
+    # rather than a string.
+    return FOLD_RE.sub("", "".join(parts))
 
 
 def _parse_address(value: str | None) -> str | None:

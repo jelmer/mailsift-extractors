@@ -111,3 +111,18 @@ class TestReadMessage:
         mail = read_message(BytesIO(raw))
         assert mail.from_address == "sender@example.com"
         assert mail.from_domain == "example.com"
+
+    def test_folded_subject_is_unfolded(self) -> None:
+        # mailsift matches `subject_regex` against the unfolded value, so
+        # scripts have to see the same.
+        raw = (
+            b"From: sender@example.com\r\n"
+            b"Subject: Your reservation for NH Example Antwerp, February 3, 2040,\r\n"
+            b" AAAA000000001\r\n"
+            b"Content-Type: text/plain\r\n\r\n"
+            b"body\r\n"
+        )
+        mail = read_message(BytesIO(raw))
+        assert mail.subject == (
+            "Your reservation for NH Example Antwerp, February 3, 2040, AAAA000000001"
+        )
