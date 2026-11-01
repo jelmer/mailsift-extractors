@@ -1,0 +1,583 @@
+From: Hostelworld <bookings@hostelworld.com>
+To: test@example.org
+Subject: Confirmed booking from hostelworld.com
+Date: Thu, 22 Dec 2039 20:21:16 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css" media="screen">
+
+<!--
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+h3, h4 {
+	margin: 1em 0 0.5em 0;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+p, ul {
+	line-height: 1.5em;
+	font-size: 12px;
+}
+
+a {
+	color:#C23333;
+}
+
+/* New Styles Added For Hostelworld Brand */
+.lightStripe {
+	/*background: #f5f6f8;*/
+}
+.darkStripe {
+	/*background: #edeff4;*/
+}
+.confirmedNote {
+	color: #c30;
+}
+
+#bookingSummary {
+	border: 1px solid #ccc;
+	border-width: 1px 0 0 1px;
+	font-size: 12px;
+}
+#bookingSummary th {
+	background-color: #1e3a6a;
+	border-bottom: 1px solid #ccc;
+	color: #fff;
+	padding: 0.25em;
+	text-align: left;
+}
+#bookingSummary td {
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	padding: 0.25em;
+}
+#bookingSummary tfoot {
+	text-align: right;
+}
+
+#unicef img {
+	float:left;
+    margin-right:10px;
+}
+#bnb-confirmation{
+	background-color:#f2f2f2;
+	padding:10px;
+	text-decoration:none;
+	width:900px;
+	height:48px;
+	margin-left:20px;
+}
+a.bnb-confirmation {
+	text-decoration:none;
+	display:block;
+}
+#bnb-confirmation img{
+	margin-top:0px;
+	margin-left:0px;
+	float:left;
+	margin-right:20px;
+	border:0px;
+}
+#bnb-confirmation span{
+	color:#666;
+	font-weight:normal;
+	width:700px;
+}
+.rounded{
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+-->
+
+</style>
+<body>
+<table cellspacing="0" cellpadding="0" width="630" border="0" bgcolor="ffffff" align="center">
+
+<tr>
+<td>
+<a href="http://www.hostelworld.com"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/email-header-630x74.jpg" border="0" alt="Hostelworld - sleep easy" /></a>
+<!-- navigation -->
+<table width="630" height="34" border="0" cellpadding="0" cellspacing="0">
+
+
+
+	<tr>
+	  <td style="background:#0e1d62;text-align:center; padding:10px 2px 13px;border-right:1px solid #1e3a6a"><a style="color:white;font-size:12px;font-weight:bold" href="http://www.hostelworld.com">Home
+
+			</a>
+	</td>
+	 <td style="background:#0e1d62;text-align:center; padding:10px 2px 13px;border-right:1px solid #1e3a6a;border-left:1px solid #0a1444"><a style="color:white;font-size:12px;font-weight:bold" href="http://www.hostelworld.com/hostels" title="">Hostels
+
+		  </a>
+
+	</td>
+	<td style="background:#0e1d62;text-align:center; padding:10px 2px 13px;border-right:1px solid #1e3a6a;border-left:1px solid #0a1444"><a style="color:white;font-size:12px;font-weight:bold" href="http://www.hostelworld.com/travel-store/" title="">Services
+
+		</a>
+	</td>
+	<td style="background:#0e1d62;text-align:center; padding:10px 2px 13px;border-right:1px solid #1e3a6a;border-left:1px solid #0a1444"><a style="color:white;font-size:12px;font-weight:bold" href="http://www.hostelworld.com/travel-store/product/world-nomads-travel-insurance/" title="">Travel Insurance
+
+		</a>
+	</td>
+	<td style="background:#0e1d62;text-align:center; padding:10px 2px 13px;border-right:1px solid #1e3a6a;border-left:1px solid #0a1444"> <a style="color:white;font-size:12px;font-weight:bold" href="http://www.hostelworld.com/tours/" title="">Tours
+
+		</a>
+	</td>
+	<td style="background:#0e1d62;text-align:center; padding:10px 2px 13px;border-right:1px solid #1e3a6a;border-left:1px solid #0a1444"> <a style="color:white;font-size:12px;font-weight:bold" href="http://www.hostelworld.com/guides-info/" title=""> Guides
+
+		</a>
+	</td>
+
+	<td style="background:#0e1d62;text-align:center; padding:10px 2px 13px;border-right:1px solid #1e3a6a;border-left:1px solid #0a1444"> <a style="color:white;font-size:12px;font-weight:bold" href="http://www.hostelworld.com/myworld" title="">My World
+
+		</a>
+	</td>
+	<td style="background:#0e1d62;text-align:center; padding:10px 2px 13px;border-right:1px solid #1e3a6a;border-left:1px solid #0a1444"> <a style="color:white;font-size:12px;font-weight:bold" href="http://www.hostelworld.com/blog/" title=""> Blog
+
+		</a>
+	</td>
+   </tr>
+   <tr>
+		<td colspan="8"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/spacer.gif" height="20" /></td>
+	</tr>
+
+
+
+</table>
+
+<p>Dear Test User,<br />Your booking is now confirmed and all the details you need are below. Please keep this for your records and present to the hostel on arrival. Note the hostels terms and conditions, directions to the hostel and some handy tips and resources for your trip.</p>
+
+
+
+	<p style="font-size: 18px; font-weight: bold; border: 1px solid #cdd2e0; background-color: #f5f6f8; padding: 10px; text-align: center;">Your booking is confirmed. Your reference number is 11286-00000001</p>
+
+<h3>booking information</h3>
+
+<table cellspacing="0" cellpadding="0" width="630" border="0">
+<tr>
+<td valign="top" width="200">
+<!--<h4>Hostel Info</h4>-->
+<p>Example Hostel Leipzig<br />
+Beispielstraße 1<br />
+<br />
+Leipzig<br />
+Germany</p>
+<p>p. +49 341 000 000 40<br />
+f. +49 341 000 000 39<br />email: info@example.org</p>
+</td>
+
+<td>
+
+
+<!-- New Bookin Summary Table -->
+
+<table id="bookingSummary" cellspacing="0" cellpadding="0" border="0" width="430">
+						<thead style="color: #fff; background-color: #1e3a6a;">
+							<tr>
+								<th>Date</th>
+								<th>Room Details</th>
+								<th>Per Bed</th>
+
+								<th>Pax</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+
+
+
+
+						<tbody>
+						                				<tr>
+                 				  <td>
+                        				                                				                                         			                                         			                                         			                                         			                                         			Mon 26th Dec 2039
+                                         			                                			                  				 </td>
+                        			 <td>Standard Twin Private&nbsp;Shared Bathroom
+                				 <td>&euro;21.00</td>
+                 				 <td>2</td>
+                 				 <td class="sub-prices">&euro;42.00</td>
+                				</tr>
+                				                				<tr>
+                 				  <td>
+                        				                                				                                         			                                         			                                         			                                         			                                         			Tue 27th Dec 2039
+                                         			                                			                  				 </td>
+                        			 <td>Standard Twin Private&nbsp;Shared Bathroom
+                				 <td>&euro;32.00</td>
+                 				 <td>2</td>
+                 				 <td class="sub-prices">&euro;64.00</td>
+                				</tr>
+                				                				<tr>
+                 				  <td>
+                        				                                				                                         			                                         			                                         			                                         			                                         			Wed 28th Dec 2039
+                                         			                                			                  				 </td>
+                        			 <td>Standard Twin Private&nbsp;Shared Bathroom
+                				 <td>&euro;32.00</td>
+                 				 <td>2</td>
+                 				 <td class="sub-prices">&euro;64.00</td>
+                				</tr>
+                				                				<tr>
+                 				  <td>
+                        				                                				                                         			                                         			                                         			                                         			                                         			Thu 29th Dec 2039
+                                         			                                			                  				 </td>
+                        			 <td>Standard Twin Private&nbsp;Shared Bathroom
+                				 <td>&euro;32.00</td>
+                 				 <td>2</td>
+                 				 <td class="sub-prices">&euro;64.00</td>
+                				</tr>
+                				                				<tr>
+                 				  <td>
+                        				                                				                                         			                                         			                                         			                                         			                                         			Sat 31st Dec 2039
+                                         			                                			                  				 </td>
+                        			 <td>Standard Twin Private&nbsp;Shared Bathroom
+                				 <td>&euro;45.00</td>
+                 				 <td>2</td>
+                 				 <td class="sub-prices">&euro;90.00</td>
+                				</tr>
+                				
+						<!--
+							<tr>
+								<td>
+								   									 Mon 26th Dec 2039
+								</td>
+																<td>Standard Twin Private&nbsp;Shared Bathroom</td>
+																<td>&euro;21.00</td>
+								<td>2</td>
+								<td>&euro;42.00</td>
+
+							</tr>
+
+							
+							<tr>
+								<td>
+								   									 Tue 27th Dec 2039
+								</td>
+																<td>Standard Twin Private&nbsp;Shared Bathroom</td>
+																<td>&euro;32.00</td>
+								<td>2</td>
+								<td>&euro;64.00</td>
+
+							</tr>
+
+							
+							<tr>
+								<td>
+								   									 Wed 28th Dec 2039
+								</td>
+																<td>Standard Twin Private&nbsp;Shared Bathroom</td>
+																<td>&euro;32.00</td>
+								<td>2</td>
+								<td>&euro;64.00</td>
+
+							</tr>
+
+							
+							<tr>
+								<td>
+								   									 Thu 29th Dec 2039
+								</td>
+																<td>Standard Twin Private&nbsp;Shared Bathroom</td>
+																<td>&euro;32.00</td>
+								<td>2</td>
+								<td>&euro;64.00</td>
+
+							</tr>
+
+							
+							<tr>
+								<td>
+								   									 Sat 31st Dec 2039
+								</td>
+																<td>Standard Twin Private&nbsp;Shared Bathroom</td>
+																<td>&euro;45.00</td>
+								<td>2</td>
+								<td>&euro;90.00</td>
+
+							</tr>
+
+							-->
+						</tbody>
+
+
+						<tfoot align="right">
+														<tr>
+								<td colspan="5">Total:&nbsp;&euro;324.00</td>
+							</tr>
+																					<tr>
+                                <td colspan="5">10% Deposit &euro;32.40</td>
+							</tr>
+																												<tr>
+								<td colspan="5">Service Charge: &euro;1.50</td>
+							</tr>
+																					<tr>
+                                <td colspan="5"><strong>Charge on Card (Service Charge + Deposit): &euro;33.90
+									</strong></td>
+							</tr>
+							<tr>
+								<td colspan="5">
+									<strong>
+										Amount Due On Arrival: &euro;291.60
+									</strong>
+								</td>
+							</tr>
+													</tfoot>
+
+
+					</table><!-- #bookingSummary -->
+
+
+
+</td>
+</tr>
+</table>
+
+<h3>Important Information</h3>
+
+
+	<p>A non-refundable charge of EUR 33.90 has been billed to your credit card. Upon arrival at your accommodation the balance of EUR 291.60 is payable. You are due to arrive here at 20:00. <a href="#directions" title="">Get directions</a> to this hostel</p>
+
+<p>For your convenience, we have stored your booking in <a href="http://www.hostelworld.com/myworld">your account</a>. Please print and retain for your records.</p>
+
+<p><a href="http://www.hostelworld.com" title="">Click here to make your next booking</a> </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="http://www.cartrawler.com/hostelworld?clientID=327761"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/CT_new_conf_email_banner_3_3_cr.jpg" width="630" height="140" alt="" /></a>
+
+				
+	<br /><br />
+	<table width="631" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td width="1" valign="top" bgcolor="#234686"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/skype/confirmation_email_631x119_left.jpg" width="66" height="119" /></td>
+    	<td width="100%" valign="top" bgcolor="#234686">
+				<table width="100%" border="0" cellspacing="0" cellpadding="3">
+					<tr>
+						<td style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 16px; line-height:16px; color: #FFF;">Your FREE Skype credit voucher code is: YJT7UTCX98PBTAEX</td>
+					</tr>
+					<tr>
+						<td style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height:12px; color: #FFF;">This credit can be used for calling mobiles and landlines while you travel worldwide at really low rates</td>
+					</tr>
+					<tr>
+																												<td><a href="http://www.dpbolvw.net/click-4021202-10933074"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/skype/confirmation_email_631x119_bottom.jpg" width="212" height="34" border="0" /></a></td>
+					</tr>
+				</table>
+			</td>
+			<td width="1" valign="top" bgcolor="#234686"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/skype/confirmation_email_631x119_right_new.jpg" width="242" height="119" /></td>
+		</tr>
+	</table>
+	<br /> <br />
+
+
+
+	<table cellspacing="0" width="630" style="border: 1px solid #00408c;">
+	  <tr>
+		<td colspan="2"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/some-helpful-tips-for-your-trip.png" width="629" height="29" /></td>
+	  </tr>
+
+	  <tr>
+		<td><!-- Begin Partner Content -->
+		  <table cellspacing="0" cellpadding="10">
+			<tr>
+			  <td><table cellspacing="0">
+				  <tr>
+					<td><table cellspacing="0">
+						<tr>
+						  <td valign="top"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/lock.gif" width="28" height="28" /></td>
+
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/spacer.gif" width="10" /></td>
+						  <td><h2 style="font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 12px; margin: 0px;">World Nomads Travel Insurance</h2>
+							<p style="font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 12px; margin: 0px;"><a href="http://www.hostelworld.com/travel-store/product/world-nomads-travel-insurance/" title="" style="color: #0055bb; font-weight: bold;">Extend your policy</a> or claim online, 24/7, even while travelling.</p></td>
+						</tr>
+					  </table></td>
+				  </tr>
+				  <tr>
+
+					<td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/spacer.gif" height="10" /></td>
+				  </tr>
+				  <tr>
+					<td><table cellspacing="0">
+						<tr>
+						  <td valign="top"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/sim.gif" width="22" height="36" /></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/spacer.gif" width="10" /></td>
+						  <td><h2 style="font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 12px; margin: 0px;">Maxroam Sim Card</h2>
+						  <p style="font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 12px; margin: 0px;">Low cost international roaming for mobiles and cell phone with your   <a style="color: #0055bb; font-weight: bold;" href="http://www.hostelworld.com/travel-store/product/travel-roam-simcard/" title="">Maxroam sim</a></p></td>
+						</tr>
+					  </table></td>
+				  </tr>
+				  <tr>
+					<td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/spacer.gif" height="10" /></td>
+				  </tr>
+
+				  <tr>
+					<td><table cellspacing="0">
+						<tr>
+						  <td valign="top"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/book.gif" width="27" height="27" /></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/spacer.gif" width="10" /></td>
+						  <td><h2 style="font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 12px; margin: 0px;">Lonely Planet Guide Books</h2>
+														<p style="font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 12px; margin: 0px;">Great value guides for your trip to <a style="color: #0055bb; font-weight: bold;" href="http://www.hostelworld.com/travel-store/lonelyplanet.php" title="">Leipzig</a></p></td>
+						</tr>
+					  </table></td>
+				  </tr>
+				</table></td>
+			</tr>
+			<tr>
+			  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/spacer.gif" height="10" /></td>
+			</tr>
+		  </table>
+
+		  <!-- End Partner Content --></td>
+		<td bgcolor="#d2e1f3" valign="top"><!-- Begin HW Content -->
+		  <table cellspacing="0" cellpadding="10" bgcolor="#d2e1f3">
+			<tr>
+			  <td><table cellspacing="0">
+				  				  <tr>
+					<td><!-- Begin Podcast Button -->
+					  <table height="40" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+
+						  <td rowspan="3"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/podcast-icon.gif" width="30" height="40" alt="" /></td>
+						  <td bgcolor="#0055bb" style="background-image: url(http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mt.gif); background-repeat: repeat-x;"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mt.gif" width="173" height="4" alt="" /></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-tr.gif" width="4" height="4" alt="" /></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#0055bb" style="padding-left: 5px; padding-right: 5px;"><!-- link text goes here -->
+						   <a href="http://www.hostelworld.com/podcasts/leipzig" title="" style="color: #FFFFFF; font-family: Arial; font-weight: bold; font-size: 12px;">Download Leipzig Podcast</a></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mr.gif" width="4" height="32" alt="" /></td>
+
+						</tr>
+						<tr>
+						  <td bgcolor="#0055bb" style="background-image: url(http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mb.gif); background-repeat: repeat-x;"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mb.gif" width="173" height="4" alt="" /></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-br.gif" width="4" height="4" alt="" /></td>
+						</tr>
+					  </table>
+					  <!-- End Podcast Button --></td>
+				  </tr>
+
+				  <tr>
+
+					<td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/spacer.gif" height="10" /></td>
+				  </tr>
+				  				  				  <tr>
+					<td><!-- Begin Podcast Button -->
+					  <table height="40" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+						  <td rowspan="3"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/video-icon.gif" width="30" height="40" alt="" /></td>
+						  <td bgcolor="#0055bb" style="background-image: url(http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mt.gif); background-repeat: repeat-x;"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mt.gif" width="173" height="4" alt="" /></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-tr.gif" width="4" height="4" alt="" /></td>
+
+						</tr>
+						<tr>
+						  <td bgcolor="#0055bb" style="padding-left: 5px; padding-right: 5px;"><!-- link text goes here -->
+						   <a href="http://www.hostelworld.com/videos/cities/leipzig/germany" title="" style="color: #FFFFFF; font-family: Arial; font-weight: bold; font-size: 12px;">Watch Leipzig Video</a></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mr.gif" width="4" height="32" alt="" /></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#0055bb" style="background-image: url(http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mb.gif); background-repeat: repeat-x;"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mb.gif" width="173" height="4" alt="" /></td>
+
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-br.gif" width="4" height="4" alt="" /></td>
+						</tr>
+					  </table>
+					  <!-- End Podcast Button --></td>
+				  </tr>
+				  <tr>
+					<td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/spacer.gif" height="10" /></td>
+				  </tr>
+				  				  				  <tr>
+
+					<td><!-- Begin Podcast Button -->
+					  <table height="40" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+						  <td rowspan="3"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/guide-icon.gif" width="30" height="40" alt="" /></td>
+						  <td bgcolor="#0055bb" style="background-image: url(http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mt.gif); background-repeat: repeat-x;"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mt.gif" width="173" height="4" alt="" /></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-tr.gif" width="4" height="4" alt="" /></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#0055bb" style="padding-left: 5px; padding-right: 5px;"><!-- link text goes here -->
+							<a
+								href="http://www.hostelworld.com/pdfguides/generatepdf.php?PDFCity=Leipzig&free=yes"
+								title=""
+								style="color: #FFFFFF; font-family: Arial; font-weight: bold; font-size: 12px;"
+							>Download FREE Leipzig Guide</a></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mr.gif" width="4" height="32" alt="" /></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#0055bb" style="background-image: url(http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mb.gif); background-repeat: repeat-x;"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-mb.gif" width="173" height="4" alt="" /></td>
+						  <td><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/btn-br.gif" width="4" height="4" alt="" /></td>
+						</tr>
+											  </table>
+
+					  <!-- End Podcast Button --></td>
+				  </tr>
+				</table></td>
+			</tr>
+		  </table>
+		  <!-- End HW Content -->
+		  </td>
+	  </tr>
+	</table>
+
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+
+	<h3>Hostel Conditions</h3>
+		<p>Reception is open from 7am until midnight; check-in is from 3pm til midnight. Check-out is noon. We accept cash, Visa and Mastercard but there's a small fee for credit cards. There's no elevator, sorry! We don't accept stag or hen parties. If you're travelling in a group of more than 8 people please check with us before booking. We often have beds for walk-ins, too. We look forward to welcoming you to our city!</p>
+
+<h3>Hostelworld Conditions</h3>
+<ul> <li>The outstanding amount is payable to the property directly upon your arrival unless otherwise stated in hostel conditions above.</li> <li>Cancellations must be notified directly to the accommodation provider at least 24 hours prior to arrival unless otherwise stated above.</li> <li>In the event of a no show, your card will be charged for the first nights accomodation total unless otherwise stated above.</li> <li>For any changes to an existing reservation, please contact the accommodation provider directly</li> <li>Should your credit card expire or your credit card details change prior to arrival, please contact the accommodation provider directly with the amended details</li><li>If you paid your deposit with a debit card or PayPal, you must reconfirm your booking 24 hours prior to arrival directly with the property.</li> <li>In the event of cancellation, the booking deposit and booking fee are non-refundable.</li> <li>Please read our <a href="http://www.hostelworld.com/hosteltermsandconditions.php?nopopup=1">Terms & Conditions</a></li> <li>If you have a question, please see our <a class="genLinktenPx" href="http://www.hostelworld.com/supportcentre.php">FAQ</a> or contact us on +353 1 524 5800.</li> </ul>
+
+
+	</td>
+</tr>
+
+<tr>
+	<td>
+		<a href="http://www.hostelworld.com/mobile-landing"><img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/mobile_promo_panel.png" style="margin-top:20px; margin-bottom:20px; border:0;" /></a>
+	</td>
+</tr>
+
+		  <tr>
+		<td align="center">
+
+			<br />
+			<a href="http://www.hostelworld.com/travel-store/product/world-nomads-travel-insurance/">
+				<img src="http://icd.hwstatic.com/static/images/1.12.6.0/confirmationemail/468x60_nevertoolate.gif" border="0" alt="" />
+			</a>
+			<br />
+
+		</td>
+	  </tr>
+	</table>
+
+</body>
+</html>
+
+

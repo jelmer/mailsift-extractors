@@ -1,0 +1,11 @@
+name: hostelworld
+order: 50
+from_domains:
+  - hostelworld.com
+subject_regex: "^Confirmed booking from hostelworld\\.com$"
+requires:
+  - html
+# The confirmations from 2010 to 2012 are unsigned.
+require_dkim:
+  - hostelworld.com
+unsigned_before: "2013-01-01"
