@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install pytest
+      - run: pip install pytest pypdf
       - run: python -m pytest extractors/_tests
 
   lint:
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install ruff mypy pytest
+      - run: pip install ruff mypy pytest pypdf
       - run: ruff check .
       - run: ruff format --check .
       - run: mypy extractors
