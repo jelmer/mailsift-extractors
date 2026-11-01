@@ -1,0 +1,53 @@
+Authentication-Results: example.org; dkim=pass header.d=shop.example header.i=@shop.example
+From: Example Shop <support@shop.example>
+To: test@example.org
+Subject: Order 100123 confirmed
+Date: Sun, 01 Nov 2026 18:13:55 +0000
+Message-ID: <E1020004-0000000000000000-00000000@shopify.com>
+Feedback-Id: ct_example:s_0000000000:shopify
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Thank you for your order!
+
+Example Shop
+
+Order 100123
+
+-------------------------
+Thank you for your order!
+-------------------------
+
+We're getting your order ready to be shipped. We will
+notify you when it has been sent.
+
+Order summary
+-------------
+
+Example Widget × 1
+
+Large
+
+$20.00
+
+Plain Thing × 2
+
+$5.00
+
+Subtotal
+
+$25.00
+
+Shipping
+
+$5.00
+
+Total
+
+$30.00 USD
+
+Shipping method
+---------------
+
+Ground (USPS)

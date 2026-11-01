@@ -5,13 +5,19 @@ order: 50
 # by Shopify's infrastructure. Spammers can't fake that; cheap
 # copycats of the Shopify HTML template can't either.
 #
-# Two signing patterns in the wild:
+# Three signing patterns in the wild:
 # - `<shop>.myshopify.com` for shops on the classic sending domain.
 # - `<sub>.shopifyemail.com` (`t.` for transactional, `g.` for
 #   marketing) for shops on Shopify Email, the newer default.
+# - the shop's own domain (or a subdomain of it, e.g. `mailer.shop.example`)
+#   for shops sending through Shopify's mailer on a custom domain. `@from`
+#   lets those through; the script then also requires Shopify's own
+#   Message-ID or Feedback-ID, so other shops' "order confirmed" mail is
+#   not read as Shopify's.
 subject_regex: "(?i)^(Order #|A shipment from order #|Order .* confirmed|.* (confirmed|shipped|on the way|has been delivered))"
 requires:
   - text
 require_dkim:
   - ".myshopify.com"
   - ".shopifyemail.com"
+  - "@from"

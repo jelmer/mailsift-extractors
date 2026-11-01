@@ -52,3 +52,36 @@ def test_shopifyemail_sender_uses_display_name_as_merchant(run_extractor):
     assert parcel["orderNumber"] == "BP427930"
     assert parcel["trackingNumber"] == "VF649847141GB"
     assert parcel["provider"]["@id"] == "royal-mail"
+
+
+def test_own_domain_shop_confirmation_with_variant_lines(run_extractor):
+    # A shop on its own domain: signed by that domain (the manifest's
+    # `@from`), sent through Shopify's mailer (Shopify's Message-ID and
+    # Feedback-ID). The first item has a variant line before its price.
+    out = run_extractor("shopify-order", "shopify-own-domain-confirmed.eml")
+    assert set(out) == {"shop-100123.receipt.json"}
+    receipt = out["shop-100123.receipt.json"]
+    assert receipt["orderNumber"] == "100123"
+    assert receipt["priceSpecification"]["price"] == 30.0
+    assert receipt["priceSpecification"]["priceCurrency"] == "USD"
+    assert [
+        (i["orderedItem"]["name"], i["orderQuantity"], i["orderItemSubtotal"]["price"])
+        for i in receipt["orderedItem"]
+    ] == [("Example Widget", 1, 20.0), ("Plain Thing", 2, 5.0)]
+
+
+def test_own_subdomain_shop_shipment_with_usps_tracking(run_extractor):
+    # Signed by a subdomain of the From domain, as Shopify's mailer does
+    # for some custom-domain shops.
+    out = run_extractor("shopify-order", "shopify-own-subdomain-shipped.eml")
+    assert set(out) == {"goods-9400100000000000000001.parcel.json"}
+    parcel = out["goods-9400100000000000000001.parcel.json"]
+    assert parcel["trackingNumber"] == "9400100000000000000001"
+    assert parcel["provider"]["@id"] == "usps"
+    assert parcel["orderNumber"] == "100456"
+
+
+def test_own_domain_mail_without_shopify_fingerprint_is_ignored(run_extractor):
+    # `@from` lets any self-signed sender reach the script; without
+    # Shopify's Message-ID or Feedback-ID it must produce nothing.
+    assert run_extractor("shopify-order", "shopify-own-domain-not-shopify.eml") == {}
