@@ -76,9 +76,25 @@ MONTHS = {
 def value_after(lines: list[str], label: str) -> str | None:
     """The line following the first line equal to `label`."""
     for i, line in enumerate(lines[:-1]):
-        if line.rstrip(":.").strip().lower() == label.lower():
+        if is_label(line, label):
             return lines[i + 1].strip()
     return None
+
+
+def pickup_and_return(lines: list[str]) -> tuple[str | None, str | None]:
+    """The pick-up and return times as written.
+
+    Mails up to early 2016 put both labels first and then both times;
+    later ones follow each label with its time.
+    """
+    for i, line in enumerate(lines[:-3]):
+        if is_label(line, "Pick Up time") and is_label(lines[i + 1], "Return time"):
+            return lines[i + 2], lines[i + 3]
+    return value_after(lines, "Pick Up time"), value_after(lines, "Return time")
+
+
+def is_label(line: str, label: str) -> bool:
+    return line.rstrip(":.").strip().lower() == label.lower()
 
 
 def parse_when(value: str | None) -> datetime | None:
@@ -114,10 +130,11 @@ def main() -> int:
         return 0
     confirmation = match.group(1)
 
-    pickup_at = parse_when(value_after(lines, "Pick Up time"))
+    pickup_text, return_text = pickup_and_return(lines)
+    pickup_at = parse_when(pickup_text)
     if pickup_at is None:
         return 0
-    dropoff_at = parse_when(value_after(lines, "Return time"))
+    dropoff_at = parse_when(return_text)
 
     reservation: dict = {
         "@context": "https://schema.org",
@@ -143,15 +160,17 @@ def main() -> int:
     if vehicle:
         reservation["reservationFor"] = {"@type": "Car", "name": vehicle}
 
-    for line in lines:
-        total = TOTAL_RE.match(line)
-        if total:
-            reservation["totalPrice"] = {
-                "@type": "PriceSpecification",
-                "price": float(total.group(1).replace(",", "")),
-                "priceCurrency": total.group(2),
-            }
-            break
+    # Itemised mails list each charge before "Total"; otherwise the only
+    # amount is the total.
+    total = TOTAL_RE.match(value_after(lines, "Total") or "") or next(
+        (m for line in lines if (m := TOTAL_RE.match(line))), None
+    )
+    if total:
+        reservation["totalPrice"] = {
+            "@type": "PriceSpecification",
+            "price": float(total.group(1).replace(",", "")),
+            "priceCurrency": total.group(2),
+        }
 
     Path(f"hertz-{confirmation.lower()}.reservation.json").write_text(
         json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
