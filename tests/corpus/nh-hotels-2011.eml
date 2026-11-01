@@ -1,0 +1,399 @@
+From: NH Hoteles <nh@nh-hotels.com>
+To: test@example.org
+Subject:
+ Your reservation for NH Example Antwerp, February 3, 2040, AAAA000000001
+Date: Thu, 22 Dec 2039 22:11:47 +0100
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>NH Hoteles</title>
+</head>
+<body>
+<table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+<tbody>
+<tr>
+<td width="33%"></td>
+<td width="580">
+<table width="580" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td colspan="5" width="580" align="center" height="45" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">If you can't see this email correctly, click
+<a href="http://www.nh-hotels.com/nhobe/step5.html?ticket=00000000R00000000000000000&amp;language=en" style="text-decoration:none; color:#567eb5">
+&nbsp;here</a></span></font></td>
+</tr>
+<tr>
+<td colspan="5" width="116">
+<table>
+<tbody>
+<tr>
+<td><a href="#"><img style="border:none" src="http://www.nh-hotels.com/nhobe/img/logoNH.gif" alt="NH Hoteles"></a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="5" width="580"><img src="http://www.nh-hotels.com/nhobe/img/bgd_top.gif"></td>
+</tr>
+<tr>
+<td width="2px" style="background:#a4b6d5"></td>
+<td width="30"></td>
+<td width="516">
+<table width="516" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="516"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:30px; color:#424245">Booking Confirmation</strong></font></td>
+</tr>
+<tr>
+<td width="516"><img src="http://www.nh-hotels.com/nhobe/img/sepline.gif" alt="-----"></td>
+</tr>
+<tr>
+<td width="516"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a">Dear Mr/Mrs Test User,<br>
+<br>
+Thank you for choosing NH Hoteles. It is our pleasure to confirm your reservation:</span></font></td>
+</tr>
+<tr>
+<td width="516" height="10"></td>
+</tr>
+<tr>
+<td width="516"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a">Reservation number
+<strong style="color:#880c12; font-size:26px; font-weight:normal">AAAA000000001</strong>
+<br>
+<br>
+<br>
+<br>
+Effective from December 22, 2039<!-- TODO --></span></font></td>
+</tr>
+<tr>
+<td width="516" height="10"></td>
+</tr>
+<tr>
+<td width="516"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:26px; color:#424245">Hotel information</strong></font></td>
+</tr>
+<tr>
+<td width="516" height="16"></td>
+</tr>
+<tr>
+<td width="516"><img src="http://www.nh-hotels.com/nhobe/img/sep01.gif" alt="-----"></td>
+</tr>
+<tr>
+<td width="516" height="16"></td>
+</tr>
+<tr>
+<td width="516">
+<table width="516" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="108" valign="top"><a href="#"><img style="border:none;margin-right:6px;" src="http://www.nh-hotels.com/nh/hotel-gallery/21052-t3-z1w.jpg" alt="Hotel image"></a></td>
+<td valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:16px; color:#7a7a7a"><a style="color:#567eb5; text-decoration:none" href="http://www.nh-hotels.com/nh/en/hotels/belgium/antwerp/nh-example-antwerp.html?">NH Example Antwerp </a></strong></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">1 Example Street. 2000 Amberes. Antwerp (Belgium)<br>
+Telephone. &#43;32.30.000001 - Fax. &#43;32.30.000002<br>
+Email. <a style="color:#567eb5; text-decoration:none" href="mailto:nhexample@nh-hotels.com">
+nhexample@nh-hotels.com</a><br>
+</span></font></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="516" height="32"></td>
+</tr>
+<tr>
+<td width="516"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:26px; color:#424245">Reservation details</strong></font></td>
+</tr>
+<tr>
+<td width="516" height="14"></td>
+</tr>
+<tr>
+<td width="516"><img src="http://www.nh-hotels.com/nhobe/img/sep01.gif" alt="-----"></td>
+</tr>
+<tr>
+<td width="516" height="14"></td>
+</tr>
+<tr>
+<td width="516"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">Arrival:
+<strong>03/02/2040</strong> - Departure: <strong>05/02/2040</strong> - nights: <strong>
+2</strong></span></font></td>
+</tr>
+<tr>
+<td width="516"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"></span></font></td>
+</tr>
+<tr>
+<td width="516" height="10"></td>
+</tr>
+<tr>
+<td width="516"><img src="http://www.nh-hotels.com/nhobe/img/sep02.gif" alt="-----"></td>
+</tr>
+<tr>
+<td width="516" height="8"></td>
+</tr>
+<tr>
+<td width="516"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><strong>4 rooms . Type: Standard Room with Weekend Extender
+</strong></span></font></td>
+</tr>
+<tr>
+<td width="516" height="8"></td>
+</tr>
+<tr>
+<td width="516">
+<table width="516" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="236" align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">Rooms 1</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">2 adults.</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">2 Twin Beds(2 single beds)</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">Breakfast included</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">Non-Smoker</span></font><br>
+</td>
+<td width="280" align="right" valign="top"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="516" height="8"></td>
+</tr>
+<tr>
+<td width="516">
+<table width="516" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="236" align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">Rooms 2</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">2 adults.</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">2 Twin Beds(2 single beds)</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">Breakfast included</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">Non-Smoker</span></font><br>
+</td>
+<td width="280" align="right" valign="top"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="516" height="8"></td>
+</tr>
+<tr>
+<td width="516">
+<table width="516" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="236" align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">Rooms 3</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">2 adults.</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">2 Twin Beds(2 single beds)</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">Breakfast included</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">Non-Smoker</span></font><br>
+</td>
+<td width="280" align="right" valign="top"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="516" height="8"></td>
+</tr>
+<tr>
+<td width="516">
+<table width="516" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="236" align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">Rooms 4</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">2 adults.</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">2 Twin Beds(2 single beds)</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">Breakfast included</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">Non-Smoker</span></font><br>
+</td>
+<td width="280" align="right" valign="top"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="516" height="10"></td>
+</tr>
+<tr>
+<td width="516"><img src="http://www.nh-hotels.com/nhobe/img/sep02.gif" alt="-----"></td>
+</tr>
+<tr>
+<td width="516" height="8"></td>
+</tr>
+<tr>
+<td width="516">
+<table width="516" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="236" align="left" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:16px; color:#424245">Final price</strong></font><br>
+</td>
+<td width="280" align="right" valign="top">
+<p class="textright"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">706.24 EUR &#43; 42.32 EUR VAT =
+</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:20px; color:#880c12">748.56 EUR</strong></font></p>
+<br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">City Tax: 60.64 EUR not included<br>
+Estimated additional amount for all hotel guests &amp; to be paid at the hotel </span>
+</font><br>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="516" height="16"></td>
+</tr>
+<tr>
+<td width="516" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:10px; color:#999999 ">Please note: The hotel cannot guarantee specific preferences.</span></font></td>
+</tr>
+<tr>
+<td width="516" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:10px; color:#999999">You have guaranteed your reservation with a credit card. You will be charged a one-night cancellation fee if you do not cancel within
+ the limits set forth by the cancellation policy.* This does not apply to reservations booked with special rates, in which case the corresponding terms and conditions apply. *For hotels in Germany, 10% of the charge may be refunded as compensation for non-incurred
+ expenses if the reservation is not used.</span></font></td>
+</tr>
+<tr>
+<td width="516" height="32"></td>
+</tr>
+<tr>
+<td width="516"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:26px; color:#424245">Special conditions</strong></font></td>
+</tr>
+<tr>
+<td width="516"><img src="http://www.nh-hotels.com/nhobe/img/sep01.gif" alt="-----"></td>
+</tr>
+<tr>
+<td width="516" height="32"></td>
+</tr>
+<tr>
+<td width="516">
+<table width="516" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><img src="http://www.nh-hotels.com/nhobe/img/blt.gif" alt="*">2 nights with breakfast included, free minibar (the minibar is not restocked on the
+ 2nd day) and late check-out up until 5.00 p.m. on Sundays. </span></font><br>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="516" height="14"></td>
+</tr>
+<tr>
+<td width="516" height="32"></td>
+</tr>
+<tr>
+<td width="516"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:26px; color:#424245">Main Guest (name used in the reservation)</strong></font></td>
+</tr>
+<tr>
+<td width="516" height="14"></td>
+</tr>
+<tr>
+<td width="516"><img src="http://www.nh-hotels.com/nhobe/img/sep01.gif" alt="-----"></td>
+</tr>
+<tr>
+<td width="516" height="14"></td>
+</tr>
+<tr>
+<td width="516"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><strong>Test User</strong><br>
+Telephone: 0600000000<br>
+Email: <a style="color:#567eb5; text-decoration:none" href="mailto:test@example.org">
+test@example.org</a><br>
+</span></font></td>
+</tr>
+<tr>
+<td width="516" height="32"></td>
+</tr>
+<tr>
+<td width="516"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:26px; color:#424245">How to get to the hotel</strong></font></td>
+</tr>
+<tr>
+<td width="516" height="14"></td>
+</tr>
+<tr>
+<td width="516"><img src="http://www.nh-hotels.com/nhobe/img/sep01.gif" alt="-----"></td>
+</tr>
+<tr>
+<td width="516" height="14"></td>
+</tr>
+<tr>
+<td>
+<table width="516" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="204" align="left" valign="top" rowspan="10"><img style="border:4px solid #adc4e9" src="http://maps.google.com/staticmap?center=51.21890,4.40260&amp;zoom=16&amp;size=182x182&amp;markers=51.21890,4.40260,blueh&amp;key=ABQIAAAALYRDnGJbVnPGk1FJXOYGERRMcFfKcZX0z7jf7E68f73l90KXcBTSHZW2lJT3GnQl1qvP_pS8DvENEA" width="182" height="182" alt="Location map">
+</td>
+<td width="312" valign="top" align="left">
+<table cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="312" valign="top" align="left" height="100%" style="padding-bottom:10px">
+<font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:20px; color:#7a7a7a"><a style="color:#567eb5; text-decoration:none" href="http://www.nh-hotels.com/nh/en/hotels/belgium/antwerp/nh-example-antwerp.html?">NH Example Antwerp</a></strong></font>
+<br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">1 Example Street. 2000 Amberes. Antwerp (Belgium)<br>
+Telephone. &#43;32.30.000001 - Fax. &#43;32.30.000002<br>
+Email. <a style="color:#567eb5; text-decoration:none" href="mailto:nhexample@nh-hotels.com">
+nhexample@nh-hotels.com</a> </span></font></td>
+</tr>
+<tr>
+<td width="312" valign="top" align="left" height="100%" style="padding-bottom:10px">
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"> </span></font></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="516" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:10px; color:#999999 ">Please note: The hotel cannot guarantee specific preferences.</span></font></td>
+</tr>
+<tr>
+<td width="516" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:10px; color:#999999">You have guaranteed your reservation with a credit card. You will be charged a one-night cancellation fee if you do not cancel within
+ the limits set forth by the cancellation policy.* This does not apply to reservations booked with special rates, in which case the corresponding terms and conditions apply. *For hotels in Germany, 10% of the charge may be refunded as compensation for non-incurred
+ expenses if the reservation is not used.</span></font></td>
+</tr>
+<tr>
+<td width="516" height="32"></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width="30"></td>
+<td width="2px" style="background:#a4b6d5"></td>
+</tr>
+<tr>
+<td colspan="5" width="580"><img src="http://www.nh-hotels.com/nhobe/img/bgd_bot.gif"></td>
+</tr>
+<tr>
+<td colspan="5" width="580"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">ɠ2000-2039 NH Hoteles.&nbsp; 397 hotels in 24 countries<br>
+<a style="text-decoration:none; color:#567eb5" href="http://www.nh-hotels.com/nh/en/directory.html?">Information and Reservations: 00800 0115 0116
+</a>| <a style="text-decoration:none; color:#567eb5" href="http://www.nh-hotels.com/nh">
+www.nh-hotels.com</a> | <a style="text-decoration:none; color:#567eb5" href="http://www.nh-hotels.com/nh/en/legal-advice.html?" onclick="javascript:window.open(this.href, this.target, 'width=610, height=700, scrollbars=yes'); return false;" target="_blank">
+Legal Notice </a></span></font></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width="33%"></td>
+</tr>
+</tbody>
+</table>
+<br>
+<font face="Arial" color="Gray" size="1">Visit our Web site: http://www.nh-hotels.com This message is from NH HOTELES and it is private and confidential. Its content may be legally protected. Reception by a non-intended person does not waive legal protection
+ rights. If you receive this message by mistake, please delete it from your system and report it to the sender. Although this message has been cleared for viruses using currently available virus definitions before sending, it is the responsibility of the receiver
+ to ensure it is virus-free. Thank you.<br>
+</font>
+</body>
+</html>

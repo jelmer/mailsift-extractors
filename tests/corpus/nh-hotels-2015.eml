@@ -1,0 +1,432 @@
+From: NH Hotels <nh@nh-hotels.com>
+To: test@example.org
+Subject:
+ Your reservation for NH Example Antwerp, January 30, 2043, BBBB000000002
+Date: Sun, 02 Nov 2042 22:11:13 +0100
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>NH Hoteles</title>
+</head>
+<body>
+<table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+<!-- tabla 1 -->
+<tbody>
+<tr>
+<td width="33%"></td>
+<td width="580">
+<table width="580" cellpadding="0" cellspacing="0" border="0">
+<!-- tabla 2 -->
+<tbody>
+<tr>
+<td colspan="3" width="560" align="center" height="45" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">If you can't see this email correctly, click
+<a href="http://www.nh-hotels.com/nhobe/step5.html?ticket=00000000R00000000000000001&amp;language=en" style="text-decoration:none; color:#567eb5">
+&nbsp;here</a></span></font></td>
+</tr>
+<tr>
+<td width="10"></td>
+<td width="580"><a href="#"><img style="border:none" src="http://www.nh-hotels.com/nhobe/img/lgonh02.gif" alt="NH Hoteles"></a>
+</td>
+<td width="10"></td>
+</tr>
+<tr>
+<td width="10"></td>
+<td width="560">
+<table width="560" cellpadding="0" cellspacing="0" border="0">
+<!-- tabla 3 -->
+<tbody>
+<tr>
+<td width="560" height="20"></td>
+</tr>
+<tr>
+<td width="560"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:30px; color:#424245">Booking Confirmation</strong></font></td>
+</tr>
+<tr>
+<td width="560" height="10"></td>
+</tr>
+<tr>
+<td width="560"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a">Dear Mr/Mrs
+<strong>Test User</strong> ,<br>
+Thank you for choosing NH Hoteles. It is our pleasure to confirm your reservation:</span></font></td>
+</tr>
+<tr>
+<td width="560" height="10"></td>
+</tr>
+<tr>
+<td width="560"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:11px; color:#7a7a7a">Reservation number:
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a"><strong style="color:#3daa24; font-size:22px; font-weight:normal">BBBB000000002</strong></span></font></strong></font><br>
+</td>
+<br>
+<br>
+</tr>
+<tr>
+<td width="560" height="20"></td>
+</tr>
+<tr>
+<td align="right" width="560" style="padding-right:40px"><font face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.nh-hotels.com/nhobe/en/pdfVoucher/00000000R00000000000000001.pdf?username=&amp;cptpPayType=" style="font-size:14px; text-decoration:none; background:#880c12; color:#fff; displa:block; padding:4px">Download
+ confirmation</a></font><!--								  <font face="Verdana, Arial, Helvetica, sans-serif"><a href="#" onclick="print()" style="font-size:14px; text-decoration:none; background:#880c12; color:#fff; displa:block; padding:4px">Print confirmation</a></font>&nbsp;&nbsp;-->
+</td>
+</tr>
+<tr>
+<td width="560" height="20"></td>
+</tr>
+<tr>
+<td width="560" height="20"></td>
+</tr>
+<tr>
+<td width="560">
+<table width="560" background="#fafbfd" style="background:#fafbfd; border:1px solid #d3deef" cellpadding="0" cellspacing="10" border="0">
+<!-- tabla 3.1 -->
+<tbody>
+<tr>
+<td>
+<table width="530" cellpadding="2" cellspacing="2" border="0">
+<!-- tabla 3.1.1 -->
+<tbody>
+<tr>
+<td width="108" valign="top"><a href="#"><img style="width:88px; height:88px ; border:none" src="http://www.nh-hotels.com/nh/hotel-gallery/fachadas-21055--nh-example-antwerp_t3-z5w.jpg">
+</a></td>
+<td width="280" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:18px; color:#7a7a7a"><a style="color:#567eb5; text-decoration:none" href="http://www.nh-hotels.com/nh/en/hotels/belgium/antwerp/nh-example-antwerp.html?">NH Example Antwerp</a></strong></font> <img src="http://www.nh-hotels.com/nhobe/img/star_4.png"><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">1 Example Street. 2000 Antwerp (Belgium)<br>
+Telephone. &#43;32.30.000001 - Fax. &#43;32.30.000002<br>
+Email. <a style="color:#567eb5; text-decoration:none" href="mailto:nhexample@nh-hotels.com">
+nhexample@nh-hotels.com</a> </span></font></td>
+<td width="190"><font face="Verdana, Arial, Helvetica, sans-serif"><a style="font-size:15px; color:#567eb5; text-decoration:none" href="http://www.nh-hotels.com/nh/en/hotels/belgium/antwerp/nh-example-antwerp.html?">Hotel information</a></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><a style="font-size:15px; color:#567eb5; text-decoration:none" href="http://www.nh-hotels.com/nhobe/include/map/howToArrive.html?hotelId=999" target="_blank" onclick="window.open(this.href, this.target, 'width=550, height=500, top=205, left=450, toolbar=no, location=0, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no'); return false;">How
+ to get to the hotel </a></font></td>
+</tr>
+</tbody>
+</table>
+<!-- tabla 3.1.1 --></td>
+</tr>
+</tbody>
+</table>
+<!-- tabla 3.1 --></td>
+</tr>
+<tr>
+<td width="560" height="30"></td>
+</tr>
+<tr>
+<td width="560"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:22px; color:#424245">Reservation holder</strong></font></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td width="560"><img src="http://www.nh-hotels.com/nhobe/img/sep01.gif"></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td width="560"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><strong>Test User</strong>
+<br>
+Telephone: &#43;447700900000 <br>
+Email: <a style="color:#567eb5; text-decoration:none" href="mailto:nhexample@nh-hotels.com">
+test@example.org</a> </span></font></td>
+</tr>
+<tr>
+<td width="560" height="32"></td>
+</tr>
+<tr>
+<td width="560"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:22px; color:#424245">Reservation details</strong></font></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td width="560"><img src="http://www.nh-hotels.com/nhobe/img/sep01.gif"></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td width="560"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">Arrival:
+<strong>30/01/2043</strong> - Departure: <strong>01/02/2043</strong> - nights: <strong>
+2</strong></span></font></td>
+</tr>
+<tr>
+<td width="560"><img src="http://www.nh-hotels.com/nhobe/img/sep02.gif"></td>
+</tr>
+<tr>
+<td width="560" height="8"></td>
+</tr>
+<tr>
+<td width="560"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><strong>Room 1(2 adults.):
+</strong>2 Twin Beds(2 single beds),Room only,Non-Smoker </span></font></td>
+</tr>
+<tr>
+<td width="560" height="8"></td>
+</tr>
+<tr>
+<td width="560"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><a style="color:#567eb5; text-decoration:none" title="Condiciones" rel="width:570,height:330" href="http://www.nh-hotels.com/nhobe/conditions/conditions.html?policies=17,9,6,1,3,10,&amp;rateNumber=1531&amp;hotelId=999&amp;startDate=30/01/2043&amp;discount=20.00&amp;isEvents=false" class="mb">Reservation
+ conditions</a></span></font> </td>
+</tr>
+<tr>
+<td width="560" height="8"></td>
+</tr>
+<tr>
+<td width="560">
+<table width="560" cellpadding="0" cellspacing="0" border="0">
+<!-- tabla 5 -->
+<tbody>
+<tr>
+<td colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><strong>Type</strong> Standard Room with ADVANCE PURCHASE
+</span></font></td>
+</tr>
+<tr>
+<td width="236" align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">Rate<br>
+VAT<br>
+<!--	VAT included, additional taxes apply<br />--></span></font><br>
+</td>
+<td width="280" align="right" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">120.76 EUR<br>
+7.24 EUR<br>
+</span></font></td>
+</tr>
+</tbody>
+</table>
+<!-- tabla 5 --></td>
+</tr>
+<tr>
+<td width="560" height="10"></td>
+</tr>
+<tr>
+<td width="560"><img src="http://www.nh-hotels.com/nhobe/img/sep02.gif"></td>
+</tr>
+<tr>
+<td width="560" height="8"></td>
+</tr>
+<tr>
+<!-- final price-->
+<td width="560">
+<table width="560" cellpadding="0" cellspacing="0" border="0">
+<!-- tabla 5 -->
+<tbody>
+<tr>
+<td width="236" align="left" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:11px; color:#424245">Final price</strong></font><br>
+</td>
+<td width="280" align="right" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a">120.76 EUR &#43; 7.24 EUR VAT =
+</span></font><br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:20px; color:#880c12">128.00 EUR</strong></font>
+<br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:11px; color:#7a7a7a"><!--
+											   							City Tax: 15.16 EUR not included
+											   							<br />-->City Tax:15.16 EUR not included<br>
+Estimated additional amount for all hotel guests &amp; to be paid at the hotel </span>
+</font></td>
+</tr>
+</tbody>
+</table>
+<!-- tabla 5 --></td>
+</tr>
+<!-- mostrar precios -->
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<!-- Tarifa y condición de la reserva -->
+<tr>
+<td width="560"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:22px; color:#424245">Rate description and conditions</strong></font></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td width="560"><img src="http://www.nh-hotels.com/nhobe/img/sep01.gif"></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a;">ADVANCE PURCHASE<br>
+Book 30 days or more in advance and save up to 20%.<br>
+</span></font></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<!-- condiciones reserva -->
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td><font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:14px; color:#424245">General Terms and Conditions</strong></font></td>
+</tr>
+<tr>
+<td><img src="http://www.nh-hotels.com/nhobe/img/sep02.gif"></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li type="square"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a;">Best available rate</span></font>
+</li><li type="square"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a;">No reservation fee</span></font>
+</li></ul>
+</td>
+</tr>
+<tr>
+<td><font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:14px; color:#424245">Special Rate</strong></font></td>
+</tr>
+<tr>
+<td><img src="http://www.nh-hotels.com/nhobe/img/sep02.gif"></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li type="square"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a;">Guaranteed</span></font>
+</li><li type="square"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a;">Prepayment of 100% of booking. This rate cannot be paid with NH Hotel Group Rewards Points.</span></font>
+</li><li type="square"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a;">Cancellations not allowed</span></font>
+</li><li type="square"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a;">Cancellation fee is equal to the total cost of your stay.
+</span></font></li><li type="square"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a;">Modifications not allowed</span></font>
+</li><li type="square"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a;">If the guests does not arrive at the hotel, the full amount for the stay will be charged</span></font>
+</li></ul>
+</td>
+</tr>
+<!-- garantia -->
+<tr>
+<td width="560"><font face="Arial, Helvetica, sans-serif"><strong style="font-size:22px; color:#424245">Reservation Guarantee
+</strong></font></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td width="560"><img src="http://www.nh-hotels.com/nhobe/img/sep01.gif"></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td width="560" height="11"></td>
+</tr>
+<tr>
+<td width="560" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><strong style="font-size:12px; color:#7a7a7a ">Reservation Guarantee Policy</strong></font></td>
+</tr>
+<tr>
+<td width="560" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7a7a7a">Your reservation will be charged for the full amount of the stay. Cancellations and modifications are not possible.City tax excluded.</span></font></td>
+</tr>
+<tr>
+<td width="560" height="32"></td>
+</tr>
+<!-- garantia --><!-- metodo de pago: solo cptp --><!-- metodo de pago --><!-- Mensaje subida IVA --><!-- Fin Mensaje subida IVA --><!-- encuesta -->
+<tr>
+<td width="560" height="16"></td>
+</tr>
+<tr>
+<td width="560">
+<table width="560" bgcolor="#fff" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td width="75"><img src="http://www.nh-hotels.com/nhobe/img/bgd-encuesta.gif" width="67" height="94" alt="Bgd Encuesta"></td>
+<td width="473" valign="top">
+<table cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td height="10"></td>
+</tr>
+<tr>
+<td><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:22px; color:#424245">How would you rate the booking process?</span></font></td>
+</tr>
+<tr>
+<td height="10"></td>
+</tr>
+<tr>
+<td><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:12px; color:#7A7A7A">Answer a few questions and help us serve you better</span></font><br>
+<br>
+<font face="Verdana, Arial, Helvetica, sans-serif"><a href="http://customersurvey.nh-hotels.com/nhsurveybooking/BBBB000000002/en/1205/242" style="font-size:14px; text-decoration:none; background:#880c12; color:#fff; displa:block; padding:4px">NH Survey</a></font></td>
+</tr>
+<tr>
+<td height="10"></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width="10"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="560" height="32"></td>
+</tr>
+<!-- encuesta --><!-- banner -->
+<tr>
+<td width="560"></td>
+</tr>
+<!-- banner -->
+<tr>
+<td width="560" height="16"></td>
+</tr>
+<!-- nhworld --><!--							<tr>--><!--								<td width="560">--><!--									<a style="display:block; margin:0; border:none" href="#">--><!--										<img style="display:block; margin:0; border:none" src="img/world561x105.jpg" width="561" height="105" alt="Publi02">--><!--									</a>--><!--								</td>--><!--							</tr>--><!-- nhworld -->
+<tr>
+<td width="560" height="32"></td>
+</tr>
+<tr>
+<td width="516"><img src="http://www.nh-hotels.com/nhobe/img/sep02.gif"></td>
+</tr>
+<tr>
+<td width="516" height="16"></td>
+</tr>
+<tr>
+<td width="516" valign="top" style="padding-bottom:0px"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:10px; color:#999999">This message is from NH HOTELS, and is private and confidential.</span></font></td>
+</tr>
+<tr>
+<td width="516" valign="top" style="padding-bottom:0px"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:10px; color:#999999">Its contents may be legally protected. Reception by someone other than the intended person does not waive
+ legal protection rights. </span></font></td>
+</tr>
+<tr>
+<td width="516" valign="top" style="padding-bottom:0px"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:10px; color:#999999">If you have received this message by error , please delete it and report the incident to the sender.
+</span></font></td>
+</tr>
+<tr>
+<td width="516" valign="top" style="padding-bottom:0px"><font face="Verdana, Arial, Helvetica, sans-serif"><span style="font-size:10px; color:#999999">Although this message has been checked for viruses before it was sent, it is the responsibility of the recipient
+ to ensure that it is virus-free. Thank you.</span></font></td>
+</tr>
+<tr>
+<td width="516" height="16"></td>
+</tr>
+</tbody>
+</table>
+<!-- tabla 3 --></td>
+</tr>
+</tbody>
+</table>
+<!-- tabla 2 --></td>
+<td width="33%" valign="top"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<a href="http://www.nh-hotels.com/special-offers/autumn/EN/"><img alt="Banner" src="http://www.nh-hotels.com/banners/email/en/banner_dos_reservation.jpg">
+</a><br>
+<br>
+<br>
+<br>
+<a href="http://www.nh-hotels.com/app/en/"><img alt="Mobile App" src="http://www.nh-hotels.com/banners/email/en/Banner_APP_Reservation.jpg">
+</a></td>
+</tr>
+</tbody>
+</table>
+<!-- tabla 1 --><br>
+<font face="Arial" color="Gray" size="1">Visit our Web site: http://www.nh-hotels.com This message is from NH HOTELES and it is private and confidential. Its content may be legally protected. Reception by a non-intended person does not waive legal protection
+ rights. If you receive this message by mistake, please delete it from your system and report it to the sender. Although this message has been cleared for viruses using currently available virus definitions before sending, it is the responsibility of the receiver
+ to ensure it is virus-free. Thank you.<br>
+</font>
+
+<br><p>Mensaje analizado y protegido por Telefonica Grandes Clientes</p>
+
+<br></body>
+</html>
