@@ -1,0 +1,11 @@
+name: cwt
+order: 50
+from_domains:
+  - reservation.carlsonwagonlit.ie
+subject_regex: "^Travel documents for .+\\([A-Z0-9]{6}\\)- e-ticket -\\s*$"
+requires:
+  - html
+# These 2012 mails are unsigned.
+require_dkim:
+  - reservation.carlsonwagonlit.ie
+unsigned_before: "2013-01-01"

@@ -1,0 +1,44 @@
+From: Concur Travel <TravelWizard@concursolutions.com>
+To: test@example.org
+Subject: Concur Itinerary: TRIP FROM MADRID TO MONTREAL
+Date: Mon, 03 Sep 2018 09:20:00 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body>
+<div>Trip Overview</div>
+<div>Trip Name:</div>
+<div>Trip from Madrid to Montreal</div>
+<div>Start Date:</div>
+<div>September 14, 2046</div>
+<div>End Date:</div>
+<div>September 28, 2046</div>
+<div>Agency Record Locator:</div>
+<div>EEEEEE</div>
+<div>Passengers:</div>
+<div>Test User</div>
+<div>Reservations</div>
+<div>Friday, September 14, 2046</div>
+<div>Flight Madrid (MAD) to Montreal, QC (YUL)</div>
+<div>Air Canada 837</div>
+<div>Departure: 11:40 AM</div>
+<div>Seat:12A (Confirmed)</div>
+<div>Madrid Barajas Airport (MAD)</div>
+<div>Arrival: 01:50 PM</div>
+<div>Montreal Trudeau Airport (YUL)</div>
+<div>Confirmation: FFFFFF</div>
+<div>Status: Confirmed</div>
+<div>Thursday, September 27, 2046</div>
+<div>Flight Montreal, QC (YUL) to Madrid (MAD)</div>
+<div>Air Canada 836</div>
+<div>Operated by: Air Canada</div>
+<div>This flight leaves on Sep 27 and arrives on Sep 28.</div>
+<div>Departure: 06:15 PM</div>
+<div>Montreal Trudeau Airport (YUL)</div>
+<div>Arrival: 07:40 AM</div>
+<div>Madrid Barajas Airport (MAD)</div>
+<div>Confirmation: FFFFFF</div>
+<div>Status: Confirmed</div>
+<div>Total Estimated Cost</div>
+</body></html>
