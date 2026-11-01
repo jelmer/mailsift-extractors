@@ -1,0 +1,93 @@
+From: RES-SUPPORT@RJ.COM
+TO: TEST@EXAMPLE.ORG
+Subject: USER/TEST MR 09JAN HKG AMM
+Date: Tue, 17 Dec 2013 03:54:05 +0000
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of amsdasprd@amadeus.com designates 192.0.2.2 as permitted sender) smtp.mail=amsdasprd@amadeus.com
+Content-Type: multipart/mixed;
+	boundary="----=_Part_0_0.0"
+MIME-Version: 1.0
+
+------=_Part_0_0.0
+Content-Type: multipart/alternative;
+	boundary="----=_Part_1_0.0"
+
+------=_Part_1_0.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+------------------------------------------------------------------------------
+
+This document is automatically generated.
+Please do not respond to this mail.
+
+                            ELECTRONIC TICKET
+                       PASSENGER ITINERARY RECEIPT
+
+ RJ IBE OFFICE HKG                  DATE: 17 DEC 2013
+ ROYAL JORDANIAN AIRLINES,         AGENT: 0001
+ MOHAMMAD ALI JANAH ST. BUI         NAME: USER/TEST MR
+ AMMAN                              FQTV: 00000000
+ IATA       : 133 93284
+ TELEPHONE  : 00962 6 5100000
+
+
+ ISSUING AIRLINE                        : ROYAL JORDANIAN
+ TICKET NUMBER                          : ETKT 512 0000000000
+ BOOKING REF : AMADEUS: AAAAAA, AIRLINE: RJ/AAAAAA
+
+ FROM /TO        FLIGHT  CL DATE   DEP      FARE BASIS    NVB   NVA   BAG  ST
+
+ HONG KONG       RJ 183  Q  09JAN  2125     QLANHKG1      09JAN 09JAN 1PC  OK
+ TERMINAL:1         FLIGHT OPERATED BY:   ROYAL JORDANIAN
+ AMMAN                            ARRIVAL TIME: 0615
+
+ AMMAN           RJ 151  Q  10JAN  0835     QLANHKG1      10JAN 10JAN 1PC  OK
+                    FLIGHT OPERATED BY:   ROYAL JORDANIAN
+ AMSTERDAM                        ARRIVAL TIME: 1155
+
+
+ AT CHECK-IN, PLEASE SHOW A PICTURE IDENTIFICATION AND THE DOCUMENT YOU GAVE
+ FOR REFERENCE AT RESERVATION TIME
+
+------=_Part_1_0.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<HTML> <BODY><FONT FACE="Courier New" SIZE="3" ><PRE>------------------------------------------------------------------------------
+
+This document is automatically generated.
+Please do not respond to this mail.
+
+                            ELECTRONIC TICKET
+                       PASSENGER ITINERARY RECEIPT
+
+ RJ IBE OFFICE HKG                  DATE: 17 DEC 2013
+ ROYAL JORDANIAN AIRLINES,         AGENT: 0001
+ MOHAMMAD ALI JANAH ST. BUI         NAME: USER/TEST MR
+ AMMAN                              FQTV: 00000000
+ IATA       : 133 93284
+ TELEPHONE  : 00962 6 5100000
+
+
+ ISSUING AIRLINE                        : ROYAL JORDANIAN
+ TICKET NUMBER                          : ETKT 512 0000000000
+ BOOKING REF : AMADEUS: AAAAAA, AIRLINE: RJ/AAAAAA
+
+ FROM /TO        FLIGHT  CL DATE   DEP      FARE BASIS    NVB   NVA   BAG  ST
+
+ HONG KONG       RJ 183  Q  09JAN  2125     QLANHKG1      09JAN 09JAN 1PC  OK
+ TERMINAL:1         FLIGHT OPERATED BY:   ROYAL JORDANIAN
+ AMMAN                            ARRIVAL TIME: 0615
+
+ AMMAN           RJ 151  Q  10JAN  0835     QLANHKG1      10JAN 10JAN 1PC  OK
+                    FLIGHT OPERATED BY:   ROYAL JORDANIAN
+ AMSTERDAM                        ARRIVAL TIME: 1155
+
+
+ AT CHECK-IN, PLEASE SHOW A PICTURE IDENTIFICATION AND THE DOCUMENT YOU GAVE
+ FOR REFERENCE AT RESERVATION TIME
+</PRE></FONT></BODY></HTML>
+------=_Part_1_0.0--
+
+------=_Part_0_0.0--

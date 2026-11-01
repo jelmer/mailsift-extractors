@@ -1,0 +1,238 @@
+From: ibesupport@rj.com
+To: test@example.org
+Subject: Confirmation for reservation User, Hong Kong, 9 Jan.
+Date: Tue, 17 Dec 2013 03:54:02 +0000 (GMT)
+Authentication-Results: mx.google.com;
+       spf=hardfail (google.com: domain of ibesupport@rj.com does not designate 192.0.2.1 as permitted sender) smtp.mail=ibesupport@rj.com
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html><head><title>Confirmation for reservation User, Hong Kong, 9 Jan.</title></head><body>
+<table><tr>
+	          <td class="textBoldlarge">
+	            Booking reservation number: <span class="textColor">AAAAAA</span>
+			  </td>
+</tr></table>
+<table><tr><td><span>
+            Mr Test User
+</span></td></tr></table>
+<div class="sectionHolder" id="eticketNumbers">
+  <p id="eTicketNumbersDescription">Only e-ticket numbers are displayed when they are issued.</p>
+  <table class="conf_fs_pax" cellspacing="0">
+    <tr>
+      <th class="cfsp_c1" id="documentNumber_1">E-ticket number 512-0000000000:</th>
+      <th class="cfsp_c2">Hong Kong - Amsterdam</th>
+      <td class="cfsp_c3">
+                Test User
+      </td>
+    </tr>
+  </table>
+</div>
+  <div class="sectionHolder" id="sh_selectionRecap">
+    <table cellspacing="0" cellpadding="0" class="tableConfText">
+      <tr>
+            <td class="textBold">
+              Airline confirmation number(s): <span class="textColor">Royal Jordanian AAAAAA</span>
+            </td>
+      </tr>
+    </table>
+  </div>
+<div class="divtableFlightConf" id="sh_fltItinerary">
+      <table cellspacing="0" cellpadding="0" class="tableFlightConf"  id="tabFgtReview_0">
+        <tr>
+              <th colspan="3">
+                Hong Kong to Amsterdam
+              </th>
+        </tr>
+        <tr>
+          <td class="space"></td><td class="space"></td><td class="space"></td>
+        </tr>
+        <tr>
+                <td class="textBold flight">Flight 1
+                </td>
+          <td width="83%" class="textBold" colspan="2">
+            Thursday, January 09, 2014
+          </td>
+        </tr>
+        <tr>
+                  <td class="textColorBold" valign="top">&nbsp;confirmed</td>
+          <td style="padding:0px" colspan="2">
+          <table width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="padding:0px" colspan="3">
+                <table width="100%" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="15%" class="textBold"><span class="nowrap">Departure:</span></td>
+                    <td class="nowrap">21:25</td>
+                    <td width="90%">
+			Hong Kong, Hong Kong (SAR of China) - Hong Kong International, terminal 1
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="textBold"><span class="nowrap">Arrival:</span></td>
+                    <td class="nowrap">06:15
+    <span class="textSmaller">
+        +1
+        day(s)
+      <span onmouseover="javascript:NbDayBetweenDepAndArrDates.doTooltip(event,'You will be arriving 1 day(s) later')" onmouseout="javascript:NbDayBetweenDepAndArrDates.hideTip()" class="ImgHelp9">&nbsp;</span>
+    </span>
+</td>
+                    <td>
+			Amman, Jordan - Queen Alia
+                           <span class="tech">
+                                Note: includes 1 technical stop(s)
+                           </span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4" class="space"></td>
+            </tr>
+            <tr>
+                    <td width="15%" class="textBoldSmallFlight">
+                      Airline:
+                    </td>
+            <td id="segAirline_0_0" width="35%" >
+              Royal Jordanian&nbsp;RJ183
+            </td>
+              <td width="50%" colspan="2" rowspan="2" valign="top" style="padding:0px">
+                  <table width="100%" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="29%" class="textBoldSmallFlight">Aircraft:</td>
+                        <td id="segAircraft_0_0">
+  Airbus Industrie A330
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="29%" class="textBoldSmallFlight" nowrap="nowrap" >Last check in:</td>
+                        <td id="segChkIn_0_0">information not available</td>
+                      </tr>
+                  </table>
+              </td>
+            </tr>
+              <tr>
+                <td></td>
+                <td id="segOpBy_0_0" class="">
+                  <span class="textSmaller">
+                  </span>
+                </td>
+              </tr>
+              <tr id="faretype">
+                <td class="textBoldSmallFlight" nowrap="nowrap"> </td>
+                <td id="segFareType_0_0">
+			Super Flexi/Economy Restricted
+                </td>
+              </tr>
+                    <tr>
+                      <td class="textBoldSmallFlight">Meal:</td>
+                      <td id="segMeal_0_0">
+                        MEAL (NON SPECIFIC)
+                      </td>
+                    </tr>
+          </table>
+          </td>
+        </tr>
+          <tr>
+            <td class="space" colspan="3"></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="border">
+                       <span class="ImgPlane2">&nbsp;</span>
+                       <div class="textChangeAirport textChangeAirportTextBold">
+                       Change of plane required. Time between flights : 2:20.
+                       </div>
+             </td>
+          </tr>
+        <tr>
+          <td></td>
+          <td class="space" colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+                <td class="textBold flight">Flight 2
+                </td>
+          <td width="83%" class="textBold" colspan="2">
+            Friday, January 10, 2014
+          </td>
+        </tr>
+        <tr>
+                  <td class="textColorBold" valign="top">&nbsp;confirmed</td>
+          <td style="padding:0px" colspan="2">
+          <table width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="padding:0px" colspan="3">
+                <table width="100%" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="15%" class="textBold"><span class="nowrap">Departure:</span></td>
+                    <td class="nowrap">08:35</td>
+                    <td width="90%">
+			Amman, Jordan - Queen Alia
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="textBold"><span class="nowrap">Arrival:</span></td>
+                    <td class="nowrap">11:55
+</td>
+                    <td>
+			Amsterdam, Netherlands - Schiphol
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4" class="space"></td>
+            </tr>
+            <tr>
+                    <td width="15%" class="textBoldSmallFlight">
+                      Airline:
+                    </td>
+            <td id="segAirline_0_1" width="35%" >
+              Royal Jordanian&nbsp;RJ151
+            </td>
+              <td width="50%" colspan="2" rowspan="2" valign="top" style="padding:0px">
+                  <table width="100%" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="29%" class="textBoldSmallFlight">Aircraft:</td>
+                        <td id="segAircraft_0_1">
+  Airbus Industrie A319
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="29%" class="textBoldSmallFlight" nowrap="nowrap" >Last check in:</td>
+                        <td id="segChkIn_0_1">information not available</td>
+                      </tr>
+                  </table>
+              </td>
+            </tr>
+              <tr>
+                <td></td>
+                <td id="segOpBy_0_1" class="">
+                  <span class="textSmaller">
+                  </span>
+                </td>
+              </tr>
+              <tr id="faretype">
+                <td class="textBoldSmallFlight" nowrap="nowrap"> </td>
+                <td id="segFareType_0_1">
+			Super Flexi/Economy Restricted
+                </td>
+              </tr>
+                    <tr>
+                      <td class="textBoldSmallFlight">Meal:</td>
+                      <td id="segMeal_0_1">
+                        LUNCH
+                      </td>
+                    </tr>
+          </table>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="space" colspan="2">&nbsp;</td>
+        </tr>
+    </table>
+</div>
+</body></html>

@@ -1,0 +1,12 @@
+name: royal-jordanian
+order: 50
+from_domains:
+  - rj.com
+# rj.com booking confirmations and schedule-change notices, plus the
+# Amadeus itinerary receipt (`SURNAME/GIVEN MR 09JAN HKG AMM`).
+subject_regex: "(?i)^(?:(?:Confirmation|Acknowledgment for schedule changes) for reservation .+|[A-Z' -]+/[A-Z' -]+ \\d{2}[A-Z]{3} [A-Z]{3} [A-Z]{3})\\s*$"
+requires:
+  - html
+# No `require_dkim`: this mail was relayed through Amadeus unsigned.
+# royal-jordanian.py refuses anything dated 2016 or later so spoofed
+# mail can't reach it today.

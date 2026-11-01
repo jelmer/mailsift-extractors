@@ -1,0 +1,61 @@
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of op-0000000000-20181214@mb.lan.com designates 192.0.2.4 as permitted sender) smtp.mailfrom=op-0000000000-20181214@mb.lan.com
+Content-Type: multipart/mixed; boundary="_----------=_0000000000000001"
+MIME-Version: 1.0
+Date: Fri, 14 Dec 2018 00:51:25 +0000
+From: checkinweb@lan.com
+To: test@example.org
+Subject: =?utf-8?B?Qm9hcmRpbmcgUGFzcyBvZiBURVNUIFVTRVIuIDE1IGRlY2VtYmVyIDIwMTgg?=
+ =?utf-8?B?RWwgQ2FsYWZhdGUgLSBCdWVub3MgQWlyZXMgTEEgNzczNQ==?=
+
+--_----------=_0000000000000001
+Content-Type: multipart/alternative; boundary="_----------=_0000000000000002"
+
+--_----------=_0000000000000002
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+
+Hello Test User,
+
+We are sending your boarding pass so you will have it with you on the day of your flight.
+
+Option 1: To have a printed copy, download and print the attached file.
+
+Have a happy flight.
+
+The LATAM Airlines Team
+
+--_----------=_0000000000000002
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/html
+
+<html>
+    <head>
+        <title>Boarding Pass</title>
+    </head>
+    <body>
+        <div>
+            <p>Hello Test User,</p>
+            <p>We are sending your boarding pass so you will have it with you on the day of your flight.</p>
+            <ul>
+                <li>Option 1: To have a <strong>printed copy</strong>, download and print the attached file.</li>
+            </ul>
+            <p>Have a happy flight.</p>
+            <p>The LATAM Airlines Team</p>
+        </div>
+    </body>
+</html>
+
+--_----------=_0000000000000002--
+
+--_----------=_0000000000000001
+Content-Disposition: inline; filename="Test User. El Calafate - Buenos Aires.pdf"
+Content-Transfer-Encoding: base64
+Content-Type: application/pdf; name="Test User. El Calafate - Buenos Aires.pdf"
+
+JVBERi0xLjQKMSAwIG9iajw8L1R5cGUvQ2F0YWxvZz4+ZW5kb2JqCnRyYWlsZXI8PC9Sb290IDEg
+MCBSPj4KJSVFT0YK
+
+--_----------=_0000000000000001--
