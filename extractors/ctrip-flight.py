@@ -46,11 +46,6 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message, strip_html
 
-# Ctrip's mail was not DKIM-signed; its successor Trip.com signs
-# everything it sends now. Nothing genuine from ctrip.com should
-# postdate the rebrand.
-CUTOFF = datetime(2019, 1, 1)
-
 BOOKING_RE = re.compile(r"^Booking No\.\n(\d+)$", re.MULTILINE)
 SEGMENT_RE = re.compile(
     r"^(?P<date>[A-Z][a-z]{2} \d{1,2} \d{4}) (?P<airline>[A-Z0-9]{2})(?P<number>\d{1,4})"
@@ -97,10 +92,6 @@ def passengers(text: str) -> list[str]:
 def main() -> int:
     mail = read_message()
     if not mail.html:
-        return 0
-    # The manifest can't require DKIM, so refuse anything recent
-    # enough that it ought to have been signed.
-    if mail.date is None or mail.date.replace(tzinfo=None) >= CUTOFF:
         return 0
 
     text = "\n".join(
