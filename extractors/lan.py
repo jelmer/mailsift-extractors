@@ -26,10 +26,8 @@ Two templates carry flight details:
   without IATA codes and no booking reference. The PDF is kept as a
   `.ticket.pdf`.
 
-LAN didn't DKIM-sign any of this, so the manifest can't require it.
-Instead the script refuses mail dated on or after `_CUTOFF`: genuine
-mail from these templates is older, and a spoofer today can't reach
-the unauthenticated path.
+LAN didn't DKIM-sign any of this, so the manifest only lets unsigned
+mail through if it was received before 2019.
 """
 
 from __future__ import annotations
@@ -43,8 +41,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import Mail, read_message, strip_html
-
-_CUTOFF = datetime(2019, 1, 1)
 
 _MONTHS = {
     "january": 1,
@@ -267,8 +263,6 @@ def extract_boarding_pass(mail: Mail, subject: re.Match[str]) -> int:
 
 def main() -> int:
     mail = read_message()
-    if mail.date is not None and mail.date.replace(tzinfo=None) >= _CUTOFF:
-        return 0
     subject = mail.subject or ""
     if ETICKET_SUBJECT_RE.match(subject):
         return extract_eticket(mail)

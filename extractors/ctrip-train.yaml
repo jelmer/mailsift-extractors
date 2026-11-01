@@ -5,5 +5,9 @@ from_domains:
 subject_regex: "(?i)^Ticket Issued$"
 requires:
   - html
-# No require_dkim: ctrip.com mail was not DKIM-signed. The script
-# refuses anything dated after the Trip.com rebrand instead.
+# ctrip.com mail was not DKIM-signed; its successor Trip.com signs
+# everything it sends as trip.com.
+require_dkim:
+  - ctrip.com
+  - trip.com
+unsigned_before: "2019-01-01"

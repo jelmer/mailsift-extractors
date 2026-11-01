@@ -57,6 +57,11 @@ so each one you add narrows the match:
   is the strongest constraint available: it means a spammer can't reach
   your extractor by spoofing the `From:` domain. `shopify-order` routes
   entirely off the DKIM signature; read its manifest for the pattern.
+  If the vendor only started signing at some point, keep
+  `require_dkim` and add `unsigned_before` with the date the signing
+  started, rather than checking the `Date:` header in the script: a
+  forger controls `Date:`, while `unsigned_before` uses the time the
+  message was received.
 
 ## Add a test and an example email
 

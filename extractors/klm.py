@@ -153,18 +153,8 @@ def segment_before(
     return groups, cabin
 
 
-def extract(mail, max_message_date: datetime | None = None) -> int:
-    """Emit one reservation per flight segment in `mail`.
-
-    With `max_message_date` set, refuse mail whose `Date:` header is
-    missing or on or after it. The legacy manifest uses this to accept
-    unsigned mail from before KLM signed with DKIM.
-    """
-    if max_message_date is not None and (
-        mail.date is None or mail.date.replace(tzinfo=None) >= max_message_date
-    ):
-        return 0
-
+def extract(mail) -> int:
+    """Emit one reservation per flight segment in `mail`."""
     if not mail.html:
         return 0
 

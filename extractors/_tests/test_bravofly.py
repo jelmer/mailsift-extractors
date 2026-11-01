@@ -2,13 +2,6 @@
 
 from __future__ import annotations
 
-import subprocess
-import sys
-from pathlib import Path
-
-EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
-CORPUS_DIR = EXTRACTORS_DIR.parent / "tests" / "corpus"
-
 CONTEXT = {"@vocab": "https://schema.org/", "pending": "https://pending.schema.org/"}
 LHR = {"@type": "Airport", "name": "London Heathrow", "iataCode": "LHR"}
 FRA = {"@type": "Airport", "name": "Frankfurt Int.", "iataCode": "FRA"}
@@ -69,17 +62,3 @@ def test_return_trip_emits_one_reservation_per_leg(run_extractor):
             }
         ),
     }
-
-
-def test_refuses_after_cutoff(tmp_path):
-    # The mail is unsigned, so a recent message in the old template is
-    # treated as a spoof.
-    eml = (CORPUS_DIR / "bravofly-confirmation.eml").read_bytes()
-    eml = eml.replace(b"Date: Tue, 5 May 2015", b"Date: Sun, 5 May 2024")
-    subprocess.run(
-        [sys.executable, str(EXTRACTORS_DIR / "bravofly.py")],
-        cwd=tmp_path,
-        input=eml,
-        check=True,
-    )
-    assert list(tmp_path.iterdir()) == []

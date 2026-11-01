@@ -271,22 +271,8 @@ def parse_legacy_segments(text: str) -> list[tuple]:
     return out
 
 
-def extract(mail, max_message_date: datetime | None = None) -> int:
-    """Walk `mail`'s itinerary and emit one reservation per flight.
-
-    When `max_message_date` is set, refuse to process any message
-    whose `Date:` header is on or after that date. The legacy
-    manifest uses this to accept pre-DKIM mail (which BA didn't
-    sign) while making sure a spoofer today can't reach the same
-    code path.
-    """
-    if max_message_date is not None and mail.date is not None:
-        # Compare naively (drop tzinfo): the cutoff is coarse and
-        # timezone drift on the boundary day doesn't matter.
-        mail_naive = mail.date.replace(tzinfo=None)
-        if mail_naive >= max_message_date:
-            return 0
-
+def extract(mail) -> int:
+    """Walk `mail`'s itinerary and emit one reservation per flight."""
     text = mail.text
     if not text:
         return 0
