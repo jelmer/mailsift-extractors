@@ -1,0 +1,61 @@
+From: buchungsbestaetigung@bahn.de
+To: test@example.org
+Subject: =?utf-8?q?Buchungsbest=C3=A4tigung?= (Auftrag BBBBBB)
+Date: Sat, 10 Dec 2044 12:00:00 +0100
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8976563072166621958=="
+
+--===============8976563072166621958==
+Content-Type: multipart/alternative;
+ boundary="===============3340686870820114953=="
+
+--===============3340686870820114953==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Sehr geehrter Herr User,
+vielen Dank für Ihren Fahrkartenkauf.
+Auftragsnummer: BBBBBB
+
+--===============3340686870820114953==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+
+<html><body><p>Buchungsbestätigung (Auftrag BBBBBB)</p><p>Auftragsnummer: BBBBBB</p></body></html>
+
+--===============3340686870820114953==--
+
+--===============8976563072166621958==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="BBBBBB.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2Jq
+CjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2Jq
+CjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUg
+ODQyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAw
+IFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNl
+Rm9udCAvQ291cmllciAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyA+PgplbmRvYmoKNSAwIG9i
+ago8PCAvTGVuZ3RoIDg0NSA+PgpzdHJlYW0KQlQKL0YxIDggVGYKMTAgVEwKMzAgODAwIFRkCihP
+bmxpbmUtVGlja2V0KSBUaiBUKgooSGVyciAgVGVzdCBVc2VyKSBUaiBUKgooQXVmdHJhZ3NudW1t
+ZXI6ICAgQkJCQkJCKSBUaiBUKgooKSBUaiBUKgooSWhyZSBSZWlzZXZlcmJpbmR1bmcgdW5kIFJl
+c2VydmllcnVuZyBIaW5mYWhydCBhbSAzMS4xMi4yMDQ0KSBUaiBUKgooSGFsdCAgICAgICAgICAg
+ICAgICAgRGF0dW0gICAgWmVpdCAgICAgICBHbGVpcyAgIFByb2R1a3RlL1Jlc2VydmllcnVuZykg
+VGogVCoKKEtpZWwgSGJmICAgICAgICAgICAgIDMxLjEyLiAgIGFiIDIyOjEwICAgNCAgICAgICBJ
+QyAyMDAxLCAyIFNpdHpwbOR0emUsIFdnLiA5LCkgVGogVCoKKEVyZnVydCBIYmYgICAgICAgICAg
+IDAxLjAxLiAgIGFuIDA0OjU1ICAgMSAgICAgICBQbC4gMTEgMTIsIDIgR2FuZywpIFRqIFQqCigg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTmljaHRyYXVj
+aGVyLCBSZXMuTnIuIDExMTEgMjIyMiAzMzMzIDQ0KSBUaiBUKgooKSBUaiBUKgooSWhyZSBSZWlz
+ZXZlcmJpbmR1bmcgdW5kIFJlc2VydmllcnVuZyBS/GNrZmFocnQgYW0gMDMuMDEuMjA0NSkgVGog
+VCoKKEhhbHQgICAgICAgICAgICAgICAgIERhdHVtICAgIFplaXQgICAgICAgR2xlaXMgICBQcm9k
+dWt0ZS9SZXNlcnZpZXJ1bmcpIFRqIFQqCihFcmZ1cnQgSGJmICAgICAgICAgICAwMy4wMS4gICBh
+YiAwOTowMiAgIDIgICAgICAgSUNFIDE1MDIpIFRqIFQqCihLaWVsIEhiZiAgICAgICAgICAgICAw
+My4wMS4gICBhbiAxNDo0NyAgIDYpIFRqIFQqCigpIFRqIFQqCihXaWNodGlnZSBOdXR6dW5nc2hp
+bndlaXNlOikgVGogVCoKRVQKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1
+NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1
+IDAwMDAwIG4gCjAwMDAwMDAyNDEgMDAwMDAgbiAKMDAwMDAwMDMzNiAwMDAwMCBuIAp0cmFpbGVy
+Cjw8IC9TaXplIDYgL1Jvb3QgMSAwIFIgPj4Kc3RhcnR4cmVmCjEyMzIKJSVFT0YK
+
+--===============8976563072166621958==--
