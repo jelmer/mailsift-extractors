@@ -115,3 +115,40 @@ def test_alamo_keeps_only_the_booking_specific_pdf(run_extractor):
         "orderDate": "2026-10-21",
     }
     assert out["alamo-200000000-factuur.receipt.pdf"].startswith(b"%PDF")
+
+
+def national(pickup: str, dropoff: str, branch: str, car: str) -> dict:
+    return {
+        "nationalcar-1000000001.reservation.json": {
+            "@context": "https://schema.org",
+            "@type": "RentalCarReservation",
+            "reservationNumber": "1000000001",
+            "provider": {"@type": "Organization", "name": "National Car Rental"},
+            "pickupTime": pickup,
+            "dropoffTime": dropoff,
+            "pickupLocation": {"@type": "Place", "name": branch},
+            "dropoffLocation": {"@type": "Place", "name": branch},
+            "reservationFor": {"@type": "Car", "name": car},
+        }
+    }
+
+
+def test_national_booked_through_a_partner_site(run_extractor):
+    out = run_extractor("nationalcar", "nationalcar-partnerbookingkit.eml")
+    assert out == national(
+        "2045-10-12T10:30:00",
+        "2045-10-18T10:30:00",
+        "Denver International Airport",
+        "Compact Nissan Versa",
+    )
+
+
+def test_national_modified_reservation(run_extractor):
+    # Same confirmation number as the booking, so it replaces it.
+    out = run_extractor("nationalcar", "nationalcar-modified.eml")
+    assert out == national(
+        "2045-10-11T10:30:00",
+        "2045-10-18T10:30:00",
+        "DENVER INTL ARPT (DEN)",
+        "Midsize Hyundai Elantra",
+    )

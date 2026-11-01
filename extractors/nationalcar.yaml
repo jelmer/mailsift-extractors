@@ -2,6 +2,8 @@ name: nationalcar
 order: 50
 from_domains:
   - nationalcar.com
-subject_regex: "(?i)^National Reservation Confirmation\\s+\\d{6,}\\s+for\\s+"
+  # Bookings made through a partner site.
+  - partnerbookingkit.com
+subject_regex: "(?i)^(?:National Reservation Confirmation\\s+\\d{6,}\\s+for\\s+|National Car Rental Confirmation:\\s*\\d{6,}\\s*$|Modified Reservation: National Car Rental at\\s)"
 requires:
   - html

@@ -22,6 +22,18 @@ Both `Pickup` and `Return` are followed by the branch and then the
 date, so a one-way hire keeps both ends. We emit a
 `RentalCarReservation`.
 
+Two other layouts carry the same confirmation number, so they
+overwrite the same file:
+
+- Bookings made through a partner site come from
+  `no-reply@partnerbookingkit.com` ("National Car Rental Confirmation:
+  <number>"), with `Pickup Date & Time` / `Thu, Sep 14 2046 3:00 PM`,
+  `Pickup Location` / branch, the same for `Return`, and `Vehicle
+  Information` / class / model.
+- "Modified Reservation: ..." mails list `PICK UP` / branch /
+  `Wednesday, September 13, 2046` / `3:00 PM`, the same under
+  `RETURN`, and `Vehicle` / class / model.
+
 National doesn't DKIM-sign this mail (only SPF passes), so the
 manifest can't require a signature.
 """
@@ -100,6 +112,41 @@ def branch_and_time(lines: list[str], label: str) -> tuple[str | None, datetime 
     return None, None
 
 
+def value_after(lines: list[str], label: str) -> str | None:
+    try:
+        return lines[lines.index(label) + 1]
+    except (ValueError, IndexError):
+        return None
+
+
+def partner_end(lines: list[str], end: str) -> tuple[str | None, datetime | None]:
+    """`Pickup Date & Time` / `Thu, Sep 14 2046 3:00 PM`, `Pickup Location` / branch."""
+    when = value_after(lines, f"{end} Date & Time")
+    if when is None:
+        return None, None
+    try:
+        at = datetime.strptime(when, "%a, %b %d %Y %I:%M %p")
+    except ValueError:
+        raise ValueError(f"unrecognised {end.lower()} time {when!r}") from None
+    return value_after(lines, f"{end} Location"), at
+
+
+def modified_end(lines: list[str], label: str) -> tuple[str | None, datetime | None]:
+    """`PICK UP` / branch / `Wednesday, September 13, 2046` / `3:00 PM`."""
+    try:
+        i = lines.index(label)
+        branch, day, time = lines[i + 1 : i + 4]
+    except ValueError:
+        return None, None
+    try:
+        at = datetime.strptime(f"{day} {time}", "%A, %B %d, %Y %I:%M %p")
+    except ValueError:
+        raise ValueError(
+            f"unrecognised {label.lower()} time {day!r} {time!r}"
+        ) from None
+    return branch, at
+
+
 def main() -> int:
     mail = read_message()
     if not mail.html:
@@ -118,10 +165,19 @@ def main() -> int:
         return 0
     confirmation = match.group(1)
 
+    vehicle_label = "Your vehicle"
     pickup_branch, pickup_at = branch_and_time(lines, "Pickup")
-    if pickup_at is None:
-        return 0
     dropoff_branch, dropoff_at = branch_and_time(lines, "Return")
+    if pickup_at is None:
+        pickup_branch, pickup_at = partner_end(lines, "Pickup")
+        dropoff_branch, dropoff_at = partner_end(lines, "Return")
+        vehicle_label = "Vehicle Information"
+    if pickup_at is None:
+        pickup_branch, pickup_at = modified_end(lines, "PICK UP")
+        dropoff_branch, dropoff_at = modified_end(lines, "RETURN")
+        vehicle_label = "Vehicle"
+    if pickup_at is None:
+        raise ValueError(f"reservation {confirmation} has no pickup time")
 
     reservation: dict = {
         "@context": "https://schema.org",
@@ -137,13 +193,25 @@ def main() -> int:
     if dropoff_branch:
         reservation["dropoffLocation"] = {"@type": "Place", "name": dropoff_branch}
 
-    for i, line in enumerate(lines[:-1]):
-        if line.strip().lower() == "your vehicle":
-            reservation["reservationFor"] = {
-                "@type": "Car",
-                "name": lines[i + 1].strip(),
-            }
-            break
+    if vehicle_label == "Your vehicle":
+        car = next(
+            (
+                lines[i + 1]
+                for i, line in enumerate(lines[:-1])
+                if line.lower() == "your vehicle"
+            ),
+            None,
+        )
+    else:
+        # The class, then the model ("Nissan Versa or similar").
+        i = lines.index(vehicle_label) if vehicle_label in lines else -1
+        car = (
+            " ".join(lines[i + 1 : i + 3]).removesuffix(" or similar")
+            if i >= 0
+            else None
+        )
+    if car:
+        reservation["reservationFor"] = {"@type": "Car", "name": car}
 
     Path(f"nationalcar-{confirmation}.reservation.json").write_text(
         json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
