@@ -1,0 +1,10 @@
+name: virgin-atlantic
+order: 50
+from_domains:
+  - fly.virgin.com
+subject_regex: "^Virgin Atlantic Airways e-Ticket [A-Z0-9]{6}$"
+requires:
+  - html
+# Signed by Virgin's Microsoft 365 tenant rather than its own domain.
+require_dkim:
+  - virginatlantic365.onmicrosoft.com
