@@ -112,6 +112,34 @@ class TestReadMessage:
         assert mail.from_address == "sender@example.com"
         assert mail.from_domain == "example.com"
 
+    def test_ld_json_character_references_are_decoded(self) -> None:
+        # Some senders template their ld+json through HTML escaping, but
+        # <script> content is raw text, so the references survive into
+        # the JSON strings. A bare `&` not closed by `;` is left alone,
+        # so query strings in URLs come through intact.
+        raw = (
+            b"From: sender@example.com\r\n"
+            b"Subject: Your booking\r\n"
+            b"Content-Type: text/html; charset=utf-8\r\n\r\n"
+            b'<html><head><script type="application/ld+json">'
+            b'{"@type": "LodgingReservation", "reservationFor": {'
+            b'"name": "St. Example&#39;s Krak&oacute;w &amp; Spa", '
+            b'"address": "1 Example Stra&szlig;e", '
+            b'"url": "https://example.com/?a=1&region=2"}}'
+            b"</script></head><body>Hi</body></html>\r\n"
+        )
+        mail = read_message(BytesIO(raw))
+        assert mail.ld_json == [
+            {
+                "@type": "LodgingReservation",
+                "reservationFor": {
+                    "name": "St. Example's Krak\u00f3w & Spa",
+                    "address": "1 Example Stra\u00dfe",
+                    "url": "https://example.com/?a=1&region=2",
+                },
+            }
+        ]
+
     def test_folded_subject_is_unfolded(self) -> None:
         # mailsift matches `subject_regex` against the unfolded value, so
         # scripts have to see the same.

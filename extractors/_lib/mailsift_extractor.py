@@ -25,6 +25,7 @@ import email.header
 import email.message
 import email.policy
 import email.utils
+import html
 import json
 import re
 import sys
@@ -376,8 +377,44 @@ def strip_html(html: str, *, block_tags: bool = False) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+_CHAR_REF = re.compile(r"&(?:#[0-9]+|#[xX][0-9a-fA-F]+|[A-Za-z][A-Za-z0-9]*);")
+
+
+def decode_char_refs(text: str) -> str:
+    """Decode the HTML character references in `text`, once.
+
+    Only references closed by `;` are decoded. HTML also accepts some
+    named references without one, but in text that was never meant to
+    be HTML that turns a query string like `?a=1&region=2` into
+    `?a=1\u00aegion=2`. A doubly-escaped `&amp;amp;` comes out as
+    `&amp;`, since each reference is decoded a single time.
+    """
+    return _CHAR_REF.sub(lambda m: html.unescape(m.group(0)), text)
+
+
+def _decode_ld_json(value: Any) -> Any:
+    if isinstance(value, str):
+        return decode_char_refs(value)
+    if isinstance(value, list):
+        return [_decode_ld_json(v) for v in value]
+    if isinstance(value, dict):
+        return {k: _decode_ld_json(v) for k, v in value.items()}
+    return value
+
+
 def _extract_ld_json(html: str) -> list[Any]:
     """Pull <script type="application/ld+json"> blocks out of an HTML body.
+
+    Script content is raw text, so an HTML parser leaves character
+    references in it alone. Some senders generate their ld+json through
+    an HTML template that escapes it anyway, so the string values are
+    decoded here, where the blocks leave the HTML.
+    """
+    return [_decode_ld_json(block) for block in _find_ld_json(html)]
+
+
+def _find_ld_json(html: str) -> list[Any]:
+    """Find the ld+json blocks in an HTML body, as parsed JSON.
 
     Uses extruct if available for robustness; falls back to a very small
     regex-based extractor so extractors without extruct still work.
