@@ -1,0 +1,12 @@
+name: vliegtickets
+order: 50
+from_domains:
+  - vliegtickets.nl
+subject_regex: "^Uw elektronische tickets$"
+requires:
+  - html
+# The e-tickets from 2009 and 2010 are unsigned; nothing later from
+# this template has turned up.
+require_dkim:
+  - vliegtickets.nl
+unsigned_before: "2011-01-01"

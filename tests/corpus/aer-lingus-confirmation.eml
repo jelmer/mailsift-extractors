@@ -1,0 +1,395 @@
+From: bookingsen@aerlingus.com
+To: test@example.org
+Subject: Aer Lingus Confirmation - Booking Ref: AAAAAA
+Date: Thu, 03 Feb 2039 01:45:30 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Aer Lingus - Booking Confirmation</title>
+
+
+</head> <body style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">
+<!--table 1 Border table-->
+
+<table width="612px" cellpadding="0" cellspacing="0" border="0" align="center"
+style="border:1px solid #dcdcdc;">
+<tr>
+<td colspan="4" align="left" width="612">
+
+<!--table 2 Header-->
+
+<table border="0" width="612px" cellspacing="0" cellpadding="0">
+<tr>
+<td><img src="http://www.aerlingus.com/images/bookingconfirmation_title.jpg" alt="aerlingus.com. Enjoy your flight." width="612" height="80" border="0"></td>
+</tr>
+</table>
+
+<!--end table 2 Header-->
+
+</td>
+</tr>
+<tr>
+<td width="612px" align="center" valign="top">
+
+<!--table 3 Main body outside-->
+
+<table cellspacing="0" cellpadding="0" width="430">
+<tr>
+<td>
+
+<!--table 4 Main body inside-->
+
+<table align="center" cellspacing="0" cellpadding="0" width="430" class="c8" border="0">
+<tr>
+<td rowspan="4" valign="top" align="left" width="360" class="c8">
+
+<!--table 5 Introduction Booking reference inside-->
+<table cellspacing="0" cellpadding="0" width="430" border="0">
+<tr><td rowspan="8"><img src="cid:barcode_AAAAAA.jpg" alt="Barcode"></td><td rowspan="8"><img src="http://www.aerlingus.com/images/notBoardingcard.gif" style="margin-right: 1em;" alt="This is not a Boarding Card"></td>
+<td align="left" valign="bottom" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;" width="30%">Booking Reference:</td>
+<td width="70%" style="font-family: Arial,Helvetica,sans-serif; font-size: 23px;"><strong>AAAAAA</strong></td>
+</tr>
+<tr><td colspan="4" align="left" valign="bottom">&nbsp;</td></tr>
+<tr><td colspan="4" align="left" valign="bottom" style="font-size: 11px;"><ei_oal_ref></ei_oal_ref></td></tr>
+<tr>
+<td colspan="4" align="left" valign="bottom">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="4" align="left" valign="bottom" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">Date: <ei_date>03 February 2039</ei_date></td>
+</tr>
+<tr>
+<td colspan="4" align="left" valign="bottom" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="4" align="left" valign="bottom" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;"><ei_primary_pax_name>MR TEST USER</ei_primary_pax_name></td>
+</tr>
+<tr>
+<td colspan="4" align="left" valign="bottom" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;"><br>
+Thank you for booking your flight with Aer Lingus.<br><br>
+This is your booking confirmation, passenger itinerary and receipt email. Please review the <a href="http://www.aerlingus.com/i18n/en/htmlPopups/passport_visa_information.html" target="_blank">passport and visa information</a> before travel.<br>
+<br></td>
+</tr>
+</table><!--end table 5 Introduction Booking reference inside-->
+
+<img alt="Your Flights" src="http://www.aerlingus.com/images/flighttitle_small.jpg" border="0">
+
+<!--table 6 Itinerary Main-->
+
+<table width="430">
+<tr>
+<td align="left" valign="top" colspan="4" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><strong>Passenger(s)</strong></td>
+</tr>
+<tr>
+<td align="left" valign="top" colspan="4" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">MR TEST USER <br /></ei_all_pax_name></td>
+</tr><tr>
+<td align="left" valign="top" width="30%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><strong>Flight</strong></td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5"><strong>EI0712&nbsp;-&nbsp;Tue 15 Feb 2039</strong></td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Departs:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">Copenhagen (CPH) 15:10 <ei_terminal></ei_terminal></td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Arrives:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">Cork-Terminal 1  (ORK) 15:50</td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Status:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">W/Economy Class  <font style="FONT-SIZE: 11px" face="Arial, Helvetica, sans-serif" color="green">CONFIRMED</font></td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Airline:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">Aer Lingus</td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Seats:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5"><a href='http://www.aerlingus.com/home/index.jsp?campid=bookingconf_rnavseats' target=NewWindow style='font-size:10px; font-family:Arial, Helvetica, sans-serif; text-decoration:underline; color:#0095D9'>Book seats</a></td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Bags:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5"><a href='http://www.aerlingus.com/home/index.jsp?campid=traveladvisory_rnavbags' target=NewWindow style='font-size:10px; font-family:Arial, Helvetica, sans-serif; text-decoration:underline; color:#0095D9'>Book bags</a></td>
+</tr>
+<tr>
+<ei_spec_req_tag1></ei_spec_req_tag1>
+<ei_spec_req_tag2></ei_spec_req_tag2>
+</tr>
+<tr>
+<td colspan="5"> </td>
+</tr><tr>
+<td align="left" valign="top" width="30%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><strong>Flight</strong></td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5"><strong>EI0713&nbsp;-&nbsp;Wed 16 Feb 2039</strong></td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Departs:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">Cork-Terminal 1  (ORK) 13:45 <ei_terminal></ei_terminal></td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Arrives:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">Copenhagen (CPH) 16:20</td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Status:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">A/Economy Class  <font style="FONT-SIZE: 11px" face="Arial, Helvetica, sans-serif" color="green">CONFIRMED</font></td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Airline:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">Aer Lingus</td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Seats:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5"><a href='http://www.aerlingus.com/home/index.jsp?campid=bookingconf_rnavseats' target=NewWindow style='font-size:10px; font-family:Arial, Helvetica, sans-serif; text-decoration:underline; color:#0095D9'>Book seats</a></td>
+</tr>
+<tr>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Bags:</td>
+<td align="left" valign="top" colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5"><a href='http://www.aerlingus.com/home/index.jsp?campid=traveladvisory_rnavbags' target=NewWindow style='font-size:10px; font-family:Arial, Helvetica, sans-serif; text-decoration:underline; color:#0095D9'>Book bags</a></td>
+</tr>
+<tr>
+<ei_spec_req_tag1></ei_spec_req_tag1>
+<ei_spec_req_tag2></ei_spec_req_tag2>
+</tr>
+<tr>
+<td colspan="5"> </td>
+</tr><tr><td align='left' valign='top' colspan='4' style='font-family: Arial,Helvetica,sans-serif; font-size: 11px;  color: #999;  background-color: #FEF8E7'><strong>Other Information</strong></td></tr><tr><td align='left' valign='top' colspan='2' style='font-family: Arial,Helvetica,sans-serif; font-size: 11px; color: #999; background-color: #FEF8E7'>Frequent Flyer No:</td><td align='left' valign='top' colspan='2' style='font-family: Arial,Helvetica,sans-serif; font-size: 11px; color: #999; background-color: #F9FCF5'>00000000000</td></tr>
+
+<tr>
+<td colspan="5">
+<a href="http://www.aerlingus.com/home/index.jsp?campid=bookingconf_managebooking" target="_blank"><img alt="Manage your Booking" src="http://www.aerlingus.com/images/emailchangeBooking.gif" border="0"></a><br><br></td>
+</tr>
+
+<tr>
+<td align="left" valign="top" colspan="5" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color: #000;">Applications for tax refunds are subject to an administration fee. Details on <a href="http://www.aerlingus.com/Services/email_paxnotices.htm" target="_blank">Passenger Information, Fees  and Baggage Allowances >></a></td>
+</tr>
+<tr>
+<td align="left" valign="top" colspan="5" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color: #000;"><ei_pax_notice_lt></ei_pax_notice_lt></td>
+</tr><tr><td colspan="5">
+<img alt="Your Receipt" src="http://www.aerlingus.com/images/receipttitle_small.jpg" border="0"></td>
+</tr>
+
+
+<tr>
+<td align="left" valign="top" colspan="3" width="75%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><strong>Ticket Numbers</strong></td>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><strong>Issue Date</strong></td>
+</tr>
+<tr>
+<td align="left" valign="top" colspan="3" width="75%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">0530000000000</td>
+<td align="left" valign="top" width="25%" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">03FEB</td>
+</tr>
+<tr>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7" width="25%"><strong>Details</strong></td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><strong>Fare p.p.</strong></td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><strong>Taxes &amp; Charges</strong></td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><strong>Total</strong></td>
+</tr><!-- RECEIPT -->
+<tr>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">1 Adult(s):</td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">EUR 12.50</td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">EUR 82.79</td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">EUR 95.29</td>
+</tr><!-- RECEIPT -->
+<tr>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">Handling Fee: </td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5"></td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5"></td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">EUR 10.00</td>
+</tr><TR>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7" colspan="3">&nbsp;<B>TOTAL</B></td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"<b>EUR 105.29</b></td>
+</TR>
+<TR>
+<td align="left" valign="top"  colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><strong><ei_grand_total_title></ei_grand_total_title></strong> <ei_foreign_curr></ei_foreign_curr> <ei_roe_title></ei_roe_title> <ei_roe></ei_roe> </td>    <td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color:    #FEF8E7"><ei_own_curr></ei_own_curr></td>
+</TR>
+
+<!-- PAYMENT TYPE -->
+<TR>
+<td align="left" valign="top"  colspan="3" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">&nbsp;<B>Last Payment</B></FONT></td>
+<td align="left" valign="top" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7"><b>Mastercard</b></td>
+</TR>
+
+<!-- PAYMENT TYPE -->
+<TR>
+<td COLSPAN="5" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">&nbsp;</td>
+</TR>
+<!-- RESTRICTIONS -->
+<tr>
+<td  style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7" colspan="5">&nbsp;<B>Restrictions/Endorsements</B></td>
+</tr>
+<tr>
+<td colspan="5" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #F9FCF5">NO RFND/CHG FEE APPLIES<BR> CXL BY FLT DT OR NO VALUE<BR> </td>
+</tr>
+<TR>
+<td COLSPAN="5"  style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#999; background-color: #FEF8E7">&nbsp;</td>
+</TR>
+<!--<TR>
+<td bgcolor="#f9fcf5" colspan="4"><FONT color="#00907E" style="FONT-SIZE: 11px" face="Arial, Helvetica, sans-serif">&nbsp;<B>Restrictions/Endorsements</B></FONT></td>
+</TR>
+<tr>
+<td bgcolor="#f9fcf5" colspan="4"><FONT color="#00907E" style="FONT-SIZE: 11px" face="Arial, Helvetica, sans-serif">&nbsp;<ei_restrictions></ei_restrictions></FONT></td>
+</tr>-->
+<!-- END RESTRICTIONS --><tr>
+<td colspan="5"><ei_dep_addin></ei_dep_addin></td></tr>
+<tr>
+<td colspan="5"><ei_arr_addin></ei_arr_addin></td></tr><tr>
+<td colspan="4"><img alt="API banner" src="http://www.aerlingus.com/images/email_tab_api.gif" border="0"></td>
+</tr>
+<tr>
+<td align="left" valign="top" colspan="4">
+
+<!-- table 8 APIS -->
+
+<table>
+<tr>
+<td valign="top"><img alt="API" src="http://www.aerlingus.com/images/apiflag.gif" border="0"></td>
+<td style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;"><strong>Advance Passenger Information (API)</strong><br>
+Travel to Spain or between Ireland and the USA requires the compulsory provision of Advance Passenger Information. If you have not added this already, <a href="http://www.aerlingus.com/home/index.jsp?campid=bookingconf_addapi" target="_blank">please add API to your booking here</a>.
+</td>
+</tr>
+<tr>
+<td align="left" valign="top" colspan="4">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><img alt="ESTA" src="http://www.aerlingus.com/images/estalogo.gif" border="0"></td>
+<td style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;"><strong>Electronic System for Travel Authorization</strong><br>
+In addition to adding API information to your booking, all passengers travelling to the USA under the Visa Waiver Programme (VWP) must now <a href="https://esta.cbp.dhs.gov" target="_blank">apply to travel under the VWP online</a>.</td>
+</tr>
+
+
+</table>
+
+<!--end table 8 APIS items-->
+
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top" class="c8" colspan="5" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;"><span class="c1 c6">If you have purchased insurance full details of your insurance policy will be emailed to your email address from Mondial Assistance-Elvia (Access America for U.S.A. residents). If you do not receive it or have any queries regarding your policy, please contact Mondial Assistance-Elvia Customer Service. Their contact details can be found via Travel Insurance link on aerlingus.com.</span></td>
+</tr>
+
+
+<tr>
+<td align="left" valign="top" class="c8" colspan="5">&nbsp;</td>
+</tr><tr>
+<td colspan="5"><img alt="Latest News Banner" src="http://www.aerlingus.com/images/email_tab_news.gif" border="0"></td>
+</tr>
+<tr>
+<td align="left" valign="top" class="c8" colspan="5">
+
+<!-- table 8 latest news items -->
+
+<table>
+
+<tr>
+<tr>
+<td valign="top"><img alt="Select your seats" src="http://www.aerlingus.com/images/sittogether.gif" border="0"></td>
+<td style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;"><strong>Ensure you sit together</strong><br>
+If you want to ensure you sit together, or need some extra legroom at our exit rows, then <br>
+<a href="http://www.aerlingus.com/home/index.jsp?campid=bookingconf_lnewsseats" target="_blank">Choose your seats</a> now from just &euro;5 on shorthaul flights.</td>
+</tr>
+<tr>
+<td align="left" valign="top" colspan="4">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><img alt="Gift Vouchers" src="http://www.aerlingus.com/images/latestvouchers.gif" border="0"></td>
+<td style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;"><strong>Aer Lingus Gift Vouchers available online</strong><br>
+Aer Lingus Gift vouchers are now available to buy online. The perfect gift for any occasion.<br>
+<a href="https://www.aerlingusvouchers.com/" target="_blank">Purchase a voucher</a></td>
+</tr>
+<tr>
+<td align="left" valign="top" colspan="4">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top"><img alt="Sky Shopping - Buy Onboard" src="http://www.aerlingus.com/images/skyshoppingsmall.gif" border="0"></td>
+<td style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;"><strong>Sky Shopping - Buy Onboard</strong><br>
+Don't forget the savings you can make on a range of fragrances, cosmetics, jewellery, gifts and more by checking out our superb sky shopping service. For more details before you fly <a href="http://www.aerlingus.com/travelinformation/inflightservices/inflightshopping/index.html?campid=bookingconf_lnewsskyshopping" target="_blank">click here</a>.
+</td>
+</tr>
+
+</table>
+
+<!--end table 8 latest news items-->
+
+</td>
+</tr>
+
+
+</tbody>
+</table>
+
+<!--end table 6 Itinerary Main-->
+
+</td>
+</tr><tr>
+<td align="right" valign="top"><img alt="Travel Checklist" src="http://www.aerlingus.com/images/travelChecklist.gif" border="0" height="28" width="156"> <a href="http://www.aerlingus.com/home/index.jsp?campid=bookingconf_rnavbags" target="_blank"><img alt="Book Bags Online" src="http://www.aerlingus.com/images/emailbookBags.gif" border="0" height="50" width="156"></a>
+<a href="http://www.aerlingus.com/home/index.jsp?campid=bookingconf_rnavseats" target="_blank"><img alt="Select your Seat" src="http://www.aerlingus.com/images/emailbookSeats.gif" border="0" height="50" width="156"></a>
+<a href="http://www.aerlingus.com/home/index.jsp?campid=bookingconf_rnavcheckin" target="_blank"><img alt="Check-in Online" src="http://www.aerlingus.com/images/emailcheckIn.gif" border="0" height="50" width="156"></a>
+<a href="http://www.aerlingus.com/home/index.jsp?campid=bookingconf_rnavlounges" target="_blank"><img alt="Book Lounge access" src="http://www.aerlingus.com/images/emailbookLounge.gif" border="0" height="50" width="156"></a>
+<a href="http://www.aerlingus.com/home/index.jsp?campid=bookingconf_rnavaddapi" target="_blank"><img alt="Add API" src="http://www.aerlingus.com/images/emailaddApi.gif" border="0" height="50" width="156"></a>
+<a href="http://www.aerlingus.com/i18n/en/htmlPopups/special_request_information.html" target="_blank"><img alt="Special Assistance" src="http://www.aerlingus.com/images/emailadviseAssist.gif" border="0" height="50" width="156"></a>
+<a href="http://www.aerlingus.com/travelinformation/inflightservices/inflightshopping/index.html?campid=bookingconf_rnavskyshopping" target="_blank"><img alt="Sky Shopping" src="http://www.aerlingus.com/images/emailskyshopping.gif" border="0" height="50" width="156"></a>
+
+<img alt="Travel Partners" src="http://www.aerlingus.com/images/travelPartners.gif" border="0" height="28" width="156">
+<a href="http://www.hertzflydrive.com/?Link=bookingconf_email&POS=IE&lang=EN&PULoc=ORK&DOLoc=ORK&PUDate=20390215&PUTime=1550&DODate=20390216&DOTime=1345&CDP=706409" target="_blank"><img alt="Hertz Car Hire" src="http://www.aerlingus.com/images/tpHertz.gif" border="0" height="128" width="156"></a>
+<a href="http://www.aerlingushotels.com/trips/hotellist/list?startIndex=0&checkInDate=2039-02-15&checkOutDate=2039-02-16&hotelMaxReturnPerPage=25&guestCounts=1&partnerId=8001&guestCodes=ADULT&configId=S02656997&city=Cork&numRooms=1&serviceTag=LMN0&ad_country=NL&channel=HotelWebUI&DCABT=True&intcmp=AER_bookconfmail_IE" target="_blank"><img alt="Hotels" src="http://www.aerlingus.com/images/tpHotels.gif" border="0" height="128" width="156"></a>
+<a href="http://www.magroup-online.com/als/NL/?xtor=EPR-5" target="_blank"><img alt="Insurance" src="http://www.aerlingus.com/images/tpInsurance.gif" border="0" height="128" width="156"></a>
+
+<img alt="Travel X-tras" src="http://www.aerlingus.com/images/travelXtrasx.gif" border="0" height="28" width="156"><table>
+<tr>
+<td><a href="http://www.breakaway.ie/DisneyLand/Default.aspx?AffiliateNo=EI100" target="_blank"><img alt="Disneyland" src="http://www.aerlingus.com/images/txDisney.gif" border="0" height="40" width="154"></a></td>
+</tr>
+<tr>
+<td><a href="http://aerlingus.hostelworld.com/" target="_blank"><img alt="Hostelworld" src="http://www.aerlingus.com/images/txHostels.gif" border="0" height="40" width="154"></a></td>
+</tr>
+<tr>
+<td><a href="http://www.holidaytaxis.com/?ref=aer" target="_blank"><img alt="Holiday Taxis" src="http://www.aerlingus.com/images/txTaxis.gif" border="0" height="40" width="154"></a></td>
+</tr>
+<tr>
+<td><a href="http://www.breakaway.ie/experiences" target="_blank"><img alt="Tours &amp; Activities" src="http://www.aerlingus.com/images/txTours.gif" border="0" height="40" width="154"></a></td>
+</tr>
+<tr>
+<td><a href="http://www.aerlingus.servicewhileufly.ie" target="_blank"><img alt="Service while U fly" src="http://www.aerlingus.com/images/txService.gif" border="0" height="40" width="154"></a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+<!--end table 4 Main body inside-->
+
+</td>
+</tr>
+</table>
+<!--end table 3 Main body outside-->
+
+</td>
+</tr>
+<tr>
+<td colspan="4"><img border="0" src="http://www.aerlingus.com/images/email_footer_white_nbshort.gif" width="600" height="70" alt="aerlingus.com"></td>
+</tr>
+</table>
+
+<table align="center" cellspacing="0" cellpadding="0" width="612" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">
+<tr>
+<td align="center">Aer Lingus Limited is registered in Ireland, Company Number 9215.<br>
+Registered Office at Dublin Airport, Dublin, Ireland.</td>
+</tr>
+<tr>
+<td align="center">VAT number IE 9L40507W</td>
+</tr>
+</table>
+<br><br>
+<table align="center" cellspacing="0" cellpadding="0" width="612" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;">
+<tr>
+<td>
+Please note this is an informative email only, and replies to this email will fail.
+</td>
+</tr>
+<tr>
+<td align="left" valign="top" class="c8" colspan="5" style="font-family: Arial,Helvetica,sans-serif; font-size: 11px;"><span class="c1 c6">Carriage is subject to the applicable tariffs, <a href="http://www.aerlingus.com/i18n/en/htmlPopups/conds_of_carriage.html" target="_blank">Conditions of Carriage</a>, and <a href="http://www.aerlingus.com/Services/email_conditionsofcontract.htm" target="_blank">Conditions of Contract</a> which are available on this site or free of charge by application at the office of the carrier. Carriage hereunder is subject to the rules and limitations relating to liability established by the <a href="http://www.aerlingus.com/i18n/en/htmlPopups/liability_limitation.html" target="_blank">Montreal Convention</a>. </span></td>
+</tr>
+</table>
+
+
+</body>
+</html>

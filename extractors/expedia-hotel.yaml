@@ -1,0 +1,13 @@
+name: expedia-hotel
+order: 50
+from_domains:
+  - support.expedia.co.uk
+# "Expedia  travel confirmation - Luton, Bedfordshire - 22 May 2039 -
+# (Itin# 10000000001)", with two spaces after Expedia.
+subject_regex: "^Expedia\\s+travel confirmation - .+ - \\(Itin# \\d+\\)$"
+requires:
+  - html
+# The only one seen, from 2011, is unsigned.
+require_dkim:
+  - expedia.co.uk
+unsigned_before: "2012-01-01"

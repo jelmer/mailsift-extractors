@@ -2,8 +2,12 @@ name: ryanair
 order: 50
 from_domains:
   - ryanair.com
-subject_regex: "(?i)^Ryanair Travel Itinerary$"
+# Until about 2014 the subject carried a check-in reminder.
+subject_regex: "(?i)^Ryanair Travel Itinerary(?: - Don't Forget You MUST Check-in Online and Print Off your Boarding Pass)?$"
 requires:
   - html
+# Ryanair signed some itineraries from 2019 on but still sent unsigned
+# ones from mail2.ryanair.com in February 2022.
 require_dkim:
   - ryanair.com
+unsigned_before: "2022-03-01"

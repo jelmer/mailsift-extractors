@@ -1,0 +1,11 @@
+name: aer-lingus
+order: 50
+from_domains:
+  - aerlingus.com
+subject_regex: "^Aer Lingus Confirmation - Booking Ref: [A-Z0-9]{6}$"
+requires:
+  - html
+# The only confirmation seen, from 2011, is unsigned.
+require_dkim:
+  - aerlingus.com
+unsigned_before: "2012-01-01"
