@@ -1,0 +1,446 @@
+From: "Expedia.com.au" <Expedia@au.expediamail.com>
+To: test@example.org
+Subject: Expedia travel confirmation - 1 Feb. - (Itinerary # 1000000000002)
+Date: Tue, 21 Nov 2017 05:40:39 -0500
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mg.expediamail.com header.s=gears;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=expediamail.com
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+<body>
+                    <td align = "left">
+<table>
+    <tr>
+        <td>
+            <hr />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>
+Flight overview            </span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td >
+                        <div>
+                                Your reservation is booked and confirmed. There is no need to call us to reconfirm this reservation.
+                        </div>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <table
+                                          >
+                                        <tr>
+                                            <td>
+                                                <div>
+Travel dates                                                </div>
+                                                <div>
+                                                        1 Feb. 2018 - 2 Feb. 2018
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>
+Itinerary #                                                    </div>
+                                                    <div>
+                                                       <p>1000000000002</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <div>
+Confirmation                            </div>
+                                <div>
+                                    CCCCCC (China Southern Airlines)
+                                </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <div>
+Booking ID                            </div>
+                            <div>
+                                DDDDDD
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+</table>
+<table
+       xmlns="http://www.w3.org/1999/html">
+    <tr>
+        <td>
+            <hr />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>
+            </span>
+            <h2>
+Departure            </h2>
+            <span >
+            Thu., 1 Feb.
+                </span>
+        </td>
+    </tr>
+                    <tr>
+                        <td>
+                                 <span>
+                                    China Southern Airlines 302
+                                 </span>
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        <table
+                              >
+                            <tr>
+                                <td>
+                                    <table >
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                    Sydney (SYD)
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                        <span>
+                                                        10:15 pm
+                                                        </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                        <span>
+Terminal: <span>1</span>                                                        </span>
+                                                </td>
+                                            </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <table>
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                    Guangzhou (CAN)
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                        <span>
+                                                        5:00 am
+                                                        </span>
+                                                        <span>
++1 day                                                            </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                       <span>
+Arrives on 2 Feb. 2018                                                       </span>
+                                                </td>
+                                            </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                Cabin: <span>Economy</span><span> (V)</span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                                <span>
+9h 45m duration                                </span>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>
+                                <span>
+                                    <span>
+Seat:                                        <span>
+                                                10A
+| Confirm or change seats with the airline*                                        </span>
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td>
+                    <tr>
+                        <td>
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+4h 30m stop Guangzhou (CAN)                                        </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                        </td>
+                    </tr>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>
+                                 <span>
+                                    China Southern Airlines 303
+                                 </span>
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        <table
+                              >
+                            <tr>
+                                <td>
+                                    <table >
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                    Guangzhou (CAN)
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                        <span>
+                                                        9:30 am
+                                                        </span>
+                                                </td>
+                                            </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <table>
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                    London (LHR)
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                        <span>
+                                                        2:30 pm
+                                                        </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>
+Terminal: <span>4</span>                                                    </p>
+                                                </td>
+                                            </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                Cabin: <span>Economy</span><span> (V)</span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                                <span>
+13h duration                                </span>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>
+                                <span>
+                                    <span>
+Seat:                                        <span>
+                                                20C
+| Confirm or change seats with the airline*                                        </span>
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <hr />
+        </td>
+    </tr>
+        <tr>
+            <td >
+                    <span>
+Total Duration                    </span>
+            </td>
+        </tr>
+            <tr>
+                <td>
+                    <span>
+                        27h 15m
+                    </span>
+                </td>
+            </tr>
+</table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+    <table>
+        <tr>
+            <td>
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+Traveller(s)                </span>
+            </td>
+        </tr>
+            <tr>
+                <td>
+                        <div>
+                            Test User
+                        </div>
+                        <div>
+                            KLM Flying Dutchman
+                            XX 0000000000
+                        </div>
+                </td>
+            </tr>
+        <tr>
+            <td>
+                <div>
+Frequent flyer and special assistance requests should be confirmed directly with the airline.                </div>
+            </td>
+        </tr>
+    </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+<table
+      >
+    <tr>
+        <td>
+            <hr />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>
+Price summary            </span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <div>
+            <span>Traveller 1: Adult</span>
+            <span>AU$700.00</span>
+            <spanstyle="clear: left;float: left;color: @textSecondary;font-weight: normal;line-height: 1.45;margin: 0; padding-left: 12px;">Flight</span>
+            <spanstyle="float: right; padding-right: 12px;">AU$510.00</span>
+              <span>Taxes & Fees</span>
+		      <spanstyle="float: right;padding-right:12px;">AU$190.00</br></span>
+        </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>&nbsp;</div>
+        </td>
+    </tr>
+        <tr>
+            <td>
+                <div flight-total"><strong>Total</strong></span>
+                    <span><strong>AU$700.00</strong></span>
+                </div>
+            </td>
+        </tr>
+    <tr><td>
+    <div>
+    </div>
+    </td></tr>
+    <tr>
+        <td>
+                <div>
+All prices are quoted in <strong>AUD</strong>.                </div>
+        </td>
+    </tr>
+</table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+<table>
+    <tr>
+        <td>
+            <hr />
+        </td>
+    </tr>
+</body>
+</html>

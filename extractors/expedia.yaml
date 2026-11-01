@@ -1,0 +1,14 @@
+name: expedia
+order: 50
+from_domains:
+  - expediaconfirm.com
+  - "*.expediamail.com"
+# The 2015 template says "confirmation/e-Ticket - 21 Feb - (Itin# N)",
+# the 2017 one "confirmation - 1 Feb. - (Itinerary # N)". The
+# "Flight information" and "Your upcoming trip" mails carry no segments.
+subject_regex: "(?i)^Expedia travel confirmation(?:/e-Ticket)? - .+ - \\((?:Itin#|Itinerary #) ?\\d+\\)$"
+requires:
+  - html
+require_dkim:
+  - expediaconfirm.com
+  - mg.expediamail.com
