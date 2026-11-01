@@ -1,0 +1,12 @@
+name: westjet
+order: 50
+from_domains:
+  - itinerary.westjet.com
+subject_regex: "^Your itinerary and receipt - .+ for .+$"
+requires:
+  - html
+# Older itineraries came unsigned, sent through Sabre.
+require_dkim:
+  - westjet.com
+  - .westjet.com
+unsigned_before: "2019-01-01"
