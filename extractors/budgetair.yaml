@@ -1,0 +1,10 @@
+name: budgetair
+order: 50
+from_domains:
+  - budgetair.co.uk
+subject_regex: "^BudgetAir\\.co\\.uk - booking verification SBUK-\\d+$"
+requires:
+  - html
+# Signed only by their mailing provider, not by budgetair.co.uk.
+require_dkim:
+  - td35.tripolis.com
