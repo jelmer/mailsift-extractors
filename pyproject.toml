@@ -3,6 +3,8 @@ name = "mailsift-extractors"
 version = "0.0.1"
 description = "Per-vendor email extractor scripts for mailsift."
 requires-python = ">=3.11"
+# deutsche-bahn reads the ticket PDF; layout extraction needs pypdf 3.17.
+dependencies = ["pypdf>=3.17"]
 license = { text = "GPL-3.0-or-later" }
 
 [tool.pytest.ini_options]

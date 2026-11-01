@@ -1,0 +1,14 @@
+name: deutsche-bahn
+order: 50
+from_domains:
+  - bahn.de
+# German, English and Dutch confirmations. Cancellations
+# ("Annuleringsbevestiging") carry no PDF and no journey dates.
+# TODO: mark the cancelled legs once we can tell which ones they were.
+subject_regex: "(?i)^(?:Vielen Dank für Ihren Fahrkartenkauf!|Buchungsbestätigung|Booking confirmation|Boekingsbevestiging|Deutsche Bahn booking confirmation) \\((?:Auftrag|Order|bestelling|order:) ?[A-Z0-9]+\\)$"
+requires:
+  - attachment:filename:*.pdf
+# bahn.de mail was unsigned until some time in 2018.
+require_dkim:
+  - bahn.de
+unsigned_before: "2018-01-01"

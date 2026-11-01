@@ -1,0 +1,57 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@bahn.de
+From: buchungsbestaetigung@bahn.de
+To: test@example.org
+Subject: Deutsche Bahn booking confirmation (order: 900000000001)
+Date: Wed, 06 Dec 2051 01:29:00 +0100
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5666152870182675646=="
+
+--===============5666152870182675646==
+Content-Type: multipart/alternative;
+ boundary="===============1259998020670970875=="
+
+--===============1259998020670970875==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Here is your booking confirmation.
+
+--===============1259998020670970875==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+
+<html><body><p>Booking confirmation (order: 900000000001)</p><p>Services</p><p>Super Sparpreis Europa, 2. Klasse</p></body></html>
+
+--===============1259998020670970875==--
+
+--===============5666152870182675646==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Ticket_900000000001_Sitzplatzreservierung.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2Jq
+CjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2Jq
+CjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUg
+ODQyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAw
+IFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNl
+Rm9udCAvQ291cmllciAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyA+PgplbmRvYmoKNSAwIG9i
+ago8PCAvTGVuZ3RoIDU5MSA+PgpzdHJlYW0KQlQKL0YxIDggVGYKMTAgVEwKMzAgODAwIFRkCihJ
+aHJlIFJlaXNldmVyYmluZHVuZyB1bmQgUmVzZXJ2aWVydW5nIC0gRWluZmFjaGUgRmFocnQgYW0g
+MjcuMTIuMjA1MSkgVGogVCoKKEhhbHQgICAgICAgICAgICAgICAgICBEYXR1bSAgICBaZWl0ICAg
+ICAgIEdsZWlzICAgIFByb2R1a3RlICAgICAgICAgUmVzZXJ2aWVydW5nIC8gSGlud2Vpc2UpIFRq
+IFQqCihSb3N0b2NrIEhiZiAgICAgICAgICAgMjcuMTIuICAgYWIgMDg6MTIgICAyICAgICAgICBS
+QiAxMiBcKDQwMDAxXCkpIFRqIFQqCihTY2h3ZXJpbiBIYmYgICAgICAgICAgMjcuMTIuICAgYW4g
+MDk6MjAgICA0KSBUaiBUKgooU2Nod2VyaW4gSGJmICAgICAgICAgIDI3LjEyLiAgIGFiIDA5OjQx
+ICAgNSAgICAgICAgSUNFIDgwMyAgICAgICAgICAxIFNpdHpwbGF0eiwgV2cuIDYsIFBsLiAyMSwg
+MSBGZW5zdGVyLCkgVGogVCoKKE1haW56IEhiZiAgICAgICAgICAgICAyNy4xMi4gICBhbiAxNTow
+MiAgIDMgICAgICAgICAgICAgICAgICAgICAgICAgUmVzLi1Oci4gOTAwMDAwMDAwMDAyKSBUaiBU
+KgooKSBUaiBUKgooV2ljaHRpZ2UgTnV0enVuZ3NoaW53ZWlzZTopIFRqIFQqCkVUCmVuZHN0cmVh
+bQplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4g
+CjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAwMjQxIDAwMDAw
+IG4gCjAwMDAwMDAzMzYgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+
+CnN0YXJ0eHJlZgo5NzgKJSVFT0YK
+
+--===============5666152870182675646==--
