@@ -1,0 +1,493 @@
+From: Hertz Reservations <noreply@hertz.com>
+To: test@example.org
+Subject: Your Hertz Reservation G0000000001
+Date: Sun, 03 Jan 2044 18:41:35 -0600
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Your Hertz Reservation</title>
+
+					<script type="application/ld+json">
+			{
+				"@context": "schema.org",
+				"@type": "RentalCarReservation",
+				"reservationNumber": "G0000000001",
+				"reservationStatus": "http://schema.org/Confirmed",
+				"confirmReservationUrl": "https://www.hertz.com/rentacar/reservation/?confirmationNumber=G0000000001&language=en&pos=GB#search",
+				"underName":{
+					"@type": "Person",
+					"name": "TEST USER"
+				},
+				"reservationFor": {
+					"@type": "RentalCar",
+					"name": "(Y) Toyota Yaris Automatic",
+					"model": "Economy, 4-5 Door, Automatic, No Aircon, EDAN",
+					"brand": {
+						"@type": "Brand",
+						"name": "(Y) Toyota Yaris Automatic"
+					},
+					"rentalCompany": {
+						"@type": "Organization",
+						"name": "Hertz"
+					}
+				},
+				"pickupLocation": {
+			 		"@type": "Place",
+			  		"name": "Tromso Airport",
+					"telephone": "+47 000 00 030",
+					"address": {
+			 			"@type": "PostalAddress",
+			 			"streetAddress": "Tromso Airport ",
+			 			"addressLocality": "Tromso",
+			 			"addressRegion": "",
+			 			"postalCode": "",
+						"addressCountry": "NO"
+					}
+				},
+				"pickupTime": "2044-01-14T23:30:00",
+				"dropoffLocation": {
+					"@type": "Place",
+					"name": "Tromso Airport",
+					"telephone": "+47 000 00 030",
+					"address": {
+			 			"@type": "PostalAddress",
+			 			"streetAddress": "Tromso Airport ",
+			 			"addressLocality": "Tromso",
+			 			"addressRegion": "",
+			 			"postalCode": "",
+						"addressCountry": "NO"
+					}
+				},
+				"dropoffTime": "2044-01-17T16:00:00",
+				"price": "144.02",
+				"priceCurrency": "GBP"
+			}
+			</script>
+		
+	</head>
+	<body>
+		<div align="center">
+			<table border="0" cellpadding="0" cellspacing="0" style="width:600px;">
+				<tr>
+					<td>
+						<div style="background-color: #FCF235;height: 70px;margin-bottom: 15px;">			
+							<div style="float: left; padding: 10px 0px;"><img src="https://images.hertz.com/rac/misc/refresh09/hertzDotCom149x50_fcf235.gif"></div>
+						</div>
+						<table cellpadding="0" cellspacing="0" style="font-family:Arial;font-size:12px;border: 1px solid #CDCDCD;text-align:center;padding:10px;width:100%;">
+
+													<tr>
+								<td style="font-weight:bold;padding:10px 0 0 0;margin:0;">
+																			Thanks for Travelling at the Speed of Hertz,  TEST USER																	</td>
+							</tr>
+							<tr>
+								<td style="font-size:12px;font-family:Arial;padding:0;margin:0;">
+									<div style="font-weight:bold;">
+										Your reservation confirmation number is:  <span style="margin-left:5px;font-size:14px;">G0000000001</span>
+									</div>
+																												<p style="margin: 10px 0;">Dont forget to bring the same credit card used when making your reservation.</p>	
+																	</td>
+							</tr>
+															<tr>
+									<td style="padding:0px; margin:0px;">
+										<ul style="list-style: disc outside none; margin: 0 auto; text-align: left; font-size: 12px; width: 250px;  font-family:Arial;">
+																							<li>Service Type:&nbsp; Gold Counter </li>
+																																</ul>
+									</td>
+								</tr>
+														<tr>
+								<td style="padding:0px;margin:0px;">
+									<table align="center" cellspacing="10" style="margin:0 auto;padding:0;">
+										<tr>
+											<td style="background-color: #308DFF;font-family:Trebuchet MS;font-size: 12px;padding: 8px 15px;text-shadow: none;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-style: italic;font-weight: bold;text-align: center;text-decoration: none;vertical-align: middle;white-space: nowrap;line-height: 1.3;cursor: pointer;">
+												<a style="text-decoration:none;color:#000;" href="https://www.hertz.com/rentacar/reservation/?language=en&pos=GB">
+													Start a New Reservation
+												</a>
+											</td>
+											<td style="background-color: #94C3FD;font-family:Trebuchet MS;font-size: 12px;padding: 8px 15px;text-shadow: none;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-style: italic;font-weight: bold;text-align: center;text-decoration: none;vertical-align: middle;white-space: nowrap;line-height: 1.3;cursor: pointer;">
+												<a style="text-decoration:none;color:#000;" href="https://www.hertz.com/rentacar/reservation/?confirmationNumber=G0000000001&language=en&pos=GB#search">
+													Modify/Cancel Reservation
+												</a>
+											</td>
+																					</tr>
+									</table>
+								</td>
+							</tr>
+																									</table>
+						
+																			</td>					
+						</tr>
+						<tr><td style="height:10px"><div style="padding-top: 10px;"></div></td></tr>
+						<tr>
+							<td>
+								<table align="center">
+									<tr style="margin-bottom:10px;">
+										<td style="margin-right:38px;">
+											<a href="https://ad.doubleclick.net/jump/hertz.irac/;tile=1;sz=336x280;style=confEmailInPageBannerAd;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=4402395?"target="_blank";><img src="https://ad.doubleclick.net/ad/hertz.irac/;tile=1;sz=336x280;style=confEmailInPageBannerAd;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=4402395?" width="336" height="280" alt="Ad Image" border="0"></a>
+										</td>
+									</tr>
+								</table>
+												</td>					
+					</tr>
+					
+								<tr><td style="height:10px"><div style="padding-top:10px;"></div></td></tr>
+				<tr>
+					<td style="border: 1px solid #ccc;">
+						<table style="width:100%;" cellspacing="0">
+							<tr>
+								<td style="background-color:#fdf11b;padding:10px;text-align:left;font-family:Arial;font-size:12px;">
+									<span style="font-size:1.2em; font-weight:bold;">Your Itinerary: </span>
+								</td>
+							</tr>
+						</table>
+						<table style="font-family:Arial;font-size:12px;width:580px;padding-top:10px;" align="center">
+							<tr style="font-weight:bold;font-family:Arial;font-size:12px;">
+								<td><label>Pick Up time</label></td>
+								<td><label>Return time</label></td>
+							</tr>
+							<tr style="text-align:left;font-family:Arial;font-size:12px;">
+								<td>Thu, 14 Jan, 2044  at 23:30</td>
+								<td>Sun, 17 Jan, 2044  at 16:00</td>
+							</tr>
+						</table>
+												<table align="center" style="font-family:Arial;font-size:12px;width:580px;">
+							<tr><td colspan="2"><hr/></td></tr>
+							<tr>
+								<td style="width:50%" align="left">
+									<div style="font-weight:bold;padding-bottom:10px;font-family:Arial;font-size:12px;">
+																					Pickup and Return Location.
+																				<br/><span style="font-weight: normal;font-family:Arial;font-size:12px;">Tromso Airport</span>
+									</div>
+									<table style="margin-left:5px;padding-right:10px;font-family:Arial;font-size:12px;">
+										<tr>
+											<td style="font-family:Arial;font-size:12px;padding:0 0 10px;">
+												<div style="font-weight:bold;font-family:Arial;">Address</div>
+												Tromso Airport<br />
+																									 <br />
+																								Tromso,  NO 
+											</td>
+										</tr>
+																					<tr>
+												<td style="padding:0 0 10px;font-family:Arial;font-size:12px;"> 
+													<div style="font-weight:bold;font-family:Arial;font-size:12px;">Location Type:</div>
+																											Independent Licensee<br />
+																									</td>
+											</tr>
+																															<tr>
+												<td style="padding:0 0 10px;font-family:Arial;font-size:12px;">
+													<div style="font-weight:bold;font-family:Arial;font-size:12px;">Hours of Operation :</div>
+													Mo-Su 24 hours<br />
+												</td>
+											</tr>
+																															<tr>
+												<td style="padding:0 0 10px;font-family:Arial;"><div style="font-weight:bold;display:block;font-family:Arial;font-size:12px;">Phone Number:</div> +47 000 00 030</td>
+											</tr>
+																															<tr><td style="padding:0 0 10px;font-family:Arial;"><div style="font-weight:bold;display:block;font-family:Arial;font-size:12px;">Fax Number::</div> +47 000 00 031</td></tr>
+																													</table>
+								</td>
+								<td style="width:50%;vertical-align:top;" align="left">
+																			<div style="padding-right:10px;font-size:10pt; font-family:Arial;font-weight:normal;font-size:12px;">
+											<div style="padding:5px 0px 0px;font-weight:bold;">Driving Directions </div>
+																							<a href="http://maps.google.com/maps?f=d&hl=en&ie=UTF8&saddr=Tromso+Airport,Tromso,NO,">Google Maps</a>
+																									|
+																																			<a href="http://maps.msn.com/directionsFind.aspx?strt1=Tromso+Airport&city1=Tromso&stnm1=NO&zipc1=">MSN Maps</a>
+																									|
+																																			<a href="http://www.mapquest.com/directions/main.adp?cid=lfddlink&1a=Tromso+Airport&1c=Tromso&1s=&1z=&1y=NO">MapQuest</a>
+																																	</div>
+																	</td>
+							</tr>
+														<tr><td colspan="2"><hr/></td></tr>
+							<tr>
+								<td align="left" style="width:50%">
+									<div style="font-family:Arial;font-size:12px;">
+										<div style="font-weight:bold;font-family:Arial;font-size:12px;">Discounts: </div>
+																					CDP EXAMPLE CORP <br />
+																			</div>
+								</td>
+								<td align="left" style="width:50%">
+									<div style="font-weight:bold;font-family:Arial;font-size:12px;">Arrival Information: </div>
+									<div style="font-family:Arial;font-size:12px;">
+																																												Airline: SAS
+																																		Flight: 4410
+																														</div>
+								</td>
+							</tr>
+													</table>
+					</td>
+				</tr>
+				
+								<tr><td style="height:10px"><div style="padding-top: 10px;"></div></td></tr>
+				<tr>
+					<td align="left" colspan="2" style="border:1px solid #ccc;">
+						<table style="width:100%;" cellspacing="0">
+							<tr>
+								<td style="background-color:#fdf11b;padding:10px;text-align:left;font-size:14px;font-weight:bold;font-family:Arial;">
+									Your Vehicle: 
+								</td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td style="padding-top:10px;">
+																		<img src=https://images.hertz.com/vehicles/152x88/ZEISEDAN999.jpg /> 
+								</td>
+								<td style="padding-top:10px;">
+									<div style="margin-left:10px;font-family:Arial;">
+										<div style="font-family:Arial;font-size:12px;">
+											Economy, 4-5 Door, Automatic, No Aircon 
+																							(Group  Y)
+																						EDAN<br />
+											<span style="font-weight:bold;font-family:Arial;font-size:12px;">(Y) Toyota Yaris Automatic </span> 
+																							<span style="font-weight:bold;font-family:Arial;font-size:12px;">or similar</span>
+																					</div>
+																			</div>
+								</td>
+							</tr>
+						</table>
+						<hr align="center" style="width:580px;">
+						
+												<table style="width: 580px;" align="center">
+							<tr>
+								<td>
+																	</td>
+							</tr>
+							<tr>
+								<td>
+																		<div style="padding:10px;font-family:Arial;font-size:12px;">									
+																																	<div style="padding-bottom:5px;margin-left:10px;font-weight:bold;font-family:Arial;font-size:12px;">
+																											Payment method:  : <span style="font-weight:normal">Pre-Pay Online</span>
+																									</div>
+											
+																																		<div style="padding-bottom:5px;margin-left:10px;font-weight:bold;font-family:Arial;font-size:12px;">
+													Discounts: 
+												</div>
+																								    <div style="font-size:12px;margin-left:10px;font-family:Arial;">CDP Name:  : <!-- mp_trans_disable_start -->EXAMPLE CORP<!-- mp_trans_disable_end --></div>
+																																																						<table style="width:580px;" cellspacing="0">
+																							<tr>
+													<td style="text-align:left;font-family:Arial;font-size:12px;padding:3px 10px 5px;">
+														3  Days at
+																													&nbsp;38.72 &nbsp;GBP
+																											</td>
+													<td style="text-align:right;font-family:Arial;font-size:12px;font-weight:bold;padding:3px 10px 5px;">
+																													116.16 &nbsp; GBP
+																											</td>
+												</tr>
+																					</table>
+																				
+																					<div style="text-align:left;margin-left:15px;font-family:arial;font-size:12px;font-weight:bold; padding:10px 0;">Included in the rates</div>
+											<table cellpadding="0" cellspacing="0" style="width:580px;font-family:arial;font-size:12px;padding-left:40px;">
+																									<tr>
+														<td style="width:80%;"><span style="display:list-item;list-style:disc inside none;">Location Service Charge</span></td>
+														<td style="width:20%;text-align:right;padding:0 10px;"> </td>
+													</tr>
+																									<tr>
+														<td style="width:80%;"><span style="display:list-item;list-style:disc inside none;">Collision Damage Waiver (Excess Applies)</span></td>
+														<td style="width:20%;text-align:right;padding:0 10px;"> </td>
+													</tr>
+																									<tr>
+														<td style="width:80%;"><span style="display:list-item;list-style:disc inside none;">Theft Protection (Excess Applies)</span></td>
+														<td style="width:20%;text-align:right;padding:0 10px;"> </td>
+													</tr>
+																									<tr>
+														<td style="width:80%;"><span style="display:list-item;list-style:disc inside none;">MISCELLANEOUS VLF FEE</span></td>
+														<td style="width:20%;text-align:right;padding:0 10px;"> </td>
+													</tr>
+																									<tr>
+														<td style="width:80%;"><span style="display:list-item;list-style:disc inside none;">Tax</span></td>
+														<td style="width:20%;text-align:right;padding:0 10px;"> </td>
+													</tr>
+																																					<tr><td colspan="2"><span style="display:list-item;list-style:disc inside none;">Unlimited Free Kilometers Included</span></td></tr>
+																							</table>											
+										
+																					<div style="text-align:left;margin-left:15px;font-family:arial;font-size:12px;font-weight:bold;padding:10px 0;">Not included in the rates</div>
+											<table cellpadding="0" cellspacing="0" style="width:580px;font-family:arial;font-size:12px;padding-left:40px;">
+																									<tr>
+														<td><span style="display:list-item;list-style:disc inside none;">Super CDW</span></td>
+													</tr>
+																									<tr>
+														<td><span style="display:list-item;list-style:disc inside none;">Fuel</span></td>
+													</tr>
+																									<tr>
+														<td><span style="display:list-item;list-style:disc inside none;">Super Cover (Excess Waiver)</span></td>
+													</tr>
+																									<tr>
+														<td><span style="display:list-item;list-style:disc inside none;">Additional Driver Fee</span></td>
+													</tr>
+																																			</table>
+										
+																					<table style="width:580px;padding:10px;">
+												<tr style="font-family:Arial;font-size:12px;font-weight: bold;">
+													<td>Vehicle Subtotal</td>
+													<td align="right">144.02 &nbsp;GBP</td>
+												</tr>
+											</table>
+																														
+																																												<table style="width:580px;" cellspacing="0">
+																										
+																										
+																											    														        <tr style="background-color: #FCEF02;font-size:12px;font-weight:bold;font-family:Arial;">
+														    																															<td style="text-align:left;padding:10px;">Total</td>
+																														<td style="text-align:right;padding:10px;">144.02 &nbsp; GBP</td>
+														</tr>
+													
+												</table>
+																																										<table style="width:570px;margin-left:10px;" cellspacing="0">
+																							<tr>
+													<td colspan="2" style="padding:10px 0;font-family:Arial;font-size:12px;"></td>
+												</tr>
+																																		<tr>
+													<td colspan="2" style="padding:0 0 10px;font-family:Arial;font-size:12px;">Rate Code : <strong>WOWOGB</strong></td>
+												</tr>
+																																													<tr>
+													<td colspan="2" style="font-family:Arial;font-size:12px;font-weight:bold;">
+														Available Optional Items at the Counter
+													</td>
+												</tr>
+																																														<tr>
+													<td colspan="2" style="font-family:Arial;font-size:12px;padding:5px 0;">Super CDW</td>
+												</tr>
+												<tr style="background-color:#E6E6E6;font-family:Arial;font-size:12px;">
+													<td style="text-align:left;padding:3px;width:75%;">daily</td> 
+													<td style="text-align:right;padding:3px;width:25%;">9.29 &nbsp; GBP</td>
+												</tr>
+																					</table>				
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+						
+				<tr>
+					<td>
+												
+													<div style="font-family:Arial;font-weight:bold;margin-top:15px;text-align:left;font-size:12px;">
+								WARNING & ADVISORY MESSAGES
+							</div>
+							<table style="margin:10px; 0;">
+								<tr><td style="padding:0 0 0 40px;">
+									<ul style="font-family:Arial;padding:0;list-style:disc outside none;font-size:12px;margin:0;text-align:left;">
+																					<li><b>UK driving licence holders:</b><br>When renting in the UK, Afghanistan, Angola, Austria, Bahrain, Balearics, Botswana, Canaries, Croatia, Democratic Republic of Congo, Ireland, Namibia, Oman, Portugal, Slovenia, South Africa, Sweden and Tunisia, all drivers with a UK licence will need to provide evidence of any driving endorsements.<br>Please see <a href="https://www.hertz.co.uk/p/vehicle-guide/picking-up-your-vehicle-hire" target="_blank">Terms and Conditions</a> for more information.</li>
+																					<li>A Cancelation Fee or No Show Fee may apply for this prepaid rental.</li>
+																					<li>For renters under 25 years of age, check policy for exceptions</li>
+																					<li>HERTZ #1 AWARDS NOT AVAILABLE AT THIS LOCATION - PLEASE REMOVE</li>
+																					<li>ALERT - CONTRACT BENEFITS MAY NOT APPLY ON THIS RATE</li>
+																					<li>Minimum Age 25 outside US - Exceptions may apply</li>
+																					<li>Check driving restrictions for touring Europe</li>
+																					<li>RATE MAY BE SUBJECT TO VERIFICATION OF ID</li>
+																			</ul>
+								</td></tr>
+							</table>
+												
+																					<div style="font-family:Arial;font-size:12px;padding:5px 0;text-align:left;">
+									<div style="font-weight:bold;">Early Return / Late Return Charge</div>
+									<div>If you pay at location, we reserve the right to make an Early Return Charge of EUR 8.00, GBP 7.00, CHF 10.00, SEK 72.00, NOK 65.00, DKK 61.00, RUB 349.00, AED 39.00, SAR 39.00, QAR 39.00, KWD 3.00, OMR 4.00, BHD 4.00, USD 11.00, PLN 35.00, ZAR 106.00, depending on your destination country, to compensate us in part for our inability to rent your vehicle during the time reserved for your use. Currently applicable only to rentals with a destination in Europe.<br><br>If you prepaid or you pay at location, we reserve the right to make a Late Return Charge of EUR 11.5, GBP 10, CHF 14, SEK 102, NOK 92, DKK 87, RUB 499, AED 56, SAR 56, QAR 55, KWD 4, OMR 5.80, BHD 5.70, USD 15, PLN 50, ZAR 151, depending on your destination country, to compensate us in part for the costs we incur in finding an alternative vehicle to satisfy our next booking for your vehicle and for our administration costs in contacting you to return the vehicle. <br><br>Currently applicable only to rentals with a destination in Europe.</div>
+								</div>
+															<div style="font-family:Arial;font-size:12px;padding:5px 0;text-align:left;">
+									<div style="font-weight:bold;">No Show Fee</div>
+									<div>Please note that where applicable, a no show fee may apply to prepaid and pay on return bookings. For further details, please see the 'Rental Qualifications & Requirements' link on the Hertz website, and go to the Amendments, Cancellation, No Show - Lost Rental section.<BR><BR>No Show Fees for 'Pay at Location' reservations are currently applicable only to rentals in Europe and where the reservation for that rental was also made in Europe, except for reservations which have a Pick-up location in Switzerland.</div>
+								</div>
+															<div style="font-family:Arial;font-size:12px;padding:5px 0;text-align:left;">
+									<div style="font-weight:bold;">Insurance Excess Information</div>
+									<div>Please note that our <a class='rqr-policy' lang='CDW'>Collision Damage Waiver</a> and <a class='rqr-policy' lang='TP'>Theft Protection</a> policies have an excess amount payable by you should there be loss or damage to the vehicle during your rental.<br><br><strong>Insurance Excess Waiver Information</strong><br>We also offer a <a class='rqr-policy' lang='SCE'>Super Cover</a> policy which you may purchase when picking up the vehicle which covers you for the full amount of any loss or damage with no excess payable.</div>
+								</div>
+															<div style="font-family:Arial;font-size:12px;padding:5px 0;text-align:left;">
+									<div style="font-weight:bold;">Paying online? What to bring with you.</div>
+									<div>When picking up the vehicle at the counter, you will need to produce the credit or debit card with which you paid online and your full driving license. Hertz can only accept credit cards at the time of rental for deposit purposes. If a different person is driving, he or she must produce a credit card in their own name, together with their full driving license.</div>
+								</div>
+															<div style="font-family:Arial;font-size:12px;padding:5px 0;text-align:left;">
+									<div style="font-weight:bold;">Credit/Debit cards</div>
+									<div>When picking up the vehicle at the counter, you will need to produce the credit or debit card with which you paid online and your full driving license.<br><br>Hertz can only accept credit cards at the time of rental for deposit purposes.Please note, if you made your booking with a debit card, you will need to present the debit card and one or more credit cards (depending on the vehicle group) when picking-up the vehicle.<br><br>For all 'pre-pay online' bookings, the person in whose name the vehicle is booked MUST be the person whose credit card is used.The person who prepays the booking MUST be the person to whom the vehicle is rented.</div>
+								</div>
+															<div style="font-family:Arial;font-size:12px;padding:5px 0;text-align:left;">
+									<div style="font-weight:bold;">Under 25 years old?</div>
+									<div>Where applicable, young driver fee is available at the counter. Please check 'Rental Qualifications and Requirements' below for more information.</div>
+								</div>
+															<div style="font-family:Arial;font-size:12px;padding:5px 0;text-align:left;">
+									<div style="font-weight:bold;">After Hours Charges</div>
+									<div>For rentals made with pickup/return times outside the normal location opening hours, a charge may be applied to cover the costs of making your vehicle available at your chosen time. These charges may vary and are not included in the Total Approximate Charge displayed during the reservation process.<br><br>Location opening times can be found by clicking on the 'View Details' link in the Itinerary section on the right.</div>
+								</div>
+															<div style="font-family:Arial;font-size:12px;padding:5px 0;text-align:left;">
+									<div style="font-weight:bold;">Fuel options</div>
+									<div><b>Pre-Pay</b><br>If you pay for your tank of fuel before you drive away in your car, you can return it with whatever fuel is left. This way, you don’t have to plan ahead to find a petrol station and fill the tank just before returning the car (no reimbursement for unused fuel). <br><br><b>Pay on return</b><br>You just bring the car back and we will top up the tank from the fuel left. This extra fuel will be charged to your account and we will send you an invoice detailing the amount.  The extra fuel will be charged at  the rate agreed on the rental agreement plus VAT. You only pay for fuel you actually use. Service charge is added.<br><br><b>Pay at a local petrol station before return</b><br>This option means you simply return the car with a full tank of fuel. Please bring your fuel receipt with you when you return the car. There are no extra charges.</div>
+								</div>
+																			
+												<div style="font-family:Arial;font-weight:bold;margin-top:5px;text-align:left;font-size:12px;">
+							<br>RESERVATION TERMS AND CONDITIONS <br>
+						</div>
+						<div style="font-family:Arial;text-align:left;font-size:12px;">
+													<br>
+																								<strong>'Total'</strong> does not include any additional items you may select at the location or any costs arising from the rental (such as damage, fuel or road traffic charges). For renters under the age of 25, <a data-key="AGE" class="rqr-policy">additional charges</a> may apply, and are payable at the location.<br> <br>
+																								<br> <br>
+																								<p><strong>CHECKLIST - WHAT YOU NEED TO BRING</strong></p><ul><li>When you collect your vehicle you will need the <strong>credit card</strong> you used to make your booking (if you used a debit card, you will need that card plus a valid credit card in your name) and a full and current <strong><a class="rqr-policy" lang="LICENSE">driving licence</a></strong> for each driver. (see 'DESTINATION SPECIFIC TERMS ' below)</li><li>Also, the name and details of the <strong>renter</strong> must be the same as the person that made the reservation.</li></ul><p><strong>PAYMENT, PRICING & CHARGES </strong></p><ul><li>Most locations accept the majority of <strong>debit cards</strong>. If you have questions about the acceptability of your form of payment at the destination and for other relevant destination conditions and information, please refer to the 'DESTINATION SPECIFIC TERMS' below.</li><li>Although we try to ensure that all <strong>prices</strong> quoted on our websites are accurate, errors may sometimes occur. We will inform you as soon as possible if we discover an error in the price of your reservation and give you the opportunity to confirm your booking at the correct price or cancel. Our usual cancellation charges will not apply if you choose to cancel. If you cancel and you have already paid for your rental, you will receive a full refund. If we are unable to contact you we will treat your reservation as cancelled.</li><li>An additional daily charge may apply for <strong>renters under 25</strong> (see 'DESTINATION SPECIFIC TERMS ' below)</li><li>A Frequent Flyer Surcharge of up to $1.00 per day up to a maximum of $5.25 per rental may apply if you take miles or credits from a U.S. or Canadian Frequent Flyer program.</li><li>Estimated amount to be paid at the counter is based on available information at the time of reservation for renters age 25 and older. This does not include any additional items you may choose at the location, such as refuelling, LDW, etc.</li><li>Where the booking is a prepaid booking and additional extras have been selected, the total charge is estimated based on local currency conversion where applicable, at time of booking, and is subject to change at time of pick-up.</li></ul><p><strong>CHANGES TO YOUR RESERVATION</strong></p><ul><li>You can <a class="rqr-policy" lang="CANCELLATION">amend</a> your reservation free of charge <strong>online</strong> through the View/Modify/Cancel button on our website or you can Contact Us on our web site, although we reserve the right to charge an administration fee.</li><li>If you make a change we will recalculate your rental charges based on current prices, which may be more or less than the price originally booked. <strong>Please note that you must use the same credit card you used to make the original booking or you will need to cancel (see 'CANCELLATIONS' below) and make a new reservation.</strong></li><li>We are unable to accept changes to the <strong>renter</strong> or the <strong>pick-up location</strong>. If you want to change these, you will need to cancel (see 'CANCELLATIONS' below) and make a new reservation.</li><li>You can add a <strong>CDP code</strong> to a reservation, although if it is linked to a negotiated discount or rate that does not match our retail prepaid rates the change will not be possible and you will see the message 'No prepaid available'. You may then cancel your original reservation (see 'CANCELLATIONS' below) and make a new reservation adding the CDP number.</li><li>We regret that you are not able to add your #1Club or Gold number to an existing reservation online.</li></ul><p><strong>CHANGES AT TIME OF PICK UP</strong></p><ul><li>If you wish to rent a <strong>larger car</strong> or rent for a <strong>longer period</strong>, you can make these changes on pick up, subject to availability, on payment of additional charges, which will be quoted in the currency of the renting country.</li><li>Please note that <strong>prepaid vouchers</strong> can only be used for rentals on the actual date quoted on the reservation. If you wish to change the pick-up date you must cancel (see 'CANCELLATIONS' below) and re-book.</li></ul><p><strong>CANCELLATIONS</strong></p><ul><li>You can <a class="rqr-policy" lang="CANCELLATION">cancel</a> your reservation <strong>online</strong> through the View/Modify/Cancel button or through Contact Us on our web site.</li><li>If you made a <strong>pre-paid</strong> reservation and cancel within 7 days of the original booking time we will refund your reservation in full. An <strong>administration charge</strong> of EUR 40.00 (or local equivalent - see 'PRE-PAID ONLINE CANCELLATION AND NO SHOW CHARGES' below) will apply if the cancellation is made after this time and will be taken from the credit card you used to make your booking.</li></ul><p><strong>NO SHOWS/ LOST RENTALS</strong></p><ul><li>If you <strong>pre-paid</strong>, fail to cancel your reservation and do not collect the vehicle on the pick up date, we reserve the right to make a <strong><a class="rqr-policy" lang="CANCELLATION">No Show / Lost Rental Charge</a></strong> of EUR 95.00 (or local equivalent - see below) which recovers our administration costs and compensates the Hertz company providing your rental for their inability to rent the vehicle when it was reserved for your use.</li><li>In this case we will refund your prepayment, less the No Show/Lost Rental Charge, if you write to us within 90 days of the pick up date at Hertz Prepaid Accounting Department, Hertz Europe Service Centre, Swords Business Park, Swords, Co. Dublin, Ireland requesting repayment and enclosing a copy of your Reservation Confirmation.</li><li>If you <strong>pay at location</strong>, fail to cancel your reservation and do not collect the vehicle on the pick up date, we reserve the right to make a <strong>No Show / Lost Rental Charge</strong> of EUR 65.00, GBP 65.00 (or the equivalent in the destination currency, exclusive of VAT) which recovers our administration costs. This will be taken from the credit card you used to make your booking.</li></ul><p><strong>EARLY RETURN / LATE RETURN CHARGE</strong></p><ul><li>If you pay at location, we reserve the right to make an Early Return Charge of EUR 8.00, GBP 7.00, CHF 10.00, SEK 72.00, NOK 65.00, DKK 61.00, RUB 349.00, AED 39.00, SAR 39.00, QAR 39.00, KWD 3.00, OMR 4.00, BHD 4.00, USD 11.00, PLN 35.00, ZAR 106.00, depending on your destination country, to compensate us in part for our inability to rent your vehicle during the time reserved for your use. Currently applicable only to rentals with a destination in Europe.</li><li>If you prepaid or you pay at location, we reserve the right to make a Late Return Charge of EUR 11.5, GBP 10, CHF 14, SEK 102, NOK 92, DKK 87, RUB 499, AED 56, SAR 56, QAR 55, KWD 4, OMR 5.80, BHD 5.70, USD 15, PLN 50, ZAR 151, depending on your destination country, to compensate us in part for the costs we incur in finding an alternative vehicle to satisfy our next booking for your vehicle and for our administration costs in contacting you to return the vehicle. Currently applicable only to rentals with a destination in Europe.</li></ul><p><strong>NATURE OF THIS AGREEMENT</strong></p><ul><li>These reservation terms cover your booking with us (Hertz Europe Service Centre Limited, a company registered in Ireland) and are governed by Irish law. Your rental terms will be given to you by the Hertz company that provides your rental vehicle and will be governed by local law. If you are a Gold customer, your Gold terms will apply to your rental.</li><li>Acceptance of your reservation and completion of this contract for provision of a rental vehicle will occur when the vehicle is made available for your use on the agreed pick up date by the Hertz company providing your rental.</li></ul> <br>
+																								<strong>DESTINATION SPECIFIC TERMS</strong><ul><li>Please note that at the time of rental you will need to present a current driver's license and a valid major credit card. Hertz locations also accept most, but not all, debit cards.  Use of a debit card to rent a vehicle is subject to a review of your credit history. A few locations do not accept debit cards at time of rental. If you have questions about the acceptability of your form of payment, please call Hertz.</li></ul><br> <br>
+																								<strong>PRE-PAID ONLINE CANCELLATION AND NO SHOW CHARGES</strong><ul><li><strong>Late Cancellation Charge:</strong> GBP 30.00</li><li><strong>No Shows / Lost Rentals Charge:</strong> GBP 70.00</li></ul> <br>
+																								 <br>
+																								<p>Approximate rental charges are based on available information at the time of reservation. Additional fees or surcharges may be applied at time of rental.</p> <br>
+																			</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<hr style="margin-top: 10px; margin-bottom: 10px;"> 
+						<table align="right" cellspacing="10">
+							<tr>
+								<td style="background-color: #308DFF;font-family:Trebuchet MS;font-size: 12px;padding: 8px 15px;text-shadow: none;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-style: italic;font-weight: bold;text-align: center;text-decoration: none;vertical-align: middle;white-space: nowrap;line-height: 1.3;cursor: pointer;">
+									<a style="text-decoration:none;color:#000;" href="https://www.hertz.com/rentacar/reservation/?language=en&pos=GB">
+										Start a New Reservation
+									</a>
+								</td>
+								<td style="background-color: #94C3FD;font-family:Trebuchet MS;font-size: 12px;padding: 8px 15px;text-shadow: none;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-style: italic;font-weight: bold;text-align: center;text-decoration: none;vertical-align: middle;white-space: nowrap;line-height: 1.3;cursor: pointer;">
+									<a style="text-decoration:none;color:#000;" href="https://www.hertz.com/rentacar/reservation/?confirmationNumber=G0000000001&language=en&pos=GB#search">
+										Modify/Cancel Reservation
+									</a>
+								</td>
+															</tr>
+						</table>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="left" style="width:600px;padding-top:20px;padding-bottom:20px;">
+						<div style="padding-left:10px;font-size:11px;padding-right:10px;font-family:Arial;font-weight:normal;">
+							This electronic-mail message contains confidential information intended only for the use of the individual or entity named. If the reader of this message is not the intended recipient, the reader is hereby notified that any dissemination, distribution, copying or other use of this message is strictly prohibited and is hereby instructed to return or destroy this copy of this message.<br /><br />
+							The Hertz Corporation<br />
+							14501 Hertz Quail Springs Parkway <br />
+							PO Box 269033<br />
+							Oklahoma City, OK<br />
+							73126-9033<br />
+							U.S.A.<br /><br />
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<table align="center">
+							<tr style="margin-bottom:10px;">
+								<td style="margin-right:38px;">
+																			<a href="https://ad.doubleclick.net/jump/hertz.irac/;tile=1;sz=180x150;style=ConfEmailTopLeft;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=7965863?"target="_blank";><img src="https://ad.doubleclick.net/ad/hertz.irac/;tile=1;sz=180x150;style=ConfEmailTopLeft;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=7965863?" width="180" height="150" alt="Ad Image" border="0"></a>
+																	</td>
+								<td>
+																			<a href="https://ad.doubleclick.net/jump/hertz.irac/;tile=1;sz=180x150;style=ConfEmailTopRight;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=2765022?"target="_blank";><img src="https://ad.doubleclick.net/ad/hertz.irac/;tile=1;sz=180x150;style=ConfEmailTopRight;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=2765022?" width="180" height="150" alt="Ad Image" border="0"></a>
+																	</td>
+							</tr>
+							<tr>
+								<td style="margin-right:38px;">
+																			<a href="https://ad.doubleclick.net/jump/hertz.irac/;tile=1;sz=180x150;style=ConfEmailBottomLeft;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=6998654?"target="_blank";><img src="https://ad.doubleclick.net/ad/hertz.irac/;tile=1;sz=180x150;style=ConfEmailBottomLeft;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=6998654?" width="180" height="150" alt="Ad Image" border="0"></a>
+																	</td>
+								<td>
+																			<a href="https://ad.doubleclick.net/jump/hertz.irac/;tile=1;sz=180x150;style=ConfEmailBottomRight;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=2927286?"target="_blank";><img src="https://ad.doubleclick.net/ad/hertz.irac/;tile=1;sz=180x150;style=ConfEmailBottomRight;stateprov=;member=G;airline=UNKN;cp=IRAC;cdp1=0000000;cdp2=0000000;cdp3=0000000;cdp4=;cdp5=;cdpInSession=Y;destcountry=NO;destoag=TOST50;lang=en;neverlost=N;posiso=GB;ziph=;zipw=;vehicle=EDAN;hle=N;insrep=N;PC=blank;RQ=blank;clubTier=G;defcctype=VSA;defvclass=ECMN;contractType=COMM;emNeverlost=N;handcontrols=N;mbNeverlost=N;siriusRadio=N;smokingPref=;dom2=https://www.hertz.com;ITNumber=;IT=N;pmp0=;pmp1=;pmp2=;pmp3=;pmp4=;itb=;ord=2927286?" width="180" height="150" alt="Ad Image" border="0"></a>
+																	</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>	
+	</body>
+</html>

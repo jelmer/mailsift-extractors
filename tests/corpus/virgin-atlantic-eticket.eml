@@ -1,0 +1,970 @@
+From: Virgin ETicket <Virgin.eticket.LON@fly.virgin.com>
+To: test@example.org
+Subject: Virgin Atlantic Airways e-Ticket AAAAAA
+Date: Mon, 01 Aug 2044 09:28:20 +0100
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html xmlns:ns0="http://VAA.Erica.BizTalk.Schemas.ETicketReceiptToAssemble_XML">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td width="40%"><img width="259" height="62" tcmuri="tcm:54-84256" alt="" src="cid:image0">
+</td>
+<td width="15%"></td>
+<td width="40%">
+<p align="right"><img width="208" height="79" tcmuri="tcm:54-66854" alt="" src="cid:image1">
+</p>
+</td>
+</tr>
+<tr>
+<td align="right" colspan="3" style="FONT-SIZE: 16pt; FONT-FAMILY: FoundryMonoline-Regular;color:red ">
+<b>Receipt/Itinerary</b> </td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="510px">
+</table>
+<table width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:#CC0000; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" border="0" bgcolor="#CC0000">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="648">
+<p style="MARGIN: 0cm 0cm 0pt" align="center"><strong><span style="FONT-SIZE: 9pt; COLOR: white; FONT-FAMILY: FoundryMonoline-Regular"></p>
+<p align="center">THIS IS YOUR RECEIPT/ITINERARY</p>
+<p align="center">Please bring this e-ticket when you check-in.</p>
+</span></strong>
+<p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><font color="#000000"><span style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular"></p>
+<p align="center"><strong>This document is automatically generated. Please do not respond to this e-mail.</strong>
+</p>
+<p>Are you travelling to the United States under the Visa Waiver Programme? You are now required to apply for ESTA travel authorisation. Apply now at
+<a href="https://esta.cbp.dhs.gov/esta">https://esta.cbp.dhs.gov/esta</a></p>
+<p>0% commission on all foreign exchange transactions at Moneycorp ï¿½ London Gatwick Airport bureau de change for all Virgin Atlantic arriving and departing passengers, plus you can also earn Flying Club Miles. Go to
+<a href="http://www.virginatlantic.com/currency">www.virginatlantic.com/currency</a></p>
+<p>Treat yourself to some <a href="http://www.retailtherapyshopping.com/">Retail Therapy</a>. Choose from our range of gorgeous gifts, delivered either to your seat on board or direct to your home.
+<a href="http://www.retailtherapyshopping.com">Click here</a> to explore the range.</p>
+</span></font>
+<p></p>
+<p><a href="http://www.virgin-atlantic.com/manageyourflights/diycheckin/index.jsp"><font style="FONT-SIZE: 11pt; COLOR: #ff0000; FONT-FAMILY: Verdana"><strong>Please click here to use Online Check In (for Virgin Operated flights only)</strong>
+</font></a></p>
+<p><font style="FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: FoundryMonoline-Regular">Please note : Occasionally terminal information may change on the day of your flight. Please check
+<a href="http://www.virgin-atlantic.com/gb/en/travel-information/flight-status.html" target="_blank">
+flight status</a> for the most up-to-date information.</font> </p>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: #CC0000; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#CC0000">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">BOOKING DETAILS</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black"></td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="160px" height="50px">
+<tbody>
+<tr>
+<td align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black" width="80px">
+Reference:</td>
+<td align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black" width="100px">
+AAAAAA</td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="250px">
+<tbody>
+<tr>
+<td align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black" width="70px">
+Issue Date:</td>
+<td align="left" width="150px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+31 July 2044</td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="250px">
+<tbody>
+<tr>
+<td align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black" width="80px">
+Place of Issue:</td>
+<td align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black" width="165px">
+LONDON</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="350px">
+<tbody>
+<tr>
+<td align="left" width="111px" style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular;color:black">
+Passenger:</td>
+<td align="left" width="205px" style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular;color:black">
+USER/TESTMR</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td align="left" width="111px"></td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">FLIGHT DETAILS</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black"></td>
+</tr>
+</tbody>
+</table>
+<table border="1" cellspacing="0" cellpadding="0" width="500px" id="Table1">
+<tbody>
+<tr>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  background:#510051;padding:0in 5.4pt 0in 5.4pt" bgcolor="#510051">
+<p style="line-height:12.0pt;  text-autospace:none"><b><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:white">FLIGHT</span>
+</b></p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  background:#510051;padding:0in 5.4pt 0in 5.4pt" bgcolor="#510051">
+<p style="line-height:12.0pt;  text-autospace:none"><b><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:white">DEPART DATE</span>
+</b></p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  background:#510051;padding:0in 5.4pt 0in 5.4pt" bgcolor="#510051">
+<p style="line-height:12.0pt;  text-autospace:none"><b><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:white">DEPART AIRPORT</span>
+</b></p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  background:#510051;padding:0in 5.4pt 0in 5.4pt" bgcolor="#510051">
+<p style="line-height:12.0pt;  text-autospace:none"><b><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:white">DEPART TIME</span>
+</b></p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  background:#510051;padding:0in 5.4pt 0in 5.4pt" bgcolor="#510051">
+<p style="line-height:12.0pt;  text-autospace:none"><b><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:white">ARRIVE AIRPORT</span>
+</b></p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  background:#510051;padding:0in 5.4pt 0in 5.4pt" bgcolor="#510051">
+<p style="line-height:12.0pt;  text-autospace:none"><b><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:white">ARRIVE TIME</span>
+</b></p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  background:#510051;padding:0in 5.4pt 0in 5.4pt" bgcolor="#510051">
+<p style="line-height:12.0pt;  text-autospace:none"><b><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:white">CLASS</span>
+</b></p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  background:#510051;padding:0in 5.4pt 0in 5.4pt" bgcolor="#510051">
+<p style="line-height:12.0pt;  text-autospace:none"><b><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:white">STATUS</span>
+</b></p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  background:#510051;padding:0in 5.4pt 0in 5.4pt" bgcolor="#510051">
+<p style="line-height:12.0pt;  text-autospace:none"><b><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:white">OPERATED BY</span>
+</b></p>
+</td>
+</tr>
+<tr>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">VS127</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">26 OCT</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">MAN</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">21:55</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">ATL</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">10:45</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:52.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">V
+<br>
+Economy</span> </p>
+</td>
+<td width="50" valign="top" style="width:34.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">OK</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">VS</span>
+</p>
+</td>
+</tr>
+<tr>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">VS128</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">09 NOV</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">ATL</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">14:00</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">MAN</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">17:55</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:52.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">G
+<br>
+Upper Class</span> </p>
+</td>
+<td width="50" valign="top" style="width:34.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">OK</span>
+</p>
+</td>
+<td width="50" valign="top" style="width:35.50pt;border:solid windowtext 1.0pt;  border-top:none;  padding:0in 5.4pt 0in 5.4pt">
+<p style="line-height:12.0pt"><span style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">VS</span>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="500px">
+<tbody>
+<tr>
+<td style="font-size:9.0pt;font-family:FoundryMonoline-Regular;color:black">Arrival date may differ from departure date</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><font color="#000000"><span style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular">FLIGHT OPERATED BY:</span>
+</font></td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="500px">
+<tbody>
+<tr>
+<td width="5px" style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular ;color:black" align="left">
+VS</td>
+<td width="1px" align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black">
+=</td>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular; color:black" width="320px" align="left">
+VIRGIN ATLANTIC</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><font color="#000000"><span style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular">Terminal Information- (please check
+<a href="http://www.virgin-atlantic.com/gb/en/travel-information/flight-status.html" target="_blank">
+flight status</a> before you travel for the most up-to-date terminal information)</span>
+</font></td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="700px">
+<tbody>
+<tr>
+<td width="50px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black" align="left">
+VS 127</td>
+<td align="left" width="70px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black">
+Check In :</td>
+<td width="450px" align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black">
+MANCHESTER, MANCHESTER-Terminal 2</td>
+</tr>
+<tr>
+<td width="50px"></td>
+<td align="left" width="80px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+Arrivals :</td>
+<td width="450px" align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+ATLANTA, ATLANTA-Hartsfield-Jackson Intl Airport, Terminal S, Arrivals</td>
+</tr>
+<tr>
+<td width="50px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black" align="left">
+VS 128</td>
+<td align="left" width="70px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black">
+Check In :</td>
+<td width="450px" align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black">
+ATLANTA, ATLANTA-Hartsfield-Jackson Intl Airport, Terminal S, Departures</td>
+</tr>
+<tr>
+<td width="50px"></td>
+<td align="left" width="80px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+Arrivals :</td>
+<td width="450px" align="left" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+MANCHESTER, MANCHESTER-Terminal 2</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="700px">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:black">For further information please visit
+<br>
+<a href="http://www.virgin-atlantic.com/attheairport/airportguide/index.jsp" target="_blank">http://www.virgin-atlantic.com/attheairport/airportguide/index.jsp</a></td>
+</tr>
+</tbody>
+</table>
+<br>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><font color="#000000"><span style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular"><strong>INTERNATIONAL CHECK-IN TIMES</strong>
+</span></font></td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular; color:black">Check-in times vary between airlines and airports. Virgin Atlantic check-in counters and bag drop desks, open at least
+<font style="COLOR: #ff0000"><strong>2.5</strong></font> hours prior to departure.
+<a href="https://www.virgin-atlantic.com/manageyourflights/diycheckin/index.jsp" target="_blank">
+<font style="COLOR: #ff0000">Please click here to use Online Check In (Virgin Operated flights only).</font></a>
+<p>We close our check-in facilities and bag drop desks <font style="COLOR: #ff0000">
+<strong>60</strong></font> minutes before departure. If you haven't checked in with your hold luggage by this time, you'll miss the flight. For check-in details for other airlines, please check with the airline or its authorised agent.</p>
+Manchester Terminal 2 - Please ensure that you are through Airport Security at least
+<font style="COLOR: #ff0000"><strong>30 </strong></font>minutes before your schedule departure time. Unfortunately, if you do not meet this time you will not be allowed onto your flight.</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: #CC0000; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#CC0000">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">TICKET NUMBERS and ENDORSEMENTS</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black"></td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="500px">
+<tbody>
+<tr>
+<td align="left" width="250px" style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular">
+USER/TESTMR</td>
+<td align="left" width="250px" style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular">
+932 0000000002</td>
+</tr>
+<tr>
+<td align="left" width="250px" style="FONT-SIZE: 9pt; FONT-FAMILY:FoundryMonoline-Regular">
+VOLUNTARY CHANGES RESTRICTED<br>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">FARE DETAILS</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black"></td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="800px">
+<tbody>
+<tr>
+<td align="left" width="300px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+USER/TESTMR</td>
+</tr>
+<tr>
+<td align="left" width="260px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+Fare</td>
+<td align="left" width="100px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+GBP</td>
+<td align="left " width="300px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+322.00</td>
+</tr>
+<tr>
+<td align="left" width="300px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+Taxes/Fees/Charges/Carrier Imposed Surcharges</td>
+<td align="left" width="5px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+YQPD196.00&nbsp;GBPD73.00&nbsp;XTPD80.05&nbsp;</td>
+</tr>
+<tr>
+<td align="left" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black" width="300px">
+Total</td>
+<td align="left" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black" width="200px">
+GBP</td>
+<td align="left " width="300px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+156.00 Additional Collection</td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="800px">
+<tbody>
+<tr>
+<td align="left" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black" width="400px">
+Exchange Documents:</td>
+<td align="left" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black" width="400px">
+9320000000001</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="760px">
+<tbody>
+<tr>
+</tr>
+<tr>
+<td align="left" width="120px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular">
+Form of Payment ;</td>
+<td align="left" width="180px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular">
+VI************0000</td>
+<td align="left" width="150px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular">
+AMOUNT RECEIVED </td>
+<td align="left" width="10px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular">
+GBP</td>
+<td align="left" width="300px" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular">
+156.00 Additional Collection</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: #CC0000; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#CC0000">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">CONTACT DETAILS</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black"></td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white"></span></strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+<p dir="ltr" align="left">Should you need to contact Virgin Atlantic regarding your booking please see our website for your nearest Virgin office;</p>
+<p dir="ltr" align="left"><a href="http://www.virgin-atlantic.com/gb/en/travel-information/customer-service/phone.html" target="_blank"><span lang="EN-GB">http://www.virgin-atlantic.com/gb/en/travel-information/customer-service/phone.html</span>
+</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<br style="page-break-before:always;">
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">NOTICE OF INCORPORATED TERMS OF CONTRACT</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">Your carriage is subject to Virgin Atlantic's conditions of contract and to the conditions of carriage of each transporting airline. Those conditions include, for example, terms governing:
+ (1) restrictions on, and time limits for, claims; (2) rights of the airline to change terms of the contract of carriage; (3) rules on check-in and boarding times, and the right to refuse carriage. For a copy of Virgin Atlantic's conditions of contract, please
+ visit: -<br>
+<a href="http://www.virginatlantic.com/bookflightsandmore/conditionsofcontract/article1.jsp" target="_blank">www.virginatlantic.com/bookflightsandmore/conditionsofcontract/article1.jsp</a></td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">ELECTRONIC TICKET INFORMATION</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+<p>This e-ticket receipt is a record of your electronic ticket,which is stored electronically in a computer reservations system.For more information about e-tickets,please visit:
+<a href="http://virginatlantic.custhelp.com/app/answers/detail/a_id/154/kw/eticket" target="_blank">
+http://virginatlantic.custhelp.com/app/answers/detail/a_id/154/kw/eticket</a></p>
+<p>IF YOU HAVE RECEIVED THIS E-MAIL IN ERROR</p>
+<p>This is a confidential e-mail intended only for the Virgin Atlantic Airways customer appearing as the addressee. If you are not the intended recipient please delete this e-mail and inform us directly as soon as possible. Please note that any copying, distribution
+ or other action taken or omitted to be taken is prohibited and may be unlawful.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">IMPORTANT PASSENGER INFORMATION</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+<p>If travelling to the US, please make sure you have a note of your address in the US available at check-in unless you have already given us that and other advance passenger information. For more information please click the link below:<br>
+<a href="http://www.virgin-atlantic.com/passengerinformation/index.jsp" target="_blank">www.virgin-atlantic.com/passengerinformation/index.jsp</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">SELF SERVICE CHECK IN</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">Save time and use Online Check In on our website, or our new Self Service Kiosks at participating Airports. For more information please click the link below:<br>
+<a href="http://www.virginatlantic.com/manageyourflights/index.jsp" target="_blank">www.virginatlantic.com/manageyourflights/index.jsp</a></td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 900pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">BAGGAGE ALLOWANCE</span>
+</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+<p style="MARGIN: 0cm 0cm 0pt" class="MsoNormal"><span style="FONT-FAMILY: FoundryMonoline-Regular; COLOR: black; FONT-SIZE: 9pt; mso-fareast-language: EN-GB">Baggage information for your itinerary is detailed below. If you require further information on our
+ baggage policies, including excess baggage, our policy on carrying liquids or restricted items please visit our website for full details:</span>
+<span style="FONT-FAMILY: 'Times New Roman','serif'; COLOR: black; FONT-SIZE: 12pt; mso-fareast-language: EN-GB">
+</span></p>
+<p style="MARGIN: 0cm 0cm 12pt" class="MsoNormal"><span style="FONT-FAMILY: 'Times New Roman','serif'; COLOR: #1f497d; FONT-SIZE: 12pt; mso-fareast-language: EN-GB"><a href="http://www.virgin-atlantic.com/gb/en/travel-information/baggage/check-in-baggage.html" target="_blank"><font color="#0000ff"><span style="FONT-FAMILY: 'Calibri','sans-serif'">http://www.virgin-atlantic.com/gb/en/travel-information/baggage/check-in-baggage.html</span>
+</font></a></span></p>
+<p style="MARGIN: 0cm 0cm 0pt" class="MsoNormal"><span style="FONT-FAMILY: FoundryMonoline-Light; FONT-SIZE: 9pt; mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; mso-bidi-font-family: Calibri; mso-ansi-language: EN-GB; mso-fareast-language: EN-GB; mso-bidi-language: AR-SA"><font color="#000000">Please
+ note: depending on your itinerary, Virgin Atlantic's baggage policies may not apply due to the US Dept. of Transportation's regulations.</font>
+</span></p>
+<p style="MARGIN: 0cm 0cm 0pt" class="MsoNormal"></p>
+<p style="MARGIN: 0cm 0cm 0pt" class="MsoNormal"><br>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="60%">
+<tbody>
+<tr>
+<td colspan="2" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular; color:black">
+<strong><u>The following baggage fees may apply for each sector between:</u> </strong>
+</td>
+</tr>
+<tr>
+<td align="left" width="200px" style="FONT-SIZE: 10pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong><u>MAN - ATL</u> </strong></td>
+<td align="left" width="200px" style="FONT-SIZE: 10pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:red">
+</td>
+</tr>
+<tr>
+<td align="left" width="220px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>First Checked-In bag fee:</strong> </td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+FREE</td>
+</tr>
+<tr>
+<td align="left" width="220px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Maximum checked-in bag weight:</strong> </td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+UP TO 50 LB/23 KG</td>
+</tr>
+<tr>
+<td align="left" width="200px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Dimensions must not exceed:</strong> <br>
+<i>(LI is linear inches, LCM is linear centimetres. Linear is the total sum of the length, height, and width of a piece of luggage)</i>
+</td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+UP TO 81 LI/208 LCM<br>
+</td>
+</tr>
+<tr>
+<td align="left" width="220px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Second Checked-In bag fee:</strong> </td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+FREE</td>
+</tr>
+<tr>
+<td align="left" width="220px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Maximum checked-in bag weight:</strong> </td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+UP TO 50 LB/23 KG</td>
+</tr>
+<tr>
+<td align="left" width="200px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Dimensions must not exceed:</strong> <br>
+<i>(LI is linear inches, LCM is linear centimetres. Linear is the total sum of the length, height, and width of a piece of luggage)</i>
+</td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+UP TO 81 LI/208 LCM<br>
+</td>
+</tr>
+&nbsp;
+</tbody>
+</table>
+<table border="0" width="60%">
+<tbody>
+<tr>
+<td colspan="2" style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular; color:black">
+<strong><u>The following baggage fees may apply for each sector between:</u> </strong>
+</td>
+</tr>
+<tr>
+<td align="left" width="200px" style="FONT-SIZE: 10pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong><u>ATL - MAN</u> </strong></td>
+<td align="left" width="200px" style="FONT-SIZE: 10pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:red">
+</td>
+</tr>
+<tr>
+<td align="left" width="220px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>First Checked-In bag fee:</strong> </td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+FREE</td>
+</tr>
+<tr>
+<td align="left" width="220px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Maximum checked-in bag weight:</strong> </td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+UP TO 50 LB/23 KG</td>
+</tr>
+<tr>
+<td align="left" width="200px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Dimensions must not exceed:</strong> <br>
+<i>(LI is linear inches, LCM is linear centimetres. Linear is the total sum of the length, height, and width of a piece of luggage)</i>
+</td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+UP TO 81 LI/208 LCM<br>
+</td>
+</tr>
+<tr>
+<td align="left" width="220px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Second Checked-In bag fee:</strong> </td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+FREE</td>
+</tr>
+<tr>
+<td align="left" width="220px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Maximum checked-in bag weight:</strong> </td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+UP TO 50 LB/23 KG</td>
+</tr>
+<tr>
+<td align="left" width="200px" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+<strong>Dimensions must not exceed:</strong> <br>
+<i>(LI is linear inches, LCM is linear centimetres. Linear is the total sum of the length, height, and width of a piece of luggage)</i>
+</td>
+<td width="50%" style="FONT-SIZE: 9pt; FONT-FAMILY:  FoundryMonoline-Regular ;color:black">
+UP TO 81 LI/208 LCM<br>
+</td>
+</tr>
+&nbsp;
+</tbody>
+</table>
+&nbsp;
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular; color:black">
+<p align="left"><strong><u>CARRY-ON</u></strong></p>
+<table cellspacing="2" width="583" border="1">
+<tbody>
+<tr>
+<td valign="center" width="21%" bgcolor="#d99594" height="11">
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal"><strong>Class</strong></span></p>
+</td>
+<td valign="center" width="79%" bgcolor="#d99594" height="11">
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal"><strong>Allowance</strong></span></p>
+</td>
+</tr>
+<tr>
+<td valign="center" width="21%" height="19">
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal">Economy</span></p>
+</td>
+<td valign="top" width="79%" height="19">
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal">1 piece with a maximum weight of 10kg (22lbs).
+</span></p>
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal">Dimensions must not exceed 23 x 36 x 56cm / 9 x 14 x 22ins</span></p>
+</td>
+</tr>
+<tr>
+<td valign="center" width="21%" height="17">
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal">Premium Economy</span></p>
+</td>
+<td valign="center" width="79%" height="17">
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal">1 piece with a maximum weight of 10kg (22lbs).
+</span></p>
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal">Dimensions must not exceed 23 x 36 x 56cm / 9 x 14 x 22ins</span></p>
+</td>
+</tr>
+<tr>
+<td valign="center" width="21%" height="18">
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal">Upper Class</span></p>
+</td>
+<td valign="top" width="79%" height="18">
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal">2 pieces With a maximum (combined) weight of 16kg (35lbs) or with a maximum weight (individual) of 12kg (26lbs).
+</span></p>
+<p align="left"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-bidi-font-weight: normal">Dimensions must not exceed 23 x 36 x 56cm / 9 x 14 x 22ins</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<p align="left"><strong>Virgin Atlantic passengers travelling in Upper Class are entitled to three pieces of checked in baggage free of charge on Virgin Atlantic operated flights.</strong> Please note that you may be charged to take additional pieces of baggage
+ on sectors of your itinerary that are not operated by Virgin Atlantic. </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">Passengers travelling with infants or children can bring a fully collapsible pushchair or car seat, in addition to their free check
+ in luggage allowance.</span></p>
+<br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">Infants too young for their own seat on the aircraft (travelling on the lap of a parent or carer) can have one piece of hold baggage
+ weighing up to 23kg, and one piece of hand baggage weighing up to 6kg. We're afraid we can't allow extra baggage allowance to be purchased for infants.</span></p>
+<br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center" align="center">
+<strong style="mso-bidi-font-weight: normal"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">Virgin Atlantic passengers who hold a Flying Club Gold card are entitled to one piece of checked in baggage in addition to the above
+ allowance at no extra cost on Virgin Atlantic operated flights.</span></strong></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center" align="center">
+<strong style="mso-bidi-font-weight: normal"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">Please note that you may be charged to take this extra piece of baggage on sectors of your itinerary that are not operated by Virgin
+ Atlantic.</span></strong></p>
+<br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">If travelling on a mixed class ticket where the outbound and return journeys are in different classes then the relevant allowances
+ for each direction will apply so please note there may be different allowances on your outbound and return journey.</span></p>
+<br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; mso-fareast-language: EN-GB"><u><strong>Extra Baggage Charges</strong></u></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">If you'd like to bring extra luggage over and above your free baggage allowance on Virgin Atlantic operated flights, you can pay
+ to check in up to 10 extra bags per person (weight limitations may apply).</span></p>
+<p class="MsoNormal" style="MARGIN: 2pt 0cm 2pt 14.2pt; TEXT-INDENT: -14.2pt"></p>
+<p class="MsoNormal" style="MARGIN: 2pt 0cm 2pt 14.2pt; TEXT-INDENT: -14.2pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-fareast-language: EN-GB">-Extra baggage charges apply for each bag over
+ and above your free allowance.</span></p>
+<p class="MsoNormal" style="MARGIN: 2pt 0cm 2pt 14.2pt; TEXT-INDENT: -14.2pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-fareast-language: EN-GB">-Excess
+</span><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-fareast-language: EN-GB">charges
+<span style="COLOR: black">will </span>be applied to <span style="COLOR: black">both overweight and oversized bags.
+</span></span></p>
+<p class="MsoNormal" style="MARGIN: 2pt 0cm 2pt 14.2pt; TEXT-INDENT: -14.2pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-fareast-language: EN-GB">-Charges for additional baggage are payable each
+ way and could be charged per sector of travel.</span></p>
+<p class="MsoNormal" style="MARGIN: 2pt 0cm 2pt 14.2pt; TEXT-INDENT: -14.2pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-fareast-language: EN-GB">-Any bags weighing over 32kg will not be accepted.</span></p>
+<p class="MsoNormal" style="MARGIN: 2pt 0cm 2pt 14.2pt; TEXT-INDENT: -14.2pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: 'Arial','sans-serif'; LETTER-SPACING: 0.3pt; mso-fareast-language: EN-GB">-</span><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular; LETTER-SPACING: 0.3pt; mso-fareast-language: EN-GB">Any
+ excess baggage purchased is non-refundable and non-transferable.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular; color:black">
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><strong style="mso-bidi-font-weight: normal"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">DANGEROUS ARTICLES IN BAGGAGE</span></strong></p>
+For safety reasons, dangerous articles such as those listed in the following link must not be carried in your hand or checked baggage:<br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 10pt; COLOR: #1f497d; FONT-FAMILY: 'Arial','sans-serif'; mso-fareast-language: EN-GB"><a href="http://www.virgin-atlantic.com/gb/en/travel-information/baggage/restrictions/dangerous-articles.html" target="_blank"><span style="FONT-SIZE: 9pt; COLOR: #0000ff; FONT-FAMILY: FoundryMonoline-Regular">http://www.virgin-atlantic.com/gb/en/travel-information/baggage/restrictions/dangerous-articles.html</span></a></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">TRANSFER OF DATA TO GOVERNMENT AUTHORITIES</span></strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+<p>Applicable laws require that your personal information will be made available to competent authorities in and outside the EU.Further information is available on our website, please visit :
+<a href="http://www.virgin-atlantic.com/privacyandsecurity/transferringdata.jsp" target="_blank">
+www.virgin-atlantic.com/privacyandsecurity/transferringdata.jsp</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">DENIED BOARDING COMPENSATION</span></strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">For details of compensation and other benefits, to which you may be entitled if denied boarding for the flight for which you hold a confirmed reservation, please visit:<br>
+<a href="http://www.virgin-atlantic.com/gb/en/travel-information/customer-service/conditions-of-carriage/article-9.html" target="_blank">http://www.virgin-atlantic.com/gb/en/travel-information/customer-service/conditions-of-carriage/article-9.html</a></td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">LIABILITY NOTICE</span></strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+<p>Regulation 2027/97 (as amended by Regulation 889/02), the Warsaw Convention or the Montreal Convention may apply to your carriage and limits the liability of airlines for death or personal injury, loss of or damage to baggage, and for delay.<br>
+No financial limit applies to Virgin Atlantic's liability for proven damages for death or personal injury. Virgin Atlantic's liability for loss, damage to or delay of checked and unchecked baggage is limited to a maximum of 1,131 SDRs per passenger. Baggage
+ greater in value should be insured, or a higher limit of liability can be purchased, by making a special declaration and paying a supplementary fee before travel. Virgin Atlantic's liability for passenger delay is limited to a maximum 4,694 SDRs per passenger.<br>
+For more information, please click: <a href="http://www.virgin-atlantic.com/gb/en/travel-information/customer-service/conditions-of-carriage/article-15.html" target="_blank">
+http://www.virgin-atlantic.com/gb/en/travel-information/customer-service/conditions-of-carriage/article-15.html</a><br>
+For details of other transporting airlines' liability, please check with the airline or its authorised agent.
+</p>
+<p>Virgin Atlantic Airways Ltd. Registered Office- Company Secretariat, The Office, Manor Royal, Crawley, West Sussex, RH10 9NU</p>
+<p>Registered in England 1600117</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND:  #510051; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse" cellspacing="0" cellpadding="0" bgcolor="#510051">
+<tbody>
+<tr>
+<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1050pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid " valign="top" width="638">
+<p style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 12pt"><strong><span style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular;color:white">WHERE TO SEND FEEDBACK: If you wish to lodge a compliment or complaint, please contact:</span></strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td style="FONT-SIZE: 9pt; FONT-FAMILY: FoundryMonoline-Regular ;color:black">
+<table class="MsoNormalTable" style="WIDTH: 100%; mso-cellspacing: 1.5pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt" cellpadding="0" width="100%" border="0">
+<tbody>
+<tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes">
+<td style="BORDER-RIGHT: #d4d0c8; PADDING-RIGHT: 0.75pt; BORDER-TOP: #d4d0c8; PADDING-LEFT: 0.75pt; PADDING-BOTTOM: 0.75pt; BORDER-LEFT: #d4d0c8; WIDTH: 45.6%; PADDING-TOP: 0.75pt; BORDER-BOTTOM: #d4d0c8; BACKGROUND-COLOR: transparent" width="45%">
+<p style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">Customer Relations</span></span></p>
+<p style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">Virgin Atlantic Airways Limited</span></p>
+<p style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">The Office</span></p>
+<p style="MARGIN: 0cm 0cm 0pt; mso-prop-change: 018977 20110728T0948"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">Manor Royal</span></p>
+<p style="MARGIN: 0cm 0cm 0pt; mso-prop-change: 018977 20110728T0948"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">Crawley</span></p>
+<p style="MARGIN: 0cm 0cm 0pt; mso-prop-change: 018977 20110728T0948"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular"><font style="COLOR: black; BACKGROUND-COLOR: transparent">West Sussex</font></span></p>
+<p style="MARGIN: 0cm 0cm 0pt; mso-prop-change: 018977 20110728T0948"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular"><font style="COLOR: black; BACKGROUND-COLOR: transparent">RH10 9NU</font></span></p>
+<p style="MARGIN: 0cm 0cm 0pt; mso-prop-change: 018977 20110728T0948"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular">United Kingdom</span></p>
+<p style="MARGIN: 0cm 0cm 0pt; mso-prop-change: 018977 20110728T0948"><span style="FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: FoundryMonoline-Regular"><font style="COLOR: black; BACKGROUND-COLOR: transparent">Or via our website:
+<a href="http://www.virgin-atlantic.com/feedback" target="_blank">www.virgin-atlantic.com/feedback</a></font></span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p style="MARGIN: 0cm 0cm 0pt; mso-prop-change: 018977 20110728T0948"></p>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<p>_____________________________________________________________________________________________
+</p>
+Be sure to drop by at http://www.virginatlantic.com for all the latest news and fantastic offers.
+<p></p>
+Tweet travel with us: http://www.twitter.com/virginatlantic
+<p></p>
+Join us on Facebook: http://www.facebook.com/virginatlantic
+<p></p>
+View us on YouTube: http://www.youtube.com/virginatlantic
+<p></p>
+Connect on Linked In: http://www.linkedin.com/company/virgin-atlantic-airways
+<p></p>
+The information contained in this email and its attachments may contain confidential/privileged information. It is intended only for the named recipient(s). If you are not a named recipient please do not distribute/copy or rely on its contents. We apologise
+ if this came to you by mistake - please tell us and then delete it. Unless explicitly stated, any opinion expressed in this e-mail may not be that of Virgin Atlantic and the content does not represent a contract. Whilst Virgin Atlantic takes care to protect
+ its systems from electronic virus attack or other harmful event, no warranty is given that this email message (including any attachments to it) is free of any virus or other harmful matter and accepts no responsibility for any loss or damage resulting from
+ the recipient receiving, opening or using it. We reserve the right to retain and monitor all e-mail communications. Virgin Atlantic Airways Limited. Registered office: Company Secretariat, The Office, Manor Royal, Crawley, West Sussex, RH10 9NU. Registered
+ in England, company number: 1600117
+<p></p>
+____________________________________________________________________________________________
+<p></p>
+</body>
+</html>

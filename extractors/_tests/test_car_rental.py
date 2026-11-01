@@ -27,6 +27,37 @@ def test_hertz_single_branch_hire(run_extractor):
     }
 
 
+def test_hertz_labels_before_times(run_extractor):
+    # Mails up to early 2016 list "Pick Up time" and "Return time"
+    # first, then both times.
+    out = run_extractor("hertz", "hertz-labels-first.eml")
+    assert out == {
+        "hertz-g0000000001.reservation.json": {
+            "@context": "https://schema.org",
+            "@type": "RentalCarReservation",
+            "reservationNumber": "G0000000001",
+            "provider": {"@type": "Organization", "name": "Hertz"},
+            "pickupTime": "2044-01-14T23:30:00",
+            "dropoffTime": "2044-01-17T16:00:00",
+            "pickupLocation": {
+                "@type": "Place",
+                "name": "Tromso Airport",
+                "address": "Tromso Airport",
+            },
+            "reservationFor": {
+                "@type": "Car",
+                "name": "Economy, 4-5 Door, Automatic, No Aircon",
+            },
+            # The charges are itemised; the total comes after "Total".
+            "totalPrice": {
+                "@type": "PriceSpecification",
+                "price": 144.02,
+                "priceCurrency": "GBP",
+            },
+        },
+    }
+
+
 def test_avis_one_way_keeps_both_branches(run_extractor):
     out = run_extractor("avis", "avis-reservation.eml")
     assert set(out) == {"avis-00000000gb0.reservation.json"}
