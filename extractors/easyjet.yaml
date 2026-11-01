@@ -8,3 +8,6 @@ requires:
   - html
 require_dkim:
   - easyjet.com
+# Booking mail was still unsigned in March 2022; the first signed one
+# seen is from July 2024.
+unsigned_before: "2024-07-11"

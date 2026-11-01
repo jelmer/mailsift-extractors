@@ -77,25 +77,8 @@ def test_legacy_body_extracts_two_legs(run_extractor):
     assert inbound["reservationFor"]["departureAirport"]["name"] == "Amsterdam"
 
 
-def test_legacy_extractor_extracts_pre_cutoff(run_extractor):
-    # `easyjet-legacy` reuses the same parser but with no DKIM
-    # requirement, gated by a message-date cutoff (2024-07-11).
-    # Same fixture that the main extractor accepts.
-    out = run_extractor("easyjet-legacy", "easyjet-legacy-confirmation.eml")
-    assert "easyjet-leg2013-ezy2163.reservation.json" in out
-
-
-def test_legacy_extractor_refuses_post_cutoff(run_extractor):
-    # Modern fixture is dated on the cutoff; the legacy extractor must
-    # reject it even though the parser would otherwise match.
-    out = run_extractor("easyjet-legacy", "easyjet-confirmation.eml")
-    assert out == {}
-
-
-def test_legacy_extractor_extracts_unsigned_2015_mail(run_extractor):
-    # easyJet booking mail stayed unsigned until well after 2015, so
-    # the cutoff must not reject this February 2015 confirmation.
-    out = run_extractor("easyjet-legacy", "easyjet-legacy-confirmation-2015.eml")
+def test_unsigned_2015_mail_extracts(run_extractor):
+    out = run_extractor("easyjet", "easyjet-legacy-confirmation-2015.eml")
     assert out == {
         "easyjet-leg2015-ezy8818.reservation.json": {
             "@context": "https://schema.org",

@@ -11,3 +11,5 @@ requires:
 # match) rather than trying to enumerate them.
 require_dkim:
   - .ba.com
+# Older BA mail predates its DKIM setup.
+unsigned_before: "2018-01-01"

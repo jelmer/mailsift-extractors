@@ -7,3 +7,6 @@ requires:
   - html
 require_dkim:
   - klm.com
+# Every confirmation seen from 2012 to March 2019 is unsigned; the
+# first `klm.com`-signed mail seen is from August 2021.
+unsigned_before: "2021-08-30"
