@@ -8,10 +8,10 @@ order: 60
 script: british-airways-legacy.py
 from_domains:
   - email.ba.com
-# Only the legacy subject prefix. Modern mail (`Your e-ticket
-# receipt ...`) is handled by the main extractor whose DKIM check
-# guards against spoofing.
-subject_regex: "(?i)^BA e-ticket receipt\\s+[A-Z0-9]{5,8}:"
+# Both subject prefixes: unsigned mail from 2015 already uses
+# `Your e-ticket receipt ...`. The date cutoff, not the subject,
+# keeps modern mail on the DKIM-checked main extractor.
+subject_regex: "(?i)^(?:BA |Your )e-ticket receipt\\s+[A-Z0-9]{5,8}:"
 requires:
   - text
 # No `require_dkim`: pre-2018 BA mail predates BA's DKIM setup.

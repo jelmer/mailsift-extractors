@@ -1,0 +1,61 @@
+Authentication-Results: mx.google.com; spf=pass smtp.mail=noreply@klm.com
+From: KLM Reservations <noreply@klm.com>
+To: test@example.org
+Subject: Confirmation: Amsterdam - Lima (L00000)
+Date: Wed, 6 Aug 2014 00:00:00 +0200
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<table><tr><td>Your booking code</td></tr>
+<tr><td>Flight - Booking code</td></tr>
+<tr><td><strong>L00000</strong></td></tr></table>
+<table><tr><td>Flight: Amsterdam - Lima - Return</td><td>EUR 1.000,00</td></tr>
+<tr><td>Mon 1 Dec 14 - Mon 15 Dec 14</td><td></td></tr></table>
+<table>
+<tr><td colspan="2"><span>Departure: Amsterdam - Lima</span></td></tr>
+<tr><td colspan="2"><table>
+<tr><td><span>Mon 1 Dec 14</span></td>
+<td>
+			12:25 
+			Amsterdam 
+						(Schiphol, Netherlands) 
+			
+		</td></tr>
+<tr><td><span>Mon 1 Dec 14</span></td>
+<td>
+			19:15 
+			Lima 
+						(J Chavez International, Peru) 
+			
+		</td></tr>
+</table></td></tr>
+<tr><td colspan="2">Flight number: KL 0743<br>
+Aircraft type:&nbsp; Boeing 777-200<br>
+Operated by: KLM<br></td></tr>
+</table>
+
+<table>
+<tr><td colspan="2"><span>Return: Lima - Amsterdam</span></td></tr>
+<tr><td colspan="2"><table>
+<tr><td><span>Mon 15 Dec 14</span></td>
+<td>
+			21:15 
+			Lima 
+						(J Chavez International, Peru) 
+			
+		</td></tr>
+<tr><td><span>Tue 16 Dec 14</span></td>
+<td>
+			15:30 
+			Amsterdam 
+						(Schiphol, Netherlands) 
+			
+		</td></tr>
+</table></td></tr>
+<tr><td colspan="2">Flight number: KL 0744<br>
+Aircraft type:&nbsp; Boeing 777-200<br>
+Operated by: KLM<br></td></tr>
+</table>
+
+</body></html>

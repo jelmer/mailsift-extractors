@@ -79,14 +79,42 @@ def test_legacy_body_extracts_two_legs(run_extractor):
 
 def test_legacy_extractor_extracts_pre_cutoff(run_extractor):
     # `easyjet-legacy` reuses the same parser but with no DKIM
-    # requirement, gated by a message-date cutoff (2015-01-01).
+    # requirement, gated by a message-date cutoff (2024-07-11).
     # Same fixture that the main extractor accepts.
     out = run_extractor("easyjet-legacy", "easyjet-legacy-confirmation.eml")
     assert "easyjet-leg2013-ezy2163.reservation.json" in out
 
 
 def test_legacy_extractor_refuses_post_cutoff(run_extractor):
-    # Modern fixture is dated 2024; the legacy extractor must
+    # Modern fixture is dated on the cutoff; the legacy extractor must
     # reject it even though the parser would otherwise match.
     out = run_extractor("easyjet-legacy", "easyjet-confirmation.eml")
     assert out == {}
+
+
+def test_legacy_extractor_extracts_unsigned_2015_mail(run_extractor):
+    # easyJet booking mail stayed unsigned until well after 2015, so
+    # the cutoff must not reject this February 2015 confirmation.
+    out = run_extractor("easyjet-legacy", "easyjet-legacy-confirmation-2015.eml")
+    assert out == {
+        "easyjet-leg2015-ezy8818.reservation.json": {
+            "@context": "https://schema.org",
+            "@type": "FlightReservation",
+            "reservationNumber": "easyjet-LEG2015-EZY8818",
+            "reservationFor": {
+                "@type": "Flight",
+                "flightNumber": "8818",
+                "airline": {"@type": "Airline", "iataCode": "EZY"},
+                "departureAirport": {
+                    "@type": "Airport",
+                    "name": "Tel Aviv (Terminal 1)",
+                },
+                "arrivalAirport": {
+                    "@type": "Airport",
+                    "name": "London Gatwick (North Terminal)",
+                },
+                "departureTime": "2015-03-01T20:50:00",
+                "arrivalTime": "2015-03-02T00:25:00",
+            },
+        }
+    }

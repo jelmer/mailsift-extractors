@@ -2,6 +2,29 @@
 
 from __future__ import annotations
 
+import email
+import json
+import re
+from pathlib import Path
+
+EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
+CORPUS_DIR = EXTRACTORS_DIR.parent / "tests" / "corpus"
+
+
+def manifest_subject_regex(name: str) -> re.Pattern[str]:
+    """Return the compiled `subject_regex:` from an extractor manifest."""
+    for line in (EXTRACTORS_DIR / f"{name}.yaml").read_text().splitlines():
+        if line.startswith("subject_regex: "):
+            # The manifests use double-quoted YAML scalars, whose
+            # backslash escapes are a superset of JSON's.
+            return re.compile(json.loads(line.removeprefix("subject_regex: ")))
+    raise KeyError(f"{name}.yaml has no subject_regex")
+
+
+def corpus_subject(eml_name: str) -> str:
+    with (CORPUS_DIR / eml_name).open("rb") as fh:
+        return email.message_from_binary_file(fh)["Subject"]
+
 
 def test_eticket_emits_one_reservation_per_segment(run_extractor):
     out = run_extractor("british-airways", "british-airways-eticket.eml")
@@ -134,3 +157,63 @@ def test_columnar_eticket_format_extracts(run_extractor):
     }
     assert for_["departureTime"] == "2016-06-23T20:05:00"
     assert for_["arrivalTime"] == "2016-06-23T22:20:00"
+
+
+def test_legacy_manifest_accepts_2015_subject():
+    # Unsigned 2015 mail already used the `Your e-ticket receipt`
+    # subject, so the no-DKIM manifest has to accept it too.
+    subject = corpus_subject("british-airways-eticket-2015.eml")
+    assert manifest_subject_regex("british-airways-legacy").search(subject)
+
+
+def test_legacy_extractor_extracts_2015_mail(run_extractor):
+    out = run_extractor("british-airways-legacy", "british-airways-eticket-2015.eml")
+    context = {
+        "@vocab": "https://schema.org/",
+        "pending": "https://pending.schema.org/",
+    }
+    airline = {"@type": "Airline", "iataCode": "BA", "name": "British Airways"}
+    assert out == {
+        "ba-YOURTK-BA0632.reservation.json": {
+            "@context": context,
+            "@type": "FlightReservation",
+            "reservationNumber": "YOURTK",
+            "reservationFor": {
+                "@type": "Flight",
+                "flightNumber": "632",
+                "airline": airline,
+                "departureAirport": {
+                    "@type": "Airport",
+                    "name": "Heathrow",
+                    "address": "London",
+                    # TODO: the text part carries a literal `&nbsp;`
+                    # entity that the parser doesn't decode.
+                    "alternateName": "&nbsp;- Terminal 5",
+                },
+                "arrivalAirport": {"@type": "Airport", "name": "Athens"},
+                "departureTime": "2015-11-29T11:55:00",
+                "arrivalTime": "2015-11-29T17:35:00",
+                "pending:cabinClass": "Euro Traveller",
+            },
+        },
+        "ba-YOURTK-BA0633.reservation.json": {
+            "@context": context,
+            "@type": "FlightReservation",
+            "reservationNumber": "YOURTK",
+            "reservationFor": {
+                "@type": "Flight",
+                "flightNumber": "633",
+                "airline": airline,
+                "departureAirport": {"@type": "Airport", "name": "Athens"},
+                "arrivalAirport": {
+                    "@type": "Airport",
+                    "name": "Heathrow",
+                    "address": "London",
+                    "alternateName": "Terminal 5",
+                },
+                "departureTime": "2015-12-06T18:35:00",
+                "arrivalTime": "2015-12-06T20:25:00",
+                "pending:cabinClass": "Euro Traveller",
+            },
+        },
+    }

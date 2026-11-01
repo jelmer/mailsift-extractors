@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""British Airways e-ticket receipts, pre-DKIM (2013-era).
+"""British Airways e-ticket receipts from before BA signed with DKIM.
 
 Thin wrapper around `british-airways.py` that:
 
