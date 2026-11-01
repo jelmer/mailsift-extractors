@@ -1,0 +1,9 @@
+name: eurostar-legacy
+order: 50
+from_domains:
+  - e.eurostar.com
+subject_regex: "^Your Eurostar Ticket$"
+requires:
+  - html
+require_dkim:
+  - e.eurostar.com
