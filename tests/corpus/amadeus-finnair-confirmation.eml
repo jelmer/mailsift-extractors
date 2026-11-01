@@ -1,0 +1,263 @@
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of no-reply@amadeus.com designates 192.0.2.1 as permitted sender) smtp.mail=no-reply@amadeus.com
+Date: Thu, 27 Dec 2012 19:30:08 +0000 (GMT)
+From: no-reply@amadeus.com
+To: test@example.org
+Subject: Your confirmation, Booking Ref UV5WXY
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_Part_0000_00000000.0000000000000"
+
+------=_Part_0000_00000000.0000000000000
+Content-Type: text/html; charset=UTF-8; CHARSET=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="color:#434343; font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+<table width="760" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2"><img src="http://www.finnair.com:80/pl/AYOnline/jsp/../cui_ayo2.0_63_031212/img/print-email/header.jpg" width="770" height="101" hspace="0" vspace="0" border="0" align="left"></td>
+</tr>
+<tr>
+<td height="30" colspan="2">&nbsp;</td>
+</tr>
+<tr>
+
+
+
+<td width="168" rowspan="8" align="left" valign="top">
+
+<table cellspacing="0" cellpadding="0" style="border:1px solid #CCCCCC;  margin-right:20px;" width="158">
+<tr>
+<td nowrap=""  style="padding-bottom:10px; padding-left:7px; padding-top: 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; white-space:nowrap;">
+
+
+PRICE<br/>
+
+<span id="LEFT.price">
+250.00 EUR
+
+</span><br />
+
+<br />
+
+Paid seat charge:<br />
+
+2 x 8 =
+
+16 EUR<br />
+
+<strong>
+TOTAL PRICE<br/>
+
+266.00 EUR<br />
+</strong>
+
+
+</td>
+</tr>
+<tr>
+<td style="padding-bottom:15px; padding-left:7px; font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+
+<strong>PASSENGERS</strong><br />
+
+
+
+<strong>Passenger 1:</strong><br />
+
+Test
+User
+<br>
+
+
+
++31000000000<br>
+
+
+
+test@example.org<br>
+
+
+
+<br />
+
+SEAT:
+<br />
+
+
+
+AY2918
+12A
+
+
+
+<br/>
+
+
+
+AY845
+14C
+
+
+
+<br/>
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap style="padding-bottom:15px; padding-left:7px; font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+<strong>TICKET DELIVERY</strong><br />
+
+
+
+E-Ticket
+
+
+
+</td>
+</tr>
+
+
+<tr>
+<td nowrap style="padding-bottom:15px; padding-left:7px; font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+<strong>BOOKING REFERENCE:</strong><br/>
+UV5WXY
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top">
+
+<table width="100%" cellpadding="5" cellspacing="0" style="border:1px solid #CCCCCC;">
+<tr>
+<td align="left" valign="top" style="background-color:#cfd2d3; padding:3px 0 15px 5px; font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+<strong>BOOKING	CONFIRMED - THANK YOU</strong>
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+This is an automated message from Finnair Customer Care Center,
+please do not reply to this email message. If you need further information, please contact us by phone.
+<br /><br />
+Thank you for your booking!<br />
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+
+
+
+<strong>YOUR BOOKING REFERENCE:
+UV5WXY</strong><br />
+Write it down or print it out and have it with you when travelling. It will help us find your booking faster in case you need to contact us for service.
+
+
+
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+<tr>
+<td width="100%" align="left" style="padding-top:15px; padding-left:7px; font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+<strong>DEPARTURE</strong><br />
+
+Berlin
+- Helsinki (Terminal 2)<br />
+Friday 04 January 2013<br>
+AY2918
+L
+19:10
+- 22:05
+
+
+
+<br/>
+Economy
+cabin
+<br/>
+
+
+Total duration: 1h 55min<br/>
+
+
+</td>
+</tr>
+<tr>
+<td width="100%" align="left" nowrap style="padding-bottom:15px; padding-left:7px; font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+<table width="14" border="0" align="left" cellpadding="0" cellspacing="0" style="border:1px solid #d2d2d2; background-color: #fb9bcc; margin:0 5px -5px 0;">
+<tr>
+<td width="12" height="12"></td>
+</tr>
+</table>
+Basic
+</td>
+</tr>
+
+
+
+<tr>
+<td width="100%" align="left" style="padding-top:15px; padding-left:7px; font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+<strong>RETURN</strong><br />
+
+Helsinki (Terminal 2)
+- Amsterdam <br />
+Monday 14 January 2013<br>
+AY845
+Z
+16:40
+- 18:15
+
+
+
+<br/>
+Economy
+cabin
+<br/>
+
+
+Total duration: 2h 35min<br/>
+
+
+</td>
+</tr>
+<tr>
+<td width="100%" align="left" nowrap style="padding-bottom:15px; padding-left:7px; font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+<table width="14" border="0" align="left" cellpadding="0" cellspacing="0" style="margin:0 5px -5px 0; border:1px solid #d2d2d2; background-color:#fb9bcc;">
+<tr>
+<td width="12" height="12"></td>
+</tr>
+</table>
+Basic
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+<strong>PRICE:</strong>
+<strong>
+<span id="LEFT.price">
+266.00 EUR
+
+</span>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+------=_Part_0000_00000000.0000000000000--
