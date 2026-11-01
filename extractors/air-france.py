@@ -20,7 +20,7 @@ from __future__ import annotations
 import json
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
@@ -152,7 +152,7 @@ def main() -> int:
             continue
         if arr_dt < dep_dt:
             # Overnight flight: arrival is next day.
-            arr_dt = arr_dt.replace(day=arr_dt.day + 1)
+            arr_dt += timedelta(days=1)
 
         dep_name, dep_terminal = split_airport(dep_match.group(3))
         arr_name, arr_terminal = split_airport(arr_match.group(3))
