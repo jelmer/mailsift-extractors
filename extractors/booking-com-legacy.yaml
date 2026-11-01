@@ -1,0 +1,12 @@
+name: booking-com-legacy
+order: 50
+from_domains:
+  - booking.com
+  - "*.booking.com"
+# Pre-2015 confirmations are titled after the property. The "has been
+# updated" mails lead with the guest name, so the anchor skips them.
+subject_regex: "(?i)^Your booking at .+"
+requires:
+  - html
+require_dkim:
+  - booking.com

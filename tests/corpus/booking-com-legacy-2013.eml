@@ -1,0 +1,145 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@booking.com
+From: "Booking.com" <customer.service@booking.com>
+To: test@example.org
+Subject: Your booking at Example Guesthouse
+Date: Wed, 9 Jan 2013 10:05:26 +0100
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><table>
+<tr>
+<td>
+Thank you, Test! Your booking is now confirmed.
+</td>
+</tr>
+<tr>
+<td> Best Price Guaranteed</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Booking number</b></td>
+<td>100000003</td>
+</tr>
+<tr>
+<td><b>
+PIN code
+</b></td>
+<td>0000</td>
+</tr>
+<tr>
+<td><b>E-mail</b></td>
+<td>test@example.org</td>
+</tr>
+<tr>
+<td><b>Booked by</b></td>
+<td>Test User</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Your reservation:</b></td>
+<td>
+1 Night,
+1 Room,
+1 person
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Check-in:</b></td>
+<td>
+Wednesday, 9 January 2013
+<br>
+(after 15:00)
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Check-out:</b></td>
+<td>
+Thursday, 10 January 2013
+<br>
+(before 12:00)
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td><b>1 Standard Twin Room - Single Use</b></td>
+</tr>
+<tr>
+<td>VAT (10%) included</td>
+</tr>
+<tr>
+<td>Total price</td>
+<td>
+€ 60
+</td>
+</tr>
+<tr>
+<td>
+<p>
+<p>
+Please note: additional supplements (e.g. extra bed) are not added to this total
+<div>
+<p><b>Change of plans? Hey, it happens.</b><p>Visit My Booking.com to <b>edit your dates</b>. You can also <b>reserve parking</b>, request a <b>bigger bed</b> or even <b>add breakfast</b> to your stay.<p>Don’t have an account? No problem. Sign-in not required!</div>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td>
+Example Guesthouse
+</td>
+</tr>
+<tr>
+<td><b>Address:</b></td>
+<td>
+Esimerkkitie 1<br>
+Kittilä, 99100 <br>
+Finland<br>
+</td>
+</tr>
+<tr>
+<td><b>Phone:</b></td>
+<td>
++358000000000
+</td>
+</tr>
+<tr>
+<td>E-mail:</td>
+<td>info@example.com</td>
+</tr>
+<tr>
+<td>Travel information:</td>
+<td>
+Show directions
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<h2>
+</body></html>

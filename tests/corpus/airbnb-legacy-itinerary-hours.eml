@@ -1,0 +1,171 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@email.airbnb.com
+From: "Airbnb" <invitation@airbnb.com>
+To: test@example.org
+Subject: Reservation Itinerary from Test Friend
+Date: Fri, 22 Dec 2017 22:36:19 +0000 (UTC)
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="b1"
+
+--b1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Hi,
+
+Test Friend has shared some upcoming travel plans with you, which you'll find below. If you have any questions, reply directly to friend@example.org.
+
+
+
+    Friend confirmed this reservation on Airbnb, which helps travelers find unique accommodations all around the world.
+
+    Accept Friend's trip invitation
+
+    Thanks,
+The Airbnb Team
+
+  ------------------------------------------------------------------------
+  Itinerary
+Confirmation Code: HMTESTCODE
+* Check In January 14, 2018
+* Check Out January 26, 2018
+* 4 Guests
+
+Example family home
+Host
+
+1 Example Place, Forest Lodge, NSW 2037, Australia
+
+
+--b1
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><table>
+<tr>
+<td>
+<div>
+
+
+<div>
+<h1>
+Get ready for Forest Lodge!
+</h1>
+</div>
+</div>
+<div>
+<table>
+<tr>
+<td>
+<div>
+<table>
+<tr>
+
+<td>
+<div>
+<div>
+Test Friend booked  a place in Forest Lodge and shared the itinerary with you.
+</div>
+</div>
+</td>
+
+</tr>
+</table>
+<table>
+<tr>
+
+<td>
+<div>
+<table>
+<tr>
+
+<td>
+<div>
+<div>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<strong>Check In</strong>
+<br>
+<span>
+Sun, January 14, 2018
+</span>
+<br>
+<span>
+Check-in is anytime after 3PM
+</span>
+</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr>
+<td>
+<strong>Check Out</strong>
+<br>
+<span>
+Fri, January 26, 2018
+</span>
+<br>
+<span>
+10AM
+</span>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+
+<div>
+<table>
+<tr>
+<td>
+<div>
+
+<div>
+<strong>Example family home</strong> 
+
+
+
+
+
+<br>
+<div>
+<span>
+House/Entire home/apt
+</span>
+</div>
+</div>
+
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+
+</tr>
+</table>
+</div>
+</td>
+
+</tr>
+</table>
+<div>
+<table>
+<tr>
+
+<td>
+<div>
+<div>
+<div>
+</body></html>
+
+--b1--

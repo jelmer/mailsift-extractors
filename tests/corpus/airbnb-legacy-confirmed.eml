@@ -1,0 +1,170 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@email.airbnb.com
+From: Airbnb <express@airbnb.com>
+To: test@example.org
+Subject: Reservation Confirmed - Example Host
+Date: Mon, 04 Mar 2013 16:44:22 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><table><tr>
+<td>
+
+
+<table><tr>
+
+<td>
+Sign In
+</td>
+</tr></table>
+<table>
+
+<tr>
+<td>
+<table>
+
+<tr>
+
+<td>
+<table><tr><td>
+<p>Hello Test,</p>
+<p>You’re going to London! Please review your trip details below and contact your host, Host, immediately to confirm the details of your arrival.</p>
+<p>
+Thanks for using Airbnb<br></p>
+24-Hour Hotline (English Only): +1-415-800-5959 or +44 203 318 1111
+</td></tr></table>
+</td>
+
+</tr>
+
+
+</table>
+<table>
+
+<tr>
+<td>
+<table><tr>
+
+
+<td>Email Itinerary</td>
+
+
+
+<td>View Itinerary</td>
+
+
+
+<td>View Receipt</td>
+
+
+
+<td>Modify <span>or</span> Cancel</td>
+
+</tr></table>
+</td>
+</tr>
+
+</table>
+
+<table>
+
+<tr>
+
+<td>
+<table><tr><td>
+<h1>Itinerary</h1>
+<h3>Confirmation Code: TESTAB</h3>
+<table><tr>
+<td>
+<table>
+<tr>
+
+<td>Wed, March 06, 2013<br>Flexible check in time</td>
+</tr>
+<tr>
+<td>
+Check In
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+
+<td>Thu, March 14, 2013<br>Flexible check out time</td>
+</tr>
+<tr>
+<td>
+Check Out
+</td>
+</tr>
+</table>
+</td>
+</tr></table>
+
+<table><tr>
+<td>
+<table>
+<tr>
+
+<td>8</td>
+</tr>
+<tr>
+<td>
+Nights
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+
+<td>1</td>
+</tr>
+<tr>
+<td>
+Guest
+</td>
+</tr>
+</table>
+</td>
+</tr></table>
+
+
+
+<table><tr>
+<td>
+<table>
+<tr>
+
+<td>Example room - Battersea </td>
+</tr>
+<tr>
+<td>
+1 Example Road<br>London, SW11 0AA<br>United Kingdom<br>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+
+<td>Host</td>
+</tr>
+<tr>
+<td>
+<div>
+  +44 0000 000000<br>  host@example.com
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr></table>
+
+<table>
+<tr>
+</body></html>

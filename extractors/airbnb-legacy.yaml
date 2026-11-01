@@ -1,0 +1,12 @@
+name: airbnb-legacy
+order: 50
+from_domains:
+  - airbnb.com
+# 2013-2018 subjects. The modern "Reservation confirmed for ..." mail
+# has JSON-LD and goes through schema-ld.
+subject_regex: "(?i)^(Reservation Confirmed - .+|Reservation Itinerary from .+|Billing receipt for reservation)$"
+requires:
+  - html
+require_dkim:
+  - airbnb.com
+  - .airbnb.com

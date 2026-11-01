@@ -1,0 +1,168 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@booking.com
+From: "Booking.com" <customer.service@booking.com>
+To: test@example.org
+Subject: Your booking at Example Inn & Suites
+Date: Mon, 14 Oct 2013 09:19:30 +0200
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><table>
+<tr>
+<td>
+Thanks, Test! Your reservation is now confirmed.
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td> Best Price Guaranteed
+ Print
+ Change this booking</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>
+Booking number:
+</b></td>
+<td>100000004</td>
+</tr>
+<tr>
+<td><b>
+PIN Code:
+</b></td>
+<td>0000</td>
+</tr>
+<tr>
+<td><b>Email:</b></td>
+<td><span>test@example.org</span></td>
+</tr>
+<tr>
+<td><b>Booked by:</b></td>
+<td><span>Test User </span> <span>test@example.org</span></td>
+</tr>
+</table>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Your reservation:</b></td>
+<td>
+3 nights,
+1 room
+<span>2</span></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Check-in:</b></td>
+<td>Monday, October 14, 2013<br>
+(from 15:00)
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td><b>Check-out:</b></td>
+<td>Thursday, October 17, 2013
+<br>
+(until 11:00)
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table>
+<tr>
+<td><b>King Room</b></td>
+<td>
+US$ 300
+</td>
+</tr>
+<tr>
+<td>Total Price</td>
+<td>
+US$ 300
+</td>
+</tr>
+<tr>
+<td>
+<p>
+<p>TAX (10%) not included
+<p>
+Please note: additional supplements (e.g. extra bed) are not added to this total.
+<p>
+The total price shown is the amount you will pay to the property. Booking.com does not charge any reservation, administration or other fees.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td><span>
+Example Inn &amp; Suites</span>
+</td>
+</tr>
+<tr>
+<td><b>Address:</b></td>
+<td><span>1 Example Road</span><br><span>Mountain View (California)</span>, <span>CA 94040</span><br><span>United States of America</span><br>
+</td>
+</tr>
+<tr>
+<td><b>Phone:</b></td>
+<td><span>+10000000000</span></td>
+</tr>
+<tr>
+<td>Email:</td>
+<td><span>info@example.com</span></td>
+</tr>
+<tr>
+<td>Getting there:</td>
+<td>
+Show directions
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>  
+Visit My Booking.com to change or upgrade your reservation
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<h2>
+</body></html>

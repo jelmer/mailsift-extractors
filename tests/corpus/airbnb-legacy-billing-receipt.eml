@@ -1,0 +1,253 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@email.airbnb.com
+From: Airbnb <automated@airbnb.com>
+To: test@example.org
+Subject: Billing receipt for reservation
+Date: Mon, 04 Mar 2013 16:56:21 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><table><tr>
+<td>
+
+
+<table><tr>
+
+<td>
+Sign In
+</td>
+</tr></table>
+<table>
+
+<tr>
+<td>
+<table>
+
+<tr>
+<td>
+<table><tr>
+
+
+<td>Email Receipt</td>
+
+
+
+<td>Print Receipt</td>
+
+
+
+<td>View Itinerary</td>
+
+</tr></table>
+</td>
+</tr>
+
+</table>
+
+<table>
+
+<tr>
+
+<td>
+<table><tr>
+
+<td>
+<table>
+<tr>
+<td>
+<h1>Customer Receipt</h1>
+<h3>Confirmation Code: TESTAB</h3>
+<div>
+<span>Mon, March 04, 2013</span>
+<span>Receipt # 1000000001</span>
+</div>
+</td>
+<td>
+<p>
+Airbnb<br><span>www.airbnb.com/contact</span>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<div>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+
+<td>Test User</td>
+</tr>
+<tr>
+<td>Name</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr>
+
+<td>London, </td>
+</tr>
+<tr>
+<td>Travel Destination</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+
+<td>1 Example Road<br>London, SW11 0AA<br>United Kingdom<br>
+</td>
+</tr>
+<tr>
+<td>Accommodation Address</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr>
+
+<td>Example room - Battersea </td>
+</tr>
+<tr>
+<td>Property</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+
+<td>Private room</td>
+</tr>
+<tr>
+<td>Accommodation Type</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr>
+
+<td>1</td>
+</tr>
+<tr>
+<td>Guest</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+
+<td>Wed, March 06, 2013<br>Flexible check in time</td>
+</tr>
+<tr>
+<td>Check In</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr>
+
+<td>Thu, March 14, 2013<br>Flexible check out time</td>
+</tr>
+<tr>
+<td>Check Out</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+
+<td>8</td>
+</tr>
+<tr>
+<td>Nights</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr>
+
+<td>€100</td>
+</tr>
+<tr>
+<td>Security Deposit</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h2>Payment Details</h2>
+<h3>Payment received: Mon, March 04, 2013</h3>
+<table>
+
+<tr>
+<th>Accommodations</th>
+<td>
+€400
+<span>(€50 per night)</span>
+</td>
+</tr>
+<tr>
+<th>Airbnb Service Fee</th>
+<td>€50</td>
+</tr>
+<tr>
+<th>
+Airbnb ConciergeBeta<br><span>Call 24/7: <span>+1-630-541-0084</span></span>
+</th>
+<td>Free</td>
+</tr>
+
+
+
+<tr>
+<th>Total</th>
+<td>€450</td>
+</tr>
+
+</table>
+<table>
+<tr>
+<th>Payment (MASTER xxxxxxxxxxxx0000)</th>
+<td>
+€450
+</td>
+</tr>
+
+
+<tr>
+<th>Balance</th>
+<td>€0</td>
+</tr>
+
+</table>
+<div>
+</body></html>
