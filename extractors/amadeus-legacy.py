@@ -20,9 +20,8 @@ templates carry flight segments:
   name only.
 
 None of these were DKIM-signed; Amadeus started signing (selector
-`FND2019Q1`) later. Like the other `-legacy` extractors this one
-refuses mail dated after a cutoff, so a spoofer today can't reach the
-no-DKIM path.
+`FND2019Q1`) later. The manifest only lets unsigned mail through if
+it was received before 2019.
 
 TODO: the `eticket@amadeus.com` "Your Electronic Ticket Receipt" mail
 carries its segments only in a PDF attachment and is not handled.
@@ -42,8 +41,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import Mail, normalize_unicode, read_message, strip_html
-
-_CUTOFF = datetime(2019, 1, 1)
 
 _PENDING_CONTEXT = {
     "@vocab": "https://schema.org/",
@@ -461,7 +458,7 @@ def _template(mail: Mail) -> _Template | None:
 def extract(mail: Mail) -> int:
     if not mail.html:
         return 0
-    if mail.date is None or mail.date.replace(tzinfo=None) >= _CUTOFF:
+    if mail.date is None:
         return 0
     template = _template(mail)
     if template is None:

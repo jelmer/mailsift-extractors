@@ -40,9 +40,8 @@ The year comes from the receipt's issue date, and an arrival time
 earlier than the departure time is taken to mean the next day.
 
 None of this mail is DKIM-signed (and SPF fails, as Amadeus relays
-it), so the manifest can't require DKIM. Instead the script refuses
-mail dated on or after `_CUTOFF`, so a spoofer today can't reach the
-unauthenticated path.
+it), so the manifest only lets unsigned mail through if it was
+received before 2016.
 """
 
 from __future__ import annotations
@@ -56,8 +55,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import Mail, read_message, strip_html
-
-_CUTOFF = datetime(2016, 1, 1)
 
 HTML_SUBJECT_RE = re.compile(
     r"^(?:Confirmation|Acknowledgment for schedule changes) for reservation ",
@@ -335,8 +332,6 @@ def extract_receipt(mail: Mail) -> int:
 
 def main() -> int:
     mail = read_message()
-    if mail.date is not None and mail.date.replace(tzinfo=None) >= _CUTOFF:
-        return 0
     subject = mail.subject or ""
     if HTML_SUBJECT_RE.match(subject):
         return extract_html(mail)

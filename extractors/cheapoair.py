@@ -31,8 +31,9 @@ The airline's IATA code only appears in the logo URL
 marker before flattening. The per-airport dates have no year; it
 comes from the trip heading.
 
-This mail is not DKIM-signed, so a message-date cutoff guards the
-code path against present-day spoofs.
+This mail is not DKIM-signed, so the manifest only lets it through if
+it was received before 2017. CheapOair's newer mail (from
+mycheapoair.com) is DKIM-signed.
 """
 
 from __future__ import annotations
@@ -46,13 +47,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message, strip_html
-
-# The template seen is from 2014. CheapOair's newer mail (from
-# mycheapoair.com) is DKIM-signed, so anything later than this that
-# still arrives unsigned in the old template is suspicious.
-# TODO: add a DKIM-gated variant if a signed mail in this template
-# turns up.
-_CUTOFF = datetime(2017, 1, 1)
 
 LOGO_RE = re.compile(
     r"<img\b[^>]*\bsrc=['\"][^'\"]*/I/AI/(?P<code>[A-Z0-9]{2})\.gif['\"][^>]*>",
@@ -189,8 +183,6 @@ def _segments(lines: list[str]) -> list[dict]:
 
 def main() -> int:
     mail = read_message()
-    if mail.date is not None and mail.date.replace(tzinfo=None) >= _CUTOFF:
-        return 0
     if not mail.html:
         return 0
 

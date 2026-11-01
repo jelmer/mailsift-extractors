@@ -111,26 +111,6 @@ def test_legacy_eticket_format_still_extracts(run_extractor):
     }
 
 
-def test_legacy_extractor_extracts_pre_cutoff_mail(run_extractor):
-    # The `british-airways-legacy` manifest reuses the same parser
-    # but with no `require_dkim` (BA didn't sign mail in 2013).
-    # It should extract from the same legacy fixture the main
-    # extractor recognises.
-    out = run_extractor("british-airways-legacy", "british-airways-eticket-legacy.eml")
-    assert set(out) == {
-        "ba-LEGACY-BA2762.reservation.json",
-        "ba-LEGACY-BA2759.reservation.json",
-    }
-
-
-def test_legacy_extractor_refuses_post_cutoff_mail(run_extractor):
-    # The date cutoff is what defends the no-DKIM code path from a
-    # spoofer today. The modern fixture is dated 2026 and must be
-    # rejected here even though it would parse fine.
-    out = run_extractor("british-airways-legacy", "british-airways-eticket.eml")
-    assert out == {}
-
-
 def test_columnar_eticket_format_extracts(run_extractor):
     # Mid-2010s BA e-tickets carry the itinerary as free-standing
     # `date / time / place / [terminal]` blocks under a bare
@@ -159,15 +139,15 @@ def test_columnar_eticket_format_extracts(run_extractor):
     assert for_["arrivalTime"] == "2016-06-23T22:20:00"
 
 
-def test_legacy_manifest_accepts_2015_subject():
+def test_manifest_accepts_2015_subject():
     # Unsigned 2015 mail already used the `Your e-ticket receipt`
-    # subject, so the no-DKIM manifest has to accept it too.
+    # subject.
     subject = corpus_subject("british-airways-eticket-2015.eml")
-    assert manifest_subject_regex("british-airways-legacy").search(subject)
+    assert manifest_subject_regex("british-airways").search(subject)
 
 
-def test_legacy_extractor_extracts_2015_mail(run_extractor):
-    out = run_extractor("british-airways-legacy", "british-airways-eticket-2015.eml")
+def test_unsigned_2015_mail_extracts(run_extractor):
+    out = run_extractor("british-airways", "british-airways-eticket-2015.eml")
     context = {
         "@vocab": "https://schema.org/",
         "pending": "https://pending.schema.org/",

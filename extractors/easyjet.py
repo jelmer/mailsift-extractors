@@ -175,19 +175,8 @@ def _is_all_caps(token: str) -> bool:
     return any(c.isalpha() for c in token) and not any(c.islower() for c in token)
 
 
-def extract(mail, max_message_date: datetime | None = None) -> int:
-    """Walk the itinerary and emit one reservation per leg.
-
-    `max_message_date` is a date cutoff: refuse to process any mail
-    whose `Date:` header is on or after it. Used by the legacy
-    extractor variant so a spoofer today can't reach the no-DKIM
-    code path.
-    """
-    if max_message_date is not None and mail.date is not None:
-        mail_naive = mail.date.replace(tzinfo=None)
-        if mail_naive >= max_message_date:
-            return 0
-
+def extract(mail) -> int:
+    """Walk the itinerary and emit one reservation per leg."""
     if not mail.html:
         return 0
 

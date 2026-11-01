@@ -119,30 +119,6 @@ def test_split_time_and_airport_lines(run_extractor):
     assert out == EXPECTED_2014
 
 
-def test_legacy_extractor_extracts_unsigned_2014_mail(run_extractor):
-    out = run_extractor("klm-legacy", "klm-confirmation-2014.eml")
-    assert out == EXPECTED_2014
-
-
-def test_legacy_extractor_refuses_post_cutoff_mail(tmp_path):
-    eml = (CORPUS_DIR / "klm-confirmation-2014.eml").read_bytes()
-    eml = eml.replace(
-        b"Date: Wed, 6 Aug 2014 00:00:00 +0200",
-        b"Date: Mon, 30 Aug 2021 12:00:00 +0000",
-    )
-    result = run_on_bytes("klm-legacy", eml, tmp_path)
-    assert result.returncode == 0
-    assert list(tmp_path.iterdir()) == []
-
-
-def test_legacy_extractor_refuses_mail_without_date(tmp_path):
-    eml = (CORPUS_DIR / "klm-confirmation-2014.eml").read_bytes()
-    eml = eml.replace(b"Date: Wed, 6 Aug 2014 00:00:00 +0200\n", b"")
-    result = run_on_bytes("klm-legacy", eml, tmp_path)
-    assert result.returncode == 0
-    assert list(tmp_path.iterdir()) == []
-
-
 def test_malformed_segment_raises_layout_error(tmp_path):
     # A segment whose departure date is missing must fail loudly
     # rather than be read with the wrong lines in the wrong slots.

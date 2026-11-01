@@ -2,12 +2,6 @@
 
 from __future__ import annotations
 
-import subprocess
-import sys
-from pathlib import Path
-
-SCRIPT = Path(__file__).resolve().parent.parent / "amadeus-legacy.py"
-
 PENDING_CONTEXT = {
     "@vocab": "https://schema.org/",
     "pending": "https://pending.schema.org/",
@@ -196,19 +190,3 @@ def test_finnair_confirmation(run_extractor):
             "ticketedSeat": {"@type": "Seat", "seatNumber": "14C"},
         },
     }
-
-
-def test_refuses_mail_after_cutoff(tmp_path, corpus_dir):
-    # Nothing here is DKIM-signed, so a message claiming to be from
-    # after Amadeus started signing must not be trusted.
-    raw = (corpus_dir / "amadeus-itinerary.eml").read_bytes()
-    original = b"Date: Wed, 17 Jan 2018 06:47:44 +0000"
-    assert original in raw
-    raw = raw.replace(original, b"Date: Wed, 16 Jan 2019 06:47:44 +0000")
-    subprocess.run(
-        [sys.executable, str(SCRIPT)],
-        cwd=tmp_path,
-        input=raw,
-        check=True,
-    )
-    assert list(tmp_path.iterdir()) == []

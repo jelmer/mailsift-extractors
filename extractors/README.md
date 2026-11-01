@@ -36,6 +36,8 @@ require_dkim:                # optional: only run if Authentication-Results
   - vendor.example           #   shows a passing DKIM signature from one of
   - ".vendor.example"        #   these domains (leading `.` = suffix match,
                              #   matches subdomains only, not the bare domain)
+unsigned_before: "2019-01-01" # optional: also accept unsigned mail received
+                             #   before this date (needs require_dkim)
 ```
 
 ### Fields
@@ -49,6 +51,7 @@ require_dkim:                # optional: only run if Authentication-Results
 | `subject_regex`  | string          | no       | A regex (compiled with the Rust `regex` crate) applied to the `Subject:` header. Use `(?i)` for case-insensitive matching. |
 | `requires`       | list of strings | no       | Each entry must be satisfied. Supported shapes: `html`, `text`, `attachment:<type>/<subtype>`, `attachment:filename:<pattern>`. Filename patterns accept a single leading or trailing `*` (e.g. `*.ics`, `boarding-*`). |
 | `require_dkim`   | list of strings | no       | DKIM signing domains that authorise the message. Plain entries are exact matches; entries with a leading `.` are suffix matches against the signing domain (`.myshopify.com` matches `shop42.myshopify.com` but not `myshopify.com`). |
+| `unsigned_before` | `YYYY-MM-DD`   | no       | When the vendor started signing (midnight UTC). Mail that fails `require_dkim` still runs if it was received before this date. Requires `require_dkim`. |
 
 ### Dispatch semantics
 
@@ -65,6 +68,14 @@ process is spawned. `require_dkim` consults the topmost
 `Authentication-Results` header; messages that lack the header
 entirely are skipped (the milter front-end, which sees mail before the
 MTA authenticates it, explicitly opts out at run time).
+
+`unsigned_before` is for vendors that only started signing at some
+point, so their older mail has no signature to check. Whether a
+message predates the cutoff is decided by when it reached the mailbox
+(IMAP INTERNALDATE, the Maildir delivery timestamp, or `replay
+--received-at`), never by its `Date:` header, which a forger writes.
+Don't check the `Date:` header in the script for this purpose either;
+it protects nothing.
 
 Validate manifests with `cargo run -- lint` - it parses every YAML,
 checks for missing or non-executable scripts, bad regexes, unknown

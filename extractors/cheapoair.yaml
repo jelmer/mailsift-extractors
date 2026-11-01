@@ -5,6 +5,7 @@ from_domains:
 subject_regex: "(?i)^(?:AIR TICKET NUMBER\\s+&\\s+AIRLINE CONFIRMATION\\.\\s+Booking#\\s*\\d+|CheapOair\\.com\\s+-\\s+.+\\s+-\\s+Booking receipt\\s+-\\s+Booking\\s*#\\s*\\d+)\\s*$"
 requires:
   - html
-# No `require_dkim`: the 2014 booking mail from cheapoair.com was not
-# DKIM-signed. cheapoair.py refuses messages dated after a cutoff
-# instead.
+# The 2014 booking mail from cheapoair.com was not DKIM-signed.
+require_dkim:
+  - cheapoair.com
+unsigned_before: "2017-01-01"

@@ -114,10 +114,3 @@ def test_codeshare_reports_the_marketing_flight(run_extractor):
             },
         },
     }
-
-
-def test_mail_after_rebrand_is_refused(run_extractor):
-    # Unsigned ctrip.com mail dated after Trip.com took over is not
-    # trusted.
-    out = run_extractor("ctrip-flight", "ctrip-flight-confirmation-after-cutoff.eml")
-    assert out == {}

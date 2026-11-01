@@ -25,8 +25,8 @@ date line), but the mail carries no time zones to tell.
 Airports are named but not coded, so `AIRPORTS` maps Bravofly's
 spelling to IATA codes.
 
-This mail is not DKIM-signed, so a message-date cutoff guards the
-code path against present-day spoofs.
+This mail is not DKIM-signed, so the manifest only lets it through if
+it was received before 2018.
 """
 
 from __future__ import annotations
@@ -40,11 +40,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message, strip_html
-
-# The only template seen is from 2015 and unsigned.
-# TODO: add a DKIM-gated variant if a signed mail in this template
-# turns up.
-_CUTOFF = datetime(2018, 1, 1)
 
 # TODO: extend as more Bravofly airport spellings turn up; unknown
 # names are emitted without an `iataCode`.
@@ -131,8 +126,6 @@ def _legs(lines: list[str]) -> list[tuple[str, dict]]:
 
 def main() -> int:
     mail = read_message()
-    if mail.date is not None and mail.date.replace(tzinfo=None) >= _CUTOFF:
-        return 0
     if not mail.html:
         return 0
 

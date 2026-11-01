@@ -105,6 +105,10 @@ section is the guide; the quick rules:
   from the vendor. Set it to the domain the vendor signs from; leave
   it out only if the vendor genuinely doesn't sign (rare in 2026),
   and document why in a comment.
+- `unsigned_before` covers vendors whose older mail predates their
+  DKIM setup: set it to the date of the first signed mail you've
+  seen, and unsigned mail received before then still gets through.
+  Keep `require_dkim` set; one without the other is a lint error.
 
 `order: 50` runs earlier than the default `100`; use it when your
 extractor should take precedence over the generic `schema-ld`

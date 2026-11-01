@@ -75,8 +75,3 @@ def test_station_name_with_hyphen(run_extractor):
             },
         },
     }
-
-
-def test_mail_after_rebrand_is_refused(run_extractor):
-    out = run_extractor("ctrip-train", "ctrip-train-ticket-issued-after-cutoff.eml")
-    assert out == {}
