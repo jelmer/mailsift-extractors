@@ -41,8 +41,12 @@ ORDER_ID_RE = re.compile(r"Order\s+#?([A-Za-z0-9]+)")
 # Item line in the order-summary table: "Product name × 1" then a
 # blank line then "£12.34". Names can contain almost anything except a
 # newline; the × is unicode U+00D7 in the wire template.
+# A product with options has a variant line (size, colour) between the
+# name and the price: "Widget × 1\n\nLarge\n\n$20.00".
 ITEM_RE = re.compile(
-    r"^(?P<name>.+?)\s*[×x]\s*(?P<qty>\d+)\s*\n\s*\n(?P<symbol>[£€$])(?P<price>[0-9]+(?:\.[0-9]{2})?)",
+    r"^(?P<name>.+?)\s*[×x]\s*(?P<qty>\d+)\s*\n\s*\n"
+    r"(?:(?![£€$])[^\n]+\n\s*\n)?"
+    r"(?P<symbol>[£€$])(?P<price>[0-9]+(?:\.[0-9]{2})?)",
     re.MULTILINE,
 )
 # Final "Total" line: `Total\n\n£42.30 GBP` - the currency suffix is
@@ -86,7 +90,34 @@ CARRIER_MAP = {
     "evri": "evri",
     "yodel": "yodel",
     "parcelforce": "parcelforce",
+    "usps": "usps",
 }
+
+# Signing domains that are Shopify's own infrastructure.
+_SHOPIFY_DKIM_SUFFIXES = (".myshopify.com", ".shopifyemail.com")
+# `header.d=` per RFC 8601; Gmail writes only `header.i=@domain`.
+_DKIM_PASS_RE = re.compile(
+    r"\bdkim=pass\b[^;]*?\bheader\.(?:d=\"?|i=\"?[^@\s;\"]*@)([A-Za-z0-9.-]+)",
+    re.IGNORECASE,
+)
+
+
+def signed_by_shopify(mail) -> bool:
+    """Did a Shopify-owned domain pass DKIM, per the topmost
+    Authentication-Results header (the one mailsift trusts too)?"""
+    results = mail.message.get("Authentication-Results") or ""
+    return any(
+        d.lower().endswith(_SHOPIFY_DKIM_SUFFIXES)
+        for d in _DKIM_PASS_RE.findall(results)
+    )
+
+
+def sent_through_shopify(mail) -> bool:
+    """Shopify's mailer stamps its own Message-ID domain and Feedback-ID,
+    also for shops that sign with their own domain."""
+    message_id = (mail.message.get("Message-ID") or "").strip().lower()
+    feedback_id = (mail.message.get("Feedback-ID") or "").strip().lower()
+    return message_id.endswith("@shopify.com>") or feedback_id.endswith(":shopify")
 
 
 def merchant_name(mail) -> str:
@@ -211,6 +242,10 @@ def main() -> int:
     subject = (mail.subject or "").strip()
     text = mail.text or ""
     if not text:
+        return 0
+    # The manifest's `@from` admits any sender signing for its own
+    # domain; only Shopify's mailer may get past that route.
+    if not signed_by_shopify(mail) and not sent_through_shopify(mail):
         return 0
 
     subject_lower = subject.lower()

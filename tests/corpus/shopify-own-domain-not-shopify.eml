@@ -1,0 +1,24 @@
+Authentication-Results: example.org; dkim=pass header.d=lookalike.example header.i=@lookalike.example
+From: Lookalike Store <orders@lookalike.example>
+To: test@example.org
+Subject: Order 555 confirmed
+Date: Sun, 01 Nov 2026 18:13:55 +0000
+Message-ID: <order-555@lookalike.example>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Thank you for your order!
+
+Order 555
+
+Order summary
+-------------
+
+Something × 1
+
+$9.00
+
+Total
+
+$9.00 USD
