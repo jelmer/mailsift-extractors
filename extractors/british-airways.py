@@ -48,7 +48,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
-from mailsift_extractor import read_message
+from mailsift_extractor import decode_char_refs, normalize_unicode, read_message
 
 BOOKING_RE = re.compile(
     r"(?:British Airways )?booking reference(?: is)?:?\s*([A-Z0-9]{5,8})",
@@ -273,9 +273,12 @@ def parse_legacy_segments(text: str) -> list[tuple]:
 
 def extract(mail) -> int:
     """Walk `mail`'s itinerary and emit one reservation per flight."""
-    text = mail.text
-    if not text:
+    if not mail.text:
         return 0
+    # The 2015 text parts carry HTML references (`(London)&nbsp;- Terminal
+    # 5`), so decode them; the resulting non-breaking space becomes an
+    # ordinary one for the ` - ` split.
+    text = normalize_unicode(decode_char_refs(mail.text))
 
     booking_match = BOOKING_RE.search(text)
     if not booking_match:
