@@ -116,7 +116,7 @@ def read_message(stream=None) -> Mail:
     date = _parse_date(msg.get("Date"))
 
     text, html, attachments = _walk_parts(msg)
-    ld_json = _extract_ld_json(html) if html else []
+    ld_json = _extract_ld_json(html, sender=from_domain) if html else []
 
     return Mail(
         raw=raw,
@@ -392,25 +392,40 @@ def decode_char_refs(text: str) -> str:
     return _CHAR_REF.sub(lambda m: html.unescape(m.group(0)), text)
 
 
-def _decode_ld_json(value: Any) -> Any:
+def _decode_ld_json(value: Any, decoded: list[str]) -> Any:
+    """Decode the string values in `value`, adding each changed one to `decoded`."""
     if isinstance(value, str):
-        return decode_char_refs(value)
+        result = decode_char_refs(value)
+        if result != value:
+            decoded.append(value)
+        return result
     if isinstance(value, list):
-        return [_decode_ld_json(v) for v in value]
+        return [_decode_ld_json(v, decoded) for v in value]
     if isinstance(value, dict):
-        return {k: _decode_ld_json(v) for k, v in value.items()}
+        return {k: _decode_ld_json(v, decoded) for k, v in value.items()}
     return value
 
 
-def _extract_ld_json(html: str) -> list[Any]:
+def _extract_ld_json(html: str, sender: str | None = None) -> list[Any]:
     """Pull <script type="application/ld+json"> blocks out of an HTML body.
 
     Script content is raw text, so an HTML parser leaves character
-    references in it alone. Some senders generate their ld+json through
-    an HTML template that escapes it anyway, so the string values are
-    decoded here, where the blocks leave the HTML.
+    references in it alone, and JSON-LD 1.1 (section 7.2) says they stay
+    escaped. Some senders generate their ld+json through an HTML template
+    that escapes it anyway, so the string values are decoded here, where
+    the blocks leave the HTML. That is a guess about the sender, so a
+    message that needed it says so on stderr, which mailsift logs.
     """
-    return [_decode_ld_json(block) for block in _find_ld_json(html)]
+    decoded: list[str] = []
+    blocks = [_decode_ld_json(block, decoded) for block in _find_ld_json(html)]
+    if decoded:
+        refs = sorted({ref for value in decoded for ref in _CHAR_REF.findall(value)})
+        print(
+            f"decoded HTML character references in ld+json from {sender or 'unknown sender'} "
+            f"({len(decoded)} value{'s' if len(decoded) != 1 else ''}: {' '.join(refs)})",
+            file=sys.stderr,
+        )
+    return blocks
 
 
 def _find_ld_json(html: str) -> list[Any]:

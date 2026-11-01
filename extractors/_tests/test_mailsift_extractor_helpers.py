@@ -112,7 +112,7 @@ class TestReadMessage:
         assert mail.from_address == "sender@example.com"
         assert mail.from_domain == "example.com"
 
-    def test_ld_json_character_references_are_decoded(self) -> None:
+    def test_ld_json_character_references_are_decoded(self, capsys) -> None:
         # Some senders template their ld+json through HTML escaping, but
         # <script> content is raw text, so the references survive into
         # the JSON strings. A bare `&` not closed by `;` is left alone,
@@ -139,6 +139,24 @@ class TestReadMessage:
                 },
             }
         ]
+        # JSON-LD 1.1 section 7.2 says references stay escaped, so decoding
+        # is a guess about the sender; say so where the logs will show it.
+        assert capsys.readouterr().err == (
+            "decoded HTML character references in ld+json from example.com "
+            "(2 values: &#39; &amp; &oacute; &szlig;)\n"
+        )
+
+    def test_unescaped_ld_json_is_quiet(self, capsys) -> None:
+        raw = (
+            b"From: sender@example.com\r\n"
+            b"Subject: Your booking\r\n"
+            b"Content-Type: text/html; charset=utf-8\r\n\r\n"
+            b'<html><head><script type="application/ld+json">'
+            b'{"@type": "LodgingReservation", "url": "https://example.com/?a=1&b=2"}'
+            b"</script></head><body>Hi</body></html>\r\n"
+        )
+        read_message(BytesIO(raw))
+        assert capsys.readouterr().err == ""
 
     def test_folded_subject_is_unfolded(self) -> None:
         # mailsift matches `subject_regex` against the unfolded value, so
