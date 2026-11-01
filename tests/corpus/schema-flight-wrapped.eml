@@ -1,0 +1,20 @@
+From: reservations@airline.example
+To: test@example.org
+Subject: Your flight is booked: ABC123 to Los Angeles
+Date: Sat, 20 Jun 2026 08:14:00 +0000
+Message-ID: <flight-wrapped@airline.example>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html>
+<head>
+<script type="application/ld+json">
+[{"@context":"https://schema.org","@type":"FlightReservation","reservationId":"ABC123","underName":{"@type":"Person","name":"Test Passenger"},"reservationFor":{"@type":"Flight","flightNumber":"100","departureTime":"2026-07-20T16:20:00-10:00","arrivalTime":"2026-07-21T00:05:00-07:00","provider":{"@type":"Airline","name":"Example
+ Airlines","iataCode":"XA"},"departureAirport":{"@type":"Airport","name":"HNL","iataCode":"HNL"},"arrivalAirport":{"@type":"Airport","name":"LAX","iataCode":"LAX"}}}]
+</script>
+</head>
+<body>
+<p>Your flight is booked.</p>
+</body>
+</html>
