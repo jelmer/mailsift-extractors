@@ -166,9 +166,8 @@ def test_unsigned_2015_mail_extracts(run_extractor):
                     "@type": "Airport",
                     "name": "Heathrow",
                     "address": "London",
-                    # TODO: the text part carries a literal `&nbsp;`
-                    # entity that the parser doesn't decode.
-                    "alternateName": "&nbsp;- Terminal 5",
+                    # The text part spells the separator `&nbsp;- `.
+                    "alternateName": "Terminal 5",
                 },
                 "arrivalAirport": {"@type": "Airport", "name": "Athens"},
                 "departureTime": "2015-11-29T11:55:00",
