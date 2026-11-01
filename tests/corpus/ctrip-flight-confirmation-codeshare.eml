@@ -1,0 +1,280 @@
+From: "Ctrip" <ENGLISH_FLIGHT_SUPPORT@CTRIP.COM>
+To: test@example.org
+Subject: Flight reservation confirmation
+Date: Mon, 09 Oct 2017 05:47:25 +0800
+Authentication-Results: mx.google.com;       spf=pass (google.com: domain of
+ english_flight_support@ctrip.com designates 222.126.174.68 as permitted
+ sender) smtp.mailfrom=ENGLISH_FLIGHT_SUPPORT@ctrip.com
+Content-Type: multipart/mixed; boundary="===============5221530792810612149=="
+
+--===============5221530792810612149==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><head>    <meta charset=3D"utf-8" />    <title>Flight reservation confi=
+rmation</title></head><body bgcolor=3D"#ffffff" leftmargin=3D"0" topmargin=3D=
+"0" marginwidth=3D"0" marginheight=3D"0">    <style type=3D"text/css">       =
+ td[class=3D"blue"]:hover {            cursor: pointer;            background=
+-color: #3498db;        }        td[class=3D"orange"]:hover {            curs=
+or: pointer;            background-color: #ffc600;        }    </style>    <t=
+able width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">        =
+<tr>            <td align=3D"center">                <style type=3D"text/css"=
+>     .mail-header-container{width: 600px;!important;}     @media only screen=
+ and (max-width: 600px){         .mail-header-container{width: 100%!important=
+;}     } </style><table class=3D"mail-header-container" align=3D"center" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"font-family:'Arial', sa=
+ns-serif;font-size:14px;color:#5d6a73;text-align:left;padding:0 20px;width:60=
+0px;">     <tr>         <td height=3D"28"></td>     </tr>     <tr>         <t=
+d><img src=3D"https://pic.english.c-ctrip.com/picaresenglish/ibu/fe-mail/imag=
+es/logo-email-2x.bc8596f1.png" width=3D"126" height=3D"50"/></td>         <td=
+ style=3D"font-family:'Arial', sans-serif; font-size: 12px; color:#333333; te=
+xt-align: right; vertical-align: middle;">Booking No.: 1000000001</td>     </=
+tr>     <tr>         <td height=3D"27"></td>     </tr>     <tr>         <td c=
+olspan=3D"2"><table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0"><tr><td style=3D"border-top: 1px solid #DDDDDD;"></td></tr></table></t=
+d>     </tr> </table>                <table width=3D"600" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" style=3D"font-family:Arial,sans-serif;font-size=
+:12px;color:#212121;text-align:left;">                    <tr>               =
+         <td style=3D"padding:0 20px;">                            <table wid=
+th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">                =
+                <tr>                                    <td style=3D"font-fam=
+ily:Arial,sans-serif;font-size:30px;padding-bottom:15px;padding-top:15px;colo=
+r:#1171b7;text-decoration:none;">Flight reservation confirmation</td>        =
+                        </tr>                                <tr>            =
+                        <td style=3D"font-size:14px;padding-bottom:20px;font-=
+family:Arial,sans-serif;">                                        Dear <stron=
+g>TEST USER</strong>,                                        <br>Your ticket(=
+s) have been issued, and your booking information is listed below. For any ad=
+ditional details, please click "Manage My Booking" .                         =
+           </td>                                </tr>                        =
+        <tr>                                    <td>                         =
+               <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" style=3D"font-family:Arial,sans-serif;font-size:14px;color:#212121;"=
+>                                            <tr>                            =
+                    <td colspan=3D"3" style=3D"font-size:16px;font-weight:700=
+;padding-bottom:10px;border-bottom:1px solid #ededed;">Booking Details</td>  =
+                                          </tr>                              =
+              <tr>                                                <td valign=
+=3D"top" width=3D"35%" style=3D"font-weight:700;border-bottom:1px solid #eded=
+ed;padding:10px;">Booking No.</td>                                           =
+     <td style=3D"border-bottom:1px solid #ededed;padding:10px;"><a href=3D"h=
+ttp://english.ctrip.com/flights/ViewOrder?orderid=3D1000000001&accesstoken=3D=
+0000000000000000000000000000000000000000000000000000000000000000" target=3D"_=
+blank" style=3D"color:#1171b7;text-decoration:underline;">1000000001</a></td>=
+                                            </tr>                            =
+                    <tr>                                                    <=
+td style=3D"font-weight:700;border-bottom:1px solid #ededed;padding:10px;">PN=
+R</td>                                                    <td colspan=3D"2" s=
+tyle=3D"border-bottom:1px solid #ededed;padding:10px;font-weight:700;font-siz=
+e:16px;">AAAAAA</td>                                                </tr>    =
+                                                                             =
+               <tr>                                                          =
+  <td valign=3D"top" style=3D"font-weight:700;border-bottom:1px solid #ededed=
+;padding:10px;">Departure</td>                                               =
+         <td colspan=3D"2" style=3D"border-bottom:1px solid #ededed;padding:1=
+5px 0 5px 10px;">                                                            =
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=
+=3D"font-family:Arial,sans-serif;font-size:12px;color:#212121;">             =
+                                                   <tr>                      =
+                                              <td style=3D"margin:0;padding:0=
+ 0 8px;">Jan 14 2018 MU9811  (FM811)</td>                                    =
+                            </tr>                                            =
+                    <tr>                                                     =
+               <td style=3D"margin:0;padding:0 0 8px;">09:35 PVG Shanghai Pud=
+ong International Airport T1</td>                                            =
+                    </tr>                                                    =
+            <tr>                                                             =
+       <td style=3D"margin:0;padding:0 0 15px;">12:40 HKG Hong Kong Hong Kong=
+ International Airport T1</td>                                               =
+                 </tr>                                                       =
+     </table>                                                            <tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"f=
+ont-family:Arial,sans-serif;font-size:12px;color:#212121;padding-top:15px;bor=
+der-top:1px solid #ededed;">                                                 =
+               <tr>                                                          =
+          <td style=3D"margin:0;padding:0 0 8px;">Baggage Info</td>          =
+                                                      </tr>                  =
+                                              <tr>                           =
+                                         <td style=3D"margin:0;padding:0 0 8p=
+x;">Shanghai-Hong Kong: 20kg per person (excluding infants);</td>            =
+                                                    </tr>                    =
+                                        </table>                             =
+                           </td>                                             =
+       </tr>                                            <tr>                 =
+                               <td valign=3D"top" style=3D"font-weight:700;bo=
+rder-bottom:1px solid #ededed;padding:10px;">Passenger / Ticket No.</td>     =
+                                           <td colspan=3D"2" style=3D"border-=
+bottom:1px solid #ededed;padding:10px 10px 0;">                              =
+                      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"100%" style=3D"font-family:Arial,sans-serif;font-size:12px;color:#2=
+12121;">                                                                <tr> =
+                                                                   <td style=
+=3D"padding-bottom:10px;">USER/TEST</td>                                     =
+                               <td style=3D"padding-bottom:10px;">781-0000000=
+001</td>                                                                </tr>=
+                                                    </table>                 =
+                               </td>                                         =
+   </tr>                                                <tr>                 =
+                                   <td style=3D"font-weight:700;border-bottom=
+:1px solid #ededed;padding:10px;">Total amount</td>                          =
+                              <td colspan=3D"2" style=3D"font-weight:700;bord=
+er-bottom:1px solid #ededed;padding:10px;">GBP 154.25</td>                   =
+                             </tr>                                           =
+ <!--=E5=85=B3=E8=81=94=E8=AE=A2=E5=8D=95-->                                 =
+           <tr>                                                <td bgcolor=3D=
+"#ffffff" colspan=3D"2" style=3D"padding-top:10px;padding-bottom:20px;">     =
+                                               <strong>Booking Date</strong> =
+: Oct 9 2017                                                </td>            =
+                                </tr>                                        =
+</table>                                    </td>                            =
+    </tr>                                <tr>                                =
+    <td style=3D"padding:10px 10px 0;" bgcolor=3D"#f8f8f8">                  =
+                      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"font-family:Arial,sans-serif;font-size:14px;color:#212121;">       =
+                                     <tr>                                    =
+            <td style=3D"padding-bottom:10px;font-size:16px;font-weight:700;"=
+>Important Information</td>                                            </tr> =
+                                           <tr>                              =
+                  <td style=3D"color:#666666;padding-bottom:10px;">All depart=
+ure/arrival times and dates are in local time.</td>                          =
+                  </tr>                                                <tr>  =
+                                                  <td style=3D"color:#666666;=
+padding-bottom:10px;">Tickets must be used in the sequence set out in the iti=
+nerary.</td>                                                </tr>            =
+                                <tr>                                         =
+       <td style=3D"color:#666666;padding-bottom:10px;">Please=C2=A0arrive at=
+ the airport at least 2 hours before departure to avoid missing the flight.</=
+td>                                            </tr>                         =
+                       <tr>                                                  =
+  <td style=3D"color:#666666;padding-bottom:10px;">Your ID must be valid for =
+at least 6 months at the time of completing your itinerary.</td>             =
+                                   </tr>                                     =
+           <tr>                                                    <td style=
+=3D"color:#666666;padding-bottom:10px;">A transit visa may be required if you=
+ need to transfer in a third country. We recommend you confirm visa details w=
+ith the embassy of the relevant country.</td>                                =
+                </tr>                                                <tr>    =
+                                                <td style=3D"color:#666666;pa=
+dding-bottom:10px;">If you have only booked a one-way ticket and are travelli=
+ng on a short-term business/tourism visa, we recommend you purchase a return =
+ticket as soon as possible. Failure to do so may result in denial of check-in=
+, entry or exit.</td>                                                </tr>   =
+                                     </table>                                =
+    </td>                                </tr>                               =
+ <tr>                                    <td align=3D"center" style=3D"paddin=
+g-top:10px;padding-bottom:20px;">                                        <tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"font-family:Aria=
+l,sans-serif;font-size:12px;color:#212121;">                                 =
+           <tr>                                                <td bgcolor=3D=
+"#1171b7" style=3D"font-size:18px;height:56px;line-height:1;padding:0 20px;bo=
+rder-radius:5px;" class=3D"blue">                                            =
+        <a href=3D"http://english.ctrip.com/flights/ViewOrder?orderid=3D10000=
+00001&accesstoken=3D000000000000000000000000000000000000000000000000000000000=
+0000000" target=3D"_blank" style=3D"color:#ffffff;text-decoration:none;line-h=
+eight:56px; min-height:56px; display:block;">                                =
+                        Manage my booking                                    =
+                </a>                                                </td>    =
+                                        </tr>                                =
+        </table>                                    </td>                    =
+            </tr>                            </table>                        =
+</td>                    </tr>                </table>                <style =
+type=3D"text/css">     .mail-footer-container{width: 600px;!important;}     @=
+media only screen and (max-width: 600px){         .mail-footer-container{widt=
+h: 100%!important;}         .mail-contact-us{width: 100%!important;display: b=
+lock!important;padding-bottom: 10px;!important;}         .mail-contact-us-pad=
+ding{height: 10px!important;}     } </style><table  class=3D"mail-footer-cont=
+ainer" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" styl=
+e=3D"font-family:'Arial', sans-serif;font-size:14px;color:#5d6a73;text-align:=
+left;padding:0 20px;width:600px;">  <tr>         <td><table width=3D"100%" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td style=3D"border-top: 1=
+px solid #DDDDDD;"></td></tr></table></td>     </tr>     <tr>         <td hei=
+ght=3D"20"></td>     </tr>     <tr>         <td style=3D"font-family:'Arial',=
+ sans-serif; line-height: 19px; font-size: 16px; letter-spacing: 0; color:#33=
+3333; font-weight: bold;">Download the Ctrip app to track your flight status =
+and check booking details on the move.</td>     </tr>     <tr>         <td he=
+ight=3D"11"></td>     </tr><tr>         <td>             <table border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" style=3D"font-family:'Arial', sans-serif;=
+font-size:14px;color:#5d6a73;text-align:left;">                 <tr>         =
+            <td width=3D"135"><a href=3D"https://app.appsflyer.com/id68175234=
+5?pid=3Demail&c=3Dappstore"><img src=3D"https://pic.english.c-ctrip.com/picar=
+esenglish/ibu/fe-mail/images/app-store-badge-en.8fd9095b.png" width=3D"135" h=
+eight=3D"40" style=3D"cursor: pointer;"></a></td>                     <td wid=
+th=3D"10"></td>                     <td width=3D"135"><a href=3D"https://app.=
+appsflyer.com/ctrip.english?pid=3Demail&c=3Dgoogleplay"><img src=3D"https://p=
+ic.english.c-ctrip.com/picaresenglish/ibu/fe-mail/images/google-play-badge-en=
+.872b0a74.png" width=3D"135" height=3D"40" style=3D"cursor: pointer;"></a></t=
+d>                 </tr>             </table>         </td>     </tr>     <tr=
+>         <td height=3D"20"></td>     </tr>     <tr>         <td><table width=
+=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td style=3D"b=
+order-top: 1px solid #DDDDDD;"></td></tr></table></td>     </tr>     <tr>    =
+     <td height=3D"20"></td>     </tr><tr>         <td style=3D"font-family:'=
+Arial', sans-serif; line-height: 19px; font-size: 16px; letter-spacing: 0; co=
+lor:#333333; font-weight: bold;">FAQs</td>     </tr>     <tr>         <td hei=
+ght=3D"10"></td>     </tr>     <tr>         <td style=3D"font-family:'Arial',=
+ sans-serif; line-height: 12px; font-size: 12px; letter-spacing: 0; color:#25=
+77E3; font-weight: bold;">How can I refund my flight ticket?</td>     </tr>  =
+   <tr>         <td height=3D"6"></td>     </tr>     <tr>         <td style=
+=3D"font-family:'Arial', sans-serif; line-height: 14px; font-size: 12px; lett=
+er-spacing: 0; color:#333;">If you need to refund your flight ticket after th=
+e ticket has been issued, please sign in and select My bookings, then Flights=
+, click on the relevant order number to open the booking details page, click =
+the Refund button to apply for a ticket refund according to the website instr=
+uctions. A cancellation fee might apply which depends on the policy of the ai=
+rline. If you reserved your flight ticket as a guest, you can search your boo=
+king through the email address which you used for your booking and apply for =
+a ticket refund according to the website instructions.</td>     </tr>     <tr=
+>         <td height=3D"10"></td>     </tr>     <tr>         <td style=3D"fon=
+t-family:'Arial', sans-serif; line-height: 12px; font-size: 12px; letter-spac=
+ing: 0; color:#2577E3; font-weight: bold;">How can I change my flight ticket?=
+</td>     </tr>     <tr>         <td height=3D"6"></td>     </tr>     <tr>   =
+      <td style=3D"font-family:'Arial', sans-serif; line-height: 14px; font-s=
+ize: 12px; letter-spacing: 0; color:#333;">If you need to modify your ticket =
+after it has been issued, please contact one of our Ctrip customer service re=
+presentatives. A change fee might apply which is dependent on the policy of t=
+he airline.</td>     </tr>     <tr>         <td height=3D"10"></td>     </tr>=
+     <tr>         <td style=3D"font-family:'Arial', sans-serif; line-height: =
+12px; font-size: 12px; letter-spacing: 0; color:#2577E3; font-weight: bold;">=
+How can I check the flight status?</td>     </tr>     <tr>         <td height=
+=3D"6"></td>     </tr>     <tr>         <td style=3D"font-family:'Arial', san=
+s-serif; line-height: 14px; font-size: 12px; letter-spacing: 0; color:#333;">=
+You can check the flight status through "Get Flight Status" in the "Flights t=
+ools" at the bottom of the homepage of Flights. You can also download our Ctr=
+ip App to check your flight's status by clicking the button "Flight Status" o=
+n the homepage.</td>     </tr>      <tr>         <td height=3D"20"></td>     =
+</tr><tr>         <td style=3D"border-top: 1px solid #dddddd"></td>     </tr>=
+     <tr>         <td height=3D"20"></td>     </tr><tr>             	 <td sty=
+le=3D"font-family:'Arial', sans-serif; line-height: 16px; font-size: 16px; co=
+lor:#333333; font-weight: bold;">Contact Us</td>           </tr>           <t=
+r>               	<td height=3D"10"></td>           </tr><tr>         <td sty=
+le=3D"font-family:'Arial', sans-serif; line-height: 12px; font-size: 12px; co=
+lor:#333333; letter-spacing: 1px;">China : 400 828 8966 24H</td>     </tr>   =
+  <tr>         <td height=3D"10"></td>     </tr>     <tr>         <td style=
+=3D"font-family:'Arial', sans-serif; line-height: 12px; font-size: 12px; colo=
+r:#333333; letter-spacing: 1px;">Other locations : +86 21 3210 4669 24H</td> =
+    </tr><tr>         <td height=3D"20"></td>     </tr>     <tr>         <td>=
+<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><t=
+d style=3D"border-top: 1px solid #DDDDDD;"></td></tr></table></td>     </tr> =
+    <tr>         <td height=3D"20"></td>     </tr>     <tr>         <td style=
+=3D"font-family:'Arial', sans-serif; line-height: 12px; font-size: 12px; colo=
+r:#2577e3; text-align: left; font-weight: bold;">Great deals with reliable se=
+rvice</td>     </tr>     <tr>         <td height=3D"20"></td>     </tr>     <=
+tr>         <td style=3D"font-family:'Arial', sans-serif; line-height: 16px; =
+font-size: 12px; color:#333;">Thank you for choosing Ctrip<br>Customer Servic=
+e Department</td>     </tr>     <tr>         <td height=3D"20"></td>     </tr=
+>     <tr>         <td style=3D"font-family:'Arial', sans-serif; line-height:=
+ 11px; font-size: 11px; color:#9b9b9b;">Do not forward this mail as it contai=
+ns your personal information and booking details.</td>     </tr>     <tr>    =
+     <td height=3D"4"></td>     </tr>     <tr>         <td style=3D"font-fami=
+ly:'Arial', sans-serif; line-height: 11px; font-size: 11px; color:#9b9b9b;">C=
+opyright =C2=A9 1999-2017 Ctrip.com International, Ltd. All right reserved.</=
+td>     </tr>     <tr>         <td height=3D"4"></td>     </tr>     <tr>     =
+    <td style=3D"font-family:'Arial', sans-serif; line-height: 11px; font-siz=
+e: 11px; color:#9b9b9b;">Using Ctrip=E2=80=99s website means that you agree w=
+ith Ctrip=E2=80=99s <a href=3D"http://pages.english.ctrip.com/about/en/privac=
+y-policy.html" style=3D"font-family:'Arial', sans-serif; line-height:   11px;=
+ font-size: 11px; color:#667; cursor: pointer;">privacy clause</a>.</td>     =
+</tr>     <tr>         <td height=3D"60"></td>     </tr> </table>            =
+</td>        </tr>    </table></body></html>
+
+--===============5221530792810612149==--

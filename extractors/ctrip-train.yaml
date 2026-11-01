@@ -1,0 +1,9 @@
+name: ctrip-train
+order: 50
+from_domains:
+  - ctrip.com
+subject_regex: "(?i)^Ticket Issued$"
+requires:
+  - html
+# No require_dkim: ctrip.com mail was not DKIM-signed. The script
+# refuses anything dated after the Trip.com rebrand instead.

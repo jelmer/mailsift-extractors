@@ -1,0 +1,9 @@
+name: ctrip-flight
+order: 50
+from_domains:
+  - ctrip.com
+subject_regex: "(?i)^Flight reservation confirmation$"
+requires:
+  - html
+# No require_dkim: ctrip.com mail was not DKIM-signed. The script
+# refuses anything dated after the Trip.com rebrand instead.
