@@ -90,6 +90,21 @@ def test_datetime_in_a_date_field_is_canonicalised(run_extractor):
     assert for_["endDate"] == "2025-08-28T12:50:00"
 
 
+def test_numeric_reservation_number_becomes_a_string(run_extractor):
+    out = run_extractor("schema-ld", "schema-numeric-reservation-number.eml")
+    assert set(out) == {"1000000001.reservation.json"}
+    res = out["1000000001.reservation.json"]
+    assert res["reservationNumber"] == "1000000001"
+    assert res["reservedTicket"]["ticketNumber"] == "1000000001"
+
+
+def test_instant_localizable_is_converted(run_extractor):
+    out = run_extractor("schema-ld", "schema-instant-localizable.eml")
+    assert out["TABLE-77.reservation.json"]["startTime"] == (
+        "2025-08-28T19:00:00+02:00"
+    )
+
+
 def test_subscription_offer_emitted(run_extractor):
     # An `Order` confirmation carrying an `Offer` with a
     # `subscriptionDuration` triggers a `.subscription.json` artifact

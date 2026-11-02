@@ -20,6 +20,7 @@ from collections.abc import Iterable
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
@@ -41,6 +42,14 @@ SLUG_RE = re.compile(r"[^A-Za-z0-9_.+-]+")
 # so a genuinely date-typed field (schema.org Date, e.g. a `birthDate`)
 # doesn't get promoted to a spurious midnight timestamp.
 _HAS_TIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}")
+# tebi.co serialises its date-times as the Kotlin object's toString:
+# `InstantLocalizable(instant=2026-03-12T18:00:00Z,
+# timeZone=Europe/Amsterdam, style=ShortDateTime)`.
+_INSTANT_LOCALIZABLE_RE = re.compile(
+    r"^InstantLocalizable\(instant=([^,]+), timeZone=([^,]+),"
+)
+# schema.org Text fields that some vendors (Flix) send as JSON numbers.
+TEXT_FIELDS = {"reservationNumber", "reservationId", "ticketNumber"}
 
 
 def canonical_datetime(value: str) -> str:
@@ -51,6 +60,9 @@ def canonical_datetime(value: str) -> str:
     recognisable date-time it is returned untouched so genuinely odd
     strings still surface to the converter rather than being swallowed.
     """
+    if m := _INSTANT_LOCALIZABLE_RE.match(value):
+        instant = datetime.fromisoformat(m.group(1))
+        return instant.astimezone(ZoneInfo(m.group(2))).isoformat()
     if not _HAS_TIME_RE.match(value):
         return value
     candidate = value
@@ -63,8 +75,10 @@ def canonical_datetime(value: str) -> str:
     return parsed.isoformat()
 
 
-def normalise_datetimes(obj: Any) -> Any:
+def normalise(obj: Any) -> Any:
     """Recursively canonicalise any string that looks like a date-time.
+
+    Numeric values of `TEXT_FIELDS` become strings along the way.
 
     Key-driven normalisation (a fixed set of DateTime-typed field names)
     misses vendors that put a full timestamp in a schema.org `Date`
@@ -74,9 +88,12 @@ def normalise_datetimes(obj: Any) -> Any:
     untouched.
     """
     if isinstance(obj, dict):
-        return {k: normalise_datetimes(v) for k, v in obj.items()}
+        return {
+            k: str(v) if k in TEXT_FIELDS and isinstance(v, int) else normalise(v)
+            for k, v in obj.items()
+        }
     if isinstance(obj, list):
-        return [normalise_datetimes(v) for v in obj]
+        return [normalise(v) for v in obj]
     if isinstance(obj, str):
         return canonical_datetime(obj)
     return obj
@@ -179,7 +196,7 @@ def main() -> int:
             suffix += 1
             out = Path(f"{slug}-{suffix}.reservation.json")
         out.write_text(
-            json.dumps(normalise_datetimes(obj), ensure_ascii=False),
+            json.dumps(normalise(obj), ensure_ascii=False),
             encoding="utf-8",
         )
         index += 1
