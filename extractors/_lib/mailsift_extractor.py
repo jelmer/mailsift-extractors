@@ -105,7 +105,9 @@ def read_message(stream=None) -> Mail:
     raw = stream.read()
     msg = email.message_from_bytes(raw, policy=email.policy.compat32)
 
-    from_address = _parse_address(msg.get("From"))
+    # A header with raw 8-bit bytes comes back as a `Header`, which the
+    # email.utils parsers don't accept.
+    from_address = _parse_address(_as_str(msg.get("From")))
     from_domain = (
         from_address.split("@", 1)[1].lower()
         if from_address and "@" in from_address
@@ -113,7 +115,7 @@ def read_message(stream=None) -> Mail:
     )
     to = _parse_address_list(msg.get_all("To") or [])
     subject = _decode_header(msg.get("Subject"))
-    date = _parse_date(msg.get("Date"))
+    date = _parse_date(_as_str(msg.get("Date")))
 
     text, html, attachments = _walk_parts(msg)
     ld_json = _extract_ld_json(html, sender=from_domain) if html else []
@@ -157,6 +159,10 @@ def _decode_header(value: str | None) -> str | None:
     # Unfold after decoding: an 8-bit header comes in as a `Header`
     # rather than a string.
     return FOLD_RE.sub("", "".join(parts))
+
+
+def _as_str(value: str | email.header.Header | None) -> str | None:
+    return None if value is None else str(value)
 
 
 def _parse_address(value: str | None) -> str | None:
