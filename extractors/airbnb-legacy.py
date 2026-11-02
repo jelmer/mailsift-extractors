@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Airbnb reservation mail from before schema.org markup (2013-2018).
+"""Airbnb reservation mail without schema.org markup.
 
 Three shapes, none of which carry JSON-LD:
 
@@ -9,7 +9,10 @@ Three shapes, none of which carry JSON-LD:
 - "Reservation Itinerary from <guest>" (2015-2018): an itinerary
   someone shared with us. The text part has the dates and a one-line
   address; the 2017-era HTML adds check-in and check-out hours but
-  drops the address, so we read both.
+  drops the address, so we read both. By 2022 the text part lists the
+  listing after the first `/rooms/` link, a `<day> - <day>` line, and
+  `Address` and `Confirmation code` each followed by their value; it
+  has no hours.
 - "Billing receipt for reservation" (2013): emitted as a receipt
   keyed on the receipt number, like the modern `airbnb` extractor.
 """
@@ -30,7 +33,7 @@ CONFIRMATION_RE = re.compile(r"Confirmation Code:\s*([A-Z0-9]{5,12})\b", re.IGNO
 RECEIPT_RE = re.compile(r"^Receipt #\s*(\d+)$")
 HELLO_RE = re.compile(r"^Hello (.+),$")
 CLOCK_RE = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*([AP]M)\b", re.IGNORECASE)
-TRAILING_POSTCODE_RE = re.compile(r"^(.*?)(\s*(\d[\d-]*))?$")
+TRAILING_POSTCODE_RE = re.compile(r"^(.*?)(\s*(\d(?:[\d -]*\d)?))?$")
 AMOUNT_RE = re.compile(r"^(?P<symbol>[€£])\s*(?P<amount>[0-9,]+(?:\.[0-9]{2})?)$")
 CURRENCIES = {"€": "EUR", "£": "GBP"}
 
@@ -39,6 +42,7 @@ DATE_FORMATS = [
     "%a, %d %B, %Y",  # "Fri, 26 January, 2018"
     "%B %d, %Y",  # "August 08, 2015"
     "%d %B, %Y",  # "26 January, 2018"
+    "%A %d %B %Y",  # "Saturday 30 July 2022"
 ]
 
 
@@ -158,10 +162,37 @@ def confirmed(mail: Mail, lines: list[str]) -> dict:
     )
 
 
+def shared_itinerary(text: list[str], guest: str | None) -> dict:
+    """The 2022 layout; see the module docstring."""
+    rooms = next(i for i, line in enumerate(text) if "/rooms/" in line)
+    first, last = next(
+        line.split(" - ") for line in text if re.fullmatch(r"\w+ .+ - \w+ .+", line)
+    )
+    return reservation(
+        code=text[text.index("Confirmation code") + 1],
+        checkin=with_clock(parse_date(first), None),
+        checkout=with_clock(parse_date(last), None),
+        listing=text[rooms + 1],
+        address=address_from_line(text[text.index("Address") + 1]),
+        guest=guest,
+    )
+
+
 def itinerary(mail: Mail, lines: list[str]) -> dict:
     if not mail.text:
         raise ValueError("itinerary without a text part")
     text = to_lines(normalize_unicode(mail.text))
+    guest = (
+        re.sub(
+            r"^Reservation Itinerary from ",
+            "",
+            mail.subject or "",
+            flags=re.IGNORECASE,
+        ).strip()
+        or None
+    )
+    if "Confirmation code" in text:
+        return shared_itinerary(text, guest)
     ci = next(i for i, line in enumerate(text) if line.startswith("* Check In "))
     co = next(i for i, line in enumerate(text) if line.startswith("* Check Out "))
     g = next(i for i, line in enumerate(text) if re.fullmatch(r"\* \d+ Guests?", line))
@@ -175,9 +206,6 @@ def itinerary(mail: Mail, lines: list[str]) -> dict:
             return lines[i + 2] if i + 2 < len(lines) else None
         return None
 
-    guest = re.sub(
-        r"^Reservation Itinerary from ", "", mail.subject or "", flags=re.IGNORECASE
-    )
     return reservation(
         code=confirmation_code(text),
         checkin=with_clock(
@@ -188,7 +216,7 @@ def itinerary(mail: Mail, lines: list[str]) -> dict:
         ),
         listing=listing,
         address=address_from_line(address),
-        guest=guest.strip() or None,
+        guest=guest,
     )
 
 

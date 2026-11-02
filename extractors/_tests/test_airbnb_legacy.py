@@ -82,6 +82,31 @@ def test_shared_itinerary_with_hours(run_extractor):
     }
 
 
+def test_shared_itinerary_2022(run_extractor):
+    out = run_extractor("airbnb-legacy", "airbnb-legacy-itinerary-2022.eml")
+    assert out == {
+        "airbnb-TESTEF.reservation.json": {
+            "@context": "https://schema.org",
+            "@type": "LodgingReservation",
+            "reservationNumber": "TESTEF",
+            "checkinTime": "2050-07-30",
+            "checkoutTime": "2050-07-31",
+            "reservationFor": {
+                "@type": "LodgingBusiness",
+                "name": "Example cottage",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Exampleby",
+                    "addressLocality": "Example län",
+                    "postalCode": "100 01",
+                    "addressCountry": "Sweden",
+                },
+            },
+            "underName": {"@type": "Person", "name": "Test Friend"},
+        }
+    }
+
+
 def test_billing_receipt(run_extractor):
     out = run_extractor("airbnb-legacy", "airbnb-legacy-billing-receipt.eml")
     assert out == {
