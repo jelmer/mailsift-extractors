@@ -68,11 +68,13 @@ BOARDING_PASS_SUBJECT_RE = re.compile(
 
 BOOKING_LABEL = "Your reservation code is:"
 BOOKING_RE = re.compile(r"^[A-Z0-9]{6}$")
-PASSENGERS_RE = re.compile(r"^Passengers(?P<name>.*)$")
+PASSENGERS_RE = re.compile(r"^Passengers:?(?P<name>.*)$")
 DATE_RE = re.compile(
-    r"^[A-Za-z]+ (?P<day>\d{1,2}) (?P<month>[A-Za-z]+) (?P<year>\d{4})$"
+    r"^[A-Za-z]+,? (?P<day>\d{1,2}) (?P<month>[A-Za-z]+) (?P<year>\d{4})$"
 )
 TIME_RE = re.compile(r"^(?P<hh>\d{1,2}):(?P<mm>\d{2})$")
+# The late-2018 layout puts the time and airport on one line.
+TIME_AIRPORT_RE = re.compile(r"^(?P<time>\d{1,2}:\d{2}) (?P<airport>.+)$")
 AIRPORT_RE = re.compile(r"^(?P<city>.+?) \((?P<iata>[A-Z]{3})\)$")
 FLIGHT_RE = re.compile(r"^(?P<airline>[A-Z0-9]{2})(?P<number>\d{1,4})$")
 # "Economy-L": cabin, then the booking class letter.
@@ -115,22 +117,34 @@ def _time(line: str) -> tuple[int, int]:
 def _eticket_segment(lines: list[str], i: int) -> dict:
     """Parse the itinerary block whose flight number is on `lines[i]`.
 
-    The five lines before it are date, departure time, departure
-    airport, arrival time and arrival airport; the cabin follows,
-    possibly after an `Operated by` line.
+    The lines before it are the date, then the departure time and
+    airport, then the arrival time and airport: one line each, or (from
+    late 2018) time and airport together. The cabin follows, possibly
+    after an `Operated by` line.
     """
-    if i < 5:
+    if (
+        i >= 3
+        and (dep := TIME_AIRPORT_RE.match(lines[i - 2]))
+        and (arr := TIME_AIRPORT_RE.match(lines[i - 1]))
+    ):
+        date_line = lines[i - 3]
+        dep_time, dep_airport = dep.group("time"), dep.group("airport")
+        arr_time, arr_airport = arr.group("time"), arr.group("airport")
+    elif i >= 5:
+        date_line = lines[i - 5]
+        dep_time, dep_airport, arr_time, arr_airport = lines[i - 4 : i]
+    else:
         raise ValueError(f"flight number {lines[i]!r} without itinerary block")
-    date_m = DATE_RE.match(lines[i - 5])
+    date_m = DATE_RE.match(date_line)
     if not date_m:
-        raise ValueError(f"expected itinerary date, got {lines[i - 5]!r}")
+        raise ValueError(f"expected itinerary date, got {date_line!r}")
     day = date(
         int(date_m.group("year")),
         _month(date_m.group("month")),
         int(date_m.group("day")),
     )
-    dep_dt = datetime(day.year, day.month, day.day, *_time(lines[i - 4]))
-    arr_dt = datetime(day.year, day.month, day.day, *_time(lines[i - 2]))
+    dep_dt = datetime(day.year, day.month, day.day, *_time(dep_time))
+    arr_dt = datetime(day.year, day.month, day.day, *_time(arr_time))
     if arr_dt < dep_dt:
         arr_dt += timedelta(days=1)
 
@@ -140,8 +154,8 @@ def _eticket_segment(lines: list[str], i: int) -> dict:
         "@type": "Flight",
         "flightNumber": flight_m.group("number"),
         "airline": _airline(flight_m.group("airline")),
-        "departureAirport": _airport(lines[i - 3]),
-        "arrivalAirport": _airport(lines[i - 1]),
+        "departureAirport": _airport(dep_airport),
+        "arrivalAirport": _airport(arr_airport),
         "departureTime": dep_dt.strftime("%Y-%m-%dT%H:%M:%S"),
         "arrivalTime": arr_dt.strftime("%Y-%m-%dT%H:%M:%S"),
     }
@@ -177,7 +191,7 @@ def extract_eticket(mail: Mail) -> int:
             if first:
                 passengers.append(first)
             for following in lines[index + 1 :]:
-                if following.startswith("Total Fare"):
+                if following.startswith(("Total Fare", "Price")):
                     break
                 passengers.append(following)
             break

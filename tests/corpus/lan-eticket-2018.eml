@@ -1,0 +1,19 @@
+MIME-Version: 1.0
+Date: Mon, 29 Oct 2046 23:42:00 +0000
+From: LATAM.com <sales@bo.lan.com>
+To: test@example.org
+Subject: E-Ticket Confirmation
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<table>
+<tr><td><p>Your reservation code is:</p><p><strong>BBBBBB</strong></p></td></tr>
+<tr><td><p>Summary of your purchase:</p></td></tr>
+<tr><td><p>Passengers:</p><p>Test User</p><p>Other User</p></td></tr>
+<tr><td><p>Price</p><p>&pound; 100.00</p><p>(GBP)</p></td></tr>
+<tr><td><p>Itinerary</p></td></tr>
+<tr><td><p>Thursday, 06 december 2046</p></td></tr>
+<tr><td><p>08:00 Alpha City (XAA)</p><p>11:22 Beta Town (XBB)</p></td></tr>
+<tr><td><p>LA7000</p><p>Operated by LATAM Airlines Example</p><p>Economy-X</p></td></tr>
+<tr><td><p>Only includes carry-on baggage</p></td></tr>
+</table>
