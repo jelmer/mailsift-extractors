@@ -65,3 +65,46 @@ def test_boarding_pass_emits_reservation_from_subject(run_extractor):
         },
         "lan-LA7735-20181215.ticket.pdf": _STUB_PDF,
     }
+
+
+def test_eticket_confirmation_2018_layout(run_extractor):
+    # From late 2018 each time shares a line with its airport, the date
+    # has a comma after the weekday and passengers follow `Passengers:`.
+    out = run_extractor("lan", "lan-eticket-2018.eml")
+    assert out == {
+        "lan-BBBBBB-LA7000.reservation.json": {
+            "@context": {
+                "@vocab": "https://schema.org/",
+                "pending": "https://pending.schema.org/",
+            },
+            "@type": "FlightReservation",
+            "reservationNumber": "BBBBBB",
+            "underName": [
+                {"@type": "Person", "name": "Test User"},
+                {"@type": "Person", "name": "Other User"},
+            ],
+            "reservationFor": {
+                "@type": "Flight",
+                "flightNumber": "7000",
+                "airline": {
+                    "@type": "Airline",
+                    "iataCode": "LA",
+                    "name": "LAN Airlines",
+                },
+                "departureAirport": {
+                    "@type": "Airport",
+                    "name": "Alpha City",
+                    "iataCode": "XAA",
+                },
+                "arrivalAirport": {
+                    "@type": "Airport",
+                    "name": "Beta Town",
+                    "iataCode": "XBB",
+                },
+                "departureTime": "2046-12-06T08:00:00",
+                "arrivalTime": "2046-12-06T11:22:00",
+                "pending:cabinClass": "Economy",
+                "pending:bookingClass": "X",
+            },
+        }
+    }
