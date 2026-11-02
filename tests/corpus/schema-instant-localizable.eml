@@ -1,0 +1,26 @@
+From: noreply-reservations@restaurant.example
+To: test@example.org
+Subject: Reservation confirmed for Thu 28 Aug, 19:00
+Date: Wed, 27 Aug 2025 08:00:00 +0000
+Message-ID: <table-77@restaurant.example>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<head>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "FoodEstablishmentReservation",
+  "reservationNumber": "TABLE-77",
+  "underName": {"@type": "Person", "name": "Test User"},
+  "reservationFor": {"@type": "FoodEstablishment", "name": "Example Bistro"},
+  "startTime": "InstantLocalizable(instant=2025-08-28T17:00:00Z, timeZone=Europe/Amsterdam, style=ShortDateTime)",
+  "partySize": 2
+}
+</script>
+</head>
+<body>
+<p>See you soon.</p>
+</body>
+</html>

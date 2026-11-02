@@ -1,0 +1,31 @@
+From: noreply@bus.example
+To: test@example.org
+Subject: Booking Confirmation #1000000001
+Date: Wed, 27 Aug 2025 08:00:00 +0000
+Message-ID: <bus-1000000001@bus.example>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<head>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BusReservation",
+  "reservationNumber": 1000000001,
+  "underName": {"@type": "Person", "name": "Test User"},
+  "reservationFor": {
+    "@type": "BusTrip",
+    "departureBusStop": {"@type": "BusStation", "name": "Alpha"},
+    "departureTime": "2025-08-28T12:00:00+02:00",
+    "arrivalBusStop": {"@type": "BusStation", "name": "Beta"},
+    "arrivalTime": "2025-08-28T15:30:00+02:00"
+  },
+  "reservedTicket": {"@type": "Ticket", "ticketNumber": 1000000001}
+}
+</script>
+</head>
+<body>
+<p>Booking confirmed.</p>
+</body>
+</html>
