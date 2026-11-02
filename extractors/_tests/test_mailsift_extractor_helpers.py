@@ -9,6 +9,7 @@ cases here rather than leaving it to the per-vendor tests.
 from __future__ import annotations
 
 import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "_lib"))
@@ -111,6 +112,20 @@ class TestReadMessage:
         mail = read_message(BytesIO(raw))
         assert mail.from_address == "sender@example.com"
         assert mail.from_domain == "example.com"
+
+    def test_8bit_from_and_date(self) -> None:
+        raw = (
+            b"From: J\xe4ger <sender@example.com>\r\n"
+            b"Subject: Hi\r\n"
+            b"Date: Mon, 01 Jan 2024 12:00:00 +0100 (Mitteleurop\xe4ische Zeit)\r\n"
+            b"Content-Type: text/plain\r\n\r\n"
+            b"body\r\n"
+        )
+        mail = read_message(BytesIO(raw))
+        assert mail.from_address == "sender@example.com"
+        assert mail.date == datetime(
+            2024, 1, 1, 12, 0, tzinfo=timezone(timedelta(hours=1))
+        )
 
     def test_ld_json_character_references_are_decoded(self, capsys) -> None:
         # Some senders template their ld+json through HTML escaping, but
