@@ -34,6 +34,9 @@ CONFIRMATION_RE = re.compile(
     r"(?:Confirmation(?:\s+number)?|Booking\s+number)\s*:?\s*(\d+)",
     re.IGNORECASE,
 )
+# Some 2019-2021 mails don't print the number at all; it's still the
+# first part of the property's `mailto:NNN-xxxx@property.booking.com`.
+PROPERTY_MAILTO_RE = re.compile(r'mailto:(\d+)-[^@"]*@property\.booking\.com"')
 
 # Booking.com renders dates a few ways across years and locales. We hand
 # the leading-day-of-week chunk to strptime, trying each format in turn.
@@ -98,7 +101,7 @@ def main() -> int:
     text = strip_html(mail.html)
 
     confirmation = None
-    m = CONFIRMATION_RE.search(text)
+    m = CONFIRMATION_RE.search(text) or PROPERTY_MAILTO_RE.search(mail.html)
     if m:
         confirmation = m.group(1)
 
