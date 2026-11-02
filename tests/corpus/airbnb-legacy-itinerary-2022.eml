@@ -1,0 +1,40 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@email.airbnb.com
+From: Airbnb <invitation@airbnb.com>
+To: test@example.org
+Subject: Reservation Itinerary from Test Friend
+Date: Sat, 30 Jul 2050 17:29:58 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="b1"
+
+--b1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Get ready for your upcoming trip
+
+Hi Test,
+
+Test Friend booked  a place in Exampleby  and shared the itinerary with you.
+https://www.airbnb.example.org/rooms/1000
+
+Example cottage
+Cosy cottage with an outdoor fire.
+Private room hosted by Test Host
+https://www.airbnb.example.org/rooms/1000
+
+Saturday 30 July 2050 - Sunday 31 July 2050
+
+Address
+Exampleby, Example län 100 01, Sweden
+
+Confirmation code
+TESTEF
+
+Meet your host
+
+--b1
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><p>Get ready for your upcoming trip</p></body></html>
+--b1--
