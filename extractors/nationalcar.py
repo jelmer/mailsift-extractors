@@ -31,7 +31,7 @@ overwrite the same file:
   `Pickup Location` / branch, the same for `Return`, and `Vehicle
   Information` / class / model.
 - "Modified Reservation: ..." mails list `PICK UP` / branch /
-  `Wednesday, September 13, 2046` / `3:00 PM`, the same under
+  `Wednesday, September 13, 2046` (or `Wed, ...`) / `3:00 PM`, the same under
   `RETURN`, and `Vehicle` / class / model.
 
 National doesn't DKIM-sign this mail (only SPF passes), so the
@@ -138,13 +138,14 @@ def modified_end(lines: list[str], label: str) -> tuple[str | None, datetime | N
         branch, day, time = lines[i + 1 : i + 4]
     except ValueError:
         return None, None
-    try:
-        at = datetime.strptime(f"{day} {time}", "%A, %B %d, %Y %I:%M %p")
-    except ValueError:
-        raise ValueError(
-            f"unrecognised {label.lower()} time {day!r} {time!r}"
-        ) from None
-    return branch, at
+    # The weekday is sometimes abbreviated (`Sun, September 8, 2046`).
+    for weekday in ("%A", "%a"):
+        try:
+            at = datetime.strptime(f"{day} {time}", f"{weekday}, %B %d, %Y %I:%M %p")
+        except ValueError:
+            continue
+        return branch, at
+    raise ValueError(f"unrecognised {label.lower()} time {day!r} {time!r}")
 
 
 def main() -> int:

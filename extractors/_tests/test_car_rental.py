@@ -152,3 +152,13 @@ def test_national_modified_reservation(run_extractor):
         "DENVER INTL ARPT (DEN)",
         "Midsize Hyundai Elantra",
     )
+
+
+def test_national_modified_reservation_short_weekday(run_extractor):
+    out = run_extractor("nationalcar", "nationalcar-modified-short-weekday.eml")
+    assert out == national(
+        "2045-10-11T10:30:00",
+        "2045-10-18T10:30:00",
+        "DENVER INTL ARPT (DEN)",
+        "Midsize Hyundai Elantra",
+    )

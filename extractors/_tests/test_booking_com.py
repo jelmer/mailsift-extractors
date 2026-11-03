@@ -31,3 +31,12 @@ def test_confirmation_number_label(run_extractor):
         out["booking-com-8888888888.reservation.json"]["reservationNumber"]
         == "booking-com-8888888888"
     )
+
+
+def test_number_from_property_mailto(run_extractor):
+    out = run_extractor("booking-com", "booking-com-property-mailto.eml")
+    assert set(out) == {"booking-com-7777777777.reservation.json"}
+    assert (
+        out["booking-com-7777777777.reservation.json"]["reservationNumber"]
+        == "booking-com-7777777777"
+    )
