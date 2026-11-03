@@ -92,7 +92,6 @@ CARRIER_MAP = {
     "evri": "evri",
     "yodel": "yodel",
     "parcelforce": "parcelforce",
-    "usps": "usps",
 }
 
 # Signing domains that are Shopify's own infrastructure.
