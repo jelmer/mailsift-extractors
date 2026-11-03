@@ -23,6 +23,14 @@ def test_confirmation_emits_receipt(run_extractor):
     assert item["orderItemSubtotal"]["price"] == 38.40
 
 
+def test_order_number_from_subject(run_extractor):
+    # The body has `Order` and the order date on the next line, but no
+    # `Order #<id>`; the subject has the number.
+    out = run_extractor("shopify-order", "shopify-subject-order-number.eml")
+    assert set(out) == {"example-wheels-EW100003.receipt.json"}
+    assert out["example-wheels-EW100003.receipt.json"]["orderNumber"] == "EW100003"
+
+
 def test_shipment_emits_parcel(run_extractor):
     out = run_extractor("shopify-order", "shopify-patch-shipped.eml")
     assert set(out) == {"patchplants-15000000000000.parcel.json"}
