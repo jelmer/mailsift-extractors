@@ -1,0 +1,27 @@
+Authentication-Results: example.org; dkim=pass header.d=tracking.usps.com header.i=@tracking.usps.com
+Sender: auto-reply@tracking.usps.com
+Date: Sun, 01 Nov 2026 23:02:37 +0000
+Mime-Version: 1.0
+Subject: =?UTF-8?q?USPS=C2=AE_Item_Delivered,_Parcel_Locker_9400100000000000000002?=
+From: USPS Tracking <auto-reply@tracking.usps.com>
+To: test@example.org
+Message-Id: <usps-delivered-test@tracking.usps.com>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<body>
+<table><tbody><tr><td>
+<p style=3D"font-family: sans-serif;text-align: left;">Hello <strong></strong>,</p>
+<p style=3D"font-family: sans-serif;text-align: left;">Your item was =
+delivered to a parcel locker at 1:02 pm on November 1, 2026 in HONOLULU, HI 96=
+813.</p>
+<p style=3D"font-family: sans-serif;text-align: left;">Tracking Numbe=
+r: <a href=3D"https://tools.usps.com/go/TrackConfirmAction?tLabels=3D9400100000000000000002">94001000=
+00000000000002</a></p>
+<p style=3D"text-align: left;font-family: sans-serif;">Package Shippe=
+d from: <strong>EXAMPLE SHOP</strong></p>
+</td></tr></tbody></table>
+<p class=3D"MsoNormal" align=3D"center"><b>Delivered, Parcel Locker</b></p>
+</body>
+</html>

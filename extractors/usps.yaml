@@ -1,0 +1,14 @@
+name: usps
+order: 50
+# USPS Tracking notifications ("USPS® Item Delivered, Parcel Locker
+# <number>", "USPS® Item Out for Delivery <number>", ...) from
+# auto-reply@tracking.usps.com, signed by tracking.usps.com.
+from_domains:
+  - usps.com
+  - "*.usps.com"
+subject_regex: "(?i)^USPS"
+requires:
+  - html
+require_dkim:
+  - usps.com
+  - ".usps.com"
