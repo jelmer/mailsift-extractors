@@ -9,9 +9,12 @@ order: 50
 # - `<shop>.myshopify.com` for shops on the classic sending domain.
 # - `<sub>.shopifyemail.com` (`t.` for transactional, `g.` for
 #   marketing) for shops on Shopify Email, the newer default.
+# - the bare `shopifyemail.com`, alongside the shop's own signature,
+#   for shops sending from their own domain.
 subject_regex: "(?i)^(Order #|A shipment from order #|Order .* confirmed|.* (confirmed|shipped|on the way|has been delivered))"
 requires:
   - text
 require_dkim:
   - ".myshopify.com"
   - ".shopifyemail.com"
+  - "shopifyemail.com"

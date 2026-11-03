@@ -37,7 +37,9 @@ from mailsift_extractor import read_message
 # to fall back to the display name for these.
 _SHOPIFY_RELAY_DOMAINS = ("shopifyemail.com",)
 
-ORDER_ID_RE = re.compile(r"Order\s+#?([A-Za-z0-9]+)")
+# `Order #100002`, `order BP427930`; on one line, with a digit, so
+# `Order summary` or `Order` above the date doesn't match.
+ORDER_ID_RE = re.compile(r"\border[ \t]+#?([A-Za-z]*\d[A-Za-z0-9]*)", re.IGNORECASE)
 # Item line in the order-summary table: "Product name × 1" then a
 # blank line then "£12.34". Names can contain almost anything except a
 # newline; the × is unicode U+00D7 in the wire template.
@@ -129,12 +131,18 @@ def _display_name(mail) -> str:
     return name.strip()
 
 
+def order_id(text: str, mail) -> str | None:
+    """From the subject, or failing that the body, which some shops
+    leave out."""
+    m = ORDER_ID_RE.search(mail.subject or "") or ORDER_ID_RE.search(text)
+    return m.group(1) if m else None
+
+
 def emit_receipt(text: str, mail) -> bool:
-    order_m = ORDER_ID_RE.search(text)
+    order = order_id(text, mail)
     total_m = TOTAL_RE.search(text)
-    if not (order_m and total_m):
+    if not (order and total_m):
         return False
-    order_id = order_m.group(1)
     merchant = merchant_name(mail)
     items = []
     for item_m in ITEM_RE.finditer(text):
@@ -155,11 +163,11 @@ def emit_receipt(text: str, mail) -> bool:
                 },
             }
         )
-    receipt = {
+    receipt: dict[str, object] = {
         "@context": "https://schema.org",
         "@type": "Order",
         "merchant": merchant,
-        "orderNumber": order_id,
+        "orderNumber": order,
         "priceSpecification": {
             "@type": "PriceSpecification",
             "price": float(total_m.group("price")),
@@ -170,14 +178,14 @@ def emit_receipt(text: str, mail) -> bool:
         receipt["orderDate"] = mail.date.strftime("%Y-%m-%d")
     if items:
         receipt["orderedItem"] = items
-    Path(f"{merchant_slug(merchant)}-{order_id}.receipt.json").write_text(
+    Path(f"{merchant_slug(merchant)}-{order}.receipt.json").write_text(
         json.dumps(receipt, ensure_ascii=False), encoding="utf-8"
     )
     return True
 
 
 def emit_parcel(text: str, mail) -> bool:
-    order_m = ORDER_ID_RE.search(text)
+    order = order_id(text, mail)
     track_m = TRACKING_RE.search(text)
     if not track_m:
         return False
@@ -196,8 +204,8 @@ def emit_parcel(text: str, mail) -> bool:
             "name": track_m.group("carrier").strip(),
         },
     }
-    if order_m:
-        parcel["orderNumber"] = order_m.group(1)
+    if order:
+        parcel["orderNumber"] = order
     parcel["merchant"] = merchant
 
     Path(f"{merchant_slug(merchant)}-{tracking_number}.parcel.json").write_text(
