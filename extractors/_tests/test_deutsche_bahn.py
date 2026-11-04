@@ -120,6 +120,30 @@ def test_one_way_with_separate_reservation_column(run_extractor):
     }
 
 
+def test_deutschebahn_com_with_octet_stream_pdf(run_extractor):
+    out = run_extractor("deutsche-bahn", "deutsche-bahn-deutschebahn-com.eml")
+    assert out == {
+        "deutsche-bahn-cccccc-ic-3569.reservation.json": leg(
+            "CCCCCC",
+            "IC 3569",
+            "Alphaville",
+            "Betaburg",
+            ("2046-07-20T19:24:00", "2046-07-20T20:51:00"),
+            ("5", "2"),
+            underName=PASSENGER,
+        ),
+        "deutsche-bahn-cccccc-re-20097.reservation.json": leg(
+            "CCCCCC",
+            "RE 20097",
+            "Betaburg",
+            "Gammastadt Hbf",
+            ("2046-07-20T21:05:00", "2046-07-20T21:30:00"),
+            ("3", "1"),
+            underName=PASSENGER,
+        ),
+    }
+
+
 def test_same_train_twice_is_dated(run_extractor):
     # Legs share the order number and are told apart by train number,
     # so a line taken out and back carries its date.
