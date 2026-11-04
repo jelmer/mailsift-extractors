@@ -71,6 +71,30 @@ def test_cancellation_with_markup_is_left_to_schema_ld(run_extractor):
     assert run_extractor("booking-com", "booking-com-cancelled-ld-json.eml") == {}
 
 
+def test_updated_booking_replaces_the_booking(run_extractor):
+    # Changing the dates sends the whole confirmation again under the
+    # same number; the "(was ...)" summary above it must not leak in.
+    out = run_extractor("booking-com", "booking-com-updated.eml")
+    assert out == {
+        "booking-com-9999999997.reservation.json": {
+            "@context": "https://schema.org",
+            "@type": "LodgingReservation",
+            "reservationNumber": "booking-com-9999999997",
+            "checkinTime": "2046-11-06T15:00:00",
+            "checkoutTime": "2046-11-07T12:00:00",
+            "reservationFor": {
+                "@type": "LodgingBusiness",
+                "name": "Example Hotel Central",
+                "address": "1 Example Square, Exampleton, EX1 1AA, United Kingdom",
+            },
+        }
+    }
+
+
+def test_updated_booking_with_markup_is_left_to_schema_ld(run_extractor):
+    assert run_extractor("booking-com", "booking-com-updated-ld-json.eml") == {}
+
+
 def test_manifest_accepts_cancellations():
     for line in (EXTRACTORS_DIR / "booking-com.yaml").read_text().splitlines():
         if line.startswith("subject_regex: "):
@@ -81,3 +105,12 @@ def test_manifest_accepts_cancellations():
         "Booking canceled for Example Hotel Central",
     ]:
         assert pattern.search(subject), subject
+
+
+def test_manifest_accepts_updated_bookings():
+    for line in (EXTRACTORS_DIR / "booking-com.yaml").read_text().splitlines():
+        if line.startswith("subject_regex: "):
+            pattern = re.compile(json.loads(line.removeprefix("subject_regex: ")))
+            break
+    assert pattern.search("Your updated booking at Example Hotel Central")
+    assert not pattern.search("Test, your booking at Example Hotel has been updated")
