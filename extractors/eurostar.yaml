@@ -3,7 +3,7 @@ order: 50
 from_domains:
   - eurostar.com
   - "*.eurostar.com"
-subject_regex: "(?i)Booking confirmation\\s*\\||exchange confirmation\\s*\\|"
+subject_regex: "(?i)^(?:Booking|Your exchange) confirmation \\| "
 requires:
   - html
 require_dkim:
