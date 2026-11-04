@@ -1,0 +1,30 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@email.airbnb.com
+From: Airbnb <automated@airbnb.com>
+To: test@example.org
+Subject: Your 2044-05-13 reservation was cancelled
+Date: Wed, 11 May 2044 08:26:16 +0000
+Message-ID: <airbnb-cancelled-by-host-test@airbnb.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body>
+<div>Here’s a full refund and a £40.00 coupon for another place</div>
+<table><tr><th><p>Test Host had to cancel</p></th></tr></table>
+<table><tr>
+<td><img src="https://example.org/host.jpg"></td>
+<td>
+<p>Test Host</p>
+<p>May 13-May 20</p>
+<p>Host of Example Garden Studio (EX1) in Exampleton</p>
+</td>
+</tr></table>
+<table><tr><th><p>Sorry, the studio is no longer available on those dates.</p></th></tr></table>
+<table><tr><th><p>We know this is tough, so we’re giving you a full refund and a <strong>£40.00</strong> coupon to make sure you still have a great stay in Exampleton.</p></th></tr></table>
+<table><tr><th><div>
+<div>Book a new place, with an extra £40.00 on us</div>
+<div>We’ve found similar places nearby that we think you’ll like. At checkout, add the code <strong>HCP2-HMTESTCANC</strong> to use your <strong>£40.00</strong> coupon on a reservation totalling at least <strong>£400.00</strong>.</div>
+<a href="https://www.airbnb.co.uk/s/Exampleton/homes?checkin=2044-05-13&amp;checkout=2044-05-20&amp;guests=1"><p>Show homes</p></a>
+</div></th></tr></table>
+<p>Sent with ♥ from Airbnb</p>
+</body></html>

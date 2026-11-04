@@ -2,8 +2,9 @@ name: airbnb
 order: 50
 from_domains:
   - airbnb.com
-subject_regex: "(?i)^Your receipt from Airbnb"
+subject_regex: "(?i)^Your receipt from Airbnb|^Your \\d{4}-\\d{2}-\\d{2} reservation was cancel+ed$"
 requires:
   - html
 require_dkim:
   - airbnb.com
+  - .airbnb.com
