@@ -1,0 +1,31 @@
+Authentication-Results: example.org; dkim=pass header.i=@bounce.ba.com
+From: British Airways <contact@contact.britishairways.com>
+To: test@example.org
+Subject: BA confirmation of cancellation and refund: Ref.DEF456
+Date: Mon, 6 Aug 2046 11:45:12 +0000
+Message-ID: <ba-cancellation-2016-test@contact.britishairways.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+[British Airways.]
+
+Booking cancellation
+
+
+Dear Customer,  Booking reference: DEF456
+
+
+Your British Airways flight booking has been cancelled on ba.com.
+
+
+
+
+Cancelled booking details
+
+
+
+Passengers      MR TEST USER
+
+
+
+Ticket Number(s)        125-0000000000
