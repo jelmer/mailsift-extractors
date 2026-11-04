@@ -1,0 +1,13 @@
+name: deutsche-bahn-cancellation
+order: 50
+from_domains:
+  - bahn.de
+  - deutschebahn.com
+subject_regex: "(?i)^(?:Confirmation of cancellation|Annuleringsbevestiging) \\(order [A-Z0-9]+\\)$"
+requires:
+  - text
+# bahn.de mail was unsigned until some time in 2018.
+require_dkim:
+  - bahn.de
+  - deutschebahn.com
+unsigned_before: "2018-01-01"

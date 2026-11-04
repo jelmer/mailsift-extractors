@@ -22,7 +22,8 @@ PDF too, but without a journey; those are skipped.
 
 Cancellation mails ("Confirmation of cancellation (order <code>)",
 "Annuleringsbevestiging (Order <code>)") have no PDF and only give the
-order number and refund, not the legs, so they aren't handled.
+order number and refund, not the legs; they are handled by
+`deutsche-bahn-cancellation`.
 """
 
 from __future__ import annotations

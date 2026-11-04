@@ -1,0 +1,25 @@
+Authentication-Results: example.org; dkim=none
+From: buchungbestaetigung@bahn.de
+To: test@example.org
+Subject: Annuleringsbevestiging (Order DEF456)
+Date: 29 Dec 2046 20:06:16 +0100
+Message-ID: <db-cancellation-nl-test@bahn.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+
+Geachte heer User, 
+
+Hierbij bevestigen wij de annulering van uw Online-Ticket op bahn.com 
+
+Het bedrag van 100,00 EUR ontvangt u zo spoedig mogelijk via terug.
+
+Overzicht van uw annuleringsgegevens:
+Ordernummer: DEF456
+Klantnummer: 00000000
+Annuleringsdatum: 29.12.2046 Annuleringstijdstip: 20:06 
+Waarde van de geannuleerde boeking: 120,00 EUR
+Restitutiebedrag: 20,00 EUR
+Vergoed bedrag: 100,00 EUR
+
+Met vriendelijke groet 
+Het team van www.bahn.de
