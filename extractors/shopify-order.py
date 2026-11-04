@@ -44,10 +44,12 @@ ORDER_ID_RE = re.compile(r"\border[ \t]+#?([A-Za-z]*\d[A-Za-z0-9]*)", re.IGNOREC
 # blank line then "£12.34". Names can contain almost anything except a
 # newline; the × is unicode U+00D7 in the wire template.
 # A product with options has a variant line (size, colour) between the
-# name and the price: "Widget × 1\n\nLarge\n\n$20.00".
+# name and the price: "Widget × 1\n\nLarge\n\n$20.00". A long name
+# is wrapped onto further lines.
+_WRAPPED_NAME = r"(?P<name>[^\n]+?(?:\r?\n[^\r\n]+?)*?)"
 ITEM_RE = re.compile(
-    r"^(?P<name>.+?)\s*[×x]\s*(?P<qty>\d+)\s*\n\s*\n"
-    r"(?:(?![£€$])[^\n]+\n\s*\n)?"
+    rf"^{_WRAPPED_NAME}\s*[×x]\s*(?P<qty>\d+)\s*\n\s*\n"
+    r"(?:(?![£€$])[^\n]+\n\s*\n){0,3}"
     r"(?P<symbol>[£€$])(?P<price>[0-9]+(?:\.[0-9]{2})?)",
     re.MULTILINE,
 )
@@ -111,7 +113,7 @@ SHIPMENT_ITEMS_RE = re.compile(
     r"^Items in this shipment\s*\n-+\s*\n(?P<items>.*?)(?:^If you have any questions|\Z)",
     re.MULTILINE | re.DOTALL,
 )
-SHIPMENT_ITEM_RE = re.compile(r"^(?P<name>.+?)\s+×\s*\d+\s*$", re.MULTILINE)
+SHIPMENT_ITEM_RE = re.compile(rf"^{_WRAPPED_NAME}\s+×\s*\d+\s*$", re.MULTILINE)
 
 # Signing domains that are Shopify's own infrastructure.
 _SHOPIFY_DKIM_SUFFIXES = (".myshopify.com", ".shopifyemail.com")
@@ -201,7 +203,7 @@ def emit_receipt(text: str, mail) -> bool:
                 "@type": "OrderItem",
                 "orderedItem": {
                     "@type": "Product",
-                    "name": item_m.group("name").strip(),
+                    "name": " ".join(item_m.group("name").split()),
                 },
                 "orderQuantity": int(item_m.group("qty")),
                 "orderItemSubtotal": {
@@ -239,7 +241,7 @@ def shipment_item_names(text: str) -> list[str]:
     if not section_m:
         return []
     return [
-        m.group("name").strip()
+        " ".join(m.group("name").split())
         for m in SHIPMENT_ITEM_RE.finditer(section_m.group("items"))
     ]
 
