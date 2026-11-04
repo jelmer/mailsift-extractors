@@ -1,4 +1,4 @@
-"""Tests for the 2019-2023 Eurostar exchange confirmation extractor."""
+"""Tests for the 2018-2023 Eurostar booking and exchange confirmation extractor."""
 
 from __future__ import annotations
 
@@ -55,6 +55,74 @@ def test_lists_both_journeys(run_extractor):
     }
 
 
+def _reservation(slug: str, trip: dict, coach: str, seat: str) -> dict:
+    return {
+        "@context": "https://schema.org",
+        "@type": "TrainReservation",
+        "reservationNumber": slug,
+        "mailsift:itineraryComplete": True,
+        "reservationFor": {
+            "@type": "TrainTrip",
+            "provider": {"@type": "Organization", "name": "Eurostar"},
+            **trip,
+        },
+        "ticketedSeat": {"@type": "Seat", "seatSection": coach, "seatNumber": seat},
+    }
+
+
+def _station(name: str) -> dict:
+    return {"@type": "TrainStation", "name": name}
+
+
+def test_booking_confirmation(run_extractor):
+    # Both journeys change trains on the way; the seat is the first
+    # passenger's.
+    out = run_extractor("eurostar-legacy-exchange", "eurostar-legacy-booking.eml")
+    assert out == {
+        "eurostar-LLLLLL-outbound.reservation.json": _reservation(
+            "eurostar-LLLLLL-outbound",
+            {
+                "departureStation": _station("Alpha International"),
+                "arrivalStation": _station("Delta Station"),
+                "departureTime": "2046-06-29T17:01:00",
+                "arrivalTime": "2046-06-29T23:41:00",
+            },
+            "11",
+            "63",
+        ),
+        "eurostar-LLLLLL-return.reservation.json": _reservation(
+            "eurostar-LLLLLL-return",
+            {
+                "departureStation": _station("Delta Station"),
+                "arrivalStation": _station("Alpha International"),
+                "departureTime": "2046-07-01T17:17:00",
+                "arrivalTime": "2046-07-01T22:00:00",
+            },
+            "13",
+            "78",
+        ),
+    }
+
+
+def test_one_way_booking_without_direction_header(run_extractor):
+    out = run_extractor(
+        "eurostar-legacy-exchange", "eurostar-legacy-booking-one-way.eml"
+    )
+    assert out == {
+        "eurostar-MMMMMM-outbound.reservation.json": _reservation(
+            "eurostar-MMMMMM-outbound",
+            {
+                "departureStation": _station("Alpha International"),
+                "arrivalStation": _station("Epsilon Central"),
+                "departureTime": "2047-09-15T11:04:00",
+                "arrivalTime": "2047-09-15T16:11:00",
+            },
+            "1",
+            "14",
+        ),
+    }
+
+
 def _subject_regex() -> re.Pattern[str]:
     manifest = EXTRACTORS_DIR / "eurostar-legacy-exchange.yaml"
     for line in manifest.read_text().splitlines():
@@ -71,7 +139,22 @@ def _subject_regex() -> re.Pattern[str]:
         # The 2015 layout, which this extractor can't parse.
         ("Your Eurostar exchange confirmation Fri 10th Apr 2045 - KKKKKK", False),
         ("Your exchange confirmation | Sunday, 6 July 2045 - Reference: KKKKKK", False),
-        ("Your Eurostar booking confirmation Fri, 1 February - KKKKKK", False),
+        ("Your Eurostar booking confirmation Fri, 1 February - KKKKKK", True),
+        ("Your Eurostar booking confirmation Fri 3rd Feb 2045 - KKKKKK", False),
+        (
+            "Booking confirmation - please print tickets | Tue, 15 September - KKKKKK",
+            True,
+        ),
+        (
+            "Booking confirmation - here's a link to your tickets | Sat, 11 May - KKKKKK",
+            True,
+        ),
+        (
+            "Booking confirmation - here\u2019s a link to your tickets | Fri, 3 May - KKKKKK",
+            True,
+        ),
+        ("Booking confirmation | Monday, 30 October - Reference: KKKKKK", False),
+        ("Fwd: Your Eurostar booking confirmation Fri, 1 February - KKKKKK", False),
     ],
 )
 def test_manifest_subject(subject, matches):

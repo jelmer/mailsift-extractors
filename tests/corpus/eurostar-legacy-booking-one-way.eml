@@ -1,0 +1,10 @@
+Authentication-Results: example.org; dkim=pass header.i=@e.eurostar.com
+From: "Eurostar International Ltd." <noreply@e.eurostar.com>
+To: test@example.org
+Subject: Booking confirmation - please print tickets | Sun, 15 September - MMMMMM
+Date: Mon, 09 Sep 2047 15:57:41 -0600
+Message-ID: <eurostar-legacy-booking-one-way-test@e.eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><table><tr><td><div>Good news, you're</div><div>all booked</div><div><a href="https://www.eurostar.com/">Get Tickets</a></div></td></tr><tr><td><div>Booking reference: MMMMMM</div></td></tr><tr><td><div>Alpha International to Epsilon Central Sun, 15 September</div></td></tr><tr><td><div>11:04</div><div>04 hrs 07 mins</div><div>Direct</div><div>16:11</div></td></tr><tr><td><div>Test User</div><div>Coach 1, seat 14</div></td></tr><tr><td><div>Did you know?</div></td></tr></table></body></html>

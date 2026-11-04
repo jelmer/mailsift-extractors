@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Eurostar exchange confirmations, sent from 2019 to 2023.
+"""Eurostar booking and exchange confirmations, sent from 2018 to 2023.
 
 After tag-stripping, each journey of the booking reads:
 
@@ -14,11 +14,13 @@ After tag-stripping, each journey of the booking reads:
     Coming back
     ...
 
-The date has no year, and the mail lists journeys already travelled
+Some one-way booking confirmations leave out the `Going out` header.
+
+The date has no year, and an exchange lists journeys already travelled
 too, so the year is the one, around the mail's own, on which the date
 falls on the weekday given.
 
-The mail lists the whole booking, including the journey the exchange
+The mail lists the whole booking, including any journey an exchange
 left alone, but no train numbers. We emit one TrainReservation per
 direction, numbered like the `eurostar-legacy` ticket mails
 (`eurostar-<reference>-outbound`), with `mailsift:itineraryComplete`
@@ -121,16 +123,22 @@ def main() -> int:
     if reference is None:
         raise ValueError("no booking reference")
 
-    headers = [i for i, line in enumerate(lines) if line in DIRECTIONS]
-    if not headers:
-        raise ValueError(f"booking {reference} lists no journeys")
     sent = mail.date.replace(tzinfo=None)
     legs: dict[str, dict] = {}
-    for start, end in zip(headers, headers[1:] + [len(lines)], strict=True):
+    headers = [i for i, line in enumerate(lines) if line in DIRECTIONS]
+    for start, end in zip(headers, headers[1:] + [len(lines)], strict=False):
         direction = DIRECTIONS[lines[start]]
         if direction in legs:
             raise ValueError(f"booking {reference} has two {direction} journeys")
         legs[direction] = parse_journey(lines[start + 1 : end], sent)
+    if not headers:
+        routes = [i for i, line in enumerate(lines) if ROUTE_RE.match(line)]
+        if len(routes) != 1:
+            raise ValueError(
+                f"booking {reference} lists {len(routes)} journeys without "
+                "saying which way they go"
+            )
+        legs["outbound"] = parse_journey(lines[routes[0] :], sent)
 
     for direction, leg in legs.items():
         slug = f"eurostar-{reference}-{direction}"
