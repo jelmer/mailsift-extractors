@@ -5,6 +5,8 @@ from __future__ import annotations
 import email
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +43,7 @@ def test_eticket_emits_one_reservation_per_segment(run_extractor):
         },
         "@type": "FlightReservation",
         "reservationNumber": "BBBBBB",
+        "mailsift:itineraryComplete": True,
         "reservationFor": {
             "@type": "Flight",
             "flightNumber": "440",
@@ -89,6 +92,7 @@ def test_legacy_eticket_format_still_extracts(run_extractor):
     }
     outbound = out["ba-LEGACY-BA2762.reservation.json"]
     assert outbound["reservationNumber"] == "LEGACY"
+    assert outbound["mailsift:itineraryComplete"] is True
     for_ = outbound["reservationFor"]
     assert for_["flightNumber"] == "2762"
     assert for_["pending:cabinClass"] == "Euro Traveller"
@@ -123,6 +127,7 @@ def test_columnar_eticket_format_extracts(run_extractor):
         "ba-COLUMN-BA0443.reservation.json",
     }
     outbound = out["ba-COLUMN-BA0444.reservation.json"]
+    assert outbound["mailsift:itineraryComplete"] is True
     for_ = outbound["reservationFor"]
     assert for_["flightNumber"] == "444"
     assert for_["departureAirport"] == {
@@ -158,6 +163,7 @@ def test_unsigned_2015_mail_extracts(run_extractor):
             "@context": context,
             "@type": "FlightReservation",
             "reservationNumber": "YOURTK",
+            "mailsift:itineraryComplete": True,
             "reservationFor": {
                 "@type": "Flight",
                 "flightNumber": "632",
@@ -179,6 +185,7 @@ def test_unsigned_2015_mail_extracts(run_extractor):
             "@context": context,
             "@type": "FlightReservation",
             "reservationNumber": "YOURTK",
+            "mailsift:itineraryComplete": True,
             "reservationFor": {
                 "@type": "Flight",
                 "flightNumber": "633",
@@ -195,4 +202,158 @@ def test_unsigned_2015_mail_extracts(run_extractor):
                 "pending:cabinClass": "Euro Traveller",
             },
         },
+    }
+
+
+def test_eticket_keeps_legs_operated_by_others(run_extractor):
+    # A codeshare names its operator in the segment header, and so do
+    # flights operated by BA Euroflyer.
+    out = run_extractor("british-airways", "british-airways-eticket-codeshare.eml")
+    context = {
+        "@vocab": "https://schema.org/",
+        "pending": "https://pending.schema.org/",
+    }
+    airline = {"@type": "Airline", "iataCode": "BA", "name": "British Airways"}
+    assert out == {
+        "ba-CODESH-BA7287.reservation.json": {
+            "@context": context,
+            "@type": "FlightReservation",
+            "reservationNumber": "CODESH",
+            "mailsift:itineraryComplete": True,
+            "reservationFor": {
+                "@type": "Flight",
+                "flightNumber": "7287",
+                "airline": airline,
+                "departureAirport": {
+                    "@type": "Airport",
+                    "name": "Gatwick",
+                    "address": "London",
+                    "alternateName": "Terminal S",
+                },
+                "arrivalAirport": {
+                    "@type": "Airport",
+                    "name": "Madrid",
+                    "alternateName": "Terminal 4",
+                },
+                "departureTime": "2041-05-11T19:55:00",
+                "arrivalTime": "2041-05-11T23:20:00",
+                "pending:cabinClass": "Economy",
+            },
+        },
+        "ba-CODESH-BA2825.reservation.json": {
+            "@context": context,
+            "@type": "FlightReservation",
+            "reservationNumber": "CODESH",
+            "mailsift:itineraryComplete": True,
+            "reservationFor": {
+                "@type": "Flight",
+                "flightNumber": "2825",
+                "airline": airline,
+                "departureAirport": {
+                    "@type": "Airport",
+                    "name": "Madrid",
+                    "alternateName": "Terminal 4S",
+                },
+                "arrivalAirport": {
+                    "@type": "Airport",
+                    "name": "Gatwick",
+                    "address": "London",
+                    "alternateName": "Terminal S",
+                },
+                "departureTime": "2041-05-18T10:50:00",
+                "arrivalTime": "2041-05-18T12:10:00",
+                "pending:cabinClass": "Euro Traveller",
+            },
+        },
+    }
+
+
+def run_on(tmp_path: Path, eml: bytes) -> subprocess.CompletedProcess[bytes]:
+    """Run the extractor on `eml` in `tmp_path`, capturing its output."""
+    return subprocess.run(
+        [sys.executable, str(EXTRACTORS_DIR / "british-airways.py")],
+        cwd=tmp_path,
+        input=eml,
+        capture_output=True,
+        check=False,
+    )
+
+
+def test_eticket_with_unreadable_leg_fails(tmp_path):
+    # Its legs say they are the whole itinerary, so dropping one would
+    # cancel that flight.
+    eml = (CORPUS_DIR / "british-airways-eticket.eml").read_bytes()
+    eml = eml.replace(b"Arrive: 16 Jun 2024 21:25", b"Arrive: soon")
+    proc = run_on(tmp_path, eml)
+    assert proc.returncode == 1
+    assert proc.stderr.decode().splitlines()[-1] == (
+        "ValueError: BA0443: no Depart:/Arrive: lines"
+    )
+    assert list(tmp_path.iterdir()) == []
+
+
+TIME_CHANGE_CONTEXT = {
+    "@vocab": "https://schema.org/",
+    "pending": "https://pending.schema.org/",
+}
+BA = {"@type": "Airline", "iataCode": "BA", "name": "British Airways"}
+
+
+def time_change_leg(flight_number: str, departure: str, arrival: str) -> dict:
+    return {
+        "@context": TIME_CHANGE_CONTEXT,
+        "@type": "FlightReservation",
+        "reservationNumber": "TIMECH",
+        "reservationFor": {
+            "@type": "Flight",
+            "flightNumber": flight_number,
+            "airline": BA,
+            "departureAirport": {"@type": "Airport", "name": "Grand Cayman"},
+            "arrivalAirport": {
+                "@type": "Airport",
+                "name": "Heathrow",
+                "alternateName": "Terminal 5",
+            },
+            "departureTime": departure,
+            "arrivalTime": arrival,
+            "pending:cabinClass": "Traveller",
+        },
+    }
+
+
+def test_manifest_accepts_time_change_subject():
+    subject = corpus_subject("british-airways-time-change.eml")
+    assert manifest_subject_regex("british-airways").search(subject)
+
+
+def test_manifest_rejects_change_confirmation_subject():
+    regex = manifest_subject_regex("british-airways")
+    assert not regex.search("Confirmation of changes to Booking Reference:  XXXXXX")
+
+
+def test_time_change_emits_the_new_times(run_extractor):
+    # Only the changed flight is listed, so the leg doesn't claim to be
+    # the whole itinerary.
+    out = run_extractor("british-airways", "british-airways-time-change.eml")
+    assert out == {
+        "ba-TIMECH-BA0252.reservation.json": time_change_leg(
+            "252", "2041-03-19T19:30:00", "2041-03-20T11:00:00"
+        ),
+    }
+
+
+def test_time_change_to_another_flight_cancels_the_old_one(tmp_path):
+    eml = (CORPUS_DIR / "british-airways-time-change.eml").read_bytes()
+    head, _, tail = eml.rpartition(b"BA0252\nBritish Airways")
+    eml = head + b"BA0254\nBritish Airways" + tail
+    proc = run_on(tmp_path, eml)
+    assert proc.returncode == 0, proc.stderr.decode()
+    out = {child.name: json.loads(child.read_text()) for child in tmp_path.iterdir()}
+    cancelled = time_change_leg("252", "2041-03-19T20:00:00", "2041-03-20T12:05:00")
+    cancelled["reservationStatus"] = "ReservationCancelled"
+    assert out == {
+        "ba-TIMECH-BA0252.reservation.json": cancelled,
+        "ba-TIMECH-BA0254.reservation.json": time_change_leg(
+            "254", "2041-03-19T19:30:00", "2041-03-20T11:00:00"
+        ),
     }

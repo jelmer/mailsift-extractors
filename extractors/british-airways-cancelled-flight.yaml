@@ -1,0 +1,9 @@
+name: british-airways-cancelled-flight
+order: 50
+from_domains:
+  - messages.ba.com
+subject_regex: "(?i)^Your BA ?\\d{1,4} flight to .+ has been cancelled$"
+requires:
+  - html
+require_dkim:
+  - messages.ba.com

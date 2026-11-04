@@ -1,0 +1,134 @@
+Authentication-Results: example.org; dkim=pass header.d=messages.ba.com header.i=@messages.ba.com
+From: British Airways <customerservices@messages.ba.com>
+To: test@example.org
+Subject: Your BA491 flight to London Heathrow on 31 Mar 2042 has been cancelled
+Date: Mon, 31 Mar 2042 01:29:17 -0000
+Message-ID: <ba-flight-cancelled-test@messages.ba.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<body>
+<table>
+<tr><td>IMPORTANT INFORMATION ABOUT YOUR FLIGHT</td></tr>
+<tr><td>Booking Reference: CANCEL</td></tr>
+<tr><td>Dear MR USER,</td></tr>
+<tr><td><p>We're sorry that your upcoming flight to London Heathrow on Monday 31 March 2042 has been cancelled. We'll do everything we can to get you where you need to be.</p>
+<p>To help get your travel plans back on track, we've rebooked you onto the next available flight.</p></td></tr>
+<tr><td>
+<table width="47.5%">
+<tr><td>Your old flight details</td></tr>
+<tr><td>
+<table class="flight-row-container">
+<!-- Flight -->
+<tr><td>
+<table>
+<tr><td class="flight-number"><table><tr>
+<td><img src="https://example.org/flight-icon-angled-crossed.png" width="25"></td>
+<td width="70">BA491</td>
+<td>&nbsp;</td>
+</tr></table></td></tr>
+<tr><td class="flight-operator">
+British Airways
+</td></tr>
+<tr><td class="flight-cabin">
+Euro Traveller
+</td></tr>
+<tr><td class="flight-details-container">
+<table class="flight-departing-info">
+<tr>
+<td width="50%">
+<p class="departing-arrival-header">DEPARTS</p>
+<p class="departure-date">31 Mar 2042</p>
+<table><tr>
+<td width="15%"></td>
+<td class="">15:25</td>
+<td width="15%"><sup></sup></td>
+</tr></table>
+<p>Gibraltar</p>
+</td>
+<td>
+<p class="departing-arrival-header">ARRIVES</p>
+<p class="departure-date">31 Mar 2042</p>
+<table><tr>
+<td class="">17:15</td>
+<td><sup></sup></td>
+</tr></table>
+<p>London Heathrow</p>
+</td>
+<td width="1" height="150"></td>
+</tr>
+<tr>
+<td><p class="departing-arrival-header">&nbsp;</p></td>
+<td><p class="departing-arrival-header">&nbsp;</p></td>
+<td width="1"></td>
+</tr>
+</table>
+</td></tr>
+</table>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<table width="47.5%">
+<tr><td>Your new flight details</td></tr>
+<tr><td>
+<table class="flight-row-container">
+<!-- Flight -->
+<tr><td>
+<table>
+<tr><td class="flight-number"><table><tr>
+<td><img src="https://example.org/flight-icon-angled.png" width="25"></td>
+<td width="70">BA493</td>
+<td>&nbsp;</td>
+</tr></table></td></tr>
+<tr><td class="flight-operator">
+British Airways
+</td></tr>
+<tr><td class="flight-cabin">
+Euro Traveller
+</td></tr>
+<tr><td class="flight-details-container">
+<table class="flight-departing-info">
+<tr>
+<td width="50%">
+<p class="departing-arrival-header">DEPARTS</p>
+<p class="departure-date">01 Apr 2042</p>
+<table><tr>
+<td width="15%"></td>
+<td class="departure-date">11:55</td>
+<td width="15%"><!--<sup>+1</sup>--></td>
+</tr></table>
+<p>Gibraltar</p>
+</td>
+<td>
+<p class="departing-arrival-header">ARRIVES</p>
+<p class="departure-date">01 Apr 2042</p>
+<table><tr>
+<td class="">13:50</td>
+<td><sup></sup></td>
+</tr></table>
+<p>London Heathrow</p>
+</td>
+<td width="1" height="150"></td>
+</tr>
+<tr>
+<td><p class="departing-arrival-header"> &nbsp; </p></td>
+<td><p class="departing-arrival-header">Terminal 3 </p></td>
+</tr>
+<td width="1"></td>
+</table>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<!-- /End New flight details block (hidden if no re-accomm.) -->
+</td></tr>
+<tr><td><h2>Traveller names</h2></td></tr>
+<tr><td>MR TEST USER</td></tr>
+<tr><td>What do I need to do?</td></tr>
+<tr><td>Please let us know whether you'd like to travel on this flight by selecting 'accept' in Manage My Booking. You can also review other available flights here too.</td></tr>
+<tr><td>Your new flight details are saved under the same booking reference number: CANCEL.</td></tr>
+</table>
+</body>
+</html>

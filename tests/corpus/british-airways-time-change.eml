@@ -1,0 +1,60 @@
+Authentication-Results: example.org; dkim=pass header.d=email.ba.com header.i=@email.ba.com
+From: British Airways <BA.CustSvcs@email.ba.com>
+To: test@example.org
+Subject: Time change - BA0252 GCM to LHR on 19 Mar 2041 : TIMECH
+Date: Sat, 02 Feb 2041 08:16:46 +0000
+Message-ID: <ba-time-change-test@email.ba.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+[British Airways.]
+
+Flight changes
+
+
+
+Dear MR USER,     Booking reference: TIMECH
+
+
+We are sorry to advise you that there has been a change to the time of your flight BA0252 on 19 March 2041.
+
+Your old flight details
+
+Your new flight details
+
+BA0252
+British Airways | Traveller
+19 Mar 2041
+20:00
+Grand Cayman
+
+
+20 Mar 2041
+12:05
+Heathrow
+Terminal 5
+
+
+BA0252
+British Airways | Traveller
+19 Mar 2041
+19:30
+Grand Cayman
+
+
+20 Mar 2041
+11:00
+Heathrow
+Terminal 5
+
+
+
+
+Passengers
+
+MR TEST USER
+
+
+
+Next steps
+We hope you are happy to travel at the new flight time. If so, you don't need to do anything else - we have taken care of everything.
