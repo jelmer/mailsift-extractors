@@ -1,0 +1,18 @@
+Authentication-Results: example.org; dkim=pass header.d=royalmail.com header.i=@royalmail.com
+From: Royal Mail <no-reply@royalmail.com>
+To: test@example.org
+Subject: Your Royal Mail Collection - Confirmation
+Date: Fri, 16 Jan 2026 10:00:00 +0000
+Message-ID: <rm-collection-confirmation@royalmail.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi Test User</p>
+<p>Thank you for your collection request for your parcel order number CC-X000-000000000. Don't worry about printing your label, we'll bring it with us.</p>
+<p>Your collection is due:</p>
+<p>Monday 19 January 2026* between 10.15am and 1.15pm for the following item(s):</p>
+<p>OT000000002GB<br>OT000000003GB</p>
+<p>We'll collect from the following address:</p>
+<p>1 Example Street<br>London<br>N11AA</p>
+</body></html>

@@ -3,7 +3,7 @@ order: 50
 from_domains:
   - royalmail.com
   - "*.royalmail.com"
-subject_regex: "(?i)Your (Royal Mail )?parcel.*(on its way|due to be delivered|has been delivered|delivered to)"
+subject_regex: "(?i)Your (Royal Mail )?parcel.*(on its way|due to be delivered|has been delivered|delivered to)|^Your parcel has been dropped off|^Your Royal Mail Collection"
 requires:
   - html
 require_dkim:
