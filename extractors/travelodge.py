@@ -17,8 +17,12 @@ schema.org markup. After stripping tags the body is a label/value list:
 
 Times are written as `3pm` or `12 noon` rather than a 24-hour clock,
 so they're mapped rather than parsed with `strptime`. The same address
-also sends a VAT invoice and a cancellation notice under their own
-subjects; neither is a confirmation, and the manifest keeps them out.
+also sends a VAT invoice, which the manifest keeps out.
+
+"YOUR TRAVELODGE BOOKING IS CANCELLED" mails repeat the same list
+(without the postcode and total), so they emit the same reservation
+with `reservationStatus: ReservationCancelled`, which replaces the
+booked one.
 """
 
 from __future__ import annotations
@@ -33,7 +37,7 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message, strip_html
 
-CONFIRMATION_RE = re.compile(r"Confirmation number:\s*(\d+)")
+CONFIRMATION_RE = re.compile(r"Confirmation number:\s*(\d+)", re.IGNORECASE)
 HOTEL_RE = re.compile(r"^Hotel:\s*\n\s*(.+?)\s*$", re.MULTILINE)
 ROOM_RE = re.compile(r"^Staying in a:\s*\n\s*(.+?)\s*$", re.MULTILINE)
 TOTAL_RE = re.compile(
@@ -41,6 +45,9 @@ TOTAL_RE = re.compile(
 )
 POSTCODE_RE = re.compile(
     r"postcode to find our hotel:\s*([A-Z0-9 ]+?)\s*$", re.MULTILINE
+)
+CANCELLED_SUBJECT_RE = re.compile(
+    r"^Your Travelodge booking is cancell?ed$", re.IGNORECASE
 )
 CHECKIN_RE = re.compile(
     r"^Check in:\s*\n\s*(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})\s+at\s+(.+?)\s*$",
@@ -87,52 +94,61 @@ def parse_stamp(day: str, month: str, year: str, clock: str) -> datetime | None:
     return None
 
 
+def parse_stay(text: str) -> dict | None:
+    """The reservation number, hotel, times and room shared by both mails."""
+    confirmation = CONFIRMATION_RE.search(text)
+    if not confirmation:
+        return None
+    hotel_match = HOTEL_RE.search(text)
+    checkin_match = CHECKIN_RE.search(text)
+    checkout_match = CHECKOUT_RE.search(text)
+    if not hotel_match or not checkin_match or not checkout_match:
+        return None
+    checkin = parse_stamp(*checkin_match.group(1, 2, 3, 4))
+    checkout = parse_stamp(*checkout_match.group(1, 2, 3, 4))
+    if checkin is None or checkout is None:
+        return None
+
+    reservation: dict = {
+        "@context": "https://schema.org",
+        "@type": "LodgingReservation",
+        "reservationNumber": f"travelodge-{confirmation.group(1)}",
+        "checkinTime": checkin.strftime("%Y-%m-%dT%H:%M:%S"),
+        "checkoutTime": checkout.strftime("%Y-%m-%dT%H:%M:%S"),
+        "reservationFor": {
+            "@type": "LodgingBusiness",
+            "name": f"Travelodge {hotel_match.group(1)}",
+        },
+    }
+    room_match = ROOM_RE.search(text)
+    if room_match:
+        reservation["accommodationCategory"] = room_match.group(1)
+    return reservation
+
+
 def main() -> int:
     mail = read_message()
     if not mail.html:
         return 0
 
     text = strip_html(mail.html, block_tags=True)
+    reservation = parse_stay(text)
 
-    confirmation = CONFIRMATION_RE.search(text)
-    if not confirmation:
-        return 0
-    reference = confirmation.group(1)
-
-    hotel_match = HOTEL_RE.search(text)
-    if not hotel_match:
-        return 0
-    hotel = hotel_match.group(1)
-
-    checkin_match = CHECKIN_RE.search(text)
-    checkout_match = CHECKOUT_RE.search(text)
-    if not checkin_match or not checkout_match:
+    if CANCELLED_SUBJECT_RE.match((mail.subject or "").strip()):
+        if reservation is None:
+            raise ValueError("cancellation lacks the booking number, hotel or dates")
+        reservation["reservationStatus"] = "ReservationCancelled"
+        Path(f"{reservation['reservationNumber']}.reservation.json").write_text(
+            json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
+        )
         return 0
 
-    checkin = parse_stamp(*checkin_match.group(1, 2, 3, 4))
-    checkout = parse_stamp(*checkout_match.group(1, 2, 3, 4))
-    if checkin is None or checkout is None:
+    if reservation is None:
         return 0
-
-    reservation: dict = {
-        "@context": "https://schema.org",
-        "@type": "LodgingReservation",
-        "reservationNumber": f"travelodge-{reference}",
-        "checkinTime": checkin.strftime("%Y-%m-%dT%H:%M:%S"),
-        "checkoutTime": checkout.strftime("%Y-%m-%dT%H:%M:%S"),
-        "reservationFor": {
-            "@type": "LodgingBusiness",
-            "name": f"Travelodge {hotel}",
-        },
-    }
 
     postcode_match = POSTCODE_RE.search(text)
     if postcode_match:
         reservation["reservationFor"]["address"] = postcode_match.group(1).strip()
-
-    room_match = ROOM_RE.search(text)
-    if room_match:
-        reservation["accommodationCategory"] = room_match.group(1)
 
     total_match = TOTAL_RE.search(text)
     if total_match:
@@ -142,7 +158,7 @@ def main() -> int:
             "priceCurrency": "GBP",
         }
 
-    Path(f"travelodge-{reference}.reservation.json").write_text(
+    Path(f"{reservation['reservationNumber']}.reservation.json").write_text(
         json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
     )
     return 0
