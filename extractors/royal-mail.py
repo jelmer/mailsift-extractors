@@ -72,6 +72,14 @@ def parse_clock(s: str) -> tuple[int, int]:
     return hour, minute
 
 
+# `Your Royal Mail parcel from <sender> is on its way`, `Your parcel
+# from <sender> has been delivered. How did we do?`
+SENDER_RE = re.compile(
+    r"^Your (?:Royal Mail )?parcel from (?P<sender>.+?) (?:is|has|will)\b",
+    re.IGNORECASE,
+)
+
+
 def status_from_subject(subject: str) -> str | None:
     s = subject.lower()
     # Check "due to be delivered today" before any "delivered ..." match -
@@ -114,6 +122,12 @@ def main() -> int:
     }
     if status:
         parcel["deliveryStatus"] = status
+    sender_m = SENDER_RE.match(mail.subject.strip())
+    if sender_m:
+        parcel["merchant"] = {
+            "@type": "Organization",
+            "name": sender_m.group("sender").strip(),
+        }
 
     # If this is the "out for delivery today" mail, pull the window and
     # add it to the parcel record and also emit a calendar event.
