@@ -5,6 +5,8 @@ from __future__ import annotations
 import email
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +43,7 @@ def test_eticket_emits_one_reservation_per_segment(run_extractor):
         },
         "@type": "FlightReservation",
         "reservationNumber": "BBBBBB",
+        "mailsift:itineraryComplete": True,
         "reservationFor": {
             "@type": "Flight",
             "flightNumber": "440",
@@ -89,6 +92,7 @@ def test_legacy_eticket_format_still_extracts(run_extractor):
     }
     outbound = out["ba-LEGACY-BA2762.reservation.json"]
     assert outbound["reservationNumber"] == "LEGACY"
+    assert outbound["mailsift:itineraryComplete"] is True
     for_ = outbound["reservationFor"]
     assert for_["flightNumber"] == "2762"
     assert for_["pending:cabinClass"] == "Euro Traveller"
@@ -123,6 +127,7 @@ def test_columnar_eticket_format_extracts(run_extractor):
         "ba-COLUMN-BA0443.reservation.json",
     }
     outbound = out["ba-COLUMN-BA0444.reservation.json"]
+    assert outbound["mailsift:itineraryComplete"] is True
     for_ = outbound["reservationFor"]
     assert for_["flightNumber"] == "444"
     assert for_["departureAirport"] == {
@@ -158,6 +163,7 @@ def test_unsigned_2015_mail_extracts(run_extractor):
             "@context": context,
             "@type": "FlightReservation",
             "reservationNumber": "YOURTK",
+            "mailsift:itineraryComplete": True,
             "reservationFor": {
                 "@type": "Flight",
                 "flightNumber": "632",
@@ -179,6 +185,7 @@ def test_unsigned_2015_mail_extracts(run_extractor):
             "@context": context,
             "@type": "FlightReservation",
             "reservationNumber": "YOURTK",
+            "mailsift:itineraryComplete": True,
             "reservationFor": {
                 "@type": "Flight",
                 "flightNumber": "633",
@@ -212,6 +219,7 @@ def test_eticket_keeps_legs_operated_by_others(run_extractor):
             "@context": context,
             "@type": "FlightReservation",
             "reservationNumber": "CODESH",
+            "mailsift:itineraryComplete": True,
             "reservationFor": {
                 "@type": "Flight",
                 "flightNumber": "7287",
@@ -236,6 +244,7 @@ def test_eticket_keeps_legs_operated_by_others(run_extractor):
             "@context": context,
             "@type": "FlightReservation",
             "reservationNumber": "CODESH",
+            "mailsift:itineraryComplete": True,
             "reservationFor": {
                 "@type": "Flight",
                 "flightNumber": "2825",
@@ -257,3 +266,22 @@ def test_eticket_keeps_legs_operated_by_others(run_extractor):
             },
         },
     }
+
+
+def test_eticket_with_unreadable_leg_fails(tmp_path):
+    # Its legs say they are the whole itinerary, so dropping one would
+    # cancel that flight.
+    eml = (CORPUS_DIR / "british-airways-eticket.eml").read_bytes()
+    eml = eml.replace(b"Arrive: 16 Jun 2024 21:25", b"Arrive: soon")
+    proc = subprocess.run(
+        [sys.executable, str(EXTRACTORS_DIR / "british-airways.py")],
+        cwd=tmp_path,
+        input=eml,
+        capture_output=True,
+        check=False,
+    )
+    assert proc.returncode == 1
+    assert proc.stderr.decode().splitlines()[-1] == (
+        "ValueError: BA0443: no Depart:/Arrive: lines"
+    )
+    assert list(tmp_path.iterdir()) == []

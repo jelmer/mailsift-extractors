@@ -33,9 +33,10 @@ Legacy format (per segment, ~2013):
     Booking status:      Confirmed
 
 Each `BAnnnn` segment becomes one `FlightReservation` sharing the
-booking reference. Subsequent updates (delay, cancellation) sent by
-other BA addresses would land on a different extractor; here we only
-process the one-shot e-ticket receipt.
+booking reference. A receipt is sent when the booking is ticketed or
+reissued, and its itinerary lists every flight on the booking, so its
+legs carry `mailsift:itineraryComplete`: a reissue after a change then
+cancels the flights the booking no longer has.
 
 "BA confirmation of cancellation and refund: Ref.<ref>" mails only
 give the booking reference, not the flights, so they can't reproduce
@@ -105,11 +106,8 @@ _DATE_RE = re.compile(r"^\d{1,2}\s+[A-Za-z]{3}\s+\d{4}\s*$")
 _TIME_RE = re.compile(r"^\d{1,2}:\d{2}\s*$")
 
 
-def parse_naive_dt(date_str: str, time_str: str) -> datetime | None:
-    try:
-        return datetime.strptime(f"{date_str} {time_str}", "%d %b %Y %H:%M")
-    except ValueError:
-        return None
+def parse_naive_dt(date_str: str, time_str: str) -> datetime:
+    return datetime.strptime(f"{date_str} {time_str}", "%d %b %Y %H:%M")
 
 
 def airport_from_phrase(phrase: str) -> dict:
@@ -164,11 +162,9 @@ def parse_modern_segments(text: str) -> list[tuple]:
         dep_match = DEPART_RE.search(block)
         arr_match = ARRIVE_RE.search(block)
         if not dep_match or not arr_match:
-            continue
+            raise ValueError(f"{flight_no}: no Depart:/Arrive: lines")
         dep_dt = parse_naive_dt(dep_match.group(1), dep_match.group(2))
         arr_dt = parse_naive_dt(arr_match.group(1), arr_match.group(2))
-        if dep_dt is None or arr_dt is None:
-            continue
         out.append(
             (flight_no, dep_dt, arr_dt, dep_match.group(3), arr_match.group(3), cabin)
         )
@@ -236,11 +232,9 @@ def parse_columnar_segments(text: str) -> list[tuple]:
             legs.append((date_str, time_str, place))
             i += consumed
         if len(legs) < 2:
-            continue
+            raise ValueError(f"{flight_no}: no departure and arrival")
         dep_dt = parse_naive_dt(legs[0][0], legs[0][1])
         arr_dt = parse_naive_dt(legs[1][0], legs[1][1])
-        if dep_dt is None or arr_dt is None:
-            continue
         out.append((flight_no, dep_dt, arr_dt, legs[0][2], legs[1][2], cabin))
     return out
 
@@ -269,21 +263,57 @@ def parse_legacy_segments(text: str) -> list[tuple]:
         dep_m = LEGACY_DEPART_RE.search(block)
         arr_m = LEGACY_ARRIVE_RE.search(block)
         if not (from_m and to_m and dep_m and arr_m):
-            continue
+            raise ValueError(f"{flight_no}: no From:/To:/Depart:/Arrive: lines")
         dep_dt = parse_naive_dt(dep_m.group(1), dep_m.group(2))
         arr_dt = parse_naive_dt(arr_m.group(1), arr_m.group(2))
-        if dep_dt is None or arr_dt is None:
-            continue
         cabin_m = LEGACY_CABIN_RE.search(block)
         cabin = cabin_m.group(1).strip() if cabin_m else None
         out.append((flight_no, dep_dt, arr_dt, from_m.group(1), to_m.group(1), cabin))
     return out
 
 
+def reservation_for(booking_code: str, segment: tuple) -> dict:
+    """Turn a parsed segment into a `FlightReservation`."""
+    flight_no, dep_dt, arr_dt, dep_phrase, arr_phrase, cabin = segment
+    flight: dict = {
+        "@type": "Flight",
+        "flightNumber": flight_no[2:].lstrip("0") or "0",
+        "airline": {
+            "@type": "Airline",
+            "iataCode": "BA",
+            "name": "British Airways",
+        },
+        "departureAirport": airport_from_phrase(dep_phrase),
+        "arrivalAirport": airport_from_phrase(arr_phrase),
+        "departureTime": dep_dt.strftime("%Y-%m-%dT%H:%M:%S"),
+        "arrivalTime": arr_dt.strftime("%Y-%m-%dT%H:%M:%S"),
+    }
+    if cabin:
+        flight["pending:cabinClass"] = cabin
+        context: str | dict = {
+            "@vocab": "https://schema.org/",
+            "pending": "https://pending.schema.org/",
+        }
+    else:
+        context = "https://schema.org"
+    return {
+        "@context": context,
+        "@type": "FlightReservation",
+        "reservationNumber": booking_code,
+        "reservationFor": flight,
+    }
+
+
+def write_reservation(booking_code: str, flight_no: str, reservation: dict) -> None:
+    Path(f"ba-{booking_code}-{flight_no}.reservation.json").write_text(
+        json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
+    )
+
+
 def extract(mail) -> int:
     """Walk `mail`'s itinerary and emit one reservation per flight."""
     if not mail.text:
-        return 0
+        raise ValueError("e-ticket receipt without a text part")
     # The 2015 text parts carry HTML references (`(London)&nbsp;- Terminal
     # 5`), so decode them; the resulting non-breaking space becomes an
     # ordinary one for the ` - ` split.
@@ -291,7 +321,7 @@ def extract(mail) -> int:
 
     booking_match = BOOKING_RE.search(text)
     if not booking_match:
-        return 0
+        raise ValueError("e-ticket receipt without a booking reference")
     booking_code = booking_match.group(1)
 
     segments = (
@@ -300,40 +330,13 @@ def extract(mail) -> int:
         or parse_legacy_segments(text)
     )
     if not segments:
-        return 0
+        raise ValueError(f"{booking_code}: no flights in the itinerary")
 
-    for flight_no, dep_dt, arr_dt, dep_phrase, arr_phrase, cabin in segments:
-        flight: dict = {
-            "@type": "Flight",
-            "flightNumber": flight_no[2:].lstrip("0") or "0",
-            "airline": {
-                "@type": "Airline",
-                "iataCode": "BA",
-                "name": "British Airways",
-            },
-            "departureAirport": airport_from_phrase(dep_phrase),
-            "arrivalAirport": airport_from_phrase(arr_phrase),
-            "departureTime": dep_dt.strftime("%Y-%m-%dT%H:%M:%S"),
-            "arrivalTime": arr_dt.strftime("%Y-%m-%dT%H:%M:%S"),
-        }
-        if cabin:
-            flight["pending:cabinClass"] = cabin
-            context: str | dict = {
-                "@vocab": "https://schema.org/",
-                "pending": "https://pending.schema.org/",
-            }
-        else:
-            context = "https://schema.org"
-
-        reservation: dict = {
-            "@context": context,
-            "@type": "FlightReservation",
-            "reservationNumber": booking_code,
-            "reservationFor": flight,
-        }
-        Path(f"ba-{booking_code}-{flight_no}.reservation.json").write_text(
-            json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
-        )
+    for segment in segments:
+        reservation = reservation_for(booking_code, segment)
+        # The receipt's itinerary lists every flight on the booking.
+        reservation["mailsift:itineraryComplete"] = True
+        write_reservation(booking_code, segment[0], reservation)
     return 0
 
 
