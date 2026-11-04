@@ -39,4 +39,13 @@ def test_expecting_parcel_with_curly_apostrophe(run_extractor):
 
 
 def test_dropped_off_parcel_is_outgoing(run_extractor):
-    assert run_extractor("evri", "evri-dropped-off.eml") == {}
+    assert run_extractor("evri", "evri-dropped-off.eml") == {
+        "evri-H05QTA0000000003.parcel.json": {
+            "@context": "https://schema.org",
+            "@type": "ParcelDelivery",
+            "trackingNumber": "H05QTA0000000003",
+            "provider": {"@type": "Organization", "@id": "evri", "name": "Evri"},
+            "deliveryStatus": "OnItsWay",
+            "mailsift:direction": "outgoing",
+        }
+    }

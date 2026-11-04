@@ -145,7 +145,10 @@ truth; the required-field summary:
   a `reservationNumber` so dedup works.
 - `.receipt.json` needs at least a merchant name and an `orderNumber`
   (or `identifier`).
-- `.parcel.json` needs a `trackingNumber`.
+- `.parcel.json` needs a `trackingNumber`. For a parcel you are
+  sending rather than receiving, add `"mailsift:direction": "outgoing"`
+  and put the recipient in `deliveryAddress`; see "Outgoing parcels" in
+  `extractors/README.md`.
 - `.bill.json` needs `payee`, `amount`, `dueDate`, `invoiceNumber`.
 - `.ticket.<ext>` is an opaque blob; pair it with a
   `.reservation.json` in the same run so the meta sidecar can link the

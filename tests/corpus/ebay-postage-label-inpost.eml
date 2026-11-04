@@ -1,0 +1,19 @@
+Authentication-Results: example.org; dkim=pass header.d=ebay.co.uk header.i=@ebay.co.uk
+From: eBay <ebay@ebay.co.uk>
+To: test@example.org
+Subject: Your postage label is ready
+Date: Wed, 8 Jul 2026 08:37:31 -0700
+Message-ID: <ebay-postage-label-inpost@ebay.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<table>
+<tr><td>Your postage label is ready</td></tr>
+<tr><td><p>Post to</p><p>Example Buyer</p><p>Exampleton, EX2 2BB</p></td></tr>
+<tr><td><p>Service</p><p>Standard tracked delivery via InPost (including Yodel) | Drop-off</p></td></tr>
+<tr><td><p>Tracking</p><p>JJD0000000000000000006</p></td></tr>
+<tr><td>Example Smart Plug</td></tr>
+<tr><td><p>Order number</p><p>00-00000-00001</p></td></tr>
+</table>
+</body></html>

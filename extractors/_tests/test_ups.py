@@ -53,5 +53,22 @@ def test_quantum_view_delivery_notification(run_extractor):
     assert "merchant" not in parcel
 
 
-def test_label_for_a_parcel_being_sent_is_skipped(run_extractor):
-    assert run_extractor("ups", "ups-label-delivery.eml") == {}
+def test_label_for_a_parcel_being_sent_is_outgoing(run_extractor):
+    assert run_extractor("ups", "ups-label-delivery.eml") == {
+        "ups-1Z0000000000000004.parcel.json": {
+            "@context": "https://schema.org",
+            "@type": "ParcelDelivery",
+            "trackingNumber": "1Z0000000000000004",
+            "provider": {"@type": "Organization", "@id": "ups", "name": "UPS"},
+            "deliveryStatus": "Scheduled",
+            "mailsift:direction": "outgoing",
+            "deliveryAddress": {
+                "@type": "PostalAddress",
+                "name": "EXAMPLE RETURNS CENTRE",
+            },
+        }
+    }
+
+
+def test_collection_request_without_tracking_number_is_skipped(run_extractor):
+    assert run_extractor("ups", "ups-collection-request.eml") == {}

@@ -13,6 +13,15 @@ Each mail carries the 13-character tracking number ([A-Z]{2}\\d{9,11}[A-Z]{2})
 near the bottom. The "due to be delivered today" mail additionally has a
 human-readable date and time window in the body.
 
+Parcels you send produce two more kinds of mail, both filed as
+outgoing (`mailsift:direction`):
+
+- "Your parcel has been dropped off at a parcel locker" -> in transit
+- "Your Royal Mail Collection - Confirmation" -> scheduled, and
+  "... - Update" -> collected (in transit) or a failed collection
+  (problem). These list every item in the collection, so one mail can
+  produce several parcels.
+
 Emits a `.parcel.json` for every status update, so the parcels target
 can merge them into a single record per tracking number. When a time
 window is present, it rides on the same file - a parcel isn't a
@@ -96,12 +105,62 @@ def status_from_subject(subject: str) -> str | None:
     return None
 
 
+DROPPED_OFF_RE = re.compile(r"^Your parcel has been dropped off\b", re.IGNORECASE)
+COLLECTION_RE = re.compile(r"^Your Royal Mail Collection\b", re.IGNORECASE)
+# Body phrases of the collection mails, with the status each implies.
+COLLECTION_STATUSES = [
+    ("thank you for your collection request", "Scheduled"),
+    ("successfully completed your collection", "OnItsWay"),
+    ("unable to fulfil your collection", "OrderProblem"),
+]
+
+
+def collection_status(text: str) -> str | None:
+    low = text.lower()
+    for phrase, status in COLLECTION_STATUSES:
+        if phrase in low:
+            return status
+    return None
+
+
+def write_outgoing(tracking: str, status: str | None) -> None:
+    parcel: dict = {
+        "@context": "https://schema.org",
+        "@type": "ParcelDelivery",
+        "trackingNumber": tracking,
+        "provider": {
+            "@type": "Organization",
+            "@id": "royal-mail",
+            "name": "Royal Mail",
+        },
+    }
+    if status:
+        parcel["deliveryStatus"] = status
+    parcel["mailsift:direction"] = "outgoing"
+    Path(f"royalmail-{tracking}.parcel.json").write_text(
+        json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
+    )
+
+
 def main() -> int:
     mail = read_message()
     if not mail.html or not mail.subject:
         return 0
 
     text = strip_html(mail.html, spaced=True)
+
+    subject = mail.subject.strip()
+    if COLLECTION_RE.match(subject):
+        status = collection_status(text)
+        # dict.fromkeys drops repeats but keeps the order.
+        for tracking in dict.fromkeys(TRACKING_RE.findall(text)):
+            write_outgoing(tracking, status)
+        return 0
+    if DROPPED_OFF_RE.match(subject):
+        dropped_m = TRACKING_RE.search(text)
+        if dropped_m:
+            write_outgoing(dropped_m.group(1), "OnItsWay")
+        return 0
 
     tracking_match = TRACKING_RE.search(text)
     if not tracking_match:

@@ -1,0 +1,20 @@
+Authentication-Results: example.org; dkim=pass header.d=ups.com header.i=@ups.com
+From: "UPS On Call Collection" <pkginfo@ups.com>
+To: test@example.org
+Subject: UPS Collection Request Scheduled
+Date: Tue, 11 Oct 2022 10:00:00 +0000
+Message-ID: <ups-collection-request@ups.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Your collection request has been received.</p>
+<p>Collection Request Number</p>
+<p>00X0X0X0XXX</p>
+<p>Collection Date</p>
+<p>Wednesday, October 12, 2022</p>
+<p>Collection Address:</p>
+<p>Test User<br>1 Example Street<br>London, N1 1AA</p>
+<p>Services Selected:</p>
+<p>UPS Express Saver</p>
+</body></html>

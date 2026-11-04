@@ -1,0 +1,9 @@
+name: inpost
+order: 50
+from_domains:
+  - inpost.co.uk
+subject_regex: "(?i)^(?:Your QR code is ready|Your parcel is locker-ed up|Your parcel is heading their way|It.s ready for them to collect|It.s been collected)"
+requires:
+  - html
+require_dkim:
+  - inpost.co.uk

@@ -19,7 +19,11 @@ from the subject ("We've got your <merchant> parcel", "Your <merchant>
 parcel is out for delivery", ...).
 
 "Thanks for dropping off your parcel" confirms a parcel you are
-sending, not one coming to you, so it is left alone.
+sending, not one coming to you. It is filed as an outgoing parcel
+(`mailsift:direction`), handed over to Evri and so on its way. The
+mail names neither the recipient nor a merchant: the "<X> parcel" in
+its body is the service the label was bought through ("eBay Simple
+Delivery").
 """
 
 from __future__ import annotations
@@ -83,8 +87,9 @@ def status_and_merchant(subject: str) -> tuple[str | None, str | None]:
 
 def main() -> int:
     mail = read_message()
-    if not mail.subject or OUTGOING_RE.match(mail.subject):
+    if not mail.subject:
         return 0
+    outgoing = OUTGOING_RE.match(mail.subject) is not None
     if mail.html:
         text = strip_html(mail.html, spaced=True)
     elif mail.text:
@@ -104,7 +109,12 @@ def main() -> int:
     else:
         return 0
 
-    status, merchant = status_and_merchant(mail.subject)
+    status: str | None
+    merchant: str | None
+    if outgoing:
+        status, merchant = "OnItsWay", None
+    else:
+        status, merchant = status_and_merchant(mail.subject)
 
     parcel = {
         "@context": "https://schema.org",
@@ -116,6 +126,8 @@ def main() -> int:
         parcel["deliveryStatus"] = status
     if merchant:
         parcel["merchant"] = {"@type": "Organization", "name": merchant}
+    if outgoing:
+        parcel["mailsift:direction"] = "outgoing"
 
     Path(f"evri-{tracking}.parcel.json").write_text(
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"

@@ -1,0 +1,18 @@
+Authentication-Results: example.org; dkim=pass header.d=royalmail.com header.i=@royalmail.com
+From: Royal Mail <no-reply@royalmail.com>
+To: test@example.org
+Subject: =?UTF-8?Q?Your_parcel_has_been_dropped_off_at_a_parcel_locker_=E2=80=93_How_did_we_do=3F?=
+Date: Tue, 29 Sep 2026 20:20:00 +0000
+Message-ID: <rm-dropped-off@royalmail.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi,</p>
+<p>Your parcel OM000000001GB has been dropped off at our Royal Mail Parcel Locker today, Tuesday, 29 September 2026 at 9.17pm.</p>
+<p>Your parcel was dropped off at:</p>
+<p>Example Lockers [N1 1AA]<br>1 Example Street<br>LONDON</p>
+<p>Want to track your parcel?</p>
+<p>OM000000001GB</p>
+<p>Track Parcel</p>
+</body></html>

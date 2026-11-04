@@ -1,0 +1,19 @@
+Authentication-Results: example.org; dkim=pass header.d=royalmail.com header.i=@royalmail.com
+From: Royal Mail <no-reply@royalmail.com>
+To: test@example.org
+Subject: =?UTF-8?Q?Your_Royal_Mail_Collection_=E2=80=93_Update._How_did_we_do=3F?=
+Date: Tue, 30 Sep 2025 11:30:00 +0000
+Message-ID: <rm-collection-completed@royalmail.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi Test User</p>
+<p>We've successfully completed your collection request, order number CC-X000-000000001.</p>
+<p>We collected the following item(s) from</p>
+<p>1 Example Street<br>London<br>N11AA</p>
+<p>OS000000004GB</p>
+<p>We collected on:</p>
+<p>Tuesday 30 September 2025 at 11.11am .</p>
+<p>Track your parcel</p>
+</body></html>
