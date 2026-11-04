@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""British Airways e-ticket receipts.
+"""British Airways e-ticket receipts and time changes.
 
 BA's e-ticket mail (BA.e-ticket@email.ba.com) carries a clean
 plain-text itinerary. We don't try to extract from HTML, which is
@@ -38,6 +38,16 @@ reissued, and its itinerary lists every flight on the booking, so its
 legs carry `mailsift:itineraryComplete`: a reissue after a change then
 cancels the flights the booking no longer has.
 
+"Time change - BAnnnn <from> to <to> on <date> : <ref>" mails show
+the changed flight before and after the change, in the columnar
+layout. Only that flight is listed, so its leg replaces the old one
+but doesn't carry `mailsift:itineraryComplete`; if the flight number
+changed too, the old flight is emitted as cancelled.
+
+"Confirmation of changes to Booking Reference: <ref>" mails don't
+list any flights: they confirm seat requests, passport details,
+membership numbers or contact details. They aren't handled.
+
 "BA confirmation of cancellation and refund: Ref.<ref>" mails only
 give the booking reference, not the flights, so they can't reproduce
 the per-flight reservations and aren't handled. "Your BA491 flight
@@ -63,6 +73,7 @@ BOOKING_RE = re.compile(
     r"(?:British Airways )?booking reference(?: is)?:?\s*([A-Z0-9]{5,8})",
     re.IGNORECASE,
 )
+TIME_CHANGE_SUBJECT_RE = re.compile(r"^Time change - BA\d{2,4} ", re.IGNORECASE)
 # Modern format: `BAnnnn: <operating airline> | <cabin> | ...` header
 # line, then `Depart:`/`Arrive:` lines with `date time - place`. The
 # operator is `British Airways`, `BA Euroflyer` or, on a codeshare,
@@ -310,10 +321,32 @@ def write_reservation(booking_code: str, flight_no: str, reservation: dict) -> N
     )
 
 
+def extract_time_change(text: str, booking_code: str) -> int:
+    """Emit the flight a time change moved.
+
+    The mail only shows the one flight, so its leg doesn't carry
+    `mailsift:itineraryComplete`.
+    """
+    old_pos = text.find("Your old flight details")
+    new_pos = text.find("Your new flight details")
+    if old_pos < 0 or new_pos < old_pos:
+        raise ValueError(f"{booking_code}: no old and new flight details")
+    segments = parse_columnar_segments(text[new_pos:])
+    if len(segments) != 2:
+        raise ValueError(f"{booking_code}: {len(segments)} flights, expected 2")
+    old, new = segments
+    if old[0] != new[0]:
+        cancelled = reservation_for(booking_code, old)
+        cancelled["reservationStatus"] = "ReservationCancelled"
+        write_reservation(booking_code, old[0], cancelled)
+    write_reservation(booking_code, new[0], reservation_for(booking_code, new))
+    return 0
+
+
 def extract(mail) -> int:
     """Walk `mail`'s itinerary and emit one reservation per flight."""
     if not mail.text:
-        raise ValueError("e-ticket receipt without a text part")
+        raise ValueError("no text part")
     # The 2015 text parts carry HTML references (`(London)&nbsp;- Terminal
     # 5`), so decode them; the resulting non-breaking space becomes an
     # ordinary one for the ` - ` split.
@@ -321,8 +354,11 @@ def extract(mail) -> int:
 
     booking_match = BOOKING_RE.search(text)
     if not booking_match:
-        raise ValueError("e-ticket receipt without a booking reference")
+        raise ValueError("no booking reference")
     booking_code = booking_match.group(1)
+
+    if TIME_CHANGE_SUBJECT_RE.match(mail.subject or ""):
+        return extract_time_change(text, booking_code)
 
     segments = (
         parse_modern_segments(text)
