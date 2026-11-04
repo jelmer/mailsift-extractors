@@ -1,0 +1,11 @@
+name: ebay-postage-label
+order: 50
+from_domains:
+  - ebay.co.uk
+  - ebay.com
+subject_regex: "(?i)^Your postage label is ready"
+requires:
+  - html
+require_dkim:
+  - ebay.co.uk
+  - ebay.com

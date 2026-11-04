@@ -1,0 +1,33 @@
+Authentication-Results: example.org; dkim=pass header.d=ebay.co.uk header.i=@ebay.co.uk
+From: eBay <ebay@ebay.co.uk>
+To: test@example.org
+Subject: Your postage label is ready
+Date: Mon, 2 Nov 2026 07:08:44 -0700
+Message-ID: <ebay-postage-label@ebay.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<table>
+<tr><td>Your postage label is ready</td></tr>
+<tr><td>Dispatch by Tue, 3 Nov</td></tr>
+<tr><td>Hi Test,</td></tr>
+<tr><td>Your buyer has paid &ndash; time to dispatch!</td></tr>
+<tr><td>Drop it off</td></tr>
+<tr><td>After you drop off the package, tracking updates will be shared with the buyer.</td></tr>
+<tr><td>Order details</td></tr>
+<tr><td>Order in this package</td></tr>
+<tr><td><p>Post to</p><p>Example Buyer</p><p>Exampleton, EX1 1AA</p></td></tr>
+<tr><td><p>Package size</p><p>Up to 2 kg with maximum dimensions of 45 x 35 x 16 cm.</p></td></tr>
+<tr><td><p>Service</p><p>Standard tracked delivery via Royal Mail | Drop-off</p></td></tr>
+<tr><td><p>Tracking</p><p>VU000000005GB</p></td></tr>
+<tr><td><a href="https://www.ebay.co.uk/itm/000000000000">Example Thermostat</a></td></tr>
+<tr><td><p>Order number</p><p>00-00000-00000</p></td></tr>
+<tr><td><p>Item number</p><p>000000000000</p></td></tr>
+<tr><td><p>Buyer</p><p>examplebuyer</p></td></tr>
+<tr><td><p>Qty</p><p>1</p></td></tr>
+<tr><td>Order total:</td></tr>
+<tr><td>Standard tracked delivery via Royal Mail | Drop-off</td></tr>
+<tr><td>Prepaid by buyer</td></tr>
+</table>
+</body></html>
