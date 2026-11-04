@@ -30,8 +30,16 @@ number them (`Return (1/2)`). The date line is either
 has no year, so it's grounded on the mail's own date. The `(local
 time)` annotations are optional.
 
-We emit one TrainReservation per leg, UID-keyed on
-`<reference>-<index>` so a reissue overwrites in place.
+We emit one TrainReservation per leg, numbered
+`eurostar-<reference>-<direction>` like the confirmations the
+`eurostar` extractor reads, and told apart by train number, so a
+reissue overwrites in place.
+
+A ticket mail lists every leg of the booking, even the ones already
+travelled or left alone by an exchange, so each leg carries
+`mailsift:itineraryComplete` and mailsift cancels the legs it replaces.
+Since 2026 this is the only mail about an exchange that names the new
+trains.
 """
 
 from __future__ import annotations
@@ -196,7 +204,12 @@ def main() -> int:
     if reference is None:
         return 0
 
-    headers = [i for i, line in enumerate(lines) if LEG_HEADER_RE.match(line)]
+    directions = {
+        i: m.group(1).lower()
+        for i, line in enumerate(lines)
+        if (m := LEG_HEADER_RE.match(line))
+    }
+    headers = list(directions)
     if not headers:
         return 0
 
@@ -208,15 +221,24 @@ def main() -> int:
     for index in range(len(headers)):
         leg = parse_leg(lines, bounds[index], bounds[index + 1], reference_date)
         if leg is not None:
+            leg["direction"] = directions[headers[index]]
             legs.append(leg)
     if not legs:
         return 0
 
-    for index, leg in enumerate(legs, start=1):
+    slugs = set()
+    for leg in legs:
+        number = f"eurostar-{reference}-{leg['direction']}"
+        slug = f"{number}-{leg['train']}" if leg.get("train") else number
+        # Legs of one direction are told apart by their train number.
+        if slug in slugs:
+            raise ValueError(f"booking {reference} has two legs that are {slug}")
+        slugs.add(slug)
         reservation: dict = {
             "@context": "https://schema.org",
             "@type": "TrainReservation",
-            "reservationNumber": f"{reference}-{index}",
+            "reservationNumber": number,
+            "mailsift:itineraryComplete": True,
             "reservationFor": {
                 "@type": "TrainTrip",
                 "provider": {"@type": "Organization", "name": "Eurostar"},
@@ -242,7 +264,7 @@ def main() -> int:
                 "@type": "Ticket",
                 "ticketedSeat": seat,
             }
-        Path(f"eurostar-{reference.lower()}-{index}.reservation.json").write_text(
+        Path(f"{slug}.reservation.json").write_text(
             json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
         )
 

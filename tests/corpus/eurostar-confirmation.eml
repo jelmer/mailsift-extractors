@@ -1,22 +1,10 @@
 Authentication-Results: example.org; dkim=pass header.d=eurostar.com header.i=@eurostar.com
 From: Eurostar <noreply@eurostar.com>
 To: test@example.org
-Subject: Booking confirmation | Wednesday, 10 June 2026 - Reference: EEEEEE
-Date: Fri, 30 Jan 2026 10:04:03 +0000
+Subject: Booking confirmation | Wednesday, 13 June 2046 - Reference: EEEEEE
+Date: Wed, 02 May 2046 10:04:03 +0000
 Message-ID: <eurostar-test@eurostar.com>
 MIME-Version: 1.0
 Content-Type: text/html; charset="utf-8"
 
-<html><body>
-<p>Booking reference: EEEEEE</p>
-<table>
-<tr><td>Outbound Eurostar Standard Wednesday, 10 June 2026</td></tr>
-<tr><td>London St Pancras Int'l Rotterdam Centraal 18:04 22:32 3 hrs 28 mins Direct</td></tr>
-<tr><td>Test User Coach 5 - Seat 17</td></tr>
-</table>
-<table>
-<tr><td>Return Eurostar Standard Monday, 22 June 2026</td></tr>
-<tr><td>Rotterdam Centraal London St Pancras Int'l 19:28 21:57 3 hrs 29 mins Direct</td></tr>
-<tr><td>Test User Coach 10 - Seat 55</td></tr>
-</table>
-</body></html>
+<html><body><table><tr><td><div>Booking confirmation | Wednesday, 13 June 2046 - Reference: EEEEEE</div></td></tr><tr><td><div>Good news, you're all booked</div><div>Dear Test User,</div><div><a href="https://www.eurostar.com/">View your booking online</a></div></td></tr><tr><td><div>Booking reference: EEEEEE</div></td></tr><tr><td><div>Outbound</div></td><td><p>Eurostar Standard</p></td></tr><tr><td><div>Wednesday, 13 June 2046</div></td></tr><tr><td><div>London St Pancras Int'l</div><div>Rotterdam Centraal</div></td><td><div>18:04</div><div>22:32</div></td></tr><tr><td><div>3 hrs 28 mins Direct</div></td></tr><tr><td><div>Test User</div><div>Coach 5 - Seat 17</div><div><a href="https://www.eurostar.com/">View / change seats</a></div></td></tr><tr><td><div>Return</div></td><td><p>Eurostar Plus</p></td></tr><tr><td><div>Sunday, 24 June 2046</div></td></tr><tr><td><div>Rotterdam Centraal</div><div>London St Pancras Int'l</div></td><td><div>19:28</div><div>21:57</div></td></tr><tr><td><div>3 hrs 29 mins Direct</div></td></tr><tr><td><div>Test User</div><div>Coach 10 - Seat 55</div><div><a href="https://www.eurostar.com/">View / change seats</a></div></td></tr><tr><td><div>Plans changed?</div><div>Total paid</div><div>100.00&euro;</div></td></tr></table></body></html>

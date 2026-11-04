@@ -1,0 +1,10 @@
+Authentication-Results: example.org; dkim=pass header.d=eurostar.com header.i=@eurostar.com
+From: Eurostar <noreply@eurostar.com>
+To: test@example.org
+Subject: Your exchange confirmation | Tuesday, 14 November 2045 - Reference: GGGGGG
+Date: Mon, 30 Oct 2045 12:54:28 +0000
+Message-ID: <eurostar-exchange-test@eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><table><tr><td><div>Your exchange confirmation | Reference: GGGGGG</div></td></tr><tr><td><div>Your journey has been changed</div><div>Dear Test User,</div><div><a href="https://www.eurostar.com/">View your booking online</a></div></td></tr><tr><td><div>Booking reference: GGGGGG</div></td></tr><tr><td><div>Your journey includes a change of train in Gamma Midi. <a href="https://www.eurostar.com/">Journey breakdown</a></div></td></tr><tr><td><div>Outbound</div></td><td><p>Standard</p></td></tr><tr><td><div>Tuesday, 14 November 2045</div></td></tr><tr><td><div>London St Pancras Int'l</div><div>Rotterdam Centraal</div></td><td><div>06:04</div><div>10:32</div></td></tr><tr><td><div>3 hrs 28 mins Direct</div></td></tr><tr><td><div>Test User</div><div>Coach 3 - Seat 21</div></td></tr><tr><td><div>Return</div></td><td><p>Eurostar Plus</p></td></tr><tr><td><div>Wednesday, 22 November 2045</div></td></tr><tr><td><div>Rotterdam Centraal</div><div>London St Pancras Int'l</div></td><td><div>06:58</div><div>09:57</div></td></tr><tr><td><div>3 hrs 59 mins 1 Change</div></td></tr><tr><td><div>Eurostar - Rotterdam Centraal to Gamma Midi</div><div>Test User</div><div>Coach 2 - Seat 31</div></td></tr><tr><td><div>Eurostar - Gamma Midi to London St Pancras Int'l</div><div>Test User</div><div>Coach 3 - Seat 23</div></td></tr><tr><td><div>Plans changed?</div></td></tr></table></body></html>

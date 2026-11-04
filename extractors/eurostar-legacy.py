@@ -19,7 +19,8 @@ After tag-stripping, each passenger's journeys read:
 The mail repeats every journey for each passenger. We emit one
 TrainReservation per direction, keyed like the `eurostar` extractor's
 (`eurostar-<reference>-outbound`), so a later mail about the same
-booking overwrites it.
+booking overwrites it. A mail lists every journey of the booking, so
+each leg carries `mailsift:itineraryComplete`.
 """
 
 from __future__ import annotations
@@ -160,6 +161,7 @@ def main() -> int:
             "@type": "TrainReservation",
             "reservationNumber": slug,
             "reservationStatus": "https://schema.org/ReservationConfirmed",
+            "mailsift:itineraryComplete": True,
             "reservationFor": trip,
             "underName": [ticket["underName"] for ticket in journey.tickets],
             "reservedTicket": journey.tickets,

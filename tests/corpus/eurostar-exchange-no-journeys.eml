@@ -1,0 +1,10 @@
+Authentication-Results: example.org; dkim=pass header.d=eurostar.com header.i=@eurostar.com
+From: Eurostar <noreply@eurostar.com>
+To: test@example.org
+Subject: Your exchange confirmation | Friday, 21 September 2046 - Reference: HHHHHH
+Date: Fri, 07 Sep 2046 16:51:51 +0000
+Message-ID: <eurostar-exchange-empty-test@eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><table><tr><td><div>Your exchange confirmation | Reference: HHHHHH</div></td></tr><tr><td><div>Your journey has been changed</div><div>Dear Test User,</div><div>To see your updated journey details, please view your booking online below.</div><div><a href="https://www.eurostar.com/">View your booking online</a></div></td></tr><tr><td><div>Booking reference: HHHHHH</div></td></tr><tr><td><div>Plans changed?</div><div>Total paid</div><div>10.00&euro;</div></td></tr></table></body></html>
