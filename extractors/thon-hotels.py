@@ -18,8 +18,14 @@ HTML page. After stripping tags the body has a stable layout:
     Address
     <street, city, CC>
 
-We emit a single `LodgingReservation`. Cancellation, post-stay survey,
-and other operational mails don't carry a Ref. and so produce nothing.
+We emit a single `LodgingReservation`. Post-stay survey and other
+operational mails don't carry a Ref. and so produce nothing.
+
+"Your reservation at <hotel> has been cancelled" mails ("Stay
+cancelled") repeat the hotel, Ref. and both dates, without the clock
+times, so they emit the same reservation with dates only and
+`reservationStatus: ReservationCancelled`, which replaces the booked
+one.
 """
 
 from __future__ import annotations
@@ -56,6 +62,10 @@ CHECKOUT_RE = re.compile(
     r"([A-Z][a-z]{2})\s+(\d{1,2})\.\s+([A-Z][a-z]{2})\s+(\d{4})\s+"
     r"Check\s*out\s+before\s+(\d{1,2}[.:]\d{2})",
 )
+DATE_RE = re.compile(r"\b([A-Z][a-z]{2})\s+(\d{1,2})\.\s+([A-Z][a-z]{2})\s+(\d{4})")
+CANCELLED_SUBJECT_RE = re.compile(
+    r"^Your reservation at .+ has been cancel+ed$", re.IGNORECASE
+)
 PRICE_RE = re.compile(r"\bEUR\s+([0-9]+(?:[.,][0-9]{2})?)")
 ADDRESS_RE = re.compile(r"\bAddress\s*\n\s*([^\n]+)")
 
@@ -68,12 +78,49 @@ def parse_date(weekday: str, day: str, month: str, year: str) -> datetime | None
         return None
 
 
+def cancelled_stay(text: str) -> dict:
+    ref_match = REF_RE.search(text)
+    if not ref_match:
+        raise ValueError("cancellation has no Ref.")
+    ref = ref_match.group(1)
+    hotel_match = HOTEL_RE.search(text)
+    if not hotel_match:
+        raise ValueError(f"cancellation of {ref} has no hotel name")
+    # Check-in and check-out are the first two dates after the Ref.
+    stay = list(DATE_RE.finditer(text, ref_match.end()))[:2]
+    if len(stay) != 2:
+        raise ValueError(f"cancellation of {ref} has no stay dates")
+    checkin = parse_date(*stay[0].group(1, 2, 3, 4))
+    checkout = parse_date(*stay[1].group(1, 2, 3, 4))
+    if checkin is None or checkout is None:
+        raise ValueError(f"cancellation of {ref}: bad dates {stay[0].group(0)!r}")
+    return {
+        "@context": "https://schema.org",
+        "@type": "LodgingReservation",
+        "reservationStatus": "ReservationCancelled",
+        "reservationNumber": f"thon-{ref}",
+        "checkinTime": checkin.strftime("%Y-%m-%d"),
+        "checkoutTime": checkout.strftime("%Y-%m-%d"),
+        "reservationFor": {
+            "@type": "LodgingBusiness",
+            "name": hotel_match.group(1).strip(),
+        },
+    }
+
+
 def main() -> int:
     mail = read_message()
     if not mail.html:
         return 0
 
     text = strip_html(mail.html, block_tags=True)
+
+    if CANCELLED_SUBJECT_RE.match((mail.subject or "").strip()):
+        cancelled = cancelled_stay(text)
+        Path(f"{cancelled['reservationNumber']}.reservation.json").write_text(
+            json.dumps(cancelled, ensure_ascii=False), encoding="utf-8"
+        )
+        return 0
 
     ref_match = REF_RE.search(text)
     if not ref_match:
