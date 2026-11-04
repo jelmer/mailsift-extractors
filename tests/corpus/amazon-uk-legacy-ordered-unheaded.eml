@@ -1,0 +1,55 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <auto-confirm@amazon.co.uk>
+To: test@example.org
+Subject: Your Amazon.co.uk order of "Example Bike Mount..." and 1 more item(s)
+Date: Sat, 17 Jul 2021 10:00:00 +0000
+Message-ID: <amazon-uk-legacy-ordered-unheaded@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Amazon.co.uk Order Confirmation
+Order #333-3333333-3333333
+Order #444-4444444-4444444
+_____________________________________________________________________________________
+
+Hello,
+
+Your purchase has been divided into 2 orders.
+
+     Arriving:
+          Tuesday, July 20
+
+     Your order will be sent to:
+          Test Person
+          London
+
+Ordered item(s):
+     Example Radar Mount & Holder
+     £16.98
+     Condition: New
+     Sold by: Example Seller
+     Fulfilled by Amazon
+
+     Order Total:                      £16.98
+
+=======================================================================================
+
+     Arriving:
+          Tuesday, July 20
+
+     Your order will be sent to:
+          Test Person
+          London
+
+Ordered item(s):
+     Example Out Front Combo Mount
+     £19.95
+     Condition: New
+     Sold by: Example Mounts
+
+     Order Total:                      £19.95
+
+=======================================================================================
+
+We hope to see you again soon.

@@ -1,0 +1,29 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.de header.i=@amazon.de
+From: "Amazon.de" <versandbestaetigung@amazon.de>
+To: test@example.org
+Subject: Ihre Amazon.de Bestellung von 2 x "Example USB-C Ladeger..."  wurde versandt!
+Date: Wed, 29 Jun 2016 08:00:00 +0000
+Message-ID: <amazon-de-legacy-dispatched@amazon.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Amazon.de Versandbestätigung
+Bestellnummer: #666-6666666-6666666
+___________________________________________________________________________
+
+Guten Tag,
+
+wir möchten Ihnen hiermit mitteilen, dass wir Ihre Bestellung versandt haben.
+
+============================================================================
+Einzelheiten Ihrer Lieferung:
+
+2 x Example USB-C Ladegerät 5V/3A
+Verkauft von: Example Händler
+EUR 31,98
+___________________________________________________________________________
+
+   Zwischensumme: EUR 31,98
+   Endbetrag: EUR 31,98
+============================================================================

@@ -10,8 +10,9 @@ from_domains:
   - amazon.com
 # Accept the English lifecycle prefixes AND the localised German/
 # Dutch subjects Amazon uses on the DE/NL sites. The script sorts
-# out which status each subject maps to.
-subject_regex: "(?i)^(Ordered|Dispatched|Out for delivery|Delivered|Delivery attempted|Your return of|Arriving today|Your Amazon\\.\\w+ order of|Je Amazon\\.\\w+-?bestelling van|Je bestelling (bij|op) Amazon\\.\\w+|Ihre Amazon\\.\\w+ Bestellung von|Bezorgd:|Amazon\\.\\w+ -- (Bestellungsaenderung|Bestell)):? "
+# out which status each subject maps to. `Your Amazon.co.uk order ...`
+# covers the older confirmation and dispatch mails.
+subject_regex: "(?i)^((Ordered|Dispatched|Out for delivery|Delivered|Delivery attempted|Your return of|Arriving today|Je Amazon\\.[\\w.]+-?bestelling van|Je bestelling (bij|op) Amazon\\.[\\w.]+|Ihre Amazon\\.[\\w.]+ Bestellung von|Bezorgd:|Amazon\\.[\\w.]+ -- (Bestellungsaenderung|Bestell)):? |Your Amazon\\.[\\w.]+ order\\b)"
 requires:
   - text
 require_dkim:

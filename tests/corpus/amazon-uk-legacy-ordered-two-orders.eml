@@ -1,0 +1,73 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "auto-confirm@amazon.co.uk" <auto-confirm@amazon.co.uk>
+To: test@example.org
+Subject: Your Amazon.co.uk order of "Example Bike Light..." and 2 more item(s)
+Date: Mon, 27 Jan 2014 09:12:00 +0000
+Message-ID: <amazon-uk-legacy-ordered-two-orders@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Amazon.co.uk Order Confirmation
+Order #111-1111111-1111111
+Order #222-2222222-2222222
+www.amazon.co.uk/ref=TE_tex_h
+_______________________________________________________________________________________
+
+Hello,
+
+Thanks for your order. We'll let you know once your item(s) have dispatched.
+
+Your purchase has been divided into 2 orders.
+
+=======================================================================================
+
+Order Details
+Order #111-1111111-1111111
+Placed on January 27, 2014
+
+     Your estimated delivery date is:
+               Tuesday, January 28, 2014
+
+     Your order will be sent to:
+               Test Person
+               London
+               United Kingdom
+
+     Example Bike Light Set - Front and Rear, USB Rechargeable
+     £6.99
+     Condition: New
+     Sold by Example Seller
+     Fulfilled by Amazon
+
+     Example Paperback Novel
+     £5.03
+     Sold by Amazon EU S.a.r.L.
+
+_______________________________________________________________________________________
+
+     Item Subtotal: £12.02
+     Delivery & Handling: £0.00
+     Order Total: £12.02
+
+=======================================================================================
+
+Order #222-2222222-2222222
+Placed on January 27, 2014
+
+     Your order will be sent to:
+               Test Person
+               London
+               United Kingdom
+
+     Example Puzzle Cube
+     £6.12
+     Condition: New
+     Sold by Example Toys
+
+_______________________________________________________________________________________
+
+     Item Subtotal: £6.12
+     Order Total: £6.12
+
+=======================================================================================
