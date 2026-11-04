@@ -1,0 +1,10 @@
+Authentication-Results: example.org; dkim=pass header.i=@e.eurostar.com
+From: "Eurostar International LTD" <noreply@e.eurostar.com>
+To: test@example.org
+Subject: Your Eurostar exchange confirmation Fri, 29 December - KKKKKK
+Date: Tue, 20 Feb 2046 14:47:04 -0600
+Message-ID: <eurostar-legacy-exchange-test@e.eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><table><tr><td><div>Your journey has been changed</div><div>Thanks for your booking.</div><div><a href="https://www.eurostar.com/">Get Tickets</a></div></td></tr><tr><td><div>Booking reference: KKKKKK</div></td></tr><tr><td><div>Going out</div></td></tr><tr><td><div>Beta Central to Alpha International<span>Fri, 29 December</span></div></td></tr><tr><td><div>17:28</div><div>3 hrs 32 mins</div><div>Direct</div><div>20:00</div></td></tr><tr><td><div>Test User</div><div>Coach 11, seat 43</div></td></tr><tr><td><div>Coming back</div></td></tr><tr><td><div>Alpha International to Beta Central Wed, 21 March</div></td></tr><tr><td><div>06:16</div><div>3 hrs 16 mins</div><div>Direct</div><div>10:32</div></td></tr><tr><td><div>Test User</div><div>Coach 4, seat 62</div><div><a href="https://www.eurostar.com/">Change seat</a></div></td></tr><tr><td><div>CHANGE JOURNEY</div></td></tr></table></body></html>
