@@ -1,0 +1,43 @@
+Authentication-Results: example.org; dkim=pass header.i=@eurostar.com
+From: Eurostar <booking.elgar@eurostar.com>
+To: test@example.org
+Subject: Your Eurostar booking confirmation Fri, 01 February - RRRRRR
+Date: Mon, 26 Nov 2046 12:23:22 +0000
+Message-ID: <eurostar-elgar-return-test@eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><div><table><tr><td>Good news, you're</td></tr><tr><td>all booked</td></tr>
+<tr><td><a href="https://www.eurostar.com/">Get Tickets</a></td></tr>
+<tr><td> Eurostar reference : <a>RRRRRR</a></td></tr></table></div>
+<div><table><tr><td colspan="4"><a> Eurostar
+          ES9140</a></td><td colspan="2"><a> Standard </a></td></tr><tr><td colspan="6"><p>Alpha International 
+          <a> To </a>Beta Midi 
+          </p></td></tr><tr><td colspan="4"><p><a> Departs : </a>
+          Fri
+          01&nbsp;
+          Feb&nbsp;
+          <a> at </a>15:04<a> Arrives </a>&nbsp;
+          <a> at </a>18:05</p></td><td colspan="2"><p><a> Journey Time: </a><a>2<text> hrs </text>01<text> mins </text></a></p></td></tr><tr><td colspan="4"><p><br> TEST USER <br></p></td><td colspan="2"><br><p>
+          Coach 
+          005
+          , Seat
+          71<br></p></td></tr></table>
+<table><tr><td><a href="https://www.eurostar.com/"><span> Change seat </span></a></td></tr></table>
+<table><tr><td colspan="4"><a> Eurostar
+          ES9163</a></td><td colspan="2"><a> Standard </a></td></tr><tr><td colspan="6"><p>Beta Midi 
+          <a> To </a>Alpha International 
+          </p></td></tr><tr><td colspan="4"><p><a> Departs : </a>
+          Sun
+          03&nbsp;
+          Feb&nbsp;
+          <a> at </a>20:22<a> Arrives </a>&nbsp;
+          <a> at </a>21:33</p></td><td colspan="2"><p><a> Journey Time: </a><a>2<text> hrs </text>01<text> mins </text></a></p></td></tr><tr><td colspan="4"><p><br> TEST USER <br></p></td><td colspan="2"><br><p>
+          Coach 
+          011
+          , Seat
+          21<br></p></td></tr></table>
+<table><tr><td><a href="https://www.eurostar.com/"><span> Change seat </span></a></td></tr></table>
+</div>
+<div><table><tr><td>International Rail Total:</td><td>118.00 GBP</td></tr></table></div>
+</body></html>
