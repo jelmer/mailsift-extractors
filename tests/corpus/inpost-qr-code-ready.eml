@@ -1,0 +1,22 @@
+Authentication-Results: example.org; dkim=pass header.d=inpost.co.uk header.i=@inpost.co.uk
+From: InPost <inpost@inpost.co.uk>
+To: test@example.org
+Subject: Your QR code is ready
+Date: Wed, 8 Jul 2026 15:37:00 +0000
+Message-ID: <inpost-qr-code-ready@inpost.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Drop, lock and off you pop</p>
+<p>Drop your parcel off at any of our lockers or shops with the code below</p>
+<p>Enter this code instead</p>
+<p>000 000 000</p>
+<p>Sending to:</p>
+<p>INPOST POINT</p>
+<p>24/7 InPost Locker - Example Service Station</p>
+<p>EX1 1AA</p>
+<p>Exampleton</p>
+<p>See where your parcel's at, every step of the way</p>
+<p>JJD0000000000000000007</p>
+</body></html>

@@ -1,0 +1,19 @@
+Authentication-Results: example.org; dkim=pass header.d=inpost.co.uk header.i=@inpost.co.uk
+From: InPost <inpost@inpost.co.uk>
+To: test@example.org
+Subject: It's been collected
+Date: Sun, 12 Jul 2026 19:50:00 +0000
+Message-ID: <inpost-collected@inpost.co.uk>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>It's in their hands now!</p>
+<p>Good news! Your parcel has been picked up by your buyer</p>
+<table>
+<tr><td>Receipt</td></tr>
+<tr><td>Parcel number</td><td>JJD0000000000000000007</td></tr>
+<tr><td>Collection date</td><td>12/07/2026 20:46</td></tr>
+<tr><td>Collection point</td><td>24/7 InPost Locker - Example Service Station</td></tr>
+</table>
+</body></html>
