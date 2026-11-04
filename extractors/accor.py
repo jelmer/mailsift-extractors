@@ -20,9 +20,12 @@ repeated inside marketing copy and is hard to pin down. The check-in
 and check-out clock times come from the policy paragraphs, which are
 the only place they appear.
 
-Modification and cancellation mails reuse the same template under a
-different subject; the manifest keeps them out so a cancelled stay
-doesn't reappear as a booking.
+"Cancellation of your reservation: <hotel> No. <code>" mails list the
+same number and stay dates, so they emit the same reservation with
+`reservationStatus: ReservationCancelled`, which replaces the booked
+one. They carry no policy paragraphs, so the times are dates only.
+Older templates write the stay as `From Jul. 20, 2022 to Jul. 21, 2022`.
+Modification mails are kept out by the manifest.
 """
 
 from __future__ import annotations
@@ -38,11 +41,15 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 from mailsift_extractor import read_message, strip_html
 
 SUBJECT_RE = re.compile(
-    r"Confirmation of your reservation:\s*(?P<hotel>.+?)\s*No\.\s*(?P<ref>[A-Z0-9]+)\s*$",
+    r"(?P<kind>Confirmation|Cancellation) of your reservation:"
+    r"\s*(?P<hotel>.+?)\s*No\.\s*(?P<ref>[A-Z0-9]+)\s*$",
     re.IGNORECASE,
 )
 STAY_RE = re.compile(
     r"From\s+(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})\s+to\s+(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})",
+)
+MONTH_FIRST_STAY_RE = re.compile(
+    r"From\s+([A-Za-z]+)\.?\s+(\d{1,2}),\s+(\d{4})\s+to\s+([A-Za-z]+)\.?\s+(\d{1,2}),\s+(\d{4})",
 )
 ADULTS_RE = re.compile(r",\s*(\d+)\s+adults?\b", re.IGNORECASE)
 CHECKIN_TIME_RE = re.compile(r"room is available from\s*(\d{1,2}[:.]\d{2})")
@@ -57,6 +64,30 @@ def parse_date(day: str, month: str, year: str) -> datetime | None:
         except ValueError:
             continue
     return None
+
+
+def cancelled_stay(text: str, hotel: str, reference: str) -> dict:
+    stay = STAY_RE.search(text)
+    if stay:
+        checkin = parse_date(*stay.group(1, 2, 3))
+        checkout = parse_date(*stay.group(4, 5, 6))
+    else:
+        stay = MONTH_FIRST_STAY_RE.search(text)
+        if not stay:
+            raise ValueError(f"cancellation of {reference} has no stay dates")
+        checkin = parse_date(*stay.group(2, 1, 3))
+        checkout = parse_date(*stay.group(5, 4, 6))
+    if checkin is None or checkout is None:
+        raise ValueError(f"cancellation of {reference}: bad dates {stay.group(0)!r}")
+    return {
+        "@context": "https://schema.org",
+        "@type": "LodgingReservation",
+        "reservationStatus": "ReservationCancelled",
+        "reservationNumber": f"accor-{reference}",
+        "checkinTime": checkin.strftime("%Y-%m-%d"),
+        "checkoutTime": checkout.strftime("%Y-%m-%d"),
+        "reservationFor": {"@type": "LodgingBusiness", "name": hotel},
+    }
 
 
 def apply_clock(stamp: datetime, text: str, pattern: re.Pattern[str]) -> datetime:
@@ -76,10 +107,18 @@ def main() -> int:
     hotel = subject_match.group("hotel").strip()
     reference = subject_match.group("ref")
 
-    text = mail.text or ""
+    # Some mails carry an empty text/plain part next to the HTML.
+    text = (mail.text or "").strip()
     if not text and mail.html:
         text = strip_html(mail.html, block_tags=True)
     if not text:
+        return 0
+
+    if subject_match.group("kind").lower() == "cancellation":
+        cancelled = cancelled_stay(text, hotel, reference)
+        Path(f"accor-{reference}.reservation.json").write_text(
+            json.dumps(cancelled, ensure_ascii=False), encoding="utf-8"
+        )
         return 0
 
     stay = STAY_RE.search(text)

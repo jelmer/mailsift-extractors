@@ -4,7 +4,7 @@ from_domains:
   - confirmation.all.com
   - reservation.accor-mail.com
   - accor-mail.com
-subject_regex: "(?i)^Confirmation of your reservation:"
+subject_regex: "(?i)^(Confirmation|Cancellation) of your reservation:"
 require_dkim:
   - all.com
   - accor-mail.com
