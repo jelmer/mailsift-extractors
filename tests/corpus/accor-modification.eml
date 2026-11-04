@@ -1,0 +1,55 @@
+From: ALL - Accor Live Limitless <all@reservation.accor-mail.com>
+To: test@example.org
+Subject: Modification of your reservation: ibis budget Exampleton No. YYYYYYYY
+Date: Thu, 01 Nov 2046 08:39:25 +0100
+Message-ID: <accor-modification-test@reservation.accor-mail.com>
+Authentication-Results: example.org; dkim=pass header.d=accor-mail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="sep"
+
+--sep
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+
+--sep
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body>
+<table>
+<tr><td>Confirmation</td></tr>
+<tr><td>Dear Mr User ,</td></tr>
+<tr><td>Please find below a summary of your reservation as it currently stands.</td></tr>
+<tr><td>Your reservation has been changed.</td></tr>
+<tr><td>Reservation number:</td></tr>
+<tr><td><b>YYYYYYYY</b></td></tr>
+<tr><td>Transaction number:</td></tr>
+<tr><td>YYYYYYYY_0000000000000000PP</td></tr>
+<tr><td>Date of stay:</td></tr>
+<tr><td>From Dec. 07, 2046 to Dec. 08, 2046</td></tr>
+<tr><td>Your stay:</td></tr>
+<tr><td>1 accommodation, 1 night</td></tr>
+<tr><td>2 adults , 0 child</td></tr>
+<tr><td>Your stay</td></tr>
+<tr><td>ibis budget Exampleton</td></tr>
+<tr><td>1 Example Road</td></tr>
+<tr><td>EX1 1AA EXAMPLETON - UNITED KINGDOM</td></tr>
+<tr><td>Accommodation</td></tr>
+<tr><td>Reservation made in the name of : Mr Test User</td></tr>
+<tr><td>TRIPLE - Room with a large bed bunk bed.</td></tr>
+<tr><td>2 Adults , 0 Child</td></tr>
+<tr><td>SAVER, Room only</td></tr>
+<tr><td>GBP 40.00</td></tr>
+<tr><td>Total price of stay</td></tr>
+<tr><td>Total (fees and taxes included):</td></tr>
+<tr><td>GBP 40.00</td></tr>
+<tr><td>Amount already paid:</td></tr>
+<tr><td>GBP 45.00</td></tr>
+<tr><td>Check in Policy:</td></tr>
+<tr><td>The room is available from 15:00.</td></tr>
+<tr><td>Check out Policy:</td></tr>
+<tr><td>The room must be vacated by 12:00 at the latest.</td></tr>
+</table>
+</body></html>
+--sep--
