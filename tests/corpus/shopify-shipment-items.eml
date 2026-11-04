@@ -1,0 +1,40 @@
+Authentication-Results: example.org; dkim=pass header.d=exampleelectronics.myshopify.com header.i=@exampleelectronics.myshopify.com
+From: "Example Electronics Ltd" <support@exampleelectronics.com>
+To: test@example.org
+Subject: A shipment from order #EX100200 is on the way
+Date: Fri, 29 Dec 2045 10:53:35 +0000
+Message-ID: <shopify-run-together-carrier@exampleelectronics.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Your order is on the way
+
+Example Electronics Ltd
+
+Order #EX100200
+
+------------------------
+Your order is on the way
+------------------------
+
+Your order is on the way. If you selected a trackable
+shipping method at checkout, your tracking number will be shown
+below.
+
+View your order
+
+RoyalMail tracking number: 00000000000000000000A
+
+Items in this shipment
+----------------------
+
+Example Microcontroller Board,
+Wireless × 1
+
+With headers
+
+Example Single Board Computer × 2
+
+If you have any questions, reply to this email or
+contact us at support@example.com

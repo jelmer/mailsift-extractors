@@ -23,6 +23,18 @@ def test_confirmation_emits_receipt(run_extractor):
     assert item["orderItemSubtotal"]["price"] == 38.40
 
 
+def test_confirmation_with_wrapped_names_and_several_variant_lines(run_extractor):
+    out = run_extractor("shopify-order", "shopify-wrapped-items-confirmed.eml")
+    receipt = out["thepihut-100003.receipt.json"]
+    assert [
+        (i["orderedItem"]["name"], i["orderItemSubtotal"]["price"])
+        for i in receipt["orderedItem"]
+    ] == [
+        ("Example GPS Breakout - Chip Antenna, Long Model Name (Qwiic)", 30.0),
+        ("Example Board Case", 8.4),
+    ]
+
+
 def test_order_number_from_subject(run_extractor):
     # The body has `Order` and the order date on the next line, but no
     # `Order #<id>`; the subject has the number.
@@ -44,6 +56,22 @@ def test_shipment_emits_parcel(run_extractor):
     }
     assert parcel["orderNumber"] == "100001"
     assert parcel["merchant"] == "Patchplants"
+    assert parcel["deliveryStatus"] == "OrderInTransit"
+    assert parcel["itemShipped"] == {"@type": "Product", "name": "Example Plant"}
+
+
+def test_shipment_items_and_run_together_carrier_name(run_extractor):
+    out = run_extractor("shopify-order", "shopify-shipment-items.eml")
+    parcel = out["exampleelectronics-00000000000000000000A.parcel.json"]
+    assert parcel["provider"] == {
+        "@type": "Organization",
+        "@id": "royal-mail",
+        "name": "Royal Mail",
+    }
+    assert parcel["itemShipped"] == [
+        {"@type": "Product", "name": "Example Microcontroller Board, Wireless"},
+        {"@type": "Product", "name": "Example Single Board Computer"},
+    ]
 
 
 def test_shopifyemail_sender_uses_display_name_as_merchant(run_extractor):

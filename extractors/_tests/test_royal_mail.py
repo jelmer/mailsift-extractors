@@ -37,6 +37,7 @@ def test_out_for_delivery_today(run_extractor):
             "name": "Royal Mail",
         },
         "deliveryStatus": "OutForDelivery",
+        "merchant": {"@type": "Organization", "name": "Vision Direct"},
         "expectedArrivalFrom": "2024-08-16T09:30:00",
         "expectedArrivalUntil": "2024-08-16T13:30:00",
     }

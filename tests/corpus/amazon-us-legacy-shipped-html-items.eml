@@ -1,0 +1,24 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.com header.i=@amazon.com
+From: "Amazon.com" <shipment-tracking@amazon.com>
+To: test@example.org
+Subject: Your Amazon.com order of "Example HDD Enclosure..." and 2 more items has shipped!
+Date: Mon, 11 Sep 2017 15:00:00 +0000
+Message-ID: <amazon-us-legacy-shipped-html-items@amazon.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Amazon Shipping Confirmation
+____________________________________________________________________
+
+Monday, September 11
+
+Track your package:
+
+On the way:
+Example HDD Enclosure... and 2 more items
+Order #777-7777777-7777777
+
+Shipment total:
+$43.47
+____________________________________________________________________

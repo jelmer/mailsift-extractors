@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+import json
+import re
+from pathlib import Path
+
+import pytest
+
+EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
+
 
 def test_uk_ordered_emits_receipt_and_parcel(run_extractor):
     out = run_extractor("amazon", "amazon-uk-ordered.eml")
@@ -243,3 +251,85 @@ def test_arrival_window_can_cross_the_new_year(run_extractor):
     parcel = out["amazon-uk-888-8888888-8888888.parcel.json"]
     assert parcel["expectedArrivalFrom"] == "2026-12-28"
     assert parcel["expectedArrivalUntil"] == "2027-01-03"
+
+
+def _names(parcel):
+    items = parcel.get("itemShipped")
+    if items is None:
+        return []
+    return [i["name"] for i in (items if isinstance(items, list) else [items])]
+
+
+def test_legacy_confirmation_splits_items_per_order(run_extractor):
+    out = run_extractor("amazon", "amazon-uk-legacy-ordered-two-orders.eml")
+    assert set(out) == {
+        "amazon-uk-111-1111111-1111111.parcel.json",
+        "amazon-uk-222-2222222-2222222.parcel.json",
+    }
+    first = out["amazon-uk-111-1111111-1111111.parcel.json"]
+    assert first["deliveryStatus"] == "OrderProcessing"
+    assert _names(first) == [
+        "Example Bike Light Set - Front and Rear, USB Rechargeable",
+        "Example Paperback Novel",
+    ]
+    assert _names(out["amazon-uk-222-2222222-2222222.parcel.json"]) == [
+        "Example Puzzle Cube"
+    ]
+
+
+def test_legacy_confirmation_without_order_headings(run_extractor):
+    out = run_extractor("amazon", "amazon-uk-legacy-ordered-unheaded.eml")
+    assert _names(out["amazon-uk-333-3333333-3333333.parcel.json"]) == [
+        "Example Radar Mount & Holder"
+    ]
+    assert _names(out["amazon-uk-444-4444444-4444444.parcel.json"]) == [
+        "Example Out Front Combo Mount"
+    ]
+
+
+def test_legacy_dispatch_is_in_transit_with_its_items(run_extractor):
+    out = run_extractor("amazon", "amazon-uk-legacy-dispatched.eml")
+    assert set(out) == {"amazon-uk-555-5555555-5555555.parcel.json"}
+    parcel = out["amazon-uk-555-5555555-5555555.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderInTransit"
+    assert _names(parcel) == [
+        "Example Micro First Aid Kit, Lightweight",
+        "Example Water Bottle",
+    ]
+
+
+def test_legacy_german_dispatch(run_extractor):
+    out = run_extractor("amazon", "amazon-de-legacy-dispatched.eml")
+    parcel = out["amazon-de-666-6666666-6666666.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderInTransit"
+    assert _names(parcel) == ["Example USB-C Ladegerät 5V/3A"]
+
+
+def test_legacy_items_only_in_html_fall_back_to_subject(run_extractor):
+    out = run_extractor("amazon", "amazon-us-legacy-shipped-html-items.eml")
+    parcel = out["amazon-us-777-7777777-7777777.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderInTransit"
+    assert _names(parcel) == ["Example HDD Enclosure..."]
+
+
+def _subject_regex():
+    for line in (EXTRACTORS_DIR / "amazon.yaml").read_text().splitlines():
+        if line.startswith("subject_regex: "):
+            return re.compile(json.loads(line.removeprefix("subject_regex: ")))
+    raise KeyError("amazon.yaml has no subject_regex")
+
+
+@pytest.mark.parametrize(
+    "subject",
+    [
+        'Your Amazon.co.uk order of "Rubik\'s Cube" has been dispatched',
+        'Your Amazon.co.uk order of "Demon" and 3 more item(s)',
+        "Your Amazon.co.uk order (#205-1590890-9427506) has been dispatched",
+        "Your Amazon.co.uk order.",
+        "Your Amazon.com order",
+        "Your Amazon.com order has shipped",
+        'Je Amazon.nl-bestelling van "ConBee II de universele..."',
+    ],
+)
+def test_manifest_accepts_legacy_subjects(subject):
+    assert _subject_regex().search(subject)

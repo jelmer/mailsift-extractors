@@ -1,0 +1,39 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <shipment-tracking@amazon.co.uk>
+To: test@example.org
+Subject: Your Amazon.co.uk order of "Example First Aid Kit..." has been dispatched
+Date: Thu, 29 Jun 2023 18:38:40 +0000
+Message-ID: <amazon-uk-legacy-dispatched@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Amazon.co.uk Dispatch Confirmation
+Order: #555-5555555-5555555
+https://www.amazon.co.uk/ref=TE_tex_g
+
+___________________________________________________________________________
+
+Hello,
+We thought you'd like to know that we've dispatched your item(s). Your order is on the way, and can no longer be changed.
+
+Arriving:
+Friday, June 30
+
+Order Total: £19.95
+
+Your item(s) is (are) being sent by Amazon Logistics. Your tracking number is QA0000000000.
+
+============================================================================
+
+Order summary
+1 X Example Micro First Aid Kit, Lightweight
+Sold by Amazon EU S.a.r.L.
+£19.95
+___________________________________________________________________________
+
+Items dispatching soon
+Order #555-5555555-5555555
+Placed on June 29, 2023
+	1X Example Water Bottle
+============================================================================

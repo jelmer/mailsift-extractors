@@ -15,8 +15,11 @@ tag-stripping:
 The tracking number lives on its own line after the literal "Tracking
 number" label, and also appears in the tracking URL
 (https://www.evri.com/track/parcel/<id>/details). The merchant comes
-from the subject ("Thanks for collecting your <merchant> parcel")
-falling back to the first paragraph in the body.
+from the subject ("We've got your <merchant> parcel", "Your <merchant>
+parcel is out for delivery", ...).
+
+"Thanks for dropping off your parcel" confirms a parcel you are
+sending, not one coming to you, so it is left alone.
 """
 
 from __future__ import annotations
@@ -30,19 +33,44 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message, strip_html
 
-# Evri tracking numbers are alphanumeric, currently 16 characters.
-TRACKING_RE = re.compile(r"\b([A-Z]\d{4}[A-Z]\d{10})\b")
-URL_TRACKING_RE = re.compile(r"evri\.com/track/parcel/([A-Z0-9]{10,20})", re.IGNORECASE)
-SUBJECT_COLLECTED_RE = re.compile(
-    r"^Thanks\s+for\s+collecting\s+your\s+(?P<merchant>.+?)\s+parcel\s*$", re.IGNORECASE
+# Evri tracking numbers are 16 letters and digits (`H0000A0000000000`,
+# `T00N3A0022795218`), on their own after a "Tracking number" label.
+TRACKING_RE = re.compile(r"\bTracking number:?\s+([A-Z0-9]{16})\b")
+URL_TRACKING_RE = re.compile(
+    r"evri\.com/track/(?:#/)?parcel/([A-Z0-9]{10,20})", re.IGNORECASE
 )
+_APOSTROPHE = "['\u2019]"
+# Subject templates naming the sender, with the status each implies. A
+# parcel waiting at a ParcelShop counts as out for delivery, as mailroom
+# has it for DPD.
+SUBJECT_PATTERNS: list[tuple[str, str]] = [
+    (r"Thanks for collecting your (?P<merchant>.+) parcel", "Delivered"),
+    (rf"We{_APOSTROPHE}ve delivered your (?P<merchant>.+) parcel", "Delivered"),
+    (r"Evri has successfully delivered your (?P<merchant>.+) parcel", "Delivered"),
+    (r"Your (?P<merchant>.+) parcel is out for delivery", "OutForDelivery"),
+    (r"Your (?P<merchant>.+) parcel is now with your local \w+ courier.*", "OnItsWay"),
+    (rf"We{_APOSTROPHE}ve got your (?P<merchant>.+) parcel", "OnItsWay"),
+    (rf"We{_APOSTROPHE}re expecting your (?P<merchant>.+) parcel", "Scheduled"),
+    (r"Your (?P<merchant>.+) parcel is ready to collect", "OutForDelivery"),
+    (r"Remember to collect your (?P<merchant>.+) parcel", "OutForDelivery"),
+    (
+        rf"Sorry, we couldn{_APOSTROPHE}t deliver your (?P<merchant>.+) parcel.*",
+        "OrderProblem",
+    ),
+]
+SUBJECT_RES = [
+    (re.compile(rf"^{pattern}\s*$", re.IGNORECASE), status)
+    for pattern, status in SUBJECT_PATTERNS
+]
+OUTGOING_RE = re.compile(r"^Thanks for dropping off your\b", re.IGNORECASE)
 
 
 def status_and_merchant(subject: str) -> tuple[str | None, str | None]:
     s = subject.strip()
-    m = SUBJECT_COLLECTED_RE.match(s)
-    if m:
-        return "InTransit", m.group("merchant").strip()
+    for pattern, status in SUBJECT_RES:
+        m = pattern.match(s)
+        if m:
+            return status, m.group("merchant").strip()
     low = s.lower()
     if "has been delivered" in low or "successfully delivered" in low:
         return "Delivered", None
@@ -55,7 +83,7 @@ def status_and_merchant(subject: str) -> tuple[str | None, str | None]:
 
 def main() -> int:
     mail = read_message()
-    if not mail.subject:
+    if not mail.subject or OUTGOING_RE.match(mail.subject):
         return 0
     if mail.html:
         text = strip_html(mail.html)

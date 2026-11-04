@@ -187,3 +187,18 @@ class TestReadMessage:
         assert mail.subject == (
             "Your reservation for NH Example Antwerp, February 3, 2040, AAAA000000001"
         )
+
+
+def test_from_name_decodes_encoded_words():
+    mail = read_message(
+        BytesIO(
+            b"From: =?utf-8?q?Caf=C3=A9_Example?= <yourdelivery@dpd.co.uk>\n"
+            b"Subject: x\n\nbody\n"
+        )
+    )
+    assert mail.from_name == "Café Example"
+
+
+def test_from_name_is_none_without_a_display_name():
+    mail = read_message(BytesIO(b"From: yourdelivery@dpd.co.uk\nSubject: x\n\nb\n"))
+    assert mail.from_name is None

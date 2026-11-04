@@ -67,6 +67,8 @@ class Mail:
     html: str | None
     ld_json: list[Any] = field(default_factory=list)
     attachments: list[Attachment] = field(default_factory=list)
+    # The display name in `From:`, decoded.
+    from_name: str | None = None
 
     @property
     def headers(self) -> Mapping[str, str]:
@@ -113,6 +115,7 @@ def read_message(stream=None) -> Mail:
         if from_address and "@" in from_address
         else None
     )
+    from_name = _parse_display_name(_as_str(msg.get("From")))
     to = _parse_address_list(msg.get_all("To") or [])
     subject = _decode_header(msg.get("Subject"))
     date = _parse_date(_as_str(msg.get("Date")))
@@ -132,6 +135,7 @@ def read_message(stream=None) -> Mail:
         html=html,
         ld_json=ld_json,
         attachments=attachments,
+        from_name=from_name,
     )
 
 
@@ -170,6 +174,15 @@ def _parse_address(value: str | None) -> str | None:
         return None
     _, addr = email.utils.parseaddr(value)
     return addr or None
+
+
+def _parse_display_name(value: str | None) -> str | None:
+    if not value:
+        return None
+    # Decode before splitting: an encoded-word can hide a comma or
+    # quote that parseaddr would otherwise trip over.
+    name, _ = email.utils.parseaddr(_decode_header(value) or "")
+    return name.strip() or None
 
 
 def _parse_address_list(values: list[str]) -> list[str]:

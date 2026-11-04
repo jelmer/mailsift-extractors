@@ -121,6 +121,9 @@ def main() -> int:
     }
     if status:
         parcel["deliveryStatus"] = status
+    # DPD sends in the shop's name: `IKEA <yourdelivery@dpd.co.uk>`.
+    if mail.from_name and not mail.from_name.lower().startswith("dpd"):
+        parcel["merchant"] = {"@type": "Organization", "name": mail.from_name}
 
     postcode = postcode_from_attachments(mail)
     if postcode:

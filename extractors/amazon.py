@@ -33,6 +33,16 @@ recognise is left alone rather than guessed at.
 One mail can acknowledge several orders, each in its own block, so the
 body is sliced per order rather than scanned once.
 
+Until about 2024 the mails were plain text of a different shape:
+subjects like `Your Amazon.co.uk order of "..." has been dispatched`,
+`Order #<number>` on one line, and items listed as a title followed by
+its price (order confirmations) or as `1 X <title>` (dispatch mails).
+A confirmation for several orders lists all the numbers at the top and
+then each order's details under its own heading, so the last mention
+of a number is the one its items follow. Some of these mails only name
+the items in the HTML part; for those, the truncated title in the
+subject is the best there is.
+
 We deliberately don't emit a calendar event: Amazon doesn't promise a
 delivery window precise enough to be useful.
 """
@@ -60,6 +70,41 @@ ORDER_RE = re.compile(
     r"N° de commande\s*:?|Numero d'ordine\s*:?)"
     r"\s*\n\s*(\d{3}-\d{7}-\d{7})\b",
     re.MULTILINE,
+)
+# The older plain-text layout: `Order #<number>` on one line, or the
+# localised `Bestellung #` / `Bestellnummer: #` / `Bestelling: #`.
+LEGACY_ORDER_RE = re.compile(
+    r"^[ \t]*(?:Order|Bestellung|Bestellnummer|Bestelling):?[ \t]*#[ \t]*"
+    r"(\d{3}-\d{7}-\d{7})\b",
+    re.MULTILINE,
+)
+# A line holding nothing but a price: `£6.99`, `$15.17`, `GBP 12.18`,
+# `EUR 15,99`.
+LEGACY_PRICE_RE = re.compile(
+    r"^(?:[£$€]\s?|(?:GBP|EUR|USD)\s?)\d[\d.,]*$|^\d[\d.,]*\s?€$"
+)
+LEGACY_SEPARATOR_RE = re.compile(r"^\s*={10,}\s*$", re.MULTILINE)
+# Dispatch mails list `1 X <title>`, or `1X <title>` for the other
+# shipments of the same order.
+LEGACY_QUANTITY_RE = re.compile(r"^\d+ ?[xX] (.+)$")
+# Lines between an item title and its price that aren't titles.
+LEGACY_NOT_ITEM_PREFIXES = (
+    "sold by",
+    "condition",
+    "fulfilled by",
+    "verkauft von",
+    "zustand",
+    "versand durch",
+    "verkocht door",
+    "conditie",
+    "door amazon",
+)
+# `Your Amazon.co.uk order of "<title>..." and 2 more item(s) has been
+# dispatched`, with or without the quotes.
+SUBJECT_ITEM_RE = re.compile(
+    r"^Your Amazon\.[\w.]+ order of (?:\"\d+\" x )?\"?(.+?)\"?"
+    r"(?:\s+and \d+ (?:more|other)\b.*|\s+has\b.*|\.)?$",
+    re.IGNORECASE,
 )
 # "Arriving ..." sits on its own line above the order it belongs to.
 # Amazon never puts a year in it, and uses either an ASCII hyphen or an
@@ -153,6 +198,71 @@ def _block_start(text: str, orders: list[re.Match[str]], index: int) -> int:
     for match in ARRIVING_RE.finditer(text, after_previous, orders[index].start()):
         heading = match
     return heading.start() if heading else after_previous
+
+
+def legacy_blocks(text: str) -> list[tuple[str, str]]:
+    """Split an older-layout body into `(order number, block)` pairs.
+
+    Each order's details follow the last mention of its number, so
+    every block runs from there to the next order's. Around 2021 the
+    details lost their headings: the numbers are only listed at the
+    top, and each order's details follow in that order, separated by
+    `=====` lines.
+    """
+    last: dict[str, int] = {}
+    for match in LEGACY_ORDER_RE.finditer(text):
+        last[match.group(1)] = match.start()
+    starts = sorted((start, order_id) for order_id, start in last.items())
+    if len(starts) == 1:
+        return [(starts[0][1], text)]
+    blocks = [
+        (order_id, text[start : starts[i + 1][0] if i + 1 < len(starts) else None])
+        for i, (start, order_id) in enumerate(starts)
+    ]
+    if any(legacy_item_names(block) for _, block in blocks[:-1]):
+        return blocks
+    sections = [
+        section
+        for section in LEGACY_SEPARATOR_RE.split(text)
+        if legacy_item_names(section)
+    ]
+    if len(sections) != len(blocks):
+        return blocks
+    return [(order_id, section) for (order_id, _), section in zip(blocks, sections)]
+
+
+def legacy_item_names(block: str) -> list[str]:
+    """Item titles from an older-layout block.
+
+    A title is a `1 X <title>` line, or the line before a price once
+    seller and condition lines are skipped.
+    """
+    lines = [line.strip() for line in block.splitlines() if line.strip()]
+    names: list[str] = []
+
+    def add(name: str) -> None:
+        quantity_m = LEGACY_QUANTITY_RE.match(name)
+        if quantity_m:
+            name = quantity_m.group(1).strip()
+        if name not in names:
+            names.append(name)
+
+    for index, line in enumerate(lines):
+        if LEGACY_QUANTITY_RE.match(line):
+            add(line)
+            continue
+        if not LEGACY_PRICE_RE.match(line):
+            continue
+        title = index - 1
+        while title >= 0 and lines[title].lower().startswith(LEGACY_NOT_ITEM_PREFIXES):
+            title -= 1
+        if (
+            title >= 0
+            and not lines[title].endswith(":")
+            and not LEGACY_PRICE_RE.match(lines[title])
+        ):
+            add(lines[title])
+    return names
 
 
 def resolve_year(ref: date, day: int, month: int) -> int:
@@ -251,6 +361,8 @@ def status_from_subject(subject: str) -> str | None:
         subject.startswith("Dispatched")
         or "wurde versandt" in lower
         or "is verzonden" in lower
+        or "has been dispatched" in lower
+        or "has shipped" in lower
     ):
         return "OrderInTransit"
     if subject.startswith("Arriving") or "arriving today" in lower:
@@ -262,6 +374,7 @@ def status_from_subject(subject: str) -> str | None:
         or "bestellung von" in lower  # DE order confirmation
         or "-bestelling van" in lower  # NL order confirmation
         or "order of" in lower  # `Your Amazon.nl order of X`
+        or re.match(r"your amazon\.[\w.]+ order\.?$", lower)
     ):
         return "OrderProcessing"
     return None
@@ -288,31 +401,40 @@ def main() -> int:
         if match.group(1) not in seen:
             seen.add(match.group(1))
             orders.append(match)
-    if not orders:
-        return 0
-
-    status = status_from_subject(subject)
-    provider_id = LOCALE_TO_PROVIDER.get(locale, "amazon")
-    mail_day = mail.date.date() if mail.date else None
 
     # One mail can acknowledge several orders, each as its own block:
     # an "Arriving" line, the order number, then that order's items and
     # Total. Slice the body on the order numbers so items and prices
     # land on the order they belong to rather than all on the first.
-    for index, order_m in enumerate(orders):
-        order_id = order_m.group(1)
-        # A block runs from just after the previous order's items to
-        # the end of this order's own. Cutting at the following order
-        # number would leave this order's items and Total in the next
-        # block, so cut at the arrival line that heads it instead.
-        block_start = _block_start(text, orders, index)
-        block_end = (
-            _block_start(text, orders, index + 1)
-            if index + 1 < len(orders)
-            else len(text)
+    # A block runs from just after the previous order's items to the
+    # end of this order's own. Cutting at the following order number
+    # would leave this order's items and Total in the next block, so
+    # cut at the arrival line that heads it instead.
+    blocks = [
+        (
+            order_m.group(1),
+            text[
+                _block_start(text, orders, index) : (
+                    _block_start(text, orders, index + 1)
+                    if index + 1 < len(orders)
+                    else len(text)
+                )
+            ],
         )
-        block = text[block_start:block_end]
+        for index, order_m in enumerate(orders)
+    ]
+    legacy = not blocks
+    if legacy:
+        blocks = legacy_blocks(text)
+    if not blocks:
+        return 0
 
+    status = status_from_subject(subject)
+    provider_id = LOCALE_TO_PROVIDER.get(locale, "amazon")
+    mail_day = mail.date.date() if mail.date else None
+    subject_item_m = SUBJECT_ITEM_RE.match(subject)
+
+    for order_id, block in blocks:
         parcel = {
             "@context": "https://schema.org",
             "@type": "ParcelDelivery",
@@ -340,6 +462,12 @@ def main() -> int:
         item_names = [
             item_m.group(1).strip().rstrip(",") for item_m in ITEM_RE.finditer(block)
         ]
+        if legacy:
+            item_names = legacy_item_names(block)
+            # Only the order and dispatch mails name an item in their
+            # subject; later ones would replace full titles with it.
+            if not item_names and subject_item_m and len(blocks) == 1:
+                item_names = [subject_item_m.group(1)]
         if item_names:
             products = [{"@type": "Product", "name": name} for name in item_names]
             parcel["itemShipped"] = products[0] if len(products) == 1 else products
