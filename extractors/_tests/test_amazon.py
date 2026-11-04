@@ -359,7 +359,7 @@ def _subject_regex():
     [
         'Your Amazon.co.uk order of "Rubik\'s Cube" has been dispatched',
         'Your Amazon.co.uk order of "Demon" and 3 more item(s)',
-        "Your Amazon.co.uk order (#205-1590890-9427506) has been dispatched",
+        "Your Amazon.co.uk order (#205-0000000-0000000) has been dispatched",
         "Your Amazon.co.uk order.",
         "Your Amazon.com order",
         "Your Amazon.com order has shipped",

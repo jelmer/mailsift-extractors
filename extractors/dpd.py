@@ -44,7 +44,7 @@ WINDOW_RE = re.compile(
     r"(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})",
     re.IGNORECASE,
 )
-# A UK postcode at the end of the address, e.g. "..., London, NW6 2EF".
+# A UK postcode at the end of the address, e.g. "..., London, EX1 1AA".
 POSTCODE_RE = re.compile(r"([A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2})\s*$", re.IGNORECASE)
 
 MONTHS = {

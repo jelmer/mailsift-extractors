@@ -12,12 +12,12 @@ lays out a stable "Ticket details" block after HTML-stripping:
     Quantity
     1
     Venue
-    The Underworld
-    174 Camden High St, London NW1 0NE
+    The Example Venue
+    1 Example Street, London EX1 1EX
     Date & time
     Thu 14 Mar, 7:00 PM GMT
     Name on ticket
-    Jelmer Vernooij
+    Test User
     Total price
     ...
 

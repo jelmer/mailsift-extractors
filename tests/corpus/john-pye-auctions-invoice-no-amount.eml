@@ -1,7 +1,7 @@
 Authentication-Results: example.org; dkim=pass header.d=johnpye.co.uk header.i=@johnpye.co.uk
 From: John Pye Auctions <customerservice@johnpye.co.uk>
 To: "test@example.org" <test@example.org>
-Subject: New Invoice #91247784 from John Pye Auctions (JohnPye)
+Subject: New Invoice #90000004 from John Pye Auctions (JohnPye)
 Date: Sat, 03 Oct 2026 18:14:20 +0000 (UTC)
 Message-ID: <john-pye-invoice-no-amount-test@johnpye.co.uk>
 MIME-Version: 1.0
@@ -18,7 +18,7 @@ Content-Type: text/html; charset=iso-8859-1
     <br> You have an outstanding invoice
     </b></p>
 
-    <p class="red-text"> <b>Invoice ID:#91247784</b></p>
+    <p class="red-text"> <b>Invoice ID:#90000004</b></p>
 
 <p class="red-text">Online Card Payment:</p>
    <p class="red-texta">Payment/Collection deadlines are present on your Invoice</p>

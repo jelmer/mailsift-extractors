@@ -8,10 +8,10 @@ customer identifier; the PDF invoice is attached.
 
 Body extract:
 
-    Domain 01920C-C508B1-A90BAD
+    Domain 000000-000000-000000
     Name Some Person
-    Invoice number 5684506471
-    Payments profile ID 0635-3736-8691
+    Invoice number 0000000000
+    Payments profile ID 0000-0000-0000
 
 The mail says the balance will be auto-charged, so this is
 functionally a bill that will be paid without action - but auto-pay
