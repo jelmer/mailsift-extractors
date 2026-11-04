@@ -16,6 +16,13 @@ by the manifest; adding French would need parallel parsing of the
 "Total commande" / "Numero de reservation" body labels and there
 are none of those in the corpus we've seen. Add when a real
 French-locale mail turns up.
+
+"Cancellation Confirmation" mails give the PNR, stations and departure
+time of each cancelled direction, but not the train number, which is
+part of each leg's calendar UID; a reservation built from them
+wouldn't replace the booked one, so they aren't handled.
+TODO: mark the legs cancelled once the host can match them without
+the train number.
 """
 
 from __future__ import annotations
