@@ -50,11 +50,12 @@ membership numbers or contact details. They aren't handled.
 
 "BA confirmation of cancellation and refund: Ref.<ref>" mails only
 give the booking reference, not the flights, so they can't reproduce
-the per-flight reservations and aren't handled. "Your BA491 flight
-... has been cancelled" mails come with a rebooking, so the booking
-itself still stands.
+the per-flight reservations and aren't handled.
 TODO: mark the flights cancelled once the host can match a booking by
 its reference alone.
+
+"Your BA491 flight ... has been cancelled" mails are HTML only and
+are handled by `british-airways-cancelled-flight`.
 """
 
 from __future__ import annotations
