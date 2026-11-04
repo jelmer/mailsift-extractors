@@ -8,7 +8,15 @@ MIME-Version: 1.0
 Content-Type: text/html; charset="utf-8"
 
 <html><body>
+<p>Thank you for shipping with us! Here's a summary of your shipment.</p>
 <p>Ship From:</p>
-<p>Test Person</p>
-<p>Tracking Number: 1Z0000000000000004</p>
+<p>Test User<br>1 Example Street<br>London N1 1AA<br>United Kingdom</p>
+<p>Ship To:</p>
+<p>EXAMPLE RETURNS CENTRE<br>2 Sample Road<br>Exampleton EX1 1AA<br>United Kingdom</p>
+<p>Lead tracking number:</p>
+<p>1Z0000000000000004</p>
+<p>Ship Date:</p>
+<p>13 October 2022</p>
+<p>UPS Service:</p>
+<p>UPS Standard</p>
 </body></html>

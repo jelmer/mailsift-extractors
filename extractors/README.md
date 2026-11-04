@@ -148,6 +148,32 @@ calendar events. If you want the bill due date on the calendar, emit
 both a `.bill.json` *and* a `.event.ics` from the same extractor -
 explicit beats clever.
 
+### Outgoing parcels
+
+A `.parcel.json` describes a parcel coming to you unless it carries
+`"mailsift:direction": "outgoing"`, for parcels you are sending: a
+postage label you bought, a drop-off or collection receipt. schema.org
+has no property for which way a parcel is going, hence the namespaced
+field; leave it out for incoming parcels rather than writing
+`"incoming"`. For an outgoing parcel, `merchant` stays unset (you are
+the sender) and the recipient goes in `deliveryAddress`, a
+`PostalAddress` whose `name` is who it is addressed to:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "ParcelDelivery",
+  "trackingNumber": "1Z0000000000000004",
+  "provider": {"@type": "Organization", "@id": "ups", "name": "UPS"},
+  "deliveryStatus": "Scheduled",
+  "mailsift:direction": "outgoing",
+  "deliveryAddress": {"@type": "PostalAddress", "name": "Example Returns Centre"}
+}
+```
+
+Once a record is marked outgoing, later mails about the same tracking
+number keep the marker, since parcels merge by overlaying fields.
+
 ### Optional `_manifest.json`
 
 An extractor may drop a `_manifest.json` in cwd with `notes` and

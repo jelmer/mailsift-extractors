@@ -12,6 +12,11 @@ After tag-stripping the HTML the relevant text is in a stable form:
 - "Tracking Number: 1Zxxxxxxxxxxxxxxxxx" or service line `UPS <X>
   1Zxxxx...` carry the 18-character 1Z tracking id.
 
+"UPS Label Delivery" mails are for a parcel you are sending: they are
+filed as outgoing (`mailsift:direction`) with the "Ship To:" name as
+the recipient. "UPS Collection Request" mails carry only a collection
+number, not a tracking number, so they are left alone.
+
 Emits a `.parcel.json` for each update. The delivery window rides on
 the same file (`expectedArrivalFrom`/`Until`) when present - a parcel
 isn't a reservation, so no separate calendar artifact is written.
@@ -88,13 +93,31 @@ SHIPPER_ABOVE_TRACKING_RE = re.compile(
     r"^\s*([A-Z][A-Z0-9 &.,'()/-]*?)\s*\n\s*Tracking Number:",
     re.MULTILINE,
 )
-# Labels and collections for parcels you are sending.
-OUTGOING_RE = re.compile(r"^UPS (?:Label Delivery|Collection Request)\b", re.IGNORECASE)
+# A label bought for a parcel you are sending.
+LABEL_RE = re.compile(r"^UPS Label Delivery\b", re.IGNORECASE)
+COLLECTION_RE = re.compile(r"^UPS Collection Request\b", re.IGNORECASE)
+# The first line of the address block is the recipient's name.
+SHIP_TO_RE = re.compile(r"^\s*Ship To:\s*\n\s*(\S.*?)\s*$", re.MULTILINE)
+
+
+def label_parcel(tracking: str, blocks: str) -> dict:
+    parcel: dict = {
+        "@context": "https://schema.org",
+        "@type": "ParcelDelivery",
+        "trackingNumber": tracking,
+        "provider": {"@type": "Organization", "@id": "ups", "name": "UPS"},
+        "deliveryStatus": "Scheduled",
+        "mailsift:direction": "outgoing",
+    }
+    m = SHIP_TO_RE.search(blocks)
+    if m:
+        parcel["deliveryAddress"] = {"@type": "PostalAddress", "name": m.group(1)}
+    return parcel
 
 
 def main() -> int:
     mail = read_message()
-    if not mail.subject or OUTGOING_RE.match(mail.subject):
+    if not mail.subject or COLLECTION_RE.match(mail.subject):
         return 0
 
     if mail.html:
@@ -108,6 +131,14 @@ def main() -> int:
     if not tracking_match:
         return 0
     tracking = tracking_match.group(1)
+
+    if LABEL_RE.match(mail.subject):
+        blocks = strip_html(mail.html, block_tags=True) if mail.html else text
+        Path(f"ups-{tracking}.parcel.json").write_text(
+            json.dumps(label_parcel(tracking, blocks), ensure_ascii=False),
+            encoding="utf-8",
+        )
+        return 0
 
     status = status_from_subject(mail.subject)
 
