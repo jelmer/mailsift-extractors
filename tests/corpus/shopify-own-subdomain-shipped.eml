@@ -1,0 +1,34 @@
+Authentication-Results: example.org; dkim=pass header.d=mailer.goods.example header.i=@mailer.goods.example
+From: Example Goods <sales@goods.example>
+To: test@example.org
+Subject: A shipment from order #100456 is on the way
+Date: Tue, 13 Oct 2026 13:47:03 +0000
+Message-Id: <E1020004-0000000000000001-00000001@shopify.com>
+Feedback-Id: ct_example:s_0000000001:shopify
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Your order is on the way
+
+Example Goods
+
+Order #100456
+
+------------------------
+Your order is on the way
+------------------------
+
+Your order is on the way. Track your shipment to see
+the delivery status.
+
+USPS tracking number: 9400100000000000000001
+( https://tools.usps.com/go/TrackConfirmAction.action?tLabels=9400100000000000000001 )
+
+
+Items in this shipment
+----------------------
+
+Example Widget × 1
+
+Large
