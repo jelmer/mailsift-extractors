@@ -34,6 +34,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
+from mailsift_extractor import strip_html as block_text
 
 # bol order ids come in two flavours:
 # - Legacy (pre-2015): a plain 10-digit numeric (`NNNNNNNNNN`).
@@ -60,7 +61,58 @@ ITEM_STATUS_RE = re.compile(
     r"Dit is (?:onderweg|bezorgd)\s+\d+\s+artike\w*\s+(.+?)\s+(?:[AC]000[A-Z0-9]{6}|\d{10})",
     re.IGNORECASE,
 )
-ITEM_LEGACY_RE = re.compile(r"Besteld bij bol\.com:\s+(.+?)\s+\d+\s+€", re.IGNORECASE)
+# Pre-2015 mails list the items in a table under "Besteld bij
+# bol.com:": title (`Of Mice and Men -`), author, format, then the
+# quantity, the price and line total (`€` / `9,99`), and on the order
+# confirmation the delivery time.
+LEGACY_TABLE_HEADINGS = {"Titel", "Aantal", "Prijs", "Totaal", "Levertijd"}
+LEGACY_TABLE_END = {"Bestelbedrag", "Subtotaal", "Totaalbedrag", "Totaal"}
+LEGACY_PRICE_RE = re.compile(r"^(?:€|€\s*[\d.,]+|[\d.,]+)$")
+LEGACY_QUANTITY_RE = re.compile(r"^\d+$")
+LEGACY_DELIVERY_TIME_RE = re.compile(r"werkdag|in huis|weken|voorraad", re.IGNORECASE)
+LEGACY_NOT_TITLE_RE = re.compile(
+    r"^(?:Schrijf een review|(?:Engels|Nederlands|Duits|Frans)\b.*)$|"
+    r"\b(?:Paperback|Hardcover|Gebonden|E-book)\b",
+    re.IGNORECASE,
+)
+
+
+def legacy_items(html: str) -> list[tuple[str, int, float | None]]:
+    """`(title, quantity, price)` for each row of the pre-2015 table."""
+    lines = [line.strip() for line in block_text(html, block_tags=True).splitlines()]
+    lines = [line for line in lines if line]
+    try:
+        index = lines.index("Besteld bij bol.com:") + 1
+    except ValueError:
+        return []
+    while index < len(lines) and lines[index] in LEGACY_TABLE_HEADINGS:
+        index += 1
+    items = []
+    while index < len(lines) and lines[index] not in LEGACY_TABLE_END:
+        names = []
+        while index < len(lines) and not LEGACY_QUANTITY_RE.match(lines[index]):
+            names.append(lines[index])
+            index += 1
+        if index == len(lines):
+            break
+        quantity = int(lines[index])
+        index += 1
+        prices = []
+        while index < len(lines) and LEGACY_PRICE_RE.match(lines[index]):
+            amount = lines[index].lstrip("€").strip()
+            if amount:
+                prices.append(float(amount.replace(",", ".")))
+            index += 1
+        if index < len(lines) and LEGACY_DELIVERY_TIME_RE.search(lines[index]):
+            index += 1
+        # A missing author shows as `-`.
+        parts = [n.rstrip(" -") for n in names[:1]]
+        parts += [
+            n for n in names[1:2] if n.strip(" -") and not LEGACY_NOT_TITLE_RE.search(n)
+        ]
+        if parts:
+            items.append((" - ".join(parts), quantity, prices[0] if prices else None))
+    return items
 
 
 class _Strip(HTMLParser):
@@ -110,7 +162,7 @@ def status_from_subject(subject: str) -> str | None:
         return "OrderInTransit"
     if "bezorger is onderweg" in s:
         return "OrderInTransit"
-    if "ligt bij de buren" in s:
+    if "ligt bij de buren" in s or "afgeleverd" in s:
         return "OrderDelivered"
     if "pakket is bezorgd" in s:
         return "OrderDelivered"
@@ -121,8 +173,9 @@ def main() -> int:
     mail = read_message()
     # bol has used at least two automated senders over the years:
     # `automail@bol.com` on the modern templates and `noreply@bol.com`
-    # on the pre-2015 ones. Both are DKIM-signed by `bol.com`, so
-    # accept either.
+    # on the pre-2015 ones. Accept either; the manifest only lets the
+    # older, mostly unsigned, ones through for mail received before
+    # bol signed it.
     from_address = (mail.from_address or "").lower()
     if from_address not in ("automail@bol.com", "noreply@bol.com"):
         return 0
@@ -162,16 +215,20 @@ def main() -> int:
         parcel["deliveryStatus"] = status
     # Item name, if a template we understand names it. The bul (buren /
     # neighbours) template just carries an address, so no item field.
-    item_m = (
-        ITEM_MODERN_RE.search(text)
-        or ITEM_STATUS_RE.search(text)
-        or ITEM_LEGACY_RE.search(text)
+    item_m = ITEM_MODERN_RE.search(text) or ITEM_STATUS_RE.search(text)
+    # An old dispatch mail lists only what went in that shipment, and
+    # would replace the whole order the confirmation listed.
+    old_items = (
+        legacy_items(mail.html) if not item_m and status == "OrderProcessing" else []
     )
     if item_m:
         parcel["itemShipped"] = {
             "@type": "Product",
             "name": item_m.group(1).strip(),
         }
+    elif old_items:
+        products = [{"@type": "Product", "name": name} for name, _, _ in old_items]
+        parcel["itemShipped"] = products[0] if len(products) == 1 else products
     Path(f"bol-{order_id}.parcel.json").write_text(
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
     )
@@ -205,6 +262,26 @@ def main() -> int:
             "priceCurrency": "EUR",
         },
     }
+    if old_items:
+        receipt["orderedItem"] = [
+            {
+                "@type": "OrderItem",
+                "orderedItem": {"@type": "Product", "name": name},
+                "orderQuantity": quantity,
+            }
+            | (
+                {}
+                if price is None
+                else {
+                    "orderItemSubtotal": {
+                        "@type": "PriceSpecification",
+                        "price": price,
+                        "priceCurrency": "EUR",
+                    }
+                }
+            )
+            for name, quantity, price in old_items
+        ]
     seller_m = SELLER_RE.search(text)
     if seller_m:
         receipt["seller"] = seller_m.group(1).strip()

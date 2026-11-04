@@ -91,3 +91,29 @@ def test_legacy_2012_bestelling_emits_receipt_and_parcel(run_extractor):
         "price": 14.99,
         "priceCurrency": "EUR",
     }
+
+
+def test_legacy_confirmation_lists_every_row_of_the_table(run_extractor):
+    out = run_extractor("bol-com", "bol-com-legacy-ordered-table.eml")
+    parcel = out["bol-9999999901.parcel.json"]
+    assert parcel["itemShipped"] == [
+        {"@type": "Product", "name": "Example Novel - Example Author"},
+        {"@type": "Product", "name": "Example Album"},
+    ]
+    receipt = out["bol-9999999901.receipt.json"]
+    assert [
+        (i["orderedItem"]["name"], i["orderQuantity"], i["orderItemSubtotal"]["price"])
+        for i in receipt["orderedItem"]
+    ] == [("Example Novel - Example Author", 1, 9.99), ("Example Album", 2, 11.0)]
+
+
+def test_legacy_partial_dispatch_leaves_the_items_alone(run_extractor):
+    out = run_extractor("bol-com", "bol-com-legacy-shipped-part.eml")
+    parcel = out["bol-9999999901.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderInTransit"
+    assert "itemShipped" not in parcel
+
+
+def test_legacy_left_with_a_neighbour_is_delivered(run_extractor):
+    out = run_extractor("bol-com", "bol-com-legacy-neighbour.eml")
+    assert out["bol-9999999901.parcel.json"]["deliveryStatus"] == "OrderDelivered"
