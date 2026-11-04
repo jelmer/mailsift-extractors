@@ -36,6 +36,14 @@ Each `BAnnnn` segment becomes one `FlightReservation` sharing the
 booking reference. Subsequent updates (delay, cancellation) sent by
 other BA addresses would land on a different extractor; here we only
 process the one-shot e-ticket receipt.
+
+"BA confirmation of cancellation and refund: Ref.<ref>" mails only
+give the booking reference, not the flights, so they can't reproduce
+the per-flight reservations and aren't handled. "Your BA491 flight
+... has been cancelled" mails come with a rebooking, so the booking
+itself still stands.
+TODO: mark the flights cancelled once the host can match a booking by
+its reference alone.
 """
 
 from __future__ import annotations
