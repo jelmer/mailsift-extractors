@@ -32,3 +32,9 @@ def test_delivered_records_actual_time(run_extractor):
     parcel = out["ups-1Z0000000000000001.parcel.json"]
     assert parcel["deliveryStatus"] == "Delivered"
     assert parcel["actualDeliveryTime"] == "2026-04-30T11:13:00"
+
+
+def test_records_the_sender(run_extractor):
+    out = run_extractor("ups", "ups-delivered.eml")
+    parcel = out["ups-1Z0000000000000001.parcel.json"]
+    assert parcel["merchant"] == {"@type": "Organization", "name": "ACME PARTS CO"}

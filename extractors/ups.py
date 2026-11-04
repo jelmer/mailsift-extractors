@@ -68,6 +68,9 @@ def parse_date(date_str: str) -> datetime | None:
         return None
 
 
+SENDER_RE = re.compile(r"^\s*From (\S.*?)\s*$", re.MULTILINE)
+
+
 def main() -> int:
     mail = read_message()
     if not mail.subject:
@@ -95,6 +98,14 @@ def main() -> int:
     }
     if status:
         parcel["deliveryStatus"] = status
+    # The sender sits on its own line: `From GARMIN (EUROPE) LIMITED`.
+    if mail.html:
+        sender_m = SENDER_RE.search(strip_html(mail.html, block_tags=True))
+        if sender_m:
+            parcel["merchant"] = {
+                "@type": "Organization",
+                "name": sender_m.group(1).strip(),
+            }
 
     window_start: datetime | None = None
     window_end: datetime | None = None
