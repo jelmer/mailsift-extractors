@@ -22,6 +22,12 @@ Maps / Search. The HTML body opens with a schema.org microdata block:
 The HTML is mostly well-formed but unquoted attributes and stray control
 bytes are common, so we use targeted regex extraction rather than a
 full microdata parser.
+
+"Your reservation at <place> is canceled" mails carry the same block
+with `<link itemprop=reservationStatus
+href=http://schema.org/ReservationCancelled>`, so they emit the same
+reservation with `reservationStatus: ReservationCancelled`, which
+replaces the booked one.
 """
 
 from __future__ import annotations
@@ -45,6 +51,15 @@ META_RE = re.compile(
 SCOPE_OPEN_RE = re.compile(
     r"<div\s+[^>]*itemtype=[\"']?http://schema\.org/(?P<type>[A-Za-z]+)",
     re.IGNORECASE,
+)
+
+STATUS_RE = re.compile(
+    r"<link\s+itemprop=[\"']?reservationStatus[\"']?\s+href="
+    r"[\"']?(?:https?://schema\.org/)?(?P<status>[A-Za-z]+)",
+    re.IGNORECASE,
+)
+CANCELLED_SUBJECT_RE = re.compile(
+    r"^Your reservation at .* (is|has been) cancell?ed", re.IGNORECASE
 )
 
 
@@ -109,6 +124,11 @@ def main() -> int:
     if not mail.html:
         return 0
 
+    status = STATUS_RE.search(mail.html)
+    cancelled = status is not None and status["status"] == "ReservationCancelled"
+    if CANCELLED_SUBJECT_RE.match((mail.subject or "").strip()) and not cancelled:
+        raise ValueError("cancellation mail without ReservationCancelled markup")
+
     micro = parse_microdata(mail.html)
     if not micro:
         return 0
@@ -154,6 +174,9 @@ def main() -> int:
             reservation["partySize"] = int(party)
         except ValueError:
             pass
+
+    if cancelled:
+        reservation["reservationStatus"] = "ReservationCancelled"
 
     res_id = micro.get("reservationNumber") or micro.get("reservationId")
     if res_id:
