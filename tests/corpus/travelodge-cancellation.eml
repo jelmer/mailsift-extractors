@@ -1,0 +1,32 @@
+From: Travelodge Website <webmaster@mail.travelodge.co.uk>
+To: test@example.org
+Subject: YOUR TRAVELODGE BOOKING IS CANCELLED
+Date: Thu, 07 Mar 2046 22:16:48 +0000
+Message-ID: <travelodge-cancellation-test@mail.travelodge.co.uk>
+Authentication-Results: example.org; dkim=pass header.d=travelodge.co.uk
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<h1>Your Travelodge Booking Cancellation</h1>
+<p>Hi Test User,</p>
+<p>Your Travelodge Booking Cancellation.</p>
+<table>
+<tr><td>Your Confirmation Number:12345679</td></tr>
+<tr><td>Keep this number safe, you may need this later on.</td></tr>
+<tr><td>Your Cancellation Number:87654321</td></tr>
+<tr><td>Keep this number safe, you may need this later on.</td></tr>
+</table>
+<table>
+<tr><td>Guest Name:</td></tr><tr><td>Test User</td></tr>
+<tr><td>Hotel:</td></tr><tr><td>Springfield Central</td></tr>
+<tr><td>Rate:</td></tr><tr><td>Flexible Rate</td></tr>
+<tr><td>Check in:</td></tr><tr><td>09 Mar 2046 at 3pm</td></tr>
+<tr><td>Check out:</td></tr><tr><td>11 Mar 2046 at 12 noon</td></tr>
+<tr><td>Staying in a:</td></tr><tr><td>Double Room </td></tr>
+<tr><td>Room Cost:</td></tr><tr><td>&pound;90.00</td></tr>
+<tr><td>Total cost is:</td></tr><tr><td>&pound;90.00</td></tr>
+<tr><td>The total refund is:</td></tr><tr><td>&pound; 90.00</td></tr>
+</table>
+</body></html>

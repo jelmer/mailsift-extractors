@@ -2,6 +2,12 @@
 
 from __future__ import annotations
 
+import json
+import re
+from pathlib import Path
+
+EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
+
 
 def test_confirmation_emits_reservation(run_extractor):
     out = run_extractor("thon-hotels", "thon-hotels-confirmation.eml")
@@ -47,3 +53,30 @@ def test_norwegian_locale_variant(run_extractor):
         "price": 192.0,
         "priceCurrency": "EUR",
     }
+
+
+def test_cancellation_replaces_the_booking(run_extractor):
+    out = run_extractor("thon-hotels", "thon-hotels-cancellation.eml")
+    assert out == {
+        "thon-400000001.reservation.json": {
+            "@context": "https://schema.org",
+            "@type": "LodgingReservation",
+            "reservationStatus": "ReservationCancelled",
+            "reservationNumber": "thon-400000001",
+            "checkinTime": "2046-06-15",
+            "checkoutTime": "2046-06-17",
+            "reservationFor": {
+                "@type": "LodgingBusiness",
+                "name": "Thon Hotel Eksempel",
+            },
+        }
+    }
+
+
+def test_manifest_accepts_cancellations():
+    for line in (EXTRACTORS_DIR / "thon-hotels.yaml").read_text().splitlines():
+        if line.startswith("subject_regex: "):
+            pattern = re.compile(json.loads(line.removeprefix("subject_regex: ")))
+            break
+    assert pattern.search("Your reservation at Thon Hotel Eksempel has been cancelled")
+    assert pattern.search("Booking Confirmation Thon Hotel Eksempel")

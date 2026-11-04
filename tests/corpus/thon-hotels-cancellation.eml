@@ -1,0 +1,24 @@
+Authentication-Results: example.org; dkim=pass header.d=e.thonhotels.no header.i=@e.thonhotels.no
+From: Thon Hotels <reservations@e.thonhotels.no>
+To: test@example.org
+Subject: Your reservation at Thon Hotel Eksempel has been cancelled
+Date: Thu, 15 Mar 2046 22:23:29 +0000
+Message-ID: <thon-cancellation-test@e.thonhotels.no>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html>
+<body>
+<p>Thon</p>
+<p>Stay cancelled</p>
+<h1>Stay cancelled</h1>
+<p>Thon Hotel Eksempel</p>
+<p>Ref.&nbsp;400000001</p>
+<p>1 room, 2 nights</p>
+<p>, 1 adult</p>
+<p>Fri 15. Jun 2046</p>
+<p>Sun 17. Jun 2046</p>
+<p>We hope to welcome you back another time!</p>
+</body>
+</html>

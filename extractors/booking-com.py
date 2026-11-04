@@ -5,6 +5,12 @@ These don't carry schema.org markup, but their HTML is consistent
 enough across years to scrape directly. We pull confirmation number,
 check-in / check-out date+time, location, and hotel name (from
 subject), and emit a single `LodgingReservation` for the stay.
+
+"Booking cancelled for <hotel>" mails list the same booking number,
+hotel, address and dates, so they emit the same reservation with
+`reservationStatus: ReservationCancelled`, which replaces the booked
+one. Older cancellations that carry schema.org markup are left to the
+schema-ld extractor, which filed their confirmations too.
 """
 
 from __future__ import annotations
@@ -56,6 +62,7 @@ CHECKOUT_RE = re.compile(
     r"\s*\((?:until\s+)?(\d{1,2}:\d{2})",
 )
 LOCATION_RE = re.compile(r"Location\s+([^P]+?)\s+Phone\b", re.DOTALL)
+CANCELLED_SUBJECT_RE = re.compile(r"^Booking cancel+ed for\s+(.+?)\s*$", re.IGNORECASE)
 
 
 def parse_date(s: str) -> datetime | None:
@@ -93,9 +100,60 @@ def hotel_from_subject(subject: str | None) -> str | None:
     return None
 
 
+def value_after(lines: list[str], label: str) -> str | None:
+    try:
+        return lines[lines.index(label) + 1]
+    except (ValueError, IndexError):
+        return None
+
+
+def cancelled_stay(mail, hotel: str) -> dict:
+    """The reservation a "Booking cancelled for <hotel>" mail describes.
+
+    The body lists the hotel name on its own line, its address on the
+    next, and `Check-in` / `Thursday 5 November 2026` without a time.
+    """
+    lines = [
+        line.strip()
+        for line in strip_html(mail.html, block_tags=True).splitlines()
+        if line.strip()
+    ]
+    number_m = CONFIRMATION_RE.search("\n".join(lines))
+    if not number_m:
+        raise ValueError(f"cancellation for {hotel!r} has no booking number")
+    checkin = parse_date(value_after(lines, "Check-in") or "")
+    checkout = parse_date(value_after(lines, "Check-out") or "")
+    if checkin is None:
+        raise ValueError(f"cancellation for {hotel!r} has no check-in date")
+    reservation: dict = {
+        "@context": "https://schema.org",
+        "@type": "LodgingReservation",
+        "reservationStatus": "ReservationCancelled",
+        "reservationNumber": f"booking-com-{number_m.group(1)}",
+        "checkinTime": checkin.strftime("%Y-%m-%d"),
+        "reservationFor": {"@type": "LodgingBusiness", "name": hotel},
+    }
+    if checkout is not None:
+        reservation["checkoutTime"] = checkout.strftime("%Y-%m-%d")
+    address = value_after(lines, hotel)
+    if address and address != "CANCELLED":
+        reservation["reservationFor"]["address"] = address
+    return reservation
+
+
 def main() -> int:
     mail = read_message()
     if not mail.html:
+        return 0
+
+    cancelled_m = CANCELLED_SUBJECT_RE.match((mail.subject or "").strip())
+    if cancelled_m:
+        if any("Reservation" in str(item.get("@type", "")) for item in mail.ld_json):
+            return 0
+        cancelled = cancelled_stay(mail, cancelled_m.group(1))
+        Path(f"{cancelled['reservationNumber']}.reservation.json").write_text(
+            json.dumps(cancelled, ensure_ascii=False), encoding="utf-8"
+        )
         return 0
 
     text = strip_html(mail.html)

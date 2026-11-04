@@ -3,7 +3,7 @@ order: 50
 from_domains:
   - e.thonhotels.no
   - thonhotels.no
-subject_regex: "(?i)^Booking Confirmation"
+subject_regex: "(?i)^Booking Confirmation|^Your reservation at .+ has been cancel+ed$"
 requires:
   - html
 require_dkim:

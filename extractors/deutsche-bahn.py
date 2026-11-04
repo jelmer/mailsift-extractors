@@ -19,6 +19,10 @@ ending in a comma. The header says `Rückfahrt` for a return and
 
 We emit one TrainReservation per leg. BahnCard purchases come with a
 PDF too, but without a journey; those are skipped.
+
+Cancellation mails ("Confirmation of cancellation (order <code>)",
+"Annuleringsbevestiging (Order <code>)") have no PDF and only give the
+order number and refund, not the legs, so they aren't handled.
 """
 
 from __future__ import annotations

@@ -3,7 +3,7 @@ order: 50
 from_domains:
   - mail.travelodge.co.uk
   - travelodge.co.uk
-subject_regex: "(?i)^Your Travelodge booking confirmation$"
+subject_regex: "(?i)^Your Travelodge booking (confirmation|is cancell?ed)$"
 requires:
   - html
 require_dkim:

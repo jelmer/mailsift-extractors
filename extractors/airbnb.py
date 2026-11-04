@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Airbnb payment receipts.
+"""Airbnb payment receipts and host cancellations.
 
 `Your receipt from Airbnb` mails are HTML-only and carry no
 schema.org markup (unlike the `Reservation confirmed for ...` mails
@@ -18,6 +18,14 @@ We emit a receipt keyed on the Receipt ID; the confirmation code
 carries over so a downstream reader can join it back to the
 reservation the `schema-ld` path produced from the confirmation
 mail.
+
+"Your 2021-04-30 reservation was cancelled" mails (sent when the host
+cancels) have no markup either. They give the check-in date in the
+subject, the listing in a `Host of <listing> in <city>` line and the
+check-out date in the "Show homes" search link. The confirmation code
+only appears inside the compensation coupon code, `HCP2-<code>`. We
+emit the same `LodgingReservation` schema-ld filed from the
+confirmation, with `reservationStatus: ReservationCancelled`.
 """
 
 from __future__ import annotations
@@ -25,6 +33,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
@@ -47,9 +56,44 @@ TOTAL_RE = re.compile(
     r"(?P<symbol>[£€$])?\s*(?P<amount>[0-9,]+(?:\.[0-9]{2})?)",
 )
 
+CANCELLED_SUBJECT_RE = re.compile(
+    r"^Your (\d{4}-\d{2}-\d{2}) reservation was cancel+ed$", re.IGNORECASE
+)
+LISTING_RE = re.compile(r"^Host of (.+) in .+$")
+COUPON_CODE_RE = re.compile(r"\bHCP\d+-([A-Z0-9]{6,20})\b")
+CHECKOUT_RE = re.compile(r"[?&](?:amp;)?checkout=(\d{4}-\d{2}-\d{2})\b")
+
 
 def parse_amount(raw: str) -> float:
     return float(raw.replace(",", ""))
+
+
+def cancelled_reservation(html: str, checkin: date) -> dict:
+    lines = [
+        line.strip()
+        for line in strip_html(html, block_tags=True).splitlines()
+        if line.strip()
+    ]
+    listing = next(
+        (m.group(1) for line in lines if (m := LISTING_RE.match(line))), None
+    )
+    if listing is None:
+        raise ValueError("cancellation without a 'Host of <listing>' line")
+    code_m = COUPON_CODE_RE.search(html)
+    if not code_m:
+        raise ValueError(f"cancellation of {listing!r} has no confirmation code")
+    checkout_m = CHECKOUT_RE.search(html)
+    if not checkout_m:
+        raise ValueError(f"cancellation of {listing!r} has no check-out date")
+    return {
+        "@context": "https://schema.org",
+        "@type": "LodgingReservation",
+        "reservationStatus": "ReservationCancelled",
+        "reservationNumber": code_m.group(1),
+        "checkinTime": checkin.isoformat(),
+        "checkoutTime": date.fromisoformat(checkout_m.group(1)).isoformat(),
+        "reservationFor": {"@type": "LodgingBusiness", "name": listing},
+    }
 
 
 def main() -> int:
@@ -57,6 +101,15 @@ def main() -> int:
     html = mail.html
     if not html:
         return 0
+
+    cancelled_m = CANCELLED_SUBJECT_RE.match((mail.subject or "").strip())
+    if cancelled_m:
+        res = cancelled_reservation(html, date.fromisoformat(cancelled_m.group(1)))
+        Path(f"airbnb-{res['reservationNumber']}.reservation.json").write_text(
+            json.dumps(res, ensure_ascii=False), encoding="utf-8"
+        )
+        return 0
+
     text = strip_html(html, block_tags=True)
 
     receipt_match = RECEIPT_ID_RE.search(text)

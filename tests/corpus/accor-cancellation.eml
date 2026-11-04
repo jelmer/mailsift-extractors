@@ -1,0 +1,43 @@
+From: ALL - Accor Live Limitless <all@reservation.accor-mail.com>
+To: test@example.org
+Subject: Cancellation of your reservation: ibis Exampleton Centre No. ZZZZZZZZ
+Date: Fri, 25 May 2046 17:53:52 +0200
+Message-ID: <accor-cancellation-test@reservation.accor-mail.com>
+Authentication-Results: example.org; dkim=pass header.d=accor-mail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="sep"
+
+--sep
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+
+--sep
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body>
+<table>
+<tr><td>Dear Mr User ,</td></tr>
+<tr><td>We have received and registered your request.</td></tr>
+<tr><td>This reservation was cancelled.</td></tr>
+<tr><td>Reservation number: </td></tr>
+<tr><td><b>ZZZZZZZZ</b></td></tr>
+<tr><td>Date of stay:</td></tr>
+<tr><td>From Jul. 20, 2046 to Jul. 22, 2046 </td></tr>
+<tr><td>Your stay:</td></tr>
+<tr><td>1 accommodation, 2 nights</td></tr>
+<tr><td>1 adult , 0 child </td></tr>
+<tr><td>Your stay</td></tr>
+<tr><td>ibis Exampleton Centre</td></tr>
+<tr><td>1 Example Square</td></tr>
+<tr><td>00000 EXAMPLETON - GERMANY</td></tr>
+<tr><td>Accommodation 1</td></tr>
+<tr><td>Reservation made in the name of : Mr User Test .</td></tr>
+<tr><td>Date of stay: From Jul. 20, 2046 to Jul. 22, 2046.</td></tr>
+<tr><td>Number of guests: 1 adult , 0 child </td></tr>
+<tr><td>This reservation was cancelled on May. 25, 2046 - 17:53:00.</td></tr>
+<tr><td>Cancellation number: 0000</td></tr>
+</table>
+</body></html>
+--sep--

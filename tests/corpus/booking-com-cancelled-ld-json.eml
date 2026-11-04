@@ -1,0 +1,30 @@
+Authentication-Results: example.org; dkim=pass header.d=booking.com header.i=@booking.com
+From: Booking.com <noreply@booking.com>
+To: test@example.org
+Subject: Booking cancelled for Example Hotel Central
+Date: Wed, 04 Nov 2046 10:00:00 +0000
+Message-ID: <booking-com-cancelled-ld@booking.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><head><script type="application/ld+json">{"@context": "http://schema.org", "@type": "LodgingReservation", "reservationStatus": "http://schema.org/Cancelled", "reservationNumber": "9999999998", "reservationFor": {"@type": "LodgingBusiness", "name": "Example Hotel Central"}, "checkinDate": "2046-11-08", "checkoutDate": "2046-11-09"}</script>
+</head><body>
+<h1>Booking cancelled for Example Hotel Central</h1>
+<p>Confirmation number: 9999999998</p>
+<p>PIN code: 0000</p>
+<h2>Your booking has been successfully cancelled for free</h2>
+<p>Dear Test Person,</p>
+<p>We can confirm that your reservation at Example Hotel Central has been cancelled and no fee will be charged.</p>
+<table>
+<tr><td><b>Example Hotel Central</b></td></tr>
+<tr><td>1 Example Square, Exampleton, EX1 1AA, United Kingdom</td></tr>
+<tr><td>CANCELLED</td></tr>
+<tr><td>Check-in</td></tr>
+<tr><td>Thursday 8 November 2046</td></tr>
+<tr><td>Check-out</td></tr>
+<tr><td>Friday 9 November 2046</td></tr>
+<tr><td>Booking number</td></tr>
+<tr><td>9999999998</td></tr>
+</table>
+</body></html>

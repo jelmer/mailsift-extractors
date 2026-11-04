@@ -1,0 +1,34 @@
+Authentication-Results: example.org; dkim=pass header.d=google.com header.i=@google.com
+From: Reserve with Google <reserve-noreply@google.com>
+To: test@example.org
+Subject: Your reservation at The Example Bistro is canceled
+Date: Fri, 19 Oct 2046 12:40:58 -0700
+Message-ID: <google-reserve-cancelled-test@google.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<div itemscope itemtype=http://schema.org/FoodEstablishmentReservation>
+  <meta itemprop=reservationNumber content=0000-0000-0000-0001>
+  <meta itemprop=reservationId content=0000-0000-0000-0001>
+  <link itemprop=reservationStatus href=http://schema.org/ReservationCancelled>
+  <div itemprop=underName itemscope itemtype=http://schema.org/Person>
+    <meta itemprop=name content="Test User">
+  </div>
+  <meta itemprop=partySize content=3>
+  <meta itemprop=startTime content=2046-10-20T13:00:00+02:00>
+  <meta itemprop=endTime content=2046-10-20T15:30:00+02:00>
+  <div itemprop=reservationFor itemscope itemtype=http://schema.org/FoodEstablishment>
+    <meta itemprop=name content="The Example Bistro">
+    <div itemprop=address itemscope itemtype=http://schema.org/PostalAddress>
+      <meta itemprop=streetAddress content="1 Example Lane">
+      <meta itemprop=addressLocality content=Exampleton>
+      <meta itemprop=postalCode content="0000 AA">
+      <meta itemprop=addressCountry content=NL>
+    </div>
+  </div>
+  <meta itemprop=bookingTime content=2046-10-19T21:18:55+02:00>
+  <meta itemprop=modifiedTime content=2046-10-19T21:40:56+02:00>
+</div>
+<p>Your reservation has been canceled.</p>
+</body></html>
