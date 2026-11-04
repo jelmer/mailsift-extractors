@@ -22,7 +22,7 @@ def test_lodging_reservation(run_extractor):
             "name": "Example Hotel Amsterdam",
             "address": "1 Example Street, Amsterdam, 1011 AB, Netherlands",
         },
-        "reservationNumber": "booking-com-9999999999",
+        "reservationNumber": "9999999999",
     }
 
 
@@ -35,7 +35,7 @@ def test_confirmation_number_label(run_extractor):
     assert set(out) == {"booking-com-8888888888.reservation.json"}
     assert (
         out["booking-com-8888888888.reservation.json"]["reservationNumber"]
-        == "booking-com-8888888888"
+        == "8888888888"
     )
 
 
@@ -44,7 +44,7 @@ def test_number_from_property_mailto(run_extractor):
     assert set(out) == {"booking-com-7777777777.reservation.json"}
     assert (
         out["booking-com-7777777777.reservation.json"]["reservationNumber"]
-        == "booking-com-7777777777"
+        == "7777777777"
     )
 
 
@@ -55,7 +55,7 @@ def test_cancellation_replaces_the_booking(run_extractor):
             "@context": "https://schema.org",
             "@type": "LodgingReservation",
             "reservationStatus": "ReservationCancelled",
-            "reservationNumber": "booking-com-9999999998",
+            "reservationNumber": "9999999998",
             "checkinTime": "2046-11-08",
             "checkoutTime": "2046-11-09",
             "reservationFor": {
@@ -79,7 +79,7 @@ def test_updated_booking_replaces_the_booking(run_extractor):
         "booking-com-9999999997.reservation.json": {
             "@context": "https://schema.org",
             "@type": "LodgingReservation",
-            "reservationNumber": "booking-com-9999999997",
+            "reservationNumber": "9999999997",
             "checkinTime": "2046-11-06T15:00:00",
             "checkoutTime": "2046-11-07T12:00:00",
             "reservationFor": {

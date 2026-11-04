@@ -4,7 +4,9 @@
 These don't carry schema.org markup, but their HTML is consistent
 enough across years to scrape directly. We pull confirmation number,
 check-in / check-out date+time, location, and hotel name (from
-subject), and emit a single `LodgingReservation` for the stay.
+subject), and emit a single `LodgingReservation` for the stay. The
+`reservationNumber` is the bare booking number, as printed in the mail
+and in the schema.org markup schema-ld files, so the two agree.
 
 "Booking cancelled for <hotel>" mails list the same booking number,
 hotel, address and dates, so they emit the same reservation with
@@ -135,7 +137,7 @@ def cancelled_stay(mail, hotel: str) -> dict:
         "@context": "https://schema.org",
         "@type": "LodgingReservation",
         "reservationStatus": "ReservationCancelled",
-        "reservationNumber": f"booking-com-{number_m.group(1)}",
+        "reservationNumber": number_m.group(1),
         "checkinTime": checkin.strftime("%Y-%m-%d"),
         "reservationFor": {"@type": "LodgingBusiness", "name": hotel},
     }
@@ -161,9 +163,9 @@ def main() -> int:
         if has_reservation_markup(mail):
             return 0
         cancelled = cancelled_stay(mail, cancelled_m.group(1))
-        Path(f"{cancelled['reservationNumber']}.reservation.json").write_text(
-            json.dumps(cancelled, ensure_ascii=False), encoding="utf-8"
-        )
+        Path(
+            f"booking-com-{cancelled['reservationNumber']}.reservation.json"
+        ).write_text(json.dumps(cancelled, ensure_ascii=False), encoding="utf-8")
         return 0
 
     updated_m = UPDATED_SUBJECT_RE.match((mail.subject or "").strip())
@@ -211,7 +213,7 @@ def main() -> int:
         },
     }
     if confirmation:
-        reservation["reservationNumber"] = f"booking-com-{confirmation}"
+        reservation["reservationNumber"] = confirmation
     if location:
         reservation["reservationFor"]["address"] = location
 

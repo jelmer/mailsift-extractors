@@ -9,7 +9,8 @@ renders as label lines ("Booking number", "Check-in:", "Address:",
 line rather than scraping the markup.
 
 The same template carried JSON-LD from late January 2015 on; those
-mails are left to the generic schema-ld extractor.
+mails are left to the generic schema-ld extractor. Like that markup,
+`reservationNumber` is the bare booking number.
 """
 
 from __future__ import annotations
@@ -155,7 +156,7 @@ def main() -> int:
     reservation: dict = {
         "@context": "https://schema.org",
         "@type": "LodgingReservation",
-        "reservationNumber": f"booking-com-{booking_number}",
+        "reservationNumber": booking_number,
         "checkinTime": parse_check(lines, "Check-in", last_time=False),
         "checkoutTime": parse_check(lines, "Check-out", last_time=True),
         "reservationFor": {"@type": "LodgingBusiness", "name": hotel},
