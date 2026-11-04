@@ -11,6 +11,11 @@ hotel, address and dates, so they emit the same reservation with
 `reservationStatus: ReservationCancelled`, which replaces the booked
 one. Older cancellations that carry schema.org markup are left to the
 schema-ld extractor, which filed their confirmations too.
+
+"Your updated booking at <hotel>" mails, sent after the dates change,
+repeat the full confirmation with the new dates, so they emit the same
+reservation and replace the original. As with cancellations, those
+with schema.org markup are left to schema-ld.
 """
 
 from __future__ import annotations
@@ -63,6 +68,7 @@ CHECKOUT_RE = re.compile(
 )
 LOCATION_RE = re.compile(r"Location\s+([^P]+?)\s+Phone\b", re.DOTALL)
 CANCELLED_SUBJECT_RE = re.compile(r"^Booking cancel+ed for\s+(.+?)\s*$", re.IGNORECASE)
+UPDATED_SUBJECT_RE = re.compile(r"^Your updated booking at\s+(.+?)\s*$", re.IGNORECASE)
 
 
 def parse_date(s: str) -> datetime | None:
@@ -141,6 +147,10 @@ def cancelled_stay(mail, hotel: str) -> dict:
     return reservation
 
 
+def has_reservation_markup(mail) -> bool:
+    return any("Reservation" in str(item.get("@type", "")) for item in mail.ld_json)
+
+
 def main() -> int:
     mail = read_message()
     if not mail.html:
@@ -148,12 +158,16 @@ def main() -> int:
 
     cancelled_m = CANCELLED_SUBJECT_RE.match((mail.subject or "").strip())
     if cancelled_m:
-        if any("Reservation" in str(item.get("@type", "")) for item in mail.ld_json):
+        if has_reservation_markup(mail):
             return 0
         cancelled = cancelled_stay(mail, cancelled_m.group(1))
         Path(f"{cancelled['reservationNumber']}.reservation.json").write_text(
             json.dumps(cancelled, ensure_ascii=False), encoding="utf-8"
         )
+        return 0
+
+    updated_m = UPDATED_SUBJECT_RE.match((mail.subject or "").strip())
+    if updated_m and has_reservation_markup(mail):
         return 0
 
     text = strip_html(mail.html, spaced=True)
@@ -168,12 +182,23 @@ def main() -> int:
     if checkin is None or checkout is None:
         return 0
 
-    hotel = hotel_from_subject(mail.subject) or "Hotel"
+    if updated_m:
+        hotel = updated_m.group(1)
+    else:
+        hotel = hotel_from_subject(mail.subject) or "Hotel"
 
     location = None
     m = LOCATION_RE.search(text)
     if m:
         location = re.sub(r"\s+", " ", m.group(1)).strip()
+    elif updated_m:
+        # No "Location" label here; the address follows the hotel name.
+        lines = [
+            line.strip()
+            for line in strip_html(mail.html, block_tags=True).splitlines()
+            if line.strip()
+        ]
+        location = value_after(lines, hotel)
 
     reservation: dict = {
         "@context": "https://schema.org",

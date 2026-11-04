@@ -1,0 +1,32 @@
+From: Travelodge Website <webmaster@mail.travelodge.co.uk>
+To: test@example.org
+Subject: Your Travelodge booking is modified
+Date: Mon, 05 Mar 2046 23:00:00 +0000
+Message-ID: <travelodge-modified@mail.travelodge.co.uk>
+Authentication-Results: example.org; dkim=pass header.d=travelodge.co.uk
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<h1>BOOKING UPDATE</h1>
+<p>Hi Test User,</p>
+<p>Your booking is updated, please check the details below are correct.</p>
+<table>
+<tr><td>Your Confirmation Number:12345670</td><td>Keep this number safe, you may need this later on.</td></tr>
+</table>
+<table>
+<tr><td>Guest Name:</td><td>Test User</td></tr>
+<tr><td>Hotel:</td><td>Springfield Central</td></tr>
+<tr><td>Rate:</td><td>Flexible Rate</td></tr>
+<tr><td>Check in:</td><td>9 Mar 2046 at 3pm</td></tr>
+<tr><td>Check out:</td><td>11 Mar 2046 at 12 noon</td></tr>
+<tr><td>Staying in a:</td><td>Double Room</td></tr>
+<tr><td>Room Cost:</td><td>&pound;139.98</td></tr>
+<tr><td>Total Cost Is:</td><td>&pound;</td><td>139.98</td></tr>
+</table>
+<h4>Finding your hotel</h4>
+<p>Please use this postcode to find your hotel: AA1 7DY</p>
+<h4>The total cost is:</h4>
+<p>&pound;139.98</p>
+</body></html>

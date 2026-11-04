@@ -24,8 +24,13 @@ the only place they appear.
 same number and stay dates, so they emit the same reservation with
 `reservationStatus: ReservationCancelled`, which replaces the booked
 one. They carry no policy paragraphs, so the times are dates only.
-Older templates write the stay as `From Jul. 20, 2022 to Jul. 21, 2022`.
-Modification mails are kept out by the manifest.
+
+"Modification of your reservation: <hotel> No. <code>" mails summarise
+the reservation as it now stands, in the same layout as a
+confirmation, so they emit the same reservation with the new dates.
+
+Older templates write the stay as `From Jul. 20, 2022 to Jul. 21, 2022`
+and the guests as `2 adults , 0 child` on a line of their own.
 """
 
 from __future__ import annotations
@@ -41,7 +46,7 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 from mailsift_extractor import read_message, strip_html
 
 SUBJECT_RE = re.compile(
-    r"(?P<kind>Confirmation|Cancellation) of your reservation:"
+    r"(?P<kind>Confirmation|Cancellation|Modification) of your reservation:"
     r"\s*(?P<hotel>.+?)\s*No\.\s*(?P<ref>[A-Z0-9]+)\s*$",
     re.IGNORECASE,
 )
@@ -51,10 +56,12 @@ STAY_RE = re.compile(
 MONTH_FIRST_STAY_RE = re.compile(
     r"From\s+([A-Za-z]+)\.?\s+(\d{1,2}),\s+(\d{4})\s+to\s+([A-Za-z]+)\.?\s+(\d{1,2}),\s+(\d{4})",
 )
-ADULTS_RE = re.compile(r",\s*(\d+)\s+adults?\b", re.IGNORECASE)
+ADULTS_RE = re.compile(r"(?:,|^)\s*(\d+)\s+adults?\b", re.IGNORECASE | re.MULTILINE)
 CHECKIN_TIME_RE = re.compile(r"room is available from\s*(\d{1,2}[:.]\d{2})")
 CHECKOUT_TIME_RE = re.compile(r"room must be vacated by\s*(\d{1,2}[:.]\d{2})")
-TOTAL_RE = re.compile(r"Total\s*\n\s*([A-Z]{3})\s+([0-9]+(?:\.[0-9]{2})?)")
+TOTAL_RE = re.compile(
+    r"Total(?: \(fees and taxes included\):)?\s*\n\s*([A-Z]{3})\s+([0-9]+(?:\.[0-9]{2})?)"
+)
 
 
 def parse_date(day: str, month: str, year: str) -> datetime | None:
@@ -66,7 +73,7 @@ def parse_date(day: str, month: str, year: str) -> datetime | None:
     return None
 
 
-def cancelled_stay(text: str, hotel: str, reference: str) -> dict:
+def stay_dates(text: str) -> tuple[datetime, datetime] | None:
     stay = STAY_RE.search(text)
     if stay:
         checkin = parse_date(*stay.group(1, 2, 3))
@@ -74,11 +81,19 @@ def cancelled_stay(text: str, hotel: str, reference: str) -> dict:
     else:
         stay = MONTH_FIRST_STAY_RE.search(text)
         if not stay:
-            raise ValueError(f"cancellation of {reference} has no stay dates")
+            return None
         checkin = parse_date(*stay.group(2, 1, 3))
         checkout = parse_date(*stay.group(5, 4, 6))
     if checkin is None or checkout is None:
-        raise ValueError(f"cancellation of {reference}: bad dates {stay.group(0)!r}")
+        raise ValueError(f"unrecognised stay dates {stay.group(0)!r}")
+    return checkin, checkout
+
+
+def cancelled_stay(text: str, hotel: str, reference: str) -> dict:
+    dates = stay_dates(text)
+    if dates is None:
+        raise ValueError(f"cancellation of {reference} has no stay dates")
+    checkin, checkout = dates
     return {
         "@context": "https://schema.org",
         "@type": "LodgingReservation",
@@ -90,12 +105,12 @@ def cancelled_stay(text: str, hotel: str, reference: str) -> dict:
     }
 
 
-def apply_clock(stamp: datetime, text: str, pattern: re.Pattern[str]) -> datetime:
+def clock(text: str, pattern: re.Pattern[str]) -> tuple[int, int] | None:
     match = pattern.search(text)
     if not match:
-        return stamp
+        return None
     hour, minute = (int(x) for x in re.split(r"[:.]", match.group(1)))
-    return stamp.replace(hour=hour, minute=minute)
+    return hour, minute
 
 
 def main() -> int:
@@ -121,23 +136,34 @@ def main() -> int:
         )
         return 0
 
-    stay = STAY_RE.search(text)
-    if not stay:
+    dates = stay_dates(text)
+    if dates is None:
+        if subject_match.group("kind").lower() == "modification":
+            raise ValueError(f"modification of {reference} has no stay dates")
         return 0
-    checkin = parse_date(*stay.group(1, 2, 3))
-    checkout = parse_date(*stay.group(4, 5, 6))
-    if checkin is None or checkout is None:
-        return 0
+    checkin, checkout = dates
 
-    checkin = apply_clock(checkin, text, CHECKIN_TIME_RE)
-    checkout = apply_clock(checkout, text, CHECKOUT_TIME_RE)
+    checkin_clock = clock(text, CHECKIN_TIME_RE)
+    checkout_clock = clock(text, CHECKOUT_TIME_RE)
+    # Some mails leave out one of the policy lines; fall back to dates
+    # for both rather than invent a midnight check-in.
+    if checkin_clock and checkout_clock:
+        checkin_str = checkin.replace(
+            hour=checkin_clock[0], minute=checkin_clock[1]
+        ).strftime("%Y-%m-%dT%H:%M:%S")
+        checkout_str = checkout.replace(
+            hour=checkout_clock[0], minute=checkout_clock[1]
+        ).strftime("%Y-%m-%dT%H:%M:%S")
+    else:
+        checkin_str = checkin.strftime("%Y-%m-%d")
+        checkout_str = checkout.strftime("%Y-%m-%d")
 
     reservation: dict = {
         "@context": "https://schema.org",
         "@type": "LodgingReservation",
         "reservationNumber": f"accor-{reference}",
-        "checkinTime": checkin.strftime("%Y-%m-%dT%H:%M:%S"),
-        "checkoutTime": checkout.strftime("%Y-%m-%dT%H:%M:%S"),
+        "checkinTime": checkin_str,
+        "checkoutTime": checkout_str,
         "reservationFor": {
             "@type": "LodgingBusiness",
             "name": hotel,

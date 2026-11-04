@@ -23,6 +23,10 @@ also sends a VAT invoice, which the manifest keeps out.
 (without the postcode and total), so they emit the same reservation
 with `reservationStatus: ReservationCancelled`, which replaces the
 booked one.
+
+"Your Travelodge booking is modified" mails list the booking as it now
+stands, so they emit the same reservation with the new dates, which
+replaces the original.
 """
 
 from __future__ import annotations
@@ -40,11 +44,12 @@ from mailsift_extractor import read_message, strip_html
 CONFIRMATION_RE = re.compile(r"Confirmation number:\s*(\d+)", re.IGNORECASE)
 HOTEL_RE = re.compile(r"^Hotel:\s*\n\s*(.+?)\s*$", re.MULTILINE)
 ROOM_RE = re.compile(r"^Staying in a:\s*\n\s*(.+?)\s*$", re.MULTILINE)
+# The modified mail drops "for your booking" and says "your hotel".
 TOTAL_RE = re.compile(
-    r"total cost for your booking is:\s*\u00a3\s*([0-9]+(?:\.[0-9]{2})?)"
+    r"total cost (?:for your booking )?is:\s*\u00a3\s*([0-9]+(?:\.[0-9]{2})?)"
 )
 POSTCODE_RE = re.compile(
-    r"postcode to find our hotel:\s*([A-Z0-9 ]+?)\s*$", re.MULTILINE
+    r"postcode to find (?:our|your) hotel:\s*([A-Z0-9 ]+?)\s*$", re.MULTILINE
 )
 CANCELLED_SUBJECT_RE = re.compile(
     r"^Your Travelodge booking is cancell?ed$", re.IGNORECASE

@@ -1,0 +1,46 @@
+Authentication-Results: example.org; dkim=pass header.d=booking.com header.i=@booking.com
+From: Booking.com <noreply@booking.com>
+To: test@example.org
+Subject: Your updated booking at Example Hotel Central
+Date: Tue, 18 Sep 2046 10:00:00 +0000
+Message-ID: <booking-com-updated@booking.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body>
+<h1>Your updated booking at Example Hotel Central</h1>
+<p>Confirmation number: 9999999997</p>
+<p>PIN code: 0000</p>
+<h2>Your booking has been successfully modified</h2>
+<p>This booking was updated on Tuesday 18 September 2046</p>
+<table>
+<tr><td>Double Room</td></tr>
+<tr><td>for guest Test User</td></tr>
+<tr><td>Departure:</td></tr>
+<tr><td>Wednesday, 7 November 2046</td></tr>
+<tr><td>(was Friday, 9 November 2046)</td></tr>
+<tr><td>price:</td></tr>
+<tr><td>&pound;100</td></tr>
+<tr><td>(was &pound;300)</td></tr>
+</table>
+<p>Below is your updated booking confirmation:</p>
+<table>
+<tr><td><b>Example Hotel Central</b></td></tr>
+<tr><td>1 Example Square, Exampleton, EX1 1AA, United Kingdom</td></tr>
+<tr><td>- Show directions</td></tr>
+<tr><td>Phone:</td></tr>
+<tr><td>+440000000000</td></tr>
+</table>
+<table>
+<tr><td>Your reservation</td></tr>
+<tr><td>1 night,</td></tr>
+<tr><td>1 room</td></tr>
+<tr><td>Check-in</td></tr>
+<tr><td>Tuesday 6 November 2046</td></tr>
+<tr><td>(from 15:00)</td></tr>
+<tr><td>Check-out</td></tr>
+<tr><td>Wednesday 7 November 2046</td></tr>
+<tr><td>(until 12:00)</td></tr>
+</table>
+</body></html>
