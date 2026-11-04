@@ -84,9 +84,18 @@ LEGACY_PRICE_RE = re.compile(
     r"^(?:[£$€]\s?|(?:GBP|EUR|USD)\s?)\d[\d.,]*$|^\d[\d.,]*\s?€$"
 )
 LEGACY_SEPARATOR_RE = re.compile(r"^\s*={10,}\s*$", re.MULTILINE)
+# Some confirmations put the title and price on one line:
+# `Ordered item(s):2 x <title> £42.50`.
+LEGACY_PRICED_LINE_RE = re.compile(
+    r"^(?:Ordered item\(s\):\s*)?(?P<name>.*\S)\s+"
+    r"(?:[£$€]\s?|(?:GBP|EUR|USD)\s?)\d[\d.,]*$"
+)
 # Dispatch mails list `1 X <title>`, or `1X <title>` for the other
 # shipments of the same order.
 LEGACY_QUANTITY_RE = re.compile(r"^\d+ ?[xX] (.+)$")
+# Only Amazon's own `1 X` marker is a quantity; `100 x Hair Bands` and
+# `2 x USB Charger` in a title say what the item is.
+LEGACY_QUANTITY_MARKER_RE = re.compile(r"^\d+ ?X (.+)$")
 # Lines between an item title and its price that aren't titles.
 LEGACY_NOT_ITEM_PREFIXES = (
     "sold by",
@@ -102,7 +111,7 @@ LEGACY_NOT_ITEM_PREFIXES = (
 # `Your Amazon.co.uk order of "<title>..." and 2 more item(s) has been
 # dispatched`, with or without the quotes.
 SUBJECT_ITEM_RE = re.compile(
-    r"^Your Amazon\.[\w.]+ order of (?:\"\d+\" x )?\"?(.+?)\"?"
+    r"^Your Amazon\.[\w.]+ order of (?:\"?\d+\"? x )?\"?(.+?)\"?"
     r"(?:\s+and \d+ (?:more|other)\b.*|\s+has\b.*|\.)?$",
     re.IGNORECASE,
 )
@@ -234,14 +243,15 @@ def legacy_blocks(text: str) -> list[tuple[str, str]]:
 def legacy_item_names(block: str) -> list[str]:
     """Item titles from an older-layout block.
 
-    A title is a `1 X <title>` line, or the line before a price once
-    seller and condition lines are skipped.
+    A title is a `1 X <title>` line, a title followed by its price on
+    the same line, or the line before a price once seller and condition
+    lines are skipped. Labels like `Order Total:` end in a colon.
     """
     lines = [line.strip() for line in block.splitlines() if line.strip()]
     names: list[str] = []
 
     def add(name: str) -> None:
-        quantity_m = LEGACY_QUANTITY_RE.match(name)
+        quantity_m = LEGACY_QUANTITY_MARKER_RE.match(name)
         if quantity_m:
             name = quantity_m.group(1).strip()
         if name not in names:
@@ -250,6 +260,14 @@ def legacy_item_names(block: str) -> list[str]:
     for index, line in enumerate(lines):
         if LEGACY_QUANTITY_RE.match(line):
             add(line)
+            continue
+        priced_m = LEGACY_PRICED_LINE_RE.match(line)
+        if (
+            priced_m
+            and not priced_m.group("name").endswith(":")
+            and not line.lower().startswith(LEGACY_NOT_ITEM_PREFIXES)
+        ):
+            add(priced_m.group("name"))
             continue
         if not LEGACY_PRICE_RE.match(line):
             continue
@@ -464,9 +482,15 @@ def main() -> int:
         ]
         if legacy:
             item_names = legacy_item_names(block)
-            # Only the order and dispatch mails name an item in their
-            # subject; later ones would replace full titles with it.
-            if not item_names and subject_item_m and len(blocks) == 1:
+            # The subject's title is cut short, so only take it from the
+            # order confirmation: a later mail would replace the full
+            # titles the confirmation listed.
+            if (
+                not item_names
+                and subject_item_m
+                and len(blocks) == 1
+                and status == "OrderProcessing"
+            ):
                 item_names = [subject_item_m.group(1)]
         if item_names:
             products = [{"@type": "Product", "name": name} for name in item_names]

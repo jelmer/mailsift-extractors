@@ -1,0 +1,23 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <auto-confirm@amazon.co.uk>
+To: test@example.org
+Subject: Your Amazon.co.uk order of 2 x "Example Taper Jeans..."
+Date: Sun, 15 Sep 2019 10:00:00 +0000
+Message-ID: <amazon-uk-legacy-ordered-one-line@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Amazon.co.uk Order Confirmation
+    Order #999-9999999-9999999
+_____________________________________________________________________________________
+
+Hello,
+
+     Arriving:
+          Wednesday, September 18
+
+Ordered item(s):2 x Example Taper Jeans, Blue, 34W / 32L £42.50
+Sold by: Amazon EU S.a.r.L.
+Order Total:              £85.00
+=======================================================================================
