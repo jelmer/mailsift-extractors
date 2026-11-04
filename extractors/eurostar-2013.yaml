@@ -1,0 +1,12 @@
+name: eurostar-2013
+order: 50
+from_domains:
+  - eurostar.com
+subject_regex: "^Your Eurostar (?:booking|exchange) confirmation [A-Z][a-z]{2} \\d{1,2}(?:st|nd|rd|th) [A-Z][a-z]{2} \\d{4} - [A-Z0-9]{6}(?:,[A-Z0-9]{6})*$"
+requires:
+  - html
+require_dkim:
+  - eurostar.com
+# Some of these mails were only signed for mandrill.eurostar.com, whose
+# key was never published. The layout was gone by 2017.
+unsigned_before: "2017-01-01"

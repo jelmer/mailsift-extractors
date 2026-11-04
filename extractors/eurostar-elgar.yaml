@@ -1,0 +1,12 @@
+name: eurostar-elgar
+order: 50
+from_domains:
+  - eurostar.com
+subject_regex: "^Your Eurostar (?:booking confirmation [A-Z][a-z]{2}, \\d{2} [A-Z][a-z]+ - |confirmation email - Ref:)[A-Z0-9]{6}$"
+requires:
+  - html
+require_dkim:
+  - eurostar.com
+# Signed for eurostar.com since mid-2018 (selector mimecast20180628);
+# the one earlier mail seen carries a signature that doesn't verify.
+unsigned_before: "2018-06-28"

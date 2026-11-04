@@ -1,0 +1,50 @@
+Authentication-Results: example.org; dkim=pass header.i=@eurostar.com
+From: Eurostar <no-reply@eurostar.com>
+To: test@example.org
+Subject: Your Eurostar booking confirmation Fri 5th Oct 2046 - NNNNNN,PPPPPP
+Date: Wed, 05 Sep 2046 13:42:31 +0000
+Message-ID: <eurostar-2013-test-NNNNNN-PPPPPP@eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><table>
+<tr><td>Hello Test</td></tr>
+<tr><td>Just to let you know, this page isn't your ticket.</td></tr>
+<tr><td>Booking reference</td><td>Route</td><td>Carrier</td></tr>
+<tr><td>NNNNNN, PPPPPP</td><td>Beta Midi to Alpha International (return)</td><td>Eurostar</td></tr>
+<tr><td>Your Itinerary (1 of 2)</td></tr>
+<tr><td>Beta to Alpha return</td></tr>
+<tr><td>Booking reference <strong>NNNNNN</strong></td></tr>
+<tr><td><img src="https://www.eurostar.com/img-outbound.png" alt="Outbound"></td></tr>
+<tr><td><table><tr><td>Departs</td><td><strong>Beta Midi</strong> at <strong>16:56</strong> on <strong>Friday 5 October</strong></td></tr>
+<tr><td>Arrives</td><td><strong>Alpha International</strong> at <strong>18:06</strong> on <strong>Friday 5 October</strong></td></tr>
+<tr><td>Duration</td><td>02h 10m</td></tr></table></td></tr>
+<tr><td>Standard : <a href="https://www.eurostar.com/">View fare conditions</a></td></tr>
+<tr><td>Traveller</td><td>Membership number</td><td>Meal</td><td>Eurostar seats</td><td>Fare</td></tr>
+<tr><td>Test User (Adult)</td><td></td><td></td><td>Carriage 9 Seat 13</td><td>&pound;33.00</td></tr>
+<tr><td><img src="https://www.eurostar.com/img-inbound.png" alt="Inbound"></td></tr>
+<tr><td><table><tr><td>Departs</td><td><strong>Alpha International</strong> at <strong>10:58</strong> on <strong>Monday 8 October</strong></td></tr>
+<tr><td>Arrives</td><td><strong>Beta Midi</strong> at <strong>14:05</strong> on <strong>Monday 8 October</strong></td></tr>
+<tr><td>Duration</td><td>02h 10m</td></tr></table></td></tr>
+<tr><td>Standard : <a href="https://www.eurostar.com/">View fare conditions</a></td></tr>
+<tr><td>Traveller</td><td>Membership number</td><td>Meal</td><td>Eurostar seats</td><td>Fare</td></tr>
+<tr><td>Test User (Adult)</td><td></td><td></td><td>Carriage 9 Seat 13</td><td>&pound;33.00</td></tr>
+<tr><td>Your Itinerary (2 of 2)</td></tr>
+<tr><td>Beta to Alpha return</td></tr>
+<tr><td>Booking reference <strong>PPPPPP</strong></td></tr>
+<tr><td><img src="https://www.eurostar.com/img-outbound.png" alt="Outbound"></td></tr>
+<tr><td><table><tr><td>Departs</td><td><strong>Beta Midi</strong> at <strong>16:56</strong> on <strong>Friday 5 October</strong></td></tr>
+<tr><td>Arrives</td><td><strong>Alpha International</strong> at <strong>18:06</strong> on <strong>Friday 5 October</strong></td></tr>
+<tr><td>Duration</td><td>02h 10m</td></tr></table></td></tr>
+<tr><td>Standard : <a href="https://www.eurostar.com/">View fare conditions</a></td></tr>
+<tr><td>Traveller</td><td>Membership number</td><td>Meal</td><td>Eurostar seats</td><td>Fare</td></tr>
+<tr><td>Other User (Adult)</td><td></td><td></td><td>Carriage 9 Seat 14</td><td>&pound;33.00</td></tr>
+<tr><td><img src="https://www.eurostar.com/img-inbound.png" alt="Inbound"></td></tr>
+<tr><td><table><tr><td>Departs</td><td><strong>Alpha International</strong> at <strong>10:58</strong> on <strong>Monday 8 October</strong></td></tr>
+<tr><td>Arrives</td><td><strong>Beta Midi</strong> at <strong>14:05</strong> on <strong>Monday 8 October</strong></td></tr>
+<tr><td>Duration</td><td>02h 10m</td></tr></table></td></tr>
+<tr><td>Standard : <a href="https://www.eurostar.com/">View fare conditions</a></td></tr>
+<tr><td>Traveller</td><td>Membership number</td><td>Meal</td><td>Eurostar seats</td><td>Fare</td></tr>
+<tr><td>Other User (Adult)</td><td></td><td></td><td>Carriage 9 Seat 14</td><td>&pound;33.00</td></tr>
+<tr><td>Date</td><td>Description</td><td>Amount</td></tr>
+</table></body></html>

@@ -2,7 +2,7 @@ name: eurostar-legacy-exchange
 order: 50
 from_domains:
   - e.eurostar.com
-subject_regex: "^Your Eurostar exchange confirmation [A-Z][a-z]{2}, \\d{1,2} [A-Z][a-z]+ - [A-Z0-9]{6}$"
+subject_regex: "^(?:Your Eurostar (?:booking|exchange) confirmation|Booking confirmation - (?:please print tickets|here['\u2019]s a link to your tickets) \\|) [A-Z][a-z]{2}, \\d{1,2} [A-Z][a-z]+ - [A-Z0-9]{6}$"
 requires:
   - html
 require_dkim:

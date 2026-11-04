@@ -1,0 +1,10 @@
+Authentication-Results: example.org; dkim=pass header.i=@e.eurostar.com
+From: "Eurostar International Ltd." <noreply@e.eurostar.com>
+To: test@example.org
+Subject: Your Eurostar booking confirmation Fri, 29 June - LLLLLL
+Date: Sat, 26 May 2046 08:44:44 -0600
+Message-ID: <eurostar-legacy-booking-test@e.eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><table><tr><td><div>Good news, you're</div><div>all booked</div><div><a href="https://www.eurostar.com/">Get Tickets</a></div></td></tr><tr><td><div>Booking reference: LLLLLL</div></td></tr><tr><td><div>Going out</div></td></tr><tr><td><div>Alpha International to Delta Station<span>Fri, 29 June</span></div></td></tr><tr><td><div>17:01</div><div>5 hrs 40 mins</div><div>1 Changes</div><div>23:41</div></td></tr><tr><td><div>Test User</div><div>Coach 11, seat 63</div><div>Other User</div><div>Coach 11, seat 64</div><div><a href="https://www.eurostar.com/">Change seat</a></div></td></tr><tr><td><div>Coming back</div></td></tr><tr><td><div>Delta Station to Alpha International<span>Sun, 1 July</span></div></td></tr><tr><td><div>17:17</div><div>5 hrs 43 mins</div><div>1 Changes</div><div>22:00</div></td></tr><tr><td><div>Test User</div><div>Coach 13, seat 78</div><div>Other User</div><div>Coach 13, seat 77</div><div><a href="https://www.eurostar.com/">Change seat</a></div></td></tr><tr><td><div>Change date or time</div></td></tr></table></body></html>

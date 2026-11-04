@@ -1,0 +1,17 @@
+Authentication-Results: example.org; dkim=pass header.i=@eurostar.com
+From: Eurostar <booking.elgar@eurostar.com>
+To: test@example.org
+Subject: Your Eurostar confirmation email - Ref:SSSSSS
+Date: Mon, 23 Oct 2045 17:38:42 +0100
+Message-ID: <eurostar-elgar-one-way-test@eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><div><table><tr><td>Good news, you're</td></tr><tr><td>all booked</td></tr>
+<tr><td><a href="https://www.eurostar.com/">Get Tickets</a></td></tr>
+<tr><td> Eurostar reference : <a>SSSSSS</a></td></tr></table></div>
+<div><table><tr><td colspan="4"><a> Eurostar ES9008</a></td><td colspan="2"><a> Standard </a></td></tr><tr><td colspan="6"><p>Alpha International <a> To </a>Gamma Nord </p></td></tr><tr><td colspan="4"><p><a> Departs : </a> Thur 14&nbsp;Dec&nbsp;<a> at </a>07:55<a> Arrives </a>&nbsp;<a> at </a>11:17</p></td><td colspan="2"><p><a> Journey Time: </a><a>2<text> hrs </text>01<text> mins </text></a></p></td></tr><tr><td colspan="4"><p><br> TEST USER <br>OTHER USER <br></p></td><td colspan="2"><br><p> Coach  012 , Seat 56<br> Coach  012 , Seat 55<br></p></td></tr></table>
+<table><tr><td><a href="https://www.eurostar.com/"><span> Change seat </span></a></td></tr></table>
+</div>
+<div><table><tr><td>International Rail Total:</td><td>118.00 GBP</td></tr></table></div>
+</body></html>
