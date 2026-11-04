@@ -60,6 +60,30 @@ def test_cancellation_replaces_the_booking(run_extractor):
     }
 
 
+def test_modification_replaces_the_booking(run_extractor):
+    out = run_extractor("travelodge", "travelodge-modified.eml")
+    assert out == {
+        "travelodge-12345670.reservation.json": {
+            "@context": "https://schema.org",
+            "@type": "LodgingReservation",
+            "reservationNumber": "travelodge-12345670",
+            "checkinTime": "2046-03-09T15:00:00",
+            "checkoutTime": "2046-03-11T12:00:00",
+            "reservationFor": {
+                "@type": "LodgingBusiness",
+                "name": "Travelodge Springfield Central",
+                "address": "AA1 7DY",
+            },
+            "accommodationCategory": "Double Room",
+            "totalPrice": {
+                "@type": "PriceSpecification",
+                "price": 139.98,
+                "priceCurrency": "GBP",
+            },
+        }
+    }
+
+
 def test_manifest_accepts_cancellations():
     for line in (EXTRACTORS_DIR / "travelodge.yaml").read_text().splitlines():
         if line.startswith("subject_regex: "):
@@ -67,4 +91,5 @@ def test_manifest_accepts_cancellations():
             break
     assert pattern.search("YOUR TRAVELODGE BOOKING IS CANCELLED")
     assert pattern.search("Your Travelodge booking confirmation")
+    assert pattern.search("Your Travelodge booking is modified")
     assert not pattern.search("Your Travelodge Invoice")
