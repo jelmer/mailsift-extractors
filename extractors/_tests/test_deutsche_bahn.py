@@ -25,22 +25,25 @@ def seat(section: str, number: str, kind: str = "Seat") -> dict:
 def leg(
     number: str, train: str, origin: str, destination: str, times, platforms, **extra
 ) -> dict:
+    trip = {
+        "@type": "TrainTrip",
+        "provider": DB,
+        "trainNumber": train,
+        "departureStation": station(origin),
+        "arrivalStation": station(destination),
+        "departureTime": times[0],
+        "arrivalTime": times[1],
+    }
+    if platforms[0] is not None:
+        trip["departurePlatform"] = platforms[0]
+    if platforms[1] is not None:
+        trip["arrivalPlatform"] = platforms[1]
     return {
         "@context": "https://schema.org",
         "@type": "TrainReservation",
         "reservationNumber": number,
         "reservationStatus": "https://schema.org/ReservationConfirmed",
-        "reservationFor": {
-            "@type": "TrainTrip",
-            "provider": DB,
-            "trainNumber": train,
-            "departureStation": station(origin),
-            "arrivalStation": station(destination),
-            "departureTime": times[0],
-            "arrivalTime": times[1],
-            "departurePlatform": platforms[0],
-            "arrivalPlatform": platforms[1],
-        },
+        "reservationFor": trip,
         **extra,
     }
 
@@ -166,5 +169,31 @@ def test_same_train_twice_is_dated(run_extractor):
             ("2046-07-21T08:00:00", "2046-07-21T08:40:00"),
             ("5", "2"),
             underName=PASSENGER,
+        ),
+    }
+
+
+def test_ticket_per_direction(run_extractor):
+    # Since 2026 the subject reads "Buchungsbestätigung Deutsche Bahn
+    # (Auftrag: <n>)" and each direction has a PDF of its own.
+    out = run_extractor("deutsche-bahn", "deutsche-bahn-two-tickets.eml")
+    assert out == {
+        "deutsche-bahn-900000000002-ice-901.reservation.json": leg(
+            "900000000002",
+            "ICE 901",
+            "Alphaville",
+            "Betaburg",
+            ("2046-12-27T09:10:00", "2046-12-27T11:25:00"),
+            ("1", None),
+            reservedTicket=seat("4", "11"),
+        ),
+        "deutsche-bahn-900000000002-ice-902.reservation.json": leg(
+            "900000000002",
+            "ICE 902",
+            "Betaburg",
+            "Alphaville",
+            ("2046-12-30T16:05:00", "2046-12-30T18:20:00"),
+            (None, "2"),
+            reservedTicket=seat("5", "12"),
         ),
     }
