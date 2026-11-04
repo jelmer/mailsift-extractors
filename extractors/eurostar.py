@@ -24,6 +24,12 @@ a whole.
 These mails don't carry a train number, so the reservation has no
 trainNumber field.
 
+Every one of these mails lists the whole booking, including legs
+already travelled and legs an exchange left alone, so each leg carries
+`mailsift:itineraryComplete`: mailsift then cancels the legs filed
+from older mail that it no longer lists, such as the train an exchange
+moved the booking off.
+
 Exchange confirmations sent since 2026 list no journeys at all, only a
 link to the booking; the ticket mail sent alongside them has the new
 trains.
@@ -122,6 +128,7 @@ def main() -> int:
             "@context": "https://schema.org",
             "@type": "TrainReservation",
             "reservationNumber": slug,
+            "mailsift:itineraryComplete": True,
             **leg,
         }
         Path(f"{slug}.reservation.json").write_text(

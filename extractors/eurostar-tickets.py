@@ -34,6 +34,12 @@ We emit one TrainReservation per leg, numbered
 `eurostar-<reference>-<direction>` like the confirmations the
 `eurostar` extractor reads, and told apart by train number, so a
 reissue overwrites in place.
+
+A ticket mail lists every leg of the booking, even the ones already
+travelled or left alone by an exchange, so each leg carries
+`mailsift:itineraryComplete` and mailsift cancels the legs it replaces.
+Since 2026 this is the only mail about an exchange that names the new
+trains.
 """
 
 from __future__ import annotations
@@ -232,6 +238,7 @@ def main() -> int:
             "@context": "https://schema.org",
             "@type": "TrainReservation",
             "reservationNumber": number,
+            "mailsift:itineraryComplete": True,
             "reservationFor": {
                 "@type": "TrainTrip",
                 "provider": {"@type": "Organization", "name": "Eurostar"},

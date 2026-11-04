@@ -14,6 +14,7 @@ def _leg(
         "@context": "https://schema.org",
         "@type": "TrainReservation",
         "reservationNumber": number,
+        "mailsift:itineraryComplete": True,
         "reservationFor": {
             "@type": "TrainTrip",
             "provider": {"@type": "Organization", "name": "Eurostar"},

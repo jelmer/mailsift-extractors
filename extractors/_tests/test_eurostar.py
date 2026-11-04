@@ -41,6 +41,7 @@ def test_return_trip(run_extractor):
             "@context": "https://schema.org",
             "@type": "TrainReservation",
             "reservationNumber": "eurostar-EEEEEE-outbound",
+            "mailsift:itineraryComplete": True,
             "reservationFor": _trip(
                 "London St Pancras Int'l",
                 "Rotterdam Centraal",
@@ -53,6 +54,7 @@ def test_return_trip(run_extractor):
             "@context": "https://schema.org",
             "@type": "TrainReservation",
             "reservationNumber": "eurostar-EEEEEE-return",
+            "mailsift:itineraryComplete": True,
             "reservationFor": _trip(
                 "Rotterdam Centraal",
                 "London St Pancras Int'l",
@@ -73,6 +75,7 @@ def test_exchange_with_a_change_of_train(run_extractor):
             "@context": "https://schema.org",
             "@type": "TrainReservation",
             "reservationNumber": "eurostar-GGGGGG-outbound",
+            "mailsift:itineraryComplete": True,
             "reservationFor": _trip(
                 "London St Pancras Int'l",
                 "Rotterdam Centraal",
@@ -85,6 +88,7 @@ def test_exchange_with_a_change_of_train(run_extractor):
             "@context": "https://schema.org",
             "@type": "TrainReservation",
             "reservationNumber": "eurostar-GGGGGG-return",
+            "mailsift:itineraryComplete": True,
             "reservationFor": _trip(
                 "Rotterdam Centraal",
                 "London St Pancras Int'l",

@@ -22,6 +22,7 @@ def reservation(slug: str, trip: dict, tickets: list[dict]) -> dict:
         "@type": "TrainReservation",
         "reservationNumber": slug,
         "reservationStatus": "https://schema.org/ReservationConfirmed",
+        "mailsift:itineraryComplete": True,
         "reservationFor": {
             "@type": "TrainTrip",
             "provider": {"@type": "Organization", "name": "Eurostar"},
