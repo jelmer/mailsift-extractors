@@ -61,7 +61,7 @@ def main() -> int:
     if not mail.html:
         return 0
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, spaced=True)
 
     invoice_m = INVOICE_RE.search(text)
     if not invoice_m:

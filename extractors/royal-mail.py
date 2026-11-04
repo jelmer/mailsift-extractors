@@ -101,7 +101,7 @@ def main() -> int:
     if not mail.html or not mail.subject:
         return 0
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, spaced=True)
 
     tracking_match = TRACKING_RE.search(text)
     if not tracking_match:

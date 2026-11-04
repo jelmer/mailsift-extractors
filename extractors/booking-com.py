@@ -156,7 +156,7 @@ def main() -> int:
         )
         return 0
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, spaced=True)
 
     confirmation = None
     m = CONFIRMATION_RE.search(text) or PROPERTY_MAILTO_RE.search(mail.html)

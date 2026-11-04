@@ -180,7 +180,7 @@ def extract(mail) -> int:
     if not mail.html:
         return 0
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, spaced=True)
 
     ref_match = REFERENCE_RE.search(mail.subject or "") or REFERENCE_RE.search(text)
     if not ref_match:
