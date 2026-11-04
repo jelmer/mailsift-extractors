@@ -196,3 +196,64 @@ def test_unsigned_2015_mail_extracts(run_extractor):
             },
         },
     }
+
+
+def test_eticket_keeps_legs_operated_by_others(run_extractor):
+    # A codeshare names its operator in the segment header, and so do
+    # flights operated by BA Euroflyer.
+    out = run_extractor("british-airways", "british-airways-eticket-codeshare.eml")
+    context = {
+        "@vocab": "https://schema.org/",
+        "pending": "https://pending.schema.org/",
+    }
+    airline = {"@type": "Airline", "iataCode": "BA", "name": "British Airways"}
+    assert out == {
+        "ba-CODESH-BA7287.reservation.json": {
+            "@context": context,
+            "@type": "FlightReservation",
+            "reservationNumber": "CODESH",
+            "reservationFor": {
+                "@type": "Flight",
+                "flightNumber": "7287",
+                "airline": airline,
+                "departureAirport": {
+                    "@type": "Airport",
+                    "name": "Gatwick",
+                    "address": "London",
+                    "alternateName": "Terminal S",
+                },
+                "arrivalAirport": {
+                    "@type": "Airport",
+                    "name": "Madrid",
+                    "alternateName": "Terminal 4",
+                },
+                "departureTime": "2041-05-11T19:55:00",
+                "arrivalTime": "2041-05-11T23:20:00",
+                "pending:cabinClass": "Economy",
+            },
+        },
+        "ba-CODESH-BA2825.reservation.json": {
+            "@context": context,
+            "@type": "FlightReservation",
+            "reservationNumber": "CODESH",
+            "reservationFor": {
+                "@type": "Flight",
+                "flightNumber": "2825",
+                "airline": airline,
+                "departureAirport": {
+                    "@type": "Airport",
+                    "name": "Madrid",
+                    "alternateName": "Terminal 4S",
+                },
+                "arrivalAirport": {
+                    "@type": "Airport",
+                    "name": "Gatwick",
+                    "address": "London",
+                    "alternateName": "Terminal S",
+                },
+                "departureTime": "2041-05-18T10:50:00",
+                "arrivalTime": "2041-05-18T12:10:00",
+                "pending:cabinClass": "Euro Traveller",
+            },
+        },
+    }

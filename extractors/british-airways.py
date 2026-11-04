@@ -62,11 +62,12 @@ BOOKING_RE = re.compile(
     r"(?:British Airways )?booking reference(?: is)?:?\s*([A-Z0-9]{5,8})",
     re.IGNORECASE,
 )
-# Modern format: `BAnnnn: British Airways | <cabin> | ...` header
+# Modern format: `BAnnnn: <operating airline> | <cabin> | ...` header
 # line, then `Depart:`/`Arrive:` lines with `date time - place`. The
-# cabin name is separated by ` | ` and always follows the airline.
+# operator is `British Airways`, `BA Euroflyer` or, on a codeshare,
+# the partner (`Iberia`).
 SEGMENT_RE = re.compile(
-    r"^(?P<no>BA\d{2,4}):\s*British Airways\s*\|\s*(?P<cabin>[^|]+?)\s*\|",
+    r"^(?P<no>BA\d{2,4}):\s*[^|\n]+?\s*\|\s*(?P<cabin>[^|\n]+?)\s*\|",
     re.MULTILINE,
 )
 DEPART_RE = re.compile(

@@ -1,0 +1,39 @@
+Authentication-Results: example.org; dkim=pass header.d=email.ba.com header.i=@email.ba.com
+From: British Airways e-ticket <BA.e-ticket@email.ba.com>
+To: test@example.org
+Subject: Your e-ticket receipt CODESH: 11 May 2041 19:55
+Date: Tue, 09 Apr 2041 01:09:45 +0000
+Message-ID: <ba-eticket-codeshare-test@email.ba.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Dear Mr Tester,
+
+British Airways booking reference: CODESH
+
+---------------------
+Your e-ticket receipt
+---------------------
+Thank you for booking with British Airways.
+
+Ticket Type: e-ticket
+
+--------------
+Your Itinerary
+--------------
+------------------------------------
+BA7287: Iberia | Economy | Confirmed
+------------------------------------
+Depart: 11 May 2041 19:55 - Gatwick (London)&nbsp;- Terminal S
+Arrive: 11 May 2041 23:20 - Madrid - Terminal 4
+
+-------------------------------------------------
+BA2825: BA Euroflyer | Euro Traveller | Confirmed
+-------------------------------------------------
+Depart: 18 May 2041 10:50 - Madrid&nbsp;- Terminal 4S
+Arrive: 18 May 2041 12:10 - Gatwick (London) - Terminal S
+
+--------------
+Passenger list
+--------------
+MR TEST USER
