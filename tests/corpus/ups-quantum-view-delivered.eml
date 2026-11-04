@@ -1,0 +1,18 @@
+Authentication-Results: example.org; dkim=pass header.d=ups.com header.i=@ups.com
+From: "UPS Quantum View" <auto-notify@ups.com>
+To: test@example.org
+Subject: UPS Delivery Notification, Tracking Number 1Z0000000000000003
+Date: Tue, 01 Nov 2011 17:40:00 +0000
+Message-ID: <ups-quantum-view-delivered@ups.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>At the request of Test Person, this notice alerts you the following shipment has been delivered.</p>
+<p>Important Delivery Information</p>
+<p>Tracking Number:</p>
+<p>1Z0000000000000003</p>
+<p>Shipment Detail</p>
+<p>Weight:</p>
+<p>1.5 LBS.</p>
+</body></html>

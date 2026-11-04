@@ -48,8 +48,21 @@ SCHEDULED_DATE_RE = re.compile(
 
 def status_from_subject(subject: str) -> str | None:
     s = subject.lower()
-    if "was delivered" in s or "parcel delivered" in s:
+    if (
+        "was delivered" in s
+        or "parcel delivered" in s
+        or "delivery notification" in s
+        or "afleveringsbevestiging" in s
+    ):
         return "Delivered"
+    if "exception notification" in s:
+        return "OrderProblem"
+    # Waiting at an Access Point counts as out for delivery, as mailroom
+    # has it for DPD.
+    if "ready for collection" in s:
+        return "OutForDelivery"
+    if "ship notification" in s or "verzendbericht" in s:
+        return "OnItsWay"
     if (
         "scheduled for delivery" in s
         or "arriving tomorrow" in s
@@ -68,12 +81,20 @@ def parse_date(date_str: str) -> datetime | None:
         return None
 
 
-SENDER_RE = re.compile(r"^\s*From (\S.*?)\s*$", re.MULTILINE)
+SENDER_RE = re.compile(r"^\s*From:? (\S.*?)\s*$", re.MULTILINE)
+# My Choice mails before about 2023 have the shipper in capitals on the
+# line above the tracking number: `THOMANN GMBH` / `Tracking Number:`.
+SHIPPER_ABOVE_TRACKING_RE = re.compile(
+    r"^\s*([A-Z][A-Z0-9 &.,'()/-]*?)\s*\n\s*Tracking Number:",
+    re.MULTILINE,
+)
+# Labels and collections for parcels you are sending.
+OUTGOING_RE = re.compile(r"^UPS (?:Label Delivery|Collection Request)\b", re.IGNORECASE)
 
 
 def main() -> int:
     mail = read_message()
-    if not mail.subject:
+    if not mail.subject or OUTGOING_RE.match(mail.subject):
         return 0
 
     if mail.html:
@@ -100,7 +121,8 @@ def main() -> int:
         parcel["deliveryStatus"] = status
     # The sender sits on its own line: `From GARMIN (EUROPE) LIMITED`.
     if mail.html:
-        sender_m = SENDER_RE.search(strip_html(mail.html, block_tags=True))
+        blocks = strip_html(mail.html, block_tags=True)
+        sender_m = SENDER_RE.search(blocks) or SHIPPER_ABOVE_TRACKING_RE.search(blocks)
         if sender_m:
             parcel["merchant"] = {
                 "@type": "Organization",

@@ -1,0 +1,19 @@
+Authentication-Results: example.org; dkim=pass header.d=ups.com header.i=@ups.com
+From: "UPS My Choice" <mcinfo@ups.com>
+To: test@example.org
+Subject: UPS Update: Parcel Scheduled for Delivery Tomorrow
+Date: Wed, 27 May 2020 18:00:00 +0000
+Message-ID: <ups-my-choice-scheduled-2020@ups.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hi Test, you have a parcel coming tomorrow.</p>
+<p>Scheduled Delivery Date:</p>
+<p>Thursday, 28/05/2020</p>
+<p>EXAMPLE MUSIC GMBH</p>
+<p>Tracking Number:</p>
+<p>1Z0000000000000002</p>
+<p>UPS Service:</p>
+<p>UPS Standard</p>
+</body></html>
