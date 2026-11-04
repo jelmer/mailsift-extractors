@@ -86,7 +86,7 @@ def main() -> int:
     if not mail.subject or OUTGOING_RE.match(mail.subject):
         return 0
     if mail.html:
-        text = strip_html(mail.html)
+        text = strip_html(mail.html, spaced=True)
     elif mail.text:
         text = mail.text
     else:

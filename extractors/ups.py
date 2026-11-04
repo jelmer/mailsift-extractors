@@ -98,7 +98,7 @@ def main() -> int:
         return 0
 
     if mail.html:
-        text = strip_html(mail.html)
+        text = strip_html(mail.html, spaced=True)
     elif mail.text:
         text = mail.text
     else:

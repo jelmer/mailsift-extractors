@@ -183,7 +183,7 @@ def _make_reservation(
 def handle_delivery_slot(mail: Mail) -> bool:
     if not mail.html:
         return False
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, spaced=True)
     slot = SLOT_WITH_POSTCODE_RE.search(text)
     if not slot:
         return False
@@ -222,7 +222,7 @@ def _payment_due_date(
 def handle_order_confirmation(mail: Mail) -> bool:
     if not mail.html:
         return False
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, spaced=True)
 
     subject_match = ORDER_SUBJECT_RE.search(mail.subject or "")
     order_id = subject_match.group(1) if subject_match else None

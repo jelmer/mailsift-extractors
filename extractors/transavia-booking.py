@@ -99,7 +99,7 @@ def main() -> int:
     if not mail.html:
         return 0
 
-    text = strip_html(mail.html)
+    text = strip_html(mail.html, spaced=True)
 
     booking = BOOKING_RE.search(text)
     if not booking:

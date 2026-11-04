@@ -60,7 +60,7 @@ def main() -> int:
 
     body = mail.text
     if not body and mail.html:
-        body = strip_html(mail.html)
+        body = strip_html(mail.html, spaced=True)
     if not body:
         return 0
 

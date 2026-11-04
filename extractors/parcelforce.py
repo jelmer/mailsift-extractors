@@ -40,7 +40,7 @@ def main() -> int:
     mail = read_message()
     if not mail.html and not mail.text:
         return 0
-    text = strip_html(mail.html) if mail.html else mail.text or ""
+    text = strip_html(mail.html, spaced=True) if mail.html else mail.text or ""
 
     m = DELIVERY_RE.search(text)
     if not m:

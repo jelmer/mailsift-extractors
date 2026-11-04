@@ -202,3 +202,9 @@ def test_from_name_decodes_encoded_words():
 def test_from_name_is_none_without_a_display_name():
     mail = read_message(BytesIO(b"From: yourdelivery@dpd.co.uk\nSubject: x\n\nb\n"))
     assert mail.from_name is None
+
+
+def test_strip_html_spaced_keeps_neighbouring_cells_apart():
+    html = "<td>Your parcel:</td><td>1500 0000 000 000</td><td>Check-in</td>"
+    assert strip_html(html) == "Your parcel:1500 0000 000 000Check-in"
+    assert strip_html(html, spaced=True) == "Your parcel: 1500 0000 000 000 Check-in"

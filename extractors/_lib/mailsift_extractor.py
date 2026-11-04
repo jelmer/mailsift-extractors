@@ -336,11 +336,12 @@ def normalize_unicode(text: str) -> str:
 
 
 class _HtmlToText(HTMLParser):
-    def __init__(self, *, block_tags: bool) -> None:
+    def __init__(self, *, block_tags: bool, spaced: bool = False) -> None:
         super().__init__(convert_charrefs=True)
         self._parts: list[str] = []
         self._skip_depth = 0
         self._block_tags = block_tags
+        self._spaced = spaced
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag in ("style", "script"):
@@ -364,10 +365,10 @@ class _HtmlToText(HTMLParser):
             self._parts.append(data)
 
     def result(self) -> str:
-        return "".join(self._parts)
+        return (" " if self._spaced else "").join(self._parts)
 
 
-def strip_html(html: str, *, block_tags: bool = False) -> str:
+def strip_html(html: str, *, block_tags: bool = False, spaced: bool = False) -> str:
     """Reduce an HTML body to plain text ready for regex parsing.
 
     `<style>` and `<script>` blocks are dropped, HTML entities are
@@ -381,8 +382,12 @@ def strip_html(html: str, *, block_tags: bool = False) -> str:
       `<tr>`, `<li>`, ...) insert a newline, and blank lines are
       preserved between paragraphs. Right for extractors that walk the
       body line by line.
+
+    `spaced=True` puts a space between the text of neighbouring
+    elements, so two table cells (`<td>Your parcel:</td><td>1500</td>`)
+    don't run together. Without it, text either side of a tag fuses.
     """
-    parser = _HtmlToText(block_tags=block_tags)
+    parser = _HtmlToText(block_tags=block_tags, spaced=spaced)
     parser.feed(html)
     text = normalize_unicode(parser.result())
     if block_tags:
