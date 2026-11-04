@@ -6,11 +6,8 @@
 ticket was cancelled and refunded. They give the order number and the
 refund but not the journey, so they emit a `TrainReservation` that
 carries only the order number and `reservationStatus:
-ReservationCancelled`, for the host to match against the legs filed
-for that order.
-
-TODO: deutsche-bahn files each leg under `<order>-<date>-<train>`, so
-a bare order number doesn't match any of them yet.
+ReservationCancelled`, for the host to match against the legs
+deutsche-bahn filed under the same order number.
 """
 
 from __future__ import annotations

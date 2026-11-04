@@ -17,8 +17,15 @@ reservation wraps over as many lines as it needs, each but the last
 ending in a comma. The header says `Rückfahrt` for a return and
 `- Einfache Fahrt` in newer tickets.
 
-We emit one TrainReservation per leg. BahnCard purchases come with a
-PDF too, but without a journey; those are skipped.
+We emit one TrainReservation per leg. `reservationNumber` is the order
+number, which is also all a cancellation mail gives; the legs of an
+order are told apart by their `trainNumber`. Every leg has one (a leg
+without a train fails to parse). Older tickets give S-Bahn and
+regional trains by line ("S 3"), so an order can list the same one
+twice, out and back; those legs get the departure date appended to the
+train number ("S 3 (2040-03-23)") to keep them apart. BahnCard
+purchases come with a PDF too, but without a journey; those are
+skipped.
 
 Cancellation mails ("Confirmation of cancellation (order <code>)",
 "Annuleringsbevestiging (Order <code>)") have no PDF and only give the
@@ -32,6 +39,7 @@ import io
 import json
 import re
 import sys
+from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -179,6 +187,15 @@ def ticketed_seat(reservation: str) -> dict | None:
     return seat
 
 
+def train_labels(legs: list[Leg]) -> list[str]:
+    """The `trainNumber` of each leg, dated where the order repeats it."""
+    counts = Counter(leg.train for leg in legs)
+    return [
+        f"{leg.train} ({leg.departs:%Y-%m-%d})" if counts[leg.train] > 1 else leg.train
+        for leg in legs
+    ]
+
+
 def main() -> int:
     mail = read_message()
     order = ORDER_RE.search(mail.subject or "")
@@ -196,13 +213,16 @@ def main() -> int:
         if "BAHNCARD" in text.upper() and "Reiseverbindung" not in text:
             return 0
         raise ValueError(f"order {order[1]} lists no journey")
+    trains = train_labels(legs)
+    if len(set(trains)) != len(trains):
+        raise ValueError(f"order {order[1]} lists the same train twice a day: {trains}")
     passenger = PASSENGER_RE.search(text)
 
-    for leg in legs:
+    for leg, train in zip(legs, trains):
         trip: dict = {
             "@type": "TrainTrip",
             "provider": {"@type": "Organization", "name": "Deutsche Bahn"},
-            "trainNumber": leg.train,
+            "trainNumber": train,
             "departureStation": {"@type": "TrainStation", "name": leg.origin},
             "arrivalStation": {"@type": "TrainStation", "name": leg.destination},
             "departureTime": leg.departs.strftime("%Y-%m-%dT%H:%M:%S"),
@@ -212,11 +232,10 @@ def main() -> int:
             trip["departurePlatform"] = leg.departure_platform
         if leg.arrival_platform:
             trip["arrivalPlatform"] = leg.arrival_platform
-        number = f"{order[1]}-{leg.departs:%Y%m%d}-{leg.train.replace(' ', '')}"
         reservation: dict = {
             "@context": "https://schema.org",
             "@type": "TrainReservation",
-            "reservationNumber": number,
+            "reservationNumber": order[1],
             "reservationStatus": "https://schema.org/ReservationConfirmed",
             "reservationFor": trip,
         }
@@ -224,7 +243,8 @@ def main() -> int:
             reservation["underName"] = {"@type": "Person", "name": passenger[1]}
         if seat := ticketed_seat(leg.reservation):
             reservation["reservedTicket"] = {"@type": "Ticket", "ticketedSeat": seat}
-        Path(f"deutsche-bahn-{number.lower()}.reservation.json").write_text(
+        slug = re.sub(r"[^a-z0-9]+", "-", f"{order[1]}-{train}".lower()).strip("-")
+        Path(f"deutsche-bahn-{slug}.reservation.json").write_text(
             json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
         )
     return 0
