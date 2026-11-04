@@ -81,18 +81,37 @@ def merchant_slug(merchant: str) -> str:
 # Map the parsed carrier label (as it appears in the body) to our
 # canonical carrier ids. Anything we don't recognise gets the slugged
 # carrier name verbatim so the parcels target still has *something*.
+# Keys are lowercased with the spaces taken out, since shops write
+# both `Royal Mail` and `RoyalMail`.
 CARRIER_MAP = {
     "dpd": "dpd",
-    "royal mail": "royal-mail",
-    "special care": "royal-mail",  # The Pi Hut's "Special Care" is Royal Mail Tracked
+    "royalmail": "royal-mail",
+    "specialcare": "royal-mail",  # The Pi Hut's "Special Care" is Royal Mail Tracked
     "dhl": "dhl",
-    "dhl express": "dhl",
+    "dhlexpress": "dhl",
     "fedex": "fedex",
     "ups": "ups",
     "evri": "evri",
     "yodel": "yodel",
     "parcelforce": "parcelforce",
 }
+CARRIER_NAMES = {
+    "dpd": "DPD",
+    "royal-mail": "Royal Mail",
+    "dhl": "DHL",
+    "fedex": "FedEx",
+    "ups": "UPS",
+    "evri": "Evri",
+    "yodel": "Yodel",
+    "parcelforce": "Parcelforce",
+}
+# `Raspberry Pi Pico W × 1` under "Items in this shipment", each
+# perhaps followed by a variant line.
+SHIPMENT_ITEMS_RE = re.compile(
+    r"^Items in this shipment\s*\n-+\s*\n(?P<items>.*?)(?:^If you have any questions|\Z)",
+    re.MULTILINE | re.DOTALL,
+)
+SHIPMENT_ITEM_RE = re.compile(r"^(?P<name>.+?)\s+×\s*\d+\s*$", re.MULTILINE)
 
 # Signing domains that are Shopify's own infrastructure.
 _SHOPIFY_DKIM_SUFFIXES = (".myshopify.com", ".shopifyemail.com")
@@ -215,29 +234,48 @@ def emit_receipt(text: str, mail) -> bool:
     return True
 
 
-def emit_parcel(text: str, mail) -> bool:
+def shipment_item_names(text: str) -> list[str]:
+    section_m = SHIPMENT_ITEMS_RE.search(text)
+    if not section_m:
+        return []
+    return [
+        m.group("name").strip()
+        for m in SHIPMENT_ITEM_RE.finditer(section_m.group("items"))
+    ]
+
+
+def emit_parcel(text: str, mail, status: str) -> bool:
     order = order_id(text, mail)
     track_m = TRACKING_RE.search(text)
     if not track_m:
         return False
-    carrier_label = track_m.group("carrier").strip().lower()
-    carrier_id = CARRIER_MAP.get(carrier_label, carrier_label.replace(" ", "-"))
+    carrier_label = track_m.group("carrier").strip()
+    carrier_id = CARRIER_MAP.get(
+        re.sub(r"\s+", "", carrier_label.lower()),
+        carrier_label.lower().replace(" ", "-"),
+    )
     tracking_number = track_m.group("number")
     merchant = merchant_name(mail)
 
-    parcel = {
+    parcel: dict[str, object] = {
         "@context": "https://schema.org",
         "@type": "ParcelDelivery",
         "trackingNumber": tracking_number,
+        "deliveryStatus": status,
         "provider": {
             "@type": "Organization",
             "@id": carrier_id,
-            "name": track_m.group("carrier").strip(),
+            "name": CARRIER_NAMES.get(carrier_id, carrier_label),
         },
     }
     if order:
         parcel["orderNumber"] = order
     parcel["merchant"] = merchant
+    products = [
+        {"@type": "Product", "name": name} for name in shipment_item_names(text)
+    ]
+    if products:
+        parcel["itemShipped"] = products[0] if len(products) == 1 else products
 
     Path(f"{merchant_slug(merchant)}-{tracking_number}.parcel.json").write_text(
         json.dumps(parcel, ensure_ascii=False), encoding="utf-8"
@@ -264,11 +302,11 @@ def main() -> int:
         emitted_any |= emit_receipt(text, mail)
     # Shipment: `A shipment from order #N is on the way`.
     if "on the way" in subject_lower or "shipped" in subject_lower:
-        emitted_any |= emit_parcel(text, mail)
+        emitted_any |= emit_parcel(text, mail, "OrderInTransit")
     # Some shops collapse confirmation and shipping into a single
     # "Order X has been delivered" mail; treat as parcel update.
     if "has been delivered" in subject_lower:
-        emitted_any |= emit_parcel(text, mail)
+        emitted_any |= emit_parcel(text, mail, "OrderDelivered")
     return 0
 
 
