@@ -1,0 +1,24 @@
+Authentication-Results: example.org; dkim=pass header.d=amazon.co.uk header.i=@amazon.co.uk
+From: "Amazon.co.uk" <auto-confirm@amazon.co.uk>
+To: test@example.org
+Subject: Your Amazon.co.uk order of "Example Essay Collection..." and 1 more item(s)
+Date: Wed, 06 Jan 2021 10:00:00 +0000
+Message-ID: <amazon-uk-legacy-ordered-no-items@amazon.co.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Amazon.co.uk Order Confirmation
+Order #888-8888888-8888888
+_____________________________________________________________________________________
+
+Hello,
+
+Thanks for your order. We'll let you know once your item(s) have dispatched.
+
+     Arriving:
+          Saturday, January 9
+
+     Order Total:                      £11.10
+
+=======================================================================================

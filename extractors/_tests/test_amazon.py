@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib.util
 import json
 import re
 from pathlib import Path
@@ -9,6 +10,19 @@ from pathlib import Path
 import pytest
 
 EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
+
+
+def _load_amazon():
+    spec = importlib.util.spec_from_file_location(
+        "amazon", EXTRACTORS_DIR / "amazon.py"
+    )
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+SUBJECT_ITEM_RE = _load_amazon().SUBJECT_ITEM_RE
 
 
 def test_uk_ordered_emits_receipt_and_parcel(run_extractor):
@@ -302,14 +316,35 @@ def test_legacy_german_dispatch(run_extractor):
     out = run_extractor("amazon", "amazon-de-legacy-dispatched.eml")
     parcel = out["amazon-de-666-6666666-6666666.parcel.json"]
     assert parcel["deliveryStatus"] == "OrderInTransit"
-    assert _names(parcel) == ["Example USB-C Ladegerät 5V/3A"]
+    assert _names(parcel) == ["2 x Example USB-C Ladegerät 5V/3A"]
 
 
-def test_legacy_items_only_in_html_fall_back_to_subject(run_extractor):
+def test_legacy_confirmation_without_items_falls_back_to_subject(run_extractor):
+    out = run_extractor("amazon", "amazon-uk-legacy-ordered-no-items.eml")
+    parcel = out["amazon-uk-888-8888888-8888888.parcel.json"]
+    assert parcel["deliveryStatus"] == "OrderProcessing"
+    assert _names(parcel) == ["Example Essay Collection..."]
+
+
+def test_legacy_dispatch_does_not_take_the_subject_title(run_extractor):
+    # The subject's title is cut short; taking it here would replace
+    # the full titles the confirmation listed.
     out = run_extractor("amazon", "amazon-us-legacy-shipped-html-items.eml")
     parcel = out["amazon-us-777-7777777-7777777.parcel.json"]
     assert parcel["deliveryStatus"] == "OrderInTransit"
-    assert _names(parcel) == ["Example HDD Enclosure..."]
+    assert "itemShipped" not in parcel
+
+
+def test_legacy_confirmation_with_title_and_price_on_one_line(run_extractor):
+    out = run_extractor("amazon", "amazon-uk-legacy-ordered-one-line.eml")
+    parcel = out["amazon-uk-999-9999999-9999999.parcel.json"]
+    assert _names(parcel) == ["2 x Example Taper Jeans, Blue, 34W / 32L"]
+
+
+def test_subject_title_after_a_quantity():
+    m = SUBJECT_ITEM_RE.match('Your Amazon.co.uk order of 2 x "Example Taper Jeans..."')
+    assert m is not None
+    assert m.group(1) == "Example Taper Jeans..."
 
 
 def _subject_regex():

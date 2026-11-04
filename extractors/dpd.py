@@ -67,11 +67,23 @@ def status_from_subject(subject: str) -> str | None:
     s = subject.lower()
     if "has been delivered" in s:
         return "Delivered"
-    if "will be delivered today" in s:
+    if "will be delivered today" in s or "due for delivery between" in s:
         return "OutForDelivery"
+    # Waiting at a Pickup shop counts as out for delivery, as mailroom
+    # has it when it polls DPD.
+    if (
+        "ready for you to collect" in s
+        or "is waiting for you at" in s
+        or s.startswith("act now - your")
+    ):
+        return "OutForDelivery"
+    if "missed you" in s:
+        return "OrderProblem"
     if "on its way" in s:
         return "OnItsWay"
-    if "expecting your" in s and "parcel" in s:
+    if ("expecting your" in s and "parcel" in s) or (
+        s.startswith("we'll deliver your") or "is due for delivery on" in s
+    ):
         return "Scheduled"
     return None
 

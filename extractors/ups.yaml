@@ -8,3 +8,5 @@ requires:
   - html
 require_dkim:
   - ups.com
+# Quantum View mail up to late 2013 was unsigned.
+unsigned_before: "2014-01-01"

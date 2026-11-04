@@ -7,6 +7,14 @@ target keys on a single token.
 
 from __future__ import annotations
 
+import json
+import re
+from pathlib import Path
+
+import pytest
+
+EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
+
 
 def test_expecting(run_extractor):
     out = run_extractor("dpd", "dpd-expecting.eml")
@@ -65,3 +73,31 @@ def test_delivered(run_extractor):
             "deliveryStatus": "Delivered",
         }
     }
+
+
+def test_ready_to_collect_counts_as_out_for_delivery(run_extractor):
+    out = run_extractor("dpd", "dpd-ready-to-collect.eml")
+    assert out["dpd-15000000000000.parcel.json"]["deliveryStatus"] == "OutForDelivery"
+
+
+def test_missed_delivery_is_a_problem(run_extractor):
+    out = run_extractor("dpd", "dpd-missed-you.eml")
+    assert out["dpd-15000000000000.parcel.json"]["deliveryStatus"] == "OrderProblem"
+
+
+@pytest.mark.parametrize(
+    "subject",
+    [
+        "Your IKEA parcel is ready for you to collect from Example Store",
+        "Your IKEA parcel is waiting for you at Example Store",
+        "Act now - your IKEA parcel at Example Store will be returned unless collected",
+        "Sorry we missed you",
+        "We'll deliver your IKEA parcel on 5th July 2021",
+    ],
+)
+def test_manifest_accepts(subject):
+    for line in (EXTRACTORS_DIR / "dpd.yaml").read_text().splitlines():
+        if line.startswith("subject_regex: "):
+            assert re.search(json.loads(line.removeprefix("subject_regex: ")), subject)
+            return
+    raise AssertionError("dpd.yaml has no subject_regex")
