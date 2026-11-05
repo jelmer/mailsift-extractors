@@ -51,7 +51,7 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 from mailsift_extractor import read_message
 
 ORDER_RE = re.compile(
-    r"\((?:Auftrag|Order|bestelling|order:)\s*([A-Z0-9]+)\)", re.IGNORECASE
+    r"\((?:Auftrag|Order|bestelling|order):?\s*([A-Z0-9]+)\)", re.IGNORECASE
 )
 SECTION_RE = re.compile(
     r"Ihre Reiseverbindung und Reservierung\s+(?:-\s+)?"
@@ -60,8 +60,11 @@ SECTION_RE = re.compile(
 ROW_RE = re.compile(
     r"^\s*(?P<station>\S.*?)\s+(?P<day>\d{2})\.(?P<month>\d{2})\.\s+"
     r"(?P<kind>ab|an)\s+(?P<time>\d{2}:\d{2})"
-    r"(?:\s+(?P<platform>\d[\w-]*))?(?:\s+(?P<rest>\S.*))?$"
 )
+# A table cell: words one space apart. Columns are further apart.
+CELL_RE = re.compile(r"\S+(?: \S+)*")
+# The column after "Gleis" holds the train and the seat booking.
+PRODUCTS_COLUMN_RE = re.compile(r"\bGleis\s+(\S)")
 # Older tickets print the passenger and order number in a column to the
 # right of the table, on the same lines as its rows.
 RIGHT_COLUMN_RE = re.compile(r"\s{3,}(?:Herr|Frau|ID-Karte:|Auftragsnummer:)\s.*$")
@@ -101,7 +104,24 @@ def stamp(day: str, month: str, time: str, start: datetime) -> datetime:
     return moment
 
 
-def parse_section(start: datetime, lines: list[str]) -> list[Leg]:
+def split_row(line: str, after: int, products: int) -> tuple[str | None, str]:
+    """The platform and the products of a row, by the column each cell
+    of `line` from `after` on starts in."""
+    platform: str | None = None
+    for cell in CELL_RE.finditer(line, after):
+        if cell.start() >= products:
+            return platform, line[cell.start() :].strip()
+        if platform is not None:
+            raise ValueError(f"two platforms in {line.strip()!r}")
+        platform = cell[0]
+    return platform, ""
+
+
+def parse_section(start: datetime, header: str, lines: list[str]) -> list[Leg]:
+    column = PRODUCTS_COLUMN_RE.search(header)
+    if column is None:
+        raise ValueError(f"no Gleis column in {header.strip()!r}")
+    products = column.start(1)
     legs: list[Leg] = []
     pending: dict | None = None
     wrapping = False
@@ -117,14 +137,14 @@ def parse_section(start: datetime, lines: list[str]) -> list[Leg]:
                 raise ValueError(f"departure from {pending['station']} has no arrival")
             break
         moment = stamp(row["day"], row["month"], row["time"], start)
-        rest = (row["rest"] or "").strip()
+        platform, rest = split_row(line, row.end(), products)
         if row["kind"] == "ab":
             if pending is not None:
                 raise ValueError(f"two departures in a row at {row['station']}")
             pending = {
                 "station": row["station"],
                 "moment": moment,
-                "platform": row["platform"],
+                "platform": platform,
                 "rest": rest,
             }
             wrapping = False
@@ -147,7 +167,7 @@ def parse_section(start: datetime, lines: list[str]) -> list[Leg]:
                 train=train,
                 reservation=reservation,
                 departure_platform=pending["platform"],
-                arrival_platform=row["platform"],
+                arrival_platform=platform,
             )
         )
         wrapping = reservation.endswith(",")
@@ -165,7 +185,7 @@ def parse_ticket(text: str) -> list[Leg]:
         body = text[m.end() :].split("\n")[1:]
         if not body or not body[0].strip().startswith("Halt"):
             raise ValueError(f"no timetable after {m[0]!r}")
-        found = parse_section(start, body[1:])
+        found = parse_section(start, body[0], body[1:])
         if not found:
             raise ValueError(f"no legs under {m[0]!r}")
         legs.extend(found)
@@ -201,11 +221,13 @@ def main() -> int:
     order = ORDER_RE.search(mail.subject or "")
     if order is None:
         raise ValueError(f"no order number in {mail.subject!r}")
-    pdf = mail.find_pdf_attachment()
-    if pdf is None:
+    # Newer orders attach a ticket per direction.
+    pdfs = [a for a in mail.attachments if a.looks_like_pdf()]
+    if not pdfs:
         raise ValueError(f"order {order[1]} has no ticket PDF")
     text = "\n".join(
         page.extract_text(extraction_mode="layout")
+        for pdf in pdfs
         for page in PdfReader(io.BytesIO(pdf.bytes)).pages
     )
     legs = parse_ticket(text)

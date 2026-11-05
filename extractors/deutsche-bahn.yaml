@@ -4,9 +4,10 @@ from_domains:
   - bahn.de
   # Confirmations have come from noreply@deutschebahn.com since 2022.
   - deutschebahn.com
-# German, English and Dutch confirmations. Cancellations carry no PDF
+# German, English and Dutch confirmations; since 2026 the subject reads
+# "Buchungsbestätigung Deutsche Bahn (Auftrag: <n>)". Cancellations carry no PDF
 # and are handled by deutsche-bahn-cancellation.
-subject_regex: "(?i)^(?:Vielen Dank für Ihren Fahrkartenkauf!|Buchungsbestätigung|Booking confirmation|Boekingsbevestiging|Deutsche Bahn booking confirmation) \\((?:Auftrag|Order|bestelling|order:) ?[A-Z0-9]+\\)$"
+subject_regex: "(?i)^(?:Vielen Dank für Ihren Fahrkartenkauf!|Buchungsbestätigung|Booking confirmation|Boekingsbevestiging|Deutsche Bahn booking confirmation)(?: Deutsche Bahn)? \\((?:Auftrag|Order|bestelling|order):? ?[A-Z0-9]+\\)$"
 requires:
   - attachment:filename:*.pdf
 # bahn.de mail was unsigned until some time in 2018.
