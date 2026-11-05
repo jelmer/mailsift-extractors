@@ -1,0 +1,47 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@bahn.de
+From: buchungsbestaetigung@bahn.de
+To: test@example.org
+Subject: =?utf-8?q?Buchungsbest=C3=A4tigung?= (Auftrag DDDDDD)
+Date: Wed, 18 Jul 2046 17:14:36 +0200
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8712605024486623298=="
+
+--===============8712605024486623298==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Sehr geehrter Herr User,
+vielen Dank für Ihren Fahrkartenkauf.
+Auftragsnummer: DDDDDD
+
+--===============8712605024486623298==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="DDDDDD.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2Jq
+CjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2Jq
+CjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUg
+ODQyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAw
+IFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNl
+Rm9udCAvQ291cmllciAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyA+PgplbmRvYmoKNSAwIG9i
+ago8PCAvTGVuZ3RoIDY5NiA+PgpzdHJlYW0KQlQKL0YxIDggVGYKMTAgVEwKMzAgODAwIFRkCihP
+bmxpbmUtVGlja2V0KSBUaiBUKgooSGVyciAgVGVzdCBVc2VyKSBUaiBUKgooQXVmdHJhZ3NudW1t
+ZXI6ICAgREREREREKSBUaiBUKgooKSBUaiBUKgooSWhyZSBSZWlzZXZlcmJpbmR1bmcgdW5kIFJl
+c2VydmllcnVuZyBIaW5mYWhydCBhbSAyMC4wNy4yMDQ2KSBUaiBUKgooSGFsdCAgICAgICAgICAg
+ICAgICAgRGF0dW0gICAgWmVpdCAgICAgICBHbGVpcyAgIFByb2R1a3RlL1Jlc2VydmllcnVuZykg
+VGogVCoKKEFscGhhdmlsbGUgICAgICAgICAgIDIwLjA3LiAgIGFiIDA4OjAwICAgNSAgICAgICBS
+QiAxMikgVGogVCoKKEJldGFidXJnICAgICAgICAgICAgIDIwLjA3LiAgIGFuIDA4OjQwICAgMikg
+VGogVCoKKCkgVGogVCoKKElocmUgUmVpc2V2ZXJiaW5kdW5nIHVuZCBSZXNlcnZpZXJ1bmcgUvxj
+a2ZhaHJ0IGFtIDIxLjA3LjIwNDYpIFRqIFQqCihIYWx0ICAgICAgICAgICAgICAgICBEYXR1bSAg
+ICBaZWl0ICAgICAgIEdsZWlzICAgUHJvZHVrdGUvUmVzZXJ2aWVydW5nKSBUaiBUKgooQWxwaGF2
+aWxsZSAgICAgICAgICAgMjEuMDcuICAgYWIgMDg6MDAgICA1ICAgICAgIFJCIDEyKSBUaiBUKgoo
+QmV0YWJ1cmcgICAgICAgICAgICAgMjEuMDcuICAgYW4gMDg6NDAgICAyKSBUaiBUKgooKSBUaiBU
+KgooV2ljaHRpZ2UgTnV0enVuZ3NoaW53ZWlzZTopIFRqIFQqCkVUCmVuZHN0cmVhbQplbmRvYmoK
+eHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAw
+NTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAwMjQxIDAwMDAwIG4gCjAwMDAw
+MDAzMzYgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJl
+ZgoxMDgzCiUlRU9GCg==
+
+--===============8712605024486623298==--

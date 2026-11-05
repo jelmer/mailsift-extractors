@@ -29,30 +29,30 @@ ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  K6Ow==;        dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass
  header.i=@google.com header.s=20251104 header.b=rRkoW7Ux;       spf=pass
- (google.com: domain of =?utf-8?q?3bsuxahakcb8uf3rjsyx-stwjuq3lttlqj=2Ehtro0?=
- =?utf-8?q?jwsttnolrfnq=2Ehtr=40scoutcamp=2Ebounces=2Egoogle=2Ecom?=
+ (google.com: domain of =?utf-8?q?3bsuxahakcb8uf3rjsyx-stwjuq3lttlqj=2Ehtrzx?=
+ =?utf-8?q?jwjcfruqjxxx=2Ehtr=40scoutcamp=2Ebounces=2Egoogle=2Ecom?=
  designates 209.85.220.69 as permitted sender) =?utf-8?q?smtp=2Emailfrom=3D3?=
- =?utf-8?q?bsuXahAKCb8uf3rjsyx-stwjuq3lttlqj=2Ehtro0jwsttnolrfnq=2Ehtr=40sco?=
+ =?utf-8?q?bsuXahAKCb8uf3rjsyx-stwjuq3lttlqj=2Ehtrzxjwjcfruqjxxx=2Ehtr=40sco?=
  =?utf-8?q?utcamp=2Ebounces=2Egoogle=2Ecom=3B?=       dmarc=pass (p=REJECT
  sp=REJECT dis=NONE) header.from=google.com;       dara=pass
  header.i=@gmail.com
-Return-Path: =?utf-8?q?=3C3bsuXahAKCb8uf3rjsyx-stwjuq3lttlqj=2Ehtro0jwsttnol?=
- =?utf-8?q?rfnq=2Ehtr=40scoutcamp=2Ebounces=2Egoogle=2Ecom=3E?=
+Return-Path: =?utf-8?q?=3C3bsuXahAKCb8uf3rjsyx-stwjuq3lttlqj=2Ehtrzxjwjcfruq?=
+ =?utf-8?q?jxxx=2Ehtr=40scoutcamp=2Ebounces=2Egoogle=2Ecom=3E?=
 Received: from mail-sor-f69.google.com (mail-sor-f69.google.com.
  [209.85.220.69])        by mx.google.com with SMTPS id
  af79cd13be357-9395efc3d12sor190994285a.0.2026.09.02.00.08.30        for
  <user@example.com>        (Google Transport Security);        Wed, 02 Sep
  2026 00:08:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of =?utf-8?q?3bsuxahakcb8uf3rjsyx-stw?=
- =?utf-8?q?juq3lttlqj=2Ehtro0jwsttnolrfnq=2Ehtr=40scoutcamp=2Ebounces=2Egoog?=
+ =?utf-8?q?juq3lttlqj=2Ehtrzxjwjcfruqjxxx=2Ehtr=40scoutcamp=2Ebounces=2Egoog?=
  =?utf-8?q?le=2Ecom?= designates 209.85.220.69 as permitted sender)
  client-ip=209.85.220.69;
 Authentication-Results: mx.google.com;       dkim=pass header.i=@google.com
  header.s=20251104 header.b=rRkoW7Ux;       spf=pass (google.com: domain of
- =?utf-8?q?3bsuxahakcb8uf3rjsyx-stwjuq3lttlqj=2Ehtro0jwsttnolrfnq=2Ehtr=40sc?=
+ =?utf-8?q?3bsuxahakcb8uf3rjsyx-stwjuq3lttlqj=2Ehtrzxjwjcfruqjxxx=2Ehtr=40sc?=
  =?utf-8?q?outcamp=2Ebounces=2Egoogle=2Ecom?= designates 209.85.220.69 as
  permitted sender) =?utf-8?q?smtp=2Emailfrom=3D3bsuXahAKCb8uf3rjsyx-stwjuq3l?=
- =?utf-8?q?ttlqj=2Ehtro0jwsttnolrfnq=2Ehtr=40scoutcamp=2Ebounces=2Egoogle=2E?=
+ =?utf-8?q?ttlqj=2Ehtrzxjwjcfruqjxxx=2Ehtr=40scoutcamp=2Ebounces=2Egoogle=2E?=
  =?utf-8?q?com=3B?=       dmarc=pass (p=REJECT sp=REJECT dis=NONE)
  header.from=google.com;       dara=pass header.i=@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;

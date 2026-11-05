@@ -10,7 +10,7 @@ def test_2015_layout(run_extractor):
         "booking-com-100000001.reservation.json": {
             "@context": "https://schema.org",
             "@type": "LodgingReservation",
-            "reservationNumber": "booking-com-100000001",
+            "reservationNumber": "100000001",
             "checkinTime": "2015-01-05T12:00:00",
             "checkoutTime": "2015-01-06T09:00:00",
             "reservationFor": {
@@ -40,7 +40,7 @@ def test_2014_layout(run_extractor):
         "booking-com-100000002.reservation.json": {
             "@context": "https://schema.org",
             "@type": "LodgingReservation",
-            "reservationNumber": "booking-com-100000002",
+            "reservationNumber": "100000002",
             "checkinTime": "2014-03-14T14:00:00",
             "checkoutTime": "2014-03-15T11:00:00",
             "reservationFor": {
@@ -72,7 +72,7 @@ def test_2013_layout(run_extractor):
         "booking-com-100000003.reservation.json": {
             "@context": "https://schema.org",
             "@type": "LodgingReservation",
-            "reservationNumber": "booking-com-100000003",
+            "reservationNumber": "100000003",
             "checkinTime": "2013-01-09T15:00:00",
             "checkoutTime": "2013-01-10T12:00:00",
             "reservationFor": {
@@ -102,7 +102,7 @@ def test_region_in_locality(run_extractor):
         "booking-com-100000004.reservation.json": {
             "@context": "https://schema.org",
             "@type": "LodgingReservation",
-            "reservationNumber": "booking-com-100000004",
+            "reservationNumber": "100000004",
             "checkinTime": "2013-10-14T15:00:00",
             "checkoutTime": "2013-10-17T11:00:00",
             "reservationFor": {
@@ -136,7 +136,7 @@ def test_unwrapped_forward_with_local_script_address(run_extractor):
         "booking-com-100000005.reservation.json": {
             "@context": "https://schema.org",
             "@type": "LodgingReservation",
-            "reservationNumber": "booking-com-100000005",
+            "reservationNumber": "100000005",
             "checkinTime": "2013-12-22T14:00:00",
             "checkoutTime": "2013-12-24T12:00:00",
             "reservationFor": {

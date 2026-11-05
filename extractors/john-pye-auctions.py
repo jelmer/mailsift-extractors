@@ -27,8 +27,8 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
 
-# `New Invoice #91247783 from John Pye Auctions (JohnPye) for £112.60 GBP`
-# or, without an amount, `New Invoice #91247783 from John Pye Auctions (JohnPye)`
+# `New Invoice #90000003 from John Pye Auctions (JohnPye) for £112.60 GBP`
+# or, without an amount, `New Invoice #90000003 from John Pye Auctions (JohnPye)`
 NEW_INVOICE_RE = re.compile(
     r"New Invoice\s*#(?P<number>\d+)\s+from John Pye Auctions"
     r"(?:.*?for\s*(?P<symbol>[£€$])?\s*(?P<amount>[0-9]+(?:\.[0-9]{2})?)\s+"

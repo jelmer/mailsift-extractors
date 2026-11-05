@@ -1,0 +1,25 @@
+Authentication-Results: example.org; dkim=pass header.i=@email.ba.com header.s=selector2
+From: British Airways Customer Services <BA.CustSvcs@email.ba.com>
+To: test@example.org
+Subject: BA confirmation of cancellation and refund: Ref.ABC123
+Date: Sat, 31 Mar 2046 06:28:42 +0000
+Message-ID: <ba-cancellation-test@email.ba.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+[British Airways.]
+Booking cancellation
+Dear Customer,  Booking reference: ABC123
+Your British Airways flight booking has been cancelled.
+Cancelled booking details
+Passengers      Mr Test User
+Ticket Number(s)        125-0000000000
+Total refund
+Flights + Travel extras (if applicable) GBP 50.00 + 1000 Avios
+Refund breakdown
+Flights
+Passengers      Ticket refund   Less cancellation fee   Total refund due
+Mr Test User      GBP 50.00       GBP 0.00        GBP 50.00
+Total flights refund    GBP 50.00 + 1000 Avios
+Yours sincerely,
+British Airways Customer Services

@@ -1,0 +1,26 @@
+Authentication-Results: example.org; dkim=pass header.i=@deutschebahn.com header.s=mailgate
+From: noreply@deutschebahn.com
+To: test@example.org
+Subject: Confirmation of cancellation (order ABC123)
+Date: Thu, 19 Jul 2046 11:44:44 +0200
+Message-ID: <db-cancellation-test@deutschebahn.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+
+Dear Mr. User, 
+
+We hereby confirm the cancellation of your online ticket on bahn.com. 
+
+You will be credited with the sum of 100,00 EUR by in due course. The amount of 100,00 EUR will be credited to the
+credit card or PayPal account which was used for the original payment. 
+
+Overview of cancellation data:
+Order number: ABC123
+Customer ID: 00000000
+Date of cancellation: 19.07.2046 Time: 11:44 
+Value of cancelled services: 100,00 EUR
+Refund fee: 0,00 EUR
+Amount to be credited: 100,00 EUR
+
+Best regards 
+Your bahn.com team

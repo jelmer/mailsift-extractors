@@ -1,0 +1,44 @@
+Authentication-Results: mx.google.com; dkim=pass header.i=@deutschebahn.com
+From: noreply@deutschebahn.com
+To: test@example.org
+Subject: =?utf-8?q?Buchungsbest=C3=A4tigung?= (Auftrag CCCCCC)
+Date: Wed, 18 Jul 2046 17:14:36 +0200
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============1174571538614892567=="
+
+--===============1174571538614892567==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Sehr geehrter Herr User,
+vielen Dank für Ihren Fahrkartenkauf.
+Auftragsnummer: CCCCCC
+
+--===============1174571538614892567==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="CCCCCC.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2Jq
+CjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2Jq
+CjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUg
+ODQyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAw
+IFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNl
+Rm9udCAvQ291cmllciAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyA+PgplbmRvYmoKNSAwIG9i
+ago8PCAvTGVuZ3RoIDU0MyA+PgpzdHJlYW0KQlQKL0YxIDggVGYKMTAgVEwKMzAgODAwIFRkCihP
+bmxpbmUtVGlja2V0KSBUaiBUKgooSGVyciAgVGVzdCBVc2VyKSBUaiBUKgooQXVmdHJhZ3NudW1t
+ZXI6ICAgQ0NDQ0NDKSBUaiBUKgooKSBUaiBUKgooSWhyZSBSZWlzZXZlcmJpbmR1bmcgdW5kIFJl
+c2VydmllcnVuZyBIaW5mYWhydCBhbSAyMC4wNy4yMDQ2KSBUaiBUKgooSGFsdCAgICAgICAgICAg
+ICAgICAgRGF0dW0gICAgWmVpdCAgICAgICBHbGVpcyAgIFByb2R1a3RlL1Jlc2VydmllcnVuZykg
+VGogVCoKKEFscGhhdmlsbGUgICAgICAgICAgIDIwLjA3LiAgIGFiIDE5OjI0ICAgNSAgICAgICBJ
+QyAzNTY5KSBUaiBUKgooQmV0YWJ1cmcgICAgICAgICAgICAgMjAuMDcuICAgYW4gMjA6NTEgICAy
+KSBUaiBUKgooQmV0YWJ1cmcgICAgICAgICAgICAgMjAuMDcuICAgYWIgMjE6MDUgICAzICAgICAg
+IFJFIDIwMDk3KSBUaiBUKgooR2FtbWFzdGFkdCBIYmYgICAgICAgMjAuMDcuICAgYW4gMjE6MzAg
+ICAxKSBUaiBUKgooKSBUaiBUKgooV2ljaHRpZ2UgTnV0enVuZ3NoaW53ZWlzZTopIFRqIFQqCkVU
+CmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5
+IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAw
+MjQxIDAwMDAwIG4gCjAwMDAwMDAzMzYgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290
+IDEgMCBSID4+CnN0YXJ0eHJlZgo5MzAKJSVFT0YK
+
+--===============1174571538614892567==--

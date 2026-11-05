@@ -38,7 +38,7 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message
 
-# `Reference number  TB425X / HP5290517200` - the first token is the
+# `Reference number  ABC12X / HP0000000000` - the first token is the
 # PNR the user sees; the second is SNCF's internal order id. Two
 # spaces after the label is intentional; SNCF's template pads it.
 PNR_RE = re.compile(r"Reference number\s+(?P<pnr>[A-Z0-9]{6})\s*/\s*[A-Z0-9]{8,}")

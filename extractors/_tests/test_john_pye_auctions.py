@@ -7,10 +7,10 @@ def test_new_invoice_subject_carries_amount(run_extractor):
     # The invoice number, amount and currency are all in the subject
     # on the `New Invoice` mail; the body is just a payment link.
     out = run_extractor("john-pye-auctions", "john-pye-auctions-invoice.eml")
-    assert set(out) == {"john-pye-auctions-91247783.receipt.json"}
-    receipt = out["john-pye-auctions-91247783.receipt.json"]
+    assert set(out) == {"john-pye-auctions-90000003.receipt.json"}
+    receipt = out["john-pye-auctions-90000003.receipt.json"]
     assert receipt["merchant"] == "John Pye Auctions"
-    assert receipt["orderNumber"] == "91247783"
+    assert receipt["orderNumber"] == "90000003"
     assert receipt["priceSpecification"] == {
         "@type": "PriceSpecification",
         "price": 112.60,
@@ -23,11 +23,11 @@ def test_new_invoice_without_amount(run_extractor):
     # body carries no amount either; emit the receipt without a price.
     out = run_extractor("john-pye-auctions", "john-pye-auctions-invoice-no-amount.eml")
     assert out == {
-        "john-pye-auctions-91247784.receipt.json": {
+        "john-pye-auctions-90000004.receipt.json": {
             "@context": "https://schema.org",
             "@type": "Order",
             "merchant": "John Pye Auctions",
-            "orderNumber": "91247784",
+            "orderNumber": "90000004",
             "orderDate": "2026-10-03",
         }
     }
