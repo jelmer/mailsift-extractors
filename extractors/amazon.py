@@ -304,7 +304,7 @@ def parse_arrival(phrase: str, ref: date) -> tuple[date, date] | None:
     """
     text = phrase.strip().rstrip(".")
     # Drop any time-of-day part: "today 12:45 pm - 4:45 pm" is still
-    # just today, and mailroom stores arrival as a date.
+    # just today, and doorstep stores arrival as a date.
     lower = text.lower()
 
     if lower.startswith(("today", "hoy")):
@@ -499,7 +499,7 @@ def main() -> int:
         # A dispatch mail's "Track package" URL carries the packageIndex
         # and shipmentId that Amazon's public tracker needs, so stash it
         # verbatim. Order-placed mails carry an order-summary link too,
-        # but no shipmentId -- ignore those, the fallback URL mailroom
+        # but no shipmentId -- ignore those, the fallback URL doorstep
         # synthesises for order pages is a better place to land.
         track_m = TRACK_URL_RE.search(block)
         if track_m:

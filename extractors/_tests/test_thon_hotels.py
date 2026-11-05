@@ -28,11 +28,11 @@ def test_confirmation_emits_reservation(run_extractor):
         "priceCurrency": "EUR",
     }
     assert res["pending:numAdults"] == 1
-    assert res["tripmate:numRooms"] == 1
+    assert res["wayfare:numRooms"] == 1
     assert res["@context"] == {
         "@vocab": "https://schema.org/",
         "pending": "https://pending.schema.org/",
-        "tripmate": "https://jelmer.github.io/tripmate/ns#",
+        "wayfare": "https://jelmer.github.io/wayfare/ns#",
     }
 
 
@@ -91,7 +91,7 @@ def test_2026_layout(run_extractor):
             "@context": {
                 "@vocab": "https://schema.org/",
                 "pending": "https://pending.schema.org/",
-                "tripmate": "https://jelmer.github.io/tripmate/ns#",
+                "wayfare": "https://jelmer.github.io/wayfare/ns#",
             },
             "@type": "LodgingReservation",
             "reservationNumber": "thon-400000002",
@@ -103,7 +103,7 @@ def test_2026_layout(run_extractor):
                 "address": "Eksempelgata 1, Eksempelby, NO",
             },
             "pending:numAdults": 1,
-            "tripmate:numRooms": 1,
+            "wayfare:numRooms": 1,
             "totalPrice": {
                 "@type": "PriceSpecification",
                 "price": 252.0,

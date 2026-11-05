@@ -45,7 +45,7 @@ URL_TRACKING_RE = re.compile(
 )
 _APOSTROPHE = "['\u2019]"
 # Subject templates naming the sender, with the status each implies. A
-# parcel waiting at a ParcelShop counts as out for delivery, as mailroom
+# parcel waiting at a ParcelShop counts as out for delivery, as doorstep
 # has it for DPD.
 SUBJECT_PATTERNS: list[tuple[str, str]] = [
     (r"Thanks for collecting your (?P<merchant>.+) parcel", "Delivered"),
