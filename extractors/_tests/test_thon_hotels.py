@@ -80,3 +80,34 @@ def test_manifest_accepts_cancellations():
             break
     assert pattern.search("Your reservation at Thon Hotel Eksempel has been cancelled")
     assert pattern.search("Booking Confirmation Thon Hotel Eksempel")
+
+
+def test_2026_layout(run_extractor):
+    # "Ref.:" with a colon, date and check-in time in cells of their
+    # own, and the address on the "Address" line.
+    out = run_extractor("thon-hotels", "thon-hotels-2026.eml")
+    assert out == {
+        "thon-400000002.reservation.json": {
+            "@context": {
+                "@vocab": "https://schema.org/",
+                "pending": "https://pending.schema.org/",
+                "tripmate": "https://jelmer.github.io/tripmate/ns#",
+            },
+            "@type": "LodgingReservation",
+            "reservationNumber": "thon-400000002",
+            "checkinTime": "2047-01-29T15:00:00",
+            "checkoutTime": "2047-01-31T12:00:00",
+            "reservationFor": {
+                "@type": "LodgingBusiness",
+                "name": "Thon Hotel Eksempel",
+                "address": "Eksempelgata 1, Eksempelby, NO",
+            },
+            "pending:numAdults": 1,
+            "tripmate:numRooms": 1,
+            "totalPrice": {
+                "@type": "PriceSpecification",
+                "price": 252.0,
+                "priceCurrency": "EUR",
+            },
+        }
+    }
