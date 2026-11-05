@@ -91,7 +91,7 @@ def test_2026_layout(run_extractor):
             "tripmate:numRooms": 1,
             "totalPrice": {
                 "@type": "PriceSpecification",
-                "price": 252.0,
+                "price": 200.0,
                 "priceCurrency": "EUR",
             },
         }

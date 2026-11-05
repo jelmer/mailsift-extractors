@@ -2,7 +2,7 @@ Authentication-Results: example.org; dkim=pass header.d=e.thonhotels.no header.i
 From: Thon Hotels <reservations@e.thonhotels.no>
 To: test@example.org
 Subject: Booking Confirmation Thon Hotel Eksempel
-Date: Fri, 18 Sep 2046 22:54:22 +0000
+Date: Tue, 3 Oct 2046 10:00:00 +0000
 Message-ID: <thon-2026-layout-test@e.thonhotels.no>
 MIME-Version: 1.0
 Content-Type: text/html; charset="utf-8"
@@ -19,10 +19,10 @@ Content-Transfer-Encoding: 8bit
 <table><tr><td class="dm-text">Sun 31. Jan 2047</td></tr></table>
 <table><tr><td class="dm-text"><span>Check out before&nbsp;12:00</span></td></tr></table>
 <table><tr><td class="dm-text">Fri 29. Jan 2047<br>-<br>Sat 30. Jan 2047</td></tr></table>
-<table><tr><td class="dm-text">EUR 126.00</td></tr></table>
+<table><tr><td class="dm-text">EUR 100.00</td></tr></table>
 <table><tr><td class="dm-text">Payment</td></tr></table>
 <table><tr><td class="dm-text">Total</td></tr></table>
-<table><tr><td class="dm-text">EUR 252.00</td></tr></table>
+<table><tr><td class="dm-text">EUR 200.00</td></tr></table>
 <table><tr><td class="dm-text">Telephone&nbsp;+00 0 000 00 00<br>E-mail&nbsp;eksempel@example.com<br>Address&nbsp;Eksempelgata 1, Eksempelby, NO</td></tr></table>
 <table><tr><td class="dm-text">Thon Hotels app: EUR 0.00</td></tr></table>
 </body></html>
