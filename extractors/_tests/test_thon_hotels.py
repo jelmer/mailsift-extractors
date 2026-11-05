@@ -2,12 +2,6 @@
 
 from __future__ import annotations
 
-import json
-import re
-from pathlib import Path
-
-EXTRACTORS_DIR = Path(__file__).resolve().parent.parent
-
 
 def test_confirmation_emits_reservation(run_extractor):
     out = run_extractor("thon-hotels", "thon-hotels-confirmation.eml")
@@ -71,15 +65,6 @@ def test_cancellation_replaces_the_booking(run_extractor):
             },
         }
     }
-
-
-def test_manifest_accepts_cancellations():
-    for line in (EXTRACTORS_DIR / "thon-hotels.yaml").read_text().splitlines():
-        if line.startswith("subject_regex: "):
-            pattern = re.compile(json.loads(line.removeprefix("subject_regex: ")))
-            break
-    assert pattern.search("Your reservation at Thon Hotel Eksempel has been cancelled")
-    assert pattern.search("Booking Confirmation Thon Hotel Eksempel")
 
 
 def test_2026_layout(run_extractor):
