@@ -8,7 +8,7 @@ so these are all filed as outgoing (`mailsift:direction`):
 - "Your parcel is locker-ed up" -> dropped off
 - "Your parcel is heading their way" -> picked up from the drop-off
 - "It's ready for them to collect" -> waiting in the recipient's locker,
-  which counts as out for delivery, as mailroom has it for DPD
+  which counts as out for delivery, as doorstep has it for DPD
 - "It's been collected" -> collected by the recipient, with a
   "Collection date" of DD/MM/YYYY HH:MM
 

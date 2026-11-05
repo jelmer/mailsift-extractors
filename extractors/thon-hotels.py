@@ -152,13 +152,13 @@ def main() -> int:
 
     # An object @context lets us mix the base vocabulary with the
     # pending track (for numAdults, still on pending.schema.org) and
-    # tripmate's own namespace (numRooms - no schema.org term).
+    # wayfare's own namespace (numRooms - no schema.org term).
     context: str | dict = "https://schema.org"
     if composition:
         context = {
             "@vocab": "https://schema.org/",
             "pending": "https://pending.schema.org/",
-            "tripmate": "https://jelmer.github.io/tripmate/ns#",
+            "wayfare": "https://jelmer.github.io/wayfare/ns#",
         }
 
     reservation: dict = {
@@ -175,7 +175,7 @@ def main() -> int:
     }
     if composition:
         reservation["pending:numAdults"] = int(composition["adults"])
-        reservation["tripmate:numRooms"] = int(composition["rooms"])
+        reservation["wayfare:numRooms"] = int(composition["rooms"])
     if price := total_price(lines):
         reservation["totalPrice"] = price
 

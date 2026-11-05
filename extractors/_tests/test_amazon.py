@@ -99,7 +99,7 @@ def test_delivered_url_orderid_is_not_treated_as_a_second_order(run_extractor):
 def test_ordered_mail_has_no_tracking_url(run_extractor):
     # The order-placed mail links to the order summary, not a
     # progress-tracker with a shipmentId. Leaving trackingUrl unset
-    # lets mailroom's fallback URL take over.
+    # lets doorstep's fallback URL take over.
     out = run_extractor("amazon", "amazon-uk-ordered.eml")
     parcel = out["amazon-uk-111-1111111-1111111.parcel.json"]
     assert "trackingUrl" not in parcel

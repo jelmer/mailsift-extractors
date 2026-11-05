@@ -62,7 +62,7 @@ def status_from_subject(subject: str) -> str | None:
         return "Delivered"
     if "exception notification" in s:
         return "OrderProblem"
-    # Waiting at an Access Point counts as out for delivery, as mailroom
+    # Waiting at an Access Point counts as out for delivery, as doorstep
     # has it for DPD.
     if "ready for collection" in s:
         return "OutForDelivery"

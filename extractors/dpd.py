@@ -21,7 +21,7 @@ artifact is written.
 
 The out-for-delivery mail attaches a "DPD Delivery.ics" whose LOCATION
 is the delivery address. We lift the postcode from it into
-`deliveryPostalCode`, which mailroom needs to look the parcel up with
+`deliveryPostalCode`, which doorstep needs to look the parcel up with
 DPD.
 """
 
@@ -69,7 +69,7 @@ def status_from_subject(subject: str) -> str | None:
         return "Delivered"
     if "will be delivered today" in s or "due for delivery between" in s:
         return "OutForDelivery"
-    # Waiting at a Pickup shop counts as out for delivery, as mailroom
+    # Waiting at a Pickup shop counts as out for delivery, as doorstep
     # has it when it polls DPD.
     if (
         "ready for you to collect" in s
