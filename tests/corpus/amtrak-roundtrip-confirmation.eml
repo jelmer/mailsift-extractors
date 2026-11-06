@@ -1,0 +1,61 @@
+Authentication-Results: example.org; dkim=pass header.d=amtrak.com header.i=@amtrak.com
+From: etickets@amtrak.com
+To: joe@example.com
+Subject: Amtrak: eTicket and Receipt for Your 02/21/2020 Trip - JOE EXAMPLE
+Date: Fri, 21 Feb 2020 20:55:57 +0000
+Message-ID: <amtrak-test@amtrak.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY"
+
+--BOUNDARY
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>SALES RECEIPT</h1>
+<p>Purchased: 02/21/2020 12:55 PM PT</p>
+<p>Thank you for your purchase.</p>
+<p>Retain this receipt for your records.</p>
+<p>Print the attached eTicket and carry during your trip.</p>
+<p>Merchant ID 007481 Massachusetts Ave NW<br>Washington, DC 20001<br>800-USA-RAIL<br>Amtrak.com</p>
+
+<h2>Reservation Number - AAABBB</h2>
+<p>BOSTON SOU STA, MA - NEW YORK PENN, NY (Round-Trip)</p>
+<p>FEBRUARY 21, 2020</p>
+
+<h3>Billing Information</h3>
+<p>J EXAMPLE<br>1 EXAMPLE STREET<br>LONDON, ZZ NOZIPC</p>
+
+<p>Visa ending in 0000 (Purchase)<br>Authorization Code 000000</p>
+<p>Total $315.00</p>
+
+<h2>Purchase Summary - Ticket Number 0000000000000</h2>
+
+<p>TRAIN 2175: BOSTON (SOUTH STATION), MA - NEW YORK (PENN STATION), NY<br>
+Depart 5:20 PM, Friday, February 21, 2020</p>
+<p>1 ACELA BUSINESS CLASS SEAT $230.00</p>
+<p>Ticket Terms &amp; Conditions: ACELA SERVICE, NO PARTIAL REFUND IF USED IN OTHER SERVICE</p>
+<p>Subtotal $230.00</p>
+
+<p>TRAIN 170: NEW YORK (PENN STATION), NY - BOSTON (SOUTH STATION), MA<br>
+Depart 8:30 AM, Monday, February 24, 2020</p>
+<p>1 RESERVED COACH SEAT $85.00</p>
+<p>Subtotal $85.00</p>
+
+<p>Total Charged by Amtrak $315.00</p>
+
+<h3>Passengers</h3>
+<p>Joe Example</p>
+
+</body></html>
+
+--BOUNDARY
+Content-Type: application/pdf; name="eticket.pdf"
+Content-Disposition: attachment; filename="eticket.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFI+PgplbmRv
+YmoKMiAwIG9iago8PC9UeXBlL1BhZ2VzL0NvdW50IDAvS2lkcyBbXT4+CmVuZG9iagp4cmVmCjAg
+MwowMDAwMDAwMDAwIDY1NTM1IGYNCjAwMDAwMDAwMTUgMDAwMDAgbg0KMDAwMDAwMDA2MCAwMDAw
+MCBuDQp0cmFpbGVyCjw8L1NpemUgMy9Sb290IDEgMCBSPj4Kc3RhcnR4cmVmCjExMAolJUVPRgo=
+
+--BOUNDARY--

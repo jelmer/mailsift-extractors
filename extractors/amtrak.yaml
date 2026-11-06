@@ -1,0 +1,9 @@
+name: amtrak
+order: 50
+from_domains:
+  - amtrak.com
+subject_regex: "(?i)^Amtrak:\\s+eTicket and Receipt"
+requires:
+  - html
+require_dkim:
+  - amtrak.com
