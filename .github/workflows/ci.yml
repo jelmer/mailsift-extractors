@@ -31,3 +31,14 @@ jobs:
       - run: ruff check .
       - run: ruff format --check .
       - run: mypy extractors
+
+  manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: baptiste0928/cargo-install@v3
+        with:
+          crate: mailsift
+          args: --no-default-features
+      - run: mailsift lint --extractors extractors

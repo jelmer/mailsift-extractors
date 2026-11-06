@@ -5,6 +5,6 @@ from_domains:
   - pv.oebb.at
 subject_regex: "(?i)^.*(ÖBB|OEBB) Booking"
 requires:
-  - plaintext
+  - text
 require_dkim:
   - oebb.at
