@@ -1,0 +1,64 @@
+Authentication-Results: example.org; dkim=pass header.d=lner.co.uk header.i=@lner.co.uk
+From: LNER <noreply@lner.co.uk>
+To: joe@example.com
+Subject: Your reservation from London Kings Cross to Doncaster is confirmed!
+Date: Thu, 05 May 2022 23:04:11 +0000
+Message-ID: <lner-test@lner.co.uk>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY"
+
+--BOUNDARY
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>P2P Booking confirmation</h1>
+<p>Here are your booking details</p>
+
+<p>Hello Joe, your booking(s) are now confirmed and you can find all the details below or in your account area.</p>
+
+<h2>Journey 1 - Outward</h2>
+<p>02/06/2022</p>
+<p>Reservations</p>
+<p>Coach F, seats: 57 58</p>
+<p>London Kings Cross</p>
+<p>19:03</p>
+<p>Doncaster</p>
+<p>20:40</p>
+<p>Advance Single x 2</p>
+<p>&pound;40.00</p>
+<p>Passengers</p>
+<p>Adults x 2</p>
+<p>&pound;40.00</p>
+
+<h2>Journey 2 - Return</h2>
+<p>06/06/2022</p>
+<p>Reservations</p>
+<p>Coach G, seats: 17 18</p>
+<p>Doncaster</p>
+<p>14:27</p>
+<p>London Kings Cross</p>
+<p>16:22</p>
+<p>Advance Single x 2</p>
+<p>&pound;30.80</p>
+<p>Passengers</p>
+<p>Adults x 2</p>
+<p>&pound;30.80</p>
+
+<p>All bookings are subject to the National Rail Conditions of Travel.</p>
+
+<p>London North Eastern Railway Limited. Registered in England No.04659712.</p>
+<p>Template ID - 979397</p>
+<p>Transaction Reference - AAABBBCC11</p>
+</body></html>
+
+--BOUNDARY
+Content-Type: application/pdf; name="eTicket-AAABBBCC11-1-STD-1-0.pdf"
+Content-Disposition: attachment; filename="eTicket-AAABBBCC11-1-STD-1-0.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFI+PgplbmRv
+YmoKMiAwIG9iago8PC9UeXBlL1BhZ2VzL0NvdW50IDAvS2lkcyBbXT4+CmVuZG9iagp4cmVmCjAg
+MwowMDAwMDAwMDAwIDY1NTM1IGYNCjAwMDAwMDAwMTUgMDAwMDAgbg0KMDAwMDAwMDA2MCAwMDAw
+MCBuDQp0cmFpbGVyCjw8L1NpemUgMy9Sb290IDEgMCBSPj4Kc3RhcnR4cmVmCjExMAolJUVPRgo=
+
+--BOUNDARY--
