@@ -5,6 +5,4 @@ from_domains:
 subject_regex: "(?i)^Receipt\\s+from/Kvitto\\s+fra"
 requires:
   - attachment:application/pdf
-# scandichotels.com post-stay receipts from `noreply@scandichotels.com`
-# are not DKIM-signed as of 2025, only SPF+DMARC. Accept them anyway;
-# the from_domain + distinctive bilingual subject are tight enough.
+# Not DKIM signed as of 2025.
