@@ -49,14 +49,16 @@ def main() -> int:
     bill: dict = {
         "@context": "https://schema.org",
         "@type": "Invoice",
-        "identifier": folio,
-        "provider": {"@type": "Organization", "name": "Scandic Hotels"},
+        # mailsift's bill sink keys files under <payee>-<invoice>, so
+        # `payee` is load-bearing rather than merely descriptive.
+        "payee": "Scandic Hotels",
+        "invoiceNumber": folio,
         "accountId": folio,
     }
     if subject_match:
         bill["description"] = f"{hotel}, {subject_match.group('city').strip()}"
     if mail.date:
-        bill["billingDate"] = mail.date.strftime("%Y-%m-%d")
+        bill["issueDate"] = mail.date.strftime("%Y-%m-%d")
 
     slug = f"scandic-{folio}"
     Path(f"{slug}.bill.json").write_text(json.dumps(bill, ensure_ascii=False))
