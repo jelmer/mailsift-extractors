@@ -1,0 +1,9 @@
+name: hotels-com
+order: 50
+from_domains:
+  - mail.hotels.com
+subject_regex: "(?i)^Hotels\\.com travel confirmation"
+requires:
+  - html
+require_dkim:
+  - mail.hotels.com

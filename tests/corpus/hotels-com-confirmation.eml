@@ -1,0 +1,21 @@
+Authentication-Results: example.org; dkim=pass header.d=mail.hotels.com header.i=@mail.hotels.com
+From: "Hotels.com" <confirmation@mail.hotels.com>
+To: joe@example.com
+Subject: Hotels.com travel confirmation - 27 Aug - (Itinerary # 00000000000000)
+Date: Sat, 26 Aug 2023 13:44:00 +0000
+Message-ID: <hotelscom-test@mail.hotels.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<h1>Itinerary: Hotel MANI by AMANO, Berlin</h1>
+
+<p>Thanks!</p>
+<p>Your reservation is confirmed. No need to call to reconfirm.</p>
+
+<h2>Hotel MANI by AMANO, Berlin</h2>
+<p>27 Aug 2023 - 29 Aug 2023</p>
+
+<p>Itinerary # 00000000000000</p>
+
+</body></html>
