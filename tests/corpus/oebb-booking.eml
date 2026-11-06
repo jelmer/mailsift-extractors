@@ -1,0 +1,43 @@
+Authentication-Results: example.org; dkim=pass header.d=oebb.at header.i=@oebb.at
+From: tickets@oebb.at
+To: joe@example.com
+Subject: =?UTF-8?Q?=C3=96BB_Booking_=E2=80=93_0990_0000_0000_0000_=E2=80=93_Aug_01_2023?=
+Date: Tue, 01 Aug 2023 16:02:11 +0200
+Message-ID: <oebb-test@oebb.at>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY"
+
+--BOUNDARY
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Booking code: 0990 0000 0000 0000
+Booking date: 01 Aug 2023
+Transaction number: 536000000000000000
+
+Hello,
+
+
+thanks for your booking. We have debited your MASTERCARD card, with the last digits xxxxxxxxxxxx0000, with €86.00. You will find this amount on your card statement, marked with “OEBB TICKET”.
+Please be aware that this confirmation is no ticket.
+
+Your Bookings
+
+Villach Hbf > München Hbf Gl.5-10
+One-way journey for Joe Example
+1 x bicycle
+valid: Aug 01 - 02 2023
+My Booking: https://shop.oebbtickets.at/en/ticket/voucher/00000000-0000-0000-0000-000000000000
+
+
+--BOUNDARY
+Content-Type: application/pdf; name="VSt-Bescheinigung_OEBB-Ticket.pdf"
+Content-Disposition: attachment; filename="VSt-Bescheinigung_OEBB-Ticket.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFI+PgplbmRv
+YmoKMiAwIG9iago8PC9UeXBlL1BhZ2VzL0NvdW50IDAvS2lkcyBbXT4+CmVuZG9iagp4cmVmCjAg
+MwowMDAwMDAwMDAwIDY1NTM1IGYNCjAwMDAwMDAwMTUgMDAwMDAgbg0KMDAwMDAwMDA2MCAwMDAw
+MCBuDQp0cmFpbGVyCjw8L1NpemUgMy9Sb290IDEgMCBSPj4Kc3RhcnR4cmVmCjExMAolJUVPRgo=
+
+--BOUNDARY--

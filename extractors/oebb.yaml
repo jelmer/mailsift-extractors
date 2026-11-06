@@ -1,0 +1,10 @@
+name: oebb
+order: 50
+from_domains:
+  - oebb.at
+  - pv.oebb.at
+subject_regex: "(?i)^.*(ÖBB|OEBB) Booking"
+requires:
+  - plaintext
+require_dkim:
+  - oebb.at
