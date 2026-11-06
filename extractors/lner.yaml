@@ -1,0 +1,9 @@
+name: lner
+order: 50
+from_domains:
+  - lner.co.uk
+subject_regex: "(?i)^Your reservation from .+ to .+ is confirmed"
+requires:
+  - html
+require_dkim:
+  - lner.co.uk

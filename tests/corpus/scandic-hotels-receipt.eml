@@ -1,0 +1,31 @@
+Authentication-Results: example.org; dkim=pass header.d=scandichotels.com header.i=@scandichotels.com
+From: noreply@scandichotels.com
+To: joe@example.com
+Subject: Receipt from/Kvitto fraScandic Helsfyr, Oslo room/rom 703
+Date: Sun, 15 Jun 2025 07:25:26 +0000
+Message-ID: <scandic-test@scandichotels.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY"
+
+--BOUNDARY
+Content-Type: text/plain; charset="utf-8"
+
+Vedlagt finner du din kvittering/ faktura fra ditt opphold hos oss.
+
+Velkommen tilbake!
+
+Attached please find your bill/invoice from your stay with us.
+
+Looking forward to welcome you back soon again!
+
+--BOUNDARY
+Content-Type: application/pdf; name="nor_thfolio_en_12345678.PDF"
+Content-Disposition: attachment; filename="nor_thfolio_en_12345678.PDF"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFI+PgplbmRv
+YmoKMiAwIG9iago8PC9UeXBlL1BhZ2VzL0NvdW50IDAvS2lkcyBbXT4+CmVuZG9iagp4cmVmCjAg
+MwowMDAwMDAwMDAwIDY1NTM1IGYNCjAwMDAwMDAwMTUgMDAwMDAgbg0KMDAwMDAwMDA2MCAwMDAw
+MCBuDQp0cmFpbGVyCjw8L1NpemUgMy9Sb290IDEgMCBSPj4Kc3RhcnR4cmVmCjExMAolJUVPRgo=
+
+--BOUNDARY--

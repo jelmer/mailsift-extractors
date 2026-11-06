@@ -1,0 +1,9 @@
+name: scandic-hotels
+order: 50
+from_domains:
+  - scandichotels.com
+subject_regex: "(?i)^Receipt\\s+from/Kvitto\\s+fra"
+requires:
+  - attachment:application/pdf
+require_dkim:
+  - scandichotels.com
