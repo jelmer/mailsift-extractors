@@ -122,20 +122,11 @@ def main() -> int:
     slug = f"amtrak-{ticket_number or reservation_number}"
     Path(f"{slug}.receipt.json").write_text(json.dumps(receipt, ensure_ascii=False))
 
-    # File the PDF eTicket if present.
+    # File the PDF eTicket if present. mailsift's ticket sink preserves
+    # the extractor name and slug as metadata; no companion JSON needed.
     pdf = mail.find_pdf_attachment("ticket") or mail.find_pdf_attachment("")
     if pdf is not None and pdf.bytes:
-        ticket_path = Path(f"amtrak-{reservation_number}.ticket.pdf")
-        ticket_path.write_bytes(pdf.bytes)
-        meta = {
-            "@context": "https://schema.org",
-            "@type": "Ticket",
-            "ticketNumber": ticket_number or reservation_number,
-            "issuedBy": {"@type": "Organization", "name": "Amtrak"},
-        }
-        Path(f"amtrak-{reservation_number}.ticket.meta.json").write_text(
-            json.dumps(meta, ensure_ascii=False)
-        )
+        Path(f"amtrak-{reservation_number}.ticket.pdf").write_bytes(pdf.bytes)
 
     return 0
 

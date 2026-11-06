@@ -9,7 +9,6 @@ def test_roundtrip_emits_two_reservations_receipt_and_ticket(run_extractor):
         "amtrak-AAABBB-170.reservation.json",
         "amtrak-AAABBB-2175.reservation.json",
         "amtrak-0000000000000.receipt.json",
-        "amtrak-AAABBB.ticket.meta.json",
         "amtrak-AAABBB.ticket.pdf",
     }
     outbound = out["amtrak-AAABBB-2175.reservation.json"]
@@ -38,9 +37,5 @@ def test_roundtrip_emits_two_reservations_receipt_and_ticket(run_extractor):
     assert receipt["orderNumber"] == "0000000000000"
     assert receipt["price"] == "315.00"
     assert receipt["priceCurrency"] == "USD"
-
-    ticket_meta = out["amtrak-AAABBB.ticket.meta.json"]
-    assert ticket_meta["ticketNumber"] == "0000000000000"
-    assert ticket_meta["issuedBy"] == {"@type": "Organization", "name": "Amtrak"}
 
     assert out["amtrak-AAABBB.ticket.pdf"].startswith(b"%PDF")
