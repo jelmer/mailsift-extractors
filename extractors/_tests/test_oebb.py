@@ -20,6 +20,7 @@ def test_booking_emits_bill_and_ticket(run_extractor):
     assert out["oebb-536000000000000000.bill.pdf"].startswith(b"%PDF")
     # The ticket PDF is a copy of the same blob; mailsift dedups by
     # content hash so storing it twice is cheap.
-    assert out["oebb-0990000000000000.ticket.pdf"] == out[
-        "oebb-536000000000000000.bill.pdf"
-    ]
+    assert (
+        out["oebb-0990000000000000.ticket.pdf"]
+        == out["oebb-536000000000000000.bill.pdf"]
+    )
