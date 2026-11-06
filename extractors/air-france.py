@@ -91,18 +91,15 @@ def main() -> int:
     lines: list[str] = []
     for line in raw_lines:
         prev = lines[-1] if lines else ""
-        join = False
-        if prev:
-            if line.startswith("-"):
-                join = True
-            elif prev.endswith(("Flight", "-")) and re.match(
-                r"^[A-Z]{2}\d{2,4}\b", line
-            ):
-                join = True
-            elif re.match(r"^\d{1,2}h\d{2}$", prev) and line[:1].isalpha():
-                join = True
-            elif len(line) <= 4 and line[:1].isalnum():
-                join = True
+        join = bool(prev) and (
+            line.startswith("-")
+            or (
+                prev.endswith(("Flight", "-"))
+                and re.match(r"^[A-Z]{2}\d{2,4}\b", line) is not None
+            )
+            or (re.match(r"^\d{1,2}h\d{2}$", prev) is not None and line[:1].isalpha())
+            or (len(line) <= 4 and line[:1].isalnum())
+        )
         if join:
             lines[-1] = f"{prev} {line}"
         else:
