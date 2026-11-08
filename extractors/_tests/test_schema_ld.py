@@ -136,3 +136,19 @@ def test_renfe_multi_leg_train_reservation_passthrough(run_extractor):
         second_leg["reservationFor"]["arrivalStation"]["name"]
         == "SAN SEBASTIAN-DONOSTIA"
     )
+
+
+def test_attachment_named_after_the_booking_is_its_ticket(run_extractor):
+    out = run_extractor("schema-ld", "schema-bus-boarding-pass.eml")
+    # The terms carry no booking reference and the PNG isn't a PDF, so
+    # only the boarding pass is filed.
+    assert set(out) == {
+        "1000000002.reservation.json",
+        "1000000002-ticket.ticket.pdf",
+    }
+    assert out["1000000002-ticket.ticket.pdf"] == b"%PDF-1.4 boarding pass"
+
+
+def test_no_ticket_without_an_attachment(run_extractor):
+    out = run_extractor("schema-ld", "schema-numeric-reservation-number.eml")
+    assert not any(name.endswith((".ticket.pdf", ".ticket.pkpass")) for name in out)
