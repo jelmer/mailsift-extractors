@@ -58,6 +58,7 @@ index (`1`, `2`, `3`) when the mail didn't carry one.
 
 from __future__ import annotations
 
+import html as htmllib
 import json
 import re
 import sys
@@ -586,6 +587,18 @@ def _leg_key(segment: Segment, index: int) -> str:
     return segment.train_number or str(index + 1)
 
 
+# The "print your ticket(s)" link: the booking's tickets as one PDF,
+# served without logging in.
+TICKET_PDF_RE = re.compile(
+    r'href="(https://www\.bene-system\.com/hp/pdfservice\?pdf=[^"]+)"', re.IGNORECASE
+)
+
+
+def ticket_pdf(html: str) -> str | None:
+    match = TICKET_PDF_RE.search(html)
+    return htmllib.unescape(match.group(1)) if match else None
+
+
 def main() -> int:
     mail = read_message()
     if not mail.html or not mail.subject:
@@ -619,6 +632,8 @@ def main() -> int:
     if not directions:
         return 0
 
+    # One PDF holds every ticket of the booking, so each train carries it.
+    pdf = ticket_pdf(mail.html)
     first_written = True
     for direction in directions:
         for index, segment in enumerate(direction.segments):
@@ -655,6 +670,8 @@ def main() -> int:
                 "reservationNumber": reservation_number,
                 "reservationFor": trip,
             }
+            if pdf:
+                reservation["reservedTicket"] = {"@type": "Ticket", "ticketToken": pdf}
             # Total price covers the whole booking; attach it to the
             # first train we write so the archive keeps it without
             # double-counting on every leg.
