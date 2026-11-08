@@ -48,11 +48,21 @@ def leg(
     }
 
 
+def reservations(out: dict) -> dict:
+    return {
+        name: body for name, body in out.items() if name.endswith(".reservation.json")
+    }
+
+
+def tickets(out: dict) -> dict:
+    return {name: body for name, body in out.items() if ".ticket." in name}
+
+
 def test_night_train_with_couchette(run_extractor):
     """The 2012 mail is text-only; the passenger column sits beside the
     timetable rows and the couchette wraps onto two more lines."""
     out = run_extractor("deutsche-bahn", "deutsche-bahn-night-train.eml")
-    assert out == {
+    assert reservations(out) == {
         "deutsche-bahn-aaaaaa-cnl-1234.reservation.json": leg(
             "AAAAAA",
             "CNL 1234",
@@ -77,7 +87,7 @@ def test_night_train_with_couchette(run_extractor):
 
 def test_return_across_new_year(run_extractor):
     out = run_extractor("deutsche-bahn", "deutsche-bahn-return.eml")
-    assert out == {
+    assert reservations(out) == {
         "deutsche-bahn-bbbbbb-ic-2001.reservation.json": leg(
             "BBBBBB",
             "IC 2001",
@@ -102,7 +112,7 @@ def test_return_across_new_year(run_extractor):
 
 def test_one_way_with_separate_reservation_column(run_extractor):
     out = run_extractor("deutsche-bahn", "deutsche-bahn-one-way.eml")
-    assert out == {
+    assert reservations(out) == {
         "deutsche-bahn-900000000001-rb-12.reservation.json": leg(
             "900000000001",
             "RB 12",
@@ -125,7 +135,7 @@ def test_one_way_with_separate_reservation_column(run_extractor):
 
 def test_deutschebahn_com_with_octet_stream_pdf(run_extractor):
     out = run_extractor("deutsche-bahn", "deutsche-bahn-deutschebahn-com.eml")
-    assert out == {
+    assert reservations(out) == {
         "deutsche-bahn-cccccc-ic-3569.reservation.json": leg(
             "CCCCCC",
             "IC 3569",
@@ -151,7 +161,7 @@ def test_same_train_twice_is_dated(run_extractor):
     # Legs share the order number and are told apart by train number,
     # so a line taken out and back carries its date.
     out = run_extractor("deutsche-bahn", "deutsche-bahn-repeated-train.eml")
-    assert out == {
+    assert reservations(out) == {
         "deutsche-bahn-dddddd-rb-12-2046-07-20.reservation.json": leg(
             "DDDDDD",
             "RB 12 (2046-07-20)",
@@ -177,7 +187,7 @@ def test_ticket_per_direction(run_extractor):
     # Since 2026 the subject reads "Buchungsbestätigung Deutsche Bahn
     # (Auftrag: <n>)" and each direction has a PDF of its own.
     out = run_extractor("deutsche-bahn", "deutsche-bahn-two-tickets.eml")
-    assert out == {
+    assert reservations(out) == {
         "deutsche-bahn-900000000002-ice-143.reservation.json": leg(
             "900000000002",
             "ICE 143",
@@ -197,3 +207,18 @@ def test_ticket_per_direction(run_extractor):
             reservedTicket=seat("7", "103"),
         ),
     }
+
+
+def test_each_direction_s_pdf_is_its_ticket(run_extractor):
+    out = run_extractor("deutsche-bahn", "deutsche-bahn-two-tickets.eml")
+    filed = tickets(out)
+    assert set(filed) == {
+        "deutsche-bahn-900000000002-2046-12-27.ticket.pdf",
+        "deutsche-bahn-900000000002-2046-12-30.ticket.pdf",
+    }
+    assert all(body.startswith(b"%PDF") for body in filed.values())
+
+
+def test_a_single_pdf_is_the_order_s_ticket(run_extractor):
+    out = run_extractor("deutsche-bahn", "deutsche-bahn-night-train.eml")
+    assert set(tickets(out)) == {"deutsche-bahn-aaaaaa-2040-03-14.ticket.pdf"}
