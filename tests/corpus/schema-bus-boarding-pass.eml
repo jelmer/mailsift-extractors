@@ -1,0 +1,61 @@
+From: noreply@bus.example
+To: test@example.org
+Subject: Booking Confirmation #1000000002
+Date: Wed, 27 Aug 2025 08:00:00 +0000
+Message-ID: <bus-1000000002@bus.example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============6624775946130230742=="
+
+--===============6624775946130230742==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html>
+<head>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BusReservation",
+  "reservationNumber": "1000000002",
+  "underName": {"@type": "Person", "name": "Test User"},
+  "reservationFor": {
+    "@type": "BusTrip",
+    "departureBusStop": {"@type": "BusStation", "name": "Alpha"},
+    "departureTime": "2025-08-28T12:00:00+02:00",
+    "arrivalBusStop": {"@type": "BusStation", "name": "Beta"},
+    "arrivalTime": "2025-08-28T15:30:00+02:00"
+  }
+}
+</script>
+</head>
+<body>
+<p>Booking confirmed.</p>
+</body>
+</html>
+
+--===============6624775946130230742==
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Boarding-Pass-Alpha-Beta.png"
+MIME-Version: 1.0
+
+UE5HLW5vdC1hLXRpY2tldA==
+
+--===============6624775946130230742==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Boarding-Pass-Alpha-Beta-1000000002.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQgYm9hcmRpbmcgcGFzcw==
+
+--===============6624775946130230742==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Terms-and-Conditions.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQgdGVybXM=
+
+--===============6624775946130230742==--

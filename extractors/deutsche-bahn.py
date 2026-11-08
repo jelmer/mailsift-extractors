@@ -27,6 +27,9 @@ train number ("S 3 (2040-03-23)") to keep them apart. BahnCard
 purchases come with a PDF too, but without a journey; those are
 skipped.
 
+Each PDF that lists a journey is also filed as a ticket, named after
+the order and the day its first train leaves.
+
 Cancellation mails ("Confirmation of cancellation (order <code>)",
 "Annuleringsbevestiging (Order <code>)") have no PDF and only give the
 order number and refund, not the legs; they are handled by
@@ -225,11 +228,14 @@ def main() -> int:
     pdfs = [a for a in mail.attachments if a.looks_like_pdf()]
     if not pdfs:
         raise ValueError(f"order {order[1]} has no ticket PDF")
-    text = "\n".join(
-        page.extract_text(extraction_mode="layout")
+    texts = [
+        "\n".join(
+            page.extract_text(extraction_mode="layout")
+            for page in PdfReader(io.BytesIO(pdf.bytes)).pages
+        )
         for pdf in pdfs
-        for page in PdfReader(io.BytesIO(pdf.bytes)).pages
-    )
+    ]
+    text = "\n".join(texts)
     legs = parse_ticket(text)
     if not legs:
         if "BAHNCARD" in text.upper() and "Reiseverbindung" not in text:
@@ -269,6 +275,17 @@ def main() -> int:
         Path(f"deutsche-bahn-{slug}.reservation.json").write_text(
             json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
         )
+
+    # The PDFs are the tickets themselves. Each is named after the day
+    # its first train leaves, so wayfare can tell an outbound ticket
+    # from the return in an order with one per direction.
+    for pdf, pdf_text in zip(pdfs, texts):
+        pdf_legs = parse_ticket(pdf_text)
+        if not pdf_legs:
+            continue
+        day = pdf_legs[0].departs.strftime("%Y-%m-%d")
+        name = re.sub(r"[^a-z0-9]+", "-", f"{order[1]}-{day}".lower()).strip("-")
+        Path(f"deutsche-bahn-{name}.ticket.pdf").write_bytes(pdf.bytes)
     return 0
 
 

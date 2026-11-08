@@ -171,12 +171,58 @@ def emit_subscriptions(blocks: Iterable[Any]) -> None:
         index += 1
 
 
+# Shorter references would match too much by accident ("1", "AB").
+MIN_REFERENCE_LENGTH = 5
+
+
+def ticket_extension(attachment) -> str | None:
+    name = (attachment.filename or "").lower()
+    if attachment.mime_type == "application/vnd.apple.pkpass" or name.endswith(
+        ".pkpass"
+    ):
+        return "pkpass"
+    if attachment.looks_like_pdf():
+        return "pdf"
+    return None
+
+
+def emit_tickets(mail, references: dict[str, str]) -> None:
+    """File attachments that are tickets for the reservations just written.
+
+    The markup itself never carries the ticket, but vendors often attach
+    it, and name it after the booking (Flix: `Boarding-Pass-<from>-<to>-
+    <booking>.pdf`). Only a PDF or Wallet pass whose filename contains a
+    booking reference counts, which keeps receipts and terms and
+    conditions out.
+    """
+    written = 0
+    for attachment in mail.attachments:
+        ext = ticket_extension(attachment)
+        if ext is None:
+            continue
+        name = (attachment.filename or "").lower()
+        slug = next(
+            (
+                slug
+                for reference, slug in references.items()
+                if len(reference) >= MIN_REFERENCE_LENGTH and reference.lower() in name
+            ),
+            None,
+        )
+        if slug is None:
+            continue
+        suffix = f"-{written}" if written else ""
+        Path(f"{slug}-ticket{suffix}.ticket.{ext}").write_bytes(attachment.bytes)
+        written += 1
+
+
 def main() -> int:
     mail = read_message()
     if not mail.ld_json:
         return 0
 
     index = 0
+    references: dict[str, str] = {}
     for obj in flatten(mail.ld_json):
         if not isinstance(obj, dict):
             continue
@@ -199,8 +245,10 @@ def main() -> int:
             json.dumps(normalise(obj), ensure_ascii=False),
             encoding="utf-8",
         )
+        references.setdefault(str(identifier), slug)
         index += 1
 
+    emit_tickets(mail, references)
     emit_subscriptions(mail.ld_json)
     return 0
 
