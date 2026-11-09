@@ -40,15 +40,24 @@ travelled or left alone by an exchange, so each leg carries
 `mailsift:itineraryComplete` and mailsift cancels the legs it replaces.
 Since 2026 this is the only mail about an exchange that names the new
 trains.
+
+Each passenger's ticket for a leg is a barcode image hosted by Eurostar
+(`ticket.eurostar.com/barcode/<reference>/<ticket>?s=<signature>`) with
+Apple and Google Wallet links beside it. These only exist in the HTML,
+so they are matched to legs by the leg headers' order there. The image
+URL becomes the ticket's `ticketToken` and the Wallet links become
+actions; nothing is fetched.
 """
 
 from __future__ import annotations
 
+import html as htmllib
 import json
 import re
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
+from urllib.parse import unquote
 
 sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
@@ -62,6 +71,19 @@ LEG_HEADER_RE = re.compile(r"^(Outbound|Return)(?:\s*\(\d+/\d+\))?$", re.IGNOREC
 LONG_DATE_RE = re.compile(r"^[A-Za-z]+,?\s+(\d{1,2})\s+([A-Za-z]+)(?:\s+(\d{4}))?$")
 TIME_RE = re.compile(r"^(\d{1,2}):(\d{2})$")
 REFERENCE_VALUE_RE = re.compile(r"^[A-Z0-9]{6}$")
+HTML_LEG_HEADER_RE = re.compile(
+    r">\s*(?:Outbound|Return)(?:\s*\(\d+/\d+\))?\s*<", re.IGNORECASE
+)
+BARCODE_RE = re.compile(
+    r'<img\b[^>]*\bsrc="(https://ticket\.eurostar\.com/barcode/[^"]+)"', re.IGNORECASE
+)
+WALLET_RE = re.compile(
+    r'href="([^"]*tickets-api\.eurostar\.com(?:/|%2F)(apple|google)(?:/|%2F)tickets[^"]*)"',
+    re.IGNORECASE,
+)
+# Amazon SES click tracking: the target is percent-encoded after `/L0/`.
+TRACKED_RE = re.compile(r"^https://[^/]+\.awstrack\.me/L0/([^/]+)/")
+WALLETS = {"apple": "Add to Apple Wallet", "google": "Add to Google Wallet"}
 
 MONTHS = {
     m.lower(): i
@@ -179,6 +201,30 @@ def parse_leg(lines: list[str], start: int, end: int, ref: datetime) -> dict | N
     return leg
 
 
+def untracked(url: str) -> str:
+    """The link a click-tracking redirect points at, or `url` itself."""
+    url = htmllib.unescape(url)
+    if m := TRACKED_RE.match(url):
+        return unquote(m.group(1))
+    return url
+
+
+def html_leg_tickets(html: str) -> list[dict]:
+    """Barcode URLs and Wallet links under each leg header, in order."""
+    starts = [m.start() for m in HTML_LEG_HEADER_RE.finditer(html)]
+    sections = []
+    for start, end in zip(starts, starts[1:] + [len(html)], strict=True):
+        chunk = html[start:end]
+        barcodes = [htmllib.unescape(m.group(1)) for m in BARCODE_RE.finditer(chunk)]
+        wallets: list[tuple[str, str]] = []
+        for m in WALLET_RE.finditer(chunk):
+            link = (WALLETS[m.group(2).lower()], untracked(m.group(1)))
+            if link not in wallets:
+                wallets.append(link)
+        sections.append({"barcodes": barcodes, "wallets": wallets})
+    return sections
+
+
 def main() -> int:
     mail = read_message()
     if not mail.html:
@@ -222,9 +268,21 @@ def main() -> int:
         leg = parse_leg(lines, bounds[index], bounds[index + 1], reference_date)
         if leg is not None:
             leg["direction"] = directions[headers[index]]
+            leg["header_index"] = index
             legs.append(leg)
     if not legs:
         return 0
+
+    sections = html_leg_tickets(mail.html)
+    if len(sections) == len(headers):
+        for leg in legs:
+            leg.update(sections[leg["header_index"]])
+    else:
+        print(
+            f"booking {reference}: {len(sections)} leg headers in the HTML but "
+            f"{len(headers)} in its text; not matching tickets to legs",
+            file=sys.stderr,
+        )
 
     slugs = set()
     for leg in legs:
@@ -256,14 +314,24 @@ def main() -> int:
             )
         if leg.get("train"):
             reservation["reservationFor"]["trainNumber"] = leg["train"]
+        # One ticket per passenger; the seat parsed is the first one's.
+        tickets = [
+            {"@type": "Ticket", "ticketToken": url} for url in leg.get("barcodes", [])
+        ] or [{"@type": "Ticket"}]
         if leg.get("seat"):
             seat: dict = {"@type": "Seat", "seatNumber": leg["seat"]}
             if leg.get("coach"):
                 seat["seatSection"] = leg["coach"]
-            reservation["reservedTicket"] = {
-                "@type": "Ticket",
-                "ticketedSeat": seat,
-            }
+            tickets[0]["ticketedSeat"] = seat
+        if len(tickets) > 1:
+            reservation["reservedTicket"] = tickets
+        elif len(tickets[0]) > 1:
+            reservation["reservedTicket"] = tickets[0]
+        if leg.get("wallets"):
+            reservation["potentialAction"] = [
+                {"@type": "ViewAction", "name": name, "url": url}
+                for name, url in leg["wallets"]
+            ]
         Path(f"{slug}.reservation.json").write_text(
             json.dumps(reservation, ensure_ascii=False), encoding="utf-8"
         )

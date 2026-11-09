@@ -1,0 +1,68 @@
+From: Eurostar <noreply@eurostar.com>
+To: test@example.org
+Subject: Your Eurostar tickets to Beta Central on Wednesday, 10 March 2027
+Date: Mon, 01 Mar 2027 10:00:00 +0000
+Message-ID: <eurostar-tickets-barcodes-test@eurostar.com>
+Authentication-Results: example.org; dkim=pass header.d=eurostar.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6490585464787962921=="
+
+--===============6490585464787962921==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your Eurostar tickets
+
+--===============6490585464787962921==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><table>
+<tr><td><p>Your Eurostar tickets</p></td></tr>
+<tr><td><p>Booking reference: GGGGGG</p></td></tr>
+<tr><td><p>Hello,</p></td></tr>
+<tr><td><p>Outbound</p></td></tr>
+<tr><td><p>Wednesday, 10 March 2027</p></td></tr><tr><td><p>Alpha Internation=
+al</p></td></tr><tr><td><p>Beta Central</p></td></tr>
+<tr><td><p>08:01</p><p>(local time)</p></td></tr><tr><td><p>11:05</p><p>(loca=
+l time)</p></td></tr>
+<tr><td><p>Test User</p></td></tr><tr><td><p>Eurostar Standard</p></td></tr><=
+tr><td><img src=3D"https://ticket.eurostar.com/barcode/GGGGGG/ticket-a?s=3Dc2=
+lnbmF0dXJl%3D" alt=3D"Your ticket - Barcode" width=3D"440"></td></tr><tr><td>=
+<p>Coach</p><p>3</p><p>Seat</p><p>21</p></td></tr><tr><td><p>TRAIN</p><p>9001=
+</p><p>TICKET NUMBER</p><p>000000001</p></td></tr><tr><td><a href=3D"https://=
+abc1234.r.eu-west-1.awstrack.me/L0/https%3A%2F%2Ftickets-api.eurostar.com%2Fa=
+pple%2Ftickets%2Fticket-a/1/0102-test/sig=3D473"><img alt=3D"Add to Apple Wal=
+let"></a></td></tr><tr><td><a href=3D"https://abc1234.r.eu-west-1.awstrack.me=
+/L0/https%3A%2F%2Ftickets-api.eurostar.com%2Fgoogle%2Ftickets%2Fticket-a/1/01=
+02-test/sig=3D473"><img alt=3D"Add to Google Wallet"></a></td></tr>
+<tr><td><p>Other User</p></td></tr><tr><td><p>Eurostar Standard</p></td></tr>=
+<tr><td><img src=3D"https://ticket.eurostar.com/barcode/GGGGGG/ticket-b?s=3Dc=
+2lnbmF0dXJl%3D" alt=3D"Your ticket - Barcode" width=3D"440"></td></tr><tr><td=
+><p>Coach</p><p>3</p><p>Seat</p><p>22</p></td></tr><tr><td><p>TRAIN</p><p>900=
+1</p><p>TICKET NUMBER</p><p>000000001</p></td></tr><tr><td><a href=3D"https:/=
+/abc1234.r.eu-west-1.awstrack.me/L0/https%3A%2F%2Ftickets-api.eurostar.com%2F=
+apple%2Ftickets%2Fticket-b/1/0102-test/sig=3D473"><img alt=3D"Add to Apple Wa=
+llet"></a></td></tr><tr><td><a href=3D"https://abc1234.r.eu-west-1.awstrack.m=
+e/L0/https%3A%2F%2Ftickets-api.eurostar.com%2Fgoogle%2Ftickets%2Fticket-b/1/0=
+102-test/sig=3D473"><img alt=3D"Add to Google Wallet"></a></td></tr>
+<tr><td><p>Return</p></td></tr>
+<tr><td><p>Monday, 15 March 2027</p></td></tr><tr><td><p>Beta Central</p></td=
+></tr><tr><td><p>Alpha International</p></td></tr>
+<tr><td><p>16:40</p><p>(local time)</p></td></tr><tr><td><p>18:00</p><p>(loca=
+l time)</p></td></tr>
+<tr><td><p>Test User</p></td></tr><tr><td><p>Eurostar Standard</p></td></tr><=
+tr><td><img src=3D"https://ticket.eurostar.com/barcode/GGGGGG/ticket-c?s=3Dc2=
+lnbmF0dXJl%3D" alt=3D"Your ticket - Barcode" width=3D"440"></td></tr><tr><td>=
+<p>Coach</p><p>5</p><p>Seat</p><p>41</p></td></tr><tr><td><p>TRAIN</p><p>9002=
+</p><p>TICKET NUMBER</p><p>000000001</p></td></tr><tr><td><a href=3D"https://=
+abc1234.r.eu-west-1.awstrack.me/L0/https%3A%2F%2Ftickets-api.eurostar.com%2Fa=
+pple%2Ftickets%2Fticket-c/1/0102-test/sig=3D473"><img alt=3D"Add to Apple Wal=
+let"></a></td></tr><tr><td><a href=3D"https://abc1234.r.eu-west-1.awstrack.me=
+/L0/https%3A%2F%2Ftickets-api.eurostar.com%2Fgoogle%2Ftickets%2Fticket-c/1/01=
+02-test/sig=3D473"><img alt=3D"Add to Google Wallet"></a></td></tr>
+</table></body></html>
+
+--===============6490585464787962921==--

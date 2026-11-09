@@ -88,3 +88,53 @@ def test_short_date_rolls_into_the_next_year(run_extractor):
     reservation = out["eurostar-GGGGGG-outbound-1004.reservation.json"]
     assert reservation["reservationFor"]["departureTime"] == "2026-02-06T08:01:00"
     assert reservation["reservationFor"]["arrivalTime"] == "2026-02-06T11:30:00"
+
+
+def test_barcodes_and_wallet_links_land_on_their_legs(run_extractor):
+    # The outbound has two passengers, so two tickets; the seat is the
+    # first passenger's. The Wallet links come out of SES click tracking.
+    out = run_extractor("eurostar-tickets", "eurostar-tickets-barcodes.eml")
+    outbound = out["eurostar-GGGGGG-outbound-9001.reservation.json"]
+    barcode = "https://ticket.eurostar.com/barcode/GGGGGG/{}?s=c2lnbmF0dXJl%3D"
+    assert outbound["reservedTicket"] == [
+        {
+            "@type": "Ticket",
+            "ticketToken": barcode.format("ticket-a"),
+            "ticketedSeat": {"@type": "Seat", "seatNumber": "21", "seatSection": "3"},
+        },
+        {"@type": "Ticket", "ticketToken": barcode.format("ticket-b")},
+    ]
+    wallet = "https://tickets-api.eurostar.com/{}/tickets/{}"
+    assert outbound["potentialAction"] == [
+        {
+            "@type": "ViewAction",
+            "name": "Add to Apple Wallet",
+            "url": wallet.format("apple", "ticket-a"),
+        },
+        {
+            "@type": "ViewAction",
+            "name": "Add to Google Wallet",
+            "url": wallet.format("google", "ticket-a"),
+        },
+        {
+            "@type": "ViewAction",
+            "name": "Add to Apple Wallet",
+            "url": wallet.format("apple", "ticket-b"),
+        },
+        {
+            "@type": "ViewAction",
+            "name": "Add to Google Wallet",
+            "url": wallet.format("google", "ticket-b"),
+        },
+    ]
+
+    inbound = out["eurostar-GGGGGG-return-9002.reservation.json"]
+    assert inbound["reservedTicket"] == {
+        "@type": "Ticket",
+        "ticketToken": barcode.format("ticket-c"),
+        "ticketedSeat": {"@type": "Seat", "seatNumber": "41", "seatSection": "5"},
+    }
+    assert [a["url"] for a in inbound["potentialAction"]] == [
+        wallet.format("apple", "ticket-c"),
+        wallet.format("google", "ticket-c"),
+    ]
