@@ -1,0 +1,49 @@
+From: KLM <yourboardingpass@klm.com>
+To: test@example.org
+Subject: Your KLM boarding pass(s) on 01 Jan
+Date: Mon, 31 Dec 2029 20:00:00 +0000
+Message-ID: <klm-boarding-pass-new-year@klm.com>
+Authentication-Results: example.org; dkim=pass header.d=klm.com
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============0144938381689327867=="
+
+--===============0144938381689327867==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><body>
+<table><tr><td>Boarding information</td></tr></table>
+<p>You are checked in! We have attached your boarding documents.</p>
+<table>
+<thead><tr><th>Origin</th><th>Destination</th><th>Departure date</th><th>Flig=
+ht number</th><th>Booking code</th></tr></thead>
+<tbody>
+<tr>
+<td><p>Schiphol (AMS)</p><p>Amsterdam</p></td>
+<td><p>Beta Airport (BBB)</p><p>Betaburg</p></td>
+<td>1 Jan</td>
+<td>KL 1004</td>
+<td>NNNNNN</td>
+</tr>
+</tbody>
+</table>
+</body></html>
+
+--===============0144938381689327867==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Boarding passes-01 Jan.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQgYm9hcmRpbmcgcGFzc2Vz
+
+--===============0144938381689327867==
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Electronic boarding pass-KL1004-01 Jan.png"
+MIME-Version: 1.0
+
+iVBORyBueQ==
+
+--===============0144938381689327867==--

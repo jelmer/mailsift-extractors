@@ -1,0 +1,40 @@
+From: KLM <yourboardingpass@klm.com>
+To: test@example.org
+Subject: Your KLM boarding pass(es) for your flight(s) on 09 Mar
+Date: Fri, 08 Mar 2030 16:00:00 +0000
+Message-ID: <klm-boarding-pass-pdf-only@klm.com>
+Authentication-Results: example.org; dkim=pass header.d=klm.com
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============2234096606921383888=="
+
+--===============2234096606921383888==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><body>
+<table><tr><td>Boarding information</td></tr></table>
+<p>You are checked in! We have attached your boarding documents.</p>
+<table>
+<thead><tr><th>Origin</th><th>Destination</th><th>Departure date</th><th>Flig=
+ht number</th><th>Booking code</th></tr></thead>
+<tbody>
+<tr>
+<td><p>Gamma Airport (GGG)</p><p>Gammatown</p></td>
+<td><p>Schiphol (AMS)</p><p>Amsterdam</p></td>
+<td>9 Mar</td>
+<td>KL 1003</td>
+<td>SSSSSS</td>
+</tr>
+</tbody>
+</table>
+</body></html>
+
+--===============2234096606921383888==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Boarding passes-09 Mar.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQgYm9hcmRpbmcgcGFzc2Vz
+
+--===============2234096606921383888==--
