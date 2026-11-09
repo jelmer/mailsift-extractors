@@ -1,0 +1,13 @@
+name: british-airways-boarding-pass
+order: 50
+from_domains:
+  - ba.com
+# "Boarding pass for Mr Test User test@example.org"
+subject_regex: "(?i)^Boarding pass for "
+requires:
+  - attachment:application/pdf
+require_dkim:
+  - ba.com
+  - .ba.com
+# As for the e-ticket receipts: BA mail predates its DKIM setup.
+unsigned_before: "2018-01-01"
