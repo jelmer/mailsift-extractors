@@ -1,0 +1,48 @@
+From: ba@ba.com
+To: test@example.org
+Subject: Boarding pass for Mr Test User test@example.org
+Date: Sun, 03 Mar 2030 21:00:00 +0000
+Message-ID: <ba-boarding-pass-test@ba.com>
+Authentication-Results: example.org; dkim=pass header.d=ba.com
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============7689925739928897578=="
+
+--===============7689925739928897578==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thank you for using British Airways Online Check-in. The document attached to=
+ this email is the boarding pass.
+
+--===============7689925739928897578==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Boarding_Pass_BA0001_AAA_BBB_012.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2Jq
+CjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2Jq
+CjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUg
+ODQyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAw
+IFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNl
+Rm9udCAvQ291cmllciAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyA+PgplbmRvYmoKNSAwIG9i
+ago8PCAvTGVuZ3RoIDcxMiA+PgpzdHJlYW0KQlQKL0YxIDggVGYKMTAgVEwKMzAgODAwIFRkCigg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIFNlcS4gTm8uIDAxMikgVGogVCoKKCkgVGogVCoKKCAgIE1SICBURVNUICBVU0VS
+ICAgICAgICAgICAgICAgICAgICAgICAgICB5b3UncmUgcmVhZHkgdG8gZmx5KSBUaiBUKgooKSBU
+aiBUKgooICAgRmxpZ2h0ICAgICAgICAgICAgICBGcm9tICAgICAgICAgICAgICAgIFRvICAgICAg
+ICAgICAgICAgICAgR3JvdXAgICAgIFNlYXQpIFRqIFQqCiggICBCQTAwMDEgICAgICAgICAgICAg
+IEFMUEhBICAgICAgICAgICAgICAgQkVUQSAgICAgICAgICAgICAgICA0ICAgICAgICAgMUEpIFRq
+IFQqCiggICBEYXRlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQm9hcmRpbmcg
+QXQgICAgICAgICBEZXBhcnR1cmUgdGltZSkgVGogVCoKKCAgIDQgIE1hcmNoICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAwNzowNSAgICAgICAgICAgICAgIDA3OjQ1KSBUaiBUKgooKSBU
+aiBUKgooICAgT3BlcmF0aW5nIEFpcmxpbmUgICBDbGFzcyAgICAgICAgICAgICAgIEJvb2tpbmcg
+cmVmZXJlbmNlICAgRnJlcXVlbnQgZmx5ZXIpIFRqIFQqCiggICBCcml0aXNoIEFpcndheXMgICAg
+IEV1cm8gVHJhdmVsbGVyICAgICAgWlpaWlpaICAgICAgICAgICAgICBCQS8pIFRqIFQqCkVUCmVu
+ZHN0cmVhbQplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAw
+MDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAwMjQx
+IDAwMDAwIG4gCjAwMDAwMDAzMzYgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEg
+MCBSID4+CnN0YXJ0eHJlZgoxMDk4CiUlRU9GCg==
+
+--===============7689925739928897578==--

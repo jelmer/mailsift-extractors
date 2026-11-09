@@ -107,3 +107,18 @@ def test_legacy_layout_uses_routedetails_table(run_extractor):
     assert third["reservationFor"]["departureStation"]["name"] == "Newton Central"
     assert third["reservationFor"]["arrivalStation"]["name"] == "Endpoint Centraal"
     assert third["reservationFor"]["arrivalTime"] == "2026-02-02T21:14:00"
+
+
+def test_the_print_at_home_pdf_is_every_train_s_ticket(run_extractor):
+    """The mail links the booking's tickets as one PDF to print at home,
+    served without logging in; every train of the booking carries it."""
+    out = run_extractor("ns-international", "ns-international-ticket-pdf.eml")
+    pdf = "https://www.bene-system.com/hp/pdfservice?pdf=RTDET020000000000000NS212026"
+    assert [r.get("reservedTicket") for r in out.values()] == [
+        {"@type": "Ticket", "ticketToken": pdf}
+    ] * 3
+
+
+def test_no_ticket_without_the_link(run_extractor):
+    out = run_extractor("ns-international", "ns-international-routedetails.eml")
+    assert all("reservedTicket" not in r for r in out.values())

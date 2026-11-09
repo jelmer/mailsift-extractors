@@ -1,0 +1,65 @@
+From: KLM <yourboardingpass@klm.com>
+To: test@example.org
+Subject: Your KLM boarding pass(es) for your flight(s) on 03 Jun
+Date: Sun, 02 Jun 2030 12:00:00 +0000
+Message-ID: <klm-boarding-pass@klm.com>
+Authentication-Results: example.org; dkim=pass header.d=klm.com
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5137071828557548135=="
+
+--===============5137071828557548135==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><body>
+<table><tr><td>Boarding information</td></tr></table>
+<p>You are checked in! We have attached your boarding documents.</p>
+<table>
+<thead><tr><th>Origin</th><th>Destination</th><th>Departure date</th><th>Flig=
+ht number</th><th>Booking code</th></tr></thead>
+<tbody>
+<tr>
+<td><p>Alpha Airport (AAA)</p><p>Alphaville</p></td>
+<td><p>Schiphol (AMS)</p><p>Amsterdam</p></td>
+<td>3 Jun</td>
+<td>KL 1001</td>
+<td>QQQQQQ</td>
+</tr>
+<tr>
+<td><p>Schiphol (AMS)</p><p>Amsterdam</p></td>
+<td><p>Beta Airport (BBB)</p><p>Betaburg</p></td>
+<td>3 Jun</td>
+<td>KL 1002</td>
+<td>QQQQQQ</td>
+</tr>
+</tbody>
+</table>
+</body></html>
+
+--===============5137071828557548135==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Boarding passes-03 Jun.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQgYm9hcmRpbmcgcGFzc2Vz
+
+--===============5137071828557548135==
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Electronic boarding pass-KL1001-03 Jun.png"
+MIME-Version: 1.0
+
+iVBORyBrbDEwMDE=
+
+--===============5137071828557548135==
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="Electronic boarding pass-KL1002-03 Jun.png"
+MIME-Version: 1.0
+
+iVBORyBrbDEwMDI=
+
+--===============5137071828557548135==--

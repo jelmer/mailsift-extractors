@@ -1,0 +1,13 @@
+name: klm-boarding-pass
+order: 50
+from_domains:
+  - klm.com
+# "Your KLM boarding pass(es) for your flight(s) on 03 Jun", and
+# before 2020 "Your KLM boarding pass(s) on 25 Mar".
+subject_regex: "(?i)^Your KLM boarding pass"
+requires:
+  - html
+require_dkim:
+  - klm.com
+# As for the booking confirmations: unsigned until some time in 2021.
+unsigned_before: "2021-08-30"

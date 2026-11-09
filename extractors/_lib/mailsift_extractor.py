@@ -32,7 +32,7 @@ import sys
 import unicodedata
 from collections.abc import Mapping
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from html.parser import HTMLParser
 from typing import Any, cast
 
@@ -91,6 +91,22 @@ class Mail:
                 if lowered in (a.filename or "").lower():
                     return a
         return pdfs[0]
+
+
+def boarding_day(day: int, month: str, mail_date: datetime) -> date:
+    """The day a boarding pass mailed on `mail_date` means by a date
+    without a year (`3 Jun`, `4 March`).
+
+    Passes are mailed in the day or so before the flight, so it is the
+    first such day from just before the mail on. `month` may be the
+    name in full or its first three letters.
+    """
+    earliest = mail_date.date() - timedelta(days=2)
+    for year in (earliest.year, earliest.year + 1):
+        when = datetime.strptime(f"{day} {month[:3]} {year}", "%d %b %Y").date()
+        if when >= earliest:
+            return when
+    raise ValueError(f"no year puts {day} {month} after {earliest}")
 
 
 def read_message(stream=None) -> Mail:
