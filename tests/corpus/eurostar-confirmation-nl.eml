@@ -1,0 +1,10 @@
+Authentication-Results: example.org; dkim=pass header.d=eurostar.com header.i=@eurostar.com
+From: Eurostar <noreply@eurostar.com>
+To: test@example.org
+Subject: Boekingsbevestiging | woensdag, 13 juni 2046 - Referentie: EEEEEE
+Date: Wed, 02 May 2046 10:04:03 +0000
+Message-ID: <eurostar-nl-test@eurostar.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><table><tr><td><div>Boekingsbevestiging | woensdag, 13 juni 2046 - Referentie: EEEEEE</div></td></tr><tr><td><div>Goed nieuws, je boeking is bevestigd</div><div>Hallo Test User,</div><div><a href="https://www.eurostar.com/">Bekijk je boeking online</a></div></td></tr><tr><td><div>Boekingsreferentie: EEEEEE</div></td></tr><tr><td><div>Heen</div></td><td><p>Eurostar Standard</p></td></tr><tr><td><div>woensdag, 13 juni 2046</div></td></tr><tr><td><div>London St Pancras Int'l</div><div>Rotterdam Centraal</div></td><td><div>18:04</div><div>22:32</div></td></tr><tr><td><div>3 hours and 28 minutes Rechtstreeks</div></td></tr><tr><td><div>Test User</div><div>Rijtuig 5 - Zitplaats 17</div><div><a href="https://www.eurostar.com/">Zitplaats bekijken / wijzigen</a></div></td></tr><tr><td><div>Terug</div></td><td><p>Eurostar Plus</p></td></tr><tr><td><div>zondag, 24 juni 2046</div></td></tr><tr><td><div>Rotterdam Centraal</div><div>London St Pancras Int'l</div></td><td><div>19:28</div><div>21:57</div></td></tr><tr><td><div>3 hours and 29 minutes Rechtstreeks</div></td></tr><tr><td><div>Test User</div><div>Rijtuig 10 - Zitplaats 55</div><div><a href="https://www.eurostar.com/">Zitplaats bekijken / wijzigen</a></div></td></tr><tr><td><div>Zijn je plannen gewijzigd?</div><div>Totaal betaald</div><div>&euro; 100,00</div></td></tr></table></body></html>
