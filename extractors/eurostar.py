@@ -15,6 +15,10 @@ booked together). With one line per block element, a leg reads:
     Test User
     Coach 5 - Seat 17
 
+Localised to the account's language: an `nl-nl` booking replaces the
+headers (`Heen` / `Terug`), the weekday / month name in the date line,
+and the coach / seat labels (`Rijtuig N - Zitplaats M`).
+
 We emit one TrainReservation per direction, numbered
 `eurostar-<reference>-<direction>`, so an exchange confirmation for the
 same direction overwrites in place. A journey with a change of train
@@ -47,11 +51,46 @@ sys.path.insert(0, str(Path(__file__).parent / "_lib"))
 
 from mailsift_extractor import read_message, strip_html
 
-REFERENCE_RE = re.compile(r"^Booking [Rr]eference:\s*([A-Z0-9]{6})$")
-DIRECTIONS = {"Outbound": "outbound", "Return": "return"}
-DATE_RE = re.compile(r"^[A-Z][a-z]+day, (\d{1,2}) ([A-Z][a-z]+) (\d{4})$")
+# TODO: add French support once a sample confirmation is available.
+REFERENCE_RE = re.compile(
+    r"^(?:Booking [Rr]eference|Boekingsreferentie):\s*([A-Z0-9]{6})$"
+)
+DIRECTIONS = {
+    "Outbound": "outbound",
+    "Return": "return",
+    "Heen": "outbound",
+    "Terug": "return",
+}
+# Weekday and month names can be any case (English capitalises them,
+# Dutch keeps them lowercase).
+DATE_RE = re.compile(r"^[A-Za-z]+(?:day|dag), (\d{1,2}) ([A-Za-z]+) (\d{4})$")
+MONTHS = {
+    name.lower(): n
+    for n, names in enumerate(
+        [
+            ("January", "januari"),
+            ("February", "februari"),
+            ("March", "maart"),
+            ("April", "april"),
+            ("May", "mei"),
+            ("June", "juni"),
+            ("July", "juli"),
+            ("August", "augustus"),
+            ("September", "september"),
+            ("October", "oktober"),
+            ("November", "november"),
+            ("December", "december"),
+        ],
+        start=1,
+    )
+    for name in names
+}
 TIME_RE = re.compile(r"^(\d{2}):(\d{2})$")
-SEAT_RE = re.compile(r"^Coach\s+(?P<coach>\S+)\s*-\s*Seat\s+(?P<seat>\S+)$")
+SEAT_RE = re.compile(
+    r"^(?:Coach|Rijtuig)\s+(?P<coach>\S+)\s*-\s*(?:Seat|Zitplaats)\s+(?P<seat>\S+)$"
+)
+# TODO: add the Dutch (and French) equivalent once a journeyless exchange
+# confirmation in that language is available.
 NO_JOURNEYS = "To see your updated journey details, please view your booking online"
 
 
@@ -63,7 +102,11 @@ def parse_leg(lines: list[str]) -> dict:
     arr_match = TIME_RE.match(arr)
     if not (date_match and dep_match and arr_match):
         raise ValueError(f"unrecognised leg {lines[:6]!r}")
-    day = datetime.strptime(" ".join(date_match.groups()), "%d %B %Y")
+    day_num, month_name, year = date_match.groups()
+    month = MONTHS.get(month_name.lower())
+    if month is None:
+        raise ValueError(f"unrecognised month name {month_name!r}")
+    day = datetime(int(year), month, int(day_num))
     departs = day.replace(hour=int(dep_match[1]), minute=int(dep_match[2]))
     arrives = day.replace(hour=int(arr_match[1]), minute=int(arr_match[2]))
     if arrives < departs:

@@ -106,6 +106,40 @@ def test_exchange_without_journeys_emits_nothing(run_extractor):
     assert run_extractor("eurostar", "eurostar-exchange-no-journeys.eml") == {}
 
 
+def test_dutch_return_trip(run_extractor):
+    # Dutch replaces the direction headers (Heen/Terug), the weekday
+    # and month name in the date line, and the seat labels.
+    out = run_extractor("eurostar", "eurostar-confirmation-nl.eml")
+    assert out == {
+        "eurostar-EEEEEE-outbound.reservation.json": {
+            "@context": "https://schema.org",
+            "@type": "TrainReservation",
+            "reservationNumber": "eurostar-EEEEEE-outbound",
+            "mailsift:itineraryComplete": True,
+            "reservationFor": _trip(
+                "London St Pancras Int'l",
+                "Rotterdam Centraal",
+                "2046-06-13T18:04:00",
+                "2046-06-13T22:32:00",
+            ),
+            "ticketedSeat": _seat("5", "17", "Eurostar Standard"),
+        },
+        "eurostar-EEEEEE-return.reservation.json": {
+            "@context": "https://schema.org",
+            "@type": "TrainReservation",
+            "reservationNumber": "eurostar-EEEEEE-return",
+            "mailsift:itineraryComplete": True,
+            "reservationFor": _trip(
+                "Rotterdam Centraal",
+                "London St Pancras Int'l",
+                "2046-06-24T19:28:00",
+                "2046-06-24T21:57:00",
+            ),
+            "ticketedSeat": _seat("10", "55", "Eurostar Plus"),
+        },
+    }
+
+
 def _subject_regex() -> re.Pattern[str]:
     for line in (EXTRACTORS_DIR / "eurostar.yaml").read_text().splitlines():
         if line.startswith("subject_regex: "):
@@ -119,6 +153,7 @@ def _subject_regex() -> re.Pattern[str]:
         "Booking confirmation | Wednesday, 13 June 2046 - Reference: EEEEEE",
         "Booking confirmation | Monday, 30 October - Reference: EEEEEE",
         "Your exchange confirmation | Tuesday, 14 November 2045 - Reference: GGGGGG",
+        "Boekingsbevestiging | woensdag, 13 juni 2046 - Referentie: EEEEEE",
     ],
 )
 def test_manifest_accepts(subject):
